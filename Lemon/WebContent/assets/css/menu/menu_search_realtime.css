@@ -1,0 +1,226 @@
+@CHARSET "UTF-8";
+
+/*------------------------------------*/
+/*             실시간 검색어                         */
+/*------------------------------------*/
+/* 실시간 검색어 영역 */
+.realtime_soar_keyword {
+	zoom: 1;
+	float: left;
+	margin-top: 45px;
+	position: relative;
+	padding-left: 9px;
+	*z-index: 15;
+}
+
+/* 실시간 급상승 이미지 */
+.realtime_soar_keyword a.title {
+    display: none;
+    float: left;
+    width: 42px;
+    height: 16px;
+    margin: 3px 0 0 3px;
+    background-image: url("../../../assets/img/menu/menu_search_realtime_soar.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+/* 검색 키워드, 순위 변동 영역 */
+.realtime_soar_keyword .keyword_overlay {
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 162px;
+    margin: 3px 0 0 10px;
+    *margin-top: 2px;
+    overflow: hidden;
+    z-index: 15;
+}
+
+.realtime_soar_keyword .keyword_overlay ol {
+	width: 162px;
+}
+
+/* 롤링 영역 */
+.realtime_soar_keyword li {
+	position: absolute;
+	width: 162px;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 순위 영역 */
+.realtime_soar_keyword .order {
+	display: inline-block;
+	float: left;
+	margin: 1px 1px 0 0;
+	width: 19px;
+	height: 14px;
+	font-size: 12px;
+	line-height: 15px;
+	padding-right: 4px;
+	vertical-align: top;
+	color: #777;
+	text-align: right;
+}
+
+/* 순위 . */
+.realtime_soar_keyword .order .gubun {
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+/* 검색어 */
+.realtime_soar_keyword li a {
+	display: inline-block;
+	float: left;
+	width: 96px;
+	height: 14px;
+	color: #333;
+	font-size: 12px;
+	line-height: 15px;
+	margin: 1px 0 0 0;
+	vertical-align: top;
+}
+
+.realtime_soar_keyword li .ellipsis {
+	display: inline-block;
+	*display: inline;
+	*position: relative;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/* 순위 변동 영역 */
+.wrap_rank {
+	display: inline-block;
+	color: #999;
+	font-size: 12px;
+	line-height: 18px;
+	font-family: "Arial", "돋움", "Dotum", "Apple Gothic", sans-serif;
+	vertical-align: middle;
+}
+
+.realtime_soar_keyword .wrap_rank {
+	display: inline-block;
+	float: left;
+	width: 40px;
+	height: 14px;
+	margin: 2px 0 0 1px;
+	vertical-align: top;
+	color: #3d464b;
+	font-size: 0;
+	line-height: 0;
+}
+
+.wrap_rank span {
+	vertical-align: middle;
+	font-family: "Arial", "돋움", "Dotum", "Apple Gothic", sans-serif;
+	font-size: 10px;
+}
+
+/* 순위 변동 이미지 */
+.realtime_soar_keyword .wrap_rank .icon {
+	display: inline-block;
+	overflow: hidden;
+	width: 7px;
+	height: 7px;
+	margin: 1px 3px 0 0;
+	background-image:
+		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-repeat: no-repeat;
+	background-position: -22px -155px;
+	font-size: 0;
+	line-height: 0;
+}
+
+/* 순위 새 진입 이미지 */
+.realtime_soar_keyword .wrap_rank.new .icon {
+	width: 21px;
+	height: 5px;
+	margin-top: 5px;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: middle;
+	background-image:
+		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-repeat: no-repeat;
+	background-position: 0 -169px;
+}
+
+/* 순위 다운 */
+.down {
+	color: #47beaa;
+	font-size: 10px;
+}
+
+/* 순위 변동 글자 */
+.realtime_soar_keyword .wrap_rank .num {
+	font-size: 10px;
+	line-height: 13px;
+	display: inline-block;
+}
+
+/* 순위 변동 다운 글자 색상 */
+.realtime_soar_keyword .wrap_rank.down .num {
+    color: #47bda8;
+}
+
+/* 순위 상승 */
+.up {
+	color: #ff4c7c;
+	font-size: 10px;
+}
+
+/* 순위 상승 이미지 */
+.realtime_soar_keyword .wrap_rank.up .icon {
+	display: inline-block;
+	overflow: hidden;
+	width: 7px;
+	height: 7px;
+	margin: 3px 3px 0 0;
+	background-image:
+		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-repeat: no-repeat;
+	background-position: 0 -155px;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 순위 상승 글자 색상 */
+.realtime_soar_keyword .wrap_rank.up .num {
+	margin: 0;
+	color: #ff4e78;
+	font-size: 10px;
+	line-height: 13px;
+	vertical-align: top;
+}
+
+/* 더보기 */
+.realtime_soar_keyword .keyword_overlay .keyword_more {
+    display: none;
+    height: 21px;
+    margin: 0 1px;
+    padding-top: 8px;
+    border-top: 1px solid #e2e6e5;
+    color: #666;
+    text-align: center;
+    line-height: 0;
+    letter-spacing: -1px;
+}
+
+.realtime_soar_keyword .keyword_overlay .keyword_more span span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+}

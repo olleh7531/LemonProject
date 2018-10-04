@@ -1,0 +1,304 @@
+@CHARSET "UTF-8";
+
+/*------------------------------------*/
+/*             최신 앨범                         */
+/*------------------------------------*/
+.new_album {
+	position: relative;
+	z-index: 5;
+	width: 476px;
+	height: 340px;
+	float: left;
+}
+
+/*------------------------------------*/
+/*        앨범 종류                         */
+/*------------------------------------*/
+.new_album .section_na {
+	float: right;
+	padding-right: 88px;
+}
+
+.new_album h2 {
+	float: left;
+}
+
+.new_album h2 a.title_link {
+	/* overflow: hidden; */
+	width: 70px;
+	height: 2opx;
+	display: block;
+}
+
+.new_album .section_na .new_album_cate {
+	overflow: hidden;
+	zoom: 1;
+	padding-top: 2px;
+}
+
+.new_album .section_na .new_album_cate li {
+	float: left;
+	padding: 0 8px;
+	background:
+		url("../../../assets/img/main/new_album/main_new_album_bg.png");
+	background-repeat: no-repeat;
+	background-position: left 1px;
+	font-size: 0;
+	line-height: 0;
+}
+
+/* 전체 */
+.new_album .section_na .new_album_cate li a {
+	display: inline-block;
+	width: 24px;
+	height: 12px;
+	font-size: 12px;
+	line-height: 12px;
+	vertical-align: top;
+}
+
+.new_album .section_na .new_album_cate li.on a {
+	font-weight: bold;
+	color: #1a1a1a;
+}
+
+.new_album .section_na .new_album_cate li.bg_none {
+	background: none;
+}
+
+.new_album .section_na .new_album_cate li.nth1.on a {
+	background-position: 0 -12px;
+}
+
+/* 가요 */
+.new_album .section_na .new_album_cate li.nth2 a {
+	width: 24px;
+	height: 12px;
+	background-position: -39px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth3 a {
+	width: 24px;
+	height: 12px;
+	background-position: -78px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth4 a {
+	width: 24px;
+	height: 12px;
+	background-position: -106px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth5 a {
+	width: 33px;
+	height: 12px;
+	background-position: -145px 0;
+}
+
+/* 페이지처리 */
+
+
+/*------------------------------------*/
+/*             최신 앨범 목록                         */
+/*------------------------------------*/
+.new_album .list_wrap {
+	position: absolute;
+	top: 23px;
+	left: -2px;
+	width: 480px;
+	height: 340px;
+}
+
+.new_album .list_wrap .sub_list {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 480px;
+	margin: -2px 0 0 -3px;
+}
+
+.new_album .list_wrap li {
+	position: relative;
+	display: inline;
+	float: left;
+	height: 156px;
+	margin: 3px 0 0 4px;
+	padding: 0;
+	background: none;
+}
+
+.new_album .list_wrap .img .thum {
+	display: block;
+	overflow: hidden;
+	width: 156px;
+	height: 156px;
+	font-size: 0;
+	line-height: 0;
+}
+
+.new_album .list_wrap dl dd .thum span.bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 156px;
+	height: 156px;
+	background-image:
+		url("../../../assets/img/main/main_new_album_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -241px 0;
+}
+
+.new_album .list_wrap .img .overlay {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 156px;
+	height: 156px;
+	background-image:
+		url("../../../assets/img/main/main_new_album_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -843px -843px;
+}
+
+.new_album .list_wrap .img .overlay a.album {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 156px;
+	height: 155px;
+	display: block;
+	overflow: hidden;
+	text-align: center;
+	line-height: 0;
+}
+
+.btn_play_song {
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	max-width: 100%;
+	margin: 0;
+	height: 17px;
+	text-decoration: none !important;
+	cursor: pointer;
+	*cursor: pointer;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: left;
+}
+
+.new_album .list_wrap .img .overlay a.btn_play_song {
+	display: inline-block;
+	position: absolute;
+	bottom: 7px;
+	right: 7px;
+	width: 42px;
+	height: 42px;
+	background-image: url("../../../assets/img/main/btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: -1px -275px;
+	z-index: 1;
+}
+
+.new_album .list_wrap .img .overlay a.album span.album_cont {
+	position: absolute;
+	top: 60px;
+	left: 19px;
+	overflow: hidden;
+	display: block;
+	width: 118px;
+	height: 18px;
+}
+
+.new_album .list_wrap .img .overlay a.album span.title_wrap {
+	display: block;
+}
+
+.new_album .list_wrap .img .overlay a.album span.title_wrap span.title {
+	zoom: 1;
+	height: 16px;
+	text-align: center;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 16px;
+	letter-spacing: 0;
+	color: #fff;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.new_album .list_wrap .img .overlay a.album span.title_wrap span.title.title_ellipsis
+	{
+	overflow: hidden;
+	width: auto;
+	max-width: 118px;
+	text-overflow: ellipsis;
+}
+
+.new_album .list_wrap .img .overlay .singer {
+	position: absolute;
+	top: 80px;
+	left: 19px;
+	display: block;
+	height: 22px;
+	text-align: center;
+	width: 118px;
+	margin: 0 auto;
+}
+
+.new_album .list_wrap .img .overlay .singer a {
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	line-height: 15px;
+	vertical-align: top;
+}
+
+.new_album .list_wrap .singer .ellipsis {
+	display: inline-block;
+	*display: inline;
+	overflow: hidden;
+	zoom: 1;
+	max-width: 118px;
+	color: #fff;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.new_album .list_wrap dd.singer {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	height: 22px;
+	padding-top: 8px;
+	background: url("../../../assets/img/main/main_new_album_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: 0 -682px;
+	text-align: center;
+	width: 156px;
+}
+
+.new_album .list_wrap dd.singer a {
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	line-height: 15px;
+	vertical-align: top;
+}
+
+a.play_artist {
+	overflow: hidden;
+	margin: 0;
+	height: 17px;
+	text-decoration: none !important;
+	*cursor: pointer;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: left;
+}

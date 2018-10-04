@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Lemon</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>MainFrontController</servlet-name>
+		<servlet-class>com.lemon.main.action.MainFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainFrontController</servlet-name>
+		<url-pattern>*.mi</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MusicPlayerFrontController</servlet-name>
+		<servlet-class>com.lamon.musicplayer.action.MusicPlayerFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MusicPlayerFrontController</servlet-name>
+		<url-pattern>*.mp</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ABoardFrontController</servlet-name>
+		<servlet-class>com.lemon.admin.board.action.ABoardFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ABoardFrontController</servlet-name>
+		<url-pattern>*.abb</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AMemberFrontController</servlet-name>
+		<servlet-class>com.lemon.admin.member.admin.AMemberFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AMemberFrontController</servlet-name>
+		<url-pattern>*.amb</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AMusicFrontController</servlet-name>
+		<servlet-class>com.lemon.admin.music.action.AMusicFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AMusicFrontController</servlet-name>
+		<url-pattern>*.ams</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AMusicVideoFrontController</servlet-name>
+		<servlet-class>com.lemon.admin.musicVideo.action.AMusicVideoFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AMusicVideoFrontController</servlet-name>
+		<url-pattern>*.amv</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ANoticeFrontController</servlet-name>
+		<servlet-class>com.lemon.admin.notice.action.ANoticeFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ANoticeFrontController</servlet-name>
+		<url-pattern>*.ant</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BoardFrontController</servlet-name>
+		<servlet-class>com.lemon.board.action.BoardFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BoardFrontController</servlet-name>
+		<url-pattern>*.bd</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ChartFrontController</servlet-name>
+		<servlet-class>com.lemon.chart.action.ChartFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChartFrontController</servlet-name>
+		<url-pattern>*.ct</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ChattingFrontController</servlet-name>
+		<servlet-class>com.lemon.chatting.action.ChattingFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChattingFrontController</servlet-name>
+		<url-pattern>*.ch</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FolloFrontController</servlet-name>
+		<servlet-class>com.lemon.follo.action.FolloFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FolloFrontController</servlet-name>
+		<url-pattern>*.fl</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GenreFrontController</servlet-name>
+		<servlet-class>com.lemon.genre.action.GenreFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GenreFrontController</servlet-name>
+		<url-pattern>*.gr</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MemberFrontController</servlet-name>
+		<servlet-class>com.lemon.member.action.MemberFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MemberFrontController</servlet-name>
+		<url-pattern>*.mb</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MusicBoardFrontController</servlet-name>
+		<servlet-class>com.lemon.musicboard.action.MusicBoardFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MusicBoardFrontController</servlet-name>
+		<url-pattern>*.msb</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MusicVideoFrontController</servlet-name>
+		<servlet-class>com.lemon.musicVideo.action.MusicVideoFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MusicVideoFrontController</servlet-name>
+		<url-pattern>*.mv</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>NoticeFrontController</servlet-name>
+		<servlet-class>com.lemon.notice.action.NoticeFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoticeFrontController</servlet-name>
+		<url-pattern>*.nt</url-pattern>
+	</servlet-mapping>
+
+
+
+
+</web-app>

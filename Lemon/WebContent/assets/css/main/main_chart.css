@@ -1,0 +1,477 @@
+@CHARSET "UTF-8";
+
+/* 공통 */
+.chart {
+	width: 280px;
+	float: left;
+	margin-left: 24px;
+	height: 472px;
+	margin-top: 32px;
+}
+
+.chart h2 {
+	border-bottom: 1px solid #d8ddde;
+}
+
+/* 멜론 차트 제목 */
+.chart h2 a.title_link {
+	float: left;
+	width: 70px;
+	height: 15px;
+	display: block;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+/* 차트 업데이트 시간 */
+.chart .list_wrap span.txt_intro {
+	position: absolute;
+	top: -53px;
+	right: 0;
+	padding-left: 7px;
+	letter-spacing: 0;
+	font-weight: normal;
+	color: #888;
+	display: inline-block;
+	font-size: 12px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	background: none;
+	text-align: right;
+}
+/* 차트 탭 */
+.wrap_chart_tab {
+	position: relative;
+	zoom: 1;
+}
+
+a.tab_link {
+	display: block;
+	width: 94px;
+	height: 20px;
+	padding-top: 8px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: right -416px;
+	text-align: center;
+	vertical-align: top;
+}
+
+li.on a.tab_link { /* 탭 클릭하였을 때 */
+	position: absolute;
+	z-index: 1;
+	margin-top: -1px;
+	padding-top: 7px;
+	border-top: 2px solid #EDAE06;
+}
+
+/* 실시간 차트 */
+a.tab_link.realtime {
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+a.tab_link.realtime span {
+	display: inline-block;
+	height: 14px;
+	/* width: 36px; */
+}
+
+/* pop 차트 */
+
+/* 실시간 글자 색상 */
+li.on a.tab_link.realtime span {
+	color: #EDAE06
+}
+
+.chart .list_wrap {
+	display: none;
+	width: 278px;
+	position: absolute;
+	top: 28px;
+	left: 0;
+	border: 1px solid #dfe6e8;
+	border-width: 0 1px;
+}
+
+.chart li.on div.list_wrap {
+	display: block;
+}
+
+/* 차트 전체 */
+.chart .list_wrap ul {
+	border-top: 1px solid #d8ddde;
+}
+
+.chart .list_wrap li.rank_item {
+	background: #fff;
+}
+/* 차트 행 */
+.chart .list_wrap li {
+	position: relative;
+	width: 278px;
+	height: 33px;
+	border-bottom: 1px solid #e9edef;
+	font-size: 0;
+	line-height: 0;
+}
+
+.chart .list_wrap li.active {
+	position: relative;
+	z-index: 10;
+	height: 69px;
+}
+
+/* 차트 짝수 행 */
+.chart .list_wrap li.odd {
+	background: #f8f8f8;
+}
+
+/* 차트 순위 부분 */
+.chart .list_wrap li .rank_number {
+	overflow: hidden;
+	float: left;
+	width: 71px;
+}
+
+.chart .list_wrap li.active .rank_number {
+	float: left;
+	margin-top: 18px;
+}
+/* 차트 순위 */
+.chart .list_wrap li .rank_number .rank {
+	display: inline-block;
+	float: left;
+	width: 34px;
+	height: 13px;
+	margin: 9px 0 0 5px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: 0 -445px;
+	font-size: 0;
+	line-height: 0;
+	text-align: center;
+	vertical-align: top;
+}
+
+.chart .list_wrap li.active .rank_number .rank {
+	height: 21px;
+}
+
+.chart .list_wrap li.active .rank_number.nth1 .rank {
+	background-position: -53px -440px;
+}
+
+/* 차트 2위 ~ 10위 */
+.chart .list_wrap li.active .nth2 .rank {
+	background-position: -50px -474px;
+}
+
+.chart .list_wrap li .nth2 .rank {
+	background-position: 0 -478px;
+}
+
+.chart .list_wrap li.active .nth3 .rank {
+	background-position: -50px -505px;
+}
+
+.chart .list_wrap li .nth3 .rank {
+	background-position: 0 -509px;
+}
+
+.chart .list_wrap li.active .nth4 .rank {
+	background-position: -50px -536px;
+}
+
+.chart .list_wrap li .nth4 .rank {
+	background-position: 0 -540px;
+}
+
+.chart .list_wrap li.active .nth5 .rank {
+	background-position: -50px -567px;
+}
+
+.chart .list_wrap li .nth5 .rank {
+	background-position: 0 -571px;
+}
+
+.chart .list_wrap li.active .nth6 .rank {
+	background-position: -50px -598px;
+}
+
+.chart .list_wrap li .nth6 .rank {
+	background-position: 0 -602px;
+}
+
+.chart .list_wrap li.active .nth7 .rank {
+	background-position: -50px -629px;
+}
+
+.chart .list_wrap li .nth7 .rank {
+	background-position: 0 -633px;
+}
+
+.chart .list_wrap li.active .nth8 .rank {
+	background-position: -50px -660px;
+}
+
+.chart .list_wrap li .nth8 .rank {
+	background-position: 0 -664px;
+}
+
+.chart .list_wrap li.active .nth9 .rank {
+	background-position: -50px -691px;
+}
+
+.chart .list_wrap li .nth9 .rank {
+	background-position: 0 -695px;
+}
+
+.chart .list_wrap li.active .nth10 .rank {
+	background-position: -50px -722px;
+}
+
+.chart .list_wrap li .nth10 .rank {
+	background-position: 0 -726px;
+}
+
+/* 차트 변동 순위 */
+.chart .list_wrap li .rank_number .ranking_num {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	zoom: 1;
+	width: 22px;
+	height: 15px;
+	margin-top: 9px;
+	padding-left: 9px;
+	vertical-align: top;
+}
+
+.chart .list_wrap li.active .rank_number .ranking_num {
+	margin-top: 13px;
+}
+
+.chart .list_wrap li.active .nth1 .ranking_num {
+	margin-top: 12px;
+}
+
+/* 차트 순위 그대로 아이콘 */
+.chart .list_wrap li .rank_number .ranking_num .icon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 7px;
+	height: 7px;
+	margin: 3px 2px 0 0;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: -25px -196px;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 차트 순위 up 아이콘 */
+.chart .list_wrap li .rank_number .ranking_num.up .icon {
+	background-position: -13px -196px;
+}
+
+/* 차트 순위 그대로 글자 */
+.chart .list_wrap li .rank_number .ranking_num .num {
+	display: inline;
+	font-family: Arial;
+	font-size: 10px;
+	line-height: 13px;
+	vertical-align: top;
+}
+
+/* 차트 순위 up 글자 색상 */
+.chart .list_wrap li .rank_number .ranking_num.up .num {
+	color: #ff4e78;
+}
+
+/* 곡 정보 */
+.chart .list_wrap li .rank_cntt {
+	float: left;
+	width: 207px;
+	padding-top: 8px;
+}
+
+.chart .list_wrap li.active .rank_cntt {
+	padding-top: 11px;
+}
+
+.chart .list_wrap li .rank_cntt .thumb {
+	display: none;
+	float: left;
+	width: 48px;
+}
+
+.chart .list_wrap li.active .rank_cntt .thumb {
+	display: block;
+}
+
+/* 앨범 표지 */
+.chart .list_wrap li .rank_cntt .thumb a {
+	position: relative;
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	vertical-align: top;
+}
+
+.chart .list_wrap li .rank_cntt .thumb a .bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 48px;
+	height: 48px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -873px 0;
+}
+
+/* 곡 이름 */
+.chart .list_wrap li .rank_cntt .rank_info {
+	width: 207px;
+	padding-top: 2px;
+}
+
+.chart .list_wrap li.active .rank_cntt .rank_info {
+	display: inline;
+	float: left;
+	width: 150px;
+	margin-left: 9px;
+}
+
+.chart .list_wrap li .rank_cntt .song {
+	float: left;
+	width: 120px;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.chart .list_wrap li.active .rank_cntt .song {
+	width: 137px;
+	padding-top: 8px;
+	overflow: hidden;
+	color: #1a1a1a;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+/* 가수 */
+.chart .list_wrap li .rank_cntt .artist {
+	float: left;
+	width: 77px;
+	margin-left: 1px;
+}
+
+.chart .list_wrap li.active .rank_cntt .artist {
+	width: 100%;
+	margin: 3px 0 0 0;
+}
+
+.chart .list_wrap li .rank_cntt .artist .ellipsis {
+	display: block;
+	overflow: hidden;
+	float: left;
+	max-width: 100%;
+	font-size: 12px;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.chart .list_wrap li.active .rank_cntt .artist .ellipsis {
+	max-width: 135px;
+}
+
+.chart .list_wrap li .rank_cntt .artist .ellipsis a {
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 15px;
+}
+
+/* 차트 TOP 10 듣기 / 더 보기 영역  */
+.chart_btn_area {
+	zoom: 1;
+	overflow: hidden;
+	padding: 6px 8px;
+	border-bottom: 1px solid #dfe6e8;
+}
+
+/* 차트 TOP 10 듣기 */
+.chart_btn_area .btn_base {
+	display: inline;
+	float: left;
+	margin-left: 5px;
+	*margin: -2px 3px 0 0;
+}
+
+.btn_base span.odd_span {
+	padding-left: 8px;
+	background-image: url("../../../assets/img/common/common_btn.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.btn_base.play span.odd_span {
+	padding-left: 19px;
+	background-position: left -148px;
+}
+
+.btn_base span.even_span {
+	*line-height: 26px;
+}
+
+.btn_base span.even_span {
+	min-width: 22px;
+	height: 26px;
+	padding-right: 8px;
+	background-image: url("../../../assets/img/common/common_btn.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	color: #333;
+	font-size: 11px;
+	line-height: 29px;
+	font-family: "Dotum", "돋음", "Apple Gothic", sans-serif;
+	letter-spacing: -1px;
+}
+
+/* 더 보기 */
+.chart_btn_area .all_view {
+	float: right;
+	margin: 5px 5px 0 0;
+}
+
+.chart_btn_area .all_view a {
+	color: #666;
+	font-size: 11px;
+	line-height: 14px;
+}
+
+.chart_btn_area .all_view span span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: -1px -58px;
+}

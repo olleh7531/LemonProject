@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+#footer {
+    width: 100%;
+}
+
+#footer p {
+	text-align: center;
+    margin: 19px 0 19px;
+    font-size: 11px;
+    line-height: 20px;
+    color: #909090;
+    font-family: "돋움", Dotum, "맑은 고딕", "Malgun Gothic","Apple Gothic", sans-serif;
+}

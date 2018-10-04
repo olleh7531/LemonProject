@@ -1,0 +1,197 @@
+@CHARSET "UTF-8";
+
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+	abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul,
+	li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead,
+	tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav,
+	section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+a {
+	color: #1a1a1a;
+	text-decoration: none;
+}
+
+a:link {
+	color: #1a1a1a;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #1a1a1a;
+	text-decoration: none;
+}
+
+img {
+	border: none;
+	line-height: 0;
+	font-size: 0;
+}
+
+a img {
+	border: none;
+}
+
+input {
+	vertical-align: middle;
+}
+
+input, textarea, select, button {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	margin: 0em;
+	font: 400 13.3333px Arial;
+}
+
+input[type="button" i], input[type="submit" i], input[type="reset" i],
+	input[type="file" i]::-webkit-file-upload-button, button {
+	align-items: flex-start;
+	text-align: center;
+	cursor: default;
+	color: buttontext;
+	background-color: buttonface;
+	box-sizing: border-box;
+	padding: 2px 6px 3px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonface;
+	border-image: initial;
+}
+
+input[type=text], input[type=password], input[type=url], input[type=email],
+	input.text {
+	height: 24px;
+	padding: 0 7px;
+	border: 1px solid #b6b6b6;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	/* box-shadow: 1px 1px 0 0 rgba(0,0,0,0.05) inset; */
+	box-shadow: none;
+	font-size: 11px;
+	font-family: dotum, "돋움", "Apple Gothic", sans-serif;
+}
+
+input[type=text], input[type=password], input[type=url], input[type=email], input.text {
+    *line-height: 24px;
+}
+
+ol, ul, li {
+	list-style: none;
+	font-weight: normal;
+}
+
+/* 내용 */
+#conts {
+	position: relative;
+	z-index: 10;
+	display: inline-block;
+	display: block;
+	width: 1008px;
+	min-height: 800px;
+	padding: 29px 0 88px;
+	zoom: 1;
+}
+
+#conts h2 {
+	margin-top: 0 !important;
+}
+
+.clfix {
+    display: inline-block;
+}
+
+.clfix {
+	zoom: 1;
+}
+
+.clfix {
+	display: block;
+}
+
+/* margin-top */
+.mt24 {
+	margin-top: 24px !important;
+}
+
+/* margin-left */
+.ml0 {
+	margin-left: 0 !important;
+}
+
+/* 폰트 색깔 */
+.fc_mgray {
+	color: #777 !important;
+}
+
+/* 차트 순위 UP */
+.up {
+	color: #ff4c7c;
+	font-size: 10px;
+}
+
+/* 버튼 */
+button, .btn {
+	border: 1px solid red;
+	display: inline-block;
+	zoom: 1;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	text-decoration: none !important;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+button, .btn {
+    *margin: 0 2px;
+    *overflow: visible;
+}
+
+button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_span
+	{
+	display: block;
+	position: relative;
+}
+
+button.disabled, .btn.disabled {
+	cursor: default;
+}
+
+.btn_pre span.odd_span {
+	background-position: left top;
+}
+
+.btn_pre.disabled span.odd_span {
+	background-position: left -90px !important;
+}
+
+.btn_pre span.odd_span, .btn_next span.odd_span {
+	width: 22px;
+	height: 21px;
+	background-image: url("../../../assets/img/common/common_btn_page.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	font-size: 0;
+	line-height: 0;
+}
+
+.btn_next span.odd_span {
+	background-position: right top;
+}
