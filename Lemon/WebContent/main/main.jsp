@@ -1404,6 +1404,9 @@
 									</span>
 								</button>
 							</div>
+							<div class="main_naver_login">
+								<a href="">네이버 로그인</a>
+							</div>
 							<div class="main_kakao_login">
 								<a href="">카카오 로그인</a>
 							</div>
