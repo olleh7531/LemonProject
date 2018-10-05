@@ -77,10 +77,21 @@
 	background-position: -39px 0;
 }
 
+.new_album .section_na .new_album_cate li.nth2.on a {
+	font-weight: bold;
+	color: #1a1a1a;
+}
+
 .new_album .section_na .new_album_cate li.nth3 a {
 	width: 24px;
 	height: 12px;
 	background-position: -78px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth3.on a {
+    width: 22px;
+    height: 12px;
+    background-position: -78px 0;
 }
 
 .new_album .section_na .new_album_cate li.nth4 a {
@@ -89,14 +100,24 @@
 	background-position: -106px 0;
 }
 
+.new_album .section_na .new_album_cate li.nth4.on a {
+    width: 22px;
+    height: 12px;
+    background-position: -78px 0;
+}
+
 .new_album .section_na .new_album_cate li.nth5 a {
 	width: 33px;
 	height: 12px;
 	background-position: -145px 0;
 }
 
+.new_album .section_na .new_album_cate li.nth5.on a {
+    width: 22px;
+    height: 12px;
+    background-position: -78px 0;
+}
 /* 페이지처리 */
-
 
 /*------------------------------------*/
 /*             최신 앨범 목록                         */

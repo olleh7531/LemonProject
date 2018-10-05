@@ -3,6 +3,9 @@
 	
 <link rel="stylesheet" type="text/css" href="../assets/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/common/common_page.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/common/common_font.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_banner.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/main/main_common.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/main/main_new_album.css">
@@ -14,6 +17,8 @@
 
 <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="../assets/js/main/main_login.js"></script>
+<script type="text/javascript" src="../assets/js/main/maain_chart_tab.js"></script>
 
 <!-- 메뉴 -->
 <jsp:include page="../common/menu.jsp"></jsp:include>
@@ -1856,12 +1861,12 @@
 				<div class="wrap_chart_tab">
 					<ul>
 						<!-- 실시간 차트 -->
-						<li class="on nth1">
+						<li class="chart_tab on nth1">
 							<a href="" title="실시간 보기" class="d_link tab_link realtime">
 								<span>실시간</span>
 							</a>
 							<span class="none">실시간</span>
-							<div class="list_wrap typeRealtime">
+							<div class="chart_tab_content list_wrap typeRealtime">
 								<span class="txt_intro">2018.10.01 
 									<strong>16:00</strong> 기준
 								</span>
@@ -2254,12 +2259,12 @@
 						<!-- //실시간 차트 -->
 
 						<!-- POP 차트 -->
-						<li class="nth2">
+						<li class="chart_tab nth2">
 							<a href="#" title="POP 보기" class="d_link tab_link pop">
 								<span class=""></span>
 							</a>
 							<span class="none">POP</span>
-							<div class="list_wrap typePop">
+							<div class="chart_tab_content list_wrap typePop">
 								<span class="txt_intro">2018.09.30 기준</span>
 								<ul>
 									<li class="rank_item active">
@@ -2702,12 +2707,12 @@
 						<!-- //POP 차트 -->
 						
 						<!-- 아티스트 차트 -->
-						<li class="nth3">
+						<li class="chart_tab nth3">
 							<a href="#" title="아티스트 보기" class="d_link tab_link artist">
 								<span class=""></span>
 							</a>
 							<span class="none">아티스트</span>
-							<div class="list_wrap typeArtist">
+							<div class="chart_tab_content list_wrap typeArtist">
 								<span class="txt_intro">2018.09.30 기준</span>
 								<ul class="d_artist_list">
 									<li class="rank_item active">
