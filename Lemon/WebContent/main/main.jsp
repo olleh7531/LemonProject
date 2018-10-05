@@ -22,7 +22,6 @@
 
 <!-- 메뉴 -->
 <jsp:include page="../common/menu.jsp"></jsp:include>
-테스트ㅇ
 <!-- 본문 -->
 <div id="cont_wrap" class="clfix">
 	<div id="conts_section" class="pr_none">

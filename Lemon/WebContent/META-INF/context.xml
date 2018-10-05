@@ -3,10 +3,14 @@
 	<!-- <Resource name="jdbc/Lemon" auth="Container" type="javax.sql.DataSource" 
 		driverClassName="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://192.168.7.5:3306/lemon00?characterEncoding=UTF-8&amp;serverTimezone=UTC" 
 		username="jspdb" password="jsppass" /> -->
-	<Resource name="jdbc/Lemon" auth="Container" type="javax.sql.DataSource"
-		driverClassName="com.mysql.cj.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/lemon00?characterEncoding=UTF-8&amp;serverTimezone=UTC"
-		username="jspdb" password="jsppass" />
+	<Resource
+	 name="jdbc/Lemon" 
+	 auth="Container" 
+	 type="javax.sql.DataSource" 
+	 driverClassName="com.mysql.cj.jdbc.Driver" 
+	 url="jdbc:mysql://localhost:3306/lemon00?serverTimezone=UTC"
+	 username="jspid" 
+	 password="jsppass" />
 
 	<!-- INSERT INTO mysql.jspdb (host,user,authentication_string,ssl_cipher, 
 		x509_issuer, x509_subject) VALUES ('%','jspdb',password('jsppass'),'','',''); 
