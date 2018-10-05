@@ -6,12 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
+=======
+<link rel="stylesheet" type="text/css" href="../assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/common/common_font.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_common.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_search.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_search_realtime.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_banner.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu.css">
+>>>>>>> refs/remotes/origin/master
 </head>
 <body>
 	<div id="wrap">
@@ -208,7 +220,7 @@
 				<!-- 배너 영역 -->
 	            <div class="cmn_banner">
 	               <a href="" title="라이브원(소유) 사전알림 당일 - 페이지 이동" class="d_item mlog">
-	                  <img class="mySlides" width="280" height="75"
+	                  <img class="mySlides" width="280" height="75" style="display: block;"
 	                     src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002062810.png" alt="">
 	               </a>
 	               <a href="" title="이용권(니니즈 10월) - 페이지 이동" class="d_item mlog">
