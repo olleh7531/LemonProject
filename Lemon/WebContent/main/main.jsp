@@ -1,28 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/common/common.css">
+	href="./assets/css/common/common.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/common/common_page.css">
+	href="./assets/css/common/common_page.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/menu/menu_banner.css">
+	href="./assets/css/menu/menu_banner.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_common.css">
+	href="./assets/css/main/main_common.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_new_album.css">
+	href="./assets/css/main/main_new_album.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_event.css">
+	href="./assets/css/main/main_event.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_login.css">
+	href="./assets/css/main/main_login.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_concert.css">
+	href="./assets/css/main/main_concert.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_chart.css">
+	href="./assets/css/main/main_chart.css">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/main/main_hot_issue.css">
+	href="./assets/css/main/main_hot_issue.css">
 
-<script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="../assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 
 <jsp:include page="../common/menu.jsp"></jsp:include>
 

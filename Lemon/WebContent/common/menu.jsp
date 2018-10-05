@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
-<link rel="stylesheet" type="text/css" href="../assets/css/common/common.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_common.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_search.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_search_realtime.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
 </head>
 <body>
 	<div id="wrap">
@@ -22,8 +22,8 @@
 				<div id="gnb" class="clfix">
 					<!-- 로고 -->
 					<h1>
-						<a href="../index.html" title="레몬 Lemon 로고 - 홈으로 이동" class="mlog">
-							<img src="../assets/img/menu/menu_logo.png" alt="레몬 Lemon 로고 이미지">
+						<a href="./main.mi" title="레몬 Lemon 로고 - 홈으로 이동" class="mlog">
+							<img src="./assets/img/menu/menu_logo.png" alt="레몬 Lemon 로고 이미지">
 						</a>
 					</h1>
 					<!-- 로고 -->
