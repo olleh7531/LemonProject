@@ -11,5 +11,5 @@
 	<!-- INSERT INTO mysql.jspdb (host,user,authentication_string,ssl_cipher, 
 		x509_issuer, x509_subject) VALUES ('%','jspdb',password('jsppass'),'','',''); 
 		GRANT ALL PRIVILEGES ON *.* TO 'jspdb'@'%'; FLUSH PRIVILEGES; -->
-		
+
 </Context>
