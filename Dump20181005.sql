@@ -27,10 +27,9 @@ CREATE TABLE `album` (
   `album_name` varchar(200) DEFAULT NULL,
   `release` date NOT NULL,
   `album_art_img` text,
-  `rating` tinyint(4) NOT NULL,
   `agency` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +38,7 @@ CREATE TABLE `album` (
 
 LOCK TABLES `album` WRITE;
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
+INSERT INTO `album` VALUES (1,'그래프 테스트','2018-10-05',NULL,NULL),(2,'그래프 테스트2','2018-10-05',NULL,NULL),(3,'아이티윌','2018-10-05',NULL,NULL);
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,6 +79,37 @@ CREATE TABLE `comment` (
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `download_log`
+--
+
+DROP TABLE IF EXISTS `download_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `download_log` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `down_level` tinyint(4) NOT NULL,
+  `down_user_email` varchar(100) NOT NULL,
+  `down_user_ip` varchar(15) NOT NULL,
+  `down_music_num` int(11) NOT NULL,
+  `down_datetime` timestamp NOT NULL,
+  PRIMARY KEY (`no`),
+  KEY `down_mem_email_fk_idx` (`down_user_email`),
+  KEY `down_music_num_fk_idx` (`down_music_num`),
+  CONSTRAINT `down_mem_email_fk` FOREIGN KEY (`down_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `down_music_num_fk` FOREIGN KEY (`down_music_num`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `download_log`
+--
+
+LOCK TABLES `download_log` WRITE;
+/*!40000 ALTER TABLE `download_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `download_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -140,6 +171,32 @@ LOCK TABLES `good` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `hashtag`
+--
+
+DROP TABLE IF EXISTS `hashtag`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `hashtag` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `hashtag` varchar(20) NOT NULL,
+  `hash_music_num` int(11) NOT NULL,
+  PRIMARY KEY (`no`),
+  KEY `hash_music_num_fk_idx` (`hash_music_num`),
+  CONSTRAINT `hash_music_num_fk` FOREIGN KEY (`hash_music_num`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hashtag`
+--
+
+LOCK TABLES `hashtag` WRITE;
+/*!40000 ALTER TABLE `hashtag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hashtag` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `inquire`
 --
 
@@ -185,10 +242,13 @@ CREATE TABLE `member` (
   `level` tinyint(4) DEFAULT '0',
   `img` text,
   `no` int(11) NOT NULL AUTO_INCREMENT,
+  `register_date` datetime NOT NULL,
+  `register_ip` varchar(15) NOT NULL,
+  `is_deny` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_id`),
   UNIQUE KEY `no_UNIQUE` (`no`),
   UNIQUE KEY `nickname_UNIQUE` (`nickname`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,6 +257,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES ('test1','1234','테스트','테스트1','남','1995-02-01',NULL,NULL,1,'2018-10-05 00:00:00','255.255.255.255',0),('test2','1234','테스트','테스트2','남','1995-02-01',NULL,NULL,2,'2018-10-05 12:32:07','255.255.255.255',0),('test3','1234','테스트','테스트3','남','1995-02-01',NULL,NULL,5,'2018-10-05 11:23:44','255.255.255.255',0);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +279,7 @@ CREATE TABLE `music` (
   PRIMARY KEY (`no`),
   KEY `album_music_albumname_idx` (`album_num`),
   CONSTRAINT `music_album_num_fk` FOREIGN KEY (`album_num`) REFERENCES `album` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,36 +288,8 @@ CREATE TABLE `music` (
 
 LOCK TABLES `music` WRITE;
 /*!40000 ALTER TABLE `music` DISABLE KEYS */;
+INSERT INTO `music` VALUES (1,1,'1번음악','그래프 테스트',NULL,1,NULL),(2,2,'2번음악','그래프 테스트',NULL,1,NULL),(3,3,'3번음악','그래프 테스트',NULL,1,NULL),(4,4,'4번음악','그래프 테스트',NULL,1,NULL),(5,1,'그래프1','그래프 테스트2',NULL,2,NULL),(6,2,'그래프2','그래프 테스트2',NULL,2,NULL),(7,3,'그래프3','그래프 테스트2',NULL,2,NULL),(8,1,'아이티윌1','홍길동',NULL,3,NULL),(9,2,'아이티윌2','홍길동',NULL,3,NULL),(10,3,'아이티윌3','홍길동',NULL,3,NULL);
 /*!40000 ALTER TABLE `music` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `music_play`
---
-
-DROP TABLE IF EXISTS `music_play`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `music_play` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `user_email` varchar(100) NOT NULL,
-  `music_no` int(11) NOT NULL,
-  `order` int(11) NOT NULL,
-  PRIMARY KEY (`no`),
-  KEY `play_member_fk_idx` (`user_email`),
-  KEY `music_no_fk_idx` (`music_no`),
-  CONSTRAINT `play_member_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `play_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `music_play`
---
-
-LOCK TABLES `music_play` WRITE;
-/*!40000 ALTER TABLE `music_play` DISABLE KEYS */;
-/*!40000 ALTER TABLE `music_play` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -317,6 +350,35 @@ LOCK TABLES `notice_board` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `playlist`
+--
+
+DROP TABLE IF EXISTS `playlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `playlist` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `user_email` varchar(100) NOT NULL,
+  `music_no` int(11) NOT NULL,
+  `order` int(11) NOT NULL,
+  PRIMARY KEY (`no`),
+  KEY `play_member_fk_idx` (`user_email`),
+  KEY `music_no_fk_idx` (`music_no`),
+  CONSTRAINT `play_member_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `play_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `playlist`
+--
+
+LOCK TABLES `playlist` WRITE;
+/*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `playlog`
 --
 
@@ -327,13 +389,14 @@ CREATE TABLE `playlog` (
   `no` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(100) NOT NULL,
   `music_no` int(11) NOT NULL,
-  `Playtime` timestamp NOT NULL,
+  `Playtime` datetime NOT NULL,
+  `p_user_ip` varchar(15) NOT NULL,
   PRIMARY KEY (`no`),
   KEY `plog_mem_email_fk_idx` (`user_email`),
   KEY `plog_mu_num_fk_idx` (`music_no`),
   CONSTRAINT `plog_mem_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,7 +405,35 @@ CREATE TABLE `playlog` (
 
 LOCK TABLES `playlog` WRITE;
 /*!40000 ALTER TABLE `playlog` DISABLE KEYS */;
+INSERT INTO `playlog` VALUES (3,'test1',1,'2018-10-05 11:23:44',''),(4,'test1',1,'2018-10-05 11:33:44',''),(5,'test1',1,'2018-10-05 11:35:44',''),(6,'test1',1,'2018-10-05 11:36:44',''),(7,'test1',1,'2018-10-05 11:37:44',''),(8,'test1',1,'2018-10-05 11:38:44',''),(9,'test1',1,'2018-10-05 11:39:44',''),(10,'test1',1,'2018-10-05 12:10:44',''),(11,'test1',1,'2018-10-05 12:11:44',''),(12,'test1',1,'2018-10-05 12:12:44',''),(13,'test1',1,'2018-10-05 12:13:44',''),(14,'test1',1,'2018-10-05 12:14:44',''),(15,'test1',1,'2018-10-05 12:15:44',''),(16,'test1',1,'2018-10-05 12:16:44',''),(17,'test1',1,'2018-10-05 12:17:44',''),(18,'test1',2,'2018-10-05 11:10:44',''),(19,'test1',2,'2018-10-05 11:11:44',''),(20,'test1',2,'2018-10-05 11:12:44',''),(21,'test1',2,'2018-10-05 11:13:44',''),(22,'test1',2,'2018-10-05 11:14:44',''),(23,'test1',2,'2018-10-05 11:15:44',''),(24,'test1',2,'2018-10-05 11:16:44',''),(25,'test1',2,'2018-10-05 11:17:44',''),(26,'test1',2,'2018-10-05 11:18:44',''),(27,'test1',2,'2018-10-05 11:19:44',''),(28,'test1',2,'2018-10-05 11:20:44',''),(29,'test1',2,'2018-10-05 11:22:44',''),(30,'test1',2,'2018-10-05 11:25:44',''),(31,'test1',2,'2018-10-05 12:25:44',''),(32,'test1',2,'2018-10-05 12:26:44',''),(33,'test1',2,'2018-10-05 12:27:44',''),(34,'test1',2,'2018-10-05 12:28:44',''),(35,'test1',2,'2018-10-05 12:29:44',''),(36,'test1',2,'2018-10-05 12:30:44',''),(37,'test2',2,'2018-10-05 12:30:44',''),(38,'test2',2,'2018-10-05 12:31:44',''),(39,'test2',2,'2018-10-05 11:31:44',''),(40,'test2',2,'2018-10-05 11:35:44','');
 /*!40000 ALTER TABLE `playlog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `rating` (
+  `album_num` int(11) NOT NULL,
+  `rating` tinyint(4) NOT NULL,
+  `rating_mem_id` varchar(100) NOT NULL,
+  PRIMARY KEY (`album_num`),
+  KEY `rating_mem_email_fk_idx` (`rating_mem_id`),
+  CONSTRAINT `rating_album_num_fk` FOREIGN KEY (`album_num`) REFERENCES `album` (`no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `rating_mem_email_fk` FOREIGN KEY (`rating_mem_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rating`
+--
+
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -380,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-05 12:15:11
+-- Dump completed on 2018-10-05 17:12:35
