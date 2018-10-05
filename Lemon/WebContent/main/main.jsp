@@ -1,52 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common_page.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_new_album.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_event.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_login.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_concert.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_chart.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/main/main_hot_issue.css">
-=======
 	
-<link rel="stylesheet" type="text/css" href="../assets/css/common/common.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/common/common_page.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/common/common_font.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/font/nanumgothic.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_common.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_new_album.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_event.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_login.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_concert.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_chart.css">
-<link rel="stylesheet" type="text/css" href="../assets/css/main/main_hot_issue.css">
->>>>>>> refs/remotes/origin/master
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common_page.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_new_album.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_login.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_concert.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_chart.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_hot_issue.css">
 
-<<<<<<< HEAD
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-=======
-<script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="../assets/js/menu/menu_banner.js"></script>
-<script type="text/javascript" src="../assets/js/main/main_login.js"></script>
-<script type="text/javascript" src="../assets/js/main/maain_chart_tab.js"></script>
->>>>>>> refs/remotes/origin/master
+<script type="text/javascript" src="./assets/js/main/main_login.js"></script>
+<script type="text/javascript" src="./assets/js/main/maain_chart_tab.js"></script>
 
 <!-- 메뉴 -->
 <jsp:include page="../common/menu.jsp"></jsp:include>
@@ -60,22 +32,26 @@
 			<!-- 최신앨범 -->
 			<div class="new_album">
 				<h2>
-					<a href="/new/album/index.htm" title="최신 앨범"
-						class="title_link mlog">최신 앨범</a>
+					<a href="/new/album/index.htm" title="최신 앨범" class="title_link mlog">최신 앨범</a>
 				</h2>
 				<div class="section_na">
 					<!-- 최신 앨범 장르 -->
 					<ul class="new_album_cate">
-						<li class="bg_none on nth1"><a href=";" class="mlog"
-							title="전체 최신앨범 보기">전체</a></li>
-						<li class="nth2"><a href="" class="mlog" title="가요 최신앨범 보기">가요</a>
+						<li class="bg_none on nth1">
+							<a href=";" class="mlog" title="전체 최신앨범 보기">전체</a>
 						</li>
-						<li class="nth3"><a href="" class="mlog" title="POP 최신앨범 보기">POP</a>
+						<li class="nth2">
+							<a href="" class="mlog" title="가요 최신앨범 보기">가요</a>
 						</li>
-						<li class="nth4"><a href="" class="mlog" title="OST 최신앨범 보기">OST</a>
+						<li class="nth3">
+							<a href="" class="mlog" title="POP 최신앨범 보기">POP</a>
 						</li>
-						<li class="nth5"><a href="" class="mlog"
-							title="J-POP 최신앨범 보기">J-POP</a></li>
+						<li class="nth4">
+							<a href="" class="mlog" title="OST 최신앨범 보기">OST</a>
+						</li>
+						<li class="nth5">
+							<a href="" class="mlog" title="J-POP 최신앨범 보기">J-POP</a>
+						</li>
 					</ul>
 					<!-- 최신 앨범 장르 -->
 					<!-- 최신 앨범 리스트 -->
@@ -88,19 +64,13 @@
 											<span class="none">그곳에서</span>
 										</dt>
 										<dd class="img">
-											<span class="none">앨범이미지:</span> <span class="thum"> <img
-												width="156" height="156"
-												src="https://cdnimg.melon.co.kr/cm/album/images/102/08/835/10208835_500.jpg/melon/quality/80/resize/156/optimize"
-												alt=""> <span class="bg_album_frame"></span>
+											<span class="none">앨범이미지:</span>
+											<span class="thum">
+												<img width="156" height="156"
+													src="https://cdnimg.melon.co.kr/cm/album/images/102/08/835/10208835_500.jpg/melon/quality/80/resize/156/optimize"
+													alt="">
+												<span class="bg_album_frame"></span>
 											</span>
-<<<<<<< HEAD
-											<div class="overlay">
-												<a href="" class="btn_play_song mlog" title="그곳에서 재생"> <span
-													class="none">앨범전체듣기</span>
-												</a> <a href="" class="album mlog"> <span class="album_cont"
-													title="그곳에서"> <span class="title_wrap"> <span
-															class="title title_ellipsis">그곳에서</span>
-=======
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay" style="display: block;">
 												<a href="" class="btn_play_song mlog" title="그곳에서 재생">
@@ -111,9 +81,7 @@
 														<span class="title_wrap">
 															<span class="title title_ellipsis">그곳에서</span>
 														</span>
->>>>>>> refs/remotes/origin/master
 													</span>
-												</span>
 												</a>
 												<div class="singer">
 													<span class="none">가수명:</span>
@@ -131,10 +99,11 @@
 											<div class="ellipsis">
 												<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
 													<span>Dok2</span>
-												</a> <span class="checkEllipsis" style="display: none"> <a
-													href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
-														<span>Dok2</span>
 												</a>
+												<span class="checkEllipsis" style="display: none">
+													<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
+														<span>Dok2</span>
+													</a>
 												</span>
 											</div>
 										</dd>
@@ -146,21 +115,24 @@
 											<span class="none">우리의 여름은 가고 가을이 또 왔네요</span>
 										</dt>
 										<dd class="img">
-											<span class="none">앨범이미지:</span> <span class="thum"> <img
-												width="156" height="156"
-												src="https://cdnimg.melon.co.kr/cm/album/images/102/08/853/10208853_500.jpg/melon/quality/80/resize/156/optimize"
-												alt=""> <span class="bg_album_frame"></span>
+											<span class="none">앨범이미지:</span>
+											<span class="thum">
+												<img width="156" height="156"
+													src="https://cdnimg.melon.co.kr/cm/album/images/102/08/853/10208853_500.jpg/melon/quality/80/resize/156/optimize"
+													alt="">
+												<span class="bg_album_frame"></span>
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-												<a href="" class="btn_play_song mlog"
-													title="우리의 여름은 가고 가을이 또 왔네요 재생"> <span class="none">앨범전체듣기</span>
-												</a> <a href="" class="album mlog"> <span class="album_cont"
-													title="우리의 여름은 가고 가을이 또 왔네요"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">우리의 여름은 가고 가을이 또 왔네요</span>
+												<a href="" class="btn_play_song mlog" title="우리의 여름은 가고 가을이 또 왔네요 재생">
+													<span class="none">앨범전체듣기</span>
+												</a>
+												<a href="" class="album mlog">
+													<span class="album_cont" title="우리의 여름은 가고 가을이 또 왔네요">
+														<span class="title_wrap">
+															<span class="title title_ellipsis">우리의 여름은 가고 가을이 또 왔네요</span>
+														</span>
 													</span>
-												</span>
 												</a>
 												<div class="singer">
 													<span class="none">가수명:</span>
@@ -178,18 +150,12 @@
 											<div class="ellipsis">
 												<a href="" title="깃든 - 페이지 이동" class="play_artist mlog">
 													<span>깃든</span>
-<<<<<<< HEAD
-												</a> <span class="checkEllipsis" style="display: none"> <a
-													href="" title="깃든 - 페이지 이동" class="play_artist mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10006&CLICK_CONTS_ID=837924"><span>깃든</span></a></span>
-=======
 												</a>
 												<span class="checkEllipsis" style="display: none">
 													<a href="" title="깃든 - 페이지 이동" class="play_artist mlog">
 														<span>깃든</span>
 													</a>
 												</span>
->>>>>>> refs/remotes/origin/master
 											</div>
 										</dd>
 									</dl>
@@ -209,27 +175,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208809');"
-													class="btn_play_song mlog" title="和(화) 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208809"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208809');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208809">
-													<span class="album_cont" title="和(화)"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">和(화)</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="和(화) 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="和(화)">
@@ -279,29 +226,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208712');"
-													class="btn_play_song mlog"
-													title="손 the guest OST Part 1 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208712"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208712');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208712">
-													<span class="album_cont" title="손 the guest OST Part 1">
-														<span class="title_wrap"> <span
-															class="title title_ellipsis">손 the guest OST Part
-																1</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="손 the guest OST Part 1 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="손 the guest OST Part 1">
@@ -356,13 +282,8 @@
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="오늘의 탐정 OST Part 4">
-<<<<<<< HEAD
-														<span class="title_wrap"> <span
-															class="title title_ellipsis">오늘의 탐정 OST Part 4</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-=======
 														<span class="title_wrap">
 															<span class="title title_ellipsis">오늘의 탐정 OST Part 4</span>
->>>>>>> refs/remotes/origin/master
 													</span>
 												</span>
 												</a>
@@ -407,27 +328,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208587');"
-													class="btn_play_song mlog" title="CAELO 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208587"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208587');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208587">
-													<span class="album_cont" title="CAELO"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">CAELO</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="CAELO 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="CAELO">
@@ -478,27 +380,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208872');"
-													class="btn_play_song mlog" title="그림 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208872"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208872');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208872">
-													<span class="album_cont" title="그림"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">그림</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="그림 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="그림">
@@ -547,27 +430,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208799');"
-													class="btn_play_song mlog" title="Super Market 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208799"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208799');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208799">
-													<span class="album_cont" title="Super Market"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">Super Market</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="Super Market 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="Super Market">
@@ -617,27 +481,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208791');"
-													class="btn_play_song mlog" title="인생 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208791"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208791');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208791">
-													<span class="album_cont" title="인생"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">인생</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="인생 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="인생">
@@ -687,27 +532,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208735');"
-													class="btn_play_song mlog" title="이 밤 (This Night) 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208735"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208735');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208735">
-													<span class="album_cont" title="이 밤 (This Night)"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">이 밤 (This Night)</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="이 밤 (This Night) 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="이 밤 (This Night)">
@@ -759,28 +585,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208662');"
-													class="btn_play_song mlog" title="내 뒤에 테리우스 OST Part.1 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208662"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208662');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208662">
-													<span class="album_cont" title="내 뒤에 테리우스 OST Part.1">
-														<span class="title_wrap"> <span
-															class="title title_ellipsis">내 뒤에 테리우스 OST Part.1</span>
-															<!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="내 뒤에 테리우스 OST Part.1 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="내 뒤에 테리우스 OST Part.1">
@@ -830,27 +636,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208754');"
-													class="btn_play_song mlog" title="SEASON1/#4 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208754"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208754');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208754">
-													<span class="album_cont" title="SEASON1/#4"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">SEASON1/#4</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="SEASON1/#4 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="SEASON1/#4">
@@ -902,27 +689,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208758');"
-													class="btn_play_song mlog" title="HYPERISM BLUE 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208758"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208758');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208758">
-													<span class="album_cont" title="HYPERISM BLUE"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">HYPERISM BLUE</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="HYPERISM BLUE 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="HYPERISM BLUE">
@@ -972,27 +740,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208781');"
-													class="btn_play_song mlog" title="온기 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208781"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208781');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208781">
-													<span class="album_cont" title="온기"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">온기</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="온기 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="온기">
@@ -1042,27 +791,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208808');"
-													class="btn_play_song mlog" title="Tune of the Life 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208808"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208808');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208808">
-													<span class="album_cont" title="Tune of the Life"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">Tune of the Life</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="Tune of the Life 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="Tune of the Life">
@@ -1112,27 +842,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208772');"
-													class="btn_play_song mlog" title="It`s My 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208772"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208772');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208772">
-													<span class="album_cont" title="It`s My"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">It`s My</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="It`s My 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="It`s My">
@@ -1182,27 +893,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208613');"
-													class="btn_play_song mlog" title="Worth It 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208613"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208613');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208613">
-													<span class="album_cont" title="Worth It"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">Worth It</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="Worth It 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="Worth It">
@@ -1252,27 +944,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208751');"
-													class="btn_play_song mlog" title="내일도 맑음 OST Part.25 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208751"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208751');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208751">
-													<span class="album_cont" title="내일도 맑음 OST Part.25">
-														<span class="title_wrap"> <span
-															class="title title_ellipsis">내일도 맑음 OST Part.25</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="내일도 맑음 OST Part.25 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="내일도 맑음 OST Part.25">
@@ -1324,27 +997,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208622');"
-													class="btn_play_song mlog" title="밤 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208622"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208622');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208622">
-													<span class="album_cont" title="밤"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">밤</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="밤 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="밤">
@@ -1394,27 +1048,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208626');"
-													class="btn_play_song mlog" title="Flexin 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208626"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208626');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208626">
-													<span class="album_cont" title="Flexin"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">Flexin</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="Flexin 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="Flexin">
@@ -1464,30 +1099,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208753');"
-													class="btn_play_song mlog"
-													title="Vol.1 Mix tape Boom&Beat&Clap 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208753"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208753');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208753">
-													<span class="album_cont"
-													title="Vol.1 Mix tape Boom&Beat&Clap"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">Vol.1 Mix tape
-																Boom&Beat&Clap</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="Vol.1 Mix tape Boom&Beat&Clap 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="Vol.1 Mix tape Boom&Beat&Clap">
@@ -1537,27 +1150,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208749');"
-													class="btn_play_song mlog" title="사랑은 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208749"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208749');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208749">
-													<span class="album_cont" title="사랑은"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">사랑은</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="사랑은 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="사랑은">
@@ -1607,29 +1201,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208748');"
-													class="btn_play_song mlog"
-													title="S.O.U.L DIGITAL SINGLE 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208748"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208748');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208748">
-													<span class="album_cont" title="S.O.U.L DIGITAL SINGLE">
-														<span class="title_wrap"> <span
-															class="title title_ellipsis">S.O.U.L DIGITAL
-																SINGLE</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="S.O.U.L DIGITAL SINGLE 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="S.O.U.L DIGITAL SINGLE">
@@ -1679,27 +1252,8 @@
 											</span>
 											<!-- [DP] 재생 레이어 -->
 											<div class="overlay">
-<<<<<<< HEAD
-
-												<a href="javascript:;"
-													onclick="javascript:melon.play.playAlbum('10010101','10208752');"
-													class="btn_play_song mlog" title="October Lover 재생"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=P1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208752"><span
-													class="none">앨범전체듣기</span></a>
-
-												<!--141007_modify-->
-												<a href="javascript:melon.link.goAlbumDetail('10208752');"
-													class="album mlog"
-													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208752">
-													<span class="album_cont" title="October Lover"> <span
-														class="title_wrap"> <span
-															class="title title_ellipsis">October Lover</span> <!--class title_ellipsis 추가시 말줄임 처리-->
-													</span>
-												</span>
-=======
 												<a href="" class="btn_play_song mlog" title="October Lover 재생">
 													<span class="none">앨범전체듣기</span>
->>>>>>> refs/remotes/origin/master
 												</a>
 												<a href="" class="album mlog">
 													<span class="album_cont" title="October Lover">
@@ -1839,23 +1393,6 @@
 					<div class="inbox">
 						<fieldset>
 							<legend>로그인 영역</legend>
-<<<<<<< HEAD
-							<form action="./MemberLoginAction.mb" method="post">
-								<div class="input_area">
-									<input type="text" placeholder="아이디" name="email_id"
-										class="text_id_main" title="아이디 입력 편집창" style="width: 184px">
-									<input type="password" placeholder="비밀번호" name="pass"
-										title="비밀번호 입력 편집창" class="text_password_main"
-										style="width: 184px">
-									<div class="save_id">
-										<input type="checkbox" name="saveId" id="id_save01" class="">
-										<label for="id_save01">아이디 저장</label>
-									</div>
-									<button type="submit" class="btn_main_login" title="로그인">
-										<span class="odd_span"> <span class="even_span">로그인</span>
-										</span>
-									</button>
-=======
 							<div class="input_area">
 								<input type="text" placeholder="아이디" name="memberId"
 									class="text_id_main" title="아이디 입력 편집창" style="width: 199px">
@@ -1865,11 +1402,7 @@
 								<div class="save_id">
 									<input type="checkbox" name="saveId" id="id_save01" class="">
 									<label for="id_save01">아이디 저장</label>
->>>>>>> refs/remotes/origin/master
 								</div>
-<<<<<<< HEAD
-							</form>
-=======
 								<button type="button" class="btn_main_login" title="로그인">
 									<span class="odd_span">
 										<span class="even_span">로그인</span>
@@ -1879,7 +1412,6 @@
 							<div class="main_naver_login">
 								<a href="">네이버 로그인</a>
 							</div>
->>>>>>> refs/remotes/origin/master
 							<div class="main_kakao_login">
 								<a href="">카카오 로그인</a>
 							</div>
@@ -2329,12 +1861,13 @@
 				<div class="wrap_chart_tab">
 					<ul>
 						<!-- 실시간 차트 -->
-						<li class="chart_tab on nth1">
+						<!-- <li class="on nth1"> -->
+						<li class="nth1">
 							<a href="" title="실시간 보기" class="d_link tab_link realtime">
 								<span>실시간</span>
 							</a>
 							<span class="none">실시간</span>
-							<div class="chart_tab_content list_wrap typeRealtime">
+							<div class="list_wrap typeRealtime">
 								<span class="txt_intro">2018.10.01 
 									<strong>16:00</strong> 기준
 								</span>
@@ -2645,7 +2178,7 @@
 														<button type="button" title="아티스트 더보기" class="btn btn_more" data-control="dropdown">
 															<span class="odd_span">아티스트명 더보기</span>
 														</button>
-														<!-- [DP] 아티스트 더보기 레이어  -->
+														[DP] 아티스트 더보기 레이어 
 														<div class="l_popup small" style="display: none; width: 168px;">
 															<div class="l_cntt">
 																<ul class="list_bullet">
@@ -2669,7 +2202,7 @@
 															<span class="shadow"></span>
 															<span class="bullet_vertical"></span>
 														</div>
-														<!-- //[DP] 아티스트 더보기 레이어  -->
+														//[DP] 아티스트 더보기 레이어 
 													</div>
 												</div>
 											</div>
@@ -2723,16 +2256,17 @@
 										</a>
 									</div>
 								</div>
-							</div></li>
+							</div>
+						</li>
 						<!-- //실시간 차트 -->
 
 						<!-- POP 차트 -->
-						<li class="chart_tab nth2">
+						<li class="nth2">
 							<a href="#" title="POP 보기" class="d_link tab_link pop">
-								<span class=""></span>
+								<span>POP</span>
 							</a>
 							<span class="none">POP</span>
-							<div class="chart_tab_content list_wrap typePop">
+							<div class="list_wrap typePop">
 								<span class="txt_intro">2018.09.30 기준</span>
 								<ul>
 									<li class="rank_item active">
@@ -3164,24 +2698,24 @@
 										</span>
 									</button>
 									<div class="all_view">
-										<a href="" title="멜론차트 더보기" class="mlog">
-											<span>더보기
-												<span></span>
-											</span>
-										</a>
-									</div>
+											<a href="" title="멜론차트 더보기" class="mlog">
+												<span>더보기
+													<span></span>
+												</span>
+											</a>
+										</div>
 								</div>
 							</div></li>
 						<!-- //POP 차트 -->
 						
 						<!-- 아티스트 차트 -->
-						<li class="chart_tab nth3">
+						<li class="nth3 on">
 							<a href="#" title="아티스트 보기" class="d_link tab_link artist">
-								<span class=""></span>
+								<span>아티스트</span>
 							</a>
-							<span class="none">아티스트</span>
-							<div class="chart_tab_content list_wrap typeArtist">
-								<span class="txt_intro">2018.09.30 기준</span>
+							<span>아티스트</span>
+							<div class="list_wrap typeArtist">
+								<span class="txt_intro">2018.10.04 기준</span>
 								<ul class="d_artist_list">
 									<li class="rank_item active">
 										<div class="rank_number nth1">
@@ -3204,282 +2738,282 @@
 											<div class="rank_info" data-arist-no="672375">
 												<div class="artist">
 													<div class="ellipsis">
-														<a href="" title="방탄소년단" class="mlog">
-															방탄소년단
-														</a>
-													</div>
+													<a href="javascript:melon.link.goArtistDetail('672375');" title="방탄소년단" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=672375">방탄소년단</a></div>
 												</div>
 											</div>
-										</div>
+										<button type="button" title="방탄소년단 팬맺기" data-artist-no="672375" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=672375"><span class="odd_span">팬맺기</span></button></div>
 									</li>
+									
+									
 									<li class="rank_item odd">
 										<div class="rank_number nth2">
-											<span class="rank">2</span>
-											<span class="none">위</span>
-											<span class="ranking_num static">
-												<span class="num">0</span>
-												<span class="icon">순위 동일</span>
-											</span>
+											<span class="rank">2</span><span class="none">위</span>
+											
+												
+												
+													<span class="ranking_num static"><span class="num">0</span><span class="icon">순위 동일</span></span>
+												
+												
+												
+											
 										</div>
 										<div class="rank_cntt">
+											
 											<div class="thumb">
-												<a href="" title="아이유" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/002/61/143/261143_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
+												<a href="javascript:melon.link.goArtistDetail('895741');" title="iKON" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=895741">
+													<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/008/95/741/895741_500.jpg/melon/quality/80/resize/48/optimize" alt="">
+													<span class="bg_album_frame"></span>
+												</a>
+											</div>
+											<div class="rank_info" data-arist-no="895741">
+												<div class="artist">
+													<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('895741');" title="iKON" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=895741">iKON</a></div>
+												</div>
+											</div>
+										<button type="button" title="iKON 팬맺기" data-artist-no="895741" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=895741"><span class="odd_span">팬맺기</span></button></div>
+									</li>
+									
+									
+									<li class="rank_item">
+										<div class="rank_number nth3">
+											<span class="rank">3</span><span class="none">위</span>
+											
+												
+												
+													<span class="ranking_num static"><span class="num">0</span><span class="icon">순위 동일</span></span>
+												
+												
+												
+											
+										</div>
+										<div class="rank_cntt">
+											
+											<div class="thumb">
+												<a href="javascript:melon.link.goArtistDetail('261143');" title="아이유" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=261143">
+													<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/002/61/143/261143_500.jpg/melon/quality/80/resize/48/optimize" alt="">
 													<span class="bg_album_frame"></span>
 												</a>
 											</div>
 											<div class="rank_info" data-arist-no="261143">
 												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="아이유" class="mlog">
-															아이유
-														</a>
-													</div>
+													<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('261143');" title="아이유" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=261143">아이유</a></div>
 												</div>
 											</div>
-										</div>
+										<button type="button" title="아이유 팬맺기" data-artist-no="261143" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=261143"><span class="odd_span">팬맺기</span></button></div>
 									</li>
-									<li class="rank_item">
-										<div class="rank_number nth3">
-											<span class="rank">3</span>
-											<span class="none">위</span>
-											<span class="ranking_num up">
-												<span class="num">3</span>
-												<span class="icon">단계 상승</span>
-											</span>
-										</div>
-										<div class="rank_cntt">
-											<div class="thumb">
-												<a href="" title="로이킴" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/006/99/632/699632_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
-													<span class="bg_album_frame"></span>
-												</a>
-											</div>
-											<div class="rank_info" data-arist-no="699632">
-												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="로이킴" class="mlog">로이킴</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</li>
+									
+									
 									<li class="rank_item odd">
 										<div class="rank_number nth4">
-											<span class="rank">4</span>
-											<span class="none">위</span>
-											<span class="ranking_num down">
-												<span class="num">1</span>
-												<span class="icon">단계 하락</span>
-											</span>
+											<span class="rank">4</span><span class="none">위</span>
+											
+												
+												
+												
+												
+													<span class="ranking_num up"><span class="num">82</span><span class="icon">단계 상승</span></span>
+												
+											
 										</div>
 										<div class="rank_cntt">
+											
 											<div class="thumb">
-												<a href="" title="임창정" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/000/01/142/1142_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
+												<a href="javascript:melon.link.goArtistDetail('490981');" title="소유 (SOYOU)" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=490981">
+													<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/004/90/981/490981_2_500.jpg/melon/quality/80/resize/48/optimize" alt="">
 													<span class="bg_album_frame"></span>
 												</a>
 											</div>
-											<div class="rank_info" data-arist-no="1142">
+											<div class="rank_info" data-arist-no="490981">
 												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="임창정" class="mlog">
-															임창정
-														</a>
-													</div>
+													<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('490981');" title="소유 (SOYOU)" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=490981">소유 (SOYOU)</a></div>
 												</div>
 											</div>
-										</div>
+										<button type="button" title="소유 (SOYOU) 팬맺기" data-artist-no="490981" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=490981"><span class="odd_span">팬맺기</span></button></div>
 									</li>
+									
+									
 									<li class="rank_item">
 										<div class="rank_number nth5">
-											<span class="rank">5</span>
-											<span class="none">위</span>
-											<span class="ranking_num down">
-												<span class="num">1</span>
-												<span class="icon">단계 하락</span>
-											</span>
+											<span class="rank">5</span><span class="none">위</span>
+											
+												
+													<span class="ranking_num new"><span class="icon">새진입</span></span>
+												
+												
+												
+												
+											
 										</div>
 										<div class="rank_cntt">
+											
 											<div class="thumb">
-												<a href="" title="기리보이" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/005/85/492/585492_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
+												<a href="javascript:melon.link.goArtistDetail('428786');" title="유리 (YURI)" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=428786">
+													<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/004/28/786/428786_500.jpg/melon/quality/80/resize/48/optimize" alt="">
 													<span class="bg_album_frame"></span>
 												</a>
 											</div>
-											<div class="rank_info" data-arist-no="585492">
+											<div class="rank_info" data-arist-no="428786">
 												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="기리보이" class="mlog">기리보이</a>
-													</div>
+													<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('428786');" title="유리 (YURI)" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=428786">유리 (YURI)</a></div>
 												</div>
 											</div>
-										</div>
+										<button type="button" title="유리 (YURI) 팬맺기" data-artist-no="428786" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=428786"><span class="odd_span">팬맺기</span></button></div>
 									</li>
+									
+									
 									<li class="rank_item odd">
 										<div class="rank_number nth6">
-											<span class="rank">6</span>
-											<span class="none">위</span>
-											<span class="ranking_num up">
-												<span class="num">3</span>
-												<span class="icon">단계 상승</span>
-											</span>
+											<span class="rank">6</span><span class="none">위</span>
+											
+												
+													<span class="ranking_num new"><span class="icon">새진입</span></span>
+												
+												
+												
+												
+											
 										</div>
 										<div class="rank_cntt">
+											
 											<div class="thumb">
-												<a href="" title="Kid Milli" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/008/73/162/873162_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
+												<a href="javascript:melon.link.goArtistDetail('181716');" title="에피톤 프로젝트" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=181716">
+													<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/001/81/716/181716_500.jpg/melon/quality/80/resize/48/optimize" alt="">
 													<span class="bg_album_frame"></span>
 												</a>
 											</div>
-											<div class="rank_info" data-arist-no="873162">
+											<div class="rank_info" data-arist-no="181716">
 												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="Kid Milli" class="mlog">
-															Kid Milli
+													<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('181716');" title="에피톤 프로젝트" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=181716">에피톤 프로젝트</a></div>
+														</div>
+													</div>
+												<button type="button" title="에피톤 프로젝트 팬맺기" data-artist-no="181716" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=181716"><span class="odd_span">팬맺기</span></button></div>
+											</li>
+											
+											
+											<li class="rank_item">
+												<div class="rank_number nth7">
+													<span class="rank">7</span><span class="none">위</span>
+													
+														
+														
+														
+															<span class="ranking_num down"><span class="num">2</span><span class="icon">단계 하락</span></span>
+														
+														
+													
+												</div>
+												<div class="rank_cntt">
+													
+													<div class="thumb">
+														<a href="javascript:melon.link.goArtistDetail('1142');" title="임창정" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=1142">
+															<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/000/01/142/1142_500.jpg/melon/quality/80/resize/48/optimize" alt="">
+															<span class="bg_album_frame"></span>
 														</a>
 													</div>
+													<div class="rank_info" data-arist-no="1142">
+														<div class="artist">
+															<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('1142');" title="임창정" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=1142">임창정</a></div>
+														</div>
+													</div>
+												<button type="button" title="임창정 팬맺기" data-artist-no="1142" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=1142"><span class="odd_span">팬맺기</span></button></div>
+											</li>
+											
+											
+											<li class="rank_item odd">
+												<div class="rank_number nth8">
+													<span class="rank">8</span><span class="none">위</span>
+													
+														
+														
+														
+															<span class="ranking_num down"><span class="num">4</span><span class="icon">단계 하락</span></span>
+														
+														
+													
 												</div>
-											</div>
-										</div>
-									</li>
-									<li class="rank_item">
-										<div class="rank_number nth7">
-											<span class="rank">7</span>
-											<span class="none">위</span>
-											<span class="ranking_num up">
-												<span class="num">1</span>
-												<span class="icon">단계 상승</span>
-											</span>
-										</div>
-										<div class="rank_cntt">
-											<div class="thumb">
-												<a href="" title="TWICE (트와이스)" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/009/05/701/905701_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
-													<span class="bg_album_frame"></span>
-												</a>
-											</div>
-											<div class="rank_info" data-arist-no="905701">
-												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="TWICE (트와이스)" class="mlog">
-															TWICE (트와이스)
+												<div class="rank_cntt">
+													
+													<div class="thumb">
+														<a href="javascript:melon.link.goArtistDetail('41499');" title="박원" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=41499">
+															<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/000/41/499/41499_500.jpg/melon/quality/80/resize/48/optimize" alt="">
+															<span class="bg_album_frame"></span>
 														</a>
 													</div>
+													<div class="rank_info" data-arist-no="41499">
+														<div class="artist">
+															<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('41499');" title="박원" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=41499">박원</a></div>
+														</div>
+													</div>
+												<button type="button" title="박원 팬맺기" data-artist-no="41499" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=41499"><span class="odd_span">팬맺기</span></button></div>
+											</li>
+											
+											
+											<li class="rank_item">
+												<div class="rank_number nth9">
+													<span class="rank">9</span><span class="none">위</span>
+													
+														
+														
+														
+															<span class="ranking_num down"><span class="num">3</span><span class="icon">단계 하락</span></span>
+														
+														
+													
 												</div>
-											</div>
-										</div>
-									</li>
-									<li class="rank_item odd">
-										<div class="rank_number nth8">
-											<span class="rank">8</span>
-											<span class="none">위</span>
-											<span class="ranking_num up">
-												<span class="num">3</span>
-												<span class="icon">단계 상승</span>
-											</span>
-										</div>
-										<div class="rank_cntt">
-											<div class="thumb">
-												<a href="" title="Red Velvet (레드벨벳)" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/007/80/066/780066_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
-													<span class="bg_album_frame"></span>
-												</a>
-											</div>
-											<div class="rank_info" data-arist-no="780066">
-												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="Red Velvet (레드벨벳)" class="mlog">
-															Red Velvet (레드벨벳)
+												<div class="rank_cntt">
+													
+													<div class="thumb">
+														<a href="javascript:melon.link.goArtistDetail('699632');" title="로이킴" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=699632">
+															<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/006/99/632/699632_500.jpg/melon/quality/80/resize/48/optimize" alt="">
+															<span class="bg_album_frame"></span>
 														</a>
 													</div>
+													<div class="rank_info" data-arist-no="699632">
+														<div class="artist">
+															<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('699632');" title="로이킴" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=699632">로이킴</a></div>
+														</div>
+													</div>
+												<button type="button" title="로이킴 팬맺기" data-artist-no="699632" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=699632"><span class="odd_span">팬맺기</span></button></div>
+											</li>
+											
+											
+											<li class="rank_item odd">
+												<div class="rank_number nth10">
+													<span class="rank">10</span><span class="none">위</span>
+													
+														
+														
+														
+															<span class="ranking_num down"><span class="num">2</span><span class="icon">단계 하락</span></span>
+														
+														
+													
 												</div>
-											</div>
-										</div>
-									</li>
-									<li class="rank_item">
-										<div class="rank_number nth9">
-											<span class="rank">9</span>
-											<span class="none">위</span>
-											<span class="ranking_num up">
-												<span class="num">3</span>
-												<span class="icon">단계 상승</span>
-											</span>
-										</div>
-										<div class="rank_cntt">
-											<div class="thumb">
-												<a href="" title="10cm" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/004/68/244/468244_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
-													<span class="bg_album_frame"></span>
-												</a>
-											</div>
-											<div class="rank_info" data-arist-no="468244">
-												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="10cm" class="mlog">
-															10cm
+												<div class="rank_cntt">
+													
+													<div class="thumb">
+														<a href="javascript:melon.link.goArtistDetail('585492');" title="기리보이" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=585492">
+															<img onerror="WEBPOCIMG.defaultArtistImg(this);" width="48" height="48" src="https://cdnimg.melon.co.kr/cm/artistcrop/images/005/85/492/585492_500.jpg/melon/quality/80/resize/48/optimize" alt="">
+															<span class="bg_album_frame"></span>
 														</a>
 													</div>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="rank_item odd">
-										<div class="rank_number nth10">
-											<span class="rank">10</span>
-											<span class="none">위</span>
-											<span class="ranking_num new">
-												<span class="icon">새진입</span>
-											</span>
-										</div>
-										<div class="rank_cntt">
-											<div class="thumb">
-												<a href="" title="황치열" class="mlog">
-													<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/artistcrop/images/002/05/746/205746_500.jpg/melon/quality/80/resize/48/optimize"
-														alt="">
-													<span class="bg_album_frame"></span>
-												</a>
-											</div>
-											<div class="rank_info" data-arist-no="205746">
-												<div class="artist">
-													<div class="ellipsis">
-														<a href="" title="황치열" class="mlog">
-															황치열
-														</a>
+													<div class="rank_info" data-arist-no="585492">
+														<div class="artist">
+															<div class="ellipsis"><a href="javascript:melon.link.goArtistDetail('585492');" title="기리보이" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=585492">기리보이</a></div>
+														</div>
 													</div>
-												</div>
+												<button type="button" title="기리보이 팬맺기" data-artist-no="585492" data-artist-menuid="10010101" class="btn_fan_b mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=F1&amp;CLICK_CONTS_TYPE_CODE=N10006&amp;CLICK_CONTS_ID=585492"><span class="odd_span">팬맺기</span></button></div>
+											</li>
+											
+										</ul>
+										<div class="chart_btn_area">
+											<div class="all_view">
+												
+												<a href="/artistplus/artistchart/index.htm" title="멜론차트 더보기" class="mlog" data="LOG_PRT_CODE=1&amp;MENU_PRT_CODE=2&amp;MENU_ID_LV1=10010101&amp;CLICK_AREA_PRT_CODE=R03&amp;ACTION_AF_CLICK=V2"><span>더보기<span></span></span></a>
 											</div>
 										</div>
-									</li>
-								</ul>
-								<div class="chart_btn_area">
-									<div class="all_view">
-										<a href="" title="멜론차트 더보기" class="mlog">
-											<span>더보기
-												<span></span>
-											</span>
-										</a>
 									</div>
-								</div>
-							</div>
-						</li>
+								</li>
 						<!-- //아티스트 차트 -->
 					</ul>
 				</div>
