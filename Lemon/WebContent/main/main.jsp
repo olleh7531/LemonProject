@@ -34,25 +34,21 @@
 			<!-- 최신앨범 -->
 			<div class="new_album">
 				<h2>
-					<a href="/new/album/index.htm" title="최신 앨범" class="title_link mlog">최신 앨범</a>
+					<a href="/new/album/index.htm" title="최신 앨범"
+						class="title_link mlog">최신 앨범</a>
 				</h2>
 				<div class="section_na">
 					<ul class="new_album_cate">
-						<li class="bg_none on nth1">
-							<a href=";" class="mlog" title="전체 최신앨범 보기">전체</a>
+						<li class="bg_none on nth1"><a href=";" class="mlog"
+							title="전체 최신앨범 보기">전체</a></li>
+						<li class="nth2"><a href="" class="mlog" title="가요 최신앨범 보기">가요</a>
 						</li>
-						<li class="nth2">
-							<a href="" class="mlog" title="가요 최신앨범 보기">가요</a>
+						<li class="nth3"><a href="" class="mlog" title="POP 최신앨범 보기">POP</a>
 						</li>
-						<li class="nth3">
-							<a href="" class="mlog" title="POP 최신앨범 보기">POP</a>
+						<li class="nth4"><a href="" class="mlog" title="OST 최신앨범 보기">OST</a>
 						</li>
-						<li class="nth4">
-							<a href="" class="mlog" title="OST 최신앨범 보기">OST</a>
-						</li>
-						<li class="nth5">
-							<a href="" class="mlog" title="J-POP 최신앨범 보기">J-POP</a>
-						</li>
+						<li class="nth5"><a href="" class="mlog"
+							title="J-POP 최신앨범 보기">J-POP</a></li>
 					</ul>
 					<div>
 						<div class="list_wrap">
@@ -63,23 +59,19 @@
 											<span class="none">그곳에서</span>
 										</dt>
 										<dd class="img">
-											<span class="none">앨범이미지:</span>
-											<span class="thum">
-												<img width="156" height="156"
-													src="https://cdnimg.melon.co.kr/cm/album/images/102/08/835/10208835_500.jpg/melon/quality/80/resize/156/optimize"
-													alt="">
-												<span class="bg_album_frame"></span>
+											<span class="none">앨범이미지:</span> <span class="thum"> <img
+												width="156" height="156"
+												src="https://cdnimg.melon.co.kr/cm/album/images/102/08/835/10208835_500.jpg/melon/quality/80/resize/156/optimize"
+												alt=""> <span class="bg_album_frame"></span>
 											</span>
 											<div class="overlay">
-												<a href="" class="btn_play_song mlog" title="그곳에서 재생">
-													<span class="none">앨범전체듣기</span>
-												</a>
-												<a href="" class="album mlog">
-													<span class="album_cont" title="그곳에서">
-														<span class="title_wrap">
-															<span class="title title_ellipsis">그곳에서</span>
-														</span>
+												<a href="" class="btn_play_song mlog" title="그곳에서 재생"> <span
+													class="none">앨범전체듣기</span>
+												</a> <a href="" class="album mlog"> <span class="album_cont"
+													title="그곳에서"> <span class="title_wrap"> <span
+															class="title title_ellipsis">그곳에서</span>
 													</span>
+												</span>
 												</a>
 												<div class="singer">
 													<span class="none">가수명:</span>
@@ -96,11 +88,10 @@
 											<div class="ellipsis">
 												<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
 													<span>Dok2</span>
-												</a>
-												<span class="checkEllipsis" style="display: none">
-													<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
+												</a> <span class="checkEllipsis" style="display: none"> <a
+													href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
 														<span>Dok2</span>
-													</a>
+												</a>
 												</span>
 											</div>
 										</dd>
@@ -112,23 +103,20 @@
 											<span class="none">우리의 여름은 가고 가을이 또 왔네요</span>
 										</dt>
 										<dd class="img">
-											<span class="none">앨범이미지:</span>
-											<span class="thum">
-												<img width="156" height="156"
-													src="https://cdnimg.melon.co.kr/cm/album/images/102/08/853/10208853_500.jpg/melon/quality/80/resize/156/optimize"
-													alt="">
-												<span class="bg_album_frame"></span>
+											<span class="none">앨범이미지:</span> <span class="thum"> <img
+												width="156" height="156"
+												src="https://cdnimg.melon.co.kr/cm/album/images/102/08/853/10208853_500.jpg/melon/quality/80/resize/156/optimize"
+												alt=""> <span class="bg_album_frame"></span>
 											</span>
 											<div class="overlay">
-												<a href="" class="btn_play_song mlog" title="우리의 여름은 가고 가을이 또 왔네요 재생">
-													<span class="none">앨범전체듣기</span>
-												</a>
-												<a href="" class="album mlog">
-													<span class="album_cont" title="우리의 여름은 가고 가을이 또 왔네요">
-														<span class="title_wrap">
-															<span class="title title_ellipsis">우리의 여름은 가고 가을이 또 왔네요</span>
-														</span>
+												<a href="" class="btn_play_song mlog"
+													title="우리의 여름은 가고 가을이 또 왔네요 재생"> <span class="none">앨범전체듣기</span>
+												</a> <a href="" class="album mlog"> <span class="album_cont"
+													title="우리의 여름은 가고 가을이 또 왔네요"> <span
+														class="title_wrap"> <span
+															class="title title_ellipsis">우리의 여름은 가고 가을이 또 왔네요</span>
 													</span>
+												</span>
 												</a>
 												<div class="singer">
 													<span class="none">가수명:</span>
@@ -145,10 +133,8 @@
 											<div class="ellipsis">
 												<a href="" title="깃든 - 페이지 이동" class="play_artist mlog">
 													<span>깃든</span>
-												</a>
-												<span class="checkEllipsis" style="display: none">
-													<a href=""
-													title="깃든 - 페이지 이동" class="play_artist mlog"
+												</a> <span class="checkEllipsis" style="display: none"> <a
+													href="" title="깃든 - 페이지 이동" class="play_artist mlog"
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10006&CLICK_CONTS_ID=837924"><span>깃든</span></a></span>
 											</div>
 
@@ -191,8 +177,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208809">
 													<span class="album_cont" title="和(화)"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">和(화)</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">和(화)</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -268,8 +253,7 @@
 													<span class="album_cont" title="손 the guest OST Part 1">
 														<span class="title_wrap"> <span
 															class="title title_ellipsis">손 the guest OST Part
-																1</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+																1</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -341,8 +325,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208861">
 													<span class="album_cont" title="오늘의 탐정 OST Part 4">
 														<span class="title_wrap"> <span
-															class="title title_ellipsis">오늘의 탐정 OST Part 4</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">오늘의 탐정 OST Part 4</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -415,8 +398,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208587">
 													<span class="album_cont" title="CAELO"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">CAELO</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">CAELO</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -488,8 +470,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208872">
 													<span class="album_cont" title="그림"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">그림</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">그림</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -559,8 +540,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208799">
 													<span class="album_cont" title="Super Market"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">Super Market</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">Super Market</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -632,8 +612,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208791">
 													<span class="album_cont" title="인생"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">인생</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">인생</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -703,8 +682,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208735">
 													<span class="album_cont" title="이 밤 (This Night)"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">이 밤 (This Night)</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">이 밤 (This Night)</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -781,7 +759,7 @@
 													<span class="album_cont" title="내 뒤에 테리우스 OST Part.1">
 														<span class="title_wrap"> <span
 															class="title title_ellipsis">내 뒤에 테리우스 OST Part.1</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															<!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -853,8 +831,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208754">
 													<span class="album_cont" title="SEASON1/#4"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">SEASON1/#4</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">SEASON1/#4</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -926,8 +903,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208758">
 													<span class="album_cont" title="HYPERISM BLUE"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">HYPERISM BLUE</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">HYPERISM BLUE</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -997,8 +973,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208781">
 													<span class="album_cont" title="온기"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">온기</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">온기</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1068,8 +1043,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208808">
 													<span class="album_cont" title="Tune of the Life"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">Tune of the Life</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">Tune of the Life</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1139,8 +1113,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208772">
 													<span class="album_cont" title="It`s My"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">It`s My</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">It`s My</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1216,8 +1189,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208613">
 													<span class="album_cont" title="Worth It"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">Worth It</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">Worth It</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1289,8 +1261,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208751">
 													<span class="album_cont" title="내일도 맑음 OST Part.25">
 														<span class="title_wrap"> <span
-															class="title title_ellipsis">내일도 맑음 OST Part.25</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">내일도 맑음 OST Part.25</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1360,8 +1331,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208622">
 													<span class="album_cont" title="밤"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">밤</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">밤</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1431,8 +1401,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208626">
 													<span class="album_cont" title="Flexin"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">Flexin</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">Flexin</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1507,8 +1476,7 @@
 													title="Vol.1 Mix tape Boom&Beat&Clap"> <span
 														class="title_wrap"> <span
 															class="title title_ellipsis">Vol.1 Mix tape
-																Boom&Beat&Clap</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+																Boom&Beat&Clap</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1582,8 +1550,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208749">
 													<span class="album_cont" title="사랑은"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">사랑은</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">사랑은</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1657,8 +1624,7 @@
 													<span class="album_cont" title="S.O.U.L DIGITAL SINGLE">
 														<span class="title_wrap"> <span
 															class="title title_ellipsis">S.O.U.L DIGITAL
-																SINGLE</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+																SINGLE</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1728,8 +1694,7 @@
 													data="LOG_PRT_CODE=1&MENU_PRT_CODE=2&MENU_ID_LV1=10010101&CLICK_AREA_PRT_CODE=G01&ACTION_AF_CLICK=V1&CLICK_CONTS_TYPE_CODE=N10002&CLICK_CONTS_ID=10208752">
 													<span class="album_cont" title="October Lover"> <span
 														class="title_wrap"> <span
-															class="title title_ellipsis">October Lover</span>
-														<!--class title_ellipsis 추가시 말줄임 처리-->
+															class="title title_ellipsis">October Lover</span> <!--class title_ellipsis 추가시 말줄임 처리-->
 													</span>
 												</span>
 												</a>
@@ -1858,21 +1823,23 @@
 					<div class="inbox">
 						<fieldset>
 							<legend>로그인 영역</legend>
-							<div class="input_area">
-								<input type="text" placeholder="아이디" name="memberId"
-									class="text_id_main" title="아이디 입력 편집창" style="width: 184px">
-								<input type="password" placeholder="비밀번호" name="memberPwd"
-									title="비밀번호 입력 편집창" class="text_password_main"
-									style="width: 184px">
-								<div class="save_id">
-									<input type="checkbox" name="saveId" id="id_save01" class="">
-									<label for="id_save01">아이디 저장</label>
+							<form action="./MemberLoginAction.mb" method="post">
+								<div class="input_area">
+									<input type="text" placeholder="아이디" name="email_id"
+										class="text_id_main" title="아이디 입력 편집창" style="width: 184px">
+									<input type="password" placeholder="비밀번호" name="pass"
+										title="비밀번호 입력 편집창" class="text_password_main"
+										style="width: 184px">
+									<div class="save_id">
+										<input type="checkbox" name="saveId" id="id_save01" class="">
+										<label for="id_save01">아이디 저장</label>
+									</div>
+									<button type="submit" class="btn_main_login" title="로그인">
+										<span class="odd_span"> <span class="even_span">로그인</span>
+										</span>
+									</button>
 								</div>
-								<button type="button" class="btn_main_login" title="로그인">
-									<span class="odd_span"> <span class="even_span">로그인</span>
-									</span>
-								</button>
-							</div>
+							</form>
 							<div class="main_kakao_login">
 								<a href="">카카오 로그인</a>
 							</div>

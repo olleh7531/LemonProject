@@ -1,5 +1,5 @@
 package com.lemon.musicVideo.db;
 
-public class MusicBean {
+public class MusicVideoBean {
 
 }

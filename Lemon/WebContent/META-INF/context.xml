@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- <Resource name="jdbc/Lemon" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://192.168.7.5:3306/lemon00?characterEncoding=UTF-8&amp;serverTimezone=UTC"
+		username="jspdb" password="jsppass" /> -->
+	<Resource name="jdbc/Lemon" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/lemon00?characterEncoding=UTF-8&amp;serverTimezone=UTC"
+		username="jspdb" password="jsppass" />
+</Context>

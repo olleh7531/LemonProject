@@ -157,7 +157,11 @@
 		<url-pattern>*.nt</url-pattern>
 	</servlet-mapping>
 
-
-
+	<resource-ref>
+		<description>Lemon</description>
+		<res-ref-name>jdbc/Lemon</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 
 </web-app>
