@@ -11,7 +11,7 @@
 }
 
 /* 버튼 */
-.mySlides {
+.btn_banner {
 	display: none
 }
 
@@ -30,7 +30,7 @@
     height: 17px;
     font-size: 0;
     line-height: 0;
-    background-image: url("../../../assets/img/common/common_btn_page2.png");
+    background-image: url("../../../assets/img/common/common_btn_page_music.png");
     background-repeat: no-repeat;
     background-position: left -220px;
 }

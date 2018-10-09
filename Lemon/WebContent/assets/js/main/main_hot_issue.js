@@ -1,14 +1,14 @@
 var slideIndex = 1;
 
-showBanner(slideIndex);
+showHotIssue(slideIndex);
 
-function  plusBanner(n) {
-	showBanner(slideIndex += n);
+function plusHotIssue(n) {
+	showHotIssue(slideIndex += n);
 }
 
-function showBanner(n) {
+function showHotIssue(n) {
 	var i;
-	var x = document.getElementsByClassName("btn_banner");
+	var x = document.getElementsByClassName("btn_hot_issue");
 	
 	if (n > x.length) {
 		slideIndex = 1

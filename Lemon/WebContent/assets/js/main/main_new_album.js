@@ -1,14 +1,14 @@
 var slideIndex = 1;
 
-showBanner(slideIndex);
+showNewAlbum(slideIndex);
 
-function  plusBanner(n) {
-	showBanner(slideIndex += n);
+function plusNewAlbum(n) {
+	showNewAlbum(slideIndex += n);
 }
 
-function showBanner(n) {
+function showNewAlbum(n) {
 	var i;
-	var x = document.getElementsByClassName("btn_banner");
+	var x = document.getElementsByClassName("btn_new_album");
 	
 	if (n > x.length) {
 		slideIndex = 1

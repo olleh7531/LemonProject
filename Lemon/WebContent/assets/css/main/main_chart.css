@@ -65,7 +65,7 @@ li.on a.tab_link { /* 탭 클릭하였을 때 */
 	border-top: 2px solid #EDAE06;
 }
 
-/* 실시간 차트 */
+/* 차트 이름 */
 a.tab_link.realtime {
 	top: 0;
 	left: 0;
@@ -75,14 +75,49 @@ a.tab_link.realtime {
 a.tab_link.realtime span {
 	display: inline-block;
 	height: 14px;
-	/* width: 36px; */
+	width: 50px;
 }
 
-/* pop 차트 */
+a.tab_link.pop {
+	position: absolute;
+	top: 0;
+	left: 93px;
+	cursor: pointer;
+}
 
-/* 실시간 글자 색상 */
+a.tab_link.pop span {
+	display: inline-block;
+	height: 14px;
+	width: 25px;
+}
+
+a.tab_link.artist {
+	position: absolute;
+	top: 0;
+	left: 186px;
+	cursor: pointer;
+}
+
+a.tab_link.artist span {
+	display: inline-block;
+	height: 14px;
+	width: 62px;
+}
+
+/* 탭 클릭 글자 색상 */
 li.on a.tab_link.realtime span {
-	color: #EDAE06
+	color: #EDAE06;
+	font-weight: bold;
+}
+
+li.on a.tab_link.pop span {
+	color: #EDAE06;
+	font-weight: bold;
+}
+
+li.on a.tab_link.artist span {
+	color: #EDAE06;
+	font-weight: bold;
 }
 
 .chart .list_wrap {
