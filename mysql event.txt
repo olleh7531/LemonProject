@@ -1,4 +1,4 @@
-cmd ¿¡¼­
+cmd ì—ì„œ
 
 
 mysql -u id -p
@@ -17,7 +17,7 @@ SET @@global.event_scheduler = 1;
 
 
 
-cmd³ª workbench ¾Æ¹«°÷¿¡¼­
+cmd ë˜ëŠ” workbench 
 
 
 
