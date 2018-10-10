@@ -1864,9 +1864,9 @@
 				<div class="wrap_chart_tab">
 					<ul>
 						<!-- 실시간 차트 -->
-						<li class="on nth1 chart_tab_li">
+						<li class="nth1 chart_tab_li">
 							<a href="#" title="실시간 보기" class="d_link tab_link realtime">
-								<span>실시간</span>
+								<span class="chart_tab_span">실시간</span>
 							</a>
 							<span class="none">실시간</span>
 							<div class="list_wrap typeRealtime chart_tab_content">
@@ -2265,7 +2265,7 @@
 						<!-- POP 차트 -->
 						<li class="nth2 chart_tab_li">
 							<a href="#" title="POP 보기" class="d_link tab_link pop">
-								<span>POP</span>
+								<span class="chart_tab_span">POP</span>
 							</a>
 							<span class="none">POP</span>
 							<div class="list_wrap typePop">
