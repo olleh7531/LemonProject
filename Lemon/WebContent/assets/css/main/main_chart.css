@@ -443,6 +443,41 @@ li.on a.tab_link.artist span {
 	line-height: 15px;
 }
 
+/* 아티스트 */
+.btn_fan_b {
+    margin: 0;
+}
+
+.chart li.nth3 .list_wrap li .rank_cntt .btn_fan_b {
+    position: absolute;
+    top: 6px;
+    right: 16px;
+}
+
+.btn_fan_b span.odd_span {
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+.chart .list_wrap li .rank_cntt .btn_fan_b span.odd_span {
+    width: 21px;
+    height: 21px;
+    background-image: url("../../../assets/img/main/common/main_common_icon.png");
+    background-repeat: no-repeat;
+    background-position: 0px -220px;
+}
+
+.chart li.nth3 .list_wrap li .rank_cntt .btn_fan_b {
+    position: absolute;
+    top: 6px;
+    right: 16px;
+}
+
+.chart li.nth3 .list_wrap li.active .rank_cntt .btn_fan_b {
+    top: 25px;
+}
+
 /* 차트 TOP 10 듣기 / 더 보기 영역  */
 .chart_btn_area {
 	zoom: 1;
