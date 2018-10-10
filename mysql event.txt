@@ -17,7 +17,7 @@ SET @@global.event_scheduler = 1;
 
 
 
-cmd 또는 workbench 
+cmd 또는 workbench 에서
 
 
 
