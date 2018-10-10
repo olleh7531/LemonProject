@@ -1865,11 +1865,11 @@
 					<ul>
 						<!-- 실시간 차트 -->
 						<li class="on nth1 chart_tab_li">
-							<a href="" title="실시간 보기" class="d_link tab_link realtime">
+							<a href="#" title="실시간 보기" class="d_link tab_link realtime">
 								<span>실시간</span>
 							</a>
 							<span class="none">실시간</span>
-							<div class="list_wrap typeRealtime">
+							<div class="list_wrap typeRealtime chart_tab_content">
 								<span class="txt_intro">2018.10.01 
 									<strong>16:00</strong> 기준
 								</span>
