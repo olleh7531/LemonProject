@@ -1846,7 +1846,7 @@
 							<a class="btn btn_pre mlog_without_page_change" title="이전" onclick="plusHotIssue(-1)">
 								<span class="odd_span">이전</span>
 							</a>
-							<a class="btn btn_next mlog_without_page_change disabled" title="다음" onclick="plusHotIssue(1)">
+							<a class="btn btn_next mlog_without_page_change" title="다음" onclick="plusHotIssue(1)">
 								<span class="odd_span">다음</span>
 							</a>
 						</span>
@@ -1865,10 +1865,10 @@
 					<ul>
 						<!-- 실시간 차트 -->
 						<li class="nth1 chart_tab_li">
-							<a href="#" title="실시간 보기" class="d_link tab_link realtime">
+							<a title="실시간 보기" class="d_link tab_link realtime">
 								<span class="chart_tab_span">실시간</span>
 							</a>
-							<span class="none">실시간</span>
+							<!-- <span class="none">실시간</span> -->
 							<div class="list_wrap typeRealtime chart_tab_content">
 								<span class="txt_intro">2018.10.01 
 									<strong>16:00</strong> 기준
@@ -2264,10 +2264,10 @@
 
 						<!-- POP 차트 -->
 						<li class="nth2 chart_tab_li">
-							<a href="#" title="POP 보기" class="d_link tab_link pop">
+							<a title="POP 보기" class="d_link tab_link pop">
 								<span class="chart_tab_span">POP</span>
 							</a>
-							<span class="none">POP</span>
+<!-- 							<span class="none">POP</span> -->
 							<div class="list_wrap typePop">
 								<span class="txt_intro">2018.09.30 기준</span>
 								<ul>
@@ -2712,10 +2712,10 @@
 						
 						<!-- 아티스트 차트 -->
 						<li class="nth3 chart_tab_li">
-							<a href="#" title="아티스트 보기" class="d_link tab_link artist">
+							<a title="아티스트 보기" class="d_link tab_link artist">
 								<span>아티스트</span>
 							</a>
-							<span>아티스트</span>
+<!-- 							<span>아티스트</span> -->
 							<div class="list_wrap typeArtist">
 								<span class="txt_intro">2018.10.04 기준</span>
 								<ul class="d_artist_list">
