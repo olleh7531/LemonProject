@@ -10,12 +10,14 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_new_album.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_event.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event_bxslider.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_login.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_concert.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_chart.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_hot_issue.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
@@ -1319,8 +1321,8 @@
 
 			<!-- 이벤트 -->
 			<div class="event">
-				<div class="event_default" style="display: none;">
-					<a href="" class="image_type24" title="Dok2">
+				<div class="event_default">
+					<a href="" class="image_type24" title="Dok2" style="display: none;">
 						<img width="236" height="315"
 							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002064541.png/melon/quality/80"
 							alt="">
@@ -1328,55 +1330,55 @@
 					</a>
 				</div>
 				<div class="event_list" style="width: 236px;">
-					<a href="" class="image_type24 mlog" title="Dok2" style="left: 0px; display: none;">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002064541.png/melon/quality/80"
-							alt="">
-							<span class="bg_album_frame"></span>
-					</a>
-					<a href="" class="image_type24 mlog" style="display: none; left: 0px;" title="S.O.U.L">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002044330.png/melon/quality/80"
-							alt="">
-						<span class="bg_album_frame"></span>
-					</a>
-					<a href="" class="image_type24 mlog" style="display: none; left: 0px;" title="이소라">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002044351.png/melon/quality/80"
-							alt="">
-						<span class="bg_album_frame"></span>
-					</a>
-					<a href="" class="image_type24 mlog" style="display: none; left: 0px;" title="Omega Sapien">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002063235.png/melon/quality/80"
-							alt="">
-						<span class="bg_album_frame"></span>
-					</a>
-					<a href="" class="image_type24 mlog" style="display: none; left: 0px;" title="엠투엠 (M To M)">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002063301.png/melon/quality/80"
-							alt="">
-						<span class="bg_album_frame"></span>
-					</a>
-					<a href="" class="image_type24 mlog" style="display: inline; left: -235.946px;" title="iKON">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001045608.png/melon/quality/80"
-							alt="">
-						<span class="bg_album_frame"></span>
-					</a>
-					<a href="" class="image_type24 mlog" style="display: inline; left: 0.0540172px;" title="박원">
-						<img width="236" height="315"
-							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001045630.png/melon/quality/80"
-							alt="">
-						<span class="bg_album_frame"></span>
-					</a>
+							<a href="" class="image_type24 mlog" title="Dok2">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002064541.png/melon/quality/80"
+									alt="">
+									<span class="bg_album_frame"></span>
+							</a>
+							<a href="" class="image_type24 mlog" title="S.O.U.L">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002044330.png/melon/quality/80"
+									alt="">
+								<span class="bg_album_frame"></span>
+							</a>
+							<a href="" class="image_type24 mlog" title="이소라">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002044351.png/melon/quality/80"
+									alt="">
+								<span class="bg_album_frame"></span>
+							</a>
+							<a href="" class="image_type24 mlog" title="Omega Sapien">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002063235.png/melon/quality/80"
+									alt="">
+								<span class="bg_album_frame"></span>
+							</a>
+							<a href="" class="image_type24 mlog" title="엠투엠 (M To M)">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002063301.png/melon/quality/80"
+									alt="">
+								<span class="bg_album_frame"></span>
+							</a>
+							<a href="" class="image_type24 mlog" title="iKON">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001045608.png/melon/quality/80"
+									alt="">
+								<span class="bg_album_frame"></span>
+							</a>
+							<a href="" class="image_type24 mlog" title="박원">
+								<img width="236" height="315"
+									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001045630.png/melon/quality/80"
+									alt="">
+								<span class="bg_album_frame"></span>
+							</a>
 				</div>
-				<div class="play_control">
+				<!-- <div class="play_control">
 					<a href="#" class="d_btn_ctrl pause btn_pause" title="이벤트 일시정지">
 						<span>일시정지</span>
 					</a>
 					<div class="move">
-						<!-- 윗부분의 a.image_type24 갯수만큼 인디케이터를 넣기 -->
+						윗부분의 a.image_type24 갯수만큼 인디케이터를 넣기
 						<a href="#" class="d_indicator mlog on" title="1번째 이벤트 보기">1번째 이벤트</a>
 						<a href="#" class="d_indicator mlog" title="2번째 이벤트 보기">2번째 이벤트</a>
 						<a href="#" class="d_indicator mlog" title="3번째 이벤트 보기">3번째 이벤트</a>
@@ -1385,7 +1387,7 @@
 						<a href="#" class="d_indicator mlog" title="6번째 이벤트 보기">6번째 이벤트</a>
 						<a href="#" class="d_indicator mlog" title="7번째 이벤트 보기">7번째 이벤트</a>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!-- //이벤트 -->
 
