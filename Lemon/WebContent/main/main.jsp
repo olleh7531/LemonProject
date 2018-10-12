@@ -1321,14 +1321,14 @@
 
 			<!-- 이벤트 -->
 			<div class="event">
-				<div class="event_default">
+				<!-- <div class="event_default">
 					<a href="" class="image_type24" title="Dok2" style="display: none;">
 						<img width="236" height="315"
 							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002064541.png/melon/quality/80"
 							alt="">
 						<span class="bg_album_frame"></span>
 					</a>
-				</div>
+				</div> -->
 				<div class="event_list" style="width: 236px;">
 							<a href="" class="image_type24 mlog" title="Dok2">
 								<img width="236" height="315"

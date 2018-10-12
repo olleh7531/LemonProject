@@ -15,7 +15,7 @@
 	position: absolute;
 	overflow: hidden;
 	width: 236px;
-	height: 315px;
+	height: 340px;
 	top: 24px;
 	z-index: 1;
 }
@@ -24,7 +24,7 @@
     position: relative;
     overflow: hidden;
     width: 236px;
-    height: 315px;
+    height: 340px;
     padding-top: 24px;
 }
 
@@ -138,7 +138,7 @@
 	top: 0;
 	left: 0;
 	width: 236px;
-	height: 315px;
+	height: 340px;
 	background-image:
 		url("../../../assets/img/main/new_album/main_new_album_bg_frame.png");
 	background-repeat: no-repeat;
@@ -150,7 +150,7 @@
 	top: 0;
 	left: 0;
 	width: 236px;
-	height: 315px;
+	height: 340px;
 	background-image:
 		url("../../../assets/img/main/new_album/main_new_album_bg_frame.png");
 	background-repeat: no-repeat;
@@ -160,11 +160,11 @@
 .event .event_default .image_type24 {
     position: absolute;
     width: 236px;
-    height: 315px;
+    height: 340px;
 }
 
 .event .event_list .image_type24 {
 	position: absolute;
 	width: 236px;
-	height: 315px;
+	height: 340px;
 }
