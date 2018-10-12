@@ -23,7 +23,7 @@
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_login.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_chart_tab.js"></script>
+<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 
 <!-- 메뉴 -->
 <jsp:include page="../common/menu.jsp"></jsp:include>
@@ -1871,12 +1871,12 @@
 								<span class="chart_tab_span">실시간</span>
 							</a>
 							<!-- <span class="none">실시간</span> -->
-							<div class="list_wrap typeRealtime chart_tab_content">
+							<div class="list_wrap typeRealtime">
 								<span class="txt_intro">2018.10.01 
 									<strong>16:00</strong> 기준
 								</span>
 								<ul>
-									<li class="rank_item active">
+									<li class="rank_item">
 										<div class="rank_number nth1">
 											<span class="rank">1</span>
 											<span class="none">위</span>
