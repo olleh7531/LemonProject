@@ -39,7 +39,7 @@
 .new_album .section_na .new_album_cate li {
 	float: left;
 	padding: 0 8px;
-	background:
+	background-image:
 		url("../../../assets/img/main/new_album/main_new_album_bg.png");
 	background-repeat: no-repeat;
 	background-position: left 1px;
@@ -89,9 +89,9 @@
 }
 
 .new_album .section_na .new_album_cate li.nth3.on a {
-    width: 22px;
-    height: 12px;
-    background-position: -78px 0;
+	width: 22px;
+	height: 12px;
+	background-position: -78px 0;
 }
 
 .new_album .section_na .new_album_cate li.nth4 a {
@@ -101,9 +101,9 @@
 }
 
 .new_album .section_na .new_album_cate li.nth4.on a {
-    width: 22px;
-    height: 12px;
-    background-position: -78px 0;
+	width: 22px;
+	height: 12px;
+	background-position: -78px 0;
 }
 
 .new_album .section_na .new_album_cate li.nth5 a {
@@ -113,9 +113,9 @@
 }
 
 .new_album .section_na .new_album_cate li.nth5.on a {
-    width: 22px;
-    height: 12px;
-    background-position: -78px 0;
+	width: 22px;
+	height: 12px;
+	background-position: -78px 0;
 }
 /* 페이지처리 */
 
@@ -164,7 +164,7 @@
 	width: 156px;
 	height: 156px;
 	background-image:
-		url("../../../assets/img/main/main_new_album_bg_frame.png");
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
 	background-repeat: no-repeat;
 	background-position: -241px 0;
 }
@@ -178,7 +178,7 @@
 	width: 156px;
 	height: 156px;
 	background-image:
-		url("../../../assets/img/main/main_new_album_bg_frame.png");
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
 	background-repeat: no-repeat;
 	background-position: -843px -843px;
 }
@@ -218,10 +218,16 @@
 	right: 7px;
 	width: 42px;
 	height: 42px;
-	background-image: url("../../../assets/img/main/btn_page_music.png");
+	background-image:
+		url("../../../assets/img/main/common/main_bg_btn_page.png");
 	background-repeat: no-repeat;
 	background-position: -1px -275px;
 	z-index: 1;
+}
+
+.new_album .list_wrap .img .overlay a.btn_play_song:hover {
+	background-position: -1px -317px;
+	color: #fff;
 }
 
 .new_album .list_wrap .img .overlay a.album span.album_cont {
@@ -297,7 +303,8 @@
 	bottom: 0;
 	height: 22px;
 	padding-top: 8px;
-	background: url("../../../assets/img/main/main_new_album_bg_frame.png");
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
 	background-repeat: no-repeat;
 	background-position: 0 -682px;
 	text-align: center;
