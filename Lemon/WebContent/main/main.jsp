@@ -1,24 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>레몬 Lemon</title>
-
+	
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common_page.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner_bxslider.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_new_album.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_event.css">
@@ -29,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main_hot_issue.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_event_bxslider.js"></script>
+<script type="text/javascript" src="./assets/js/common/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
@@ -37,14 +25,10 @@
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 
-</head>
-<body>
-
 <!-- 메뉴 -->
 <jsp:include page="../common/menu.jsp"></jsp:include>
 
 <!-- 본문 -->
-<a href="./MusicUpload.ams">업로드 테스트</a>
 <div id="cont_wrap" class="clfix">
 	<div id="conts_section" class="pr_none">
 		<!-- 메인 컨텐츠 가운데 정렬을 위한 pr_none 클래스 추가 -->
@@ -1438,7 +1422,7 @@
 							</div>
 							<div class="wrap_member">
 								<a href="" title="아이디/비밀번호 찾기">아이디/비밀번호 찾기</a>
-								<a href="" title="회원가입">회원가입</a>
+								<a href="./MemberJoin.mb" title="회원가입">회원가입</a>
 							</div>
 						</fieldset>
 					</div>
@@ -3067,6 +3051,3 @@
 
 <!-- footer -->
 <jsp:include page="../common/footer.jsp"></jsp:include>
-
-</body>
-</html>
