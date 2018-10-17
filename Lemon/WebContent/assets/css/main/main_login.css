@@ -1,5 +1,41 @@
 @CHARSET "UTF-8";
 
+/* input[type=text], input[type=password] {
+	height: 24px !improtant;
+	padding: 0 7px !improtant;
+	border: 1px solid #b6b6b6 !improtant;
+	border-right: 1px solid #ccc !improtant;
+	border-bottom: 1px solid #ccc !improtant;
+	color: #666 !improtant;
+	box-shadow: 1px 1px 0 0 rgba(0,0,0,0.05) inset;
+	box-shadow: none !improtant;
+	font-size: 11px !improtant;
+	font-family: dotum, "돋움", "Apple Gothic", sans-serif !improtant;
+} */
+
+/* input[type=text], input[type=password] {
+	*line-height: 24px;
+}
+ */
+ 
+input {
+	vertical-align: middle;
+}
+
+input, textarea, select, button {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	margin: 0em;
+	font: 400 13.3333px Arial;
+}
+
 /* 로그인 영역 */
 .id_wrap {
 	float: left;
@@ -41,7 +77,7 @@ legend, #IE8#HACK {
 }
 
 .login_wrap .input_area input.text_id_main {
-	height: 41px;
+	height: 39px;
 	*margin-top: -2px;
 	border: 1px solid #ccc;
 	border-right: none;
@@ -50,7 +86,7 @@ legend, #IE8#HACK {
 }
 
 .login_wrap .input_area input.text_password_main {
-	height: 41px;
+	height: 39px;
 	margin: -1px 0 0;
 	*margin-top: -2px;
 	border: 1px solid #ccc;

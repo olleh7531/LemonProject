@@ -2,9 +2,8 @@
 
 div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
 	abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul,
-	li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead,
-	tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav,
-	section {
+	li, fieldset, form, label, legend, caption, article, aside, dialog,
+	figure, footer, header, hgroup, nav, section {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -38,24 +37,8 @@ a img {
 	border: none;
 }
 
-input {
-	vertical-align: middle;
-}
 
-input, textarea, select, button {
-	text-rendering: auto;
-	color: initial;
-	letter-spacing: normal;
-	word-spacing: normal;
-	text-transform: none;
-	text-indent: 0px;
-	text-shadow: none;
-	display: inline-block;
-	text-align: start;
-	margin: 0em;
-	font: 400 13.3333px Arial;
-}
-
+/* 
 input[type="button" i], input[type="submit" i], input[type="reset" i],
 	input[type="file" i]::-webkit-file-upload-button, button {
 	align-items: flex-start;
@@ -69,25 +52,7 @@ input[type="button" i], input[type="submit" i], input[type="reset" i],
 	border-style: outset;
 	border-color: buttonface;
 	border-image: initial;
-}
-
-input[type=text], input[type=password], input[type=url], input[type=email],
-	input.text {
-	height: 24px;
-	padding: 0 7px;
-	border: 1px solid #b6b6b6;
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	color: #666;
-	/* box-shadow: 1px 1px 0 0 rgba(0,0,0,0.05) inset; */
-	box-shadow: none;
-	font-size: 11px;
-	font-family: dotum, "돋움", "Apple Gothic", sans-serif;
-}
-
-input[type=text], input[type=password], input[type=url], input[type=email], input.text {
-    *line-height: 24px;
-}
+} */
 
 ol, ul, li {
 	list-style: none;
@@ -111,7 +76,7 @@ ol, ul, li {
 }
 
 .clfix {
-    display: inline-block;
+	display: inline-block;
 }
 
 .clfix {
@@ -160,8 +125,8 @@ button, .btn {
 }
 
 button, .btn {
-    *margin: 0 2px;
-    *overflow: visible;
+	*margin: 0 2px;
+	*overflow: visible;
 }
 
 button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_span

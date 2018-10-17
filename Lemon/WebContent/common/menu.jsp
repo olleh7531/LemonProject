@@ -1,24 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>레몬 Lemon</title>
-
-<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
-
-</head>
-<body>
 	<div id="wrap">
 		<div id="header" class="main">
 			<div id="header_wrap" class="pr_none">
@@ -68,12 +49,12 @@
 											<span class="thumb_frame"></span>
 											<img class="autocomplete-img" width="40" height="40" alt="">
 										</span>
-										<div class="info">
+										<span class="info">
 											<span class="autocomplete-label"></span><br>
 											<span>
 												<span class="f11 autocomplete-info"></span>
 											</span>
-										</div>
+										</span>
 									</a>
 								</li>
 							</ul>
@@ -211,23 +192,25 @@
 				<!-- //실시간 검색어 -->
 				
 				<!-- 배너 영역 -->
-	            <div class="cmn_banner">
-	               <a href="" title="라이브원(소유) 사전알림 당일 - 페이지 이동" class="d_item mlog">
-	                  <img class="btn_banner" width="280" height="75" style="display: block;"
-	                     src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002062810.png" alt="">
-	               </a>
-	               <a href="" title="이용권(니니즈 10월) - 페이지 이동" class="d_item mlog">
-	                  <img class="btn_banner" width="280" height="75"
-	                  	src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180928071055.png" alt="">
-	               </a>
-	               <a href="" title="게토레이 5차 - 페이지 이동" class="d_item mlog">
-	                  <img class="btn_banner" width="280" height="75"
-	                  	src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180912115049.png" alt="">
-	               </a>
-	               <div class="gnb_banner_btn">
-					   <a class="btn prev d_btn_ctrl" title="이전 이벤트 보기" onclick="plusBanner(-1)">이전 이벤트 보기</a>
-					   <a class="btn next d_btn_ctrl" title="다음 이벤트 보기" onclick="plusBanner(1)">다음 이벤트 보기</a>
-					  </div>
+				<div class="banner_bxslider">
+		            <div class="cmn_banner">
+		               <a href="" title="라이브원(소유) 사전알림 당일 - 페이지 이동" class="d_item mlog">
+		                  <img class="btn_banner" width="280" height="75" style="display: block;"
+		                     src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002062810.png" alt="">
+		               </a>
+		               <a href="" title="이용권(니니즈 10월) - 페이지 이동" class="d_item mlog">
+		                  <img class="btn_banner" width="280" height="75"
+		                  	src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180928071055.png" alt="">
+		               </a>
+		               <a href="" title="게토레이 5차 - 페이지 이동" class="d_item mlog">
+		                  <img class="btn_banner" width="280" height="75"
+		                  	src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180912115049.png" alt="">
+		               </a>
+		               <div class="gnb_banner_btn">
+						   <a class="btn prev d_btn_ctrl" title="이전 이벤트 보기">이전 이벤트 보기</a>
+						   <a class="btn next d_btn_ctrl" title="다음 이벤트 보기">다음 이벤트 보기</a>
+						  </div>
+					</div>
 				</div>
 				<!-- 배너 영역 -->
 			
@@ -265,7 +248,7 @@
 							</a>
 						</li>
 						<li class="menu7">
-							<a href="" lass="cur_menu mlog">
+							<a href="" class="cur_menu mlog">
 								<span class="menu_bg menu07">마이뮤직</span>
 							</a>
 						</li>
