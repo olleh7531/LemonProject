@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_btn_page.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_new_album.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event_bxslider.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_login.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_concert.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_chart.css">
