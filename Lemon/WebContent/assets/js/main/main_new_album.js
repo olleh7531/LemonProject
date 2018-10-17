@@ -4,13 +4,11 @@ $(document).ready(function() {
 		$(this).find('li').each(function() {
 			// 마우스 오버시
 			$(this).hover(function() {
-	            $(this).find('.checkEllipsis').css('display','none');
 				$(this).find('.overlay').css('display', 'block');
-				$(this).find('.singer').css('display', 'none');
+				$(this).find('.btn_new_album li .singer').css('display', 'none');
 			}, function() { // 마우스 오버가 아닌 경우
-	            $(this).find('.checkEllipsis').css('display','none');
 				$(this).find('.overlay').css('display', 'none');
-				$(this).find('.singer').css('display', 'block');
+				$(this).find('.btn_new_album li .singer').css('display', 'block');
 			});
 		});
 	});

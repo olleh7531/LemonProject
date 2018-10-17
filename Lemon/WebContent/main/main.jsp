@@ -16,12 +16,10 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner_bxslider.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_btn_page.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_new_album.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event_bxslider.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_login.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_concert.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_chart.css">
@@ -32,7 +30,6 @@
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
-	<script type="text/javascript" src="./assets/js/main/main_login.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 </head>
