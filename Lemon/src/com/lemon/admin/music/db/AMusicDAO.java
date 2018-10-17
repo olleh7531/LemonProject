@@ -45,4 +45,48 @@ public class AMusicDAO {
 			}
 		}
 	}
+	
+	public void insertMusic(AMusicBean amb){
+		try {
+			con = getCon();
+
+			// sql 쿼리
+			sql = "insert into music (no,track_no,music_name,singer_name,lyrics,album_num,musicfile)"
+					+ "values(null,?,?,?,?,?,?)";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, amb.getTrack_num());
+			pstmt.setString(2, amb.getMusic_name());
+			pstmt.setString(3, amb.getSinger_name());
+			pstmt.setString(4, amb.getLyrics());
+			pstmt.setInt(5, amb.getAlbum_num());
+			pstmt.setString(6, amb.getMusicfile());
+
+			// pstmt 객체 실행
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

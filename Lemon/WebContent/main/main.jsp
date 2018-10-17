@@ -44,6 +44,7 @@
 <jsp:include page="../common/menu.jsp"></jsp:include>
 
 <!-- 본문 -->
+<a href="./MusicUpload.ams">업로드 테스트</a>
 <div id="cont_wrap" class="clfix">
 	<div id="conts_section" class="pr_none">
 		<!-- 메인 컨텐츠 가운데 정렬을 위한 pr_none 클래스 추가 -->
