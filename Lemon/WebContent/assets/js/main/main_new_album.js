@@ -1,3 +1,18 @@
+
+$(document).ready(function(){
+   $('.btn_new_album').each(function(){
+      $(this).find('li').each(function(){
+         $(this).hover(function() {
+            $(this).find(".overlay").css('display','block');
+            $(this).find('.singer').css('display','none');
+         }, function() { // 차트에 마우스 오버가 아닌 경우
+            $(this).find(".overlay").css('display','none');
+            $(this).find('.singer').css('display','block');
+            });
+      });
+   });
+});
+
 var slideIndex = 1;
 
 showNewAlbum(slideIndex);

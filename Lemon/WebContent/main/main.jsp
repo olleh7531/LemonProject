@@ -89,7 +89,7 @@
 													<span class="bg_album_frame"></span>
 												</span>
 												<!-- [DP] 재생 레이어 -->
-												<div class="overlay" style="display: block;">
+												<div class="overlay">
 													<a href="" class="btn_play_song mlog" title="그곳에서 재생">
 														<span class="none">앨범전체듣기</span>
 													</a>
@@ -117,7 +117,7 @@
 													<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
 														<span>Dok2</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
 															<span>Dok2</span>
 														</a>
@@ -168,7 +168,7 @@
 													<a href="" title="깃든 - 페이지 이동" class="play_artist mlog">
 														<span>깃든</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="깃든 - 페이지 이동" class="play_artist mlog">
 															<span>깃든</span>
 														</a>
@@ -219,7 +219,7 @@
 													<a href="" title="카코포니 (cacophony) - 페이지 이동" class="play_artist mlog">
 														<span>카코포니 (cacophony)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="카코포니 (cacophony) - 페이지 이동" class="play_artist mlog">
 															<span>카코포니 (cacophony)</span>
 														</a>
@@ -270,7 +270,7 @@
 													<a href="" title="오존 (O3ohn) - 페이지 이동" class="play_artist mlog">
 														<span>오존 (O3ohn)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="오존 (O3ohn) - 페이지 이동" class="play_artist mlog">
 															<span>오존 (O3ohn)</span>
 														</a>
@@ -321,7 +321,7 @@
 													<a href="" title="휘성 (Realslow) - 페이지 이동" class="play_artist mlog">
 														<span>휘성 (Realslow)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="휘성 (Realslow) - 페이지 이동" class="play_artist mlog">
 															<span>휘성 (Realslow)</span>
 														</a>
@@ -371,7 +371,7 @@
 													<a href="" title="Babylon (베이빌론) - 페이지 이동" class="play_artist mlog">
 														<span>Babylon (베이빌론)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="Babylon (베이빌론) - 페이지 이동" class="play_artist mlog">
 															<span>Babylon (베이빌론)</span>
 														</a>
@@ -423,7 +423,7 @@
 													<a href="" title="듀자매 - 페이지 이동" class="play_artist mlog">
 														<span>듀자매</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="듀자매 - 페이지 이동" class="play_artist mlog">
 															<span>듀자매</span>
 														</a>
@@ -474,7 +474,7 @@
 													<a href="" title="풍뎅이 (PDE) - 페이지 이동" class="play_artist mlog">
 														<span>풍뎅이 (PDE)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="풍뎅이 (PDE) - 페이지 이동" class="play_artist mlog">
 															<span>풍뎅이 (PDE)</span>
 														</a>
@@ -525,7 +525,7 @@
 													<a href="" title="조덕환 - 페이지 이동" class="play_artist mlog">
 														<span>조덕환</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="조덕환 - 페이지 이동" class="play_artist mlog">
 															<span>조덕환</span>
 														</a>
@@ -577,7 +577,7 @@
 													<a href="" title="노래하는 말괄량이 (The Singing Girls) - 페이지 이동" class="play_artist mlog">
 														<span>노래하는 말괄량이 (The Singing Girls)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="노래하는 말괄량이 (The Singing Girls) - 페이지 이동"
 															class="play_artist mlog">
 															<span>노래하는 말괄량이 (The Singing Girls)</span>
@@ -629,7 +629,7 @@
 													<a href="" title="가호 (Gaho) - 페이지 이동" class="play_artist mlog">
 														<span>가호 (Gaho)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="가호 (Gaho) - 페이지 이동" class="play_artist mlog">
 															<span>가호 (Gaho)</span>
 														</a>
@@ -680,7 +680,7 @@
 													<a href="" title="엠투엠 (M To M) - 페이지 이동" class="play_artist mlog">
 														<span>엠투엠 (M To M)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="엠투엠 (M To M) - 페이지 이동" class="play_artist mlog">
 															<span>엠투엠 (M To M)</span>
 														</a>
@@ -733,7 +733,7 @@
 													<a href="" title="솔비 - 페이지 이동" class="play_artist mlog">
 														<span>솔비</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="솔비 - 페이지 이동" class="play_artist mlog">
 															<span>솔비</span>
 														</a>
@@ -784,7 +784,7 @@
 													<a href="" title="다시보기 - 페이지 이동" class="play_artist mlog">
 														<span>다시보기</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="다시보기 - 페이지 이동" class="play_artist mlog">
 															<span>다시보기</span>
 														</a>
@@ -835,7 +835,7 @@
 													<a href="" title="루빈 - 페이지 이동" class="play_artist mlog">
 														<span>루빈</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="루빈 - 페이지 이동" class="play_artist mlog">
 															<span>루빈</span>
 														</a>
@@ -886,7 +886,7 @@
 													<a href="" title="LOVO (Lobo Da King) - 페이지 이동" class="play_artist mlog">
 														<span>LOVO (Lobo Da King)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="LOVO (Lobo Da King) - 페이지 이동" class="play_artist mlog">
 															<span>LOVO (Lobo Da King)</span>
 														</a>
@@ -937,7 +937,7 @@
 													<a href="" title="Ted Park - 페이지 이동" class="play_artist mlog">
 														<span>Ted Park</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="Ted Park - 페이지 이동" class="play_artist mlog">
 															<span>Ted Park</span>
 														</a>
@@ -988,7 +988,7 @@
 													<a href="" title="김은비 - 페이지 이동" class="play_artist mlog">
 														<span>김은비</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="김은비 - 페이지 이동" class="play_artist mlog">
 															<span>김은비</span>
 														</a>
@@ -1041,7 +1041,7 @@
 													<a href="" title="1L2L - 페이지 이동" class="play_artist mlog">
 														<span>1L2L</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="1L2L - 페이지 이동" class="play_artist mlog">
 															<span>1L2L</span>
 														</a>
@@ -1092,7 +1092,7 @@
 													<a href="" title="24 Flakko - 페이지 이동" class="play_artist mlog">
 														<span>24 Flakko</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="24 Flakko - 페이지 이동" class="play_artist mlog">
 															<span>24 Flakko</span>
 														</a>
@@ -1143,7 +1143,7 @@
 													<a href="" title="Rose Finger(로즈핑거) - 페이지 이동" class="play_artist mlog">
 														<span>Rose Finger(로즈핑거)</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="Rose Finger(로즈핑거) - 페이지 이동" class="play_artist mlog">
 															<span>Rose Finger(로즈핑거)</span>
 														</a>
@@ -1194,7 +1194,7 @@
 													<a href="" title="스탠딩 에그 - 페이지 이동" class="play_artist mlog">
 														<span>스탠딩 에그</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="스탠딩 에그 - 페이지 이동" class="play_artist mlog">
 															<span>스탠딩 에그</span>
 														</a>
@@ -1245,7 +1245,7 @@
 													<a href="" title="S.O.U.L - 페이지 이동" class="play_artist mlog">
 														<span>S.O.U.L</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="S.O.U.L - 페이지 이동" class="play_artist mlog">
 															<span>S.O.U.L</span>
 														</a>
@@ -1296,7 +1296,7 @@
 													<a href="" title="이소라 - 페이지 이동" class="play_artist mlog">
 														<span>이소라</span>
 													</a>
-													<span class="checkEllipsis" style="display: none">
+													<span class="checkEllipsis">
 														<a href="" title="이소라 - 페이지 이동" class="play_artist mlog">
 															<span>이소라</span>
 														</a>
