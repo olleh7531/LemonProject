@@ -265,6 +265,11 @@
 							<span class="menu_bg menu07">마이뮤직</span>
 						</a>
 					</li>
+					<li class="menu8">
+						<a href="./MusicUpload.ams" class="cur_menu mlog">
+							<span class="menu_bg menu08">음악 업로드 테스트버튼</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 			<!-- 메뉴 -->
