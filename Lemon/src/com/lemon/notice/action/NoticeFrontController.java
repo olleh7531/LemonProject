@@ -36,6 +36,19 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		} else if(command.equals("/NoticeWrite.nt")) {
+			forward = new ActionForward();
+    		forward.setPath("./notice/writeForm.jsp");
+    		forward.setRedirect(false);
+    		
+		} else if(command.equals("/NoticeWriteAction.nt")) {
+			action = new NoticeWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

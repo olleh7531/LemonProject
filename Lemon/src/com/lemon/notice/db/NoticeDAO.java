@@ -174,6 +174,7 @@ public class NoticeDAO {
 				nb = new NoticeBean();
 
 				nb.setNum(rs.getInt("num"));
+				nb.setCategory(rs.getString("category"));
 				nb.setSubject(rs.getString("subject"));
 				nb.setContent(rs.getString("content"));
 				nb.setReg_date(rs.getString("reg_date"));
@@ -250,46 +251,5 @@ public class NoticeDAO {
 			CloseDB();
 		}
 		return check;
-	}
-
-	public void reInsertNotice(NoticeBean nb) {
-		int num = 0;
-		try {
-			con = getCon();
-			sql = "select max(num) from notice";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				num = rs.getInt(1) + 1;
-			}
-
-			// 답글 순서 재배치
-			// re_ref(같은 그룹) re_seq 기존 값보다 큰 값이 있으면, re_seq + 1
-			sql = "update notice set re_seq=re_seq+1 where re_ref=? and re_seq=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, nb.getRe_ref());
-			pstmt.setInt(2, nb.getRe_seq());
-			pstmt.executeUpdate();
-
-			// 답글 쓰기
-			// re_lev +1, re_seq +1
-			sql = "insert into notice(num, subject, content, readcount, re_ref, re_lev, re_seq, reg_date) values(?,?,?,?,?,?,?,now())";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setString(2, nb.getSubject());
-			pstmt.setString(3, nb.getContent());
-			pstmt.setInt(4, 0);
-			pstmt.setInt(5, nb.getRe_ref());
-			pstmt.setInt(6, nb.getRe_lev());
-			pstmt.setInt(7, nb.getRe_seq());
-
-			pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}
 	}
 }
