@@ -1,0 +1,260 @@
+package com.lemon.magazine.board.db;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class BoardDAO {
+
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = "";
+
+	// 디비연결 메서드 생성
+	private Connection getCon() throws Exception {
+		Context init = new InitialContext();
+		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/model2");
+		con = ds.getConnection();
+		return con;
+	}
+
+	// 디비 자원해제
+	public void CloseDB() {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	// insertBoard(bb)
+	public void insertBoard(BoardBean bb) {
+		int num = 0;
+
+		try {
+			con = getCon();
+
+			// 글번호 num
+			sql = "select max(num) from board";
+
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1) + 1;
+			}
+			System.out.println("글번호 : " + num);
+
+			// db글 저장(insert)
+			sql = "insert into board(num,subject,category,content,readcount," + "date,file) "
+					+ "values(?,?,?,?,?,?,?,?,?,now(),?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, bb.getSubject());
+			pstmt.setString(3, bb.getCategory());
+			pstmt.setString(4, bb.getContent());
+			pstmt.setInt(5, 0); // readcount 항상 0으로 초기화
+			pstmt.setString(6, bb.getFile());
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+	}
+
+	// insertBoard(bb)
+	// getBoardCount()
+	public int getBoardCount() {
+		int count = 0;
+
+		try {
+			con = getCon();
+
+			sql = "select count(*) from board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return count;
+	}
+
+	// getBoardCount()
+	// getBoardList(startRow,pageSize)
+	public List getBoardList(int startRow, int pageSize) {
+		List boardList = new ArrayList();
+
+		try {
+			con = getCon();
+
+			sql = "select * from board order by re_ref desc,re_seq asc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardBean bb = new BoardBean();
+
+				bb.setNum(rs.getInt("num"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setCategory(rs.getString("category"));
+				bb.setContent(rs.getString("content"));
+				bb.setDate(rs.getDate("date"));
+				bb.setFile(rs.getString("file"));
+				bb.setReadcount(rs.getInt("readcount"));
+
+				// boardList 한칸에 저장
+				boardList.add(bb);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return boardList;
+	}
+
+	// getBoardList(startRow,pageSize)
+
+	// updateReadcount(num)
+	public void updateReadcount(int num) {
+
+		try {
+			con = getCon();
+			sql = "update board set readcount=readcount+1 where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+	}
+	// updateReadcount(num)
+
+	// getBoard(num)
+	public BoardBean getBoard(int num) {
+
+		BoardBean bb = null;
+
+		try {
+			// 디비 연결
+			con = getCon();
+			// sql 작성 : num에 해당하는 게시판글 정보 전체 가져오기
+			sql = "select * from board where num=?";
+			// pstmt 객체 생성
+			pstmt = con.prepareStatement(sql);
+			// pstmt 객체 실행 & rs 저장
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			// rs정보 있을때 -> bb 객체 생성후 저장 -> 리턴
+			if (rs.next()) {
+				bb = new BoardBean();
+				bb.setNum(rs.getInt("num"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setCategory(rs.getString("category"));
+				bb.setContent(rs.getString("content"));
+				bb.setReadcount(rs.getInt("readcount"));
+				bb.setDate(rs.getDate("date"));
+				bb.setFile(rs.getString("file"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return bb;
+	}
+
+	// getBoard(num)
+	// updateBoard(bb)
+	public int updateBoard(BoardBean bb) {
+		int check = -1;
+
+		try {
+			con = getCon();
+
+			// sql ="select pass from board where num=?";
+			sql = "update board set name=?,subject=?,content=? where num=?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, bb.getSubject());
+			pstmt.setString(2, bb.getContent());
+			pstmt.setInt(3, bb.getNum());
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return check;
+	}
+
+	// updateBoard(bb)
+	// deleteBoard(num,pass)
+	public void deleteBoard(int num) {
+
+		try {
+			con = getCon();
+
+			sql = "delete from board where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	// deleteBoard(num,pass)
+
+}
