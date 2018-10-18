@@ -5,10 +5,10 @@ $(document).ready(function() {
 			// 마우스 오버시
 			$(this).hover(function() {
 				$(this).find('.overlay').css('display', 'block');
-				$(this).find('.btn_new_album li .singer').css('display', 'none');
+				$(this).find('.layer_singer').css('display', 'none');
 			}, function() { // 마우스 오버가 아닌 경우
 				$(this).find('.overlay').css('display', 'none');
-				$(this).find('.btn_new_album li .singer').css('display', 'block');
+				$(this).find('.layer_singer').css('display', 'block');
 			});
 		});
 	});

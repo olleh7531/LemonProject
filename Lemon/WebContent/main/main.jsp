@@ -109,7 +109,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="Dok2 - 페이지 이동" class="play_artist mlog">
@@ -160,7 +160,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="깃든 - 페이지 이동" class="play_artist mlog">
@@ -211,7 +211,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="카코포니 (cacophony) - 페이지 이동" class="play_artist mlog">
@@ -262,7 +262,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="오존 (O3ohn) - 페이지 이동" class="play_artist mlog">
@@ -313,7 +313,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="휘성 (Realslow) - 페이지 이동" class="play_artist mlog">
@@ -363,7 +363,7 @@
 													</div>
 												</div>
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="Babylon (베이빌론) - 페이지 이동" class="play_artist mlog">
@@ -415,7 +415,7 @@
 													</div>
 												</div>
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="듀자매 - 페이지 이동" class="play_artist mlog">
@@ -466,7 +466,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="풍뎅이 (PDE) - 페이지 이동" class="play_artist mlog">
@@ -517,7 +517,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="조덕환 - 페이지 이동" class="play_artist mlog">
@@ -569,7 +569,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="노래하는 말괄량이 (The Singing Girls) - 페이지 이동" class="play_artist mlog">
@@ -621,7 +621,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="가호 (Gaho) - 페이지 이동" class="play_artist mlog">
@@ -672,7 +672,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="엠투엠 (M To M) - 페이지 이동" class="play_artist mlog">
@@ -725,7 +725,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="솔비 - 페이지 이동" class="play_artist mlog">
@@ -776,7 +776,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="다시보기 - 페이지 이동" class="play_artist mlog">
@@ -827,7 +827,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="루빈 - 페이지 이동" class="play_artist mlog">
@@ -878,7 +878,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="LOVO (Lobo Da King) - 페이지 이동" class="play_artist mlog">
@@ -929,7 +929,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="Ted Park - 페이지 이동" class="play_artist mlog">
@@ -980,7 +980,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="김은비 - 페이지 이동" class="play_artist mlog">
@@ -1033,7 +1033,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="1L2L - 페이지 이동" class="play_artist mlog">
@@ -1084,7 +1084,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="24 Flakko - 페이지 이동" class="play_artist mlog">
@@ -1135,7 +1135,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="Rose Finger(로즈핑거) - 페이지 이동" class="play_artist mlog">
@@ -1186,7 +1186,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="스탠딩 에그 - 페이지 이동" class="play_artist mlog">
@@ -1237,7 +1237,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="S.O.U.L - 페이지 이동" class="play_artist mlog">
@@ -1288,7 +1288,7 @@
 												</div>
 												<!-- //[DP] 재생 레이어 -->
 											</dd>
-											<dd class="singer">
+											<dd class="singer layer_singer">
 												<span class="none">가수명:</span>
 												<div class="ellipsis">
 													<a href="" title="이소라 - 페이지 이동" class="play_artist mlog">
