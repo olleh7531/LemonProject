@@ -231,7 +231,7 @@
 			<div id="menu">
 				<ul>
 					<li class="menu1">
-						<a href="" class="cur_menu mlog">
+						<a href="./LemonChart.ct" class="cur_menu mlog">
 							<span class="menu_bg menu01">레몬차트</span>
 						</a>
 					</li>
@@ -275,4 +275,4 @@
 			<!-- 메뉴 -->
 		</div>
 	</div>
-	<div style="clear: both;"></div> 
+<div style="clear: both;"></div> 
