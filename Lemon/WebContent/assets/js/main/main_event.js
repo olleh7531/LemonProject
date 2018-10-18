@@ -18,16 +18,4 @@ $(document).ready(function() {
 		adaptiveHeight: false, // 높이에 따라 반응
 		responsive : true // 자동 크기 조절 활성화, 고정 너비 슬라이더 사용하는 경우 유용
 	});
-
-	// 이전 버튼을 클릭하면 이전 슬라이드로 전환
-	$('#prevBtn').on('click', function() {
-		mySlider.goToPrevSlide(); // 이전 슬라이드 배너로 이동
-		return false; // <a>에 링크 차단
-	});
-
-	// 다음 버튼을 클릭하면 다음 슬라이드로 전환
-	$('#nextBtn').on('click', function() {
-		mySlider.goToNextSlide(); // 다음 슬라이드 배너로 이동
-		return false;
-	});
 });
