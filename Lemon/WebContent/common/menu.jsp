@@ -248,17 +248,17 @@
 						</a>
 					</li>
 					<li class="menu4">
-						<a href="" class="mlog">
+						<a href="./starpost.sp" class="cur_menu mlog">
 							<span class="menu_more menu05">스타포스트</span>
 						</a>
 					</li>
 					<li class="menu5">
-						<a href="" class="mlog">
+						<a href="" class="cur_menu mlog">
 							<span class="menu_more menu06">매거진</span>
 						</a>
 					</li>
 					<li class="menu6">
-						<a href="./notice.nt" class="mlog">
+						<a href="./notice.nt" class="cur_menu mlog">
 							<span class="menu_more menu04">공지사항</span>
 						</a>
 					</li>
