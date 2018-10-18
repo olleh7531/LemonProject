@@ -53,12 +53,12 @@
 										<span class="thumb_frame"></span>
 										<img class="autocomplete-img" width="40" height="40" alt="">
 									</span>
-									<div class="info">
+									<span class="info">
 										<span class="autocomplete-label"></span><br>
 										<span>
 											<span class="f11 autocomplete-info"></span>
 										</span>
-									</div>
+									</span>
 								</a>
 							</li>
 						</ul>
@@ -275,3 +275,4 @@
 			<!-- 메뉴 -->
 		</div>
 	</div>
+	<div style="clear: both;"></div> 
