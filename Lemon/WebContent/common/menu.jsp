@@ -205,24 +205,26 @@
 
 			<!-- 배너 영역 -->
 			<div class="cmn_banner">
-				<a href="" title="라이브원(소유) 사전알림 당일 - 페이지 이동" class="d_item mlog">
-					<img class="btn_banner" width="280" height="75" style="display: block;"
-						src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002062810.png"
-						alt="">
-				</a>
-				<a href="" title="이용권(니니즈 10월) - 페이지 이동" class="d_item mlog">
-					<img class="btn_banner" width="280" height="75"
-						src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180928071055.png"
-						alt="">
-				</a>
-				<a href="" title="게토레이 5차 - 페이지 이동" class="d_item mlog">
-					<img class="btn_banner" width="280" height="75"
-						src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180912115049.png"
-						alt="">
-				</a>
+				<div class="banner_bxslider">
+					<a href="" title="라이브원(소유) 사전알림 당일 - 페이지 이동" class="d_item mlog">
+						<img class="btn_banner" width="280" height="75"
+							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002062810.png"
+							alt="">
+					</a>
+					<a href="" title="이용권(니니즈 10월) - 페이지 이동" class="d_item mlog">
+						<img class="btn_banner" width="280" height="75"
+							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180928071055.png"
+							alt="">
+					</a>
+					<a href="" title="게토레이 5차 - 페이지 이동" class="d_item mlog">
+						<img class="btn_banner" width="280" height="75"
+							src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20180912115049.png"
+							alt="">
+					</a>
+				</div>
 				<div class="gnb_banner_btn">
-					<a class="btn prev d_btn_ctrl" title="이전 이벤트 보기" onclick="plusBanner(-1)">이전 이벤트 보기</a>
-					<a class="btn next d_btn_ctrl" title="다음 이벤트 보기" onclick="plusBanner(1)">다음 이벤트 보기</a>
+					<a class="btn prev d_btn_ctrl" title="이전 이벤트 보기">이전 이벤트 보기</a>
+					<a class="btn next d_btn_ctrl" title="다음 이벤트 보기">다음 이벤트 보기</a>
 				</div>
 			</div>
 			<!-- 배너 영역 -->
@@ -246,17 +248,17 @@
 						</a>
 					</li>
 					<li class="menu4">
-						<a href="" class="mlog">
+						<a href="./starpost.sp" class="cur_menu mlog">
 							<span class="menu_more menu05">스타포스트</span>
 						</a>
 					</li>
 					<li class="menu5">
-						<a href="" class="mlog">
+						<a href="" class="cur_menu mlog">
 							<span class="menu_more menu06">매거진</span>
 						</a>
 					</li>
 					<li class="menu6">
-						<a href="./notice.nt" class="mlog">
+						<a href="./notice.nt" class="cur_menu mlog">
 							<span class="menu_more menu04">공지사항</span>
 						</a>
 					</li>

@@ -3,29 +3,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common_page.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/menu/menu_banner.css">
-
-<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_login.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
-<script type="text/javascript" src="./assets/js/main/main_chart_tab.js"></script>
-
 <!-- 메뉴 -->
 <jsp:include page="../common/menu.jsp"></jsp:include>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/menu/menu_common.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/menu/menu_search.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/menu/menu_search_realtime.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/menu/menu_banner.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common_font.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common_footer.css">
 
+<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style type="text/css">
 #wrap_conts {
@@ -56,8 +63,10 @@
 	padding-top: 35px;
 }
 
-#pageList table{
+#pageList table {
 	border-collapse: collapse;
+	 border: 1px;
+	 width: 100%;
 }
 
 #pageList thead tr {
@@ -77,7 +86,8 @@
 	line-height: 40px;
 	border-bottom: 1px solid #cfcfcf;
 }
-#pageList tbody #subject{
+
+#pageList tbody #subject {
 	text-align: left;
 }
 
@@ -85,7 +95,7 @@
 	margin-bottom: 10px;
 }
 
-#wrap_select select{
+#wrap_select select {
 	width: 152px;
 	height: 26px;
 	float: left;
@@ -138,11 +148,11 @@
 			</div>
 
 			<div id="pageList">
-				<table border="1" style="width: 100%">
+				<table>
 					<colgroup>
 						<col style="width: 60px">
 						<col style="width: 120px">
-						<col>
+						<col style="width: 647px">
 						<col style="width: 80px">
 						<col style="width: 100px">
 					</colgroup>
@@ -155,116 +165,67 @@
 							<th scope="col">등록일</th>
 						</tr>
 					</thead>
-					
+
 					<tbody>
-							<%
+						<%
 							if (count != 0) {
 								for (int i = 0; i < NoticeList.size(); i++) {
 									NoticeBean nb = (NoticeBean) NoticeList.get(i);
-							%>
-							<tr>
-								<td scope="col"><%=nb.getNum()%></td>
-								<td scope="col"><%=nb.getCategory()%></td>
-								<td id="subject" scope="col"><a href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getSubject()%></a></td>
-								<td scope="col"><%=nb.getReadcount()%></td>
-								<td><div class="wrap"><%=nb.getReg_date()%></div></td>
-							</tr>
-							<%
+						%>
+						<tr>
+							<td scope="col"><%=nb.getNum()%></td>
+							<td scope="col"><%=nb.getCategory()%></td>
+							<td id="subject" scope="col"><a
+								href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getSubject()%></a></td>
+							<td scope="col"><%=nb.getReadcount()%></td>
+							<td><div class="wrap"><%=nb.getReg_date()%></div></td>
+						</tr>
+						<%
+							}
+							}
+						%>
+					
+					<tbody>
+				</table>
+				<div id="wrap_num">
+					<div>
+						<%
+							// 페이지 출력
+							if (count != 0) {
+								// 이전
+								if (startPage > pageBlock) {
+						%>
+						<a href="./NoticeList.bo?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+						<%
+							}
+								// 1~10,11~20,21~30,....
+								for (int i = startPage; i <= endPage; i++) {
+						%>
+						<a href="./NoticeList.bo?pageNum=<%=i%>">[<%=i%>] </a>
+						<%
+								}
+								// 다음
+								if (endPage < pageCount) {
+						%>
+						<a href="./NoticeList.bo?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+						<%
 								}
 							}
-							%>
-					<tbody>
-					</table>
-					<div id="wrap_num">
-						<div>
-							<%
-								// 페이지 출력
-								if (count != 0) {
-									// 이전
-									if (startPage > pageBlock) {
-							%>
-							<a href="./NoticeList.bo?pageNum=<%=startPage - pageBlock%>"> [이전]</a>
-							<%
-									}
-									// 1~10,11~20,21~30,....
-									for (int i = startPage; i <= endPage; i++) {
-							%>
-							<a href="./NoticeList.bo?pageNum=<%=i%>">[<%=i%>]</a>
-							<%
-									}
-									// 다음
-									if (endPage < pageCount) {
-							%>
-							<a href="./NoticeList.bo?pageNum=<%=startPage + pageBlock%>">[다음]</a>
-							<%
-									}
-								}
-							%>
-						</div>
+						%>
 					</div>
-					</tbody>
+				</div>
+				</tbody>
 				</table>
 				
-				<div class="writeNotice"><a href="./NoticeWrite.bo">글쓰기</a></div>
+				<div class="writeNotice">
+					<a href="./NoticeWrite.nt">글쓰기</a>
+				</div>
 			</div>
 
 			<div id="pageNavi"></div>
 			<div class="wrap_search"></div>
 		</div>
 	</div>
-
-	<!-- <div id="cont_wrap"> -->
-	<!-- <div id="conts"> -->
-
-	<!-- <h2 id="tit">공지사항</h2> -->
-
-	<!-- <div id="search_head"> -->
-	<!-- <div>분류</div> -->
-	<!-- </div> -->
-
-	<!-- <div id="pageList"> -->
-	<!-- <table border="1" style="width:100%"> -->
-	<!-- 	<colgroup> -->
-	<!-- 		<col style="width:60px"> -->
-	<!-- 		<col style="width:120px"> -->
-	<!-- 		<col> -->
-	<!-- 		<col style="width:80px"> -->
-	<!-- 		<col style="width:100px"> -->
-	<!-- 	</colgroup> -->
-	<!-- 	<thead> -->
-	<!-- 		<tr> -->
-	<!-- 			<th scope="col"> -->
-	<!-- 				<div class="wrap pd_none">NO.</div> -->
-	<!-- 			</th> -->
-	<!-- 			<th scope="col" class="t_center"> -->
-	<!-- 				<div class="wrap">분류</div> -->
-	<!-- 			</th> -->
-	<!-- 			<th scope="col"> -->
-	<!-- 				<div class="wrap">제목</div> -->
-	<!-- 			</th> -->
-	<!-- 			<th scope="col"> -->
-	<!-- 				<div class="wrap">조회</div> -->
-	<!-- 			</th> -->
-	<!-- 			<th scope="col"> -->
-	<!-- 				<div class="wrap">등록일</div> -->
-	<!-- 			</th> -->
-	<!-- 		</tr> -->
-	<!-- 	</thead> -->
-	<!-- 	<tbody> -->
-	<!-- 	</tbody> -->
-	<!-- </table> -->
-	<!-- </div> -->
-
-	<!-- <div class="paginate"> -->
-	<!-- </div> -->
-
-	<!-- <div class="wrap_search"> -->
-	<!-- </div> -->
-
-	<!-- </div> -->
-	<!-- </div> -->
-
-	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
