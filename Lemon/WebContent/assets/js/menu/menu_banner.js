@@ -1,6 +1,3 @@
-// http://godlvkhj.tistory.com/60
-// http://gpresss.tistory.com/19
-
 $(document).ready(function() {
 	var mySlider = $('.banner_bxslider').bxSlider({
 		mode : 'horizontal',// 가로 방향 수평 슬라이드

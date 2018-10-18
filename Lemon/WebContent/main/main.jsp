@@ -1535,317 +1535,319 @@
 						<span class="txt_intro">지금 이슈가 되는 아티스트의 인기 컨텐츠입니다.</span>
 					</h2>
 					<!-- 리스트 -->
-					<ul class="sub_list btn_hot_issue">
-						<li class="issue_list04">
-							<dl class="ml0">
-								<dd class="mov_area">
-									<a href="" title="스탠딩 에그 '사랑은' Teaser" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001055401.jpg/melon/quality/80"
-											alt="">
-										<span class="playtime">
-											<strong class="none">재생시간</strong>
-											<span class="time">00:37</span>
-										</span>
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="스탠딩 에그 '사랑은' Teaser" class="mlog">
-										<span class="title">스탠딩 에그 '사랑은' Teaser</span>
-										<span class="ellipsis">이번 신곡은 사랑 노래? 이별 노래?</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬TV">레몬TV</a>
-										</span>
-										<span class="inquiry">조회 2,612</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd>
-									<a href="" title="Young Kay 'TALK' 티저 촬영장" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002051107.jpg/melon/quality/80"
-											alt="">
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="Young Kay 'TALK' 티저 촬영장" class="mlog">
-										<span class="title">Young Kay 'TALK' 티저 촬영장</span>
-										<span class="ellipsis">대세, 키프클랜 막둥이의 첫 싱글!</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬매거진">레몬매거진</a>
-										</span>
-										<span class="inquiry">조회 439</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd>
-									<a href="" title="꼭꼭 숨어있던 좋은 노래♪" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001055410.jpg/melon/quality/80"
-											alt="">
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="꼭꼭 숨어있던 좋은 노래♪" class="mlog">
-										<span class="title">꼭꼭 숨어있던 좋은 노래♪</span>
-										<span class="ellipsis">똑같은 음악에 지친 사람 모두 주목!</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬DJ">레몬DJ</a>
-										</span>
-										<span class="inquiry">조회 45,145</span>
-									</span>
-								</dd>
-							</dl>
-							<dl class="ml0">
-								<dd class="mov_area">
-									<a href="" title="에피톤 프로젝트 '마음속의 단어들'" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002051121.jpg/melon/quality/80"
-											alt="">
-										<span class="playtime">
-											<strong class="none">재생시간</strong>
-											<span class="time">04:00</span>
-										</span>
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="에피톤 프로젝트 '마음속의 단어들'" class="mlog">
-										<span class="title">에피톤 프로젝트 '마음속의 단어들'</span>
-										<span class="ellipsis">기대감 폭발하게 만드신 Preview</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬TV">레몬TV</a>
-										</span>
-										<span class="inquiry">조회 2,743</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd>
-									<a href="" title="다시 들어도 좋은 발라드 명곡!" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001055421.jpg/melon/quality/80"
-											alt="">
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="다시 들어도 좋은 발라드 명곡!" class="mlog">
-										<span class="title">다시 들어도 좋은 발라드 명곡!</span>
-										<span class="ellipsis">1990~2000년대를 장악했던 그 감성</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬DJ">레몬DJ</a>
-										</span>
-										<span class="inquiry">조회 342,578</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd>
-									<a href="" title="가을과의 환상조합 [클래식 A to Z]" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002051152.jpg/melon/quality/80"
-											alt="">
-											<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="가을과의 환상조합 [클래식 A to Z]" class="mlog">
-										<span class="title">가을과의 환상조합 [클래식 A to Z]</span>
-										<span class="ellipsis">가을 그 자체, 브람스와 차이콥스키</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬매거진">레몬매거진</a>
-										</span>
-										<span class="inquiry">조회 3,046</span>
-									</span>
-								</dd>
-							</dl>
-						</li>
-					</ul>
-					<ul class="sub_list btn_hot_issue" style="display: none;">
-						<li class="issue_list04">
-							<dl class="ml0">
-								<dd>
-									<a href="" title="인기많은 축가&amp;프로포즈 베스트" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001113838.jpg/melon/quality/80"
-											alt="">
-											<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="인기많은 축가&amp;프로포즈 베스트" class="mlog">
-										<span class="title">인기많은 축가&amp;프로포즈 베스트</span>
-										<span class="ellipsis">10월, 돌아온 결혼식의 계절</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬DJ">레몬DJ</a>
-										</span>
-										<span class="inquiry">조회 311,796</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd class="mov_area">
-									<a href="" title="치즈 'Everything To' Teaser" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002112454.jpg/melon/quality/80"
-											alt="">
-										<span class="playtime">
-											<strong class="none">재생시간</strong>
-											<span class="time">00:51</span>
-										</span>
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="치즈 'Everything To' Teaser" class="mlog">
-										<span class="title">치즈 'Everything To' Teaser</span>
-										<span class="ellipsis">한 소절만 들었는데 취향저격 각…♡</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar"> <a href="" title="레몬TV">레몬TV</a>
-										</span>
-										<span class="inquiry">조회 2,430</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd>
-									<a href="" title="싱어송라이터 박원 [r] 녹음 현장" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002112502.jpg/melon/quality/80"
-											alt="">
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="싱어송라이터 박원 [r] 녹음 현장" class="mlog">
-										<span class="title">싱어송라이터 박원 [r] 녹음 현장</span>
-										<span class="ellipsis">그가 좋아하는, 'r'로 시작하는 것들</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬매거진">레몬매거진</a>
-										</span>
-										<span class="inquiry">조회 1,610</span>
-									</span>
-								</dd>
-							</dl>
-							<dl class="ml0">
-								<dd>
-									<a href="" title="조금은 강렬한 기분전환이 필요할 때" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001113851.jpg/melon/quality/80"
-											alt="">
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="조금은 강렬한 기분전환이 필요할 때" class="mlog">
-										<span class="title">조금은 강렬한 기분전환이 필요할 때</span>
-										<span class="ellipsis">모든 일이 잘 될 것 같은 기분이 들어</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬DJ">레몬DJ</a>
-										</span>
-										<span class="inquiry">조회 11,621</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd class="mov_area">
-									<a href="" title="황치열 '어찌 잊으오' MV" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001113857.jpg/melon/quality/80"
-											alt="">
+					<div class="hot_issue_bxslider">
+						<ul class="sub_list btn_hot_issue">
+							<li class="issue_list04">
+								<dl class="ml0">
+									<dd class="mov_area">
+										<a href="" title="스탠딩 에그 '사랑은' Teaser" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001055401.jpg/melon/quality/80"
+												alt="">
 											<span class="playtime">
 												<strong class="none">재생시간</strong>
-												<span class="time">04:43</span>
+												<span class="time">00:37</span>
 											</span>
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="황치열 '어찌 잊으오' MV" class="mlog">
-										<span class="title">황치열 '어찌 잊으오' MV</span>
-										<span class="ellipsis">드라마의 대미를 장식한 애절한 노래</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬TV">레몬TV</a>
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="스탠딩 에그 '사랑은' Teaser" class="mlog">
+											<span class="title">스탠딩 에그 '사랑은' Teaser</span>
+											<span class="ellipsis">이번 신곡은 사랑 노래? 이별 노래?</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬TV">레몬TV</a>
+											</span>
+											<span class="inquiry">조회 2,612</span>
 										</span>
-										<span class="inquiry">조회 33,628</span>
-									</span>
-								</dd>
-							</dl>
-							<dl>
-								<dd>
-									<a href="" title="쌀쌀한 날, 따뜻함이 느껴지는 재즈" class="mlog">
-										<img width="223" height="148"
-											src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002112527.jpg/melon/quality/80"
-											alt="">
-										<span class="bg_album_frame"></span>
-									</a>
-								</dd>
-								<dt>
-									<a href="" title="쌀쌀한 날, 따뜻함이 느껴지는 재즈" class="mlog">
-										<span class="title">쌀쌀한 날, 따뜻함이 느껴지는 재즈</span>
-										<span class="ellipsis">감성과 마음에 온기를 채워줄게요♪</span>
-									</a>
-								</dt>
-								<dd class="view_no">
-									<span>
-										<span class="bar">
-											<a href="" title="레몬DJ">레몬DJ</a>
+									</dd>
+								</dl>
+								<dl>
+									<dd>
+										<a href="" title="Young Kay 'TALK' 티저 촬영장" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002051107.jpg/melon/quality/80"
+												alt="">
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="Young Kay 'TALK' 티저 촬영장" class="mlog">
+											<span class="title">Young Kay 'TALK' 티저 촬영장</span>
+											<span class="ellipsis">대세, 키프클랜 막둥이의 첫 싱글!</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬매거진">레몬매거진</a>
+											</span>
+											<span class="inquiry">조회 439</span>
 										</span>
-										<span class="inquiry">조회 25,331</span>
-									</span>
-								</dd>
-							</dl>
-						</li>
-					</ul>
+									</dd>
+								</dl>
+								<dl>
+									<dd>
+										<a href="" title="꼭꼭 숨어있던 좋은 노래♪" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001055410.jpg/melon/quality/80"
+												alt="">
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="꼭꼭 숨어있던 좋은 노래♪" class="mlog">
+											<span class="title">꼭꼭 숨어있던 좋은 노래♪</span>
+											<span class="ellipsis">똑같은 음악에 지친 사람 모두 주목!</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬DJ">레몬DJ</a>
+											</span>
+											<span class="inquiry">조회 45,145</span>
+										</span>
+									</dd>
+								</dl>
+								<dl class="ml0">
+									<dd class="mov_area">
+										<a href="" title="에피톤 프로젝트 '마음속의 단어들'" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002051121.jpg/melon/quality/80"
+												alt="">
+											<span class="playtime">
+												<strong class="none">재생시간</strong>
+												<span class="time">04:00</span>
+											</span>
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="에피톤 프로젝트 '마음속의 단어들'" class="mlog">
+											<span class="title">에피톤 프로젝트 '마음속의 단어들'</span>
+											<span class="ellipsis">기대감 폭발하게 만드신 Preview</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬TV">레몬TV</a>
+											</span>
+											<span class="inquiry">조회 2,743</span>
+										</span>
+									</dd>
+								</dl>
+								<dl>
+									<dd>
+										<a href="" title="다시 들어도 좋은 발라드 명곡!" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001055421.jpg/melon/quality/80"
+												alt="">
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="다시 들어도 좋은 발라드 명곡!" class="mlog">
+											<span class="title">다시 들어도 좋은 발라드 명곡!</span>
+											<span class="ellipsis">1990~2000년대를 장악했던 그 감성</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬DJ">레몬DJ</a>
+											</span>
+											<span class="inquiry">조회 342,578</span>
+										</span>
+									</dd>
+								</dl>
+								<dl>
+									<dd>
+										<a href="" title="가을과의 환상조합 [클래식 A to Z]" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002051152.jpg/melon/quality/80"
+												alt="">
+												<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="가을과의 환상조합 [클래식 A to Z]" class="mlog">
+											<span class="title">가을과의 환상조합 [클래식 A to Z]</span>
+											<span class="ellipsis">가을 그 자체, 브람스와 차이콥스키</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬매거진">레몬매거진</a>
+											</span>
+											<span class="inquiry">조회 3,046</span>
+										</span>
+									</dd>
+								</dl>
+							</li>
+						</ul>
+						<ul class="sub_list btn_hot_issue">
+							<li class="issue_list04">
+								<dl class="ml0">
+									<dd>
+										<a href="" title="인기많은 축가&amp;프로포즈 베스트" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001113838.jpg/melon/quality/80"
+												alt="">
+												<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="인기많은 축가&amp;프로포즈 베스트" class="mlog">
+											<span class="title">인기많은 축가&amp;프로포즈 베스트</span>
+											<span class="ellipsis">10월, 돌아온 결혼식의 계절</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬DJ">레몬DJ</a>
+											</span>
+											<span class="inquiry">조회 311,796</span>
+										</span>
+									</dd>
+								</dl>
+								<dl>
+									<dd class="mov_area">
+										<a href="" title="치즈 'Everything To' Teaser" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002112454.jpg/melon/quality/80"
+												alt="">
+											<span class="playtime">
+												<strong class="none">재생시간</strong>
+												<span class="time">00:51</span>
+											</span>
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="치즈 'Everything To' Teaser" class="mlog">
+											<span class="title">치즈 'Everything To' Teaser</span>
+											<span class="ellipsis">한 소절만 들었는데 취향저격 각…♡</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar"> <a href="" title="레몬TV">레몬TV</a>
+											</span>
+											<span class="inquiry">조회 2,430</span>
+										</span>
+									</dd>
+								</dl>
+								<dl>
+									<dd>
+										<a href="" title="싱어송라이터 박원 [r] 녹음 현장" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002112502.jpg/melon/quality/80"
+												alt="">
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="싱어송라이터 박원 [r] 녹음 현장" class="mlog">
+											<span class="title">싱어송라이터 박원 [r] 녹음 현장</span>
+											<span class="ellipsis">그가 좋아하는, 'r'로 시작하는 것들</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬매거진">레몬매거진</a>
+											</span>
+											<span class="inquiry">조회 1,610</span>
+										</span>
+									</dd>
+								</dl>
+								<dl class="ml0">
+									<dd>
+										<a href="" title="조금은 강렬한 기분전환이 필요할 때" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001113851.jpg/melon/quality/80"
+												alt="">
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="조금은 강렬한 기분전환이 필요할 때" class="mlog">
+											<span class="title">조금은 강렬한 기분전환이 필요할 때</span>
+											<span class="ellipsis">모든 일이 잘 될 것 같은 기분이 들어</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬DJ">레몬DJ</a>
+											</span>
+											<span class="inquiry">조회 11,621</span>
+										</span>
+									</dd>
+								</dl>
+								<dl>
+									<dd class="mov_area">
+										<a href="" title="황치열 '어찌 잊으오' MV" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181001113857.jpg/melon/quality/80"
+												alt="">
+												<span class="playtime">
+													<strong class="none">재생시간</strong>
+													<span class="time">04:43</span>
+												</span>
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="황치열 '어찌 잊으오' MV" class="mlog">
+											<span class="title">황치열 '어찌 잊으오' MV</span>
+											<span class="ellipsis">드라마의 대미를 장식한 애절한 노래</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬TV">레몬TV</a>
+											</span>
+											<span class="inquiry">조회 33,628</span>
+										</span>
+									</dd>
+								</dl>
+								<dl>
+									<dd>
+										<a href="" title="쌀쌀한 날, 따뜻함이 느껴지는 재즈" class="mlog">
+											<img width="223" height="148"
+												src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002112527.jpg/melon/quality/80"
+												alt="">
+											<span class="bg_album_frame"></span>
+										</a>
+									</dd>
+									<dt>
+										<a href="" title="쌀쌀한 날, 따뜻함이 느껴지는 재즈" class="mlog">
+											<span class="title">쌀쌀한 날, 따뜻함이 느껴지는 재즈</span>
+											<span class="ellipsis">감성과 마음에 온기를 채워줄게요♪</span>
+										</a>
+									</dt>
+									<dd class="view_no">
+										<span>
+											<span class="bar">
+												<a href="" title="레몬DJ">레몬DJ</a>
+											</span>
+											<span class="inquiry">조회 25,331</span>
+										</span>
+									</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
 					<div class="wrap_page">
 						<div class="page">
 							<span class="page_num">
@@ -1855,10 +1857,10 @@
 								<span>2</span>
 							</span>
 							<span class="wrap_btn">
-								<a class="btn btn_pre mlog_without_page_change" title="이전" onclick="plusHotIssue(-1)">
+								<a class="btn btn_pre mlog_without_page_change" title="이전">
 									<span class="odd_span">이전</span>
 								</a>
-								<a class="btn btn_next mlog_without_page_change" title="다음" onclick="plusHotIssue(1)">
+								<a class="btn btn_next mlog_without_page_change" title="다음">
 									<span class="odd_span">다음</span>
 								</a>
 							</span>
