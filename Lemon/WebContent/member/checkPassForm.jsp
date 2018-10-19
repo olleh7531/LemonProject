@@ -58,10 +58,14 @@
 		display: block;
 		margin-top: 30px;
 	}
-		
+	
 	</style>
 </head>
 <body>
+<%
+	String email_id =(String) session.getAttribute("email_id");
+	System.out.println(email_id);
+%>
 
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -70,24 +74,16 @@
 	<div id="out">
 		<div id="in">
 			<div id="wrap_tit">
-				<h2>회원탈퇴</h2>
+				<h2>비밀번호 확인</h2>
 			</div>
 			
 			<div id="conts">
-<!-- 			<input type="checkbox"> -->
-			<button type="button" onclick="memberOut();">회원탈퇴 </button><br/>
-			<button type="button" onclick="location.href='./ChooseMemberUpdate.mb'" value="취소">취소</button>
-			
-			<!-- 회원탈퇴, 취소  -->
-			<!-- 
-			동의 체크
-			회원탈퇴
-			(alert 확인 취소)
-			alert 확인
-			
-			취소시 비밀번호 확인 후 회원 분기 페이지로
-			 -->
-				
+				<form action="./MemberPassCheckAction.mb" method="post">
+					아이디 : <input type="text" name="email_id" value="<%=email_id %>" readonly><br>
+					비밀번호 : <input type="password" name="pass"><br>
+					<input type="submit" value="로그인">
+					<input type="button" value="취소">
+				</form>
 			</div>
 			
 		</div>
@@ -96,13 +92,6 @@
 	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-	
-	<script>
-	function memberOut() {
-		
-	}
-		
-	</script>
 	
 	</body>
 </html>

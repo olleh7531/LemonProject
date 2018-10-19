@@ -58,7 +58,10 @@
 		display: block;
 		margin-top: 30px;
 	}
-		
+	
+	
+	
+	
 	</style>
 </head>
 <body>
@@ -70,39 +73,25 @@
 	<div id="out">
 		<div id="in">
 			<div id="wrap_tit">
-				<h2>회원탈퇴</h2>
+				<h2>비밀번호 변경</h2>
 			</div>
 			
 			<div id="conts">
-<!-- 			<input type="checkbox"> -->
-			<button type="button" onclick="memberOut();">회원탈퇴 </button><br/>
-			<button type="button" onclick="location.href='./ChooseMemberUpdate.mb'" value="취소">취소</button>
-			
-			<!-- 회원탈퇴, 취소  -->
-			<!-- 
-			동의 체크
-			회원탈퇴
-			(alert 확인 취소)
-			alert 확인
-			
-			취소시 비밀번호 확인 후 회원 분기 페이지로
-			 -->
-				
+				<form action="./MemberPassUpdateAction.mb" method="post">
+					현재 비밀번호 : <input type="text" name="crtPass"><br>
+					새 비밀번호 : <input type="text" name="pass"><br>
+					새 비밀번호 확인 : <input type="text" name="chkPass"><br>
+					<input type="submit" value="로그인">
+					<input type="button" onclick="location.href='history.back()'" value="취소">
+				</form>
 			</div>
-			
 		</div>
 	</div>
 	<!-- 본문 -->			
 	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-	
-	<script>
-	function memberOut() {
-		
-	}
-		
-	</script>
+
 	
 	</body>
 </html>

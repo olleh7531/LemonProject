@@ -43,6 +43,7 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/insertForm.jsp");
 			// 이동할 방식
 			forward.setRedirect(false);
+			
 		} else if (command.equals("/MemberJoinAction.mb")) {
 			// 회원가입 처리
 			action = new MemberJoinAction();
@@ -51,6 +52,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/MemberLoginAction.mb")) {
 			// 로그인 처리
 			action = new MemberLoginAction();
@@ -60,6 +62,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/MemberLogoutAction.mb")) {
 			// 로그아웃 처리
 			action = new MemberLogoutAction();
@@ -68,12 +71,44 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/ChooseMemberUpdate.mb")) {
+			 // 회원정보 변경 분기 페이지
 			 forward = new ActionForward();
 			 forward.setPath("./member/chooseMemberUpdate.jsp");
 			 forward.setRedirect(false);
 
-		} else if (command.equals("/MemberDelete.mb")) {
+		} else if (command.equals("/MemberPassCheck.mb")) {
+			 // 비밀번호 확인 폼페이지
+			 forward = new ActionForward();
+			 forward.setPath("./member/checkPassForm.jsp");
+			 forward.setRedirect(false);
+
+		} else if (command.equals("/MemberPassCheckAction.mb")) {
+			// 비밀번호 확인 처리
+			action = new MemberPassCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/MemberPassUpdate.mb")) {
+			 // 비밀번호 변경 폼페이지
+			 forward = new ActionForward();
+			 forward.setPath("./member/updatePassForm.jsp");
+			 forward.setRedirect(false);
+			 
+		} else if (command.equals("/MemberPassUpdateAction.mb")) {
+			// 비밀번호 변경 처리
+			action = new MemberPassUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}  else if (command.equals("/MemberDelete.mb")) {
 			 forward = new ActionForward();
 			 forward.setPath("./member/deleteForm.jsp");
 			 forward.setRedirect(false);
