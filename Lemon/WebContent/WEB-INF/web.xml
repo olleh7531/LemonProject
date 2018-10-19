@@ -156,6 +156,15 @@
 		<servlet-name>NoticeFrontController</servlet-name>
 		<url-pattern>*.nt</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MagazineFrontController</servlet-name>
+		<servlet-class>com.lemon.magazine.board.action.MagazineFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MagazineFrontController</servlet-name>
+		<url-pattern>*.maga</url-pattern>
+	</servlet-mapping>
 
 
 	<resource-ref>

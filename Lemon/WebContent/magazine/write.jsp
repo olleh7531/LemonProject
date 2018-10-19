@@ -5,25 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="../assets/css/magazine/table.css" rel="stylesheet" type="text/css" media="screen">  
+<link href="./assets/css/magazine/table.css" rel="stylesheet" type="text/css" media="screen">  
 </head>
 <body>
-<form action="./magazineBoardWriteAction.bo" method="post" enctype="multipart/form-data">
+<form action="./magazineBoardWriteAction.maga" method="post">
 <table class="type09">
     <thead>
     <tr>
         <th scope="cols">제목</th>
-        <td><input type="text" name="subject"></td>
+        <td><input type="text" name="ma_subject"></td>
     </tr>
     </thead>
     <tbody>
     <tr>
         <th scope="row">내용</th>
-        <td><textarea rows="10" cols="20" name="content"></textarea></td>
-    </tr>
-    <tr>
-        <th scope="row">파일 첨부</th>
-        <td><input type="file" name="file"></td>
+        <td><textarea rows="10" cols="20" name="ma_content"></textarea></td>
     </tr>
     </tbody>
 </table>

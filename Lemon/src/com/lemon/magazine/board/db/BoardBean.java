@@ -4,76 +4,67 @@ import java.sql.Date;
 
 public class BoardBean {
 
-	// num
-	// subject
-	// category
-	// content
-	// readcount
-	// date
-	// file
+	// ma_num
+	// ma_subject
+	// ma_category
+	// ma_content
+	// ma_readcount
+	// ma_date
 	
 	/*
 	 CREATE TABLE 'magazine'(
-	  `num` INT NOT NULL,
-	  `subject` VARCHAR(50) NULL,
-	  `category` VARCHAR(20) NULL,
-	  `content` VARCHAR(2000) NULL,
-	  `readcount` INT NULL,
-	  `date` DATE NULL,
-	  `file` VARCHAR(45) NULL,
+	  `ma_num` INT NOT NULL,
+	  `ma_subject` VARCHAR(50) NULL,
+	  `ma_category` VARCHAR(20) NULL,
+	  `ma_content` VARCHAR(2000) NULL,
+	  `ma_readcount` INT NULL,
+	  `ma_date` DATE NULL,
 	  PRIMARY KEY (`num`));
 	 */
 	
 	
-	private int num;
-	private String subject;
-	private String category;
-	private String content;
-	private int readcount;
-	private Date date;
-	private String file;
+	private int ma_num;
+	private String ma_subject;
+	private String ma_category;
+	private String ma_content;
+	private int ma_readcount;
+	private Date ma_date;
 	
-	public int getNum() {
-		return num;
+	public int getMa_Num() {
+		return ma_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setMa_num(int ma_num) {
+		this.ma_num = ma_num;
 	}
-	public String getSubject() {
-		return subject;
+	public String getMa_subject() {
+		return ma_subject;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setMa_subject(String ma_subject) {
+		this.ma_subject = ma_subject;
 	}
-	public void setCategory(String category){
-		this.category = category;
+	public void setMa_category(String ma_category){
+		this.ma_category = ma_category;
 	}
-	public String getCategory(){
-		return category;
+	public String getMa_category(){
+		return ma_category;
 	}
-	public String getContent() {
-		return content;
+	public String getMa_content() {
+		return ma_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setMa_content(String ma_content) {
+		this.ma_content = ma_content;
 	}
-	public int getReadcount() {
-		return readcount;
+	public int getMa_readcount() {
+		return ma_readcount;
 	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
+	public void setMa_readcount(int ma_readcount) {
+		this.ma_readcount = ma_readcount;
 	}
-	public Date getDate() {
-		return date;
+	public Date getMa_date() {
+		return ma_date;
 	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setMa_date(Date ma_date) {
+		this.ma_date = ma_date;
 	}
 	
 	
