@@ -1,4 +1,4 @@
-package com.lamon.starpost.action;
+package com.lemon.starpost.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

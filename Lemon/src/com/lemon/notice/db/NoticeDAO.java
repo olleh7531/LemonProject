@@ -58,25 +58,22 @@ public class NoticeDAO {
 			sql = "select max(num) from notice";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-
+			
+			
 			if (rs.next()) {
 				num = rs.getInt(1) + 1;
 			}
-			System.out.println("글 번호 : " + num);
 			
 			// db 글 저장(insert)
-			sql = "insert into notice(num, category, subject, content, readcount, reg_date, re_ref, re_lev, re_seq) " 
-			+ "values(?,?,?,?,now(),?,?,?)";
+			sql = "insert into notice(num, no_category, no_subject, no_content, no_readcount, no_reg_date) " 
+			+ "values(?,?,?,?,?,now())";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			pstmt.setString(2, nb.getCategory());
-			pstmt.setString(3, nb.getSubject());
-			pstmt.setString(4, nb.getContent());
+			pstmt.setString(2, nb.getNo_category());
+			pstmt.setString(3, nb.getNo_subject());
+			pstmt.setString(4, nb.getNo_content());
 			pstmt.setInt(5, 0);
-			pstmt.setInt(6, num);
-			pstmt.setInt(7, 0);
-			pstmt.setInt(8, 0);
 
 			pstmt.executeUpdate();
 			System.out.println("insert ok");
@@ -93,7 +90,7 @@ public class NoticeDAO {
 		try {
 			con = getCon();
 
-			sql = "select count(*) from Notice";
+			sql = "select count(*) from notice";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -115,7 +112,7 @@ public class NoticeDAO {
 
 		try {
 			con = getCon();
-			sql = "select * from notice order by re_ref desc, re_seq asc limit ?,?";
+			sql = "select * from notice order by num desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -125,14 +122,11 @@ public class NoticeDAO {
 			while (rs.next()) {
 				NoticeBean nb = new NoticeBean();
 				nb.setNum(rs.getInt("num"));
-				nb.setCategory(rs.getString("category"));
-				nb.setSubject(rs.getString("subject"));
-				nb.setContent(rs.getString("content"));
-				nb.setReg_date(rs.getString("reg_date"));
-				nb.setReadcount(rs.getInt("readcount"));
-				nb.setRe_ref(rs.getInt("re_ref"));
-				nb.setRe_lev(rs.getInt("re_lev"));
-				nb.setRe_seq(rs.getInt("re_seq"));
+				nb.setNo_category(rs.getString("no_category"));
+				nb.setNo_subject(rs.getString("no_subject"));
+				nb.setNo_content(rs.getString("no_content"));
+				nb.setNo_reg_date(rs.getString("no_reg_date"));
+				nb.setNo_readcount(rs.getInt("no_readcount"));
 
 				// noticeList 한 칸에 저장
 
@@ -149,7 +143,7 @@ public class NoticeDAO {
 	public void updateReadCount(int num) {
 		try {
 			con = getCon();
-			sql = "update notice set readcount=readcount+1 where num=?";
+			sql = "update notice set no_readcount=no_readcount+1 where num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
@@ -174,14 +168,11 @@ public class NoticeDAO {
 				nb = new NoticeBean();
 
 				nb.setNum(rs.getInt("num"));
-				nb.setCategory(rs.getString("category"));
-				nb.setSubject(rs.getString("subject"));
-				nb.setContent(rs.getString("content"));
-				nb.setReg_date(rs.getString("reg_date"));
-				nb.setReadcount(rs.getInt("readcount"));
-				nb.setRe_ref(rs.getInt("re_ref"));
-				nb.setRe_lev(rs.getInt("re_lev"));
-				nb.setRe_seq(rs.getInt("re_seq"));
+				nb.setNo_category(rs.getString("no_category"));
+				nb.setNo_subject(rs.getString("no_subject"));
+				nb.setNo_content(rs.getString("no_content"));
+				nb.setNo_reg_date(rs.getString("no_reg_date"));
+				nb.setNo_readcount(rs.getInt("no_readcount"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -202,10 +193,10 @@ public class NoticeDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				sql = "update notice set subject=?, context=? where num=?";
+				sql = "update notice set no_subject=?, no_content=? where num=?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, nb.getSubject());
-				pstmt.setString(2, nb.getContent());
+				pstmt.setString(1, nb.getNo_subject());
+				pstmt.setString(2, nb.getNo_content());
 				pstmt.setInt(3, nb.getNum());
 
 				pstmt.executeUpdate();

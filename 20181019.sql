@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: lemon00
+-- Host: 127.0.0.1    Database: lemon
 -- ------------------------------------------------------
 -- Server version	8.0.11
 
@@ -23,12 +23,13 @@ DROP TABLE IF EXISTS `album`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `album` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `album_name` varchar(200) DEFAULT NULL,
-  `release` date NOT NULL,
-  `album_art_img` text,
-  `agency` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`no`)
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `al_name` varchar(200) DEFAULT NULL,
+  `al_release` date NOT NULL,
+  `al_art_img` text,
+  `al_agency` varchar(100) DEFAULT NULL,
+  `al_content` text,
+  PRIMARY KEY (`num`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +39,7 @@ CREATE TABLE `album` (
 
 LOCK TABLES `album` WRITE;
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
-INSERT INTO `album` VALUES (1,'그래프 테스트','2018-10-05',NULL,NULL),(2,'그래프 테스트2','2018-10-05',NULL,NULL),(3,'아이티윌','2018-10-05',NULL,NULL);
+INSERT INTO `album` VALUES (1,'그래프 테스트','2018-10-05',NULL,NULL,NULL),(2,'그래프 테스트2','2018-10-05',NULL,NULL,NULL),(3,'아이티윌','2018-10-05',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,11 +51,9 @@ DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `comment` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `board_num` int(11) NOT NULL,
   `post_num` int(11) NOT NULL,
-  `cmt_num` int(11) NOT NULL,
-  `cmt_reply` varchar(50) DEFAULT NULL,
   `cmt_secret` tinyint(4) DEFAULT '0',
   `cmt_content` text NOT NULL,
   `cmt_email` varchar(100) NOT NULL,
@@ -66,7 +65,9 @@ CREATE TABLE `comment` (
   `cmt_blame` mediumint(9) DEFAULT '0',
   `cmt_device` varchar(45) NOT NULL,
   `cmt_del` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`no`),
+  `cmt_ref` int(11) DEFAULT NULL,
+  `cmt_lev` int(11) DEFAULT NULL,
+  PRIMARY KEY (`num`),
   KEY `cmt_mem_email_fk_idx` (`cmt_email`),
   CONSTRAINT `cmt_mem_email_fk` FOREIGN KEY (`cmt_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -89,17 +90,17 @@ DROP TABLE IF EXISTS `download_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `download_log` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `down_level` tinyint(4) NOT NULL,
   `down_user_email` varchar(100) NOT NULL,
   `down_user_ip` varchar(15) NOT NULL,
   `down_music_num` int(11) NOT NULL,
   `down_datetime` timestamp NOT NULL,
-  PRIMARY KEY (`no`),
+  PRIMARY KEY (`num`),
   KEY `down_mem_email_fk_idx` (`down_user_email`),
   KEY `down_music_num_fk_idx` (`down_music_num`),
   CONSTRAINT `down_mem_email_fk` FOREIGN KEY (`down_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `down_music_num_fk` FOREIGN KEY (`down_music_num`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `down_music_num_fk` FOREIGN KEY (`down_music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -120,12 +121,12 @@ DROP TABLE IF EXISTS `friends`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `friends` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `sender_id` varchar(100) NOT NULL,
   `receive_id` varchar(100) NOT NULL,
   `check` tinyint(4) DEFAULT '0',
   `follow_date` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`no`),
+  PRIMARY KEY (`num`),
   KEY `member_follow_fk_idx` (`sender_id`,`receive_id`),
   KEY `member_receive_fk_idx` (`receive_id`),
   CONSTRAINT `fr_receive_email_fk` FOREIGN KEY (`receive_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -143,34 +144,6 @@ LOCK TABLES `friends` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `good`
---
-
-DROP TABLE IF EXISTS `good`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `good` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `user_email` varchar(100) NOT NULL,
-  `music_no` int(11) NOT NULL,
-  PRIMARY KEY (`no`),
-  KEY `good_member_fk_idx` (`user_email`),
-  KEY `music_no_fk_idx` (`music_no`),
-  CONSTRAINT `good_member_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `good_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `good`
---
-
-LOCK TABLES `good` WRITE;
-/*!40000 ALTER TABLE `good` DISABLE KEYS */;
-/*!40000 ALTER TABLE `good` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `hashtag`
 --
 
@@ -178,12 +151,12 @@ DROP TABLE IF EXISTS `hashtag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `hashtag` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `hashtag` varchar(20) NOT NULL,
   `hash_music_num` int(11) NOT NULL,
-  PRIMARY KEY (`no`),
+  PRIMARY KEY (`num`),
   KEY `hash_music_num_fk_idx` (`hash_music_num`),
-  CONSTRAINT `hash_music_num_fk` FOREIGN KEY (`hash_music_num`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `hash_music_num_fk` FOREIGN KEY (`hash_music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -197,32 +170,39 @@ LOCK TABLES `hashtag` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `inquire`
+-- Table structure for table `helpboard`
 --
 
-DROP TABLE IF EXISTS `inquire`;
+DROP TABLE IF EXISTS `helpboard`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `inquire` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `inqu_sort` varchar(50) NOT NULL,
-  `inqu_subject` varchar(100) NOT NULL,
-  `inqu_condition` varchar(45) NOT NULL DEFAULT '접수중',
-  `inqu_register_date` timestamp NOT NULL,
-  `user_nickname` varchar(100) NOT NULL COMMENT '유저 닉네임',
-  PRIMARY KEY (`no`),
-  KEY `inq_mem_nick_fk0_idx` (`user_nickname`),
-  CONSTRAINT `inq_mem_nick_fk0` FOREIGN KEY (`user_nickname`) REFERENCES `member` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `helpboard` (
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `he_category1` varchar(30) NOT NULL,
+  `he_category2` varchar(30) DEFAULT NULL,
+  `environment` varchar(30) DEFAULT NULL,
+  `os` varchar(30) DEFAULT NULL,
+  `browser` varchar(30) DEFAULT NULL,
+  `anwser_status` varchar(20) DEFAULT '0',
+  `he_nickname` varchar(30) NOT NULL COMMENT '관리자 닉네임',
+  `he_register_date` timestamp NOT NULL,
+  `he_subject` varchar(100) NOT NULL,
+  `he_content` text NOT NULL,
+  `answer_content` text,
+  `answer_date` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`num`),
+  KEY `member_notice_fk_idx` (`he_nickname`),
+  CONSTRAINT `noti_member_nick_fk` FOREIGN KEY (`he_nickname`) REFERENCES `member` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `inquire`
+-- Dumping data for table `helpboard`
 --
 
-LOCK TABLES `inquire` WRITE;
-/*!40000 ALTER TABLE `inquire` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inquire` ENABLE KEYS */;
+LOCK TABLES `helpboard` WRITE;
+/*!40000 ALTER TABLE `helpboard` DISABLE KEYS */;
+/*!40000 ALTER TABLE `helpboard` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -233,12 +213,13 @@ DROP TABLE IF EXISTS `magazine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `magazine` (
-  `no` int(11) NOT NULL,
+  `num` int(11) NOT NULL,
+  `ma_category` varchar(45) DEFAULT NULL,
   `ma_subject` varchar(100) NOT NULL,
   `ma_readcount` int(11) DEFAULT NULL,
   `ma_register_date` timestamp NOT NULL,
   `ma_content` text NOT NULL,
-  PRIMARY KEY (`no`)
+  PRIMARY KEY (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -289,6 +270,34 @@ INSERT INTO `member` VALUES ('test1','1234','테스트','테스트1','남','1995
 UNLOCK TABLES;
 
 --
+-- Table structure for table `mu_good`
+--
+
+DROP TABLE IF EXISTS `mu_good`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `mu_good` (
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `mg_user_email` varchar(100) NOT NULL,
+  `mg_music_no` int(11) NOT NULL,
+  PRIMARY KEY (`num`),
+  KEY `good_member_fk_idx` (`mg_user_email`),
+  KEY `music_no_fk_idx` (`mg_music_no`),
+  CONSTRAINT `good_member_email_fk` FOREIGN KEY (`mg_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `good_music_no_fk` FOREIGN KEY (`mg_music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mu_good`
+--
+
+LOCK TABLES `mu_good` WRITE;
+/*!40000 ALTER TABLE `mu_good` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mu_good` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `music`
 --
 
@@ -296,17 +305,19 @@ DROP TABLE IF EXISTS `music`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `music` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `track_no` int(11) DEFAULT NULL,
   `music_name` varchar(200) NOT NULL,
-  `singer_name` varchar(200) NOT NULL,
+  `singer_num` int(11) NOT NULL,
   `lyrics` text,
   `album_num` int(11) DEFAULT NULL,
   `musicfile` text,
-  PRIMARY KEY (`no`),
+  PRIMARY KEY (`num`),
   KEY `album_music_albumname_idx` (`album_num`),
-  CONSTRAINT `music_album_num_fk` FOREIGN KEY (`album_num`) REFERENCES `album` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `music_singer_num_fk_idx` (`singer_num`),
+  CONSTRAINT `music_album_num_fk` FOREIGN KEY (`album_num`) REFERENCES `album` (`num`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `music_singer_num_fk` FOREIGN KEY (`singer_num`) REFERENCES `singer` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +326,6 @@ CREATE TABLE `music` (
 
 LOCK TABLES `music` WRITE;
 /*!40000 ALTER TABLE `music` DISABLE KEYS */;
-INSERT INTO `music` VALUES (1,1,'1번음악','그래프 테스트',NULL,1,NULL),(2,2,'2번음악','그래프 테스트',NULL,1,NULL),(3,3,'3번음악','그래프 테스트',NULL,1,NULL),(4,4,'4번음악','그래프 테스트',NULL,1,NULL),(5,1,'그래프1','그래프 테스트2',NULL,2,NULL),(6,2,'그래프2','그래프 테스트2',NULL,2,NULL),(7,3,'그래프3','그래프 테스트2',NULL,2,NULL),(8,1,'아이티윌1','홍길동',NULL,3,NULL),(9,2,'아이티윌2','홍길동',NULL,3,NULL),(10,3,'아이티윌3','홍길동',NULL,3,NULL);
 /*!40000 ALTER TABLE `music` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,14 +337,14 @@ DROP TABLE IF EXISTS `music_sub`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `music_sub` (
-  `music_no` int(11) NOT NULL,
-  `mugood` int(11) DEFAULT '0',
-  `mureadcount` int(11) DEFAULT '0',
-  `musicVideo` text,
-  `music_time` varchar(50) NOT NULL,
-  `music_genre` varchar(45) NOT NULL,
-  PRIMARY KEY (`music_no`),
-  CONSTRAINT `sub_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+  `music_num` int(11) NOT NULL,
+  `mu_good` int(11) DEFAULT '0',
+  `mu_readcount` int(11) DEFAULT '0',
+  `mu_Video` text,
+  `mu_time` varchar(50) NOT NULL,
+  `mu_genre` varchar(45) NOT NULL,
+  PRIMARY KEY (`music_num`),
+  CONSTRAINT `sub_music_no_fk` FOREIGN KEY (`music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -348,33 +358,31 @@ LOCK TABLES `music_sub` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `notice_board`
+-- Table structure for table `notice`
 --
 
-DROP TABLE IF EXISTS `notice_board`;
+DROP TABLE IF EXISTS `notice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `notice_board` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `noti_sort` varchar(50) NOT NULL,
-  `noti_subject` varchar(100) NOT NULL,
-  `noti_readcount` int(11) DEFAULT '0',
-  `noti_nickname` varchar(30) NOT NULL COMMENT '관리자 닉네임',
-  `noti_register_date` timestamp NOT NULL,
-  `noti_content` text NOT NULL,
-  PRIMARY KEY (`no`),
-  KEY `member_notice_fk_idx` (`noti_nickname`),
-  CONSTRAINT `noti_member_nick_fk` FOREIGN KEY (`noti_nickname`) REFERENCES `member` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `notice` (
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `no_category` varchar(30) NOT NULL,
+  `no_subject` varchar(100) NOT NULL,
+  `no_content` text NOT NULL,
+  `no_readcount` int(11) DEFAULT NULL,
+  `no_reg_date` date DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `notice_board`
+-- Dumping data for table `notice`
 --
 
-LOCK TABLES `notice_board` WRITE;
-/*!40000 ALTER TABLE `notice_board` DISABLE KEYS */;
-/*!40000 ALTER TABLE `notice_board` ENABLE KEYS */;
+LOCK TABLES `notice` WRITE;
+/*!40000 ALTER TABLE `notice` DISABLE KEYS */;
+INSERT INTO `notice` VALUES (1,'서비스 소식','ㅁㄴㅇㄹ','<p>ㅌㅊㅍㅋㅊㅍㅌㅋ</p>',1,'2018-10-19'),(2,'서비스 종료','ㄴㅇㄻ','<p>ㅋㅌㅊㅍㅌㅊㅍㅋㅌㅊㅍㅋ</p>',20,'2018-10-19');
+/*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -385,15 +393,15 @@ DROP TABLE IF EXISTS `playlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `playlist` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(100) NOT NULL,
   `music_no` int(11) NOT NULL,
   `order` int(11) NOT NULL,
-  PRIMARY KEY (`no`),
+  PRIMARY KEY (`num`),
   KEY `play_member_fk_idx` (`user_email`),
   KEY `music_no_fk_idx` (`music_no`),
   CONSTRAINT `play_member_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `play_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `play_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -414,16 +422,16 @@ DROP TABLE IF EXISTS `playlog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `playlog` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(100) NOT NULL,
   `music_no` int(11) NOT NULL,
-  `Playtime` datetime NOT NULL,
+  `playtime` timestamp NOT NULL,
   `p_user_ip` varchar(15) NOT NULL,
-  PRIMARY KEY (`no`),
+  PRIMARY KEY (`num`),
   KEY `plog_mem_email_fk_idx` (`user_email`),
   KEY `plog_mu_num_fk_idx` (`music_no`),
   CONSTRAINT `plog_mem_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -433,7 +441,6 @@ CREATE TABLE `playlog` (
 
 LOCK TABLES `playlog` WRITE;
 /*!40000 ALTER TABLE `playlog` DISABLE KEYS */;
-INSERT INTO `playlog` VALUES (3,'test1',1,'2018-10-05 11:23:44',''),(4,'test1',1,'2018-10-05 11:33:44',''),(5,'test1',1,'2018-10-05 11:35:44',''),(6,'test1',1,'2018-10-05 11:36:44',''),(7,'test1',1,'2018-10-05 11:37:44',''),(8,'test1',1,'2018-10-05 11:38:44',''),(9,'test1',1,'2018-10-05 11:39:44',''),(10,'test1',1,'2018-10-05 12:10:44',''),(11,'test1',1,'2018-10-05 12:11:44',''),(12,'test1',1,'2018-10-05 12:12:44',''),(13,'test1',1,'2018-10-05 12:13:44',''),(14,'test1',1,'2018-10-05 12:14:44',''),(15,'test1',1,'2018-10-05 12:15:44',''),(16,'test1',1,'2018-10-05 12:16:44',''),(17,'test1',1,'2018-10-05 12:17:44',''),(18,'test1',2,'2018-10-05 11:10:44',''),(19,'test1',2,'2018-10-05 11:11:44',''),(20,'test1',2,'2018-10-05 11:12:44',''),(21,'test1',2,'2018-10-05 11:13:44',''),(22,'test1',2,'2018-10-05 11:14:44',''),(23,'test1',2,'2018-10-05 11:15:44',''),(24,'test1',2,'2018-10-05 11:16:44',''),(25,'test1',2,'2018-10-05 11:17:44',''),(26,'test1',2,'2018-10-05 11:18:44',''),(27,'test1',2,'2018-10-05 11:19:44',''),(28,'test1',2,'2018-10-05 11:20:44',''),(29,'test1',2,'2018-10-05 11:22:44',''),(30,'test1',2,'2018-10-05 11:25:44',''),(31,'test1',2,'2018-10-05 12:25:44',''),(32,'test1',2,'2018-10-05 12:26:44',''),(33,'test1',2,'2018-10-05 12:27:44',''),(34,'test1',2,'2018-10-05 12:28:44',''),(35,'test1',2,'2018-10-05 12:29:44',''),(36,'test1',2,'2018-10-05 12:30:44',''),(37,'test2',2,'2018-10-05 12:30:44',''),(38,'test2',2,'2018-10-05 12:31:44',''),(39,'test2',2,'2018-10-05 11:31:44',''),(40,'test2',2,'2018-10-05 11:35:44','');
 /*!40000 ALTER TABLE `playlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,7 +457,7 @@ CREATE TABLE `rating` (
   `rating_mem_id` varchar(100) NOT NULL,
   PRIMARY KEY (`album_num`),
   KEY `rating_mem_email_fk_idx` (`rating_mem_id`),
-  CONSTRAINT `rating_album_num_fk` FOREIGN KEY (`album_num`) REFERENCES `album` (`no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `rating_album_num_fk` FOREIGN KEY (`album_num`) REFERENCES `album` (`num`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rating_mem_email_fk` FOREIGN KEY (`rating_mem_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -472,12 +479,12 @@ DROP TABLE IF EXISTS `search`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `search` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
   `search_keyword` text NOT NULL,
   `search_date` timestamp NULL DEFAULT NULL,
   `search_ip` varchar(15) NOT NULL,
   `search_eamil` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`no`)
+  PRIMARY KEY (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -489,6 +496,92 @@ LOCK TABLES `search` WRITE;
 /*!40000 ALTER TABLE `search` DISABLE KEYS */;
 /*!40000 ALTER TABLE `search` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `singer`
+--
+
+DROP TABLE IF EXISTS `singer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `singer` (
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `activity_type` varchar(10) NOT NULL,
+  `singer_name` varchar(200) NOT NULL,
+  `si_group_name` varchar(200) DEFAULT NULL,
+  `debut_year` date DEFAULT NULL,
+  `debut_song` varchar(100) DEFAULT NULL,
+  `si_agency` varchar(100) DEFAULT NULL,
+  `si_picture` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `singer`
+--
+
+LOCK TABLES `singer` WRITE;
+/*!40000 ALTER TABLE `singer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `singer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `st_good`
+--
+
+DROP TABLE IF EXISTS `st_good`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `st_good` (
+  `num` int(11) NOT NULL,
+  `sg_useremail` varchar(100) NOT NULL,
+  `sg_num` int(11) NOT NULL,
+  PRIMARY KEY (`num`),
+  KEY `sg_useremail_fk_idx` (`sg_useremail`),
+  KEY `sg_num_idx` (`sg_num`),
+  CONSTRAINT `sg_num` FOREIGN KEY (`sg_num`) REFERENCES `starpost` (`num`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `sg_useremail_fk` FOREIGN KEY (`sg_useremail`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `st_good`
+--
+
+LOCK TABLES `st_good` WRITE;
+/*!40000 ALTER TABLE `st_good` DISABLE KEYS */;
+/*!40000 ALTER TABLE `st_good` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `starpost`
+--
+
+DROP TABLE IF EXISTS `starpost`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `starpost` (
+  `num` int(11) NOT NULL,
+  `st_file` text NOT NULL,
+  `st_subject` varchar(100) DEFAULT NULL,
+  `st_content` text NOT NULL,
+  `st_readcount` int(11) DEFAULT NULL,
+  `st_singer_num` int(11) NOT NULL,
+  PRIMARY KEY (`num`),
+  KEY `st_singer_num_fk_idx` (`st_singer_num`),
+  CONSTRAINT `st_singer_num_fk` FOREIGN KEY (`st_singer_num`) REFERENCES `singer` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `starpost`
+--
+
+LOCK TABLES `starpost` WRITE;
+/*!40000 ALTER TABLE `starpost` DISABLE KEYS */;
+/*!40000 ALTER TABLE `starpost` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -499,4 +592,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-16 18:52:43
+-- Dump completed on 2018-10-19 17:23:05

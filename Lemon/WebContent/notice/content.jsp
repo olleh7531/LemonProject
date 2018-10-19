@@ -3,38 +3,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- 메뉴 -->
-<jsp:include page="../common/menu.jsp"></jsp:include>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/menu/menu_common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/menu/menu_search.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/menu/menu_search_realtime.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common_font.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumgothic.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common_footer.css">
+	href="./assets/css/board/notice.css">
 
-<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/common/common_main_menu_bxslider.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/main/main_btn_page.css">
+   
+   <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+   <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<style type="text/css">
+<!-- <style type="text/css">
+
 #wrap_conts {
 	width: 100%;
 	text-align: center;
@@ -43,6 +38,7 @@
 #conts {
 	display: inline-block;
 	width: 1008px;
+	
 	padding-top: 30px;
 	padding-bottom: 90px;
 }
@@ -59,7 +55,6 @@
 }
 
 #pageList {
-	text-align: center;
 	padding-top: 35px;
 }
 
@@ -75,39 +70,35 @@
 	line-height: 35px;
 }
 
-#pageList tbody {
-	text-align: center;
-}
-
 #pageList tbody tr {
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #cfcfcf;
 }
 
-#pageList tbody #subject {
+.dtl {
+	display: block;
+	padding: 21px 16px 36px;
+	min-height: 200px;
 	text-align: left;
 }
+</style> -->
 
-.dtl {
-    display: block;
-	padding: 21px 16px 36px;
-}
+<script type="text/javascript">
+	function noticeList() {
+		location.href = "./notice.nt";
+	}
+</script>
 
-.dtl td {
-	text-align: left;    	
-}
-
-
-</style>
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<%
 		// 저장 
 		// request.setAttribute("bb", bb); 
 		// request.setAttribute("pageNum", pageNum);
-		// 전달 값 저장하기 
+		// 전달 값 저장하기
 		NoticeBean nb = (NoticeBean) request.getAttribute("nb");
 		String pageNum = (String) request.getAttribute("pageNum");
 	%>
@@ -115,7 +106,6 @@
 	<div id="wrap_conts">
 		<div id="conts">
 			<h2 id="tit">공지사항</h2>
-
 			<div id="pageList">
 				<table>
 					<colgroup>
@@ -128,22 +118,23 @@
 					<thead>
 						<tr>
 							<th scope="col"><%=nb.getNum()%></th>
-							<th scope="col"><%=nb.getCategory()%></th>
-							<th scope="col"><%=nb.getSubject()%></th>
-							<th scope="col"><%=nb.getReadcount()%></th>
-							<th scope="col"><%=nb.getReg_date()%></th>
+							<th scope="col"><%=nb.getNo_category()%></th>
+							<th scope="col"><%=nb.getNo_subject()%></th>
+							<th scope="col"><%=nb.getNo_readcount()%></th>
+							<th scope="col"><%=nb.getNo_reg_date()%></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>	
+							<td colspan="5">
 								<div class="dtl">
-									<p><%=nb.getContent()%></p>
+									<p><%=nb.getNo_content()%></p>
 								</div>
-							</td>							
+							</td>
 						</tr>
 					</tbody>
 				</table>
+				<button onclick="noticeList()">목록</button>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -7,27 +8,17 @@
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css"> <!-- 메인 / 메뉴 슬라이더 -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_btn_page.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_new_album.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event_bxslider.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_login.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_concert.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_chart.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_hot_issue.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
 	
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="./assets/js/main/main_event_bxslider.js"></script>
+	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
@@ -1409,6 +1400,9 @@
 	
 				<!-- 로그인 -->
 				<div class="id_wrap mt24">
+					
+					<c:set var="e_id" value="<%=email_id %>"/>				
+					<c:if test="${empty e_id}">
 					<!-- 로그인하지 않았을 때 -->
 					<form action="./MemberLoginAction.mb" method="post">
 					<div class="login_wrap" id="gnbLoginDiv">
@@ -1445,16 +1439,18 @@
 						</div>
 					</div>
 					</form>
+					</c:if>
 					<!-- 로그인하지 않았을 때 -->
 	
-					<!-- 로그인하였을 때
+					<!-- 로그인하였을 때 -->
+					<c:if test="${!empty e_id}">
 					<div class="logout_wrap">
-						로그인 유저 정보 관련
+						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
 								<a href="" class="id_area">레몬</a>님
 							</strong>
-							<a href="" title="내정보" class="bg_none">
+							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>
 							</a>
 							<div class="mem_btn" id="d_facebook_mem_btn">
@@ -1462,12 +1458,12 @@
 									<span>카카오톡 연동하기</span>
 								</button>
 							</div>
-							<a href="" title="로그아웃" class="btn_logout">
+							<a href="./MemberLogoutAction.mb" title="로그아웃" class="btn_logout">
 								<span>로그아웃</span>
 							</a>
 						</div>
-						로그인 유저 정보 관련
-						로그인한 유저 이용권 관련
+						<!-- 로그인 유저 정보 관련
+						로그인한 유저 이용권 관련 -->
 						<div class="mem_used">
 							<strong class="product_name">
 								<a href="" title="이용권보유현황">
@@ -1504,8 +1500,11 @@
 									</a>
 								</li>
 							</ul>
-						</div> 로그인한 유저 이용권 관련
-					</div> 로그인하였을 때 -->
+						</div> <!-- 로그인한 유저 이용권 관련 -->
+					</div>
+					</c:if>
+					 <!-- 로그인하였을 때 -->
+					
 					<!-- 콘서트 -->
 					<div class="promotion_wrap">
 						<div class="promotion_default" style="display: none;">
