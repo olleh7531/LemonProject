@@ -9,7 +9,6 @@
 <title>레몬 Lemon</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css"> <!-- 메인 / 메뉴 슬라이더 -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
