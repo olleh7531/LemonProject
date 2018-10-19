@@ -1460,7 +1460,7 @@
 							<strong>
 								<a href="" class="id_area">레몬</a>님
 							</strong>
-							<a href="" title="내정보" class="bg_none">
+							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>
 							</a>
 							<div class="mem_btn" id="d_facebook_mem_btn">
