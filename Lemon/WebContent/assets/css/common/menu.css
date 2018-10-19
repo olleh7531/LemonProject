@@ -1,0 +1,735 @@
+@CHARSET "UTF-8";
+
+/*------------------------------------*/
+/*               메뉴 영역                             */
+/*------------------------------------*/
+#header {
+    position: relative;
+    width: 100%;
+    min-width: 1048px;
+    height: 150px;
+    z-index: 20;
+}
+
+#header_wrap {
+	width: 1008px;
+	margin: 0 auto;
+	padding: 0 228px 0 20px;
+}
+
+#header_wrap.pr_none {
+	padding: 0 19px;
+}
+
+#gnb {
+	border: none;
+}
+
+#gnb h1 {
+	float: left;
+	line-height: 0;
+}
+
+/*------------------------------------*/
+/*                 검색                                */
+/*------------------------------------*/
+#top_search input {
+	vertical-align: middle;
+}
+
+#top_search input {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	margin: 0em;
+	font: 400 13.3333px Arial;
+}
+
+/*------------------------------------*/
+/*                검색                                 */
+/*------------------------------------*/
+
+#top_search input[type=text] {
+	height: 24px;
+	padding: 0 7px;
+	border: 1px solid #b6b6b6;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	/* box-shadow: 1px 1px 0 0 rgba(0,0,0,0.05) inset; */
+	box-shadow: none;
+	font-size: 11px;
+	font-family: dotum, "돋움", "Apple Gothic", sans-serif;
+}
+
+#top_search input[type=text] {
+	*line-height: 24px;
+}
+
+#gnb fieldset {
+	display: inline;
+	position: relative;
+	float: left;
+	width: 322px !important;
+	height: 40px;
+	margin: 36px 0 0 11px;
+	background-image: url("../../../assets/img/menu/menu_search_bg.png");
+	background-repeat: no-repeat;
+	z-index: 15;
+}
+
+legend {
+	position: absolute;
+	top: -7000px;
+	left: -7000px;
+	height: 0;
+	/* visibility: hidden; */
+}
+
+legend, #IE8#HACK {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#gnb fieldset input[type=text] {
+	display: inline;
+	float: left;
+	border: none;
+	padding-top: 3px;
+	margin: 7px 0 0 18px;
+	padding-left: 0px;
+	height: 20px;
+	box-shadow: none;
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 20px;
+	*line-height: 22px;
+	color: #999999;
+	*height: 23px;
+}
+
+.ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*------------------------------------*/
+/*              검색 버튼                               */
+/*------------------------------------*/
+#gnb fieldset .btn_auto {
+	float: left;
+}
+
+#gnb fieldset .btn_auto span {
+	display: inline-block;
+	width: 33px;
+	height: 32px;
+	margin: 0 -6px 0 0;
+	*margin: -1px -10px 0 0;
+	background-image:
+		url("../../../assets/img/menu/menu_search_auto_btn.png");
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+#gnb fieldset .btn_auto.close span {
+	background-position: -33px 0;
+}
+
+button, .btn {
+	border: 1px solid red;
+	display: inline-block;
+	zoom: 1;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	text-decoration: none !important;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_span
+	{
+	display: block;
+	position: relative;
+}
+
+.btn_icon span.odd_span {
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: middle;
+}
+
+.btn_icon.search_m {
+	float: right;
+	height: 40px;
+	margin: 0;
+}
+
+.btn_icon.search_m span.odd_span {
+	width: 45px;
+	height: 40px;
+	background-image: url("../../../assets/img/menu/menu_search.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	vertical-align: top;
+}
+
+/*------------------------------------*/
+/*           검색시 밑에 자동 완성                    */
+/*------------------------------------*/
+#gnb fieldset .auto_complete {
+	position: absolute;
+	top: 43px;
+	left: 1px;
+	padding-bottom: 13px;
+	background-image:
+		url("../../../assets/img/menu/menu_search_auto_bg.png");
+	background-repeat: no-repeat;
+	background-position: -322px bottom;
+}
+
+#gnb fieldset .auto_complete .auto_complete_cont {
+	padding-top: 13px;
+	background-image:
+		url("../../../assets/img/menu/menu_search_auto_bg.png");
+	background-repeat: no-repeat;
+	background-position: 0 top;
+}
+
+#gnb fieldset .auto_complete .thumb_result {
+	padding-top: 0;
+}
+
+#gnb fieldset .auto_complete ul {
+	width: 320px;
+	border-left: 1px solid #b4b4b4;
+	border-right: 1px solid #b4b4b4;
+	background-color: #fff;
+}
+
+#gnb fieldset .auto_complete .thumb_result li {
+	font-size: 0;
+	line-height: 0;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.cate {
+	position: relative;
+	height: 16px;
+	margin-top: 5px;
+	padding: 2px 0 0 16px;
+	padding-top: 12px;
+	border-top: 1px solid #d9d9d9;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.first_child.cate {
+	padding: 2px 0 2px 16px;
+	margin: 0;
+	border-top: none;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.class02 {
+	background: none;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.class02 a {
+	display: block;
+	height: 40px;
+	padding: 7px 0 7px 16px;
+	cursor: pointer;
+}
+
+#gnb fieldset .thumb_40 {
+	display: block;
+	float: left;
+	position: relative;
+	width: 40px;
+	height: 40px;
+}
+
+#gnb fieldset .thumb_40 img {
+	display: block;
+}
+
+#gnb fieldset .thumb_40 .thumb_frame {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 40px;
+	height: 40px;
+	background-image:
+		url("../../../assets/img/menu/menu_search_auto_bg_album_frame.png");
+	background-repeat: no-repeat;
+	background-position: -958px -162px;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.class02 a .info {
+	float: left;
+	width: 220px;
+	margin: 4px 0 0 12px;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.class02 a .info span {
+	display: inline-block;
+	max-width: 211px;
+	line-height: 140%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.class02 a .info span strong
+	{
+	color: #0ca92a;
+	vertical-align: bottom;
+}
+
+#gnb fieldset .auto_complete .thumb_result li.class02 a .info span .f11
+	{
+	font-size: 11px;
+	color: #333;
+	letter-spacing: 0;
+}
+
+/*------------------------------------*/
+/*      검색시 밑에 자동 완성 텍스트 결과             */
+/*------------------------------------*/
+#gnb fieldset .auto_complete ul {
+	width: 320px;
+	border-left: 1px solid #b4b4b4;
+	border-right: 1px solid #b4b4b4;
+	background-color: #fff;
+}
+
+#gnb fieldset .auto_complete .text_result {
+	width: 320px;
+	padding-top: 0;
+}
+
+#gnb fieldset .auto_complete .text_result li {
+	height: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+/*------------------------------------*/
+/*             검색어가 없을 때                         */
+/*------------------------------------*/
+#gnb fieldset .auto_complete .text_result li.result_none {
+	height: 15px;
+	padding: 2px 0 0 16px;
+}
+
+#gnb fieldset .result_none span {
+	display: block;
+	color: #575757;
+	line-height: 15px;
+}
+
+/*------------------------------------*/
+/*         실시간  급상승 검색어                        */
+/*------------------------------------*/
+/* 실시간 검색어 영역 */
+.realtime_soar_keyword {
+    zoom: 1;
+    float: left;
+    margin-top: 45px;
+    position: relative;
+    padding-left: 9px;
+    *z-index: 15;
+}
+
+/* 실시간 급상승 이미지 */
+.realtime_soar_keyword a.title {
+    display: none;
+    float: left;
+    width: 42px;
+    height: 16px;
+    margin: 3px 0 0 3px;
+    background-image: url("../../../assets/img/menu/menu_search_realtime_soar.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+/* 검색 키워드, 순위 변동 영역 */
+.realtime_soar_keyword .keyword_overlay {
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 162px;
+    margin: 3px 0 0 10px;
+    *margin-top: 2px;
+    overflow: hidden;
+    z-index: 15;
+}
+
+.realtime_soar_keyword .keyword_overlay ol {
+	width: 162px;
+}
+
+/* 롤링 영역 */
+.realtime_soar_keyword li {
+	position: absolute;
+	width: 162px;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 순위 영역 */
+.realtime_soar_keyword .order {
+	display: inline-block;
+	float: left;
+	margin: 1px 1px 0 0;
+	width: 19px;
+	height: 14px;
+	font-size: 12px;
+	line-height: 15px;
+	padding-right: 4px;
+	vertical-align: top;
+	color: #777;
+	text-align: right;
+}
+
+/* 순위 . */
+.realtime_soar_keyword .order .gubun {
+    vertical-align: top;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+/* 검색어 */
+.realtime_soar_keyword li a {
+	display: inline-block;
+	float: left;
+	width: 96px;
+	height: 14px;
+	color: #333;
+	font-size: 12px;
+	line-height: 15px;
+	margin: 1px 0 0 0;
+	vertical-align: top;
+}
+
+.realtime_soar_keyword li .ellipsis {
+	display: inline-block;
+	*display: inline;
+	*position: relative;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/* 순위 변동 영역 */
+.wrap_rank {
+	display: inline-block;
+	color: #999;
+	font-size: 12px;
+	line-height: 18px;
+	font-family: "Arial", "돋움", "Dotum", "Apple Gothic", sans-serif;
+	vertical-align: middle;
+}
+
+.realtime_soar_keyword .wrap_rank {
+	display: inline-block;
+	float: left;
+	width: 40px;
+	height: 14px;
+	margin: 2px 0 0 1px;
+	vertical-align: top;
+	color: #3d464b;
+	font-size: 0;
+	line-height: 0;
+}
+
+.wrap_rank span {
+	vertical-align: middle;
+	font-family: "Arial", "돋움", "Dotum", "Apple Gothic", sans-serif;
+	font-size: 10px;
+}
+
+/* 순위 변동 이미지 */
+.realtime_soar_keyword .wrap_rank .icon {
+	display: inline-block;
+	overflow: hidden;
+	width: 7px;
+	height: 7px;
+	margin: 1px 3px 0 0;
+	background-image:
+		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-repeat: no-repeat;
+	background-position: -22px -155px;
+	font-size: 0;
+	line-height: 0;
+}
+
+/* 순위 새 진입 이미지 */
+.realtime_soar_keyword .wrap_rank.new .icon {
+	width: 21px;
+	height: 5px;
+	margin-top: 5px;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: middle;
+	background-image:
+		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-repeat: no-repeat;
+	background-position: 0 -169px;
+}
+
+/* 순위 다운 */
+.down {
+	color: #47beaa;
+	font-size: 10px;
+}
+
+/* 순위 변동 글자 */
+.realtime_soar_keyword .wrap_rank .num {
+	font-size: 10px;
+	line-height: 13px;
+	display: inline-block;
+}
+
+/* 순위 변동 다운 글자 색상 */
+.realtime_soar_keyword .wrap_rank.down .num {
+    color: #47bda8;
+}
+
+/* 순위 상승 */
+.up {
+	color: #ff4c7c;
+	font-size: 10px;
+}
+
+/* 순위 상승 이미지 */
+.realtime_soar_keyword .wrap_rank.up .icon {
+	display: inline-block;
+	overflow: hidden;
+	width: 7px;
+	height: 7px;
+	margin: 3px 3px 0 0;
+	background-image:
+		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-repeat: no-repeat;
+	background-position: 0 -155px;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 순위 상승 글자 색상 */
+.realtime_soar_keyword .wrap_rank.up .num {
+	margin: 0;
+	color: #ff4e78;
+	font-size: 10px;
+	line-height: 13px;
+	vertical-align: top;
+}
+
+/* 더보기 */
+.realtime_soar_keyword .keyword_overlay .keyword_more {
+    display: none;
+    height: 21px;
+    margin: 0 1px;
+    padding-top: 8px;
+    border-top: 1px solid #e2e6e5;
+    color: #666;
+    text-align: center;
+    line-height: 0;
+    letter-spacing: -1px;
+}
+
+.realtime_soar_keyword .keyword_overlay .keyword_more span span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+}
+
+/*------------------------------------*/
+/*                 배너                                */
+/*------------------------------------*/
+@CHARSET "UTF-8";
+
+/* 배너 영역 */
+.cmn_banner {
+    float: right;
+    position: relative;
+    top: 24px;
+    font-size: 0;
+    line-height: 0;
+    z-index: 11;
+}
+
+/* 버튼 */
+.btn_banner {
+	display: none
+}
+
+.cmn_banner .gnb_banner_btn {
+    position: absolute;
+    top: 47px;
+    right: 0;
+    zoom: 1;
+    overflow: hidden;
+}
+
+.cmn_banner .gnb_banner_btn a {
+    float: left;
+    display: inline-block;
+    width: 20px;
+    height: 17px;
+    font-size: 0;
+    line-height: 0;
+    background-image: url("../../../assets/img/common/common_btn_page_music.png");
+    background-repeat: no-repeat;
+    background-position: left -220px;
+}
+
+.cmn_banner .gnb_banner_btn .next {
+    margin-left: -2px;
+    background-position: right -220px;
+}
+
+/* 버튼 페이지 처리 */
+.wrap_page {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.wrap_page .page_num {
+    display: inline-block;
+    color: #888;
+    font-size: 12px;
+    line-height: 17px;
+    vertical-align: top;
+}
+
+.wrap_page .page_num strong {
+    color: #1a1a1a;
+    font-weight: normal;
+}
+
+.wrap_page .wrap_btn {
+    vertical-align: top;
+}
+
+.wrap_page .page .wrap_btn .btn_pre {
+    margin-right: -2px;
+}
+
+.wrap_page .btn_pre span.odd_span, .wrap_page .btn_next span.odd_span {
+    width: 20px;
+    height: 17px;
+    background-image: url("../../../assets/img/main/common/main_bg_btn_page.png");
+    background-repeat: no-repeat;
+    font-size: 0;
+    line-height: 0;
+}
+
+.wrap_page .btn_pre span.odd_span {
+    background-position: left -220px;
+}
+
+.wrap_page .btn_pre.disabled span.odd_span {
+    background-position: left -202px !important;
+}
+
+.wrap_page .btn_next span.odd_span {
+    background-position: right -220px;
+}
+
+.page .page_num {
+	color: #666;
+	font-size: 12px;
+	line-height: 1.2em;
+	font-family: arial, "돋움", "dotum", sans-serif, "Apple Gothic",
+		sans-serif;
+	vertical-align: middle;
+}
+
+.page .page_num strong {
+	color: #333;
+}
+
+.page .wrap_btn {
+	display: inline-block;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+
+.page .wrap_btn {
+    *zoom: 1;
+}
+
+.page .wrap_btn .btn {
+    *margin: 0;
+}
+
+.page .wrap_btn .btn_pre, .page .wrap_btn .btn_next {
+    float: left;
+    margin-right: 0;
+}
+
+.page .wrap_btn .btn_pre {
+    margin-right: -1px;
+}
+
+/*------------------------------------*/
+/*                 메뉴                                */
+/*------------------------------------*/
+#menu  {
+	float: left;
+	position: relative;
+}
+
+#menu ul li {
+	float: left;
+	margin-left: 18px;
+	font-size: 0;
+	height: 100px;
+	line-height: 100px;
+	padding: 0 19px;
+}
+
+#menu ul li.menu1 {
+	margin-left: 0;
+}
+
+#menu ul li a {
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 17px;
+	letter-spacing: 0.25px;
+}
+
+#menu ul li a:HOVER {
+	color: #EDAE06;
+}

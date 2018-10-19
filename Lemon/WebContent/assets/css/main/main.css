@@ -1,0 +1,1856 @@
+@CHARSET "UTF-8";
+
+/*------------------------------------*/
+/*               메인 공통                             */
+/*------------------------------------*/
+h2 {
+	height: 24px;
+	color: #1a1a1a;
+	font-size: 15px;
+	line-height: 15px;
+	letter-spacing: -1px;
+	font-weight: bold;
+	font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+}
+
+input[type=text], input[type=password] {
+	height: 24px;
+	padding: 0 7px;
+	border: 1px solid #b6b6b6;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	/* box-shadow: 1px 1px 0 0 rgba(0,0,0,0.05) inset; */
+	box-shadow: none;
+	font-size: 11px;
+	font-family: dotum, "돋움", "Apple Gothic", sans-serif;
+}
+
+input[type=text], input[type=password] {
+	*line-height: 24px;
+}
+
+#conts {
+	padding: 30px 0 0 0;
+}
+
+#conts h2 {
+	margin-top: 0 !important;
+}
+
+#conts_section {
+	position: relative;
+	width: 1008px;
+	margin: 0 auto;
+	padding: 0 228px 0 20px;
+}
+
+#conts_section.pr_none {
+	padding: 0 20px;
+}
+
+#cont_wrap {
+	min-height: 100%;
+	margin: 0 auto;
+	background: none;
+}
+
+.clfix {
+	zoom: 1;
+}
+
+.clfix {
+	display: block;
+}
+
+.none {
+	position: absolute;
+	top: -5000em;
+	left: 0;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+/* 버튼 페이지 처리 */
+.wrap_page {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.wrap_page .page_num {
+    display: inline-block;
+    color: #888;
+    font-size: 12px;
+    line-height: 17px;
+    vertical-align: top;
+}
+
+.wrap_page .page_num strong {
+    color: #1a1a1a;
+    font-weight: normal;
+}
+
+.wrap_page .wrap_btn {
+    vertical-align: top;
+}
+
+.wrap_page .page .wrap_btn .btn_pre {
+    margin-right: -2px;
+}
+
+.wrap_page .btn_pre span.odd_span, .wrap_page .btn_next span.odd_span {
+    width: 20px;
+    height: 17px;
+    background-image: url("../../../assets/img/main/common/main_bg_btn_page.png");
+    background-repeat: no-repeat;
+    font-size: 0;
+    line-height: 0;
+}
+
+.wrap_page .btn_pre span.odd_span {
+    background-position: left -220px;
+}
+
+.wrap_page .btn_pre.disabled span.odd_span {
+    background-position: left -202px !important;
+}
+
+.wrap_page .btn_next span.odd_span {
+    background-position: right -220px;
+}
+
+.page .page_num {
+	color: #666;
+	font-size: 12px;
+	line-height: 1.2em;
+	font-family: arial, "돋움", "dotum", sans-serif, "Apple Gothic",
+		sans-serif;
+	vertical-align: middle;
+}
+
+.page .page_num strong {
+	color: #333;
+}
+
+.page .wrap_btn {
+	display: inline-block;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+
+.page .wrap_btn {
+    *zoom: 1;
+}
+
+.page .wrap_btn .btn {
+    *margin: 0;
+}
+
+.page .wrap_btn .btn_pre, .page .wrap_btn .btn_next {
+    float: left;
+    margin-right: 0;
+}
+
+.page .wrap_btn .btn_pre {
+    margin-right: -1px;
+}
+
+/*------------------------------------*/
+/*               최신 앨범                             */
+/*------------------------------------*/
+.new_album {
+	position: relative;
+	z-index: 5;
+	width: 476px;
+	height: 340px;
+	float: left;
+}
+
+/* 앨범 종류 */
+.new_album .section_na {
+	float: right;
+	padding-right: 88px;
+}
+
+.new_album h2 {
+	float: left;
+}
+
+.new_album h2 a.title_link {
+	/* overflow: hidden; */
+	width: 70px;
+	height: 2opx;
+	display: block;
+}
+
+.new_album .section_na .new_album_cate {
+	overflow: hidden;
+	zoom: 1;
+	padding-top: 2px;
+}
+
+.new_album .section_na .new_album_cate li {
+	float: left;
+	padding: 0 8px;
+	background-image:
+		url("../../../assets/img/main/new_album/main_new_album_bg.png");
+	background-repeat: no-repeat;
+	background-position: left 1px;
+	font-size: 0;
+	line-height: 0;
+}
+
+/* 전체 */
+.new_album .section_na .new_album_cate li a {
+	display: inline-block;
+	width: 24px;
+	height: 12px;
+	font-size: 12px;
+	line-height: 12px;
+	vertical-align: top;
+}
+
+.new_album .section_na .new_album_cate li.on a {
+	font-weight: bold;
+	color: #1a1a1a;
+}
+
+.new_album .section_na .new_album_cate li.bg_none {
+	background: none;
+}
+
+.new_album .section_na .new_album_cate li.nth1.on a {
+	background-position: 0 -12px;
+}
+
+/* 가요 */
+.new_album .section_na .new_album_cate li.nth2 a {
+	width: 24px;
+	height: 12px;
+	background-position: -39px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth2.on a {
+	font-weight: bold;
+	color: #1a1a1a;
+}
+
+.new_album .section_na .new_album_cate li.nth3 a {
+	width: 24px;
+	height: 12px;
+	background-position: -78px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth3.on a {
+	width: 22px;
+	height: 12px;
+	background-position: -78px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth4 a {
+	width: 24px;
+	height: 12px;
+	background-position: -106px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth4.on a {
+	width: 22px;
+	height: 12px;
+	background-position: -78px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth5 a {
+	width: 33px;
+	height: 12px;
+	background-position: -145px 0;
+}
+
+.new_album .section_na .new_album_cate li.nth5.on a {
+	width: 22px;
+	height: 12px;
+	background-position: -78px 0;
+}
+
+/*------------------------------------*/
+/*             최신 앨범 목록                         */
+/*------------------------------------*/
+.new_album .list_wrap {
+	position: absolute;
+	top: 23px;
+	left: -2px;
+	width: 480px;
+	height: 340px;
+}
+
+.new_album .list_wrap .sub_list {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 480px;
+	margin: -2px 0 0 -3px;
+}
+
+.new_album .list_wrap li {
+	position: relative;
+	display: inline;
+	float: left;
+	height: 156px;
+	margin: 3px 0 0 4px;
+	padding: 0;
+	background: none;
+}
+
+.new_album .list_wrap .img .thum {
+	display: block;
+	overflow: hidden;
+	width: 156px;
+	height: 156px;
+	font-size: 0;
+	line-height: 0;
+}
+
+.new_album .list_wrap dl dd .thum span.bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 156px;
+	height: 156px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -241px 0;
+}
+
+.new_album .list_wrap .img .overlay {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 156px;
+	height: 156px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -843px -843px;
+}
+
+.new_album .list_wrap .img .overlay a.album {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 156px;
+	height: 155px;
+	display: block;
+	overflow: hidden;
+	text-align: center;
+	line-height: 0;
+}
+
+.btn_play_song {
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	max-width: 100%;
+	margin: 0;
+	height: 17px;
+	text-decoration: none !important;
+	cursor: pointer;
+	*cursor: pointer;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: left;
+}
+
+.new_album .list_wrap .img .overlay a.btn_play_song {
+	display: inline-block;
+	position: absolute;
+	bottom: 7px;
+	right: 7px;
+	width: 42px;
+	height: 42px;
+	background-image:
+		url("../../../assets/img/main/common/main_bg_btn_page.png");
+	background-repeat: no-repeat;
+	background-position: -1px -275px;
+	z-index: 1;
+}
+
+.new_album .list_wrap .img .overlay a.btn_play_song:hover {
+	background-position: -1px -317px;
+	color: #fff;
+}
+
+.new_album .list_wrap .img .overlay a.album span.album_cont {
+	position: absolute;
+	top: 60px;
+	left: 19px;
+	overflow: hidden;
+	display: block;
+	width: 118px;
+	height: 18px;
+}
+
+.new_album .list_wrap .img .overlay a.album span.title_wrap {
+	display: block;
+}
+
+.new_album .list_wrap .img .overlay a.album span.title_wrap span.title {
+	zoom: 1;
+	height: 16px;
+	text-align: center;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 16px;
+	letter-spacing: 0;
+	color: #fff;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.new_album .list_wrap .img .overlay a.album span.title_wrap span.title.title_ellipsis
+	{
+	overflow: hidden;
+	width: auto;
+	max-width: 118px;
+	text-overflow: ellipsis;
+}
+
+.new_album .list_wrap .img .overlay .singer {
+	position: absolute;
+	top: 80px;
+	left: 19px;
+	display: block;
+	height: 22px;
+	text-align: center;
+	width: 118px;
+	margin: 0 auto;
+}
+
+.new_album .list_wrap .img .overlay .singer a {
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	line-height: 15px;
+	vertical-align: top;
+}
+
+.new_album .list_wrap .singer .ellipsis {
+	display: inline-block;
+	*display: inline;
+	overflow: hidden;
+	zoom: 1;
+	max-width: 118px;
+	color: #fff;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.new_album .list_wrap dd.singer {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	height: 22px;
+	padding-top: 8px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: 0 -682px;
+	text-align: center;
+	width: 156px;
+}
+
+.new_album .list_wrap dd.singer a {
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	line-height: 15px;
+	vertical-align: top;
+}
+
+a.play_artist {
+	overflow: hidden;
+	margin: 0;
+	height: 17px;
+	text-decoration: none !important;
+	*cursor: pointer;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: left;
+}
+
+/*------------------------------------*/
+/*                이벤트                               */
+/*------------------------------------*/
+/* 영역 */
+.event {
+	position: relative;
+	width: 236px;
+	margin: 0 0 0 8px;
+	float: left;
+	height: 340px;
+}
+
+.event .event_default {
+	position: absolute;
+	overflow: hidden;
+	width: 236px;
+	height: 340px;
+	top: 24px;
+	z-index: 1;
+}
+
+.event .event_list {
+	position: relative;
+	overflow: hidden;
+	width: 236px;
+	height: 340px;
+	padding-top: 24px;
+}
+
+/* 컨트롤러 */
+.event .play_control {
+	overflow: hidden;
+	position: absolute;
+	top: 1px;
+	right: 2px;
+	text-align: right;
+	line-height: 0;
+}
+
+.event .play_control .d_btn_ctrl span {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 컨트롤러 페이지 */
+.event .play_control .move {
+	display: inline-block;
+	margin: 2px 0 0 0;
+}
+
+.event .play_control .move a {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-left: 3px;
+	font-size: 0;
+	line-height: 0;
+	background-image:
+		url("../../../assets/img/common/common_btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: -13px -189px;
+	vertical-align: top;
+}
+
+.event .play_control .move a.on {
+	background-image:
+		url("../../../assets/img/common/common_btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: -1px -189px;
+}
+
+.event .play_control .move a:first-child {
+	margin: 0;
+}
+
+/* 컨트롤러 일시정지 */
+.event .play_control .d_btn_ctrl {
+	float: right;
+	margin-left: 10px;
+}
+
+.event .play_control .pause span {
+	background-image:
+		url("../../../assets/img/common/common_btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: left -171px;
+}
+
+/* 컨트롤러 재생 */
+.event .play_control .play {
+	float: right;
+}
+
+.event .play_control .play span {
+	background-image:
+		url("../../../assets/img/common/common_btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: left -155px;
+}
+
+/* 이벤트 표지 */
+.image_type24 {
+	display: block;
+	position: relative;
+	width: 185px;
+	height: 288px;
+	font-size: 0;
+	line-height: 0;
+}
+
+.image_type24 .bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 185px;
+	height: 288px;
+	background-image:
+		url("../../../assets/img/main/event/main_event_bg_album_frame.png");
+	background-repeat: no-repeat;
+	background-position: -662px -782px;
+	cursor: pointer;
+}
+
+.event div a span.bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 236px;
+	height: 340px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.event .event_default a span.bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 236px;
+	height: 340px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.event .event_default .image_type24 {
+	position: absolute;
+	width: 236px;
+	height: 340px;
+}
+
+.event .event_list .image_type24 {
+	position: absolute;
+	width: 236px;
+	height: 340px;
+}
+
+/*------------------------------------*/
+/*                로그인                               */
+/*------------------------------------*/
+/* input[type=text], input[type=password] {
+	height: 24px !improtant;
+	padding: 0 7px !improtant;
+	border: 1px solid #b6b6b6 !improtant;
+	border-right: 1px solid #ccc !improtant;
+	border-bottom: 1px solid #ccc !improtant;
+	color: #666 !improtant;
+	box-shadow: 1px 1px 0 0 rgba(0,0,0,0.05) inset;
+	box-shadow: none !improtant;
+	font-size: 11px !improtant;
+	font-family: dotum, "돋움", "Apple Gothic", sans-serif !improtant;
+} */
+
+/* input[type=text], input[type=password] {
+	*line-height: 24px;
+}
+ */
+input {
+	vertical-align: middle;
+}
+
+input, textarea, select, button {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	margin: 0em;
+	font: 400 13.3333px Arial;
+}
+
+/* 로그인 영역 */
+.id_wrap {
+	float: left;
+	width: 280px;
+	margin-left: 8px;
+	height: 316px;
+}
+
+/* 비로그인 */
+.id_wrap .login_wrap {
+	position: relative;
+	width: 280px;
+	height: 119px;
+}
+
+.login_wrap .inbox {
+	
+}
+
+fieldset {
+	border: 0;
+	line-height: 0;
+}
+
+.login_wrap .inbox fieldset {
+	line-height: 18px;
+}
+
+legend {
+	position: absolute;
+	top: -7000px;
+	left: -7000px;
+	height: 0;
+	/* visibility: hidden; */
+}
+
+legend, #IE8#HACK {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.login_wrap .input_area input.text_id_main {
+	height: 39px;
+	*margin-top: -2px;
+	border: 1px solid #ccc;
+	border-right: none;
+	ime-mode: inactive;
+	line-height: 39px;
+}
+
+.login_wrap .input_area input.text_password_main {
+	height: 39px;
+	margin: -1px 0 0;
+	*margin-top: -2px;
+	border: 1px solid #ccc;
+	border-right: none;
+	line-height: 39px;
+}
+
+.save_id {
+	position: absolute;
+	bottom: 15px;
+	left: 0;
+	letter-spacing: -1px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	font-size: 11px;
+	color: #888888;
+	line-height: 13px;
+}
+
+.save_id input#id_save01 {
+	width: 11px;
+	height: 11px;
+	margin: 1px 3px 0 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+.save_id label {
+	line-height: 14px;
+	vertical-align: top;
+}
+
+.btn_main_login {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.btn_main_login span {
+	display: block;
+	width: 81px;
+	height: 81px;
+	background-image:
+		url("../../../assets/img/main/login/main_login_btn.jpg");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.main_naver_login {
+	position: absolute;
+	right: 85px;
+	top: -23px;
+}
+
+.main_naver_login a {
+	display: block;
+	padding-left: 16px;
+	background-image:
+		url("../../../assets/img/main/login/main_login_naver.png");
+	background-repeat: no-repeat;
+	background-size: 11px 11px;
+	background-position: 1px 3px;
+	font-size: 11px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	color: #6f5552;
+	letter-spacing: -1px;
+	text-decoration: none;
+}
+
+.main_kakao_login {
+	position: absolute;
+	right: 1px;
+	top: -23px;
+}
+
+.main_kakao_login a {
+	display: block;
+	padding-left: 16px;
+	background-image:
+		url("../../../assets/img/main/login/main_login_kakao2.png");
+	background-repeat: no-repeat;
+	background-position: 1px 3px;
+	font-size: 11px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	color: #6f5552;
+	letter-spacing: -1px;
+	text-decoration: none;
+}
+
+.wrap_member {
+	position: absolute;
+	bottom: 13px;
+	right: 0;
+}
+
+.wrap_member a {
+	padding: 0 0 0 12px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	font-size: 11px;
+	color: #888888;
+	letter-spacing: -1px;
+}
+
+/* 로그인 */
+.id_wrap .logout_wrap {
+	position: relative;
+	border: 1px solid #d8dadb;
+	background-color: #f9f9f9;
+	width: 278px;
+	height: 117px;
+}
+
+/* 유저 정보 */
+.mem_info {
+	height: 30px;
+	padding: 10px 6px 0 6px;
+	background: #f3f3f3;
+}
+
+.mem_info a {
+	display: inline-block;
+	float: left;
+	margin: 0 0 0 1px;
+	padding: 2px 0 0;
+	font-size: 11px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	color: #7d7d7d;
+	text-decoration: underline;
+}
+
+/* 아이디 */
+.logout_wrap .mem_info strong {
+	float: left;
+	display: inline-block;
+	max-width: 108px;
+	padding: 2px 5px 0 0;
+	color: #1a1a1a;
+	font-size: 12px;
+}
+
+.mem_info strong a {
+	padding: 0 9px 0 0;
+	color: #1a1a1a;
+	font-size: 12px;
+	background: none;
+}
+
+.logout_wrap .mem_info strong .id_area {
+	display: inline-block;
+	width: auto;
+	max-width: 92px;
+	margin: -2px 0 0 0;
+	padding: 0;
+	padding-top: 2px;
+	padding-bottom: 1px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-wrap: normal;
+	overflow: hidden;
+	vertical-align: top;
+	*vertical-align: -1px;
+	text-decoration: none;
+}
+
+/* 로그인 API 연동 */
+.mem_info .mem_btn {
+	float: left;
+	margin-left: 1px;
+	padding-left: 4px;
+}
+
+.btn_info {
+	position: relative;
+}
+
+.btn_info span {
+	display: inline-block;
+	height: 18px;
+	background-image:
+		url("../../../assets/img/main/login/main_login_kakao.png");
+	background-position: 5px 1px;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	line-height: 0;
+	font-size: 0;
+}
+
+.btn_info.kakao {
+	height: 20px;
+}
+
+.btn_info.kakao span {
+	display: inline-block;
+	overflow: hidden;
+	width: 35px;
+	height: 19px;
+	padding: 0 5px;
+	font-size: 0;
+	line-height: 0;
+	/* background-position: 5px 3px; */
+	vertical-align: top;
+}
+
+/* 로그아웃 버튼 */
+.mem_info .btn_logout {
+	float: right;
+	width: 41px;
+	margin: 0;
+	padding: 1px 5px 0 5px;
+	border: 1px solid #d9d9d9;
+	line-height: 17px;
+	background-color: #fff;
+	letter-spacing: -1px;
+	text-decoration: none;
+}
+
+/* 로그인한 유저 이용권 관련 */
+/* 영역 */
+.mem_used {
+	border-top: 1px solid #d8dadb;
+}
+
+/* 글자 앞 공통 이미지 */
+.mem_used strong.product_name {
+	display: block;
+	margin: 0 15px;
+	padding: 14px 0 7px 7px;
+	background-image:
+		url("../../../assets/img/main/login/main_login_use_bg.png");
+	background-repeat: no-repeat;
+	background-position: left 21px;
+	font-weight: normal;
+	vertical-align: top;
+}
+
+/* 이용권 */
+.mem_used strong.product_name a {
+	display: inline-block;
+	width: auto;
+	max-width: 230px;
+	padding-right: 8px;
+	color: #666666;
+	background-image:
+		url("../../../assets/img/main/login/main_login_arrow.png");
+	background-repeat: no-repeat;
+	background-position: right 5px;
+}
+
+/* 이용권 글자 */
+.mem_used strong.product_name a .box_name {
+	display: block;
+}
+
+.mem_used strong.product_name a strong {
+	display: inline-block;
+	width: auto;
+	max-width: 190px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: top;
+	*vertical-align: middle;
+}
+
+/* 쿠폰, 캐시, 선물 */
+.mem_used ul {
+	overflow: hidden;
+	zoom: 1;
+	padding-left: 15px;
+	padding-top: 7px;
+}
+
+.mem_used li {
+	float: left;
+	padding: 0 10px;
+	background-image:
+		url("../../../assets/img/main/login/main_login_use_bg.png");
+	background-repeat: no-repeat;
+	background-position: left 5px;
+	line-height: 13px;
+}
+
+.mem_used li span {
+	color: #888888;
+	font-size: 0;
+	line-height: 0;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	vertical-align: top;
+	vertical-align: top;
+}
+
+.mem_used li span.label {
+	display: inline-block;
+	width: 25px;
+	height: 15px;
+	margin-top: 1px;
+	font-size: 12px;
+	line-height: 12px;
+	vertical-align: top;
+}
+
+.mem_used li a {
+	padding: 5px 0;
+	cursor: pointer;
+}
+
+.mem_used li.nth1 {
+	width: 64px;
+}
+
+.mem_used li.nth2 {
+	width: 82px;
+}
+
+.mem_used li.nth3 {
+	width: 52px;
+}
+
+.mem_used li span span.nm {
+	display: inline-block;
+	padding-left: 5px;
+	color: #333;
+	font-size: 11px;
+	line-height: 13px;
+	vertical-align: top;
+}
+
+/*------------------------------------*/
+/*               프로모션                             */
+/*------------------------------------*/
+.promotion_wrap {
+	position: relative;
+	width: 280px;
+	height: 188px;
+	margin-top: 8px;
+	background-image:
+		url("../../../assets/img/main/concert/main_concert_loading.jpg");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+.promotion_wrap .promotion_default {
+	position: absolute;
+	z-index: 1;
+}
+
+.promotion_wrap a span.bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 280px;
+	height: 188px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: 0 -320px;
+	cursor: pointer;
+}
+
+.promotion_wrap ul {
+	position: relative;
+	overflow: hidden;
+	width: 280px;
+	height: 188px;
+}
+
+.promotion_wrap li {
+	position: absolute;
+	height: 188px;
+}
+
+.promotion_wrap .play_control {
+	position: absolute;
+	top: 11px;
+	right: 11px;
+	z-index: 2;
+}
+
+.promotion_wrap .play_control .move {
+	font-size: 0;
+	line-height: 0;
+}
+
+.promotion_wrap .play_control .move a.on {
+	background-image:
+		url("../../../assets/img/common/common_btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: -1px -189px;
+}
+
+/*------------------------------------*/
+/*              인기있어요                            */
+/*------------------------------------*/
+.hot_issue {
+	clear: both;
+	width: 704px;
+	position: relative;
+	float: left;
+	height: 472px;
+	margin-top: 32px;
+}
+
+/* 제목 영역 */
+.hot_issue h2 {
+	border-bottom: 1px solid #dfe6e8;
+}
+
+.hot_issue h2 span.title_link {
+	float: left;
+	width: 70px;
+	height: 15px;
+	display: block;
+	/* background: url(//cdnimg.melon.co.kr/resource/image/web/main/bg_main_title_140716.png) no-repeat;
+    background-position: 0 -194px;
+    text-indent: -9999px; */
+}
+
+.hot_issue h2 span.txt_intro {
+	display: inline-block;
+	width: 300px;
+	margin-top: 1px;
+	padding-left: 12px;
+	letter-spacing: 0;
+	font-weight: normal;
+	color: #888;
+	font-size: 12px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	background: none;
+	vertical-align: top;
+}
+
+/* 리스트 */
+.hot_issue .issue_list04 {
+	clear: both;
+	width: 704px;
+}
+
+.hot_issue .issue_list04 dl {
+	position: relative;
+	margin: 16px 0 2px 16px;
+	float: left;
+}
+
+.issue_list04 dl dd {
+	width: 223px;
+	height: 148px;
+}
+
+.issue_list04 .mov_area {
+	position: relative;
+}
+
+.issue_list04 .playtime {
+	display: block;
+	position: absolute;
+	bottom: 6px;
+	right: 6px;
+	margin-left: 24px;
+	height: 16px;
+	background-image:
+		url("../../../assets/img/main/hot_issue/main_hot_issue_playtime.png");
+	background-repeat: no-repeat;
+	background-position: right 0;
+}
+
+.issue_list04 .playtime {
+	*cursor: pointer;
+}
+
+.issue_list04 .playtime .time {
+	display: block;
+	position: relative;
+	top: 0;
+	left: -24px;
+	height: 16px;
+	margin-right: -19px;
+	padding-left: 23px;
+	line-height: 16px;
+	background-image:
+		url("../../../assets/img/main/hot_issue/main_hot_issue_playtime.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	color: #fff;
+	font-size: 11px;
+	font-family: Arial, "Apple Gothic", sans-serif;
+}
+
+.issue_list04 a span.bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 223px;
+	height: 148px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -570px -382px;
+}
+
+.issue_list04 dl dt {
+	width: 223px;
+	line-height: 16px;
+}
+
+.issue_list04 dl dt a {
+	color: #888;
+	cursor: pointer;
+}
+
+.issue_list04 .title {
+	display: block;
+	overflow: hidden;
+	height: 16px;
+	font-weight: bold;
+	color: #333;
+	margin-top: 6px;
+	margin-bottom: 2px;
+	word-break: break-all;
+}
+
+.issue_list04 .ellipsis {
+	display: block;
+	width: 223px;
+	height: 16px;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+.issue_list04 .view_no {
+	margin-top: 2px;
+	font-size: 11px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	color: #888;
+	height: 14px;
+}
+
+.issue_list04 .view_no .bar {
+	padding-right: 6px;
+	margin-right: 5px;
+	color: #EDAE06;
+}
+
+.issue_list04 .view_no a {
+	color: #EDAE06;
+}
+
+/*------------------------------------*/
+/*                 차트                               */
+/*------------------------------------*/
+/* 공통 */
+.chart {
+	width: 280px;
+	float: left;
+	margin-left: 24px;
+	height: 472px;
+	margin-top: 32px;
+}
+
+.chart h2 {
+	border-bottom: 1px solid #d8ddde;
+}
+
+/* 멜론 차트 제목 */
+.chart h2 a.title_link {
+	float: left;
+	width: 70px;
+	height: 15px;
+	display: block;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+/* 차트 업데이트 시간 */
+.chart .list_wrap span.txt_intro {
+	position: absolute;
+	top: -53px;
+	right: 0;
+	padding-left: 7px;
+	letter-spacing: 0;
+	font-weight: normal;
+	color: #888;
+	display: inline-block;
+	font-size: 12px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	background: none;
+	text-align: right;
+}
+
+/* 차트 탭 */
+.wrap_chart_tab {
+	position: relative;
+	zoom: 1;
+}
+
+a.tab_link {
+	display: block;
+	width: 94px;
+	height: 20px;
+	padding-top: 8px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: right -416px;
+	text-align: center;
+	vertical-align: top;
+}
+
+.tab_on { /* 탭 클릭하였을 때 */
+	position: absolute;
+	z-index: 1;
+	margin-top: -1px;
+	padding-top: 7px;
+	border-top: 2px solid #EDAE06;
+}
+
+/* 차트 이름 */
+a.tab_link.realtime {
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+a.tab_link.realtime span {
+	display: inline-block;
+	height: 14px;
+	width: 50px;
+}
+
+a.tab_link.pop {
+	position: absolute;
+	top: 0;
+	left: 93px;
+	cursor: pointer;
+}
+
+a.tab_link.pop span {
+	display: inline-block;
+	height: 14px;
+	width: 25px;
+}
+
+a.tab_link.artist {
+	position: absolute;
+	top: 0;
+	left: 186px;
+	cursor: pointer;
+}
+
+a.tab_link.artist span {
+	display: inline-block;
+	height: 14px;
+	width: 62px;
+}
+
+/* 탭 클릭 글자 색상 */
+.tab_on span {
+	color: #EDAE06;
+	font-weight: bold;
+}
+
+.chart .list_wrap {
+	display: none;
+	width: 278px;
+	position: absolute;
+	top: 28px;
+	left: 0;
+	border: 1px solid #dfe6e8;
+	border-width: 0 1px;
+}
+
+.chart li.on div.list_wrap {
+	display: block;
+}
+
+/* 차트 전체 */
+.chart .list_wrap ul {
+	border-top: 1px solid #d8ddde;
+}
+
+.chart .list_wrap li.rank_item {
+	background: #fff;
+}
+
+/* 차트 행 */
+.chart .list_wrap li {
+	position: relative;
+	width: 278px;
+	height: 33px;
+	border-bottom: 1px solid #e9edef;
+	font-size: 0;
+	line-height: 0;
+}
+
+.chart .list_wrap li.active {
+	position: relative;
+	z-index: 10;
+	height: 69px;
+}
+
+/* 차트 짝수 행 */
+.chart .list_wrap li.odd {
+	background: #f8f8f8;
+}
+
+/* 차트 순위 부분 */
+.chart .list_wrap li .rank_number {
+	overflow: hidden;
+	float: left;
+	width: 71px;
+}
+
+.chart .list_wrap li.active .rank_number {
+	float: left;
+	margin-top: 18px;
+}
+
+/* 차트 순위 */
+.chart .list_wrap li .rank_number .rank {
+	display: inline-block;
+	float: left;
+	width: 34px;
+	height: 13px;
+	margin: 9px 0 0 5px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: 0 -445px;
+	font-size: 0;
+	line-height: 0;
+	text-align: center;
+	vertical-align: top;
+}
+
+.chart li.nth3 .list_wrap li .rank_number .ranking_num {
+	margin-top: 9px;
+}
+
+.chart .list_wrap li.active .rank_number .rank {
+	height: 21px;
+}
+
+.chart .list_wrap li.active .rank_number.nth1 .rank {
+	background-position: -53px -440px;
+}
+
+/* 차트 2위 ~ 10위 */
+.chart .list_wrap li.active .nth2 .rank {
+	background-position: -50px -474px;
+}
+
+.chart .list_wrap li .nth2 .rank {
+	background-position: 0 -478px;
+}
+
+.chart .list_wrap li.active .nth3 .rank {
+	background-position: -50px -505px;
+}
+
+.chart .list_wrap li .nth3 .rank {
+	background-position: 0 -509px;
+}
+
+.chart .list_wrap li.active .nth4 .rank {
+	background-position: -50px -536px;
+}
+
+.chart .list_wrap li .nth4 .rank {
+	background-position: 0 -540px;
+}
+
+.chart .list_wrap li.active .nth5 .rank {
+	background-position: -50px -567px;
+}
+
+.chart .list_wrap li .nth5 .rank {
+	background-position: 0 -571px;
+}
+
+.chart .list_wrap li.active .nth6 .rank {
+	background-position: -50px -598px;
+}
+
+.chart .list_wrap li .nth6 .rank {
+	background-position: 0 -602px;
+}
+
+.chart .list_wrap li.active .nth7 .rank {
+	background-position: -50px -629px;
+}
+
+.chart .list_wrap li .nth7 .rank {
+	background-position: 0 -633px;
+}
+
+.chart .list_wrap li.active .nth8 .rank {
+	background-position: -50px -660px;
+}
+
+.chart .list_wrap li .nth8 .rank {
+	background-position: 0 -664px;
+}
+
+.chart .list_wrap li.active .nth9 .rank {
+	background-position: -50px -691px;
+}
+
+.chart .list_wrap li .nth9 .rank {
+	background-position: 0 -695px;
+}
+
+.chart .list_wrap li.active .nth10 .rank {
+	background-position: -50px -722px;
+}
+
+.chart .list_wrap li .nth10 .rank {
+	background-position: 0 -726px;
+}
+
+/* 차트 변동 순위 */
+.chart .list_wrap li .rank_number .ranking_num {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	zoom: 1;
+	width: 22px;
+	height: 15px;
+	margin-top: 9px;
+	padding-left: 9px;
+	vertical-align: top;
+}
+
+.chart .list_wrap li.active .rank_number .ranking_num {
+	margin-top: 13px;
+}
+
+.chart .list_wrap li.active .nth1 .ranking_num {
+	margin-top: 12px;
+}
+
+/* 차트 순위 그대로 아이콘 */
+.chart .list_wrap li .rank_number .ranking_num .icon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 7px;
+	height: 7px;
+	margin: 3px 2px 0 0;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: -25px -196px;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+}
+
+/* 차트 순위 up 아이콘 */
+.chart .list_wrap li .rank_number .ranking_num.up .icon {
+	background-position: -13px -196px;
+}
+
+/* 차트 순위 down 아이콘 */
+.chart .list_wrap li .rank_number .ranking_num.down .icon {
+	background-position: -2px -196px;
+}
+
+/* 차트 순위 new 아이콘 */
+.chart .list_wrap li .rank_number .ranking_num.new .icon {
+	width: 21px;
+	margin-top: 4px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: -37px -196px;
+}
+
+/* 차트 순위 그대로 글자 */
+.chart .list_wrap li .rank_number .ranking_num .num {
+	display: inline;
+	font-family: Arial;
+	font-size: 10px;
+	line-height: 13px;
+	vertical-align: top;
+}
+
+/* 차트 순위 up 글자 색상 */
+.chart .list_wrap li .rank_number .ranking_num.up .num {
+	color: #ff4e78;
+}
+
+/* 차트 순위 down 글자 색상 */
+.chart .list_wrap li .rank_number .ranking_num.down .num {
+	color: #47bda8;
+}
+
+/* 곡 정보 */
+.chart .list_wrap li .rank_cntt {
+	float: left;
+	width: 207px;
+	padding-top: 8px;
+}
+
+.chart .list_wrap li.active .rank_cntt {
+	padding-top: 11px;
+}
+
+.chart .list_wrap li .rank_cntt .thumb {
+	display: none;
+	float: left;
+	width: 48px;
+}
+
+.chart .list_wrap li.active .rank_cntt .thumb {
+	display: block;
+}
+
+/* 앨범 표지 */
+.chart .list_wrap li .rank_cntt .thumb a {
+	position: relative;
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	vertical-align: top;
+}
+
+.chart .list_wrap li .rank_cntt .thumb a .bg_album_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 48px;
+	height: 48px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_bg_frame.png");
+	background-repeat: no-repeat;
+	background-position: -873px 0;
+}
+
+/* 곡 이름 */
+.chart .list_wrap li .rank_cntt .rank_info {
+	width: 207px;
+	padding-top: 2px;
+}
+
+.chart .list_wrap li.active .rank_cntt .rank_info {
+	display: inline;
+	float: left;
+	width: 150px;
+	margin-left: 9px;
+}
+
+.chart .list_wrap li .rank_cntt .song {
+	float: left;
+	width: 120px;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.chart .list_wrap li.active .rank_cntt .song {
+	width: 137px;
+	padding-top: 8px;
+	overflow: hidden;
+	color: #1a1a1a;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+/* 가수 */
+.chart .list_wrap li .rank_cntt .artist {
+	float: left;
+	width: 77px;
+	margin-left: 1px;
+}
+
+.chart .list_wrap li.active .rank_cntt .artist {
+	width: 100%;
+	margin: 3px 0 0 0;
+}
+
+.chart .list_wrap li .rank_cntt .artist .ellipsis {
+	display: block;
+	overflow: hidden;
+	float: left;
+	max-width: 100%;
+	font-size: 12px;
+	line-height: 15px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+.chart .list_wrap li.active .rank_cntt .artist .ellipsis {
+	max-width: 135px;
+}
+
+.chart .list_wrap li .rank_cntt .artist .ellipsis a {
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 15px;
+}
+
+/* 아티스트 */
+.btn_fan_b {
+	margin: 0;
+}
+
+.chart li.nth3 .list_wrap li .rank_cntt .btn_fan_b {
+	position: absolute;
+	top: 6px;
+	right: 16px;
+}
+
+.btn_fan_b span.odd_span {
+	font-size: 0;
+	line-height: 0;
+	vertical-align: middle;
+}
+
+.chart .list_wrap li .rank_cntt .btn_fan_b span.odd_span {
+	width: 21px;
+	height: 21px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: 0px -220px;
+}
+
+.chart li.nth3 .list_wrap li .rank_cntt .btn_fan_b {
+	position: absolute;
+	top: 6px;
+	right: 16px;
+}
+
+.chart li.nth3 .list_wrap li.active .rank_cntt .btn_fan_b {
+	top: 25px;
+}
+
+/* 차트 TOP 10 듣기 / 더 보기 영역  */
+.chart_btn_area {
+	zoom: 1;
+	overflow: hidden;
+	padding: 6px 8px;
+	border-bottom: 1px solid #dfe6e8;
+}
+
+/* 차트 TOP 10 듣기 */
+.chart_btn_area .btn_base {
+	display: inline;
+	float: left;
+	margin-left: 5px;
+	*margin: -2px 3px 0 0;
+}
+
+.btn_base span.odd_span {
+	padding-left: 8px;
+	background-image: url("../../../assets/img/common/common_btn.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.btn_base.play span.odd_span {
+	padding-left: 19px;
+	background-position: left -148px;
+}
+
+.btn_base span.even_span {
+	*line-height: 26px;
+}
+
+.btn_base span.even_span {
+	min-width: 22px;
+	height: 26px;
+	padding-right: 8px;
+	background-image: url("../../../assets/img/common/common_btn.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	color: #333;
+	font-size: 11px;
+	line-height: 29px;
+	font-family: "Dotum", "돋음", "Apple Gothic", sans-serif;
+	letter-spacing: -1px;
+}
+
+/* 더 보기 */
+.chart_btn_area .all_view {
+	float: right;
+	margin: 5px 5px 0 0;
+}
+
+.chart_btn_area .all_view a {
+	color: #666;
+	font-size: 11px;
+	line-height: 14px;
+}
+
+.chart_btn_area .all_view span span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-image:
+		url("../../../assets/img/main/common/main_common_icon.png");
+	background-repeat: no-repeat;
+	background-position: -1px -58px;
+}

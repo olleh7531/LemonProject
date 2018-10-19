@@ -25,11 +25,14 @@ public class StarPostFrontController extends HttpServlet {
 		ActionForward forward = null;
 
 		// 가상주소 비교
-		if (command.equals("/starpost.sp")) {
+		if (command.equals("/starpost.sp")) { // 스타포스트 메인 화면
 			// starPost/starPost.jsp
 			forward = new ActionForward();
 			forward.setPath("./starPost/starPost.jsp");
 			forward.setRedirect(false);
+		}
+		else if(command.equals("")) { // 스타포스트 아티스트 채널
+			
 		}
 
 		// 이동
