@@ -58,15 +58,14 @@ public class NoticeDAO {
 			sql = "select max(num) from notice";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
 				num = rs.getInt(1) + 1;
 			}
-			System.out.println("글 번호 : " + num);
 			
 			// db 글 저장(insert)
 			sql = "insert into notice(num, category, subject, content, readcount, reg_date, re_ref, re_lev, re_seq) " 
-			+ "values(?,?,?,?,now(),?,?,?)";
+			+ "values(?,?,?,?,?,now(),?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
