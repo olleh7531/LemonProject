@@ -114,6 +114,31 @@ LOCK TABLES `download_log` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `email_temp`
+--
+
+DROP TABLE IF EXISTS `email_temp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `email_temp` (
+  `em_email` varchar(100) NOT NULL,
+  `em_code` varchar(45) DEFAULT NULL,
+  `em_timestamp` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`em_email`),
+  CONSTRAINT `em_email_fk` FOREIGN KEY (`em_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `email_temp`
+--
+
+LOCK TABLES `email_temp` WRITE;
+/*!40000 ALTER TABLE `email_temp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `email_temp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `friends`
 --
 
@@ -213,13 +238,13 @@ DROP TABLE IF EXISTS `magazine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `magazine` (
-  `num` int(11) NOT NULL,
+  `ma_num` int(11) NOT NULL,
   `ma_category` varchar(45) DEFAULT NULL,
   `ma_subject` varchar(100) NOT NULL,
   `ma_readcount` int(11) DEFAULT NULL,
   `ma_register_date` timestamp NOT NULL,
   `ma_content` text NOT NULL,
-  PRIMARY KEY (`num`)
+  PRIMARY KEY (`ma_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -249,10 +274,16 @@ CREATE TABLE `member` (
   `level` tinyint(4) DEFAULT '0',
   `img` text,
   `no` int(11) NOT NULL AUTO_INCREMENT,
-  `register_date` datetime NOT NULL,
+  `register_datetime` datetime NOT NULL,
   `register_ip` varchar(15) NOT NULL,
   `is_deny` tinyint(4) NOT NULL DEFAULT '0',
   `chk` tinyint(4) NOT NULL,
+  `mobile` varchar(45) DEFAULT NULL,
+  `zip_code` varchar(45) DEFAULT NULL,
+  `address1` varchar(45) DEFAULT NULL,
+  `address2` varchar(45) DEFAULT NULL,
+  `email_cert` varchar(45) DEFAULT NULL,
+  `receive_email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`email_id`),
   UNIQUE KEY `no_UNIQUE` (`no`),
   UNIQUE KEY `nickname_UNIQUE` (`nickname`)
@@ -265,7 +296,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES ('test1','1234','테스트','테스트1','남','1995-02-01',NULL,NULL,1,'2018-10-05 00:00:00','255.255.255.255',0,0),('test2','1234','테스트','테스트2','남','1995-02-01',NULL,NULL,2,'2018-10-05 12:32:07','255.255.255.255',0,0),('test3','1234','테스트','테스트3','남','1995-02-01',NULL,NULL,5,'2018-10-05 11:23:44','255.255.255.255',0,0);
+INSERT INTO `member` VALUES ('test1','1234','테스트','테스트1','남','1995-02-01',NULL,NULL,1,'2018-10-05 00:00:00','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL),('test2','1234','테스트','테스트2','남','1995-02-01',NULL,NULL,2,'2018-10-05 12:32:07','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL),('test3','1234','테스트','테스트3','남','1995-02-01',NULL,NULL,5,'2018-10-05 11:23:44','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,8 +369,7 @@ DROP TABLE IF EXISTS `music_sub`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `music_sub` (
   `music_num` int(11) NOT NULL,
-  `mu_good` int(11) DEFAULT '0',
-  `mu_readcount` int(11) DEFAULT '0',
+  `mu_playcount` int(11) DEFAULT '0',
   `mu_Video` text,
   `mu_time` varchar(50) NOT NULL,
   `mu_genre` varchar(45) NOT NULL,
@@ -422,17 +452,17 @@ DROP TABLE IF EXISTS `playlog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `playlog` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `user_email` varchar(100) NOT NULL,
-  `music_no` int(11) NOT NULL,
-  `playtime` timestamp NOT NULL,
-  `p_user_ip` varchar(15) NOT NULL,
+  `num` int(11) NOT NULL,
+  `pl_user_email` varchar(100) NOT NULL,
+  `pl_music_no` int(11) NOT NULL,
+  `pl_playtime` timestamp NOT NULL,
+  `pl_user_ip` varchar(15) NOT NULL,
   PRIMARY KEY (`num`),
-  KEY `plog_mem_email_fk_idx` (`user_email`),
-  KEY `plog_mu_num_fk_idx` (`music_no`),
-  CONSTRAINT `plog_mem_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `plog_mem_email_fk_idx` (`pl_user_email`),
+  KEY `plog_mu_num_fk_idx` (`pl_music_no`),
+  CONSTRAINT `plog_mem_email_fk` FOREIGN KEY (`pl_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`pl_music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -592,4 +622,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-19 17:23:05
+-- Dump completed on 2018-10-19 20:37:04

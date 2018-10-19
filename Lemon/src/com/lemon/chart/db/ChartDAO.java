@@ -56,7 +56,7 @@ public class ChartDAO {
 			con = getCon();
 
 			// sql 쿼리
-			sql = "select music_sub (no,track_no,music_name,singer_name,lyrics,album_num,musicfile)"
+			sql = "select music_sub (no,track_no,music_name ,singer_name,lyrics,album_num,musicfile)"
 					+ "values(null,?,?,?,?,?,?)";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
