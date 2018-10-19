@@ -1,5 +1,6 @@
 package com.lemon.notice.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +17,10 @@ public class NoticeListAction implements Action {
 		// 게시판 글 목록 디비에서 가져옴 -> view(jsp)페이지로 전달
 		NoticeDAO ndao = new NoticeDAO();
 		
+		
 		// 게시판 전체 글 개수 확인
 		int count = ndao.getNoticeCount();
+		
 		
 		/***********************************************************************/
 
@@ -35,12 +38,13 @@ public class NoticeListAction implements Action {
 		int startRow = (currentPage - 1) * pageSize + 1;
 		
 		// 끝행을 계산하기 10..... 20.....30...40...
-		int endRow = currentPage * pageSize;
+//		int endRow = currentPage * pageSize;
 		
 		/***********************************************************************/
 		
 		// 전체 글 개수 가져오기
-		List noticeList = ndao.getNoticeList(startRow, pageSize);
+		List noticeList = new ArrayList();
+		noticeList = ndao.getNoticeList(startRow, pageSize);
 		
 		/***********************************************************************/
 		// 전체 페이지수 계산 => 게시판 글 50개 , 한페이지에 10개씩 보여줌 => 5페이지

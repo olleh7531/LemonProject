@@ -17,9 +17,9 @@ public class NoticeWriteAction implements Action {
 		// 게시판 글정보를 저장하는 객체 (BoardBean)
 		NoticeBean nb = new NoticeBean();
 		
-		nb.setCategory(request.getParameter("category"));
-		nb.setSubject(request.getParameter("subject"));
-		nb.setContent(request.getParameter("content"));
+		nb.setNo_category(request.getParameter("category"));
+		nb.setNo_subject(request.getParameter("subject"));
+		nb.setNo_content(request.getParameter("content"));
 		
 		// 게시판에 글쓰는(DB에 저장) 객체 (BoardDAO)
 		NoticeDAO bdao = new NoticeDAO();

@@ -2,11 +2,11 @@ package com.lemon.notice.db;
 
 public class NoticeBean {
 	private int num;
-	private String category;
-	private String subject;
-	private String content;
-	private int readcount;
-	private String reg_date;
+	private String no_category;
+	private String no_subject;
+	private String no_content;
+	private int no_readcount;
+	private String no_reg_date;
 	
 	public int getNum() {
 		return num;
@@ -14,35 +14,36 @@ public class NoticeBean {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getCategory() {
-		return category;
+	public String getNo_category() {
+		return no_category;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setNo_category(String no_category) {
+		this.no_category = no_category;
 	}
-	public String getSubject() {
-		return subject;
+	public String getNo_subject() {
+		return no_subject;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setNo_subject(String no_subject) {
+		this.no_subject = no_subject;
 	}
-	public String getContent() {
-		return content;
+	public String getNo_content() {
+		return no_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setNo_content(String no_content) {
+		this.no_content = no_content;
 	}
-	public int getReadcount() {
-		return readcount;
+	public int getNo_readcount() {
+		return no_readcount;
 	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
+	public void setNo_readcount(int no_readcount) {
+		this.no_readcount = no_readcount;
 	}
-	public String getReg_date() {
-		return reg_date;
+	public String getNo_reg_date() {
+		return no_reg_date;
 	}
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setNo_reg_date(String no_reg_date) {
+		this.no_reg_date = no_reg_date;
 	}
+
 
 }
