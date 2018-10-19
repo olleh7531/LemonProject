@@ -28,8 +28,8 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/main/main_hot_issue.css">
 	
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="./assets/js/main/main_event_bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>

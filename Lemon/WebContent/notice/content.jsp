@@ -3,12 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!-- 메뉴 -->
-<jsp:include page="../common/menu.jsp"></jsp:include>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/common/common.css">
 <link rel="stylesheet" type="text/css"
@@ -28,13 +26,18 @@
 	href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/common/common_footer.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/main/main_event_bxslider.css">
+
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<style type="text/css">
+<!-- <style type="text/css">
+
 #wrap_conts {
 	width: 100%;
 	text-align: center;
@@ -43,6 +46,7 @@
 #conts {
 	display: inline-block;
 	width: 1008px;
+	
 	padding-top: 30px;
 	padding-bottom: 90px;
 }
@@ -59,7 +63,6 @@
 }
 
 #pageList {
-	text-align: center;
 	padding-top: 35px;
 }
 
@@ -75,39 +78,35 @@
 	line-height: 35px;
 }
 
-#pageList tbody {
-	text-align: center;
-}
-
 #pageList tbody tr {
 	height: 40px;
 	line-height: 40px;
 	border-bottom: 1px solid #cfcfcf;
 }
 
-#pageList tbody #subject {
+.dtl {
+	display: block;
+	padding: 21px 16px 36px;
+	min-height: 200px;
 	text-align: left;
 }
+</style> -->
 
-.dtl {
-    display: block;
-	padding: 21px 16px 36px;
-}
+<script type="text/javascript">
+	function noticeList() {
+		location.href = "./notice.nt";
+	}
+</script>
 
-.dtl td {
-	text-align: left;    	
-}
-
-
-</style>
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<%
 		// 저장 
 		// request.setAttribute("bb", bb); 
 		// request.setAttribute("pageNum", pageNum);
-		// 전달 값 저장하기 
+		// 전달 값 저장하기
 		NoticeBean nb = (NoticeBean) request.getAttribute("nb");
 		String pageNum = (String) request.getAttribute("pageNum");
 	%>
@@ -115,7 +114,6 @@
 	<div id="wrap_conts">
 		<div id="conts">
 			<h2 id="tit">공지사항</h2>
-
 			<div id="pageList">
 				<table>
 					<colgroup>
@@ -136,14 +134,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>	
+							<td colspan="5">
 								<div class="dtl">
 									<p><%=nb.getContent()%></p>
 								</div>
-							</td>							
+							</td>
 						</tr>
 					</tbody>
 				</table>
+				<button onclick="noticeList()">목록</button>
 			</div>
 		</div>
 	</div>
