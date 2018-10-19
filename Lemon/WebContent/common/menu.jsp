@@ -233,7 +233,7 @@
 			<div id="menu">
 				<ul>
 					<li class="menu1">
-						<a href="" class="cur_menu mlog">
+						<a href="./LemonChart.ct" class="cur_menu mlog">
 							<span class="menu_bg menu01">레몬차트</span>
 						</a>
 					</li>
@@ -248,17 +248,17 @@
 						</a>
 					</li>
 					<li class="menu4">
-						<a href="" class="mlog">
+						<a href="./starpost.sp" class="cur_menu mlog">
 							<span class="menu_more menu05">스타포스트</span>
 						</a>
 					</li>
 					<li class="menu5">
-						<a href="" class="mlog">
+						<a href="" class="cur_menu mlog">
 							<span class="menu_more menu06">매거진</span>
 						</a>
 					</li>
 					<li class="menu6">
-						<a href="./notice.nt" class="mlog">
+						<a href="./notice.nt" class="cur_menu mlog">
 							<span class="menu_more menu04">공지사항</span>
 						</a>
 					</li>
@@ -277,4 +277,4 @@
 			<!-- 메뉴 -->
 		</div>
 	</div>
-	<div style="clear: both;"></div> 
+<div style="clear: both;"></div> 

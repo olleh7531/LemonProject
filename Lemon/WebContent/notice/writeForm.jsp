@@ -16,7 +16,7 @@
 		$(document).ready(function() {
 			var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함. 
 			// Editor Setting 
-			nhn.husky.EZCreator.createInIFrame({
+			nhn.husky.EZCreator.createInIFrame({  
 				oAppRef : oEditors, // 전역변수 명과 동일해야 함. 
 				elPlaceHolder : "smarteditor", // 에디터가 그려질 textarea ID 값과 동일 해야 함. 
 				sSkinURI : "./assets/js/se2/SmartEditor2Skin.html", // Editor HTML 

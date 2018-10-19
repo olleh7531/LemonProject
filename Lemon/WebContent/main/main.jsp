@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -35,6 +36,12 @@
 	<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 </head>
 <body>
+<%
+	// 세션값 id 정보를 저장 
+	String email_id =(String) session.getAttribute("email_id");
+	System.out.println(email_id);
+%>
+
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
@@ -1403,22 +1410,26 @@
 	
 				<!-- 로그인 -->
 				<div class="id_wrap mt24">
+					
+					<c:set var="e_id" value="<%=email_id %>"/>				
+					<c:if test="${empty e_id}">
 					<!-- 로그인하지 않았을 때 -->
+					<form action="./MemberLoginAction.mb" method="post">
 					<div class="login_wrap" id="gnbLoginDiv">
 						<div class="inbox">
 							<fieldset>
 								<legend>로그인 영역</legend>
 								<div class="input_area">
-									<input type="text" placeholder="아이디" name="memberId"
+									<input type="text" placeholder="아이디" name="email_id"
 										class="text_id_main" title="아이디 입력 편집창" style="width: 199px">
-									<input type="password" placeholder="비밀번호" name="memberPwd"
+									<input type="password" placeholder="비밀번호" name="pass"
 										title="비밀번호 입력 편집창" class="text_password_main"
 										style="width: 199px">
 									<div class="save_id">
 										<input type="checkbox" name="saveId" id="id_save01" class="">
 										<label for="id_save01">아이디 저장</label>
 									</div>
-									<button type="button" class="btn_main_login" title="로그인">
+									<button type="submit" class="btn_main_login" title="로그인">
 										<span class="odd_span">
 											<span class="even_span">로그인</span>
 										</span>
@@ -1437,11 +1448,14 @@
 							</fieldset>
 						</div>
 					</div>
+					</form>
+					</c:if>
 					<!-- 로그인하지 않았을 때 -->
 	
-					<!-- 로그인하였을 때
+					<!-- 로그인하였을 때 -->
+					<c:if test="${!empty e_id}">
 					<div class="logout_wrap">
-						로그인 유저 정보 관련
+						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
 								<a href="" class="id_area">레몬</a>님
@@ -1454,12 +1468,12 @@
 									<span>카카오톡 연동하기</span>
 								</button>
 							</div>
-							<a href="" title="로그아웃" class="btn_logout">
+							<a href="./MemberLogoutAction.mb" title="로그아웃" class="btn_logout">
 								<span>로그아웃</span>
 							</a>
 						</div>
-						로그인 유저 정보 관련
-						로그인한 유저 이용권 관련
+						<!-- 로그인 유저 정보 관련
+						로그인한 유저 이용권 관련 -->
 						<div class="mem_used">
 							<strong class="product_name">
 								<a href="" title="이용권보유현황">
@@ -1496,8 +1510,11 @@
 									</a>
 								</li>
 							</ul>
-						</div> 로그인한 유저 이용권 관련
-					</div> 로그인하였을 때 -->
+						</div> <!-- 로그인한 유저 이용권 관련 -->
+					</div>
+					</c:if>
+					 <!-- 로그인하였을 때 -->
+					
 					<!-- 콘서트 -->
 					<div class="promotion_wrap">
 						<div class="promotion_default" style="display: none;">

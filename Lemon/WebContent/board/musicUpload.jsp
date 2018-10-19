@@ -139,7 +139,7 @@
         html +="<td><input type='text' name='singer_name'></td>";
         html +="<td><textarea name='lyrics'></textarea></td>";
         html += "    <td class='left' >";
-        html +=         fileName + " / " + fileSize + "MB "  + "<a href='#' onclick='deleteFile(" + fIndex + "); return false;' class='btn'><svg class='octicon octicon-x' viewBox='0 0 12 16' version='1.1' width='12' height='16' aria-hidden='true'><path fill-rule='evenodd' d='M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z'></path></svg></a>";
+        html +=         fileName + " / " + fileSize + "MB "  + "<button onclick='deleteFile(" + fIndex + "); return false;' class='btn'><svg class='octicon octicon-x' viewBox='0 0 12 16' version='1.1' width='12' height='16' aria-hidden='true'><path fill-rule='evenodd' d='M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z'></path></svg></button>";
         html += "    </td>";
         html += "</tr>";
 
@@ -223,10 +223,8 @@
             	 infor = infor +','+$(this).parent().next().next().find('input[name=music_name]').val();
             	 infor = infor +','+$(this).parent().next().next().next().find('input[name=singer_name]').val();
             	 infor = infor +','+$(this).parent().next().next().next().next().find('textarea[name=lyrics]').val();
-
-				num = index+1;
-            	var musicinfor = 'musicinfor'+num;
-            	formData.append(musicinfor , infor);
+			num='musicinfor'+index;
+            	formData.append(num , infor);
             }); 
             
             $.ajax({
@@ -258,6 +256,7 @@
 
 </script>
 
+<link rel="stylesheet" type="text/css" href="./assets/css/board/musicUpload.css" />
 
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common.css"> 
 <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
@@ -268,10 +267,18 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event_bxslider.css">
 
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
 
-<link rel="stylesheet" type="text/css" href="./assets/css/board/musicUpload.css" />
+
+
+<script type="text/javascript" src="./assets/js/main/main_event_bxslider.js"></script>
+	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 </head>
 <body>
 <!-- 헤더 -->

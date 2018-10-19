@@ -26,8 +26,22 @@
 	href="./assets/css/menu/menu_search_realtime.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/menu/menu_banner.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
-	
+
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/board/notice.css">
+\
+<link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common_font.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common_footer.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/main/main_event_bxslider.css">
+
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript"
 	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -58,7 +72,7 @@
 		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
 	%>
 	<!-- 	헤드 -->
-<jsp:include page="../common/menu.jsp"></jsp:include>
+	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<!-- 	헤드 -->
 	<div id="wrap_conts">
 		<div id="conts">
@@ -108,7 +122,7 @@
 							<td><div class="wrap"><%=nb.getReg_date()%></div></td>
 						</tr>
 						<%
-								}
+							}
 							}
 						%>
 					

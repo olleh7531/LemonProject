@@ -26,7 +26,11 @@
 	href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/common/common_footer.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/main/main_event_bxslider.css">
+
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
@@ -90,7 +94,7 @@
 
 <script type="text/javascript">
 	function noticeList() {
-		location.href="./notice.nt";
+		location.href = "./notice.nt";
 	}
 </script>
 
