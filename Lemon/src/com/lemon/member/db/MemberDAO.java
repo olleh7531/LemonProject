@@ -88,33 +88,42 @@ public class MemberDAO {
 		}
 	}
 	
-	public int idCheck(String id, String pass) {
-		int check = -1;
+	// idCheck(id,pass)
+	public int idCheck(String email_id, String pass){
+		int check=-1;
 		
 		try {
+			// 디비 연결(+드라이버로드)
 			con = getCon();
-			sql = "select pass from member where id = ?";
+
+			sql ="select pass from member1 where email_id =?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, email_id);
+			// email_id 실행 & 결과저장
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				if(rs.getString("pass").equals(pass)) {
-					check = 1;
-				}
-				else {
+			if(rs.next()){
+				// 아이디 있음
+				if(pass.equals(rs.getString("pass"))){
+					check = 1; //비밀번호 맞음
+				}else{
+					// 비밀번호 틀림
 					check = 0;
 				}
-			} else {
-				check = -1;
+			}else{
+				//아이디 없음
+				check =-1;
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			CloseDB();
-		}	
-		return check;		
+		}
+		
+		return check;
 	}
+	// idCheck(id,pass)
 	
 	public MemberBean getMember(String id) {
 		MemberBean mb = null;
