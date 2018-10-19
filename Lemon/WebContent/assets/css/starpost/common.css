@@ -1,0 +1,126 @@
+@CHARSET "UTF-8";
+
+/*------------------------------------*/
+/*               본문 영역                             */
+/*------------------------------------*/
+#cont_wrap {
+	min-height: 100%;
+	margin: 0 auto;
+	background: none;
+}
+
+#conts_section {
+	position: relative;
+	width: 1008px;
+	margin: 0 auto;
+	padding: 0 228px 0 20px;
+}
+
+#conts_section.my_fold, #conts_section.fold_off {
+	padding: 0 228px 0 20px;
+}
+
+/*------------------------------------*/
+/*                 본문                                */
+/*------------------------------------*/
+#conts {
+	position: relative;
+	z-index: 10;
+	display: inline-block;
+	display: block;
+	width: 1008px;
+	min-height: 800px;
+	padding: 52px 0 88px;
+	zoom: 1;
+}
+
+/*------------------------------------*/
+/*                 제목                                */
+/*------------------------------------*/
+.f_tit {
+	/* margin: 25px 0 12px; */
+	color: #1a1a1a;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 30px;
+	font-family: "맑은 고딕", "Malgun Gothic", "돋움", Dotum, "Apple Gothic",
+		sans-serif;
+	letter-spacing: -2px;
+}
+
+h2.f_tit {
+	margin: 25px 0 12px;
+}
+
+#conts h2 {
+	margin-top: 0 !important;
+}
+
+/*------------------------------------*/
+/*               탭                           */
+/*------------------------------------*/
+/* 탭 영역 */
+.wrap_tab_atist ul {
+    position: relative;
+    width: 1008px;
+    margin-top: 15px;
+    border-top: 2px solid #838383;
+    border-bottom: 1px solid #dbdbdb;
+    background: #eaefeb;
+}
+
+/* 탭 메뉴 */
+.wrap_tab_atist ul li {
+    float: left;
+    width: 110px;
+    border-right: 1px solid #dbdbdb;
+    border-left: 1px solid #ffffff;
+    height: 34px;
+}
+
+.wrap_tab_atist ul li.first_child {
+    border-left: 0;
+}
+
+.wrap_tab_atist ul li a {
+    display: block;
+    position: relative;
+    padding: 10px 0 7px 0px;
+    color: #1b1b1b;
+    text-align: center;
+}
+
+.wrap_tab_atist ul li.on a {
+    z-index: 3;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    color: #1a1a1a;
+    font-weight: bold;
+    height: 17px;
+    color: #6ea300;
+}
+
+.wrap_tab_atist .icon_timeline {
+    display: block;
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.wrap_tab_atist ul li.last_child {
+    width: 112px;
+    border-right: 0;
+}
+
+/*------------------------------------*/
+/*               메인 공통                             */
+/*------------------------------------*/
+
+
+
+

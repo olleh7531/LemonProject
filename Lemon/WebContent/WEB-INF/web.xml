@@ -166,7 +166,6 @@
 		<url-pattern>*.maga</url-pattern>
 	</servlet-mapping>
 
-
 	<servlet>
 		<servlet-name>StarPostFrontController</servlet-name>
 		<servlet-class>com.lemon.starpost.action.StarPostFrontController</servlet-class>
