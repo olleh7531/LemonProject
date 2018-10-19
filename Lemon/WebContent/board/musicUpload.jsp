@@ -267,13 +267,18 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main_event_bxslider.css">
 
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
 
 
 
 <script type="text/javascript" src="./assets/js/main/main_event_bxslider.js"></script>
-<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 </head>
 <body>
 <!-- 헤더 -->

@@ -115,7 +115,7 @@ public class NoticeDAO {
 
 		try {
 			con = getCon();
-			sql = "select * from notice order by re_ref desc, re_seq asc limit ?,?";
+			sql = "select * from notice order by num desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -130,9 +130,6 @@ public class NoticeDAO {
 				nb.setContent(rs.getString("content"));
 				nb.setReg_date(rs.getString("reg_date"));
 				nb.setReadcount(rs.getInt("readcount"));
-				nb.setRe_ref(rs.getInt("re_ref"));
-				nb.setRe_lev(rs.getInt("re_lev"));
-				nb.setRe_seq(rs.getInt("re_seq"));
 
 				// noticeList 한 칸에 저장
 
@@ -179,9 +176,6 @@ public class NoticeDAO {
 				nb.setContent(rs.getString("content"));
 				nb.setReg_date(rs.getString("reg_date"));
 				nb.setReadcount(rs.getInt("readcount"));
-				nb.setRe_ref(rs.getInt("re_ref"));
-				nb.setRe_lev(rs.getInt("re_lev"));
-				nb.setRe_seq(rs.getInt("re_seq"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
