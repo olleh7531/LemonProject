@@ -97,7 +97,7 @@ h2.f_tit {
     color: #1a1a1a;
     font-weight: bold;
     height: 17px;
-    color: #6ea300;
+    color: #EDAE06;
 }
 
 .wrap_tab_atist .icon_timeline {
@@ -115,6 +115,14 @@ h2.f_tit {
 .wrap_tab_atist ul li.last_child {
     width: 112px;
     border-right: 0;
+}
+
+.wrap_tab_atist ul:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
 }
 
 /*------------------------------------*/

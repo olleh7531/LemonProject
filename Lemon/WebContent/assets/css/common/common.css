@@ -87,6 +87,16 @@ ol, ul, li {
 	display: block;
 }
 
+
+/* float 정렬 */
+.fl_left {
+    float: left;
+}
+
+.fl_right {
+    float: right;
+}
+
 /* margin-top */
 .mt24 {
 	margin-top: 24px !important;

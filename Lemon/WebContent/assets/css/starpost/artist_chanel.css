@@ -6,6 +6,7 @@
 .wrap_dtl_atist {
 	border: 1px solid #bbbbbb;
 	border-top: 2px solid #808080;
+	height: 250px;
 }
 
 .wrap_dtl_atist .dtl_atist {
@@ -224,4 +225,238 @@
 	background-position: -136px -57px;
 	line-height: 7px;
 	vertical-align: 1px;
+}
+
+/* 라디오 버튼 - 발매 참여 작사 작곡 */
+.sort_info {
+	padding: 24px 0 9px;
+}
+
+.sort_info .fl_left {
+	color: #1a1a1a;
+}
+
+.sort_info .wrap_sort {
+	margin-top: 3px;
+}
+
+.wrap_sort .ico_radio {
+	display: inline-block;
+	margin-right: 8px;
+}
+
+.ico_radio .icon {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	background-image:
+		url("../../../assets/img/artistChanel/artistchanel_bg_radio.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	vertical-align: middle;
+}
+
+.ico_radio.on .icon {
+	background-position: -20px 0;
+}
+
+.ico_radio .text {
+	color: #666;
+	vertical-align: middle;
+}
+
+.ico_radio.on .text {
+	color: #1a1a1a;
+}
+
+.ico_radio.on .text span {
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+
+/* 정렬 - 최신순 인기순 가나다순 */
+.sort_info .list_sort {
+	margin-top: 4px;
+}
+
+.list_sort li {
+	float: left;
+	margin-left: 4px;
+	padding: 0 4px 0 9px;
+	background-image:
+		url("../../../assets/img/artistChanel/artistchanel_bg_gray_bar.png");
+	background-repeat: no-repeat;
+	background-position: 0 3px;
+}
+
+.list_sort li.first_child {
+	margin-left: 8px;
+	background: 0;
+}
+
+.list_sort li a {
+	color: #666;
+}
+
+.list_sort li.on a {
+	color: #1a1a1a;
+	font-weight: bold;
+}
+
+/* 곡 리스트 영역 */
+.tb_list {
+	max-width: 1008px;
+	border: 1px solid #e4e4e4;
+	border-width: 1px 0;
+}
+
+/* 전체선택 듣기 다운 담기 선물 */
+.tb_list .wrap_btn_tb {
+	padding: 7px 0;
+}
+
+.tb_list .wrap_btn_tb.top {
+	border-bottom: 1px solid #ccc;
+}
+
+.btn_base span.odd_span {
+	padding-left: 8px;
+	background-image:
+		url("../../../assets/img/artistChanel/artistchanel_bg_btn_base.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.btn_base.short.check_all span.odd_span {
+    padding-left: 21px;
+    background-position: left -1285px;
+}
+
+.btn_base span.even_span {
+    min-width: 22px;
+    height: 26px;
+    padding-right: 8px;
+    background-image: url("../../../assets/img/artistChanel/artistchanel_bg_btn_base.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    color: #333;
+    font-size: 11px;
+    line-height: 29px;
+    font-family: "Dotum", "돋음", "Apple Gothic", sans-serif;
+    letter-spacing: -1px;
+}
+
+.btn_base.short span.even_span {
+    height: 24px;
+    padding-right: 5px;
+    background-position: right -1286px;
+    line-height: 26px;
+}
+
+.btn_base.play span.odd_span {
+    padding-left: 19px;
+    background-position: left -148px;
+}
+
+.btn_base.short span.odd_span {
+    background-position: left -1285px;
+}
+
+.btn_base.short span.odd_span {
+    padding-left: 7px;
+}
+
+.btn_base.short.play span.odd_span {
+    padding-left: 18px;
+    background-position: left -1316px;
+}
+
+.btn_base.short.download span.odd_span {
+    padding-left: 18px;
+    background-position: left -1347px;
+}
+
+.btn_base.short.scrap span.odd_span {
+    padding-left: 18px;
+    background-position: left -1378px;
+}
+
+.btn_base.short.gift span.odd_span {
+    padding-left: 18px;
+    background-position: left -1409px;
+}
+
+/* 곡 리스트 테이블 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+table, th, td {
+    vertical-align: top;
+}
+
+caption {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    float: none !important;
+}
+
+#d_cmtpgn caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    float: none !important;
+}
+
+#d_cmtpgn table, th, td {
+    vertical-align: top;
+}
+
+.tb_list th, .tb_list td {
+    line-height: 1.2em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tb_list th {
+    height: 26px;
+    border-bottom: 2px solid #EDAE06;
+    color: #EDAE06;
+    font-family: "돋움", "Dotum", "Apple Gothic", sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.tb_list th .wrap, .tb_list td .wrap {
+    padding: 0 8px;
+}
+
+.tb_list th .wrap.pd_none, .tb_list td .wrap.pd_none {
+    padding: 0;
+}
+
+.tb_list th .wrap.left, .tb_list td .wrap.left {
+    padding-left: 16px;
+}
+
+.tb_list th .input_check {
+    *width: 12px;
+    *height: 12px;
+    margin: 0;
+    vertical-align: -2px;
+}
+
+.tb_list th.t_left, .tb_list td.t_left {
+    text-align: left;
 }
