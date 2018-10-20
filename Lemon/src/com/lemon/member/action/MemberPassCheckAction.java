@@ -47,14 +47,14 @@ public class MemberPassCheckAction implements Action {
 			
 			return null;
 		}
-		
-	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.me		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("email_id", email_id);
-		
+		session.setAttribute("pass", pass);
+
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./ChooseMemberUpdate.mb");
+		forward.setPath("./MemberDelete.mb");
 		forward.setRedirect(true);		
 		return forward;
 	}

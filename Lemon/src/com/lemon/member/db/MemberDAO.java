@@ -61,7 +61,7 @@ public class MemberDAO {
 				num = rs.getInt("max(num)") + 1;
 			}
 			
-			sql = "insert into member1 (email_id, pass, name, nickname, gender, birth, level, img, num, reg_date, reg_ip, is_deny, chk)"
+			sql = "insert into member (email_id, pass, name, nickname, gender, birth, level, img, num, reg_date, reg_ip, is_deny, chk)"
 					+ "values(?,?,?,?,?,?,?,?,?,now(),?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class MemberDAO {
 			// 디비 연결(+드라이버로드)
 			con = getCon();
 
-			sql ="select pass from member1 where email_id =?";
+			sql ="select pass from member where email_id =?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
 			// email_id 실행 & 결과저장
@@ -125,137 +125,24 @@ public class MemberDAO {
 	}
 	// idCheck(id,pass)
 	
-	public MemberBean getMember(String id) {
-		MemberBean mb = null;
-		
+	// deleteMember(email_id, pass)
+	public void deleteMember(String email_id, String pass) {
 		try {
 			con = getCon();
-			sql = "select * from member where id=?";
+			
+			sql = "delete from member where email_id=? and pass=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
+			pstmt.setString(1, email_id);
+			pstmt.setString(2, pass);
 			
-			if(rs.next()) {
-				/*mb = new MemberBean();
-				mb.setId(rs.getString("id"));
-				mb.setPass(rs.getString("pass"));
-				mb.setName(rs.getString("name"));
-				mb.setAge(rs.getInt("age"));
-				mb.setGender(rs.getString("gender"));
-				mb.setEmail(rs.getString("email"));
-				mb.setReg_date(rs.getTimestamp("reg_date"));*/
-			}						
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}		
-		return mb;
-	}
-	
-	public int updateMember(MemberBean mb) {
-		int check = -1;
-		
-		try {
-			con = getCon();
-			sql = "select pass from member where id=?";
-			pstmt = con.prepareStatement(sql);
-			// pstmt.setString(1, mb.getId());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) { // 아이디 있음
-				if(mb.getPass().equals(rs.getString("pass"))) {
-					// 비밀번호 맞음 
-					sql = "update member set name=?, age=?, gender=?, email=? where id=?";
-					/*pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, mb.getName());
-					pstmt.setInt(2, mb.getAge());
-					pstmt.setString(3, mb.getGender());
-					pstmt.setString(4, mb.getEmail());
-					pstmt.setString(5, mb.getId());
-					*/
-					pstmt.executeUpdate();
-					check = 1;
-				} else {
-					// 비밀번호 틀림
-					check = 0;
-				}
-			} else { // 아이디 없음
-				check = -1;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}
-		return check;
-	}
-	
-	public int deleteMember(String id, String pass) {
-		int check = -1;
-		
-		try {
-			con = getCon();
-			sql = "select pass from member where id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if(rs.next()) { // 아이디 있음
-				if(pass.equals(rs.getString("pass"))) {
-					// 비밀번호 맞음 
-					sql = "delete from member where id=? and pass=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, id);
-					pstmt.setString(2, pass);
-					
-					pstmt.executeUpdate();
-					check = 1;
-				} else {
-					// 비밀번호 틀림
-					check = 0;
-				}
-			} else { // 아이디 없음
-				check = -1;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}
-		return check;
-	}
-	
-	public List getMemberList(){
-		List memberList = new ArrayList();
-		
-		try {
-			con=getCon();
-			
-			sql ="select * from member";
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				MemberBean mb = new MemberBean();
-				
-				/*mb.setAge(rs.getInt("age"));
-				mb.setEmail(rs.getString("email"));
-				mb.setGender(rs.getString("gender"));
-				mb.setId(rs.getString("id"));
-				mb.setName(rs.getString("name"));
-				mb.setPass(rs.getString("pass"));
-				mb.setReg_date(rs.getTimestamp("reg_date"));*/
+			pstmt.executeUpdate();
 
-				memberList.add(mb);
-
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			CloseDB();
 		}
-		
-		return memberList;
 	}
+	// deleteMember(email_id, pass)
+
 }

@@ -78,7 +78,22 @@ public class MemberFrontController extends HttpServlet {
 			 forward.setPath("./member/chooseMemberUpdate.jsp");
 			 forward.setRedirect(false);
 
-		} else if (command.equals("/MemberPassCheck.mb")) {
+		} else if (command.equals("/MemberDelete.mb")) {
+		     // 회원탈퇴 페이지 
+			 forward = new ActionForward();
+			 forward.setPath("./member/deleteForm.jsp");
+			 forward.setRedirect(false);
+
+		} else if (command.equals("/MemberDeleteAction.mb")) {
+			// 회원탈퇴 처리
+			action = new MemberDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}  else if (command.equals("/MemberPassCheck.mb")) {
 			 // 비밀번호 확인 폼페이지
 			 forward = new ActionForward();
 			 forward.setPath("./member/checkPassForm.jsp");
@@ -108,11 +123,6 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}  else if (command.equals("/MemberDelete.mb")) {
-			 forward = new ActionForward();
-			 forward.setPath("./member/deleteForm.jsp");
-			 forward.setRedirect(false);
-
 		}
 
 		if (forward != null) {

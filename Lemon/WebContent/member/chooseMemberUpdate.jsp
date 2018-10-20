@@ -69,14 +69,15 @@
 	<div id="out">
 		<div id="in">
 			<div id="wrap_tit">
-				<h2>회원정보 변경</h2>
+				<h2>회원정보 관리</h2>
 			</div>
 			
 			<div id="conts">
 				<ul>
-					<li><a href="#">회원정보 변경</a></li>
-					<li><a href="./MemberPassUpdate.mb">패스워드 변경</a></li>
-					<li><a href="./MemberDelete.mb">회원 탈퇴</a></li>
+					<li><a href="#">내 정보 변경</a></li>
+					<li><a href="#">추가정보 변경</a></li>
+					<li><a href="./MemberPassUpdate.mb">비밀번호 변경</a></li>
+					<li><a href="./MemberPassCheck.mb">회원 탈퇴</a></li>
 				</ul>
 				
 			</div>
