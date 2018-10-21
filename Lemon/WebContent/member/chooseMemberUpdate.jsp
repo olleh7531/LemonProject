@@ -72,8 +72,8 @@
 				<ul>
 					<li><a href="#">내 정보 변경</a></li>
 					<li><a href="#">추가정보 변경</a></li>
-					<li><a href="./MemberPassCheck.mb">비밀번호 변경</a></li>
-					<li><a href="./MemberPassCheck.mb">회원 탈퇴</a></li>
+					<li><a href="./MemberPassCheck.mb?pageSelect=/Lemon/MemberPassUpdate.mb">비밀번호 변경</a></li>
+					<li><a href="./MemberPassCheck.mb?pageSelect=/Lemon/MemberDelete.mb">회원 탈퇴</a></li>
 				</ul>
 				
 			</div>

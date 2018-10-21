@@ -60,7 +60,10 @@
 <body>
 <%
 	String email_id =(String) session.getAttribute("email_id");
-	System.out.println(email_id);
+	String pageSelect = request.getParameter("pageSelect");
+	System.out.println("checkPassForm User ID : "+email_id);
+	System.out.println("checkPassForm pageSelect : "+pageSelect);
+
 %>
 
 	<!-- 메뉴 -->
@@ -75,6 +78,7 @@
 			
 			<div id="conts">
 				<form action="./MemberPassCheckAction.mb" method="post">
+					<input type="hidden" name="pageSelect" value="<%=pageSelect %>">
 					아이디 : <input type="text" name="email_id" value="<%=email_id %>" readonly><br>
 					비밀번호 : <input type="password" name="pass"><br>
 					<input type="submit" value="로그인">

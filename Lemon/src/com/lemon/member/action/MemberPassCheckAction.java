@@ -12,10 +12,14 @@ public class MemberPassCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// 비밀번호 확인 및 회원정보 변경 페이지 선택 메뉴 처리
 		System.out.println("MemberPassCheckAction_execute()");
-
+		
 		String email_id = request.getParameter("email_id");
 		String pass = request.getParameter("pass");
+		
+		// 회원정보 변경 페이지에서 메뉴 선택
+		String pageSelect = request.getParameter("pageSelect");
 		
 		MemberDAO mdao = new MemberDAO();
 
@@ -54,7 +58,7 @@ public class MemberPassCheckAction implements Action {
 
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberDelete.mb");
+		forward.setPath(pageSelect);
 		forward.setRedirect(true);		
 		return forward;
 	}
