@@ -21,6 +21,7 @@
 
 	
 	<style>
+	/*공통*/
 	div{
 		display: block;
 	}
@@ -50,10 +51,23 @@
 
 	}
 	
-	#conts{ border: 1px solid gray;
+	#contsMem{ border: 1px solid gray;
 		display: block;
 		margin-top: 30px;
 	}
+	/*공통*/
+	
+	/*회원 탈퇴*/
+	.mt14{ margin-top: 14px; }
+}
+	.txt_info_mem{
+	    margin-top: 16px;
+	    font-size: 14px;
+   		line-height: 22px;
+    	color: #333;
+    	font-family: "맑은 고딕",sans-serif;
+    	letter-spacing: -1px;
+    }
 		
 	</style>
 </head>
@@ -68,11 +82,24 @@
 				<h2>회원탈퇴</h2>
 			</div>
 			
-			<div id="conts">
-				<input type="checkbox" id="isOutAgree" />
+			<div id="contsMem">
+				<p class="txt_info_mem"><strong>회원탈퇴 전 안내사항을 꼭 확인해주세요.</strong><br/>
+					<strong>탈퇴 후 회원님의 멜론 이용정보가 삭제되어 복구 불가능하오니 신중히 선택하시기 바랍니다.</strong>
+				</p>
+				<div class="mt14">
+					<p>
+					<strong style="font-size: 13px; color: #df2607;">
+						탈퇴 후에는 개인의 데이터를 복구할 수 없으며, 서비스에 남아있는 게시물을 삭제 할 수 없습니다.
+					</strong>
+					</p>
+				</div>
+				<div class="mt14">
+					<input type="checkbox" id="isOutAgree" />
+					<label style="font-size: 12px; color: #666;">안내사항을 모두 확인하였으며, 이에 동의합니다.</label>
+				</div>
 				<button type="button" onclick="memberOut();">회원탈퇴</button><br/>
 				<button type="button" onclick="location.href='./ChooseMemberUpdate.mb'">취소</button>
-				<button type="button" onclick="testCK();">체크테스트</button><br/>
+				
 			</div>
 			
 		</div>
