@@ -69,23 +69,31 @@
 			</div>
 			
 			<div id="conts">
+				<input type="checkbox" id="isOutAgree" />
 				<button type="button" onclick="memberOut();">회원탈퇴</button><br/>
 				<button type="button" onclick="location.href='./ChooseMemberUpdate.mb'">취소</button>
-				
+				<button type="button" onclick="testCK();">체크테스트</button><br/>
 			</div>
 			
 		</div>
 	</div>
 	<!-- 본문 -->			
-	
+
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
 	<script>
 	function memberOut() {
-		var chkMemDel = confirm('확인을 누르시면 탈퇴가 완료됩니다.');
-		if(chkMemDel == true){
-			location.href='./MemberDeleteAction.mb';
+		var isOutAgree = document.getElementById("isOutAgree");
+
+		if(isOutAgree.checked == true){
+			var chkMemDel = confirm('확인을 누르시면 탈퇴가 완료됩니다.');
+			
+			if(chkMemDel == true){	
+				location.href='./MemberDeleteAction.mb';
+			}
+		}else{
+			alert('안내사항을 확인하셨다면 동의해주세요.');
 		}
 	}
 		
