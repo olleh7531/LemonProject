@@ -48,7 +48,7 @@ public class MemberLoginAction implements Action {
 			return null;
 		}
 		
-	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.me		
+	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.mi		
 		HttpSession session = request.getSession();
 		session.setAttribute("email_id", email_id);
 		

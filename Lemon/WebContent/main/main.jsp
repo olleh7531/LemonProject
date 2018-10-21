@@ -26,8 +26,8 @@
 </head>
 <body>
 <%
-	// 세션값 id 정보를 저장 
-	String email_id =(String) session.getAttribute("email_id");
+	// LoginAction에서 받아온 세션값 id 정보를 저장 
+	String email_id = (String) session.getAttribute("email_id");
 	System.out.println(email_id);
 %>
 

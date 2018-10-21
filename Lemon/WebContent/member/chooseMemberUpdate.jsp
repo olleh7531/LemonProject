@@ -18,7 +18,6 @@
 	<script type="text/javascript"
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-
 	
 	<style>
 	div{
@@ -55,9 +54,6 @@
 		margin-top: 30px;
 	}
 	
-	
-	
-	
 	</style>
 </head>
 <body>
@@ -76,7 +72,7 @@
 				<ul>
 					<li><a href="#">내 정보 변경</a></li>
 					<li><a href="#">추가정보 변경</a></li>
-					<li><a href="./MemberPassUpdate.mb">비밀번호 변경</a></li>
+					<li><a href="./MemberPassCheck.mb">비밀번호 변경</a></li>
 					<li><a href="./MemberPassCheck.mb">회원 탈퇴</a></li>
 				</ul>
 				

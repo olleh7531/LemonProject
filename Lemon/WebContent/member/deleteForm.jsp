@@ -58,11 +58,6 @@
 	</style>
 </head>
 <body>
-<%
-	String email_id = (String) session.getAttribute("email_id");
-	String pass = (String) session.getAttribute("pass");
-
-%>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
@@ -74,13 +69,8 @@
 			</div>
 			
 			<div id="conts">
-			<form action="./MemberDeleteAction.mb" method="post">
-				<input type="hidden" name="email_id" value="<%=email_id %>">
-				<input type="hidden" name="pass" value="<%=pass %>">
-				<input type="submit" onclick="return memberOut();" value="회원탈퇴"/><br/>
-				<input type="button" onclick="location.href='./ChooseMemberUpdate.mb'" value="취소">
-			</form>
-			
+				<button type="button" onclick="memberOut();">회원탈퇴</button><br/>
+				<button type="button" onclick="location.href='./ChooseMemberUpdate.mb'">취소</button>
 				
 			</div>
 			
@@ -95,9 +85,8 @@
 	function memberOut() {
 		var chkMemDel = confirm('확인을 누르시면 탈퇴가 완료됩니다.');
 		if(chkMemDel == true){
-				return true;
+			location.href='./MemberDeleteAction.mb';
 		}
-		return false;
 	}
 		
 	</script>
