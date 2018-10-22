@@ -12,7 +12,6 @@ public class MemberDeleteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		System.out.println("MemberDeleteAction_execute()");
 
 		// 로그인한 사람의 개인 정보를 출력

@@ -126,7 +126,50 @@ public class MemberDAO {
 	}
 	// idCheck(email_id,pass)
 	
-	// deleteMember(id,pass)
+	// updateMemPass()
+	public int updateMemPass(String email_id, String crtPass, String newPass, String chkPass){
+		int check =-1;
+
+		try {
+			con = getCon();
+			
+			sql = "select email_id, pass from member where email_id=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			pstmt.setString(2, crtPass);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(crtPass.equals(rs.getString("pass"))){
+				    if(newPass.equals(chkPass)){
+				    	sql="update member set pass=? where email_id=?"; 
+				    	
+				    	pstmt = con.prepareStatement(sql);
+					    pstmt.setString(1, newPass);
+					    pstmt.setString(2, email_id);
+					    
+					    pstmt.executeUpdate();
+					    check =1;
+				    }else{
+				    	check =0;
+				    } 					
+				}else{
+					check =-1;
+				}				
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			CloseDB();
+		}
+		
+		return check;
+	}
+	// updateMemPass()
+		
+	
+	// deleteMember(email_id,pass)
 	public int deleteMember(String email_id, String pass){
 		int check =-1;
 		
@@ -164,6 +207,6 @@ public class MemberDAO {
 		
 		return check;
 	}
-	// deleteMember(id,pass)
+	// deleteMember(email_id,pass)
 
 }
