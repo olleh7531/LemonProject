@@ -126,14 +126,13 @@ public class MemberDAO {
 	// idCheck(id,pass)
 	
 	// deleteMember(email_id, pass)
-	public void deleteMember(String email_id, String pass) {
+	public void deleteMember(String email_id) {
 		try {
 			con = getCon();
 			
-			sql = "delete from member where email_id=? and pass=?";
+			sql = "delete from member where email_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
-			pstmt.setString(2, pass);
 			
 			pstmt.executeUpdate();
 

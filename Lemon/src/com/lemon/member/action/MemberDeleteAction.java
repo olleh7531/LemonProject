@@ -17,10 +17,9 @@ public class MemberDeleteAction implements Action {
 
 		HttpSession session = request.getSession();
 		String email_id = (String) session.getAttribute("email_id");
-		String pass = (String) session.getAttribute("pass");
 
 		MemberDAO mdao = new MemberDAO();
-		mdao.deleteMember(email_id, pass);
+		mdao.deleteMember(email_id);
 
 		// 세션 초기화 
 		session.invalidate();

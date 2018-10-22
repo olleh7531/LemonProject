@@ -52,10 +52,6 @@ public class MemberPassCheckAction implements Action {
 			return null;
 		}
 
-		HttpSession session = request.getSession();
-		session.setAttribute("email_id", email_id);
-		session.setAttribute("pass", pass);
-
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath(pageSelect);
