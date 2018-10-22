@@ -72,6 +72,18 @@
 	</style>
 </head>
 <body>
+<%
+	/* 회원정보 변경 권한 */
+	/* authMemUp이 1이 아닐 때, 메인 페이지로*/
+	int authMemUp = (Integer)request.getAttribute("authMemUp");
+
+	if(authMemUp != 1){
+		response.sendRedirect("./Lemon/main.mi");
+	}else{
+		System.out.println("회원정보 변경 권한을 가지고 있습니다.");
+	}
+%>
+
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	

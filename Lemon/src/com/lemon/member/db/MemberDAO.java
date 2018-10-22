@@ -89,7 +89,7 @@ public class MemberDAO {
 	}
 	
 	// idCheck(id,pass)
-	public int idCheck(String email_id, String pass){
+	public int memberCheck(String email_id, String pass){
 		int check=-1;
 		
 		try {

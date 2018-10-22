@@ -23,10 +23,10 @@ public class MemberPassCheckAction implements Action {
 		
 		MemberDAO mdao = new MemberDAO();
 
-		int check = mdao.idCheck(email_id, pass);
+		int check = mdao.memberCheck(email_id, pass);
 		// 0 - "비밀번호 오류"
 		// -1 - "아이디 없음"
-		// 1 - 로그인 
+		// 1 - 회원정보 변경 권한 OK
 		
 		if(check ==0){
 			response.setContentType("text/html; charset=UTF-8");
@@ -51,11 +51,13 @@ public class MemberPassCheckAction implements Action {
 			
 			return null;
 		}
-
+		
+		request.setAttribute("authMemUp", check);
+		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath(pageSelect);
-		forward.setRedirect(true);		
+		forward.setRedirect(false);		
 		return forward;
 	}
 

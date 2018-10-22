@@ -19,7 +19,7 @@ public class MemberLoginAction implements Action {
 		
 		MemberDAO mdao = new MemberDAO();
 
-		int check = mdao.idCheck(email_id, pass);
+		int check = mdao.memberCheck(email_id, pass);
 		// 0 - "비밀번호 오류"
 		// -1 - "아이디 없음"
 		// 1 - 로그인 
