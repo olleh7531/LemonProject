@@ -54,9 +54,7 @@
 		display: block;
 		margin-top: 30px;
 	}
-	
-	
-	
+
 	
 	</style>
 </head>
@@ -73,11 +71,11 @@
 			</div>
 			
 			<div id="contsMem">
-				<form action="./MemberPassUpdateAction.mb" method="post">
+				<form action="./MemberPassUpdateAction.mb" method="post" name="frPass">
 					현재 비밀번호 : <input type="text" name="crtPass"><br>
-					새 비밀번호 : <input type="text" name="pass"><br>
+					새 비밀번호 : <input type="text" name="newPass"><br>
 					새 비밀번호 확인 : <input type="text" name="chkPass"><br>
-					<input type="submit" value="로그인">
+					<input type="submit" onclick="return check();" value="로그인">
 					<input type="button" onclick="location.href='history.back()'" value="취소">
 				</form>
 			</div>
@@ -88,6 +86,30 @@
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
+
+	<script>
+	function check(){
+		if(document.frPass.crtPass.value == ""){
+			alert("현재 비밀번호를 입력하시오");
+			document.frPass.crtPass.focus();
+			
+			return false;
+		}		
+		if(document.frPass.newPass.value == ""){
+			alert("새 비밀번호를 입력하시오");
+			document.frPass.newPass.focus();
+			
+			return false;
+		}
+		if(document.frPass.chkPass.value == ""){
+			alert("새 비밀번호 확인을 입력하시오");
+			document.frPass.chkPass.focus();
+			
+			return false;
+		}		
+		return true;
+	}
+	</script>
 	
 	</body>
 </html>
