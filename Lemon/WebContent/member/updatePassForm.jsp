@@ -72,7 +72,7 @@
 				<h2>비밀번호 변경</h2>
 			</div>
 			
-			<div id="conts">
+			<div id="contsMem">
 				<form action="./MemberPassUpdateAction.mb" method="post">
 					현재 비밀번호 : <input type="text" name="crtPass"><br>
 					새 비밀번호 : <input type="text" name="pass"><br>

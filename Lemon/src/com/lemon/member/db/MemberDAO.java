@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
 public class MemberDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -87,19 +88,19 @@ public class MemberDAO {
 			CloseDB();
 		}
 	}
-	
-	// idCheck(id,pass)
-	public int memberCheck(String email_id, String pass){
+
+	// idCheck(email_id,pass)
+	public int idCheck(String email_id,String pass){
 		int check=-1;
 		
 		try {
 			// 디비 연결(+드라이버로드)
 			con = getCon();
-
+			// sql 작성 & pstmt 객체 생성
 			sql ="select pass from member where email_id =?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
-			// email_id 실행 & 결과저장
+			// sql 실행 & 결과저장
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -123,25 +124,46 @@ public class MemberDAO {
 		
 		return check;
 	}
-	// idCheck(id,pass)
+	// idCheck(email_id,pass)
 	
-	// deleteMember(email_id, pass)
-	public void deleteMember(String email_id) {
+	// deleteMember(id,pass)
+	public int deleteMember(String email_id, String pass){
+		int check =-1;
+		
 		try {
 			con = getCon();
 			
-			sql = "delete from member where email_id=?";
+			sql = "select pass from member where email_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
 			
-			pstmt.executeUpdate();
-
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pass.equals(rs.getString("pass"))){
+				     sql="delete from member where email_id=?";
+				     pstmt = con.prepareStatement(sql);
+				     pstmt.setString(1, email_id);
+				     
+				     pstmt.executeUpdate();
+				     check =1;
+					
+				}else{
+					check =0;
+				}				
+			}else{
+				check =-1;
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			CloseDB();
 		}
+		
+		return check;
 	}
-	// deleteMember(email_id, pass)
+	// deleteMember(id,pass)
 
 }

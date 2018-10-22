@@ -73,17 +73,8 @@
 </head>
 <body>
 <%
-	/* 회원정보 변경 권한 */
-	/* authMemUp이 1이 아닐 때, 메인 페이지로*/
-	int authMemUp = (Integer)request.getAttribute("authMemUp");
-
-	if(authMemUp != 1){
-		response.sendRedirect("./Lemon/main.mi");
-	}else{
-		System.out.println("회원정보 변경 권한을 가지고 있습니다.");
-	}
+	String email_id = (String)session.getAttribute("email_id");
 %>
-
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
@@ -105,13 +96,17 @@
 					</strong>
 					</p>
 				</div>
-				<div class="mt14">
-					<input type="checkbox" id="isOutAgree" />
-					<label style="font-size: 12px; color: #666;">안내사항을 모두 확인하였으며, 이에 동의합니다.</label>
-				</div>
-				<button type="button" onclick="memberOut();">회원탈퇴</button><br/>
-				<button type="button" onclick="location.href='./ChooseMemberUpdate.mb'">취소</button>
-				
+				<form action="./MemberDeleteAction.mb" method="post">
+					<div class="mt14">
+						<input type="checkbox" id="isOutAgree" />
+						<label style="font-size: 12px; color: #666;">안내사항을 모두 확인하였으며, 이에 동의합니다.</label>
+					</div>
+					ID : <input type="text" name="email_id" value="<%=email_id %>" readonly/> <br/>
+					PW : <input type="text" name="pass" /> <br/>
+					
+					<input type="submit" onclick="return memberOut();" value="회원 탈퇴" />
+					<input type="button" onclick="history.back();" value="취소" />
+				</form>
 			</div>
 			
 		</div>
@@ -129,11 +124,14 @@
 			var chkMemDel = confirm('확인을 누르시면 탈퇴가 완료됩니다.');
 			
 			if(chkMemDel == true){	
-				location.href='./MemberDeleteAction.mb';
+				return true;
 			}
 		}else{
 			alert('안내사항을 확인하셨다면 동의해주세요.');
+			return false;
 		}
+		
+		return false;
 	}
 		
 	</script>
