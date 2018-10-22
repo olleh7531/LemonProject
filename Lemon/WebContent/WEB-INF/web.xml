@@ -166,6 +166,7 @@
 		<url-pattern>*.maga</url-pattern>
 	</servlet-mapping>
 
+	<!-- 스타포스트 -->
 	<servlet>
 		<servlet-name>StarPostFrontController</servlet-name>
 		<servlet-class>com.lemon.starpost.action.StarPostFrontController</servlet-class>
@@ -173,6 +174,16 @@
 	<servlet-mapping>
 		<servlet-name>StarPostFrontController</servlet-name>
 		<url-pattern>*.sp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 스타포스트 관리자 모드 -->
+	<servlet>
+		<servlet-name>AStarPostFrontController</servlet-name>
+		<servlet-class>com.lemon.admin.starpost.action.AStarPostFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AStarPostFrontController</servlet-name>
+		<url-pattern>*.asp</url-pattern>
 	</servlet-mapping>
 
 	<resource-ref>
