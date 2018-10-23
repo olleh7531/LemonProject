@@ -67,16 +67,26 @@
 	<div id="out">
 		<div id="in">
 			<div id="wrap_tit">
-				<h2>비밀번호 변경</h2>
+				<h2>회원정보 변경</h2>
 			</div>
-			
 			<div id="contsMem">
-				<form action="./MemberPassUpdateAction.mb" method="post" name="frPass">
-					현재 비밀번호 : <input type="text" name="crtPass"><br>
-					새 비밀번호 : <input type="text" name="newPass"><br>
-					새 비밀번호 확인 : <input type="text" name="chkPass"><br>
-					<input type="submit" onclick="return check();" value="로그인">
-					<input type="button" onclick="location.href='history.back()'" value="취소">
+				<form action="./MemberUpdateAction.mb" method="post">				
+					<h3><b>내 정보</b></h3><br/>
+					레몬 ID : <input><br/>
+					수신 여부 : <br/>
+					이름 : <br/>
+					닉네임 : 변경<br/>
+					성별 : <br/>
+					생일 : <br/>
+					프로필 이미지 : <br/>
+										
+					<hr/>
+					<h3><b>추가 정보</b></h3><br/>
+					휴대폰 : <br/>
+					우편 번호 : <br/>
+					주소 : <br/>
+					상세 주소 : <br/>
+				
 				</form>
 			</div>
 		</div>
@@ -86,30 +96,6 @@
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
-
-	<script>
-	function check(){
-		if(document.frPass.crtPass.value == ""){
-			alert("현재 비밀번호를 입력하시오");
-			document.frPass.crtPass.focus();
-			
-			return false;
-		}		
-		if(document.frPass.newPass.value == ""){
-			alert("새 비밀번호를 입력하시오");
-			document.frPass.newPass.focus();
-			
-			return false;
-		}
-		if(document.frPass.chkPass.value == ""){
-			alert("새 비밀번호 확인을 입력하시오");
-			document.frPass.chkPass.focus();
-			
-			return false;
-		}		
-		return true;
-	}
-	</script>
 	
 	</body>
 </html>

@@ -70,8 +70,7 @@
 			
 			<div id="conts">
 				<ul>
-					<li><a href="#">내 정보 변경</a></li>
-					<li><a href="#">추가정보 변경</a></li>
+					<li><a href="./MemberUpdate.mb">회원정보 변경</a></li>
 					<li><a href="./MemberPassUpdate.mb">비밀번호 변경</a></li>
 					<li><a href="./MemberDelete.mb">회원 탈퇴</a></li>
 				</ul>
