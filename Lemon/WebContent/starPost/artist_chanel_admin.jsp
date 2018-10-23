@@ -13,10 +13,12 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/jquery-ui.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/common/jquery-ui.js"></script>
 <script type="text/javascript" src="./assets/js/starpost/artist_chanel_admin.js"></script>
 </head>
 <body>
@@ -29,11 +31,15 @@
 		<table border="1">
 			<tr>
 				<td>가수 이름</td>
-				<td>아이유</td>
+				<td>
+					<input type="text">
+				</td>
 			</tr>
 			<tr>
 				<td>데뷔</td>
-				<td>2008.09.18</td>
+				<td>
+					<input name="acaCalendarFrom" type="text" id="acaCalendarFrom" value = "">
+				</td>
 			</tr>
 			<tr>
 				<td>활동년대</td>
@@ -60,7 +66,6 @@
 								value="2010">
 								<label for="aca_active_years_2010">2010</label>
 						</p>
-						<input type="submit" value="제출">
 					</fieldset>
 				</td>
 			</tr>
@@ -68,27 +73,24 @@
 				<td>유형</td>
 				<td>
 					<!-- http://victoryan.tistory.com/85 -->
+					<!-- https://blog.naver.com/jung20619/221104836168 -->
+					<!-- http://jindo.dev.naver.com/docs/jindo-component/1.8.0/doc/external/classes/jindo.SelectBox.html -->
+					<!-- https://blog.naver.com/horu_kaya/221033455801 -->
 					<select name="solo_group" size="1">
-							<optgroup label="솔로/그룹" selected>
-								<option value="solo">솔로</option>
-								<option value="group">그룹</option>
-							</optgroup>
+						<option value="" disabled="disabled">솔로/그룹</option>
+						<option value="solo">솔로</option>
+						<option value="group">그룹</option>
 					</select>
 					<select name="gender" size="1">
-							<optgroup label="성별" selected>
-								<option value="woman">여성</option>
-								<option value="man">남성</option>
-								<option value="mixed_gender">혼성</option>
-							</optgroup>
+						<option value="" disabled="disabled">성별</option>
+						<option value="woman">여성</option>
+						<option value="man">남성</option>
+						<option value="mixed_gender">혼성</option>
 					</select>
 				</td>
 			</tr>
-		</table>
-		
-		<br><br>
-		노래 장르<br><br>
-		<table border="1">
 			<tr>
+				<td>장르</td>
 				<td>
 					<fieldset>
 						<legend>노래 장르</legend>
@@ -122,6 +124,48 @@
 								<label for="aca_active_years_2010">인디음악</label>
 						</p>
 					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td>소속사명</td>
+				<td>카카오M, 페이브엔터테인먼트</td>
+			</tr>
+			<tr>
+				<td>소속사명</td>
+				<td>
+					<a href="#">이유 갓지(GOD G) 않은 이유 (박명수, 아이유)</a>
+				</td>
+			</tr>
+		</table>
+		
+		<br><br>
+		신상정보<br><br>
+		<table border="1">
+			<tr>
+				<td>본명</td>
+				<td>이지은</td>
+			</tr>
+			<tr>
+				<td>국적</td>
+				<td>대한민국</td>
+			</tr>
+			<tr>
+				<td>생일</td>
+				<td>1993.05.16</td>
+			</tr>
+			<tr>
+				<td>별자리</td>
+				<td>황소자리</td>
+			</tr>
+			<tr>
+				<td>혈액형</td>
+				<td>
+					<select name="blood_group" size="1">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="O">O</option>
+						<option value="AB">AB</option>
+					</select>
 				</td>
 			</tr>
 		</table>
