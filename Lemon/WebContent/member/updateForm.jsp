@@ -1,3 +1,5 @@
+<%@page import="com.lemon.member.db.MemberBean"%>
+<%@page import="com.lemon.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,6 +61,17 @@
 	</style>
 </head>
 <body>
+<%
+	String email_id= (String)session.getAttribute("email_id");
+
+	MemberBean mb = (MemberBean)request.getAttribute("mb");
+	
+	String gender = mb.getGender();
+	if(gender == null){
+		  gender = "남";
+	}
+%>
+
 
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -70,22 +83,33 @@
 				<h2>회원정보 변경</h2>
 			</div>
 			<div id="contsMem">
-				<form action="./MemberUpdateAction.mb" method="post">				
+				<form action="./MemberUpdateAction.mb" method="post" >				
 					<h3><b>내 정보</b></h3><br/>
-					레몬 ID : <input><br/>
-					수신 여부 : <br/>
-					이름 : <br/>
-					닉네임 : 변경<br/>
-					성별 : <br/>
-					생일 : <br/>
-					프로필 이미지 : <br/>
+					레몬 ID <input type="text" name="email_id" value="<%=mb.getEmail_id() %>"> <br/>
+					수신 여부 <input type="checkbox"> <br/>
+					비밀번호 <input type="text" name="pass"><br/>
+					비밀번호 확인 <input type="text" name="chkPass"><br/>
+					이름 <input type="text" name="name" value="<%=mb.getName()%>"> <br/>
+					닉네임 변경 <input type="text" name="nickName" value="<%=mb.getNickname()%>"><br/>
+					성별 <input type="radio" name="gender" value="남" 
+					      <%if(gender.equals("남")){ %>
+					          checked
+					      <%} %>
+					     >남
+					      <input type="radio" name="gender" value="여"
+					      <%if(gender.equals("여")){ %>
+					          checked
+					      <%} %>	      
+					       >여  <br/>
+					생일  <input type="text" name="birth"><br/>
+					프로필 이미지  <input type="text" name="email_id"> <br/>
 										
 					<hr/>
 					<h3><b>추가 정보</b></h3><br/>
-					휴대폰 : <br/>
-					우편 번호 : <br/>
-					주소 : <br/>
-					상세 주소 : <br/>
+					휴대폰  <input type="text" name="email_id">  <br/>
+					우편 번호  <input type="text" name="email_id">  <br/>
+					주소   <input type="text" name="email_id"> <br/>
+					상세 주소  <input type="text" name="email_id">  <br/>
 				
 				</form>
 			</div>

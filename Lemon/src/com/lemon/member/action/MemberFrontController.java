@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.member.action.MemberUpdate;
+import net.member.action.MemberUpdateAction;
+
 
 public class MemberFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -79,11 +82,39 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/chooseMemberUpdate.jsp");
 			forward.setRedirect(false);
 			
-		} else if(command.equals("/MemberDelete.mb")){
+		} else if(command.equals("/MemberUpdate.mb")){
+			action = new MemberUpdate(); // Action
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} /*else if(command.equals("/MemberUpdateAction.me")){
+			
+			//Action
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/  else if(command.equals("/MemberDelete.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/deleteForm.jsp");
 			forward.setRedirect(false);			
 
+		} else if(command.equals("/MemberDeleteAction.mb")){
+			action = new MemberDeleteAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if(command.equals("/MemberPassUpdate.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/updatePassForm.jsp");
@@ -97,12 +128,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/MemberUpdate.mb")){
-			forward = new ActionForward();
-			forward.setPath("./member/updateForm.jsp");
-			forward.setRedirect(false);		
-
-		} 
+		}
 
 		
 

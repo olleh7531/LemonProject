@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.member.db.MemberBean;
+
 
 public class MemberDAO {
 	Connection con = null;
@@ -208,5 +210,48 @@ public class MemberDAO {
 		return check;
 	}
 	// deleteMember(email_id,pass)
+
+	// getMember(email_id)
+	public MemberBean getMember(String email_id) {
+		MemberBean mb = null;
+		
+		try {
+			con = getCon();
+			
+			sql ="select * from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				mb = new MemberBean();
+				mb.setEmail_id(rs.getString("email_id"));
+				mb.setName(rs.getString("name"));
+				mb.setNickname(rs.getString("nickname"));
+				mb.setGender(rs.getString("gender"));
+				mb.setBirth(rs.getString("birth"));
+				mb.setImg(rs.getString("img"));
+				mb.setMobile(rs.getString("mobile"));
+				
+/*				mb.setAge(rs.getInt("age"));
+				mb.setEmail(rs.getString("email"));
+				
+				mb.setId(rs.getString("id"));
+				mb.setName(rs.getString("name"));
+				mb.setPass(rs.getString("pass"));
+				mb.setReg_date(rs.getTimestamp("reg_date"));
+*/			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return mb;
+		
+	}
+	// getMember(email_id)
 
 }
