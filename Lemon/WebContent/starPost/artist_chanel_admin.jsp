@@ -26,7 +26,6 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
 	<!-- 내용 -->
-	활동 정보<br><br>
 	<form action="" name="aca_form">
 		<table border="1">
 			<tr>
@@ -136,11 +135,6 @@
 					<a href="#">이유 갓지(GOD G) 않은 이유 (박명수, 아이유)</a>
 				</td>
 			</tr>
-		</table>
-		
-		<br><br>
-		신상정보<br><br>
-		<table border="1">
 			<tr>
 				<td>본명</td>
 				<td>이지은</td>
