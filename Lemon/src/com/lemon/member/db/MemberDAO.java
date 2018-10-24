@@ -299,6 +299,37 @@ public class MemberDAO {
 		
 		
 		return check;
+		
 	}
 	// updateMember(mb)
+
+	// checkNick(nickname)
+	public int checkNick(String nickname) {
+		int check=0;
+		
+		try {
+			con = getCon();
+			
+			sql ="select * from member where nickname=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				check =1;
+			}else{
+				check =0;
+			}
+			System.out.println("아이디 중복 검사 완료 ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			CloseDB();
+		}
+		
+		return check;
+	}
+	// checkNick(nickname)
 }

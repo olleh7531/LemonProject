@@ -59,21 +59,19 @@
 
 	
 	</style>
-		
-<script type="text/javascript">
-	/* winopen() */
-	function changeNick() {
+	
+	<script type="text/javascript">
+	function checkNick() {
 		if(document.fr.nickname.value == ""){
-			alert("닉네임을 입력하세요.");
+			alert("닉네임을 입력 해 주세요.");
 			document.fr.nickname.focus();
 			return;
 		}
-		var fnick = document.fr.nick.value;
+		var fnickname = document.fr.nickname.value;
 		// 새창 열기
-		window.open("joinIdCheck.jsp?fid="+fid,"","width=400,height=250");
+		window.open("./member/checkNick.jsp?fnickname="+fnickname,"","width=400,height=250");
 	}
-</script>
-
+	</script>
 </head>
 <body>
 <%
@@ -104,16 +102,16 @@
 				<form action="./MemberUpdateAction.mb" method="post" enctype="multipart/form-data" name="fr">				
 					<h3><b>내 정보</b></h3><br/>
 					<input type="hidden" name="preImg" value="<%=mb.getImg()%>">
-					프로필 이미지  <img src="./upload/member/img/<%=mb.getImg()%>"  width="50" height="50"><br/>
+					프로필 이미지  <img src="./upload/member/img/<%=mb.getImg()%>" width="50" height="50"><br/>
 					레몬 ID <input type="text" name="email_id" value="<%=mb.getEmail_id() %>"> <br/>
-					수신 여부 <input type="checkbox" name="receive_email" <%if(chkRe == 1){ %>
+					수신 여부  <input type="checkbox" name="receive_email" <%if(chkRe == 1){ %>
 					          checked
 					      <% } %>> <br/>
 					비밀번호 <input type="text" name="pass"><br/>
 					비밀번호 확인 <input type="text" name="chkPass"><br/>
 					이름 <input type="text" name="name" value="<%=mb.getName()%>"> <br/>
 					닉네임 <input type="text" name="nickname" value="<%=mb.getNickname()%>">
-							<input type="button" value="중복 확인" onclick="changeNick()"><br/>
+						<input type="button" value="중복 확인" onclick="checkNick()"> <br/>
 					성별 <input type="radio" name="gender" value="남" 
 					      <%if(gender.equals("남")){ %>
 					          checked
@@ -153,6 +151,10 @@
 	<!-- 주소 검색 API -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js" />
 	<script src="./assets/js/member/searchAddress.js" />
+	
+	<script>
+	
+	</script>
 
 	
 	</body>
