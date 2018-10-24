@@ -1,13 +1,18 @@
 package com.lemon.member.action;
 
+import java.io.File;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.lemon.member.db.MemberBean;
 import com.lemon.member.db.MemberDAO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MemberUpdateAction implements Action {
 
@@ -30,24 +35,48 @@ public class MemberUpdateAction implements Action {
 		
 		// 한글처리 
 		request.setCharacterEncoding("UTF-8");
+
+		ServletContext ctx = request.getServletContext();
+		String realPath=ctx.getRealPath("/upload/member/img/");
+	    
+		int maxSize = 10 * 1024 * 1024;
+		
+		String img="";
+		
+		MultipartRequest multi = new MultipartRequest(
+			request,
+			realPath,
+			maxSize,
+			"UTF-8",
+			new DefaultFileRenamePolicy()		  
+		);
+		
+		img = multi.getFilesystemName("img");		
+		
 		// MemberBean 객체 생성 -> 수정페이지(폼태그) 정보를 저장
 		// 파라미터값 -> MemberBean객체로 저장
 		MemberBean mb = new MemberBean();
+
+		mb.setEmail_id(multi.getParameter("email_id"));
+		mb.setPass(multi.getParameter("pass"));
+		mb.setName(multi.getParameter("name"));
+		mb.setNickname(multi.getParameter("nickname"));
+		mb.setGender(multi.getParameter("gender"));
+		mb.setBirth(multi.getParameter("birth"));
+		mb.setImg(img);
+		if(img == null){
+			mb.setImg(multi.getParameter("preImg"));
+		}
 		
-		mb.setEmail_id(request.getParameter("email_id"));
-		mb.setPass(request.getParameter("pass"));
-		mb.setName(request.getParameter("name"));
-		mb.setNickname(request.getParameter("nickname"));
-		mb.setGender(request.getParameter("gender"));
-		mb.setBirth(request.getParameter("birth"));
-		mb.setImg(request.getParameter("img"));
-		
-		mb.setMobile(request.getParameter("mobile"));
-		mb.setZip_code(request.getParameter("zip_code"));
-		mb.setAddress1(request.getParameter("address1"));
-		mb.setAddress2(request.getParameter("address2"));	
-//		mb.setreceive_email(Integer.parseInt(request.getParameter("age")));
-				
+		mb.setMobile(multi.getParameter("mobile"));
+		mb.setZip_code(multi.getParameter("zip_code"));
+		mb.setAddress1(multi.getParameter("address1"));
+		mb.setAddress2(multi.getParameter("address2"));	
+		if(multi.getParameter("receive_email") == null){
+			mb.setReceive_email(0);	
+		}else if(multi.getParameter("receive_email").equals("on")){
+			mb.setReceive_email(1);			
+		}
 		
 		// MemberDAO 객체 생성 -> 메서드 생성  updateMember(mb);
 		MemberDAO mdao = new MemberDAO();
@@ -73,9 +102,8 @@ public class MemberUpdateAction implements Action {
 			out.close();
 			return null;
 		}	
-		
+
 		//check =1 
-		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");

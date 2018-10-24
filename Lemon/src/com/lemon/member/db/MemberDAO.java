@@ -252,7 +252,7 @@ public class MemberDAO {
 	// updateMember(mb)
 	public int updateMember(MemberBean mb){
 		int check =-1;
-		
+
 		try {
 			con = getCon();
 			
@@ -261,12 +261,11 @@ public class MemberDAO {
 			pstmt.setString(1, mb.getEmail_id());
 			
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()){
 				// 아이디 있음
 				if(mb.getPass().equals(rs.getString("pass"))){
 					// 비밀번호 맞는경우
-					sql = "update member set name=?,nickname=?,gender=?,birth=?,img=?,mobile=?,zip_code=?,address1=?,address2=? where email_id =?";
+					sql = "update member set name=?,nickname=?,gender=?,birth=?,img=?,mobile=?,zip_code=?,address1=?,address2=?,receive_email=? where email_id =?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, mb.getName());
 					pstmt.setString(2, mb.getNickname());
@@ -278,11 +277,12 @@ public class MemberDAO {
 					pstmt.setString(7, mb.getZip_code());
 					pstmt.setString(8, mb.getAddress1());
 					pstmt.setString(9, mb.getAddress2());
-					pstmt.setString(10, mb.getEmail_id());
+					pstmt.setInt(10, mb.getReceive_email());
+					pstmt.setString(11, mb.getEmail_id());
 										
 					pstmt.executeUpdate();
 					check =1;
-					
+
 				}else{
                     // 비밀번호 틀린경우
 					check = 0;
