@@ -85,12 +85,13 @@
 			<div id="contsMem">
 				<form action="./MemberUpdateAction.mb" method="post" >				
 					<h3><b>내 정보</b></h3><br/>
+					프로필 이미지  <input type="text" name="img" value="<%=mb.getImg()%>"> <br/>
 					레몬 ID <input type="text" name="email_id" value="<%=mb.getEmail_id() %>"> <br/>
 					수신 여부 <input type="checkbox"> <br/>
 					비밀번호 <input type="text" name="pass"><br/>
 					비밀번호 확인 <input type="text" name="chkPass"><br/>
 					이름 <input type="text" name="name" value="<%=mb.getName()%>"> <br/>
-					닉네임 변경 <input type="text" name="nickName" value="<%=mb.getNickname()%>"><br/>
+					닉네임 변경 <input type="text" name="nickname" value="<%=mb.getNickname()%>"><br/>
 					성별 <input type="radio" name="gender" value="남" 
 					      <%if(gender.equals("남")){ %>
 					          checked
@@ -101,16 +102,18 @@
 					          checked
 					      <%} %>	      
 					       >여  <br/>
-					생일  <input type="text" name="birth"><br/>
-					프로필 이미지  <input type="text" name="email_id"> <br/>
+					생일  <input type="text" name="birth" value="<%=mb.getBirth()%>" ><br/>
+					이미지 변경 <br/>
 										
 					<hr/>
 					<h3><b>추가 정보</b></h3><br/>
-					휴대폰  <input type="text" name="email_id">  <br/>
-					우편 번호  <input type="text" name="email_id">  <br/>
-					주소   <input type="text" name="email_id"> <br/>
-					상세 주소  <input type="text" name="email_id">  <br/>
-				
+					휴대폰  <input type="text" name="mobile" value="<%=mb.getMobile()%>">  <br/>
+					우편 번호  <input type="text" name="zip_code" value="<%=mb.getZip_code()%>">  <br/>
+					주소   <input type="text" name="address1" value="<%=mb.getAddress1()%>"> <br/>
+					상세 주소  <input type="text" name="address2" value="<%=mb.getAddress2()%>">  <br/>
+
+					<input type="submit" value="회원수정">						
+					<input type="reset" value="취소">	
 				</form>
 			</div>
 		</div>

@@ -8,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.action.MemberUpdate;
-import net.member.action.MemberUpdateAction;
-
-
 public class MemberFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -77,12 +73,13 @@ public class MemberFrontController extends HttpServlet {
 			}
 			
 		} else if(command.equals("/ChooseMemberUpdate.mb")){
-			// 회원정보 변경
+			// 회원정보 변경 메뉴 선택
 			forward = new ActionForward();
 			forward.setPath("./member/chooseMemberUpdate.jsp");
 			forward.setRedirect(false);
 			
 		} else if(command.equals("/MemberUpdate.mb")){
+			// 회원정보 변경
 			action = new MemberUpdate(); // Action
 			
 			try {
@@ -91,18 +88,16 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		} /*else if(command.equals("/MemberUpdateAction.me")){
-			
-			//Action
+		} else if(command.equals("/MemberUpdateAction.mb")){	
+			// 회원정보 수정 처리
 			action = new MemberUpdateAction();
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}*/  else if(command.equals("/MemberDelete.mb")){
+		}  else if(command.equals("/MemberDelete.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/deleteForm.jsp");
 			forward.setRedirect(false);			
