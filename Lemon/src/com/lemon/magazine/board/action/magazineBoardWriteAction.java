@@ -28,7 +28,7 @@ public class magazineBoardWriteAction implements Action {
 		bdao.insertBoard(bb);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./main.mi");
+		forward.setPath("./magazineList.maga");
 		forward.setRedirect(true);
 		
 		return forward;

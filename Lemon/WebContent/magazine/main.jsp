@@ -20,10 +20,10 @@
 <jsp:include page="../common/menu.jsp"></jsp:include>
 
 <!-- 본문 -->	
-<%
-  response.sendRedirect("./magazine.go");
+<%-- <%
+  response.sendRedirect("./");
 
-%>
+%> --%>
 
 
 </body>

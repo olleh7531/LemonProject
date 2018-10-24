@@ -36,6 +36,10 @@ public class MagazineFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(command.equals("/magazineList.maga")){
+			forward = new ActionForward();
+			forward.setPath("./magazine/main.jsp");
+			forward.setRedirect(false);
 		}
 
 		if (forward != null) {
