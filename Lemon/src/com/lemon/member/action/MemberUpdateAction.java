@@ -51,6 +51,21 @@ public class MemberUpdateAction implements Action {
 			new DefaultFileRenamePolicy()		  
 		);
 		
+		String pass = multi.getParameter("pass");
+		String chkPass = multi.getParameter("chkPass");		
+		
+		if(!pass.equals(chkPass)){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script>");
+			out.println(" alert('비밀번호가 일치하지 않습니다.');");
+			out.println(" history.back(); ");
+			out.println("</script>");
+			out.close();
+			
+		}
+		
 		img = multi.getFilesystemName("img");		
 		
 		// MemberBean 객체 생성 -> 수정페이지(폼태그) 정보를 저장
@@ -58,7 +73,7 @@ public class MemberUpdateAction implements Action {
 		MemberBean mb = new MemberBean();
 
 		mb.setEmail_id(multi.getParameter("email_id"));
-		mb.setPass(multi.getParameter("pass"));
+		mb.setPass(pass);
 		mb.setName(multi.getParameter("name"));
 		mb.setNickname(multi.getParameter("nickname"));
 		mb.setGender(multi.getParameter("gender"));

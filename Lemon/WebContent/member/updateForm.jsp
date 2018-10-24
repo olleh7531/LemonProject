@@ -151,11 +151,7 @@
 	<!-- 주소 검색 API -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js" />
 	<script src="./assets/js/member/searchAddress.js" />
-	
-	<script>
-	
-	</script>
 
-	
+
 	</body>
 </html>
