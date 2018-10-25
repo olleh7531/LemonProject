@@ -22,6 +22,40 @@
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 
+
+	<style>
+	#wrap_tablePass{
+		border-top: 1px solid #B8B8B8;
+		border-bottom: 1px solid #B8B8B8;
+		
+	    font-size: 14px;
+   		line-height: 1.2em;
+    	font-family: "돋움","Dotum","Apple Gothic",sans-serif;
+    	letter-spacing: 0;
+
+	}
+	
+	#wrap_tablePass table{
+		width:100%;
+    	border-collapse : collapse;
+		
+	}
+	#wrap_tablePass th {
+	    border-top: 1px solid #e6e6e6;
+	    border-right: 1px solid #e6e6e6;
+        background: #fafafa;
+        color: #1a1a1a;
+    	vertical-align: middle;
+    	padding:15px;
+
+	}
+	#wrap_tablePass td {
+
+		border-top: 1px solid #e6e6e6;
+	}
+	
+	</style>
+	
 </head>
 <body>
 
@@ -37,11 +71,30 @@
 			
 			<div id="contsMem">
 				<form action="./MemberPassUpdateAction.mb" method="post" name="frPass">
-					현재 비밀번호 : <input type="text" name="crtPass"><br>
-					새 비밀번호 : <input type="text" name="newPass"><br>
-					새 비밀번호 확인 : <input type="text" name="chkPass"><br>
-					<input type="submit" onclick="return check();" value="로그인">
-					<input type="button" onclick="location.href='history.back()'" value="취소">
+					<div id="wrap_tablePass">
+					<table>
+						<colgroup>
+							<col style="width:188px">
+							<col>
+						</colgroup>
+						<tr>
+							<th>현재 비밀번호</th>
+							<td><input type="text" name="crtPass"></td>
+						</tr>
+						<tr>
+							<th>새 비밀번호</th>
+							<td><input type="text" name="newPass"></td>
+						</tr>
+						<tr>
+							<th>새 비밀번호 확인</th>
+							<td><input type="text" name="chkPass"></td>
+						</tr>
+					</table>
+					</div>
+					<div id="wrap_buttons">
+						<input type="submit" onclick="return check();" value="로그인">
+						<input type="button" onclick="location.href='history.back()'" value="취소">
+					</div>
 				</form>
 			</div>
 		</div>
