@@ -74,7 +74,7 @@ public class NoticeDAO {
 			pstmt.setString(3, nb.getNo_subject());
 			pstmt.setString(4, nb.getNo_content());
 			pstmt.setInt(5, 0);
-
+			
 			pstmt.executeUpdate();
 			System.out.println("insert ok");
 		} catch (Exception e) {
@@ -106,10 +106,36 @@ public class NoticeDAO {
 
 		return count;
 	}
-
+	
+	public int getNoticeCount(String category) {
+		int count = 0;
+		// DB 연결
+		try {
+			con = getCon();
+			
+			if(category.equals("분류")) {
+				category = "%";
+			}
+			
+			sql = "select count(*) from notice where no_category like ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, category);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return count;
+	}
+	
 	public List getNoticeList(int startRow, int pageSize) {
 		List noticeList = new ArrayList();
-
+		
 		try {
 			con = getCon();
 			sql = "select * from notice order by num desc limit ?,?";
@@ -127,9 +153,47 @@ public class NoticeDAO {
 				nb.setNo_content(rs.getString("no_content"));
 				nb.setNo_reg_date(rs.getString("no_reg_date"));
 				nb.setNo_readcount(rs.getInt("no_readcount"));
-
+				
 				// noticeList 한 칸에 저장
-
+				
+				noticeList.add(nb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return noticeList;
+	}
+	
+	public List getNoticeList(int startRow, int pageSize, String category) {
+		List noticeList = new ArrayList();
+		try {
+			con = getCon();
+			
+			if(category.equals("분류")) {
+				category = "%";
+			}
+			
+			sql = "select * from notice where no_category like ? order by num desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, category);
+			pstmt.setInt(2, startRow - 1);
+			pstmt.setInt(3, pageSize);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				NoticeBean nb = new NoticeBean();
+				nb.setNum(rs.getInt("num"));
+				nb.setNo_category(rs.getString("no_category"));
+				nb.setNo_subject(rs.getString("no_subject"));
+				nb.setNo_content(rs.getString("no_content"));
+				nb.setNo_reg_date(rs.getString("no_reg_date"));
+				nb.setNo_readcount(rs.getInt("no_readcount"));
+				
+				// noticeList 한 칸에 저장
+				
 				noticeList.add(nb);
 			}
 		} catch (Exception e) {
@@ -166,7 +230,7 @@ public class NoticeDAO {
 
 			if (rs.next()) {
 				nb = new NoticeBean();
-
+				
 				nb.setNum(rs.getInt("num"));
 				nb.setNo_category(rs.getString("no_category"));
 				nb.setNo_subject(rs.getString("no_subject"));
@@ -182,60 +246,34 @@ public class NoticeDAO {
 		return nb;
 	}
 
-	public int updateNotice(NoticeBean nb) {
-		int check = -1;
-
+	public void updateNotice(NoticeBean nb) {
 		try {
 			con = getCon();
-			sql = "select pass from notice where num=?";
+			sql = "update notice set no_subject=?, no_category=? ,no_content=? where num=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, nb.getNum());
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				sql = "update notice set no_subject=?, no_content=? where num=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, nb.getNo_subject());
-				pstmt.setString(2, nb.getNo_content());
-				pstmt.setInt(3, nb.getNum());
-
-				pstmt.executeUpdate();
-				check = 1;
-			} else {
-				check = 0;
-			}
+			pstmt.setString(1, nb.getNo_subject());
+			pstmt.setString(2, nb.getNo_category());
+			pstmt.setString(3, nb.getNo_content());
+			pstmt.setInt(4, nb.getNum());
+			
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
-		return check;
 	}
-
-	public int deleteNotice(int num, String pass) {
-		int check = -1;
-		System.out.println("1");
+	
+	public int deleteNotice(int num) {
+		int check = 0;
 		try {
 			con = getCon();
-			sql = "select pass from notice where no=?";
+			sql = "delete from notice where num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
-			System.out.println("2");
-			if (rs.next()) {
-				if (pass.equals(rs.getString("pass"))) {
-					sql = "delete from notice where no=?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, num);
-					pstmt.executeUpdate();
-					check = 1;
-					System.out.println("3");
-				} else {
-					check = 0;
-				}
-			} else {
-				check = -1;
-			}
+			
+			pstmt.executeUpdate();
+			check = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

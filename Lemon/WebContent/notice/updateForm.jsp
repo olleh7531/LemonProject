@@ -1,5 +1,5 @@
+<%@page import="com.lemon.notice.db.NoticeDAO"%>
 <%@page import="com.lemon.notice.db.NoticeBean"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -16,21 +16,20 @@
 	href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
 <link rel="stylesheet" type="text/css"
-	href="./assets/css/board/notice.css">
-<link rel="stylesheet" type="text/css"
 	href="./assets/css/common/font.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/font/nanumgothic.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/common/footer.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript"
+	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-<script type="text/javascript" src="./assets/js/se2/js/HuskyEZCreator.js"></script>
+<script type="text/javascript"
+	src="./assets/js/se2/js/HuskyEZCreator.js"></script>
 <script src="./assets/js/jquery-3.1.1.min.js"></script>
 <!-- Mainly scripts -->
 
@@ -54,43 +53,55 @@
 			$("#frm").submit();
 		})
 	});
-	
 </script>
 
 </head>
 <body>
+
+	<%
+		request.setCharacterEncoding("UTF-8");
+		int num = Integer.parseInt(request.getParameter("num"));
+		String pageNum = request.getParameter("pageNum");
+
+		NoticeDAO ndao = new NoticeDAO();
+		NoticeBean nb = ndao.getNotice(num);
+	%>
+
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-
+	
 	<!-- 내용 -->
-	<div id="wrap_conts" style="text-align: center">
+	<div id="wrap_conts">
 		<div id="conts">
-			<form action="./NoticeWriteAction.nt" method="post" id="frm">
-				<div>
-					<select name="category">
-						<option value="서비스 소식">서비스 소식</option>
-						<option value="서비스 오픈">서비스 오픈</option>
-						<option value="서비스 종료">서비스 종료</option>
-						<option value="서비스 점검">서비스 점검</option>
-						<option value="안내">안내</option>
-					</select>
-					
-					<input type="text" name="subject" placeholder="제목" required> <br>
-				</div>
-				
-				<textarea name="content" id="smarteditor" class="summernote" placeholder="메시지를 입력하세요" required
-				style="width: 700px; height: 300px;" ></textarea> <br>
-				 
-				<input type="button" id="submit_btn" value="글쓰기">
+			<form action="./NoticeUpdateAction.nt?pageNum=<%=pageNum%>"
+				method="post" id="frm" style="text-align: center">
+				<input type="hidden" name="num" value="<%=num%>"> <select
+					name="category">
+					<option value="서비스 소식"
+						<%if (nb.getNo_category().equals("서비스 소식")) {%> selected <%}%>>서비스
+						소식</option>
+					<option value="서비스 오픈"
+						<%if (nb.getNo_category().equals("서비스 오픈")) {%> selected <%}%>>서비스
+						오픈</option>
+					<option value="서비스 종료"
+						<%if (nb.getNo_category().equals("서비스 종료")) {%> selected <%}%>>서비스
+						종료</option>
+					<option value="서비스 점검"
+						<%if (nb.getNo_category().equals("서비스 점검")) {%> selected <%}%>>서비스
+						점검</option>
+					<option value="안내" <%if (nb.getNo_category().equals("안내")) {%>
+						selected <%}%>>안내</option>
+				</select> <input type="text" name="subject" placeholder="제목"
+					value="<%=nb.getNo_subject()%>"> <br>
+				<textarea name="content" id="smarteditor" class="summernote"
+					placeholder="메시지를 입력하세요" required style="display: inline-block;"><%=nb.getNo_content()%></textarea>
+				<br> <input type="button" id="submit_btn" value="수정하기">
 			</form>
-			<div id="pageNavi"></div>
-			<div class="wrap_search"></div>
 		</div>
 	</div>
 	<!-- 내용 -->
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-
 </body>
 </html>

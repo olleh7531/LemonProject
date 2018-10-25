@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NoticeFrontController extends HttpServlet {
 	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		request.setCharacterEncoding("UTF-8");
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
@@ -20,15 +21,21 @@ public class NoticeFrontController extends HttpServlet {
 		ActionForward forward = null;
 		
 		// 초기화면. List 보여주는 곳
-		if (command.equals("/notice.nt")) {
+		if (command.equals("/noticeInit.nt")) {
+			action = new NoticeInitAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		// 글 내용 보기
+		} else if(command.equals("/notice.nt")) {
 			action = new NoticeListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		// 글 내용 보기
 		} else if(command.equals("/noticeContent.nt")) {
 			action = new NoticeContentAction();
 			try {
@@ -36,8 +43,9 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		} else if(command.equals("/NoticeWrite.nt")) {
+		} 
+		
+		else if(command.equals("/NoticeWrite.nt")) {
 			forward = new ActionForward();
     		forward.setPath("./notice/writeForm.jsp");
     		forward.setRedirect(false);
@@ -49,7 +57,26 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		} else if(command.equals("/NoticeUpdate.nt")) {
+			forward = new ActionForward();
+    		forward.setPath("./notice/updateForm.jsp");
+    		forward.setRedirect(false);
+    		
+		} else if(command.equals("/NoticeUpdateAction.nt")) {
+			action = new NoticeUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/NoticeDeleteAction.nt")) {
+			action = new NoticeDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		
 		
 		if (forward != null) {

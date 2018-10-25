@@ -258,7 +258,7 @@
 						</a>
 					</li>
 					<li class="menu6">
-						<a href="./notice.nt" class="cur_menu mlog">
+						<a href="./noticeInit.nt" class="cur_menu mlog">
 							<span class="menu_more menu04">공지사항</span>
 						</a>
 					</li>

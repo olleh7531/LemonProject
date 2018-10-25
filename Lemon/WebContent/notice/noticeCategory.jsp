@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,26 +32,17 @@
 	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script>
-	function initialization() {
-		var category = document.getElementById("category").
-		options[document.getElementById("category").selectedIndex].text;
-		
-		$.ajax({
-        	url: "./notice.nt",
-            data: {category: category},
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            type: 'POST',
-            success:function(result) {
-				$('.no_tbody').html(result);
-            }, error:function() {
-				alert("실패");
-            }
-        });
+	function Select(elm) {
+		if(elm.value != "분류") {
+			alert(elm.value)
+			location.href="./noticeCategory.nt?category="+elm.value;
+		} else {
+			location.href="./notice.nt";
+		}
 	}
-	
 	</script>
 </head>
-<body onload="initialization()">
+<body>
 	<%
 		request.setCharacterEncoding("UTF-8");
 		//  request 데이터 저장
@@ -79,9 +71,9 @@
 		<div id="conts">
 			<h2 id="tit">공지사항</h2>
 			<div id="wrap_select">
-				<select name="category" id="category" onchange="initialization()">
-					<option value="분류"
-					<%if (category.equals("분류")) {%> selected <%}%>>분류</option>
+				
+				<select name="category" onchange="Select(this)">
+					<option value="분류">분류</option>
 					<option value="서비스 소식"
 					<%if (category.equals("서비스 소식")) {%> selected <%}%>>서비스	소식</option>
 					<option value="서비스 오픈"
@@ -113,22 +105,21 @@
 							<th scope="col">등록일</th>
 						</tr>
 					</thead>
-
-					<tbody class="no_tbody">
+					
+					<tbody>
 						<%
 							if (count != 0) {
 								for (int i = 0; i < NoticeList.size(); i++) {
 									NoticeBean nb = (NoticeBean) NoticeList.get(i);
 						%>
-						<%-- <tr>
+						<tr>
 							<td scope="col"><%=nb.getNum()%></td>
 							<td scope="col"><%=nb.getNo_category()%></td>
-							<td id="subject" scope="col">
-							<a href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a>
-							</td>
+							<td id="subject" scope="col"><a
+								href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a></td>
 							<td scope="col"><%=nb.getNo_readcount()%></td>
 							<td><div class="wrap"><%=nb.getNo_reg_date()%></div></td>
-						</tr> --%>
+						</tr>
 						<%
 								}
 							}
@@ -150,7 +141,7 @@
 								// 1~10,11~20,21~30,....
 								for (int i = startPage; i <= endPage; i++) {
 						%>
-						<a href="./noticeInit.nt?pageNum=<%=i%>">[<%=i%>]
+						<a href="./notice.nt?pageNum=<%=i%>">[<%=i%>]
 						</a>
 						<%
 							}
@@ -169,13 +160,11 @@
 					<a href="./NoticeWrite.nt">글쓰기</a>
 				</div>
 			</div>
-
 			<div id="pageNavi"></div>
 			<div class="wrap_search"></div>
 		</div>
 	</div>
 	<!-- 내용 -->
-
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
