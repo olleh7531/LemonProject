@@ -16,45 +16,12 @@
 	
 	<!-- Member CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
-	
+	<link rel="stylesheet" type="text/css" href="./assets/css/member/updateMemberPass.css">	
+		
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-
-
-	<style>
-	#wrap_tablePass{
-		border-top: 1px solid #B8B8B8;
-		border-bottom: 1px solid #B8B8B8;
-		
-	    font-size: 14px;
-   		line-height: 1.2em;
-    	font-family: "돋움","Dotum","Apple Gothic",sans-serif;
-    	letter-spacing: 0;
-
-	}
-	
-	#wrap_tablePass table{
-		width:100%;
-    	border-collapse : collapse;
-		
-	}
-	#wrap_tablePass th {
-	    border-top: 1px solid #e6e6e6;
-	    border-right: 1px solid #e6e6e6;
-        background: #fafafa;
-        color: #1a1a1a;
-    	vertical-align: middle;
-    	padding:15px;
-
-	}
-	#wrap_tablePass td {
-
-		border-top: 1px solid #e6e6e6;
-	}
-	
-	</style>
 	
 </head>
 <body>
@@ -69,9 +36,11 @@
 				<h2>비밀번호 변경</h2>
 			</div>
 			
-			<div id="contsMem">
+			<div id="contsMem">			
+				<p>주기적인 비밀번호 변경은 개인정보를 안전하게 보호하고, 개인정보도용 피해를 예방합니다.</p>
+			
 				<form action="./MemberPassUpdateAction.mb" method="post" name="frPass">
-					<div id="wrap_tablePass">
+					<div class="wrap_table">
 					<table>
 						<colgroup>
 							<col style="width:188px">
@@ -92,10 +61,18 @@
 					</table>
 					</div>
 					<div id="wrap_buttons">
-						<input type="submit" onclick="return check();" value="로그인">
-						<input type="button" onclick="location.href='history.back()'" value="취소">
+						<input type="submit" onclick="return check();" class="btnConfirm" value="로그인">
+						<input type="button" onclick="history.back()" class="btnCancle" value="취소">
 					</div>
 				</form>
+				
+				<div id="noti_box">
+					<ul>
+						<li>개인정보(연락처/생일)와 관련된 숫자 등 다른 사람이 알아낼 수 있는 비밀번호는 사용하지 마세요.</li>
+						<li>영문, 특수문자를 혼합하면 더욱 안전한 비밀번호를 만들 수 있습니다.</li>
+					</ul>
+				</div>
+				
 			</div>
 		</div>
 	</div>

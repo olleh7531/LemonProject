@@ -18,7 +18,8 @@
 	
 	<!-- Member CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
-	
+	<link rel="stylesheet" type="text/css" href="./assets/css/member/updateMember.css">
+		
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -36,6 +37,7 @@
 		window.open("./member/checkNick.jsp?fnickname="+fnickname,"","width=400,height=250");
 	}
 	</script>
+	
 </head>
 <body>
 <%
@@ -64,42 +66,108 @@
 			</div>
 			<div id="contsMem">
 				<form action="./MemberUpdateAction.mb" method="post" enctype="multipart/form-data" name="fr">				
-					<h3><b>내 정보</b></h3><br/>
 					<input type="hidden" name="preImg" value="<%=mb.getImg()%>">
-					프로필 이미지  <img src="./upload/member/img/<%=mb.getImg()%>" width="50" height="50"><br/>
-					레몬 ID <input type="text" name="email_id" value="<%=mb.getEmail_id() %>"> <br/>
-					수신 여부  <input type="checkbox" name="receive_email" <%if(chkRe == 1){ %>
-					          checked
-					      <% } %>> <br/>
-					비밀번호 <input type="text" name="pass"><br/>
-					비밀번호 확인 <input type="text" name="chkPass"><br/>
-					이름 <input type="text" name="name" value="<%=mb.getName()%>"> <br/>
-					닉네임 <input type="text" name="nickname" value="<%=mb.getNickname()%>">
-						<input type="button" value="중복 확인" onclick="checkNick()"> <br/>
-					성별 <input type="radio" name="gender" value="남" 
-					      <%if(gender.equals("남")){ %>
-					          checked
-					      <%} %>
-					     >남
-					      <input type="radio" name="gender" value="여"
-					      <%if(gender.equals("여")){ %>
-					          checked
-					      <%} %>	      
-					       >여  <br/>
-					생일  <input type="text" name="birth" value="<%=mb.getBirth()%>" ><br/>
-					이미지 변경 <input type="file" name="img" id="img" onchange="previewImage(this,'View_area')"><br/>
-					<div id='View_area' style='position:relative; width: 100px; height: 100px; color: black; border: 0px solid black; dispaly: inline; '></div>
 					
-					<hr/>
+					<h3><b>내 정보</b></h3><br/>
+					<div class="wrap_table">
+					<table>
+						<colgroup>
+							<col style="width:188px">
+							<col>
+						</colgroup>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+								<div>
+									<img src="./upload/member/img/<%=mb.getImg()%>" style="margin-top:10px;" width="100" height="100">
+									<p style="margin-top:10px; margin-bottom:10px;"><span style="font-size: 20px; font-weight: bold;"><%=mb.getNickname()%></span>님의 회원정보</p>
+								</div>
+							</td>
+						</tr>
+						<tr style="height: 70px">
+							<th>레몬 ID</th>
+							<td>
+								<input type="text" name="email_id" value="<%=mb.getEmail_id() %>"><br/>	
+								<p><input type="checkbox" stype="width:auto;" name="receive_email" <%if(chkRe == 1){ %>
+					          			checked
+					      			<% } %>><label>이메일 수신동의</label>
+					      		</p>
+							</td>
+						</tr>
+						<tr>
+							<th>비밀번호</th>
+							<td><input type="text" name="pass"></td>
+						</tr>
+						<tr>
+							<th>비밀번호 확인</th>
+							<td><input type="text" name="chkPass"></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td><input type="text" name="name" value="<%=mb.getName()%>"></td>
+						</tr>
+						<tr>
+							<th>닉네임</th>
+							<td><input type="text" name="nickname" value="<%=mb.getNickname()%>">
+						<input type="button" class="upBtn" value="중복 확인" onclick="checkNick()"></td>
+						</tr>
+						<tr>
+							<th>성별</th>
+							<td><input type="radio" name="gender" value="남" 
+							      <%if(gender.equals("남")){ %>
+							          checked
+							      <%} %>
+							     >남
+							      <input type="radio" name="gender" value="여"
+							      <%if(gender.equals("여")){ %>
+							          checked
+							      <%} %>	      
+							     >여
+					       </td>
+						</tr>
+						<tr>
+							<th>생일</th>
+							<td><input type="text" name="birth" value="<%=mb.getBirth()%>" ></td>
+						</tr>
+						<tr>
+							<th>프로필 이미지 변경</th>
+							<td><input type="file" style="margin:10px 0 10px 20px" name="img" id="img" onchange="previewImage(this,'View_area')"><br/>
+							<div id='View_area' style='position:relative; width: 100px; height: 100px; margin:0 0 10px 20px; color: black; border: 1px solid black; dispaly: inline; '></td>
+						</tr>
+					</table>
+					</div>
+					<br/>
+					
 					<h3><b>추가 정보</b></h3><br/>
-					휴대폰  <input type="text" name="mobile" value="<%=mb.getMobile()%>">  <br/>
-					우편 번호  <input type="text" name="zip_code" id="zip_code" value="<%=mb.getZip_code()%>">
-						   <input type="button" onclick="searchAddress()" value="주소 검색" class="dup"> <br/>
-					주소   <input type="text" name="address1" id="address1" value="<%=mb.getAddress1()%>"> <br/>
-					상세 주소  <input type="text" name="address2" id="address2" value="<%=mb.getAddress2()%>">  <br/>
-
-					<input type="submit" value="회원수정">						
-					<input type="reset" value="취소">	
+					<div class="wrap_table">
+					<table>
+						<colgroup>
+							<col style="width:188px">
+							<col>
+						</colgroup>
+						<tr>
+							<th>휴대폰</th>
+							<td><input type="text" name="mobile" value="<%=mb.getMobile()%>"></td>
+						</tr>
+						<tr>
+							<th>우편 번호</th>
+							<td><input type="text" name="zip_code" id="zip_code" value="<%=mb.getZip_code()%>">
+						   <input type="button" onclick="searchAddress()" class="upBtn" value="주소 검색" class="dup"></td>
+						</tr>
+						<tr>
+							<th>주소 </th>
+							<td><input type="text" name="address1" id="address1" value="<%=mb.getAddress1()%>"></td>
+						</tr>
+						<tr>
+							<th>상세 주소</th>
+							<td><input type="text" name="address2" id="address2" value="<%=mb.getAddress2()%>"></td>
+						</tr>
+					</table>
+					</div>					
+					
+					<div id="wrap_buttons">
+						<input type="submit" class="btnConfirm" value="회원 수정" />
+						<input type="button" class="btnCancle" value="취소" />
+					</div>	
 				</form>
 			</div>
 		</div>

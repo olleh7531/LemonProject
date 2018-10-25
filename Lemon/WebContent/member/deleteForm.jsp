@@ -76,8 +76,8 @@
 					</div>
 					
 					<div id="wrap_buttons">
-						<input type="submit" onclick="return memberOut();" value="회원 탈퇴" />
-						<input type="button" onclick="history.back();" value="취소" />
+						<input type="submit" onclick="return memberOut();" class="btnConfirm" value="회원 탈퇴" />
+						<input type="button" onclick="history.back();" class="btnCancle" value="취소" />
 					</div>				
 				</form>
 			</div>

@@ -35,8 +35,41 @@ div{
 	padding-top: 20px;
 }
 
+/*테이블 관련*/
+.wrap_table{
+	border-top: 1px solid #B8B8B8;
+	border-bottom: 1px solid #B8B8B8;
+    font-size: 14px;
+	line-height: 1.2em;
+   	font-family: "돋움","Dotum","Apple Gothic",sans-serif;
+   	letter-spacing: 0;
+}
+	
+.wrap_table table{
+	width:100%;
+   	border-collapse : collapse;		
+}
+	
+.wrap_table th {
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    background: #fafafa;
+    color: #1a1a1a;
+   	vertical-align: middle;
+   	padding:15px;
+}
+
+.wrap_table td {
+	border-top: 1px solid #e6e6e6;
+}
+
+.wrap_table input{
+	margin-left: 20px;
+}
+/*테이블 관련*/	
+
 /* 버튼 */
-input[type=submit] {
+.btnConfirm {
   background-color: #EDAE06;
   border: 0;
   border-radius: 100px;
@@ -51,12 +84,11 @@ input[type=submit] {
   margin-right:5px;
 }
 	
-input[type=button] {
+.btnCancle {
   background-color: #FFF;
   border: 1px solid #bfbfbf;
   border-radius: 100px;
   cursor: pointer;
-  color: #fff;
   font-size:16px;
   font-weight: bold;
   line-height: 1.4;
@@ -67,11 +99,15 @@ input[type=button] {
   margin-right:5px;
 }
 
-input:hover[type=submit]{
+.btnConfirm:hover{
 	  background-color: #e0a000;
 }
 	
-input:hover[type=button]{
+.btnCancle:hover{
 	border: 1px solid #8e8e8e;
 }
 /* 버튼 */
+
+.clear{
+	clear: both;
+}
