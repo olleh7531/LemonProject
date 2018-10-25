@@ -11,11 +11,18 @@ public class MemberBean {
 	private String birth;
 	private int level;
 	private String img;
-	private int no;
 	private Date reg_date;
 	private String reg_ip;
 	private int is_deny;
 	private int chk;
+	
+	private String mobile;
+	private String zip_code;
+	private String address1;
+	private String address2;
+	private int email_cert;
+	private int receive_email;
+	
 	
 	public String getEmail_id() {
 		return email_id;
@@ -65,12 +72,6 @@ public class MemberBean {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
 	public Date getReg_date() {
 		return reg_date;
 	}
@@ -89,10 +90,47 @@ public class MemberBean {
 	public void setIs_deny(int is_deny) {
 		this.is_deny = is_deny;
 	}
-	public int getchk() {
+	public int getChk() {
 		return chk;
 	}
-	public void setchk(int chk) {
+	public void setChk(int chk) {
 		this.chk = chk;
 	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getZip_code() {
+		return zip_code;
+	}
+	public void setZip_code(String zip_code) {
+		this.zip_code = zip_code;
+	}
+	public String getAddress1() {
+		return address1;
+	}
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	public String getAddress2() {
+		return address2;
+	}
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+	public int getEmail_cert() {
+		return email_cert;
+	}
+	public void setEmail_cert(int email_cert) {
+		this.email_cert = email_cert;
+	}
+	public int getReceive_email() {
+		return receive_email;
+	}
+	public void setReceive_email(int receive_email) {
+		this.receive_email = receive_email;
+	}
+	
 }

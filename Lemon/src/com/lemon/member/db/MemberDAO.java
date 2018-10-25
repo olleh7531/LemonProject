@@ -166,8 +166,7 @@ public class MemberDAO {
 		
 		return check;
 	}
-	// updateMemPass()
-		
+	// updateMemPass()	
 	
 	// deleteMember(email_id,pass)
 	public int deleteMember(String email_id, String pass){
@@ -209,4 +208,128 @@ public class MemberDAO {
 	}
 	// deleteMember(email_id,pass)
 
+	// getMember(email_id)
+	public MemberBean getMember(String email_id) {
+		MemberBean mb = null;
+		
+		try {
+			con = getCon();
+			
+			sql ="select * from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				//내정보
+				mb = new MemberBean();
+				mb.setEmail_id(rs.getString("email_id"));
+				mb.setName(rs.getString("name"));
+				mb.setNickname(rs.getString("nickname"));
+				mb.setGender(rs.getString("gender"));
+				mb.setBirth(rs.getString("birth"));
+				mb.setImg(rs.getString("img"));
+				//추가정보
+				mb.setMobile(rs.getString("mobile"));
+				mb.setZip_code(rs.getString("zip_code"));
+				mb.setAddress1(rs.getString("address1"));
+				mb.setAddress2(rs.getString("address2"));
+				mb.setReceive_email(rs.getInt("receive_email"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return mb;
+		
+	}
+	// getMember(email_id)
+
+	// updateMember(mb)
+	public int updateMember(MemberBean mb){
+		int check =-1;
+
+		try {
+			con = getCon();
+			
+			sql ="select pass from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getEmail_id());
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				// 아이디 있음
+				if(mb.getPass().equals(rs.getString("pass"))){
+					// 비밀번호 맞는경우
+					sql = "update member set name=?,nickname=?,gender=?,birth=?,img=?,mobile=?,zip_code=?,address1=?,address2=?,receive_email=? where email_id =?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, mb.getName());
+					pstmt.setString(2, mb.getNickname());
+					pstmt.setString(3, mb.getGender());
+					pstmt.setString(4, mb.getBirth());
+					pstmt.setString(5, mb.getImg());
+					
+					pstmt.setString(6, mb.getMobile());
+					pstmt.setString(7, mb.getZip_code());
+					pstmt.setString(8, mb.getAddress1());
+					pstmt.setString(9, mb.getAddress2());
+					pstmt.setInt(10, mb.getReceive_email());
+					pstmt.setString(11, mb.getEmail_id());
+										
+					pstmt.executeUpdate();
+					check =1;
+
+				}else{
+                    // 비밀번호 틀린경우
+					check = 0;
+				}
+			}else{
+				// 아이디 없음
+				check = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			CloseDB();
+		}		
+		
+		
+		return check;
+		
+	}
+	// updateMember(mb)
+
+	// checkNick(nickname)
+	public int checkNick(String nickname) {
+		int check=0;
+		
+		try {
+			con = getCon();
+			
+			sql ="select * from member where nickname=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				check =1;
+			}else{
+				check =0;
+			}
+			System.out.println("아이디 중복 검사 완료 ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			CloseDB();
+		}
+		
+		return check;
+	}
+	// checkNick(nickname)
 }

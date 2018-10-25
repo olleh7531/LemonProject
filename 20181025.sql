@@ -39,7 +39,7 @@ CREATE TABLE `album` (
 
 LOCK TABLES `album` WRITE;
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
-INSERT INTO `album` VALUES (1,'그래프 테스트','2018-10-05',NULL,NULL,NULL),(2,'그래프 테스트2','2018-10-05',NULL,NULL,NULL),(3,'아이티윌','2018-10-05',NULL,NULL,NULL);
+INSERT INTO `album` VALUES (1,'?׷??? ?׽?Ʈ','2018-10-05',NULL,NULL,NULL),(2,'?׷??? ?׽?Ʈ2','2018-10-05',NULL,NULL,NULL),(3,'????Ƽ??','2018-10-05',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +209,7 @@ CREATE TABLE `helpboard` (
   `os` varchar(30) DEFAULT NULL,
   `browser` varchar(30) DEFAULT NULL,
   `anwser_status` varchar(20) DEFAULT '0',
-  `he_nickname` varchar(30) NOT NULL COMMENT '관리자 닉네임',
+  `he_nickname` varchar(30) NOT NULL COMMENT '?????? ?г??',
   `he_register_date` timestamp NOT NULL,
   `he_subject` varchar(100) NOT NULL,
   `he_content` text NOT NULL,
@@ -278,12 +278,12 @@ CREATE TABLE `member` (
   `register_ip` varchar(15) NOT NULL,
   `is_deny` tinyint(4) NOT NULL DEFAULT '0',
   `chk` tinyint(4) NOT NULL,
-  `mobile` varchar(45) DEFAULT NULL,
-  `zip_code` varchar(45) DEFAULT NULL,
-  `address1` varchar(45) DEFAULT NULL,
-  `address2` varchar(45) DEFAULT NULL,
-  `email_cert` varchar(45) DEFAULT NULL,
-  `receive_email` varchar(45) DEFAULT NULL,
+  `mobile` varchar(13) DEFAULT NULL,
+  `zip_code` varchar(6) DEFAULT NULL,
+  `address1` text,
+  `address2` text,
+  `email_cert` tinyint(4) DEFAULT NULL,
+  `receive_email` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`email_id`),
   UNIQUE KEY `no_UNIQUE` (`no`),
   UNIQUE KEY `nickname_UNIQUE` (`nickname`)
@@ -296,7 +296,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES ('test1','1234','테스트','테스트1','남','1995-02-01',NULL,NULL,1,'2018-10-05 00:00:00','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL),('test2','1234','테스트','테스트2','남','1995-02-01',NULL,NULL,2,'2018-10-05 12:32:07','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL),('test3','1234','테스트','테스트3','남','1995-02-01',NULL,NULL,5,'2018-10-05 11:23:44','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `member` VALUES ('test1','1234','?׽?Ʈ','?׽?Ʈ1','??','1995-02-01',NULL,NULL,1,'2018-10-05 00:00:00','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL),('test2','1234','?׽?Ʈ','?׽?Ʈ2','??','1995-02-01',NULL,NULL,2,'2018-10-05 12:32:07','255.255.255.255',0,0,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +411,7 @@ CREATE TABLE `notice` (
 
 LOCK TABLES `notice` WRITE;
 /*!40000 ALTER TABLE `notice` DISABLE KEYS */;
-INSERT INTO `notice` VALUES (1,'서비스 소식','ㅁㄴㅇㄹ','<p>ㅌㅊㅍㅋㅊㅍㅌㅋ</p>',1,'2018-10-19'),(2,'서비스 종료','ㄴㅇㄻ','<p>ㅋㅌㅊㅍㅌㅊㅍㅋㅌㅊㅍㅋ</p>',20,'2018-10-19');
+INSERT INTO `notice` VALUES (1,'?????? ?ҽ','????????','<p>????????????????</p>',1,'2018-10-19'),(2,'?????? ???','??????','<p>????????????????????????</p>',20,'2018-10-19');
 /*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,6 +543,9 @@ CREATE TABLE `singer` (
   `debut_song` varchar(100) DEFAULT NULL,
   `si_agency` varchar(100) DEFAULT NULL,
   `si_picture` varchar(200) DEFAULT NULL,
+  `si_genre` text,
+  `si_birth` date DEFAULT NULL,
+  `si_gender` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -622,4 +625,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-19 20:37:04
+-- Dump completed on 2018-10-25 10:28:35

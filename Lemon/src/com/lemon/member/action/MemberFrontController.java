@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class MemberFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -74,16 +73,43 @@ public class MemberFrontController extends HttpServlet {
 			}
 			
 		} else if(command.equals("/ChooseMemberUpdate.mb")){
-			// 회원정보 변경
+			// 회원정보 변경 메뉴 선택
 			forward = new ActionForward();
 			forward.setPath("./member/chooseMemberUpdate.jsp");
 			forward.setRedirect(false);
 			
-		} else if(command.equals("/MemberDelete.mb")){
+		} else if(command.equals("/MemberUpdate.mb")){
+			// 회원정보 변경
+			action = new MemberUpdate(); // Action
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if(command.equals("/MemberUpdateAction.mb")){	
+			// 회원정보 수정 처리
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}  else if(command.equals("/MemberDelete.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/deleteForm.jsp");
 			forward.setRedirect(false);			
 
+		} else if(command.equals("/MemberDeleteAction.mb")){
+			action = new MemberDeleteAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if(command.equals("/MemberPassUpdate.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/updatePassForm.jsp");
@@ -97,12 +123,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/MemberUpdate.mb")){
-			forward = new ActionForward();
-			forward.setPath("./member/updateForm.jsp");
-			forward.setRedirect(false);		
-
-		} 
+		}
 
 		
 
