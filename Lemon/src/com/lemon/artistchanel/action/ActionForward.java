@@ -1,4 +1,4 @@
-package com.lemon.admin.artistchanel.action;
+package com.lemon.artistchanel.action;
 
 public class ActionForward {
 	// 이동정보 저장 객체 (이동할 페이지주소, 이동할 페이지 방식)

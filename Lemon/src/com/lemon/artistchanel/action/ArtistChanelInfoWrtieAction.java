@@ -1,4 +1,4 @@
-package com.lemon.admin.artistchanel.action;
+package com.lemon.artistchanel.action;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -7,8 +7,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lemon.admin.artistchanel.db.ArtistChanelInfoBean;
-import com.lemon.admin.artistchanel.db.ArtistChanelInfoDAO;
+import com.lemon.artistchanel.db.ArtistChanelInfoBean;
+import com.lemon.artistchanel.db.ArtistChanelInfoDAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -16,15 +16,15 @@ public class ArtistChanelInfoWrtieAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("AStarPostInfoWrtieAction.java execute()");
+		System.out.println("ArtistChanelInfoWrtieAction.java execute()");
 		
 		// 파일 업로드
 		// upload/starpost/singerProfile 폴더 생성
 		// 업로드 할 실제 서버 경로를 가져오기
 		ServletContext context = request.getServletContext();
 		String realPath = context.getRealPath("/upload/starpost/singerProfile");
-		System.out.println("adminArtistChanelInfoWrite.jsp context : " + context);
-		System.out.println("adminArtistChanelInfoWrite.jsp realPath : " + realPath);
+		System.out.println("ArtistChanelInfoWrite.jsp context : " + context);
+		System.out.println("ArtistChanelInfoWrite.jsp realPath : " + realPath);
 
 		// 한번에 업로드할 파일의 최대 용량 지정 
 		int maxSize = 10*1024*1024; // 10MB
@@ -39,66 +39,66 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		);
 		
 		// 정보 -> JSP 페이지 -> Controller -> Action -> DB
-		// DB - 자바빈(AStarPostBean), 처리(AStarPostDAO) / singer 테이블 생성
-		ArtistChanelInfoBean aacibean = new ArtistChanelInfoBean();
+		// DB - 자바빈(ArtistChanelBean), 처리(ArtistChanelDAO) / singer 테이블 생성
+		ArtistChanelInfoBean aciibean = new ArtistChanelInfoBean();
 		
 		// Data 포맷 설정
 		SimpleDateFormat format = new SimpleDateFormat("yy-mm-dd"); 
 		
 		// 데이터 넣기
-		// aacibean.setNum(Integer.parseInt(multi.getParameter("num"))); // 가수 번호
-		// System.out.println("adminArtistChanelInfoWrite.jsp num : " + multi.getParameter("num"));
+		// aciibean.setNum(Integer.parseInt(multi.getParameter("num"))); // 가수 번호
+		// System.out.println("ArtistChanelInfoWrite.jsp num : " + multi.getParameter("num"));
 		
 		// 솔로/그룹 유형
-		aacibean.setActivity_type(multi.getParameter("singer_solo_group"));
-		System.out.println("adminArtistChanelInfoWrite.jsp singer_solo_group : " + multi.getParameter("singer_solo_group"));
+		aciibean.setActivity_type(multi.getParameter("singer_solo_group"));
+		System.out.println("ArtistChanelInfoWrite.jsp singer_solo_group : " + multi.getParameter("singer_solo_group"));
 		
 		// 가수 활동 이름(예명)
-		aacibean.setSinger_name(multi.getParameter("singer_name"));
-		System.out.println("adminArtistChanelInfoWrite.jsp singer_name : " + multi.getParameter("singer_name"));
+		aciibean.setSinger_name(multi.getParameter("singer_name"));
+		System.out.println("ArtistChanelInfoWrite.jsp singer_name : " + multi.getParameter("singer_name"));
 		
 		// 소속 그룹 이름
-		aacibean.setSi_group_name(multi.getParameter("singer_affiliate_group"));
-		System.out.println("adminArtistChanelInfoWrite.jsp singer_affiliate_group : " + multi.getParameter("singer_affiliate_group"));
+		aciibean.setSi_group_name(multi.getParameter("singer_affiliate_group"));
+		System.out.println("ArtistChanelInfoWrite.jsp singer_affiliate_group : " + multi.getParameter("singer_affiliate_group"));
 		
 		// 데뷔 날짜
         Date debut_year = new Date(format.parse(multi.getParameter("singer_debut_day")).getTime());
-        aacibean.setDebut_year(debut_year);
-        System.out.println("adminArtistChanelInfoWrite.jsp debut_year : " + debut_year);
+        aciibean.setDebut_year(debut_year);
+        System.out.println("ArtistChanelInfoWrite.jsp debut_year : " + debut_year);
         
         // 데뷔 노래
-        aacibean.setDebut_song(multi.getParameter("singer_debut_song"));
-        System.out.println("adminArtistChanelInfoWrite.jsp singer_debut_song : " + multi.getParameter("singer_debut_song"));
+        aciibean.setDebut_song(multi.getParameter("singer_debut_song"));
+        System.out.println("ArtistChanelInfoWrite.jsp singer_debut_song : " + multi.getParameter("singer_debut_song"));
         
         // 소속사 이름
-        aacibean.setSi_agency(multi.getParameter("singer_agency_name"));
-        System.out.println("adminArtistChanelInfoWrite.jsp singer_agency_name : " + multi.getParameter("singer_agency_name"));
+        aciibean.setSi_agency(multi.getParameter("singer_agency_name"));
+        System.out.println("ArtistChanelInfoWrite.jsp singer_agency_name : " + multi.getParameter("singer_agency_name"));
         
 		// 프로필 사진
-        aacibean.setSi_picture(multi.getFilesystemName("singer_picture"));
+        aciibean.setSi_picture(multi.getFilesystemName("singer_picture"));
 		System.out.println("upload 폴더에 올라가있는 파일 이름 : " + multi.getFilesystemName("singer_picture"));
 		System.out.println("사용자 올린 파일의 원본이름 : "+multi.getOriginalFileName("singer_picture"));
 		
 		// 노래 장르
-		aacibean.setSi_genre(multi.getParameter("singer_song_genres"));
-		System.out.println("adminArtistChanelInfoWrite.jsp singer_song_genres : " + multi.getParameter("singer_song_genres"));
+		aciibean.setSi_genre(multi.getParameter("singer_song_genres"));
+		System.out.println("ArtistChanelInfoWrite.jsp singer_song_genres : " + multi.getParameter("singer_song_genres"));
 		
 		// 생일
 		Date si_birth = new Date(format.parse(multi.getParameter("singer_birth")).getTime());
-		aacibean.setSi_birth(si_birth);
-		System.out.println("adminArtistChanelInfoWrite.jsp singer_birth : " + multi.getParameter("singer_birth"));
+		aciibean.setSi_birth(si_birth);
+		System.out.println("ArtistChanelInfoWrite.jsp singer_birth : " + multi.getParameter("singer_birth"));
 		
-		// AStarPostDAO 객체 생성
-		ArtistChanelInfoDAO aacidao = new ArtistChanelInfoDAO();
+		// ArtistChanelDAO 객체 생성
+		ArtistChanelInfoDAO aciidao = new ArtistChanelInfoDAO();
 		
 		// 정보 글쓰기 메소드 구현 및 실행(호출)
-		aacidao.infoWrite(aacibean);
+		aciidao.infoWrite(aciibean);
 		
 		// 페이지 이동
 		// /AStartPostInfoWriteAction.asp
 		ActionForward forward = new ActionForward();
 		
-		forward.setPath("./startPost.asp");
+		forward.setPath("./ArtistChanel.ac");
 		forward.setRedirect(true);
 		
 		return forward;

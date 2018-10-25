@@ -1,8 +1,10 @@
-package com.lemon.admin.artistchanel.db;
+package com.lemon.artistchanel.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -69,9 +71,11 @@ public class ArtistChanelInfoDAO {
 			
 			// sql - insert
 			sql = "insert into singer("
-						+ "num, activity_type, singer_name, si_group_name, debut_year"
+						+ "num, activity_type, singer_name, si_group_name, debut_year,"
 						+ "debut_song, si_agency, si_picture, si_genre, si_birth"
-					+ ")";
+					+ ")"
+					+ "values (?, ?, ?, ?, ?,"
+						+ "?, ?, ?, ?, ?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -92,5 +96,45 @@ public class ArtistChanelInfoDAO {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		finally {
+			CloseDB();
+		}
+	}
+	
+	// 정보 출력
+	public List getArtistChanelInfo() {
+		List info = new ArrayList();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from singer";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ArtistChanelInfoBean acibean = new ArtistChanelInfoBean();
+				
+				acibean.setActivity_type(rs.getString("activity_type")); // 솔로/그룹 유형
+				acibean.setSinger_name(rs.getString("singer_name")); // 가수 활동 이름(예명)
+				acibean.setSi_group_name(rs.getString("si_group_name")); // 소속 그룹 이름
+				acibean.setDebut_year(rs.getDate("debut_year")); // 데뷔 날짜
+				acibean.setDebut_song(rs.getString("debut_song")); // 데뷔 노래
+				acibean.setSi_agency(rs.getString("si_agency")); // 소속사 이름
+				acibean.setSi_picture(rs.getString("si_picture")); // 프로필 사진
+				acibean.setSi_genre(rs.getString("si_genre")); // 노래 장르
+				acibean.setSi_birth(rs.getDate("si_birth")); // 생일
+				
+				// 자바빈 객체 -> ArrayList 한 칸에 저장
+				info.add(acibean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return info;
 	}
 }

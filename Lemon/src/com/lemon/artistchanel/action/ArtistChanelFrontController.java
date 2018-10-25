@@ -1,4 +1,4 @@
-package com.lemon.admin.artistchanel.action;
+package com.lemon.artistchanel.action;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class ArtistChanelFrontController extends HttpServlet {
 
 		// 가상주소와 내가 처리할 동작이랑 같은지 비교 
 		// 아티스트 채널 관리자 화면
-		if (command.equals("/ArtistChanelInfoWrite.asp")) { // 아티스트 채널 정보 글쓰기
+		if (command.equals("/ArtistChanelInfoWrite.ac")) { // 아티스트 채널 정보 글쓰기
 			// 페이지 이동 방식
 			// 1. response 이동
 			// response.sendRedirect("./member/insertForm.jsp");
@@ -50,10 +50,10 @@ public class ArtistChanelFrontController extends HttpServlet {
 			// ActionForward()객체 생성
 			// starPost/adminArtistChanelInfoWrite.jsp
 			forward = new ActionForward();
-			forward.setPath("./starPost/adminArtistChanelInfoWrite.jsp");
+			forward.setPath("./starpost/adminArtistChanelInfoWrite.jsp");
 			forward.setRedirect(false);
 		}
-		else if(command.equals("/ArtistChanelInfoWrtieAction.asp")) {
+		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {
 			// 아티스트 채널 정보 글쓰기 proc 
 			action = new ArtistChanelInfoWrtieAction(); 
 			
@@ -63,7 +63,7 @@ public class ArtistChanelFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/adminArtistChanel.asp")) {
+		else if(command.equals("/ArtistChanel.ac")) {
 			// 아티스트 채널 내용
 			action = new ArtistChanelAction(); 
 			

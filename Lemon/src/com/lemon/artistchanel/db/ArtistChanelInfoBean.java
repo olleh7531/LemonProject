@@ -1,4 +1,4 @@
-package com.lemon.admin.artistchanel.db;
+package com.lemon.artistchanel.db;
 
 import java.sql.Date;
 

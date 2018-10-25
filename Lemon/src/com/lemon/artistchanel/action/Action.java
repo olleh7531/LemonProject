@@ -1,4 +1,4 @@
-package com.lemon.admin.artistchanel.action;
+package com.lemon.artistchanel.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
