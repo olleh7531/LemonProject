@@ -14,7 +14,8 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/starpost/common.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/starpost/artist_chanel.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/starpost/artist_chanel_song.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/starpost/artist_chanel_info.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -83,31 +84,38 @@
 
 				<!-- 탭 메뉴 -->
 				<div class="wrap_tab_atist">
-					<ul>
-						<li class="first_child on">
+					<ul class="artist_chanel_tab">
+						<li class="first_child on" data-tab="artist_chanel_tab1">
 							<a href="" title="아이유 곡정보">
 								<span class="cntt">곡</span>
 							</a>
 						</li>
-						<li class="">
-							<a href="" title="아이유 앨범정보">
+						<li class="" data-tab="artist_chanel_tab2">
+							<a href="#" title="아이유 앨범정보">
 								<span class="cntt">앨범</span>
 							</a>
 						</li>
-						<li class="">
-							<a href="" title="아이유 비디오정보">
+						<li class="" data-tab="artist_chanel_tab3">
+							<a href="#" title="아이유 비디오정보">
 								<span class="cntt">비디오</span>
 							</a>
 						</li>
-						<li class="">
-							<a href="" title="아이유 포토정보">
+						<li class="" data-tab="artist_chanel_tab4">
+							<a href="#" title="아이유 포토정보">
 								<span class="cntt">포토/스토리</span>
 							</a>
 						</li>
+						<li class="" data-tab="artist_chanel_tab5">
+							<a href="#" title="아이유 상세정보">
+								<span class="cntt">상세정보</span>
+							</a>
+						</li>
 					</ul>
-				</div> <!-- 탭 메뉴 -->
+				</div>
+				<!-- 탭 메뉴 -->
+				
 				<!-- 곡리스트 -->
-				<div class="section_vdo">
+				<div class="section_vdo artist_chanel_tab1" >
 					<div class="sort_info clfix">
 						<div class="wrap_sort fl_left" id="sort_layer">
 							<a href="" title="발매 보기" class="ico_radio on" radio-value="A">
@@ -3767,14 +3775,93 @@
 								</div>
 							</div>
 						</form>
-						<!-- //곡1 목록 -->
-
+						<!-- // 곡1 목록 -->
 					</div>
+				</div> <!-- 곡 리스트 -->
+				
+				<!-- 앨범 -->
+				<div class="artist_chanel_tab2">
 				</div>
+				<!-- 앨범 -->
+				
+				<!-- 비디오 -->
+				<div class="artist_chanel_tab3">
+				</div>
+				<!-- 비디오 -->
+				
+				<!-- 포토/스토리 -->
+				<div class="artist_chanel_tab4">
+				</div>
+				<!-- 포토/스토리 -->
+				
+				<!-- 상세정보 -->
+				<div class="artist_chanel_tab5 section_atistinfo01">
+					<!-- 활동정보 -->
+					<div class="section_atistinfo03">
+						<h3 class="title line arr">활동정보</h3>
+						<div class="debutsong">
+							<div class="title">데뷔곡</div>
+							<div class="debutsong_info_area">
+								<!-- 솔로 데뷔 곡 정보  -->
+								<div class="debutsong_info">
+									<dl>
+										<dt>
+											<a href="" class="ellipsis" title="미아">미아</a>
+										</dt>
+										<dd class="atist">
+											<a href="" class="ellipsis" title="아이유">아이유</a>
+										</dd>
+									</dl>
+								</div>
+								<!-- 그룹데뷔곡 정보(솔로일경우 표현) -->
+							</div>
+						</div>
+						<dl class="list_define clfix">
+							<dt>데뷔</dt>
+								<dd>2008.09.18</dd>
+							<dt>활동년대</dt>
+								<dd>2000, 2010 년대</dd>
+							<dt>유형</dt>
+								<dd>솔로
+									<span class="bar">|</span>여성
+								</dd>
+							<dt>장르</dt>
+								<dd>Ballad, Dance, Drama, Electronica, Folk, Korean Movie, R&B / Soul, Rock, 기타</dd>
+							<dt>소속사명</dt>
+								<dd>카카오M, 페이브엔터테인먼트</dd>
+							<dt>소속그룹</dt>
+								<dd>
+									<a href="">이유 갓지(GOD G) 않은 이유 (박명수, 아이유)</a>
+								</dd>=
+						</dl>
+						<!-- 그룹멤버 시작-->
+						
+						<!-- //그룹멤버 종료 -->
+						<!-- 다른활동 -->
+						
+						<!--// 다른활동 -->
+					</div>
+					<!-- //활동정보 -->
+					
+					<!-- 신상정보 -->
+					<div class="section_atistinfo04">
+						<h3 class="title line arr">신상정보</h3>
+						<dl class="list_define clfix">
+							<!-- 그룹일경우 국적만 표시 -->
+							<dt>본명</dt>
+								<dd>이지은</dd>
+							<dt>생일</dt>
+								<dd>1993.05.16</dd>
+						</dl>
+					</div>
+					<!-- //신상정보 -->
+				</div>
+				<!-- 상세정보 -->
 			</div>
-			<!-- 내용 -->
-
-			<!-- footer -->
-			<jsp:include page="../common/footer.jsp"></jsp:include>
+		</div>
+		<!-- 내용 -->
+		
+	<!-- footer -->
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

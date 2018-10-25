@@ -170,3 +170,56 @@ button.disabled, .btn.disabled {
 .btn_next span.odd_span {
 	background-position: right top;
 }
+
+.tb_list .ellipsis a {
+    color: #666;
+}
+
+.tb_list th .wrap.right_none, .tb_list td .wrap.right_none {
+    padding-right: 0;
+}
+
+.btn_icon.like span.odd_span {
+    background-image: url("../../../assets/img/artistChanel/artist_chanel_bg_sprite_gray.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+
+.btn_icon span.cnt {
+    width: auto;
+    height: auto;
+    background: none !important;
+    overflow: visible;
+    color: #666;
+    font-size: 12px;
+    line-height: 14px;
+    font-family: "돋움","dotum", "Apple Gothic",sans-serif;
+    vertical-align: middle;
+    text-indent: 0;
+}
+
+.btn_icon.mv span.odd_span {
+    background-image: url("../../../assets/img/artistChanel/artist_chanel_bg_sprite_gray.png");
+    background-repeat: no-repeat;
+    background-position: -28px top;
+}
+
+.tb_list th .wrap.right, .tb_list td .wrap.right {
+    padding-right: 16px;
+}
+
+.btn_icon.dl span.odd_span {
+    background-image: url("../../../assets/img/artistChanel/artist_chanel_bg_sprite_gray.png");
+    background-repeat: no-repeat;
+    background-position: -84px top;
+}
+
+button.disabled, .btn.disabled {
+    cursor: default;
+}
+
+.btn_icon.mv.disabled span.odd_span {
+    background-image: url("../../../assets/img/artistChanel/artist_chanel_bg_sprite_gray.png");
+    background-repeat: no-repeat;
+    background-position: -224px top;
+}

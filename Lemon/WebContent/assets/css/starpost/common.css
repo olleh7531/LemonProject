@@ -57,6 +57,233 @@ h2.f_tit {
 }
 
 /*------------------------------------*/
+/*             아티스트 정보 영역                      */
+/*------------------------------------*/
+.wrap_dtl_atist {
+	border: 1px solid #bbbbbb;
+	border-top: 2px solid #808080;
+	height: 250px;
+}
+
+.wrap_dtl_atist .dtl_atist {
+	position: relative;
+	padding: 24px 23px;
+	background-color: #fff;
+}
+
+.none {
+	position: absolute;
+	top: -5000em;
+	left: 0;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+/*------------------------------------*/
+/*              프로필 이미지                           */
+/*------------------------------------*/
+.wrap_dtl_atist .wrap_thumb {
+	float: left;
+	position: relative;
+	width: 208px;
+}
+
+.dtl_atist .wrap_thumb .thumb {
+	display: block;
+	position: relative;
+	width: 208px;
+	height: 208px;
+}
+
+.dtl_atist .wrap_thumb .thumb_frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 208px;
+	height: 208px;
+	background-image:
+		url("../../../assets/img/artistChanel/artistChanel_bg_atist_frame.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+
+/*------------------------------------*/
+/*             아티스트 정보                            */
+/*------------------------------------*/
+.wrap_dtl_atist .wrap_atist_info {
+	float: left;
+	width: 440px;
+	margin-left: 22px;
+}
+
+/* 가수 이름 */
+.dtl_atist .wrap_atist_info .title_atist {
+	margin-top: -2px;
+	color: #000;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 30px;
+	font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+	letter-spacing: -1px;
+	word-break: break-all;
+}
+
+/* 가수 본명 */
+.dtl_atist .wrap_atist_info .title_atist .realname {
+	font-size: 16px;
+}
+
+/* 가수 정보 영역 */
+.dtl_atist dl.atist_info {
+	margin-top: 19px;
+}
+
+/* 가수 정보 주제 */
+.dtl_atist .wrap_atist_info dt {
+	clear: left;
+	float: left;
+	width: 70px;
+	padding-left: 2px;
+	color: #666;
+	font-size: 12px;
+	line-height: 20px;
+	font-family: Dotum, "Apple Gothic", sans-serif;
+}
+
+/* 가수 정보 내용 */
+.dtl_atist .wrap_atist_info dd {
+	float: left;
+	width: 368px;
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 20px;
+	font-family: Dotum, "Apple Gothic", sans-serif;
+}
+
+.dtl_atist .wrap_atist_info dd .gubun {
+	display: inline-block;
+}
+
+/* 데뷔 앨범 노래 듣기 */
+.btn_play_song {
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	max-width: 100%;
+	margin: 0;
+	height: 17px;
+	text-decoration: none !important;
+	cursor: pointer;
+	*cursor: pointer;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: left;
+}
+
+.dtl_atist .wrap_atist_info dd .btn_play_song {
+	height: 18px;
+	margin-left: 12px;
+	max-width: 290px;
+	vertical-align: top;
+}
+
+.btn_play_song span.icon_play {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin: 0;
+	background-image:
+		url("../../../assets/img/artistChanel/artistChanel_btn_play_song.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	line-height: 0;
+	text-indent: -9999px;
+	*text-indent: 0;
+	*font-size: 0px;
+	*line-height: 0;
+	vertical-align: top;
+}
+
+.btn_play_song span.songname12 {
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 16px;
+	font-family: "Dotum", "Apple Gothic", sans-serif;
+	vertical-align: top;
+	text-align: left;
+}
+
+.dtl_atist .wrap_atist_info dd a.btn_play_song .songname12 {
+	max-width: 200px;
+}
+
+.dtl_atist .wrap_atist_info dd {
+	float: left;
+	width: 368px;
+	color: #1a1a1a;
+	font-size: 12px;
+	line-height: 20px;
+	font-family: Dotum, "Apple Gothic", sans-serif;
+}
+
+.dtl_atist .wrap_atist_info dd.awarded .ellipsis {
+	float: left;
+	display: inline-block;
+	max-width: 315px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.dtl_atist .wrap_atist_info dd .bar {
+	margin: 0 5px;
+	color: #ccc;
+}
+
+/* 더보기 */
+.btn_text {
+	cursor: pointer;
+}
+
+.dtl_atist .wrap_atist_info dd.awarded .btn_text {
+	display: inline-block;
+	margin-left: 10px;
+	*margin-left: 2px;
+	vertical-align: top;
+	*vertical-align: middle;
+}
+
+.btn_text .text {
+	display: inline;
+	color: #666;
+	font-size: 11px;
+	line-height: 1.2em;
+	letter-spacing: -1px;
+	font-family: "Dotum", "돋음", "Apple Gothic", sans-serif;
+}
+
+.btn_text .icon {
+	display: inline-block;
+	background-image:
+		url("../../../assets/img/artistChanel/artistChanel_bg_btn_icon.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	vertical-align: middle;
+}
+
+.btn_text.arrow_r .icon {
+	width: 4px;
+	height: 7px;
+	background-position: -136px -57px;
+	line-height: 7px;
+	vertical-align: 1px;
+}
+
+/*------------------------------------*/
 /*               탭                           */
 /*------------------------------------*/
 /* 탭 영역 */
@@ -126,9 +353,12 @@ h2.f_tit {
 }
 
 /*------------------------------------*/
-/*               메인 공통                             */
+/*               폰트 색상                           */
 /*------------------------------------*/
+.fc_gray {
+    color: #333 !important;
+}
 
-
-
-
+.fc_mgray {
+    color: #777 !important;
+}
