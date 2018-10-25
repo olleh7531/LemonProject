@@ -1,4 +1,4 @@
-package com.lemon.admin.starpost.action;
+package com.lemon.admin.artistchanel.action;
 
 import java.io.IOException;
 
@@ -31,11 +31,49 @@ public class AStarPostFrontController extends HttpServlet {
 		ActionForward forward = null;
 
 		// 가상주소와 내가 처리할 동작이랑 같은지 비교 
-		// 스타포스트
-		if (command.equals("")) {
+		// 아티스트 채널 관리자 화면
+		if (command.equals("/aArtistChanelInfoWrite.asp")) { // 아티스트 채널 정보 글쓰기
+			// 페이지 이동 방식
+			// 1. response 이동
+			// response.sendRedirect("./member/insertForm.jsp");
+			// http://localhost:8088/Model2/member/insertForm.jsp
 			
+			// 2. forward 이동 
+			// A 정보를 가지고  => B 이동, 주소줄에는 A의주소, 실제화면 B
+			// RequestDispatcher dis =
+			// request.getRequestDispatcher("./member/insertForm.jsp");
+			// dis.forward(request, response);
+			
+			// 이동할 정보를 저장 (이동할 페이지 주소,이동방식)
+			// net.member.action -> ActionForward
+			
+			// ActionForward()객체 생성
+			// starPost/adminArtistChanelInfoWrite.jsp
+			forward = new ActionForward();
+			forward.setPath("./starPost/adminArtistChanelInfoWrite.jsp");
+			forward.setRedirect(false);
 		}
-		
+		else if(command.equals("/aArtistChanelInfoWriteAction.asp")) {
+			// 아티스트 채널 정보 글쓰기 proc 
+			action = new ArtistChanelInfoWrtieAction(); 
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminArtistChanel.asp")) {
+			// 아티스트 채널 내용
+			action = new ArtistChanelAction(); 
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		// 이동
 		if (forward != null) {
 			if (forward.isRedirect()) {

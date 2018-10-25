@@ -34,7 +34,7 @@ $(function() {
 		// numberOfMonths: [1,1],
 	};
 
-	$(".debut_calendar").datepicker(calendarFrom);
+	$(".singer_debut_day").datepicker(calendarFrom);
 
 	// 이미지버튼
 	$("img.ui-datepicker-trigger").attr("style",
@@ -78,7 +78,7 @@ $(function() {
 		// numberOfMonths: [1,1],
 	};
 
-	$(".birth_calendar").datepicker(calendarFrom);
+	$(".singer_birth").datepicker(calendarFrom);
 
 	// 이미지버튼
 	$("img.ui-datepicker-trigger").attr("style",
