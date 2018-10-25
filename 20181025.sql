@@ -310,12 +310,12 @@ DROP TABLE IF EXISTS `mu_good`;
 CREATE TABLE `mu_good` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `mg_user_email` varchar(100) NOT NULL,
-  `mg_music_no` int(11) NOT NULL,
+  `mg_music_num` int(11) NOT NULL,
   PRIMARY KEY (`num`),
   KEY `good_member_fk_idx` (`mg_user_email`),
-  KEY `music_no_fk_idx` (`mg_music_no`),
+  KEY `music_no_fk_idx` (`mg_music_num`),
   CONSTRAINT `good_member_email_fk` FOREIGN KEY (`mg_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `good_music_no_fk` FOREIGN KEY (`mg_music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `good_music_num_fk` FOREIGN KEY (`mg_music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -337,12 +337,15 @@ DROP TABLE IF EXISTS `music`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `music` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
-  `track_no` int(11) DEFAULT NULL,
   `music_name` varchar(200) NOT NULL,
-  `singer_num` int(11) NOT NULL,
   `lyrics` text,
+  `musicfile` text NOT NULL,
+  `music_genre` varchar(50) DEFAULT NULL,
+  `music_time` varchar(8) DEFAULT NULL,
+  `singer_num` int(11) DEFAULT NULL,
   `album_num` int(11) DEFAULT NULL,
-  `musicfile` text,
+  `track_no` int(11) DEFAULT NULL,
+  `music_video` text,
   PRIMARY KEY (`num`),
   KEY `album_music_albumname_idx` (`album_num`),
   KEY `music_singer_num_fk_idx` (`singer_num`),
@@ -370,9 +373,7 @@ DROP TABLE IF EXISTS `music_sub`;
 CREATE TABLE `music_sub` (
   `music_num` int(11) NOT NULL,
   `mu_playcount` int(11) DEFAULT '0',
-  `mu_Video` text,
-  `mu_time` varchar(50) NOT NULL,
-  `mu_genre` varchar(45) NOT NULL,
+  `mu_downcount` int(11) DEFAULT NULL,
   PRIMARY KEY (`music_num`),
   CONSTRAINT `sub_music_no_fk` FOREIGN KEY (`music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -424,14 +425,14 @@ DROP TABLE IF EXISTS `playlist`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `playlist` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
-  `user_email` varchar(100) NOT NULL,
-  `music_no` int(11) NOT NULL,
+  `pls_user_email` varchar(100) NOT NULL,
+  `pls_music_num` int(11) NOT NULL,
   `order` int(11) NOT NULL,
   PRIMARY KEY (`num`),
-  KEY `play_member_fk_idx` (`user_email`),
-  KEY `music_no_fk_idx` (`music_no`),
-  CONSTRAINT `play_member_email_fk` FOREIGN KEY (`user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `play_music_no_fk` FOREIGN KEY (`music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `play_member_fk_idx` (`pls_user_email`),
+  KEY `music_no_fk_idx` (`pls_music_num`),
+  CONSTRAINT `pls_member_email_fk` FOREIGN KEY (`pls_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pls_music_num_fk` FOREIGN KEY (`pls_music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -454,14 +455,14 @@ DROP TABLE IF EXISTS `playlog`;
 CREATE TABLE `playlog` (
   `num` int(11) NOT NULL,
   `pl_user_email` varchar(100) NOT NULL,
-  `pl_music_no` int(11) NOT NULL,
+  `pl_music_num` int(11) NOT NULL,
   `pl_playtime` timestamp NOT NULL,
   `pl_user_ip` varchar(15) NOT NULL,
   PRIMARY KEY (`num`),
   KEY `plog_mem_email_fk_idx` (`pl_user_email`),
-  KEY `plog_mu_num_fk_idx` (`pl_music_no`),
+  KEY `plog_mu_num_fk_idx` (`pl_music_num`),
   CONSTRAINT `plog_mem_email_fk` FOREIGN KEY (`pl_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`pl_music_no`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `plog_mu_num_fk` FOREIGN KEY (`pl_music_num`) REFERENCES `music` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -625,4 +626,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-25 10:28:35
+-- Dump completed on 2018-10-25 12:07:44
