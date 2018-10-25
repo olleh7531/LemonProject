@@ -176,14 +176,14 @@
 		<url-pattern>*.sp</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 스타포스트 관리자 모드 -->
+	<!-- 아티스트채널  -->
 	<servlet>
-		<servlet-name>AStarPostFrontController</servlet-name>
-		<servlet-class>com.lemon.admin.starpost.action.AStarPostFrontController</servlet-class>
+		<servlet-name>ArtistChanelFrontController</servlet-name>
+		<servlet-class>com.lemon.artistchanel.action.ArtistChanelFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>AStarPostFrontController</servlet-name>
-		<url-pattern>*.asp</url-pattern>
+		<servlet-name>ArtistChanelFrontController</servlet-name>
+		<url-pattern>*.ac</url-pattern>
 	</servlet-mapping>
 
 	<resource-ref>

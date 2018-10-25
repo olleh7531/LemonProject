@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AStarPostFrontController extends HttpServlet {
+public class ArtistChanelFrontController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 가상주소 가져오기
@@ -32,7 +32,7 @@ public class AStarPostFrontController extends HttpServlet {
 
 		// 가상주소와 내가 처리할 동작이랑 같은지 비교 
 		// 아티스트 채널 관리자 화면
-		if (command.equals("/aArtistChanelInfoWrite.asp")) { // 아티스트 채널 정보 글쓰기
+		if (command.equals("/ArtistChanelInfoWrite.asp")) { // 아티스트 채널 정보 글쓰기
 			// 페이지 이동 방식
 			// 1. response 이동
 			// response.sendRedirect("./member/insertForm.jsp");
@@ -53,7 +53,7 @@ public class AStarPostFrontController extends HttpServlet {
 			forward.setPath("./starPost/adminArtistChanelInfoWrite.jsp");
 			forward.setRedirect(false);
 		}
-		else if(command.equals("/aArtistChanelInfoWriteAction.asp")) {
+		else if(command.equals("/ArtistChanelInfoWrtieAction.asp")) {
 			// 아티스트 채널 정보 글쓰기 proc 
 			action = new ArtistChanelInfoWrtieAction(); 
 			
