@@ -1,0 +1,393 @@
+.tab {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 35px;
+    line-height: 35px;
+}
+
+/* Float the list items side by side */
+
+.tab li {
+    float: left;
+}
+
+/* Style the links inside the list items */
+
+.tab li a {
+    display: inline-block;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 16px;
+    font-size: 17px;
+    transition: 0.3s;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Style the tab content */
+
+.tabcontent {
+    display: none;
+    /*background-color: rgb(0, 154, 200);*/
+    padding: 30px 12px;
+    color: #fff;
+}
+
+
+ul.tab li.current a {
+    color: #edae06;
+
+}
+
+.tabcontent.current {
+    display: block;
+}
+
+.service_list_song {
+    margin-top: 30px;
+}
+
+.service_list_song th {
+    height: 48px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    color: #606060;
+    font-size: 13px;
+    font-family: "돋움", Dotum, Arial, sans-serif;
+
+}
+
+.service_list_song th .service_list_song td {
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+.service_list_song .wrap_song_info {
+    display: inline-block;
+    width: 100%;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+.service_list_song .ellipsis.rank01 {
+    max-width: 240px;
+}
+
+.service_list_song .ellipsis.rank02 {
+    max-width: 220px;
+}
+
+.service_list_song .ellipsis.rank03 {
+    max-width: 170px;
+}
+
+.service_list_song .ellipsis.rank03 a {
+    color: #969696;
+    font-size: 14px;
+}
+
+.service_list_song .wrap_song_info a {
+    letter-spacing: 0 !important;
+    font-size: 14px;
+}
+
+.service_list_song .ellipsis.rank01 a {
+    color: #333;
+    font-size: 14px;
+}
+
+.service_list_song .ellipsis.rank02 a {
+    color: #969696;
+    font-size: 12px;
+}
+
+.page_header {
+    position: relative;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.page_header h2.title {
+    height: 40px;
+    line-height: 40px;
+    font-size: 26px;
+}
+
+#conts h2 {
+    margin-top: 0 !important;
+}
+
+.service_list_song i {
+    color: #969696;
+}
+
+
+.service_list_song td {
+    height: 84px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.service_list_song th,
+.service_list_song td {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.image_typeAll {
+    display: block;
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+}
+
+.image_typeAll .bg_album_frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.service_list_song th .wrap {
+    padding-top: 2px;
+}
+
+.service_list_song .t_right {
+    text-align: right;
+}
+
+.service_list_song .pd_l_12 {
+    padding-left: 12px;
+}
+
+.service_list_song .pd_l_30 {
+    padding-left: 30px;
+}
+
+.service_list_song .t_center {
+    text-align: center;
+}
+
+.button_etc.like .cnt {
+    color: #888;
+    line-height: 14px;
+    font-size: 12px;
+    letter-spacing: 0;
+    vertical-align: top;
+    margin-left: 5px;
+}
+
+.button_etc.like {
+    height: 14px;
+    visibility: visible;
+    overflow: hidden;
+}
+
+.service_list_song .t_center {
+    text-align: center;
+}
+
+.div_tab {
+    width: 1008px;
+    margin: 0 auto;
+}
+
+.wrap_btn_tb.top {
+    margin-bottom: 10px;
+}
+
+.wrap_btn_tb .button_rbox:first-child {
+    margin-left: 0;
+}
+
+.wrap_btn_tb .button_rbox {
+    float: left;
+    padding: 0 9px;
+    margin-left: 10px;
+}
+
+.button_rbox {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 16px;
+    border: 1px solid #b2b2b2;
+    border-radius: 100px;
+    color: #606060;
+    font-size: 12px;
+    visibility: visible;
+    overflow: hidden;
+}
+
+.service_list_album .info .ellipsis.artist {
+    max-width: 230px;
+    font-size: 12px;
+    color: #00b423;
+}
+
+.ellipsis {
+    display: inline-block;
+    padding-right: 1px;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    overflow: hidden;
+}
+
+.service_list_album {
+    width: 457px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 15px;
+    margin-top: 30px;
+
+}
+
+.service_list {
+    margin: 0 0 0 -30px;
+}
+
+.service_list_album .thumb {
+    position: relative;
+    float: left;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+}
+
+.service_list_album .thumb_mv {
+    position: relative;
+    float: left;
+    width: 180px;
+    height: 140px;
+    overflow: hidden;
+}
+
+.service_list_album .entry {
+    float: left;
+    width: 230px;
+    height: 139px;
+    padding: 19px 23px 20px;
+    margin-left: -1px;
+    border: 1px solid #e5e5e5;
+}
+
+.service_list_album .entry_mv {
+    float: left;
+    width: 230px;
+    height: 99px;
+    padding: 19px 23px 20px;
+    margin-left: -1px;
+    border: 1px solid #e5e5e5;
+}
+
+.service_list_album .info {
+    margin-bottom: 10px;
+}
+
+.service_list_album .info .vdo_name {
+    display: block;
+    margin-bottom: 2px;
+    color: #575757;
+    font-size: 14px;
+}
+
+.service_list_album .info .album_name {
+    display: block;
+    line-height: 21px;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 16px;
+
+}
+
+.service_list_album .meta {
+    line-height: 1;
+    margin-bottom: 14px;
+}
+
+.service_list_album .meta .reg_date {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    color: #767676;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+.service_list_album .meta .bar {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    height: 10px;
+    line-height: 14px;
+    margin: 0 4px;
+    border-left: 1px solid #eaeaea;
+    vertical-align: top;
+}
+
+.service_list_album .meta .button_etc {
+    vertical-align: top;
+}
+
+.button_etc.like {
+    height: 14px;
+    visibility: visible;
+    overflow: hidden;
+}
+
+button,
+.btn {
+    border: 1px solid red;
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    text-decoration: none !important;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.service_list_album .meta .tot_song {
+    display: inline-block;
+    color: #767676;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.wrap_btn_tb .button_rbox:first-child {
+    margin-left: 0;
+}
+
+.wrap_btn_tb .button_rbox {
+    float: left;
+    padding: 0 9px;
+    margin-left: 10px;
+}
+
+.button_rbox {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 16px;
+    border: 1px solid #b2b2b2;
+    border-radius: 100px;
+    color: #606060;
+    font-size: 12px;
+    visibility: visible;
+    overflow: hidden;
+}
+
+.service_list_album .info .artist_name {
+    color: #00b423;
+    font-size: 12px;
+}

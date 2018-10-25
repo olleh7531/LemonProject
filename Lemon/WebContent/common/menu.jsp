@@ -238,7 +238,7 @@
 						</a>
 					</li>
 					<li class="menu2">
-						<a href="" class="cur_menu mlog">
+						<a href="./LemonLatest_Chart.ct" class="cur_menu mlog">
 							<span class="menu_bg menu02">최신</span>
 						</a>
 					</li>
