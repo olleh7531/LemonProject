@@ -4,11 +4,11 @@
 /*               메뉴 영역                             */
 /*------------------------------------*/
 #header {
-    position: relative;
-    width: 100%;
-    min-width: 1048px;
-    height: 150px;
-    z-index: 20;
+	position: relative;
+	width: 100%;
+	min-width: 1048px;
+	height: 150px;
+	z-index: 20;
 }
 
 #header_wrap {
@@ -54,7 +54,6 @@
 /*------------------------------------*/
 /*                검색                                 */
 /*------------------------------------*/
-
 #top_search input[type=text] {
 	height: 24px;
 	padding: 0 7px;
@@ -79,7 +78,7 @@
 	width: 322px !important;
 	height: 40px;
 	margin: 36px 0 0 11px;
-	background-image: url("../../../assets/img/menu/menu_search_bg.png");
+	background-image: url("../../img/menu/menu_search_bg.png");
 	background-repeat: no-repeat;
 	z-index: 15;
 }
@@ -138,8 +137,7 @@ legend, #IE8#HACK {
 	height: 32px;
 	margin: 0 -6px 0 0;
 	*margin: -1px -10px 0 0;
-	background-image:
-		url("../../../assets/img/menu/menu_search_auto_btn.png");
+	background-image: url("../../img/menu/menu_search_auto_btn.png");
 	background-repeat: no-repeat;
 	vertical-align: middle;
 }
@@ -188,7 +186,7 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 .btn_icon.search_m span.odd_span {
 	width: 45px;
 	height: 40px;
-	background-image: url("../../../assets/img/menu/menu_search.png");
+	background-image: url("../../img/menu/menu_search.png");
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	vertical-align: top;
@@ -202,16 +200,14 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 	top: 43px;
 	left: 1px;
 	padding-bottom: 13px;
-	background-image:
-		url("../../../assets/img/menu/menu_search_auto_bg.png");
+	background-image: url("../../img/menu/menu_search_auto_bg.png");
 	background-repeat: no-repeat;
 	background-position: -322px bottom;
 }
 
 #gnb fieldset .auto_complete .auto_complete_cont {
 	padding-top: 13px;
-	background-image:
-		url("../../../assets/img/menu/menu_search_auto_bg.png");
+	background-image: url("../../img/menu/menu_search_auto_bg.png");
 	background-repeat: no-repeat;
 	background-position: 0 top;
 }
@@ -278,7 +274,7 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 	width: 40px;
 	height: 40px;
 	background-image:
-		url("../../../assets/img/menu/menu_search_auto_bg_album_frame.png");
+		url("http://localhost:8080/Lemon/assets/img/menu/menu_search_auto_bg_album_frame.png");
 	background-repeat: no-repeat;
 	background-position: -958px -162px;
 }
@@ -352,40 +348,40 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 /*------------------------------------*/
 /* 실시간 검색어 영역 */
 .realtime_soar_keyword {
-    zoom: 1;
-    float: left;
-    margin-top: 45px;
-    position: relative;
-    padding-left: 9px;
-    *z-index: 15;
+	zoom: 1;
+	float: left;
+	margin-top: 45px;
+	position: relative;
+	padding-left: 9px;
+	*z-index: 15;
 }
 
 /* 실시간 급상승 이미지 */
 .realtime_soar_keyword a.title {
-    display: none;
-    float: left;
-    width: 42px;
-    height: 16px;
-    margin: 3px 0 0 3px;
-    background-image: url("../../../assets/img/menu/menu_search_realtime_soar.png");
-    background-repeat: no-repeat;
-    background-position: left top;
-    font-size: 0;
-    line-height: 0;
-    vertical-align: top;
-    cursor: pointer;
+	display: none;
+	float: left;
+	width: 42px;
+	height: 16px;
+	margin: 3px 0 0 3px;
+	background-image: url("../../img/menu/menu_search_realtime_soar.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+	cursor: pointer;
 }
 
 /* 검색 키워드, 순위 변동 영역 */
 .realtime_soar_keyword .keyword_overlay {
-    position: relative;
-    float: left;
-    display: inline-block;
-    width: 162px;
-    margin: 3px 0 0 10px;
-    *margin-top: 2px;
-    overflow: hidden;
-    z-index: 15;
+	position: relative;
+	float: left;
+	display: inline-block;
+	width: 162px;
+	margin: 3px 0 0 10px;
+	*margin-top: 2px;
+	overflow: hidden;
+	z-index: 15;
 }
 
 .realtime_soar_keyword .keyword_overlay ol {
@@ -419,9 +415,9 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 
 /* 순위 . */
 .realtime_soar_keyword .order .gubun {
-    vertical-align: top;
-    font-size: 12px;
-    line-height: 15px;
+	vertical-align: top;
+	font-size: 12px;
+	line-height: 15px;
 }
 
 /* 검색어 */
@@ -481,8 +477,7 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 	width: 7px;
 	height: 7px;
 	margin: 1px 3px 0 0;
-	background-image:
-		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-image: url("../../img/menu/menu_search_realtime_ranking.png");
 	background-repeat: no-repeat;
 	background-position: -22px -155px;
 	font-size: 0;
@@ -498,8 +493,7 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 	font-size: 0;
 	line-height: 0;
 	vertical-align: middle;
-	background-image:
-		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-image: url("../../img/menu/menu_search_realtime_ranking.png");
 	background-repeat: no-repeat;
 	background-position: 0 -169px;
 }
@@ -519,7 +513,7 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 
 /* 순위 변동 다운 글자 색상 */
 .realtime_soar_keyword .wrap_rank.down .num {
-    color: #47bda8;
+	color: #47bda8;
 }
 
 /* 순위 상승 */
@@ -535,8 +529,7 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 	width: 7px;
 	height: 7px;
 	margin: 3px 3px 0 0;
-	background-image:
-		url("../../../assets/img/menu/menu_search_realtime_ranking.png");
+	background-image: url("../../img/menu/menu_search_realtime_ranking.png");
 	background-repeat: no-repeat;
 	background-position: 0 -155px;
 	font-size: 0;
@@ -555,21 +548,21 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 
 /* 더보기 */
 .realtime_soar_keyword .keyword_overlay .keyword_more {
-    display: none;
-    height: 21px;
-    margin: 0 1px;
-    padding-top: 8px;
-    border-top: 1px solid #e2e6e5;
-    color: #666;
-    text-align: center;
-    line-height: 0;
-    letter-spacing: -1px;
+	display: none;
+	height: 21px;
+	margin: 0 1px;
+	padding-top: 8px;
+	border-top: 1px solid #e2e6e5;
+	color: #666;
+	text-align: center;
+	line-height: 0;
+	letter-spacing: -1px;
 }
 
 .realtime_soar_keyword .keyword_overlay .keyword_more span span {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
 }
 
 /*------------------------------------*/
@@ -579,12 +572,12 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 
 /* 배너 영역 */
 .cmn_banner {
-    float: right;
-    position: relative;
-    top: 24px;
-    font-size: 0;
-    line-height: 0;
-    z-index: 11;
+	float: right;
+	position: relative;
+	top: 24px;
+	font-size: 0;
+	line-height: 0;
+	z-index: 11;
 }
 
 /* 버튼 */
@@ -593,77 +586,77 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 }
 
 .cmn_banner .gnb_banner_btn {
-    position: absolute;
-    top: 47px;
-    right: 0;
-    zoom: 1;
-    overflow: hidden;
+	position: absolute;
+	top: 47px;
+	right: 0;
+	zoom: 1;
+	overflow: hidden;
 }
 
 .cmn_banner .gnb_banner_btn a {
-    float: left;
-    display: inline-block;
-    width: 20px;
-    height: 17px;
-    font-size: 0;
-    line-height: 0;
-    background-image: url("../../../assets/img/common/common_btn_page_music.png");
-    background-repeat: no-repeat;
-    background-position: left -220px;
+	float: left;
+	display: inline-block;
+	width: 20px;
+	height: 17px;
+	font-size: 0;
+	line-height: 0;
+	background-image: url("../../img/common/common_btn_page_music.png");
+	background-repeat: no-repeat;
+	background-position: left -220px;
 }
 
 .cmn_banner .gnb_banner_btn .next {
-    margin-left: -2px;
-    background-position: right -220px;
+	margin-left: -2px;
+	background-position: right -220px;
 }
 
 /* 버튼 페이지 처리 */
 .wrap_page {
-    position: absolute;
-    top: 0;
-    right: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .wrap_page .page_num {
-    display: inline-block;
-    color: #888;
-    font-size: 12px;
-    line-height: 17px;
-    vertical-align: top;
+	display: inline-block;
+	color: #888;
+	font-size: 12px;
+	line-height: 17px;
+	vertical-align: top;
 }
 
 .wrap_page .page_num strong {
-    color: #1a1a1a;
-    font-weight: normal;
+	color: #1a1a1a;
+	font-weight: normal;
 }
 
 .wrap_page .wrap_btn {
-    vertical-align: top;
+	vertical-align: top;
 }
 
 .wrap_page .page .wrap_btn .btn_pre {
-    margin-right: -2px;
+	margin-right: -2px;
 }
 
 .wrap_page .btn_pre span.odd_span, .wrap_page .btn_next span.odd_span {
-    width: 20px;
-    height: 17px;
-    background-image: url("../../../assets/img/main/common/main_bg_btn_page.png");
-    background-repeat: no-repeat;
-    font-size: 0;
-    line-height: 0;
+	width: 20px;
+	height: 17px;
+	background-image: url("../../img/main/common/main_bg_btn_page.png");
+	background-repeat: no-repeat;
+	font-size: 0;
+	line-height: 0;
 }
 
 .wrap_page .btn_pre span.odd_span {
-    background-position: left -220px;
+	background-position: left -220px;
 }
 
 .wrap_page .btn_pre.disabled span.odd_span {
-    background-position: left -202px !important;
+	background-position: left -202px !important;
 }
 
 .wrap_page .btn_next span.odd_span {
-    background-position: right -220px;
+	background-position: right -220px;
 }
 
 .page .page_num {
@@ -686,26 +679,26 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 }
 
 .page .wrap_btn {
-    *zoom: 1;
+	*zoom: 1;
 }
 
 .page .wrap_btn .btn {
-    *margin: 0;
+	*margin: 0;
 }
 
 .page .wrap_btn .btn_pre, .page .wrap_btn .btn_next {
-    float: left;
-    margin-right: 0;
+	float: left;
+	margin-right: 0;
 }
 
 .page .wrap_btn .btn_pre {
-    margin-right: -1px;
+	margin-right: -1px;
 }
 
 /*------------------------------------*/
 /*                 메뉴                                */
 /*------------------------------------*/
-#menu  {
+#menu {
 	float: left;
 	position: relative;
 }
@@ -714,7 +707,8 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 	float: left;
 	margin-left: 18px;
 	font-size: 0;
-	height: 100px;
+	/*height: 100px;*/
+	height: 85px;
 	line-height: 100px;
 	padding: 0 19px;
 }

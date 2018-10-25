@@ -257,7 +257,7 @@ ul.tab li.current a {
     position: relative;
     float: left;
     width: 180px;
-    height: 180px;
+    height: 160px;
     overflow: hidden;
 }
 
@@ -273,7 +273,7 @@ ul.tab li.current a {
     float: left;
     width: 230px;
     height: 139px;
-    padding: 19px 23px 20px;
+    padding: 0 23px 20px;
     margin-left: -1px;
     border: 1px solid #e5e5e5;
 }
