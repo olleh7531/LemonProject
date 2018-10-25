@@ -31,6 +31,7 @@ public class MemberUpdate implements Action {
 		
 		// 회원정보를 updateForm.jsp 페이지에 전달(request객체)
 		request.setAttribute("mb", mb);
+		
 		// ./member/updateForm.jsp 생성
 		// 페이지 이동 (주소 : ./MemberUpdate.me(화면 : ./member/updateForm.jsp))
 		forward.setPath("./member/updateForm.jsp");	
