@@ -1448,7 +1448,7 @@
 						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
-								<a href="" class="id_area">레몬</a>님
+								<a href="" class="id_area"><%=email_id %></a>님
 							</strong>
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>

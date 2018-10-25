@@ -14,62 +14,25 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/starpost/common.css">
 	
+	<!-- Member CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/member/deleteMember.css">
+		
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 
-	
 	<style>
-	/*공통*/
-	div{
-		display: block;
-	}
-	
-	#out{ border: 1px solid red; 
-		width: 100%;
-		text-align: center;
-	}
-	
-	#in{ border: 1px solid blue; 
-		display: inline-block;
-		width: 1008px;
-		text-align: left;
-	}
-	
-	#wrap_tit{
-	}
-	
-	#wrap_tit h2{	
-	    color: #1a1a1a;
-	    font-weight: bold;
-	    font-size: 24px;
-	    line-height: 30px;
-	    font-family: "맑은 고딕", sans-serif;
-	    letter-spacing: -2px;
-		margin-top: 30px;
-
-	}
-	
-	#contsMem{ border: 1px solid gray;
-		display: block;
-		margin-top: 30px;
-	}
-	/*공통*/
-	
-	/*회원 탈퇴*/
-	.mt14{ margin-top: 14px; }
-}
-	.txt_info_mem{
-	    margin-top: 16px;
-	    font-size: 14px;
-   		line-height: 22px;
-    	color: #333;
-    	font-family: "맑은 고딕",sans-serif;
-    	letter-spacing: -1px;
+	#terms {
+  	width: 100%;
+	height: 371px;
+    background-image: url("./assets/img/member/terms.JPG");
+    margin-top: 20px;
+    margin-bottom: 10px;
     }
-		
-	</style>
+    </style>
+    
 </head>
 <body>
 <%
@@ -79,8 +42,8 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
 	<!-- 본문 -->
-	<div id="out">
-		<div id="in">
+	<div id="bg_contsMem">
+		<div id="wrap_contsMem">
 			<div id="wrap_tit">
 				<h2>회원탈퇴</h2>
 			</div>
@@ -96,16 +59,26 @@
 					</strong>
 					</p>
 				</div>
+				<div id="terms"></div>
 				<form action="./MemberDeleteAction.mb" method="post">
 					<div class="mt14">
 						<input type="checkbox" id="isOutAgree" />
 						<label style="font-size: 12px; color: #666;">안내사항을 모두 확인하였으며, 이에 동의합니다.</label>
 					</div>
-					ID : <input type="text" name="email_id" value="<%=email_id %>" readonly/> <br/>
-					PW : <input type="text" name="pass" /> <br/>
 					
-					<input type="submit" onclick="return memberOut();" value="회원 탈퇴" />
-					<input type="button" onclick="history.back();" value="취소" />
+					<div id="chkUserForm">
+						<dl>
+							<dt>레몬 ID</dt>
+							<dd><%=email_id %></dd>
+							<dt>비밀번호</dt>
+							<dd><input type="text" name="pass" /></dd>
+						</dl>
+					</div>
+					
+					<div id="wrap_buttons">
+						<input type="submit" onclick="return memberOut();" value="회원 탈퇴" />
+						<input type="button" onclick="history.back();" value="취소" />
+					</div>				
 				</form>
 			</div>
 			
@@ -116,25 +89,7 @@
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
-	<script>
-	function memberOut() {
-		var isOutAgree = document.getElementById("isOutAgree");
-
-		if(isOutAgree.checked == true){
-			var chkMemDel = confirm('확인을 누르시면 탈퇴가 완료됩니다.');
-			
-			if(chkMemDel == true){	
-				return true;
-			}
-		}else{
-			alert('안내사항을 확인하셨다면 동의해주세요.');
-			return false;
-		}
-		
-		return false;
-	}
-		
-	</script>
+	<script type="text/javascript" src="./assets/js/member/deleteMember.js"></script>
 	
 	</body>
 </html>
