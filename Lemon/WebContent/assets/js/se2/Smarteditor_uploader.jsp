@@ -26,13 +26,10 @@
 	// multipart로 전송되었는가 체크 
 	if (ServletFileUpload.isMultipartContent(request)) {
 		ServletFileUpload uploadHandler = new ServletFileUpload(new DiskFileItemFactory());
-
-		// UTF-8 인코딩 설정
+		//UTF-8 인코딩 설정
 		uploadHandler.setHeaderEncoding("UTF-8");
-
-		List items = uploadHandler.parseRequest(request);
-
-		// 각 필드태그들을 FOR문을 이용하여 비교를 합니다.
+		List<FileItem> items = uploadHandler.parseRequest(request);
+		//각 필드태그들을 FOR문을 이용하여 비교를 합니다.
 		for (FileItem item : items) {
 			if (item.getFieldName().equals("callback")) {
 				return1 = item.getString("UTF-8");
