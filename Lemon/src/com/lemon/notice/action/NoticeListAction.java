@@ -1,29 +1,37 @@
 package com.lemon.notice.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lemon.notice.db.NoticeBean;
 import com.lemon.notice.db.NoticeDAO;
 
-public class NoticeListAction implements Action {
-
+public class NoticeListAction implements Action{
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("NoticeListAction_execute!");
-
+		System.out.println("NoticeListAction execute!");
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		// 게시판 글 목록 디비에서 가져옴 -> view(jsp)페이지로 전달
 		NoticeDAO ndao = new NoticeDAO();
 		
+		String category = request.getParameter("category");
+		
+		if(category == null) {
+			category = "분류";
+		}
 		
 		// 게시판 전체 글 개수 확인
-		int count = ndao.getNoticeCount();
-		
-		
+		int count = ndao.getNoticeCount(category);
 		/***********************************************************************/
-
+		
 		// 페이징
 		// 한 페이지에서 보여줄 글 개수를 설정
 		int pageSize = 15;
@@ -38,17 +46,14 @@ public class NoticeListAction implements Action {
 		int startRow = (currentPage - 1) * pageSize + 1;
 		
 		// 끝행을 계산하기 10..... 20.....30...40...
-//		int endRow = currentPage * pageSize;
+		// int endRow = currentPage * pageSize;
 		
 		/***********************************************************************/
 		
 		// 전체 글 개수 가져오기
-		List noticeList = new ArrayList();
-		noticeList = ndao.getNoticeList(startRow, pageSize);
+		List<NoticeBean> noticeList = ndao.getNoticeList(startRow, pageSize, category);
 		
-		/***********************************************************************/
-		// 전체 페이지수 계산 => 게시판 글 50개 , 한페이지에 10개씩 보여줌 => 5페이지
-		// 게시판 글 77개 , 한페이지에 10개씩 보여줌 => 8페이지( 7+1 )
+		PrintWriter out = response.getWriter();
 		
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 		
@@ -71,11 +76,25 @@ public class NoticeListAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		request.setAttribute("category", category);
 		
-		ActionForward forward = new ActionForward();
-		forward.setPath("./notice/notice.jsp");
-		forward.setRedirect(false);
-		System.out.println("forward 이동 !");
-		return forward;
+		for(int i=0 ; i<noticeList.size() ; i++) {
+			NoticeBean nb = noticeList.get(i);
+			String result =
+					"<tr>"+
+						"<td>"+nb.getNum()+"</td>"+
+						"<td>"+nb.getNo_category()+"</td>"+
+						"<td id='subject'>"+
+						"<a href='./noticeContent.nt?num="+nb.getNum()+"&pageNum="+pageNum+"'>"+nb.getNo_subject()+"</a>"+
+						"</td>"+
+						"<td>"+nb.getNo_readcount()+"</td>"+
+						"<td><div class='wrap'>"+nb.getNo_reg_date()+"</div></td>"+
+					"</tr>";
+			out.print(result);
+		}
+		
+		/***********************************************************************/
+				
+		return null;
 	}
 }

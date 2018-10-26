@@ -32,6 +32,14 @@ public class ChartFrontController extends HttpServlet {
 			}
     	}else if(command.equals("/MusicUploadAction.ams")){
 
+    	}else if(command.equals("/LemonLatest_Chart.ct")){
+    		action = new LemonLatest_Chart();
+    		
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     	}
 		
 		

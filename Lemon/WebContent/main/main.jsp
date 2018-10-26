@@ -9,17 +9,17 @@
 <title>레몬 Lemon</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css"> <!-- 메인 / 메뉴 슬라이더 -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 	
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	<script type="text/javascript" src="./assets/js/menu/main_search_real_time.js"></script><!-- 실시간 검색어 -->
 	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
@@ -27,8 +27,10 @@
 </head>
 <body>
 <%
-	// 세션값 id 정보를 저장 
-	String email_id =(String) session.getAttribute("email_id");
+	// LoginAction에서 받아온 세션값 id 정보를 저장 
+	String email_id = (String) session.getAttribute("email_id");
+	String nickname = (String) session.getAttribute("nickname");
+
 	System.out.println(email_id);
 %>
 
@@ -1448,7 +1450,7 @@
 						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
-								<a href="" class="id_area">레몬</a>님
+								<a href="" class="id_area"><%=nickname %></a>님
 							</strong>
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>

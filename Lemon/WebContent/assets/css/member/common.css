@@ -1,0 +1,113 @@
+@CHARSET "UTF-8";
+
+div{
+	display: block;
+}
+	
+#bg_contsMem{ /* border: 1px solid red;  */
+	width: 100%;
+	text-align: center;
+}
+	
+#wrap_contsMem{/*  border: 1px solid blue;  */
+	display: inline-block;
+	width: 1008px;
+	text-align: left;
+}
+	
+#wrap_tit h2{	
+    color: #1a1a1a;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    font-family: "맑은 고딕", sans-serif;
+    letter-spacing: -2px;
+	margin-top: 30px;
+}
+	
+#contsMem{ /* border: 1px solid gray; */
+	display: block;
+	margin-top: 30px;
+}
+
+#wrap_buttons{
+	text-align: center;
+	padding-top: 20px;
+}
+
+/*테이블 관련*/
+.wrap_table{
+	border-top: 1px solid #B8B8B8;
+	border-bottom: 1px solid #B8B8B8;
+    font-size: 14px;
+	line-height: 1.2em;
+   	font-family: "돋움","Dotum","Apple Gothic",sans-serif;
+   	letter-spacing: 0;
+}
+	
+.wrap_table table{
+	width:100%;
+   	border-collapse : collapse;		
+}
+	
+.wrap_table th {
+    border-top: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    background: #fafafa;
+    color: #1a1a1a;
+   	vertical-align: middle;
+   	padding:15px;
+}
+
+.wrap_table td {
+	border-top: 1px solid #e6e6e6;
+}
+
+.wrap_table input{
+	margin-left: 20px;
+}
+/*테이블 관련*/	
+
+/* 버튼 */
+.btnConfirm {
+  background-color: #EDAE06;
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  color: #fff;
+  font-size:16px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 10px;
+  width: 120px;
+  margin-left:5px;
+  margin-right:5px;
+}
+	
+.btnCancle {
+  background-color: #FFF;
+  border: 1px solid #bfbfbf;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size:16px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 10px;
+  width: 120px;
+  color: #666666;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+.btnConfirm:hover{
+	  background-color: #e0a000;
+}
+	
+.btnCancle:hover{
+	border: 1px solid #8e8e8e;
+}
+/* 버튼 */
+
+.clear{
+	clear: both;
+}

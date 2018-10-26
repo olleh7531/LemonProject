@@ -27,7 +27,7 @@ public class NoticeWriteAction implements Action {
 		
 		// 이동준비
 		ActionForward forward = new ActionForward();
-		forward.setPath("./notice.nt");
+		forward.setPath("./noticeInit.nt");
 		forward.setRedirect(true);		
 		
 		return forward;

@@ -43,24 +43,27 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/insertForm.jsp");
 			// 이동할 방식
 			forward.setRedirect(false);
+			
 		} else if (command.equals("/MemberJoinAction.mb")) {
 			// 회원가입 처리
 			action = new MemberJoinAction();
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/MemberLoginAction.mb")) {
-			// 로그인 처리
+			
+		} else if(command.equals("/MemberLoginAction.mb")){
+			// 로그인 처리 
 			action = new MemberLoginAction();
-			System.out.println("로그인");
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/MemberLogoutAction.mb")) {
+			
+		} else if(command.equals("/MemberLogoutAction.mb")){
 			// 로그아웃 처리
 			action = new MemberLogoutAction();
 			try {
@@ -68,17 +71,61 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/ChooseMemberUpdate.mb")) {
-			 forward = new ActionForward();
-			 forward.setPath("./member/chooseMemberUpdate.jsp");
-			 forward.setRedirect(false);
+			
+		} else if(command.equals("/ChooseMemberUpdate.mb")){
+			// 회원정보 변경 메뉴 선택
+			forward = new ActionForward();
+			forward.setPath("./member/chooseMemberUpdate.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/MemberUpdate.mb")){
+			// 회원정보 변경
+			action = new MemberUpdate(); // Action
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if(command.equals("/MemberUpdateAction.mb")){	
+			// 회원정보 수정 처리
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}  else if(command.equals("/MemberDelete.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/deleteForm.jsp");
+			forward.setRedirect(false);			
 
-		} else if (command.equals("/MemberDelete.mb")) {
-			 forward = new ActionForward();
-			 forward.setPath("./member/deleteForm.jsp");
-			 forward.setRedirect(false);
+		} else if(command.equals("/MemberDeleteAction.mb")){
+			action = new MemberDeleteAction();
 
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MemberPassUpdate.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/updatePassForm.jsp");
+			forward.setRedirect(false);		
+			
+		} else if(command.equals("/MemberPassUpdateAction.mb")){
+			action = new MemberPassUpdateAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
+		
 
 		if (forward != null) {
 			if (forward.isRedirect()) {// true

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lemon.member.db.MemberBean;
 import com.lemon.member.db.MemberDAO;
 
 public class MemberLoginAction implements Action {
@@ -18,7 +19,7 @@ public class MemberLoginAction implements Action {
 		String pass = request.getParameter("pass");
 		
 		MemberDAO mdao = new MemberDAO();
-
+		
 		int check = mdao.idCheck(email_id, pass);
 		// 0 - "비밀번호 오류"
 		// -1 - "아이디 없음"
@@ -48,10 +49,14 @@ public class MemberLoginAction implements Action {
 			return null;
 		}
 		
-	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.me		
+	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.mi		
 		HttpSession session = request.getSession();
 		session.setAttribute("email_id", email_id);
 		
+		
+		MemberBean mb = mdao.getMember(email_id);		
+		session.setAttribute("nickname", mb.getNickname());
+
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./main.mi");

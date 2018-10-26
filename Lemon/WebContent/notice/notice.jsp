@@ -2,39 +2,57 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>레몬 Lemon</title>
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/main_menu_bxslider.css">
+<!-- 메인 / 메뉴 슬라이더 -->
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/footer.css">
 
-   <link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/common/common_footer.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/common/common_main_menu_bxslider.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/common/common_font.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_common.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_search_realtime.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/menu/menu_banner.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/main/main_common.css">
-   <link rel="stylesheet" type="text/css" href="./assets/css/main/main_btn_page.css">
-   
-   <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-   <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
-   <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript"
+	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	<script>
+	function initialization() {
+		var category = document.getElementById("category").
+		options[document.getElementById("category").selectedIndex].text;
+		
+		$.ajax({
+        	url: "./notice.nt",
+            data: {category: category},
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            type: 'POST',
+            success:function(result) {
+				$('.no_tbody').html(result);
+            }, error:function() {
+				alert("실패");
+            }
+        });
+	}
+	</script>
 </head>
-<body>
+<body onload="initialization()">
 	<%
 		request.setCharacterEncoding("UTF-8");
-		//request 데이터 저장
+		//  request 데이터 저장
 		//	request.setAttribute("NoticeList", NoticeList);
 		//	request.setAttribute("pageNum", pageNum);
 		//	request.setAttribute("count", count);
@@ -42,32 +60,40 @@
 		//	request.setAttribute("pageBlock", pageBlock);
 		//	request.setAttribute("startPage", startPage);
 		//	request.setAttribute("endPage", endPage);
-
 		List NoticeList = (List) request.getAttribute("noticeList");
 		String pageNum = (String) request.getAttribute("pageNum");
+		String category = (String) request.getAttribute("category");
 		int count = ((Integer) request.getAttribute("count")).intValue();
 		int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
 		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
 		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
 		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
 	%>
-	<!-- 	헤드 -->
+	
+	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	<!-- 	헤드 -->
-	<div id="wrap_conts">
+	
+	<!-- 내용 -->
+	<div id="wrap_conts" style="text-align: center">
 		<div id="conts">
 			<h2 id="tit">공지사항</h2>
 			<div id="wrap_select">
-				<select>
-					<option>분류</option>
-					<option>서비스 소식</option>
-					<option>서비스 오픈</option>
-					<option>서비스 종료</option>
-					<option>서비스 점검</option>
-					<option>안내</option>
+				<select name="category" id="category" onchange="initialization()">
+					<option value="분류"
+					<%if (category.equals("분류")) {%> selected <%}%>>분류</option>
+					<option value="서비스 소식"
+					<%if (category.equals("서비스 소식")) {%> selected <%}%>>서비스	소식</option>
+					<option value="서비스 오픈"
+					<%if (category.equals("서비스 오픈")) {%> selected <%}%>>서비스	오픈</option>
+					<option value="서비스 종료"
+					<%if (category.equals("서비스 종료")) {%> selected <%}%>>서비스	종료</option>
+					<option value="서비스 점검"
+					<%if (category.equals("서비스 점검")) {%> selected <%}%>>서비스	점검</option>
+					<option value="안내"
+					<%if (category.equals("안내")) {%> selected <%}%>>안내</option>
 				</select>
 			</div>
-
+			
 			<div id="pageList">
 				<table>
 					<colgroup>
@@ -87,22 +113,23 @@
 						</tr>
 					</thead>
 
-					<tbody>
+					<tbody class="no_tbody">
 						<%
 							if (count != 0) {
 								for (int i = 0; i < NoticeList.size(); i++) {
 									NoticeBean nb = (NoticeBean) NoticeList.get(i);
 						%>
-						<tr>
+						<%-- <tr>
 							<td scope="col"><%=nb.getNum()%></td>
 							<td scope="col"><%=nb.getNo_category()%></td>
-							<td id="subject" scope="col"><a
-								href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a></td>
+							<td id="subject" scope="col">
+							<a href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a>
+							</td>
 							<td scope="col"><%=nb.getNo_readcount()%></td>
 							<td><div class="wrap"><%=nb.getNo_reg_date()%></div></td>
-						</tr>
+						</tr> --%>
 						<%
-							}
+								}
 							}
 						%>
 					
@@ -122,7 +149,7 @@
 								// 1~10,11~20,21~30,....
 								for (int i = startPage; i <= endPage; i++) {
 						%>
-						<a href="./notice.nt?pageNum=<%=i%>">[<%=i%>]
+						<a href="./noticeInit.nt?pageNum=<%=i%>">[<%=i%>]
 						</a>
 						<%
 							}
@@ -141,11 +168,15 @@
 					<a href="./NoticeWrite.nt">글쓰기</a>
 				</div>
 			</div>
-
+			
 			<div id="pageNavi"></div>
 			<div class="wrap_search"></div>
 		</div>
 	</div>
+	<!-- 내용 -->
+
+	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+
 </body>
 </html>
