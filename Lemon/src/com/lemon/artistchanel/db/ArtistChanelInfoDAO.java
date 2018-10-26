@@ -116,15 +116,32 @@ public class ArtistChanelInfoDAO {
 			while(rs.next()) {
 				ArtistChanelInfoBean acibean = new ArtistChanelInfoBean();
 				
-				acibean.setActivity_type(rs.getString("activity_type")); // 솔로/그룹 유형
-				acibean.setSinger_name(rs.getString("singer_name")); // 가수 활동 이름(예명)
-				acibean.setSi_group_name(rs.getString("si_group_name")); // 소속 그룹 이름
-				acibean.setDebut_year(rs.getDate("debut_year")); // 데뷔 날짜
-				acibean.setDebut_song(rs.getString("debut_song")); // 데뷔 노래
-				acibean.setSi_agency(rs.getString("si_agency")); // 소속사 이름
-				acibean.setSi_picture(rs.getString("si_picture")); // 프로필 사진
-				acibean.setSi_genre(rs.getString("si_genre")); // 노래 장르
-				acibean.setSi_birth(rs.getDate("si_birth")); // 생일
+				// 솔로/그룹 유형
+				acibean.setActivity_type(rs.getString("activity_type"));
+				
+				// 가수 활동 이름(예명)
+				acibean.setSinger_name(rs.getString("singer_name"));
+				
+				// 소속 그룹 이름
+				acibean.setSi_group_name(rs.getString("si_group_name"));
+				
+				// 데뷔 날짜
+				acibean.setDebut_year(rs.getDate("debut_year"));
+				
+				// 데뷔 노래
+				acibean.setDebut_song(rs.getString("debut_song"));
+				
+				// 소속사 이름
+				acibean.setSi_agency(rs.getString("si_agency"));
+				
+				// 프로필 사진
+				acibean.setSi_picture(rs.getString("si_picture"));
+				
+				// 노래 장르
+				acibean.setSi_genre(rs.getString("si_genre"));
+			
+				// 생일
+				acibean.setSi_birth(rs.getDate("si_birth"));
 				
 				// 자바빈 객체 -> ArrayList 한 칸에 저장
 				info.add(acibean);

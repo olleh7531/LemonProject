@@ -14,12 +14,14 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/starpost/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/starpost/artist_chanel_tabmenu.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/starpost/artist_chanel_song.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/starpost/artist_chanel_info.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/starpost/artist_chanel_tabmenu.js"></script>
 </head>
 <body>
 	<!-- 메뉴 -->
@@ -30,8 +32,8 @@
 		<div id="conts_section" class="my_fold">
 			<div id="conts" class="">
 				<h2 class="f_tit">아티스트 채널</h2>
+				<!-- 아티스트 기본정보 -->
 				<div class="wrap_dtl_atist">
-					<!-- 아티스트 기본정보 -->
 					<div class="dtl_atist clfix">
 						<h3 class="none">아티스트 기본정보</h3>
 						<!-- 프로필 이미지 -->
@@ -78,10 +80,11 @@
 									</a>
 								</dd>
 							</dl>
-						</div> <!-- 아티스트 정보 -->
+						</div>
 					</div>
 				</div>
-
+				<!-- 아티스트 기본정보 -->
+				
 				<!-- 탭 메뉴 -->
 				<div class="wrap_tab_atist">
 					<ul class="artist_chanel_tab">
@@ -107,7 +110,7 @@
 						</li>
 						<li class="" data-tab="artist_chanel_tab5">
 							<a href="#" title="아이유 상세정보">
-								<span class="cntt">상세정보</span>
+								<span class="cntt">소개</span>
 							</a>
 						</li>
 					</ul>
@@ -115,7 +118,7 @@
 				<!-- 탭 메뉴 -->
 				
 				<!-- 곡리스트 -->
-				<div class="section_vdo artist_chanel_tab1" >
+				<div class="section_vdo artist_chanel_tab1 current tab_content">
 					<div class="sort_info clfix">
 						<div class="wrap_sort fl_left" id="sort_layer">
 							<a href="" title="발매 보기" class="ico_radio on" radio-value="A">
@@ -186,7 +189,7 @@
 										</span>
 									</button>
 								</div>
-								<table border="1" style="width: 100%">
+								<table style="width: 100%">
 									<caption>
 										곡 목록입니다. 목록에 있는 곡을 선택하여 재생, 다운로드, 플레이리스트 담기, 선물하기가 가능합니다.
 									</caption>
@@ -3780,22 +3783,22 @@
 				</div> <!-- 곡 리스트 -->
 				
 				<!-- 앨범 -->
-				<div class="artist_chanel_tab2">
+				<div class="tab_content" id="artist_chanel_tab2">
 				</div>
 				<!-- 앨범 -->
 				
 				<!-- 비디오 -->
-				<div class="artist_chanel_tab3">
+				<div class="tab_content" id="artist_chanel_tab3">
 				</div>
 				<!-- 비디오 -->
 				
 				<!-- 포토/스토리 -->
-				<div class="artist_chanel_tab4">
+				<div class="tab_content" id="artist_chanel_tab4">
 				</div>
 				<!-- 포토/스토리 -->
 				
-				<!-- 상세정보 -->
-				<div class="artist_chanel_tab5 section_atistinfo01">
+				<!-- 아티스트 소개 -->
+				<div class="section_atistinfo01 tab_content" id="artist_chanel_tab5">
 					<!-- 활동정보 -->
 					<div class="section_atistinfo03">
 						<h3 class="title line arr">활동정보</h3>
@@ -3832,7 +3835,7 @@
 							<dt>소속그룹</dt>
 								<dd>
 									<a href="">이유 갓지(GOD G) 않은 이유 (박명수, 아이유)</a>
-								</dd>=
+								</dd>
 						</dl>
 						<!-- 그룹멤버 시작-->
 						

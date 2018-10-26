@@ -16,15 +16,15 @@ public class ArtistChanelFrontController extends HttpServlet {
 		
 		// /Lemon/index.me
 		String requestURI = request.getRequestURI();
-		System.out.println("StarPostFrontController : requserURI : " + requestURI);
+		System.out.println("ArtistChanelFrontController : requserURI : " + requestURI);
 
 		// /Lemon
 		String contextPath = request.getContextPath();
-		System.out.println("StarPostFrontController : contextPath : " + contextPath);
+		System.out.println("ArtistChanelFrontController : contextPath : " + contextPath);
 
 		// /index.me
 		String command = requestURI.substring(contextPath.length());
-		System.out.println("StarPostFrontController : command : " + command);
+		System.out.println("ArtistChanelFrontController : command : " + command);
 
 		// ActionForward (이동정보 - 페이지, 방법)
 		Action action = null;
@@ -50,7 +50,7 @@ public class ArtistChanelFrontController extends HttpServlet {
 			// ActionForward()객체 생성
 			// starPost/adminArtistChanelInfoWrite.jsp
 			forward = new ActionForward();
-			forward.setPath("./starpost/adminArtistChanelInfoWrite.jsp");
+			forward.setPath("./starpost/adminArtistChanelInfo.jsp");
 			forward.setRedirect(false);
 		}
 		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {

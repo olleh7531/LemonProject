@@ -19,7 +19,7 @@
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type="text/javascript" src="./assets/js/common/jquery-ui.js"></script>
-<script type="text/javascript" src="./assets/js/starpost/artist_chanel_admin.js"></script>
+<script type="text/javascript" src="./assets/js/starpost/artist_chanel_info.js"></script>
 </head>
 <body>
 	<!-- 메뉴 -->
@@ -92,23 +92,23 @@
 						<p>
 							<!-- 개별 항목들에 대한 체크박스 -->
 							<input type="checkbox" name="singer_song_genres"
-								id="song_genres_ballade" class="song_genres_check"
+								id="song_genres_ballade" class="singer_song_genres_check"
 								value="ballade">
 								<label for="song_genres_ballade">발라드</label>
 							<input type="checkbox" name="singer_song_genres"
-								id="song_genres_dance" class="song_genres_check"
+								id="song_genres_dance" class="singer_song_genres_check"
 								value="dance">
 								<label for="song_genres_dance">댄스</label>
 							<input type="checkbox" name="singer_song_genres"
-								id="song_genres_raphiphop" class="song_genres_check"
+								id="song_genres_raphiphop" class="singer_song_genres_check"
 								value="raphiphop">
 								<label for="song_genres_raphiphop">랩/힙합</label>
 							<input type="checkbox" name="singer_song_genres"
-								id="song_genres_randbsoul" class="song_genres_check"
+								id="song_genres_randbsoul" class="singer_song_genres_check"
 								value="randbsoul">
-								<label for="song_genres_randbsoul">R&B/Soul</label>
+								<label for="song_g enres_randbsoul">R&B/Soul</label>
 							<input type="checkbox" name="singer_song_genres"
-								id="song_genres_indie" class="song_genres_check"
+								id="song_genres_indie" class="singer_song_genres_check"
 								value="indie">
 								<label for="song_genres_indie">인디음악</label>
 						</p>
