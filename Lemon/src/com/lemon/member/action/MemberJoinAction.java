@@ -22,7 +22,7 @@ public class MemberJoinAction implements Action{
 		ServletContext ctx = request.getSession().getServletContext();
 		
 		// 실제 파일 저장경로 가져와서 출력
-		String realPath = ctx.getRealPath("/member/upload/img/");
+		String realPath = ctx.getRealPath("/upload/member/img/");
 		
 		// 파일의 최대 크기 지정
 		int maxSize = 10 * 1024 * 1024;
@@ -41,7 +41,7 @@ public class MemberJoinAction implements Action{
 		String email = email_1 + "@" + email_2;
 
 		mb.setEmail_id(email);
-		mb.setPass(multi.getParameter("passward"));
+		mb.setPass(multi.getParameter("password"));
 		mb.setName(multi.getParameter("name"));
 		mb.setNickname(multi.getParameter("nickname"));
 		mb.setGender(multi.getParameter("gender"));
@@ -49,7 +49,7 @@ public class MemberJoinAction implements Action{
 		String img = multi.getFilesystemName("file");
 		mb.setImg(img);
 		mb.setReg_ip(request.getRemoteAddr());
-				
+		
 		// DB 처리 객체 생성 net.member.db / MemberDAO
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertMember(mb);
