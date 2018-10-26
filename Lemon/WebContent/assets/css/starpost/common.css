@@ -13,16 +13,16 @@
 	position: relative;
 	width: 1008px;
 	margin: 0 auto;
-	padding: 0 228px 0 20px;
+	/* padding: 0 228px 0 20px; */
 }
 
-#conts_section.my_fold, #conts_section.fold_off {
+/* #conts_section.my_fold, #conts_section.fold_off {
 	padding: 0 228px 0 20px;
-}
-
-/*------------------------------------*/
-/*                 본문                                */
-/*------------------------------------*/
+} */
+/* 
+------------------------------------
+                본문                               
+------------------------------------
 #conts {
 	position: relative;
 	z-index: 10;
@@ -32,7 +32,7 @@
 	min-height: 800px;
 	padding: 52px 0 88px;
 	zoom: 1;
-}
+} */
 
 /*------------------------------------*/
 /*                 제목                                */

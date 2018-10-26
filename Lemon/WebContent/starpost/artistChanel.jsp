@@ -3802,26 +3802,13 @@
 					<!-- 활동정보 -->
 					<div class="section_atistinfo03">
 						<h3 class="title line arr">활동정보</h3>
-						<div class="debutsong">
-							<div class="title">데뷔곡</div>
-							<div class="debutsong_info_area">
-								<!-- 솔로 데뷔 곡 정보  -->
-								<div class="debutsong_info">
-									<dl>
-										<dt>
-											<a href="" class="ellipsis" title="미아">미아</a>
-										</dt>
-										<dd class="atist">
-											<a href="" class="ellipsis" title="아이유">아이유</a>
-										</dd>
-									</dl>
-								</div>
-								<!-- 그룹데뷔곡 정보(솔로일경우 표현) -->
-							</div>
-						</div>
 						<dl class="list_define clfix">
 							<dt>데뷔</dt>
 								<dd>2008.09.18</dd>
+							<dt>데뷔곡</dt>
+								<dd>
+									<a href="" class="ellipsis" title="미아">미아</a>
+								</dd>
 							<dt>활동년대</dt>
 								<dd>2000, 2010 년대</dd>
 							<dt>유형</dt>
