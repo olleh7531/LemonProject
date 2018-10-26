@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MagazineFrontController extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
@@ -27,16 +32,16 @@ public class MagazineFrontController extends HttpServlet {
 			forward.setPath("./magazine/write.jsp");
 			forward.setRedirect(false);
 
-		}else if(command.equals("/magazineBoardWriteAction.maga")){
+		} else if (command.equals("/magazineBoardWriteAction.maga")) {
 			action = new magazineBoardWriteAction();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(command.equals("/magazineList.maga")){
+		} else if (command.equals("/magazineList.maga")) {
 			forward = new ActionForward();
 			forward.setPath("./magazine/main.jsp");
 			forward.setRedirect(false);
@@ -63,6 +68,7 @@ public class MagazineFrontController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doProcess(request, response);
+		 
 	}
 
 }
