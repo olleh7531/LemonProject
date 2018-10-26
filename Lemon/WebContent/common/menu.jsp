@@ -248,8 +248,8 @@
 						</a>
 					</li>
 					<li class="menu4">
-						<a href="./starpost.sp" class="cur_menu mlog">
-							<span class="menu_more menu05">스타포스트</span>
+						<a href="" class="cur_menu mlog">
+							<span class="menu_more menu05">멜론DJ</span>
 						</a>
 					</li>
 					<li class="menu5">
@@ -274,7 +274,7 @@
 					</li>
 					<li class="menu9">
 						<a href="./MusicUpload.ams" class="cur_menu mlog">
-							<span class="menu_bg menu08">음악 업로드 테스트버튼</span>
+							<span class="menu_bg menu08">업로드</span>
 						</a>
 					</li>
 				</ul>
