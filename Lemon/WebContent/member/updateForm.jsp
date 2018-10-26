@@ -78,7 +78,12 @@
 						<tr>
 							<td colspan="2" style="text-align: center;">
 								<div>
+									<%if(mb.getImg() == null){
+										%>
+										<img src="./assets/img/member/noimg.gif" style="margin-top:10px;" width="100" height="100">										
+										<% }else{ %>
 									<img src="./upload/member/img/<%=mb.getImg()%>" style="margin-top:10px;" width="100" height="100">
+									<%} %>
 									<p style="margin-top:10px; margin-bottom:10px;"><span style="font-size: 20px; font-weight: bold;"><%=mb.getNickname()%></span>님의 회원정보</p>
 								</div>
 							</td>
@@ -87,7 +92,7 @@
 							<th>레몬 ID</th>
 							<td>
 								<input type="text" name="email_id" value="<%=mb.getEmail_id() %>"><br/>	
-								<p><input type="checkbox" stype="width:auto;" name="receive_email" <%if(chkRe == 1){ %>
+								<p><input type="checkbox" style="width:auto;" name="receive_email" <%if(chkRe == 1){ %>
 					          			checked
 					      			<% } %>><label>이메일 수신동의</label>
 					      		</p>
