@@ -83,6 +83,25 @@
 	text-align: left;
 }
 
+.cate_sub {
+	text-align: left
+}
+
+.cate_sub select {
+	width: 126px; 
+	height: 26px;
+}
+
+.cate_sub input {
+	margin-bottom: 4px;
+	height: 26px;
+}
+
+#smarteditor {
+	width: 1000px;
+	height: 300px;
+}
+
 #submit_btn {
 	margin: auto;	
 	border: 1px solid #d3d3d3;
@@ -105,7 +124,7 @@
 	border-radius: 40px;
 	background-color: #fff;
 	display: inline-block;
-	padding: 10px 37px;
+	padding: 10px 30px;
 	font-weight: bold;
 	color: #666;
 	outline: 0;
@@ -114,3 +133,8 @@
 #cancel_btn:hover {
 	border: 1px solid #666;
 }
+
+
+
+
+

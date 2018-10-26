@@ -16,7 +16,7 @@
 	href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
 <link rel="stylesheet" type="text/css"
-	href="./assets/css/board/notice.css">
+	href="./assets/css/board/notice1.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/common/font.css">
 <link rel="stylesheet" type="text/css"
@@ -28,9 +28,11 @@
 	href="./assets/css/common/footer.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript"
+	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-<script type="text/javascript" src="./assets/js/se2/js/HuskyEZCreator.js"></script>
+<script type="text/javascript"
+	src="./assets/js/se2/js/HuskyEZCreator.js"></script>
 <script src="./assets/js/jquery-3.1.1.min.js"></script>
 <!-- Mainly scripts -->
 
@@ -49,12 +51,35 @@
 				bUseModeChanger : true,
 			}
 		}); // 전송버튼 클릭이벤트
-		$("#submit_btn").click(function() { //if(confirm("저장하시겠습니까?")) { // id가 smarteditor인 textarea에 에디터에서 대입
-			oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); // 이부분에 에디터 validation 검증
-			$("#frm").submit();
+		$("#submit_btn").click(function() {
+			if(document.frm.subject.value == "") {
+				alert("제목을 입력하세요.");
+				document.frm.subject.focus();
+				return;
+			}
+			
+ 			oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); // 이부분에 에디터 validation 검증
+ 			var ir1 = $("#smarteditor").val();
+
+ 	        if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
+ 	             alert("내용을 입력하세요.");
+ 	             oEditors.getById["ir1"].exec("FOCUS"); //포커싱
+ 	             return;
+ 	        }
+ 	        
+ 	        try {
+ 	        	$("#frm").submit();
+ 	        } catch(e) {}
 		})
 	});
 	
+	function fun_cancel() {
+		var con = confirm("글 작성을 취소하시겠습니까?");
+		
+		if(con == true) {
+			history.back();	
+		}
+	}
 </script>
 
 </head>
@@ -63,34 +88,33 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
 	<!-- 내용 -->
-	<div id="wrap_conts" style="text-align: center">
+	<div id="wrap_conts">
 		<div id="conts">
-			<form action="./NoticeWriteAction.nt" method="post" id="frm">
-				<div>
+			<form action="./NoticeWriteAction.nt" method="post" id="frm" name="frm">
+				<div class="cate_sub">
 					<select name="category">
 						<option value="서비스 소식">서비스 소식</option>
 						<option value="서비스 오픈">서비스 오픈</option>
 						<option value="서비스 종료">서비스 종료</option>
 						<option value="서비스 점검">서비스 점검</option>
 						<option value="안내">안내</option>
-					</select>
-					
-					<input type="text" name="subject" placeholder="제목" required> <br>
+					</select> 
+					<input type="text" name="subject" placeholder="제목을 입력하세요" size="80"> <br>
 				</div>
 				
-				<textarea name="content" id="smarteditor" class="summernote" placeholder="메시지를 입력하세요" required
-				style="width: 700px; height: 300px;" ></textarea> <br>
-				 
-				<input type="button" id="submit_btn" value="글쓰기">
+				<textarea name="content" id="smarteditor" class="summernote"></textarea>
+				<br>
+				
+				<div>
+					<input type="button" id="submit_btn" value="쓰기">
+					<input type="button" id="cancel_btn" value="취소" onclick="fun_cancel()">
+				</div>
 			</form>
-			<div id="pageNavi"></div>
-			<div class="wrap_search"></div>
 		</div>
 	</div>
 	<!-- 내용 -->
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-
 </body>
 </html>

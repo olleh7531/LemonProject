@@ -16,7 +16,7 @@ public class NoticeDeleteAction implements Action{
 		ndao.deleteNotice(num);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./notice.nt");
+		forward.setPath("./noticeInit.nt");
 		forward.setRedirect(true);
 		return forward;
 	}

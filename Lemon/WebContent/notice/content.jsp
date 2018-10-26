@@ -36,7 +36,7 @@
 		NoticeBean nb = (NoticeBean) request.getAttribute("nb");
 		String pageNum = (String) request.getAttribute("pageNum");
 	%>
-
+	
 	<div id="wrap_conts">
 		<div id="conts">
 			<h2 id="tit">공지사항</h2>
@@ -69,7 +69,7 @@
 					</tbody>
 				</table>
 				<input type="button" value="글 수정" onclick="location.href='./NoticeUpdate.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="글 삭제" onclick="location.href='./NoticeDeleteAction.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" value="글 삭제" onclick="location.href='./NoticeDeleteAction.nt?num=<%=nb.getNum()%>'">
 				<input type="button" value="글 목록" onclick ="location.href='./noticeInit.nt?pageNum=<%=pageNum%>'">
 			</div>
 		</div>

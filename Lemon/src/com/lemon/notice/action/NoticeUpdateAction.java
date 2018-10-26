@@ -34,7 +34,7 @@ public class NoticeUpdateAction implements Action{
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("  alert('수정성공');");
-		out.println("  location.href='./notice.nt?pageNum="+pageNum+"';");
+		out.println("  location.href='./noticeInit.nt?pageNum="+pageNum+"';");
 		out.println("</script>");
 		out.close();
 

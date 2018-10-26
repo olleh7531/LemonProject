@@ -253,21 +253,26 @@
 						</a>
 					</li>
 					<li class="menu5">
+						<a href="./starpost.sp" class="cur_menu mlog">
+							<span class="menu_more menu05">스타포스트</span>
+						</a>
+					</li>
+					<li class="menu6">
 						<a href="" class="cur_menu mlog">
 							<span class="menu_more menu06">매거진</span>
 						</a>
 					</li>
-					<li class="menu6">
+					<li class="menu7">
 						<a href="./noticeInit.nt" class="cur_menu mlog">
 							<span class="menu_more menu04">공지사항</span>
 						</a>
 					</li>
-					<li class="menu7">
+					<li class="menu8">
 						<a href="" class="cur_menu mlog">
 							<span class="menu_bg menu07">마이뮤직</span>
 						</a>
 					</li>
-					<li class="menu8">
+					<li class="menu9">
 						<a href="./MusicUpload.ams" class="cur_menu mlog">
 							<span class="menu_bg menu08">음악 업로드 테스트버튼</span>
 						</a>

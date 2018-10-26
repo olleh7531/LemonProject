@@ -47,7 +47,6 @@
             }
         });
 	}
-	
 	</script>
 </head>
 <body onload="initialization()">
@@ -169,7 +168,7 @@
 					<a href="./NoticeWrite.nt">글쓰기</a>
 				</div>
 			</div>
-
+			
 			<div id="pageNavi"></div>
 			<div class="wrap_search"></div>
 		</div>
