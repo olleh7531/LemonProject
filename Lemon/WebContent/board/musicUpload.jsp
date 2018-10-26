@@ -132,13 +132,8 @@
     	
     
     	var html = "";
-        html += "<tr id='fileTr_" + fIndex + "'>";
-        html +="<td><input type='text' tabindex='"+fIndex+1+"' name='album_num'></td>";
-        html +="<td><input type='text' name='track_num'></td>";
-        html +="<td><input type='text' name='music_name'></td>";
-        html +="<td><input type='text' name='singer_name'></td>";
-        html +="<td><textarea name='lyrics'></textarea></td>";
-        html += "    <td class='left' >";
+        html += "<tr id='fileTr_" + fIndex + "'>";;
+        html += "    <td class='musicfile' >";
         html +=         fileName + " / " + fileSize + "MB "  + "<button onclick='deleteFile(" + fIndex + "); return false;' class='btn'><svg class='octicon octicon-x' viewBox='0 0 12 16' version='1.1' width='12' height='16' aria-hidden='true'><path fill-rule='evenodd' d='M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z'></path></svg></button>";
         html += "    </td>";
         html += "</tr>";
@@ -216,7 +211,7 @@
             
 
             
-			var num;
+/* 			var num;
              $('input[name=album_num]').each(function(index){
             	var infor = $(this).val();
             	 infor = infor +','+$(this).parent().next().find('input[name=track_num]').val();
@@ -225,7 +220,7 @@
             	 infor = infor +','+$(this).parent().next().next().next().next().find('textarea[name=lyrics]').val();
 			num='musicinfor'+index;
             	formData.append(num , infor);
-            }); 
+            });  */
             
             $.ajax({
             	url:"./MusicUploadAction.ams",
@@ -279,7 +274,7 @@
 		method="post">
 					<div id="dropZone">파일을 드래그 하세요</div>
 				<div id="m_upload_box"> 
-		<div class="music_div">앨범번호</div><div class="music_div">트랙번호</div><div class="music_div">음악이름</div><div class="music_div">가수</div><div class="music_div">가사</div><div class="music_div">파일이름</div>
+		<div class="music_div">파일이름 / 크기(MB)</div>
 		 </div>
 		<table id="m_upload_table">
 		

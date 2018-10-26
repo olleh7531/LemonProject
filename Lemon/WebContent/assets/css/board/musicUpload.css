@@ -17,13 +17,13 @@ border-top: solid 2px #b8b8b8;
 border-bottom: solid 1px #cfcfcf;
 margin: 0;
 padding: 0;
-width: 16%;
+width: 100%;
 text-align: center;
 background-color: #fafafa;}
 
 
-.music_div:NTH-OF-TYPE(6) {
-width: 20% !important;}
+/* .music_div:NTH-OF-TYPE(6) {
+width: 20% !important;} */
 
 #m_upload_box ,#m_upload_table,#m_upload_table td {
 	margin: 0 !important;  padding: 0 !important;
@@ -31,6 +31,9 @@ width: 20% !important;}
 #m_upload_table td {
 border-bottom: solid 1px #e6e6e6 !important;
 border-right: solid 1px #cfcfcf;
+text-align: center;
+min-height: 40px;
+line-height: 40px;
 }
 
 #m_upload_table td:NTH-OF-TYPE(6){

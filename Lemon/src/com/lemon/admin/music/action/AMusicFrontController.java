@@ -29,17 +29,6 @@ public class AMusicFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}else if(command.equals("/MusicUpload2.ams")){
-    		forward = new ActionForward();
-    		forward.setPath("./board/musicUpload2.jsp");
-    		forward.setRedirect(false);    		
-    	}else if(command.equals("/MusicUploadAction2.ams")){
-    		action = new MusicUploadAction2();
-    		try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
     	}
 		
 		

@@ -1,17 +1,23 @@
 package com.lemon.admin.music.action;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
+import org.jaudiotagger.tag.images.Artwork;
 
 import com.lemon.admin.music.db.AMusicBean;
 import com.lemon.admin.music.db.AMusicDAO;
@@ -33,7 +39,6 @@ public class MusicUploadAction implements Action {
 				new DefaultFileRenamePolicy());
 
 		Enumeration<String> files = multi.getFileNames();
-		Enumeration<String> infor = multi.getParameterNames();
 
 		AMusicBean amb = new AMusicBean();
 		AMusicDAO amdao = new AMusicDAO();
@@ -43,9 +48,8 @@ public class MusicUploadAction implements Action {
 			System.out.println(musicfile);
 			File f = multi.getFile(musicfile);
 			MP3File mp3 = (MP3File) AudioFileIO.read(f);
-
-			AbstractID3v2Tag tag2 = mp3.getID3v2Tag();
-
+			AudioFile af = AudioFileIO.read(f);
+			
 			Tag tag = mp3.getTag();
 			String title = tag.getFirst(FieldKey.TITLE);
 			String artist = tag.getFirst(FieldKey.ARTIST);
@@ -53,10 +57,11 @@ public class MusicUploadAction implements Action {
 			String year = tag.getFirst(FieldKey.YEAR);
 			String genre = tag.getFirst(FieldKey.GENRE);
 			String Lyrics = tag.getFirst(FieldKey.LYRICS);
+			String track = tag.getFirst(FieldKey.TRACK);
 			String a18 = tag.getFirst(FieldKey.COVER_ART);
-		
+			musicfile = multi.getFilesystemName(musicfile);
 
-			// System.out.println("Tag : " + tag2);
+			System.out.println("musicfile : " + musicfile);
 			System.out.println("Song Name : " + title);
 			System.out.println("Artist : " + artist);
 			System.out.println("Album : " + album);
@@ -64,19 +69,43 @@ public class MusicUploadAction implements Action {
 			System.out.println("Genre : " + genre);
 			System.out.println("Lyrics : " + Lyrics);
 			System.out.println("a18"+a18);
+			System.out.println("track : "+track);
+					
+			int duration = af.getAudioHeader().getTrackLength();
+			int minute = duration/60;
+			int second = duration%60;
+			String musictime;
+			if(second<10){				
+				musictime=minute+":0"+second;
+			}else{
+				musictime=minute+":"+second;
+			}
+			
+			System.out.println("음악 길이 : "+musictime);
 	
 
+			Artwork art = tag.getFirstArtwork();
+			System.out.println("art1 : "+art);
+			System.out.println("art3 : "+art.getHeight());
+			System.out.println("art5 : "+art.getMimeType());
+			System.out.println("art6 : "+art.getPictureType());
+			System.out.println("art7 : "+art.getWidth());
+			System.out.println("art8 : "+art.getBinaryData());
+			System.out.println("art9 : "+art.getImage());
+			album=album.replace("?", "");
+			BufferedImage thumb = new BufferedImage(1024,1024,BufferedImage.TYPE_INT_RGB);
+			Graphics2D g=thumb.createGraphics();
+			g.drawImage((BufferedImage)art.getImage(), 0, 0, 1024,1024,null);
+			File filex = new File("C:/Users/itwill/Desktop"+album+".jpg");
+			ImageIO.write(thumb, "jpg", filex );
 			
 
-/*			String musicinfor = infor.nextElement();
-			musicinfor = multi.getParameter(musicinfor);
+/*			amb.setMusic_name(title);
+			amb.setLyrics(Lyrics);
 			amb.setMusicfile(musicfile);
-			String[] musicarr=musicinfor.split(",");
-			amb.setAlbum_num(Integer.parseInt(musicarr[0]));
-			amb.setTrack_num(Integer.parseInt(musicarr[1]));
-			amb.setMusic_name((musicarr[2]));
-			amb.setSinger_name((musicarr[3]));
-			amb.setLyrics((musicarr[4]));*/
+			amb.setMusic_genre(genre);
+			amb.setMusic_time(musictime);
+			amb.setTrack_num(Integer.parseInt(track));*/
 
 //			amdao.insertMusic(amb);
 		}

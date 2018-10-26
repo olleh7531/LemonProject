@@ -51,16 +51,16 @@ public class AMusicDAO {
 			con = getCon();
 
 			// sql 쿼리
-			sql = "insert into music (no,track_no,music_name,singer_name,lyrics,album_num,musicfile)"
+			sql = "insert into music (num,music_name,lyrics,musicfile,music_genre,music_time,track_num)"
 					+ "values(null,?,?,?,?,?,?)";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, amb.getTrack_num());
-			pstmt.setString(2, amb.getMusic_name());
-			pstmt.setString(3, amb.getSinger_name());
-			pstmt.setString(4, amb.getLyrics());
-			pstmt.setInt(5, amb.getAlbum_num());
-			pstmt.setString(6, amb.getMusicfile());
+			pstmt.setString(1, amb.getMusic_name());
+			pstmt.setString(2, amb.getLyrics());
+			pstmt.setString(3, amb.getMusicfile());
+			pstmt.setString(4, amb.getMusic_genre());
+			pstmt.setString(5, amb.getMusic_time());
+			pstmt.setInt(6, amb.getTrack_num());
 
 			// pstmt 객체 실행
 			pstmt.executeUpdate();
