@@ -54,16 +54,18 @@ public class MemberDAO {
 		
 		try {
 			con = getCon();
-			sql = "select max(num) from member1";
+			sql = "select max(no) from member";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				num = rs.getInt("max(num)") + 1;
+				num = rs.getInt("max(no)") + 1;
 			}
 			
-			sql = "insert into member (email_id, pass, name, nickname, gender, birth, level, img, num, reg_date, reg_ip, is_deny, chk)"
-					+ "values(?,?,?,?,?,?,?,?,?,now(),?,?,?)";
+			sql = "insert into member (email_id, pass, name, nickname, gender, birth, level, img, no, register_datetime, register_ip, is_deny, chk)"
+					+ "values(?,?,?,?,?,"
+					+ "?,?,?,?,now(),"
+					+ "?,?,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getEmail_id());
