@@ -54,7 +54,7 @@ public class MemberDAO {
 		
 		try {
 			con = getCon();
-			sql = "select max(num) from member1";
+			sql = "select max(num) from member";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			

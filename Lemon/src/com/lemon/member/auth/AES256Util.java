@@ -57,16 +57,18 @@ public class AES256Util {
 
 		return new String(c.doFinal(byteStr), "UTF-8");
 	}
+	
 	public static void main(String args[]) throws Exception{
-        String key = "ehbekhbkhkbhlfgfg";       // key는 16자 이상
+        String key = "apsoejfurhwgduti";       // key는 16자 이상
         AES256Util aes256 = new AES256Util(key);
          
-        String text = "암호화되지 않은 문자입니다.";
+        String text = "아이티윌";
         String encText = aes256.aesEncode(text);
         String decText = aes256.aesDecode(encText);
          
         System.out.println("암호화할 문자 : " + text);
         System.out.println("암호화된 문자 : " + encText);
+        System.out.println("암호화된 문자 : " + encText.length());
         System.out.println("복호화된 문자 : " + decText);
 	}
 }
