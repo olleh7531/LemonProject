@@ -8,7 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class AMusicDAO {
+public class MusicDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -46,7 +46,7 @@ public class AMusicDAO {
 		}
 	}
 	
-	public void insertMusic(AMusicBean amb){
+	public void insertMusic(MusicBean amb){
 		try {
 			con = getCon();
 
@@ -64,7 +64,7 @@ public class AMusicDAO {
 
 			// pstmt 객체 실행
 			pstmt.executeUpdate();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -73,7 +73,39 @@ public class AMusicDAO {
 	}
 	
 	
-	
+	public void insertAlbum(AlbumBean ab,MusicBean mb) {
+		try {
+			con = getCon();
+
+			sql="select * from album where al_name=? and al_release=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, ab.getAl_name());
+			pstmt.setDate(2, ab.getAl_release());
+			
+			rs=pstmt.executeQuery();
+			rs.last();
+			// rs 개수구해서 1개뿐
+			if(rs.next()) {
+				
+			}else {
+				sql ="insert into album (num,al_name,al_release,al_art_img,al_agency,al_content)"
+						+ "values(null,?,?,?,?,?)";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, ab.getAl_name());
+						pstmt.setDate(2, ab.getAl_release());
+						pstmt.setString(3, ab.getAl_art_img());
+						pstmt.setString(4, ab.getAl_agency());
+						pstmt.setString(5, ab.getAl_content());
+						
+						pstmt.executeUpdate();
+			}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		CloseDB();
+	}
+	}
 	
 	
 	

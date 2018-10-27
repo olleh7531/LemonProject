@@ -5,9 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,8 +23,9 @@ import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 import org.jaudiotagger.tag.images.Artwork;
 
-import com.lemon.admin.music.db.AMusicBean;
-import com.lemon.admin.music.db.AMusicDAO;
+import com.lemon.admin.music.db.MusicBean;
+import com.lemon.admin.music.db.MusicDAO;
+import com.lemon.admin.music.db.AlbumBean;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -30,7 +35,8 @@ public class MusicUploadAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MusicUploadAction execute()~~~~");
 
-		String realpath = request.getRealPath("/musicUpload");
+		ServletContext ctx = request.getSession().getServletContext();
+		String realpath = ctx.getRealPath("/musicUpload/music");
 		System.out.println("realpath : " + realpath);
 
 		int maxSize = 100 * 1024 * 1024;
@@ -40,8 +46,9 @@ public class MusicUploadAction implements Action {
 
 		Enumeration<String> files = multi.getFileNames();
 
-		AMusicBean amb = new AMusicBean();
-		AMusicDAO amdao = new AMusicDAO();
+		MusicBean mb = new MusicBean();
+		MusicDAO mdao = new MusicDAO();
+		AlbumBean ab = new AlbumBean();
 		while (files.hasMoreElements()) {
 			String musicfile = (String)files.nextElement();
 
@@ -54,13 +61,15 @@ public class MusicUploadAction implements Action {
 			String title = tag.getFirst(FieldKey.TITLE);
 			String artist = tag.getFirst(FieldKey.ARTIST);
 			String album = tag.getFirst(FieldKey.ALBUM);
+			album=album.replace("?", "");
 			String year = tag.getFirst(FieldKey.YEAR);
 			String genre = tag.getFirst(FieldKey.GENRE);
 			String Lyrics = tag.getFirst(FieldKey.LYRICS);
 			String track = tag.getFirst(FieldKey.TRACK);
-			String a18 = tag.getFirst(FieldKey.COVER_ART);
 			musicfile = multi.getFilesystemName(musicfile);
 
+			 
+			
 			System.out.println("musicfile : " + musicfile);
 			System.out.println("Song Name : " + title);
 			System.out.println("Artist : " + artist);
@@ -68,7 +77,6 @@ public class MusicUploadAction implements Action {
 			System.out.println("Year : " + year);
 			System.out.println("Genre : " + genre);
 			System.out.println("Lyrics : " + Lyrics);
-			System.out.println("a18"+a18);
 			System.out.println("track : "+track);
 					
 			int duration = af.getAudioHeader().getTrackLength();
@@ -85,29 +93,34 @@ public class MusicUploadAction implements Action {
 	
 
 			Artwork art = tag.getFirstArtwork();
-			System.out.println("art1 : "+art);
-			System.out.println("art3 : "+art.getHeight());
-			System.out.println("art5 : "+art.getMimeType());
-			System.out.println("art6 : "+art.getPictureType());
-			System.out.println("art7 : "+art.getWidth());
-			System.out.println("art8 : "+art.getBinaryData());
-			System.out.println("art9 : "+art.getImage());
-			album=album.replace("?", "");
-			BufferedImage thumb = new BufferedImage(1024,1024,BufferedImage.TYPE_INT_RGB);
+			BufferedImage bi = (BufferedImage)art.getImage();
+			BufferedImage thumb = new BufferedImage(bi.getWidth(),bi.getHeight(),BufferedImage.TYPE_INT_RGB);
 			Graphics2D g=thumb.createGraphics();
-			g.drawImage((BufferedImage)art.getImage(), 0, 0, 1024,1024,null);
-			File filex = new File("C:/Users/itwill/Desktop"+album+".jpg");
+			g.drawImage((BufferedImage)art.getImage(), 0, 0, bi.getWidth(),bi.getHeight(),null);
+			realpath = ctx.getRealPath("/musicUpload/albumcover/");
+			File filex = new File(realpath+album+".jpg");
 			ImageIO.write(thumb, "jpg", filex );
 			
+			
 
-/*			amb.setMusic_name(title);
-			amb.setLyrics(Lyrics);
-			amb.setMusicfile(musicfile);
-			amb.setMusic_genre(genre);
-			amb.setMusic_time(musictime);
-			amb.setTrack_num(Integer.parseInt(track));*/
+			
+			ab.setAl_name(album);
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");	
+			Date d = new Date(format.parse(year).getTime());
+			ab.setAl_release(d);
+			ab.setAl_art_img(realpath+album+".jpg");
+			
+			
+			
+			mb.setMusic_name(title);
+			mb.setLyrics(Lyrics);
+			mb.setMusicfile(musicfile);
+			mb.setMusic_genre(genre);
+			mb.setMusic_time(musictime);
+			mb.setTrack_num(Integer.parseInt(track));
 
-//			amdao.insertMusic(amb);
+			mdao.insertAlbum(ab,mb);
+			mdao.insertMusic(mb);
 		}
 
 		response.setContentType("text/html; charset=UTF-8");

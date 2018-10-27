@@ -1,6 +1,6 @@
 package com.lemon.admin.music.db;
 
-public class AMusicBean {
+public class MusicBean {
 	private String music_name;
 	private String lyrics;
 	private String musicfile;
