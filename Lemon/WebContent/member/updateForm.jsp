@@ -151,20 +151,61 @@
 						</colgroup>
 						<tr>
 							<th>휴대폰</th>
-							<td><input type="text" name="mobile" value="<%=mb.getMobile()%>"></td>
+							<td><input type="text" name="mobile" <%
+								if(mb.getMobile() != null) {
+									%>
+									value="<%=mb.getMobile() %>";
+									<%
+								} else {
+									%>
+									value="";
+									<%
+								}
+							%>
+							></td>
 						</tr>
 						<tr>
 							<th>우편 번호</th>
-							<td><input type="text" name="zip_code" id="zip_code" value="<%=mb.getZip_code()%>">
-						   <input type="button" onclick="searchAddress()" class="upBtn" value="주소 검색" class="dup"></td>
+							<td><input type="text" name="zip_code" id="zip_code"<%
+								if(mb.getMobile() != null) {
+									%>
+									value="<%=mb.getZip_code() %>";
+									<%
+								} else {
+									%>
+									value="";
+									<%
+								}
+							%>">
+						   <input type="button" onclick="searchAddress()" class="upBtn" class="dup" value="주소 검색"></td>
 						</tr>
 						<tr>
 							<th>주소 </th>
-							<td><input type="text" name="address1" id="address1" value="<%=mb.getAddress1()%>"></td>
+							<td><input type="text" name="address1" id="address1" <%
+								if(mb.getAddress1() != null) {
+									%>
+									value="<%=mb.getAddress1() %>";
+									<%
+								} else {
+									%>
+									value="";
+									<%
+								}
+							%>></td>
 						</tr>
 						<tr>
 							<th>상세 주소</th>
-							<td><input type="text" name="address2" id="address2" value="<%=mb.getAddress2()%>"></td>
+							<td><input type="text" name="address2" id="address2" <%
+								if(mb.getAddress2() != null) {
+									%>
+									value="<%=mb.getAddress2() %>";
+									<%
+								} else {
+									%>
+									value="";
+									<%
+								}
+							%>></td>
 						</tr>
 					</table>
 					</div>					
