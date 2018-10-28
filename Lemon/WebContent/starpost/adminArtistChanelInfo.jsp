@@ -111,7 +111,7 @@
 								id="song_genres_indie" class="singer_song_genres_check"
 								value="indie">
 								<label for="song_genres_indie">인디음악</label>
-								<input type="hidden" name="s_song_genres" >
+								<input type="hidden" name="s_song_genres" id="zz" value="xxxxxxxx" >
 						</p>
 					<script type="text/javascript">
 				
@@ -120,14 +120,12 @@
 								$(function() {
 							 		$("input[name=singer_song_genres]").each(function(){
 								 		if($(this).is(":checked")){
-								 			alert($(this).val());
-											arr+=$(this).val()+",";
+											arr+=$(this).val()+", ";
 										} 
 									}); 
 									$("input[name=s_song_genres]").val(arr);
-									alert($("input[name=s_song_genres]").val());
+									$(form).submit();
 									});
- 								document.form.submit();
 							}
 						</script> 
 					</fieldset>
