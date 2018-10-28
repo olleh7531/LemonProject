@@ -81,7 +81,6 @@ public class ArtistChanelWrtieAction implements Action {
 		System.out.println("사용자 올린 파일의 원본이름 : "+multi.getOriginalFileName("singer_picture"));
 		
 		// 노래 장르
-		System.out.println("ArtistChanelInfoWrite.jsp singer_song_genres : " + multi.getParameter("s_song_genres"));
 		String[] genreParam = multi.getParameterValues("singer_song_genres");
 		String genres="" ;
 		for(int i = 0; i < genreParam.length; i++){
@@ -95,6 +94,7 @@ public class ArtistChanelWrtieAction implements Action {
 			System.out.println("ArtistChanelInfoWrite.jsp singer_song_genres : " + multi.getParameterValues("singer_song_genres")[i]);
 		}
 		acibean.setSi_genre(genres);
+		System.out.println("ArtistChanelInfoWrite.jsp genres : " + genres);
 		
 		// 생일
 		Date si_birth = new Date(format.parse(multi.getParameter("singer_birth")).getTime());

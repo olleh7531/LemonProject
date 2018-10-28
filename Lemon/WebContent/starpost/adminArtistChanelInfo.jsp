@@ -93,39 +93,41 @@
 							<!-- 개별 항목들에 대한 체크박스 -->
 							<input type="checkbox" name="singer_song_genres"
 								id="song_genres_ballade" class="singer_song_genres_check"
-								value="ballade">
+								value="발라드">
 								<label for="song_genres_ballade">발라드</label>
 							<input type="checkbox" name="singer_song_genres"
 								id="song_genres_dance" class="singer_song_genres_check"
-								value="dance">
+								value="댄스">
 								<label for="song_genres_dance">댄스</label>
 							<input type="checkbox" name="singer_song_genres"
 								id="song_genres_raphiphop" class="singer_song_genres_check"
-								value="raphiphop">
+								value="랩/힙합">
 								<label for="song_genres_raphiphop">랩/힙합</label>
 							<input type="checkbox" name="singer_song_genres"
 								id="song_genres_randbsoul" class="singer_song_genres_check"
-								value="randbsoul">
-								<label for="song_g enres_randbsoul">R&B/Soul</label>
+								value="R&B/Soul">
+								<label for="song_genres_randbsoul">R&B/Soul</label>
 							<input type="checkbox" name="singer_song_genres"
 								id="song_genres_indie" class="singer_song_genres_check"
-								value="indie">
+								value="인디음악">
 								<label for="song_genres_indie">인디음악</label>
-								<input type="hidden" name="s_song_genres" id="zz" value="xxxxxxxx" >
+								<input type="hidden" name="s_song_genres" id="zz" value="" >
 						</p>
-					<script type="text/javascript">
-				
-							function submitx(){
+						<script type="text/javascript">
+							function artist_changel_submit(){
 								var arr="";
+								
 								$(function() {
 							 		$("input[name=singer_song_genres]").each(function(){
 								 		if($(this).is(":checked")){
 											arr+=$(this).val()+", ";
 										} 
-									}); 
-									$("input[name=s_song_genres]").val(arr);
-									$(form).submit();
 									});
+							 		
+									$("input[name=s_song_genres]").val(arr);
+									
+									$(form).submit();
+								});
 							}
 						</script> 
 					</fieldset>
@@ -145,7 +147,7 @@
 			</tr>
 		</table>
 		<br><br>
-		<button type="button" name="submit0" onclick="submitx()">제출</button>
+		<button type="button" name="submit0" onclick="artist_changel_submit()">제출</button>
 	</form>
 
 	<!-- footer -->
