@@ -27,23 +27,14 @@
 </head>
 <body>
 <%
-	// 아티스트 정보
+	// 아티스트 정보 번호
 	int artist = Integer.parseInt(request.getParameter("artist"));
-System.out.println("artist : " + artist);
 
 	// 디비 처리 객체 ArtistChanelInfoDAO 객체 생성
 	ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
 	
-
-	// 디비에서 가수 정보 가져오기(번호에 해당하는 가수 정보)
+	// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
 	ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
-	
-/* 	String picture = acibean.getSi_picture();
-	System.out.println("picture : " + picture); */
-	String name = acibean.getSinger_name();
-	
-	
-
 %>
 
 	<!-- 메뉴 -->
@@ -53,7 +44,7 @@ System.out.println("artist : " + artist);
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="my_fold">
 			<div id="conts" class="">
-				<h2 class="f_tit">아티스트 채널<%=acibean.getSinger_name() %></h2>
+				<h2 class="f_tit">아티스트 채널</h2>
 				<!-- 아티스트 기본정보 -->
 				<div class="wrap_dtl_atist">
 					<div class="dtl_atist clfix">
@@ -64,7 +55,7 @@ System.out.println("artist : " + artist);
 								<span class="thumb_frame"></span>
 								<span id="artistImgArea">
 									<img width="208" height="208"
-										src=""
+										src="../../../upload/starpost/singerProfile/"<%=acibean.getSi_picture()%>"
 										alt="">
 							</span>
 							</span>
@@ -73,23 +64,23 @@ System.out.println("artist : " + artist);
 						<!-- 아티스트 정보 -->
 						<div class="wrap_atist_info">
 							<p class="title_atist">
-								<strong class="none">아티스트명</strong>
+								<strong class="none">아티스트명</strong><%=acibean.getSinger_name()%>
 							</p>
 							<dl class="atist_info clfix">
 								<dt>데뷔</dt>
-									<dd>
+									<dd><%=acibean.getDebut_year()%>
 										<span class="gubun"></span>
-										<a href="" title=" 재생" class="btn_play_song">
+										<a href="" title="<%=acibean.getDebut_song()%> 재생" class="btn_play_song">
 											<span class="icon_play">곡재생</span>
-											<span class="songname12"></span>
+											<span class="songname12"><%=acibean.getDebut_song()%></span>
 										</a>
 									</dd>
 								<dt>생일</dt>
-									<dd></dd>
+									<dd><%=acibean.getSi_birth()%></dd>
 								<dt>활동유형</dt>
-									<dd>></dd>
+									<dd><%=acibean.getActivity_type()%></dd>
 								<dt>소속사</dt>
-									<dd></dd>
+									<dd><%=acibean.getSi_agency()%></dd>
 							</dl>
 						</div>
 					</div>
@@ -3815,22 +3806,22 @@ System.out.println("artist : " + artist);
 						<h3 class="title line arr">활동정보</h3>
 						<dl class="list_define clfix">
 							<dt>데뷔</dt>
-								<dd></dd>
+								<dd><%=acibean.getDebut_year()%></dd>
 							<dt>데뷔곡</dt>
 								<dd>
-									<a href="" class="ellipsis" title=""></a>
+									<a href="" class="ellipsis" title="<%=acibean.getDebut_song()%>"><%=acibean.getDebut_song()%></a>
 								</dd>
 							<dt>유형</dt>
-								<dd>
+								<dd><%=acibean.getActivity_type()%>
 									<span class="bar">|</span>여성
 								</dd>
 							<dt>장르</dt>
-								<dd></dd>
+								<dd><%=acibean.getSi_genre()%></dd>
 							<dt>소속사명</dt>
-								<dd></dd>
+								<dd><%=acibean.getSi_agency()%></dd>
 							<dt>소속그룹</dt>
 								<dd>
-									<a href=""></a>
+									<a href=""><%=acibean.getSi_group_name()%></a>
 								</dd>
 						</dl>
 						<!-- 그룹멤버 시작-->
@@ -3841,17 +3832,6 @@ System.out.println("artist : " + artist);
 						<!--// 다른활동 -->
 					</div>
 					<!-- //활동정보 -->
-					
-					<!-- 신상정보 -->
-					<div class="section_atistinfo04">
-						<h3 class="title line arr">신상정보</h3>
-						<dl class="list_define clfix">
-							<!-- 그룹일경우 국적만 표시 -->
-							<dt>생일</dt>
-								<dd></dd>
-						</dl>
-					</div>
-					<!-- //신상정보 -->
 				</div>
 				<!-- 상세정보 -->
 			</div>

@@ -46,24 +46,44 @@ public class MusicDAO {
 		}
 	}
 	
-	public void insertMusic(MusicBean amb){
+	public void insertMusic(MusicBean mb){
 		try {
 			con = getCon();
+			int albumnum;
+			albumnum=mb.getAlbum_num();
+			if(albumnum!=0) {
+				// sql 쿼리
+				sql = "insert into music (num,music_name,lyrics,musicfile,music_genre,music_time,album_num,track_num)"
+						+ "values(null,?,?,?,?,?,?,?)";
+				// pstmt 객체생성
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, mb.getMusic_name());
+				pstmt.setString(2, mb.getLyrics());
+				pstmt.setString(3, mb.getMusicfile());
+				pstmt.setString(4, mb.getMusic_genre());
+				pstmt.setString(5, mb.getMusic_time());
+				pstmt.setInt(6, albumnum);
+				pstmt.setInt(7, mb.getTrack_num());
 
+				// pstmt 객체 실행
+				pstmt.executeUpdate();
+			}else {
+				
 			// sql 쿼리
 			sql = "insert into music (num,music_name,lyrics,musicfile,music_genre,music_time,track_num)"
 					+ "values(null,?,?,?,?,?,?)";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, amb.getMusic_name());
-			pstmt.setString(2, amb.getLyrics());
-			pstmt.setString(3, amb.getMusicfile());
-			pstmt.setString(4, amb.getMusic_genre());
-			pstmt.setString(5, amb.getMusic_time());
-			pstmt.setInt(6, amb.getTrack_num());
+			pstmt.setString(1, mb.getMusic_name());
+			pstmt.setString(2, mb.getLyrics());
+			pstmt.setString(3, mb.getMusicfile());
+			pstmt.setString(4, mb.getMusic_genre());
+			pstmt.setString(5, mb.getMusic_time());
+			pstmt.setInt(6, mb.getTrack_num());
 
 			// pstmt 객체 실행
 			pstmt.executeUpdate();
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,20 +93,24 @@ public class MusicDAO {
 	}
 	
 	
-	public void insertAlbum(AlbumBean ab,MusicBean mb) {
+	public int insertAlbum(AlbumBean ab) {
+		int albumnum=0;
 		try {
 			con = getCon();
 
-			sql="select * from album where al_name=? and al_release=?";
+//			System.out.println("앨범이름 : "+ab.getAl_name());
+			sql="select num from album where al_name=? and al_release=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ab.getAl_name());
 			pstmt.setDate(2, ab.getAl_release());
 			
 			rs=pstmt.executeQuery();
-			rs.last();
-			// rs 개수구해서 1개뿐
+			
 			if(rs.next()) {
-				
+				rs.last();
+				if(rs.getRow()==1) {
+					albumnum=rs.getInt("num");					
+				}
 			}else {
 				sql ="insert into album (num,al_name,al_release,al_art_img,al_agency,al_content)"
 						+ "values(null,?,?,?,?,?)";
@@ -98,6 +122,17 @@ public class MusicDAO {
 						pstmt.setString(5, ab.getAl_content());
 						
 						pstmt.executeUpdate();
+						
+						sql="select num from album where al_name=? and al_release=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, ab.getAl_name());
+						pstmt.setDate(2, ab.getAl_release());
+						
+						rs=pstmt.executeQuery();
+						
+						rs.next();
+						albumnum=rs.getInt("num");
+				
 			}
 		
 	} catch (Exception e) {
@@ -105,6 +140,7 @@ public class MusicDAO {
 	} finally {
 		CloseDB();
 	}
+		return albumnum;
 	}
 	
 	

@@ -23,6 +23,7 @@ public class MemberBean {
 	private int email_cert;
 	private int receive_email;
 	
+	private String code;
 	
 	public String getEmail_id() {
 		return email_id;
@@ -132,5 +133,10 @@ public class MemberBean {
 	public void setReceive_email(int receive_email) {
 		this.receive_email = receive_email;
 	}
-	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 }

@@ -54,6 +54,16 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		} else if (command.equals("/MemberJoinAuthAction.mb")) {
+			// 회원가입 인증 처리
+			action = new MemberJoinAuthAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		} else if(command.equals("/MemberLoginAction.mb")){
 			// 로그인 처리 
 			action = new MemberLoginAction();
