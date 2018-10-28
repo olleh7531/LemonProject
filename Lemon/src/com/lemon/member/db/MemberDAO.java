@@ -335,4 +335,27 @@ public class MemberDAO {
 		return check;
 	}
 	// checkNick(nickname)
+	
+	// initMailAuth()
+	public void initMailAuth(String code, String email_id) {
+		try {
+			con = getCon();
+
+			sql = "update member set code=?, email_cert=0 where email_id=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, code);
+			pstmt.setString(2, email_id);
+			
+			pstmt.executeUpdate();
+			
+			System.out.println("update 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	// initMailAuth()
+
 }

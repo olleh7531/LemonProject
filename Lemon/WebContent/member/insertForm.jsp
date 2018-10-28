@@ -10,7 +10,7 @@
 
 <title>Lemon::음악이 필요한 순간, 레몬</title>
 
-<link rel="stylesheet" href="./assets/css/member/login.css" type="text/css" />
+<link rel="stylesheet" href="./assets/css/member/insertMember.css" type="text/css" />
 
 <script type="text/javascript" src="./assets/js/member/join_main_checkAll.js" ></script>
 <script type="text/javascript" src="./assets/js/member/join_main.js" ></script>
@@ -122,10 +122,10 @@
 					<div class="row jender" id="divGender">
 						<label for="gender" class="lb">성별</label>
 						<div class="col">
-							<input type="radio" id="gender" name="gender" value="M" />
-							<label for="M">남</label>
-							<input type="radio" id="gender" name="gender" value="F" />
-							<label for="F">여</label>
+							<input type="radio" id="gender" name="gender" value="남" />
+							<label for="남">남</label>
+							<input type="radio" id="gender" name="gender" value="여" />
+							<label for="여">여</label>
 						</div>
 					</div>
 				</fieldset>
