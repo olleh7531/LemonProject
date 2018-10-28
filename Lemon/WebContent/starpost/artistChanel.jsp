@@ -1,3 +1,5 @@
+<%@page import="com.lemon.artistchanel.db.ArtistChanelInfoDAO"%>
+<%@page import="com.lemon.artistchanel.db.ArtistChanelInfoBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -24,6 +26,26 @@
 <script type="text/javascript" src="./assets/js/starpost/artist_chanel_tabmenu.js"></script>
 </head>
 <body>
+<%
+	// 아티스트 정보
+	int artist = Integer.parseInt(request.getParameter("artist"));
+System.out.println("artist : " + artist);
+
+	// 디비 처리 객체 ArtistChanelInfoDAO 객체 생성
+	ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
+	
+
+	// 디비에서 가수 정보 가져오기(번호에 해당하는 가수 정보)
+	ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
+	
+/* 	String picture = acibean.getSi_picture();
+	System.out.println("picture : " + picture); */
+	String name = acibean.getSinger_name();
+	
+	
+
+%>
+
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
@@ -31,7 +53,7 @@
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="my_fold">
 			<div id="conts" class="">
-				<h2 class="f_tit">아티스트 채널</h2>
+				<h2 class="f_tit">아티스트 채널<%=acibean.getSinger_name() %></h2>
 				<!-- 아티스트 기본정보 -->
 				<div class="wrap_dtl_atist">
 					<div class="dtl_atist clfix">
@@ -42,7 +64,7 @@
 								<span class="thumb_frame"></span>
 								<span id="artistImgArea">
 									<img width="208" height="208"
-										src="https://cdnimg.melon.co.kr/cm/artistcrop/images/002/61/143/261143_500.jpg?aad93aacac744dd0a35c1bd7b9d0f950/melon/resize/416/quality/80/optimize"
+										src=""
 										alt="">
 							</span>
 							</span>
@@ -51,34 +73,23 @@
 						<!-- 아티스트 정보 -->
 						<div class="wrap_atist_info">
 							<p class="title_atist">
-								<strong class="none">아티스트명</strong>아이유 
-									<span class="realname"> (이지은)</span>
+								<strong class="none">아티스트명</strong>
 							</p>
 							<dl class="atist_info clfix">
 								<dt>데뷔</dt>
-								<dd>
-									<span class="gubun">2008.09.18</span>
-									<a href="" title="미아 재생" class="btn_play_song">
-										<span class="icon_play">곡재생</span>
-										<span class="songname12">미아</span>
-									</a>
-								</dd>
+									<dd>
+										<span class="gubun"></span>
+										<a href="" title=" 재생" class="btn_play_song">
+											<span class="icon_play">곡재생</span>
+											<span class="songname12"></span>
+										</a>
+									</dd>
 								<dt>생일</dt>
-								<dd>1993.05.16</dd>
+									<dd></dd>
 								<dt>활동유형</dt>
-								<dd>솔로</dd>
+									<dd>></dd>
 								<dt>소속사</dt>
-								<dd>카카오M, 페이브엔터테인먼트</dd>
-								<dt>수상이력</dt>
-								<dd class="awarded">
-									<span class="ellipsis">제15회 한국대중음악상 
-										<span class="bar">|</span>최우수 팝 음반
-									</span>
-									<a href="" title="아이유 상세정보 더보기" class="btn_text arrow_r">
-										<span class="text">더보기</span>
-										<span class="icon"></span>
-									</a>
-								</dd>
+									<dd></dd>
 							</dl>
 						</div>
 					</div>
@@ -3804,24 +3815,22 @@
 						<h3 class="title line arr">활동정보</h3>
 						<dl class="list_define clfix">
 							<dt>데뷔</dt>
-								<dd>2008.09.18</dd>
+								<dd></dd>
 							<dt>데뷔곡</dt>
 								<dd>
-									<a href="" class="ellipsis" title="미아">미아</a>
+									<a href="" class="ellipsis" title=""></a>
 								</dd>
-							<dt>활동년대</dt>
-								<dd>2000, 2010 년대</dd>
 							<dt>유형</dt>
-								<dd>솔로
+								<dd>
 									<span class="bar">|</span>여성
 								</dd>
 							<dt>장르</dt>
-								<dd>Ballad, Dance, Drama, Electronica, Folk, Korean Movie, R&B / Soul, Rock, 기타</dd>
+								<dd></dd>
 							<dt>소속사명</dt>
-								<dd>카카오M, 페이브엔터테인먼트</dd>
+								<dd></dd>
 							<dt>소속그룹</dt>
 								<dd>
-									<a href="">이유 갓지(GOD G) 않은 이유 (박명수, 아이유)</a>
+									<a href=""></a>
 								</dd>
 						</dl>
 						<!-- 그룹멤버 시작-->
@@ -3838,10 +3847,8 @@
 						<h3 class="title line arr">신상정보</h3>
 						<dl class="list_define clfix">
 							<!-- 그룹일경우 국적만 표시 -->
-							<dt>본명</dt>
-								<dd>이지은</dd>
 							<dt>생일</dt>
-								<dd>1993.05.16</dd>
+								<dd></dd>
 						</dl>
 					</div>
 					<!-- //신상정보 -->
@@ -3850,7 +3857,7 @@
 			</div>
 		</div>
 		<!-- 내용 -->
-		
+	</div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

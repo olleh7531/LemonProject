@@ -53,7 +53,7 @@ public class ArtistChanelFrontController extends HttpServlet {
 			forward.setPath("./starpost/adminArtistChanelInfo.jsp");
 			forward.setRedirect(false);
 		}
-		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {
+		else if(command.equals("/ArtistChanelWrtieAction.ac")) {
 			// 아티스트 채널 정보 글쓰기 proc 
 			action = new ArtistChanelWrtieAction(); 
 			

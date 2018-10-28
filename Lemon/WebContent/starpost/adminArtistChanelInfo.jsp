@@ -26,7 +26,7 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
 	<!-- 내용 -->
-	<form action="./ArtistChanelInfoWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
+	<form action="./ArtistChanelWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
 		<table border="1">
 			<tr>
 				<td>가수 이름(예명)</td>
@@ -111,7 +111,25 @@
 								id="song_genres_indie" class="singer_song_genres_check"
 								value="indie">
 								<label for="song_genres_indie">인디음악</label>
+								<input type="hidden" name="s_song_genres" >
 						</p>
+					<script type="text/javascript">
+				
+							function submitx(){
+								var arr="";
+								$(function() {
+							 		$("input[name=singer_song_genres]").each(function(){
+								 		if($(this).is(":checked")){
+								 			alert($(this).val());
+											arr+=$(this).val()+",";
+										} 
+									}); 
+									$("input[name=s_song_genres]").val(arr);
+									alert($("input[name=s_song_genres]").val());
+									});
+ 								document.form.submit();
+							}
+						</script> 
 					</fieldset>
 				</td>
 			</tr>
@@ -129,7 +147,7 @@
 			</tr>
 		</table>
 		<br><br>
-		<input type="submit" value="제출">
+		<button type="button" name="submit0" onclick="submitx()">제출</button>
 	</form>
 
 	<!-- footer -->
