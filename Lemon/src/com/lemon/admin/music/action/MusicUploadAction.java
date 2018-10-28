@@ -52,7 +52,7 @@ public class MusicUploadAction implements Action {
 		while (files.hasMoreElements()) {
 			String musicfile = (String)files.nextElement();
 
-			System.out.println(musicfile);
+//			System.out.println(musicfile);
 			File f = multi.getFile(musicfile);
 			MP3File mp3 = (MP3File) AudioFileIO.read(f);
 			AudioFile af = AudioFileIO.read(f);
@@ -70,14 +70,14 @@ public class MusicUploadAction implements Action {
 
 			 
 			
-			System.out.println("musicfile : " + musicfile);
+/*			System.out.println("musicfile : " + musicfile);
 			System.out.println("Song Name : " + title);
 			System.out.println("Artist : " + artist);
 			System.out.println("Album : " + album);
 			System.out.println("Year : " + year);
 			System.out.println("Genre : " + genre);
 			System.out.println("Lyrics : " + Lyrics);
-			System.out.println("track : "+track);
+			System.out.println("track : "+track);*/
 					
 			int duration = af.getAudioHeader().getTrackLength();
 			int minute = duration/60;
@@ -105,7 +105,7 @@ public class MusicUploadAction implements Action {
 
 			
 			ab.setAl_name(album);
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");	
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");	
 			Date d = new Date(format.parse(year).getTime());
 			ab.setAl_release(d);
 			ab.setAl_art_img(realpath+album+".jpg");
@@ -119,7 +119,8 @@ public class MusicUploadAction implements Action {
 			mb.setMusic_time(musictime);
 			mb.setTrack_num(Integer.parseInt(track));
 
-			mdao.insertAlbum(ab,mb);
+			int albumnum = mdao.insertAlbum(ab);
+			mb.setAlbum_num(albumnum);
 			mdao.insertMusic(mb);
 		}
 
