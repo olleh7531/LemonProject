@@ -55,7 +55,7 @@ public class ArtistChanelFrontController extends HttpServlet {
 		}
 		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {
 			// 아티스트 채널 정보 글쓰기 proc 
-			action = new ArtistChanelInfoWrtieAction(); 
+			action = new ArtistChanelWrtieAction(); 
 			
 			try {
 				forward = action.execute(request, response);

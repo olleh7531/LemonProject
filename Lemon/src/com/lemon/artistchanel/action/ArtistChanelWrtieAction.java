@@ -12,7 +12,7 @@ import com.lemon.artistchanel.db.ArtistChanelInfoDAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class ArtistChanelInfoWrtieAction implements Action {
+public class ArtistChanelWrtieAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
