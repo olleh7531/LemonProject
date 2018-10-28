@@ -32,7 +32,7 @@
 	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type="text/javascript"
-	src="./assets/js/se2/js/HuskyEZCreator.js"></script>
+	src="./assets/SE2/js/HuskyEZCreator.js"></script>
 <script src="./assets/js/jquery-3.1.1.min.js"></script>
 <!-- Mainly scripts -->
 
@@ -90,7 +90,7 @@
 				nhn.husky.EZCreator.createInIFrame({
 					oAppRef : oEditors, // 전역변수 명과 동일해야 함. 
 					elPlaceHolder : "smarteditor", // 에디터가 그려질 textarea ID 값과 동일 해야 함. 
-					sSkinURI : "./assets/js/se2/SmartEditor2Skin.html", // Editor HTML 
+					sSkinURI : "./assets/SE2/SmartEditor2Skin.html", // Editor HTML 
 					fCreator : "createSEditor2", // SE2BasicCreator.js 메소드명이니 변경 금지 X 
 					htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
 						bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
