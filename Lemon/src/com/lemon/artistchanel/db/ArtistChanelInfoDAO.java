@@ -3,8 +3,6 @@ package com.lemon.artistchanel.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -55,7 +53,7 @@ public class ArtistChanelInfoDAO {
 		
 		try {
 			con = getCon();
-			
+			System.out.println(con);
 			// num 계산 -> 아티스트 정보 등록
 			sql = "select max(num) from singer";
 			
@@ -80,15 +78,25 @@ public class ArtistChanelInfoDAO {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, num); // 가수 번호
+			System.out.println(num);
 			pstmt.setString(2, aspbean.getActivity_type()); // 솔로/그룹 유형
+			System.out.println(aspbean.getActivity_type());
 			pstmt.setString(3, aspbean.getSinger_name()); // 가수 활동 이름(예명)
+			System.out.println(aspbean.getSinger_name());
 			pstmt.setString(4, aspbean.getSi_group_name()); // 소속 그룹 이름
+			System.out.println(aspbean.getSi_group_name());
 			pstmt.setDate(5, aspbean.getDebut_year()); // 데뷔 날짜
+			System.out.println(aspbean.getDebut_year());
 			pstmt.setString(6, aspbean.getDebut_song()); // 데뷔 노래
+			System.out.println(aspbean.getDebut_song());
 			pstmt.setString(7, aspbean.getSi_agency()); // 소속사 이름
+			System.out.println(aspbean.getSi_agency());
 			pstmt.setString(8, aspbean.getSi_picture()); // 프로필 사진
+			System.out.println(aspbean.getSi_picture());
 			pstmt.setString(9, aspbean.getSi_genre()); // 노래 장르
+			System.out.println(aspbean.getSi_genre());
 			pstmt.setDate(10, aspbean.getSi_birth()); // 생일
+			System.out.println(aspbean.getSi_birth());
 			
 			System.out.println("AArtist");
 			pstmt.executeUpdate();
@@ -101,20 +109,53 @@ public class ArtistChanelInfoDAO {
 		}
 	}
 	
-	// 정보 출력
-	public List getArtistChanelInfo() {
-		List info = new ArrayList();
+	// 아티스트 번호 가져오기
+	public int getArtistChanelInfoNum() {
+		int count = 0;
+		
+		try {
+			// 디비 연결
+			con = getCon();
+			
+			// sql 작성 [count()]
+			sql = "select max(num) from singer";
+			
+			// 객체 생성
+			pstmt = con.prepareStatement(sql);
+			
+			// 객체 실행
+			rs = pstmt.executeQuery();
+			
+			// 정보 있으면 저장
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+			System.out.println("아티스트 채널 정보 번호 가져옴");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return count;
+	}
+	
+	// 아티스트 번호에 해당하는 정보 가져오기
+	public ArtistChanelInfoBean getArtistChanelInfo(int num) {
+		ArtistChanelInfoBean acibean = null;
 		
 		try {
 			con = getCon();
 			
-			sql = "select * from singer";
+			sql = "select * from singer where num = ?";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
-				ArtistChanelInfoBean acibean = new ArtistChanelInfoBean();
+			if(rs.next()) {
+				acibean = new ArtistChanelInfoBean();
 				
 				// 솔로/그룹 유형
 				acibean.setActivity_type(rs.getString("activity_type"));
@@ -142,9 +183,6 @@ public class ArtistChanelInfoDAO {
 			
 				// 생일
 				acibean.setSi_birth(rs.getDate("si_birth"));
-				
-				// 자바빈 객체 -> ArrayList 한 칸에 저장
-				info.add(acibean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -152,6 +190,6 @@ public class ArtistChanelInfoDAO {
 			CloseDB();
 		}
 		
-		return info;
+		return acibean;
 	}
 }
