@@ -355,7 +355,7 @@ CREATE TABLE `member` (
   `birth` varchar(10) NOT NULL,
   `level` tinyint(4) DEFAULT '0',
   `img` text,
-  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `mem_num` int(11) NOT NULL AUTO_INCREMENT,
   `register_datetime` datetime NOT NULL,
   `register_ip` varchar(15) NOT NULL,
   `is_deny` tinyint(4) NOT NULL DEFAULT '0',
