@@ -370,7 +370,7 @@ CREATE TABLE `music` (
   `music_time` varchar(8) DEFAULT NULL,
   `singer_num` int(11) DEFAULT NULL,
   `album_num` int(11) DEFAULT NULL,
-  `track_no` int(11) DEFAULT NULL,
+  `track_num` int(11) DEFAULT NULL,
   `music_video` text,
   PRIMARY KEY (`num`),
   KEY `album_music_albumname_idx` (`album_num`),
