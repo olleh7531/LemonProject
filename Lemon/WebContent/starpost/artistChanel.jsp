@@ -55,7 +55,7 @@
 								<span class="thumb_frame"></span>
 								<span id="artistImgArea">
 									<img width="208" height="208"
-										src="../../../upload/starpost/singerProfile/"<%=acibean.getSi_picture()%>"
+										src="./upload/starpost/singerProfile/"<%=acibean.getSi_picture()%>"
 										alt="">
 							</span>
 							</span>
@@ -3813,7 +3813,7 @@
 								</dd>
 							<dt>유형</dt>
 								<dd><%=acibean.getActivity_type()%>
-									<span class="bar">|</span>여성
+									<span class="bar">|</span><%=acibean.getActivity_type()%>
 								</dd>
 							<dt>장르</dt>
 								<dd><%=acibean.getSi_genre()%></dd>

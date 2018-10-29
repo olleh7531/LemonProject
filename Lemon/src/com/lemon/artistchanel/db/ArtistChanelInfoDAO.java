@@ -48,7 +48,7 @@ public class ArtistChanelInfoDAO {
 	}
 	
 	// 정보 글쓰기
-	public void infoWrite(ArtistChanelInfoBean aspbean) {
+	public void infoWrite(ArtistChanelInfoBean acibean) {
 		int num = 0;
 		
 		try {
@@ -79,24 +79,24 @@ public class ArtistChanelInfoDAO {
 			
 			pstmt.setInt(1, num); // 가수 번호
 			System.out.println(num);
-			pstmt.setString(2, aspbean.getActivity_type()); // 솔로/그룹 유형
-			System.out.println(aspbean.getActivity_type());
-			pstmt.setString(3, aspbean.getSinger_name()); // 가수 활동 이름(예명)
-			System.out.println(aspbean.getSinger_name());
-			pstmt.setString(4, aspbean.getSi_group_name()); // 소속 그룹 이름
-			System.out.println(aspbean.getSi_group_name());
-			pstmt.setDate(5, aspbean.getDebut_year()); // 데뷔 날짜
-			System.out.println(aspbean.getDebut_year());
-			pstmt.setString(6, aspbean.getDebut_song()); // 데뷔 노래
-			System.out.println(aspbean.getDebut_song());
-			pstmt.setString(7, aspbean.getSi_agency()); // 소속사 이름
-			System.out.println(aspbean.getSi_agency());
-			pstmt.setString(8, aspbean.getSi_picture()); // 프로필 사진
-			System.out.println(aspbean.getSi_picture());
-			pstmt.setString(9, aspbean.getSi_genre()); // 노래 장르
-			System.out.println(aspbean.getSi_genre());
-			pstmt.setDate(10, aspbean.getSi_birth()); // 생일
-			System.out.println(aspbean.getSi_birth());
+			pstmt.setString(2, acibean.getActivity_type()); // 솔로/그룹 유형
+			System.out.println(acibean.getActivity_type());
+			pstmt.setString(3, acibean.getSinger_name()); // 가수 활동 이름(예명)
+			System.out.println(acibean.getSinger_name());
+			pstmt.setString(4, acibean.getSi_group_name()); // 소속 그룹 이름
+			System.out.println(acibean.getSi_group_name());
+			pstmt.setDate(5, acibean.getDebut_year()); // 데뷔 날짜
+			System.out.println(acibean.getDebut_year());
+			pstmt.setString(6, acibean.getDebut_song()); // 데뷔 노래
+			System.out.println(acibean.getDebut_song());
+			pstmt.setString(7, acibean.getSi_agency()); // 소속사 이름
+			System.out.println(acibean.getSi_agency());
+			pstmt.setString(8, acibean.getSi_picture()); // 프로필 사진
+			System.out.println(acibean.getSi_picture());
+			pstmt.setString(9, acibean.getSi_genre()); // 노래 장르
+			System.out.println(acibean.getSi_genre());
+			pstmt.setDate(10, acibean.getSi_birth()); // 생일
+			System.out.println(acibean.getSi_birth());
 			
 			System.out.println("AArtist");
 			pstmt.executeUpdate();
