@@ -58,12 +58,11 @@ public class MemberJoinAction implements Action{
 		System.out.println(mb.getEmail_id());
 		//JoinAuthAction 페이지에 보낼 아이디
 		request.setAttribute("email_id", mb.getEmail_id());
-		request.setAttribute("pass", mb.getPass());
 
 		// ActionForward 객체에 이동정보(경로/방법) 담아서 이동
 		// 로그인 페이지로 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("MemberJoinAuthAction.mb");
+		forward.setPath("MemberJoinAuthMailAction.mb");
 		forward.setRedirect(false);
 		
 		return forward;	

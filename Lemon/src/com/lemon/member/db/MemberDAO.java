@@ -63,10 +63,10 @@ public class MemberDAO {
 				num = rs.getInt("max(no)") + 1;
 			}
 			
-			sql = "insert into member (email_id, pass, name, nickname, gender, birth, level, img, no, register_datetime, register_ip, is_deny, chk)"
+			sql = "insert into member (email_id, pass, name, nickname, gender, birth, level, img, no, register_datetime, register_ip, is_deny, chk, email_cert)"
 					+ "values(?,?,?,?,?,"
 					+ "?,?,?,?,now(),"
-					+ "?,?,?)";
+					+ "?,?,?,0)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getEmail_id());
@@ -239,6 +239,8 @@ public class MemberDAO {
 				mb.setAddress1(rs.getString("address1"));
 				mb.setAddress2(rs.getString("address2"));
 				mb.setReceive_email(rs.getInt("receive_email"));
+				
+				mb.setReg_date(rs.getDate("register_datetime"));
 			}
 			
 		} catch (Exception e) {
@@ -341,7 +343,7 @@ public class MemberDAO {
 		try {
 			con = getCon();
 
-			sql = "update member set code=?, email_cert=0 where email_id=?";
+			sql = "update member set code=? where email_id=?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, code);
