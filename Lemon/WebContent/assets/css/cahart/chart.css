@@ -1,393 +1,1456 @@
 .tab {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 35px;
-    line-height: 35px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 35px;
+	line-height: 35px;
 }
 
 /* Float the list items side by side */
-
 .tab li {
-    float: left;
+	float: left;
 }
 
 /* Style the links inside the list items */
-
 .tab li a {
-    display: inline-block;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    padding: 5px 16px;
-    font-size: 17px;
-    transition: 0.3s;
-    font-weight: bold;
-    font-size: 15px;
+	display: inline-block;
+	color: #000;
+	text-align: center;
+	text-decoration: none;
+	padding: 5px 16px;
+	font-size: 17px;
+	transition: 0.3s;
+	font-weight: bold;
+	font-size: 15px;
 }
 
 /* Style the tab content */
-
 .tabcontent {
-    display: none;
-    /*background-color: rgb(0, 154, 200);*/
-    padding: 30px 12px;
-    color: #fff;
+	display: none;
+	/*background-color: rgb(0, 154, 200);*/
+	padding: 30px 12px;
+	color: #fff;
 }
 
-
 ul.tab li.current a {
-    color: #edae06;
-
+	color: #edae06;
 }
 
 .tabcontent.current {
-    display: block;
+	display: block;
 }
 
 .service_list_song {
-    margin-top: 30px;
+	margin-top: 30px;
 }
 
 .service_list_song th {
-    height: 48px;
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-    color: #606060;
-    font-size: 13px;
-    font-family: "돋움", Dotum, Arial, sans-serif;
-
+	height: 48px;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	color: #606060;
+	font-size: 13px;
+	font-family: "돋움", Dotum, Arial, sans-serif;
 }
 
 .service_list_song th .service_list_song td {
-    text-align: center;
-    vertical-align: middle;
-
+	text-align: center;
+	vertical-align: middle;
 }
 
 .service_list_song .wrap_song_info {
-    display: inline-block;
-    width: 100%;
-    margin-left: 12px;
-    vertical-align: middle;
+	display: inline-block;
+	width: 100%;
+	margin-left: 12px;
+	vertical-align: middle;
 }
 
 .service_list_song .ellipsis.rank01 {
-    max-width: 240px;
+	max-width: 240px;
 }
 
 .service_list_song .ellipsis.rank02 {
-    max-width: 220px;
+	max-width: 220px;
 }
 
 .service_list_song .ellipsis.rank03 {
-    max-width: 170px;
+	max-width: 170px;
 }
 
 .service_list_song .ellipsis.rank03 a {
-    color: #969696;
-    font-size: 14px;
+	color: #969696;
+	font-size: 14px;
 }
 
 .service_list_song .wrap_song_info a {
-    letter-spacing: 0 !important;
-    font-size: 14px;
+	letter-spacing: 0 !important;
+	font-size: 14px;
 }
 
 .service_list_song .ellipsis.rank01 a {
-    color: #333;
-    font-size: 14px;
+	color: #333;
+	font-size: 14px;
 }
 
 .service_list_song .ellipsis.rank02 a {
-    color: #969696;
-    font-size: 12px;
+	color: #969696;
+	font-size: 12px;
 }
 
 .page_header {
-    position: relative;
-    margin-bottom: 8px;
-    overflow: hidden;
+	position: relative;
+	margin-bottom: 8px;
+	overflow: hidden;
 }
 
 .page_header h2.title {
-    height: 40px;
-    line-height: 40px;
-    font-size: 26px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 26px;
 }
 
 #conts h2 {
-    margin-top: 0 !important;
+	margin-top: 0 !important;
 }
 
 .service_list_song i {
-    color: #969696;
+	color: #969696;
 }
 
-
 .service_list_song td {
-    height: 84px;
-    border-bottom: 1px solid #f2f2f2;
+	height: 84px;
+	border-bottom: 1px solid #f2f2f2;
 }
 
-.service_list_song th,
-.service_list_song td {
-    text-align: left;
-    vertical-align: middle;
+.service_list_song th, .service_list_song td {
+	text-align: left;
+	vertical-align: middle;
 }
 
 .image_typeAll {
-    display: block;
-    position: relative;
-    font-size: 0;
-    line-height: 0;
+	display: block;
+	position: relative;
+	font-size: 0;
+	line-height: 0;
 }
 
 .image_typeAll .bg_album_frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    border: 1px solid #e5e5e5;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	border: 1px solid #e5e5e5;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .service_list_song th .wrap {
-    padding-top: 2px;
+	padding-top: 2px;
 }
 
 .service_list_song .t_right {
-    text-align: right;
+	text-align: right;
 }
 
 .service_list_song .pd_l_12 {
-    padding-left: 12px;
+	padding-left: 12px;
 }
 
 .service_list_song .pd_l_30 {
-    padding-left: 30px;
+	padding-left: 30px;
 }
 
 .service_list_song .t_center {
-    text-align: center;
+	text-align: center;
 }
 
 .button_etc.like .cnt {
-    color: #888;
-    line-height: 14px;
-    font-size: 12px;
-    letter-spacing: 0;
-    vertical-align: top;
-    margin-left: 5px;
+	color: #888;
+	line-height: 14px;
+	font-size: 12px;
+	letter-spacing: 0;
+	vertical-align: top;
+	margin-left: 5px;
 }
 
 .button_etc.like {
-    height: 14px;
-    visibility: visible;
-    overflow: hidden;
+	height: 14px;
+	visibility: visible;
+	overflow: hidden;
 }
 
 .service_list_song .t_center {
-    text-align: center;
+	text-align: center;
 }
 
 .div_tab {
-    width: 1008px;
-    margin: 0 auto;
+	width: 1008px;
+	margin: 0 auto;
 }
 
 .wrap_btn_tb.top {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .wrap_btn_tb .button_rbox:first-child {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 .wrap_btn_tb .button_rbox {
-    float: left;
-    padding: 0 9px;
-    margin-left: 10px;
+	float: left;
+	padding: 0 9px;
+	margin-left: 10px;
 }
 
 .button_rbox {
-    height: 30px;
-    line-height: 28px;
-    padding: 0 16px;
-    border: 1px solid #b2b2b2;
-    border-radius: 100px;
-    color: #606060;
-    font-size: 12px;
-    visibility: visible;
-    overflow: hidden;
+	height: 30px;
+	line-height: 28px;
+	padding: 0 16px;
+	border: 1px solid #b2b2b2;
+	border-radius: 100px;
+	color: #606060;
+	font-size: 12px;
+	visibility: visible;
+	overflow: hidden;
 }
 
 .service_list_album .info .ellipsis.artist {
-    max-width: 230px;
-    font-size: 12px;
-    color: #00b423;
+	max-width: 230px;
+	font-size: 12px;
+	color: #00b423;
 }
 
 .ellipsis {
-    display: inline-block;
-    padding-right: 1px;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    word-wrap: normal;
-    overflow: hidden;
+	display: inline-block;
+	padding-right: 1px;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-wrap: normal;
+	overflow: hidden;
 }
 
 .service_list_album {
-    width: 457px;
-    display: inline-block;
-    margin-left: 30px;
-    margin-right: 15px;
-    margin-top: 30px;
-
+	width: 457px;
+	display: inline-block;
+	margin-left: 30px;
+	margin-right: 15px;
+	margin-top: 30px;
 }
 
 .service_list {
-    margin: 0 0 0 -30px;
+	margin: 0 0 0 -30px;
 }
 
 .service_list_album .thumb {
-    position: relative;
-    float: left;
-    width: 180px;
-    height: 160px;
-    overflow: hidden;
+	position: relative;
+	float: left;
+	width: 180px;
+	height: 160px;
+	overflow: hidden;
 }
 
 .service_list_album .thumb_mv {
-    position: relative;
-    float: left;
-    width: 180px;
-    height: 140px;
-    overflow: hidden;
+	position: relative;
+	float: left;
+	width: 180px;
+	height: 140px;
+	overflow: hidden;
 }
 
 .service_list_album .entry {
-    float: left;
-    width: 230px;
-    height: 139px;
-    padding: 0 23px 20px;
-    margin-left: -1px;
-    border: 1px solid #e5e5e5;
+	float: left;
+	width: 230px;
+	height: 139px;
+	padding: 0 23px 20px;
+	margin-left: -1px;
+	border: 1px solid #e5e5e5;
 }
 
 .service_list_album .entry_mv {
-    float: left;
-    width: 230px;
-    height: 99px;
-    padding: 19px 23px 20px;
-    margin-left: -1px;
-    border: 1px solid #e5e5e5;
+	float: left;
+	width: 230px;
+	height: 99px;
+	padding: 19px 23px 20px;
+	margin-left: -1px;
+	border: 1px solid #e5e5e5;
 }
 
 .service_list_album .info {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .service_list_album .info .vdo_name {
-    display: block;
-    margin-bottom: 2px;
-    color: #575757;
-    font-size: 14px;
+	display: block;
+	margin-bottom: 2px;
+	color: #575757;
+	font-size: 14px;
 }
 
 .service_list_album .info .album_name {
-    display: block;
-    line-height: 21px;
-    margin-bottom: 6px;
-    color: #333;
-    font-size: 16px;
-
+	display: block;
+	line-height: 21px;
+	margin-bottom: 6px;
+	color: #333;
+	font-size: 16px;
 }
 
 .service_list_album .meta {
-    line-height: 1;
-    margin-bottom: 14px;
+	line-height: 1;
+	margin-bottom: 14px;
 }
 
 .service_list_album .meta .reg_date {
-    display: inline-block;
-    position: relative;
-    top: -1px;
-    color: #767676;
-    font-size: 13px;
-    vertical-align: top;
+	display: inline-block;
+	position: relative;
+	top: -1px;
+	color: #767676;
+	font-size: 13px;
+	vertical-align: top;
 }
 
 .service_list_album .meta .bar {
-    display: inline-block;
-    position: relative;
-    top: 2px;
-    height: 10px;
-    line-height: 14px;
-    margin: 0 4px;
-    border-left: 1px solid #eaeaea;
-    vertical-align: top;
+	display: inline-block;
+	position: relative;
+	top: 2px;
+	height: 10px;
+	line-height: 14px;
+	margin: 0 4px;
+	border-left: 1px solid #eaeaea;
+	vertical-align: top;
 }
 
 .service_list_album .meta .button_etc {
-    vertical-align: top;
+	vertical-align: top;
 }
 
 .button_etc.like {
-    height: 14px;
-    visibility: visible;
-    overflow: hidden;
+	height: 14px;
+	visibility: visible;
+	overflow: hidden;
 }
 
-button,
-.btn {
-    border: 1px solid red;
-    display: inline-block;
-    zoom: 1;
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    text-decoration: none !important;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    cursor: pointer;
+button, .btn {
+	border: 1px solid red;
+	display: inline-block;
+	zoom: 1;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	text-decoration: none !important;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
 }
 
 .service_list_album .meta .tot_song {
-    display: inline-block;
-    color: #767676;
-    font-size: 12px;
-    vertical-align: top;
+	display: inline-block;
+	color: #767676;
+	font-size: 12px;
+	vertical-align: top;
 }
 
 .wrap_btn_tb .button_rbox:first-child {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 .wrap_btn_tb .button_rbox {
-    float: left;
-    padding: 0 9px;
-    margin-left: 10px;
+	float: left;
+	padding: 0 9px;
+	margin-left: 10px;
 }
 
 .button_rbox {
-    height: 30px;
-    line-height: 28px;
-    padding: 0 16px;
-    border: 1px solid #b2b2b2;
-    border-radius: 100px;
-    color: #606060;
-    font-size: 12px;
-    visibility: visible;
-    overflow: hidden;
+	height: 30px;
+	line-height: 28px;
+	padding: 0 16px;
+	border: 1px solid #b2b2b2;
+	border-radius: 100px;
+	color: #606060;
+	font-size: 12px;
+	visibility: visible;
+	overflow: hidden;
 }
 
 .service_list_album .info .artist_name {
-    color: #00b423;
-    font-size: 12px;
+	color: #00b423;
+	font-size: 12px;
+}
+
+/**/
+.section_info {
+	padding-top: 5px;
+	margin-bottom: 35px;
+}
+
+.section_info .wrap_info {
+	border: 1px solid #e5e5e5;
+	*zoom: 1;
+}
+
+.section_info .info .gubun {
+	display: block;
+	margin-bottom: -2px;
+	color: #888;
+	font-size: 14px;
+	font-family: "돋움", Dotum;
+}
+
+.section_info .entry {
+	position: relative;
+	min-height: 214px;
+	padding: 28px 0 33px 312px;
+	margin-left: -1px;
+}
+
+.section_info .info {
+	margin-right: 40px;
+}
+
+.section_info .thumb {
+	position: relative;
+	float: left;
+	width: 282px;
+	height: 282px;
+	z-index: 9;
+}
+
+.section_info .info .artist {
+	display: inline-block;
+	color: #00b423;
+}
+
+.section_info .info .artist .artist_name {
+	display: inline-block;
+	position: relative;
+	color: #00b423;
+	font-size: 18px;
+	letter-spacing: 0 !important;
+}
+
+.section_info .info .song_name {
+	line-height: 1.3em;
+	margin-right: 40px;
+	margin-bottom: 8px;
+	color: #2f2f2f;
+	font-size: 22px;
+}
+
+.section_info .meta .list {
+	padding-top: 14px;
+}
+
+.section_info .meta .list dt {
+	float: left;
+	width: 60px;
+	padding-top: 6px;
+	color: #888888;
+	font-size: 13px;
+}
+
+.section_info .meta .list dd {
+	padding-top: 6px;
+	margin-left: 60px;
+	color: #606060;
+	font-size: 13px;
+}
+
+.section_info .button {
+	margin-top: 17px;
+}
+
+.section_info .button .button_etc.like.type02 {
+	text-align: left;
+}
+
+.button_etc.like.type02 .odd_span {
+	width: 20px;
+	height: 17px;
+	background-position: 0 -60px;
+}
+
+.button_etc.like.type02 {
+	height: 17px;
+}
+
+.button_etc.like {
+	height: 14px;
+	visibility: visible;
+	overflow: hidden;
+}
+
+/* .button_etc.like .odd_span {
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	width: 14px;
+	height: 12px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/common/bullet_icons_sprite_20180820.png)
+		no-repeat -69px -15px;
+	vertical-align: top;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+} */
+
+.button_etc.like.type02 .cnt {
+	margin-left: 4px;
+	line-height: 18px;
+	color: #575757;
+	font-size: 18px;
+}
+
+.section_info .button .button_etc .cnt {
+	margin-left: 3px;
+}
+
+.button_etc.like .cnt {
+	color: #888;
+	line-height: 14px;
+	font-size: 12px;
+	letter-spacing: 0;
+	vertical-align: top;
+}
+
+.section_info .button .btn {
+	height: 20px;
+	margin-left: 25px;
+	vertical-align: top;
+}
+
+button, .btn {
+	border: 1px solid red;
+	display: inline-block;
+	zoom: 1;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	text-decoration: none !important;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+@charset "utf-8";
+
+/*
+	Title : Melon Web 4.x UI Common Template
+	Create Date : 2017.07
+	Author : mTechCrew
+	Category : Album(앨범 정보)
+*/
+
+/* 곡정보 */
+.section_info {
+	padding-top: 5px;
+	margin-bottom: 35px;
+}
+
+.section_info .wrap_info {
+	border: 1px solid #e5e5e5;
+	*zoom: 1;
+}
+
+.section_info .wrap_info:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.section_info .thumb {
+	position: relative;
+	float: left;
+	width: 282px;
+	height: 282px;
+	z-index: 9;
+}
+
+.section_info .thumb img {
+	vertical-align: top;
+}
+
+.section_info .thumb .play {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+/* UX-960 */
+.section_info .entry {
+	position: relative;
+	min-height: 214px;
+	padding: 28px 0 33px 312px;
+	margin-left: -1px;
+}
+
+.section_info .entry {
+	*padding-left: 30px;
+}
+
+.section_info .info {
+	margin-right: 40px;
+}
+
+/* //UX-960 */
+.section_info .info .gubun {
+	display: block;
+	margin-bottom: -2px;
+	color: #888;
+	font-size: 14px;
+	font-family: "돋움", Dotum;
+}
+
+.section_info .info .song_name {
+	line-height: 1.3em;
+	margin-right: 40px;
+	margin-bottom: 8px;
+	color: #2f2f2f;
+	font-size: 22px;
+}
+
+.section_info .info .song_name.multi {
+	margin-top: 5px;
+	font-size: 20px;
+}
+
+.section_info .info .artist {
+	display: inline-block;
+	color: #00b423;
+}
+
+.section_info .info .artist .artist_name {
+	display: inline-block;
+	position: relative;
+	color: #00b423;
+	font-size: 18px;
+	letter-spacing: 0 !important;
+}
+
+.section_info .info .artist.ellipsis {
+	max-width: 425px;
+}
+
+.section_info .info .artist.ellipsis {
+	*position: relative;
+	*display: inline;
+}
+
+.section_info .info .artist.ellipsis .artist_name {
+	display: inline;
+	font-size: 16px;
+}
+
+.section_info .info .artist .artist_name .thumb_atist {
+	display: none;
+	position: absolute;
+	top: -56px;
+	left: 50%;
+	width: 56px;
+	height: 56px;
+	margin-left: -28px;
+	padding: 1px 0 0 1px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/common/bg_thumb_atist.png)
+		no-repeat 0 0;
+}
+
+.section_info .info .artist .artist_name:hover .thumb_atist {
+	display: block;
+}
+
+.section_info .meta {
+	
+}
+
+.section_info .meta .list {
+	padding-top: 14px;
+}
+
+.section_info .meta .list dt {
+	float: left;
+	width: 60px;
+	padding-top: 6px;
+	color: #888888;
+	font-size: 13px;
+}
+
+.section_info .meta .list dd {
+	padding-top: 6px;
+	margin-left: 60px;
+	color: #606060;
+	font-size: 13px;
+}
+
+.section_info .meta .list dd a {
+	color: #606060;
+	font-size: 13px;
+}
+
+.section_info .button {
+	margin-top: 17px;
+}
+
+/* UX-960 */
+.section_info .button .button_etc.like.type02 {
+	text-align: left;
+}
+
+.section_info .button .button_etc .cnt {
+	margin-left: 3px;
+}
+
+.section_info .button .btn {
+	height: 20px;
+	margin-left: 25px;
+	vertical-align: top;
+}
+
+/* //UX-960 */
+.section_info .button .btn .button_icons.button_icons.download {
+	position: relative;
+	top: -1px;
+	vertical-align: middle;
+}
+
+.section_info .button .btn .button_icons.button_icons.gift {
+	position: relative;
+	top: 1px;
+	vertical-align: middle;
+}
+
+.section_info .button .btn .button_icons.button_icons.album {
+	vertical-align: middle;
+}
+
+.section_info .button .btn .button_icons.arrow_link02 {
+	position: relative;
+	top: 1px;
+}
+
+.section_info .button .btn .text {
+	margin-left: 3px;
+	color: #575757;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.section_info .share {
+	position: absolute;
+	bottom: 79px;
+	right: 30px;
+	width: 195px;
+}
+
+.section_info .share>dl>dt {
+	clear: both;
+	float: left;
+	width: 100px;
+	padding-right: 15px;
+	margin-bottom: 10px;
+	color: #888;
+	font-size: 14px;
+	text-align: right;
+}
+
+.section_info .share>dl>dd {
+	float: right;
+	margin-bottom: 8px;
+}
+
+.section_info .share>dl>dd a {
+	color: #606060;
+	font-size: 14px;
+	letter-spacing: 0 !important;
+}
+
+.section_info .share>dl>dd .arrow_link02 {
+	position: relative;
+	top: -1px;
+}
+
+.section_info .share .grade {
+	position: relative;
+}
+
+.section_info .share .grade .bullet_icons {
+	position: relative;
+	top: -2px;
+	text-align: left;
+}
+
+.section_info .share .grade .cnt {
+	margin-left: 5px;
+	color: #00b423;
+}
+
+/* MELON-2891 : 20171019 */
+
+/* 삭제
+.section_info .share .grade:after {content: '•'; position: absolute; top: 0; right:-18px; color: #e1e1e1;}
+*/
+
+/* //MELON-2891 : 20171019 */
+.section_info .share .wrap_sns {
+	padding-top: 1px;
+}
+
+.section_info .share .wrap_sns .sns {
+	margin-left: 3px;
+}
+
+.section_info .bottom {
+	display: table;
+	min-height: 60px;
+	border: 1px solid #e5e5e5;
+	border-top: 0;
+	background-color: #fafafa;
+}
+
+.section_info .bottom {
+	*display: block;
+	*overflow: hidden;
+	*padding: 20px 0;
+	*min-height: 1px;
+}
+
+.section_info .bottom .download {
+	display: table-cell;
+	vertical-align: middle;
+	width: 282px;
+	text-align: center;
+}
+
+.section_info .bottom .download {
+	*display: block;
+	*float: left;
+}
+
+.section_info .bottom .download .btn_album_buy {
+	display: inline;
+	padding-left: 24px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/album_4x/icon_album_buy.png)
+		no-repeat 0 50%;
+	color: #575757;
+	font-size: 16px;
+}
+
+.section_info .bottom .download .btn_album_buy .eng {
+	position: relative;
+	top: 1px;
+}
+
+.section_info .bottom .download .btn_album_buy .eng {
+	*position: static;
+}
+
+.section_info .bottom .download .btn_album_buy .price {
+	display: inline-block;
+	padding: 2px 8px;
+	border: 1px solid #afafaf;
+	border-radius: 100px;
+	color: #575757;
+	font-size: 12px;
+}
+
+.section_info .bottom .download .btn_booklet {
+	line-height: 1;
+	padding-left: 22px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/album_4x/icon_booklet.png)
+		no-repeat 0 50%;
+}
+
+.section_info .bottom .download .btn_booklet .text {
+	color: #575757;
+	font-size: 16px;
+}
+
+.section_info .bottom .download .btn_booklet .arrow_link02 {
+	position: relative;
+	top: -1px;
+}
+
+/* UX-1287 */
+.section_info .bottom .download .btn_special {
+	line-height: 1;
+}
+
+.section_info .bottom .download .btn_special .text {
+	color: #575757;
+	font-size: 16px;
+}
+
+.section_info .bottom .download .btn_special .arrow_link02 {
+	position: relative;
+	top: -1px;
+}
+
+/* //UX-1287 */
+.section_info .bottom .download .bar {
+	display: inline-block;
+	height: 21px;
+	margin: 0 10px;
+	border-left: 1px solid #d5d5d5;
+	vertical-align: middle;
+}
+
+.section_info .bottom .notice {
+	display: table-cell;
+	width: 656px;
+	padding: 0 30px 0 40px;
+	font-size: 12px;
+	font-family: "돋움", Dotum;
+	vertical-align: middle;
+	text-indent: -9px;
+	color: #969696;
+}
+
+.section_info .bottom .notice {
+	*display: block;
+	*float: left;
+	*width: 640px;
+}
+
+.section_info .bottom .notice p {
+	padding-top: 2px;
+}
+
+.section_info .bottom .notice .ntext {
+	padding-top: 2px;
+}
+
+.section_info .bottom .notice.right {
+	text-align: right;
+}
+
+.section_info .bottom .notice .btn_text {
+	margin-left: 12px;
+	vertical-align: baseline;
+	text-indent: 0;
+}
+
+.section_info .bottom .notice .btn_text .text {
+	font-size: 12px;
+	letter-spacing: 0;
+	text-indent: 0;
+}
+
+.section_info .bottom.cell2 {
+	min-height: 70px;
+}
+
+.section_info .bottom.cell2 .download {
+	width: 546px;
+}
+
+.section_info .bottom.cell2 .notice {
+	width: 420px;
+	padding-left: 10px;
+}
+
+.section_info .bottom.cellNot, .section_info .bottom.cellNot .download,
+	.section_info .bottom.cellNot .notice {
+	display: block;
+	width: auto;
+	min-height: inherit;
+	padding: 0;
+	text-align: left;
+	text-indent: 0;
+}
+
+.section_info .bottom.cellNot {
+	padding: 17px;
+}
+
+.section_info .bottom.cellNot .notice {
+	clear: both;
+	float: none;
+}
+
+.section_info .bottom.cellNot .download+.notice {
+	margin-top: 10px;
+}
+
+/* 별점주기 레이어 */
+.l_popup.small .l_cntt {
+	border: 1px solid #e5e5e5;
+}
+
+.l_popup.small .shadow {
+	display: none;
+}
+
+.l_popup.small .l_cntt .wrap_evalscore02 .text_evalscore02 {
+	position: relative;
+	top: 2px;
+	color: #b4b4b4;
+	font-size: 16px;
+}
+
+.l_popup.small .l_cntt .text_evalscore02 strong {
+	color: #2f2f2f;
+	font-size: 19px;
+	font-weight: normal;
+}
+
+.l_popup.small .l_cntt .text_evalscore02 .score {
+	font-size: 19px;
+	font-weight: normal;
+}
+
+.contt_evalscore02 {
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/common/bg_evalscore_20170829.png)
+		no-repeat 0 -119px;
+}
+
+.contt_evalscore02 span {
+	background: #fff
+		url(//cdnimg.melon.co.kr/resource/image/web/common/bg_evalscore_20170829.png)
+		no-repeat 0 -94px;
+}
+
+.contt_evalscore02 label {
+	width: 12px;
+	background: #fff
+		url(//cdnimg.melon.co.kr/resource/image/web/common/bg_evalscore_20170829.png)
+		no-repeat 0 0;
+}
+
+.contt_evalscore02 label.score02, .contt_evalscore02 label.score04,
+	.contt_evalscore02 label.score06, .contt_evalscore02 label.score08,
+	.contt_evalscore02 label.score10 {
+	margin-right: 4px;
+	background-position: -11px -119px;
+}
+
+.contt_evalscore02 label.score02.on, .contt_evalscore02 label.score04.on,
+	.contt_evalscore02 label.score06.on, .contt_evalscore02 label.score08.on,
+	.contt_evalscore02 label.score10.on {
+	margin-right: 4px;
+}
+
+/* UX-980 */
+.l_popup.small .l_cntt .wrap_btn_c .button_rbox {
+	height: 32px;
+	line-height: 28px;
+	padding: 0 22px;
+}
+
+.l_popup.small .l_cntt .wrap_btn_c .button_rbox .cnt {
+	font-size: 13px;
+}
+
+.l_popup.small .l_cntt .wrap_btn_c .button_rbox.green {
+	border-color: #00cd3c;
+	background-color: #00cd3c;
+}
+
+.l_popup.small .l_cntt .wrap_btn_c .button_rbox.green .cnt {
+	color: #fff;
+	font-size: 13px;
+	font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+}
+
+/* //UX-980 */
+.box_evalscore {
+	margin: 18px -20px 8px 0;
+	text-align: center;
+	overflow: hidden;
+}
+
+.box_evalscore dt {
+	display: block;
+	margin-bottom: 10px;
+	color: #2f2f2f;
+	font-size: 14px;
+	line-height: 1.4em;
+	font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+	letter-spacing: -1px;
+}
+
+/* 북클릿 가이드 */
+.booklet_guide {
+	position: relative;
+	display: inline-block;
+	top: 2px;
+	z-index: 99;
+}
+
+.booklet_guide .btn_booklet {
+	float: left;
+	margin-right: 8px;
+}
+
+.booklet_guide .booklet_info {
+	float: left;
+	margin: 9px 0 0;
+	*margin: 5px 0 0;
+	color: #333;
+	font-size: 12px;
+}
+
+.booklet_guide .booklet_info p {
+	display: inline-block;
+	*display: inline;
+	padding: 2px 0 3px 20px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/album/icon_booklet.png)
+		no-repeat;
+	font-family: Dotum, "Apple Gothic", sans-serif;
+	line-height: 14px;
+}
+
+.booklet_guide .booklet_info button {
+	vertical-align: 0;
+	*vertical-align: -3px;
+}
+
+.booklet_bnr {
+	position: absolute;
+	left: 149px;
+	top: -12px;
+	width: 307px;
+	height: 134px;
+	padding: 21px 43px 0 30px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/album/bg_floating_bnr.png)
+		no-repeat;
+}
+
+.booklet_bnr p {
+	height: 62px;
+	padding-top: 10px;
+}
+
+.booklet_bnr .btn_close {
+	float: right;
+	margin-top: 10px;
+	padding-right: 23px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/album/btn_close_floating.png)
+		no-repeat right 0;
+	line-height: 18px;
+	font-size: 11px;
+	color: #777;
+	vertical-align: top;
+}
+
+/* 북클릿 서비스 안내 팝업 */
+.booklet_popup {
+	color: #333;
+}
+
+.booklet_popup h2 {
+	padding: 0 0 6px 22px;
+	background:
+		url(//cdnimg.melon.co.kr/resource/image/web/album/icon_booklet.png)
+		no-repeat;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.booklet_popup div {
+	padding-left: 22px;
+}
+
+.booklet_popup .booklet_img {
+	overflow: hidden;
+	padding: 8px 0 18px;
+}
+
+.booklet_popup .booklet_img li {
+	position: relative;
+	float: left;
+	width: 101px;
+	height: 101px;
+	padding-right: 8px;
+}
+
+.booklet_popup .booklet_img li .thumb_frame {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: inline-block;
+	width: 99px;
+	height: 99px;
+	border: 1px solid #000000;
+	opacity: 0.1;
+	filter: alpha(opacity = 10);
+}
+
+.booklet_popup .list_bullet {
+	padding-top: 2px;
+}
+
+.booklet_popup .list_bullet li {
+	color: #666666;
+	line-height: 1.1em;
+}
+
+/* UX-960 */
+.line_ban {
+	margin: -10px 0 20px;
+}
+
+/* //UX-960 */
+
+/* 수록곡 */
+.section_contin {
+	margin-bottom: 35px;
+}
+
+.section_contin .page_header {
+	margin-bottom: 20px;
+}
+
+/* 앨범소개 */
+
+/* 20171114 */
+.section_albuminfo {
+	margin-bottom: 35px;
+}
+
+.section_lyric {
+	margin-bottom: 35px;
+}
+
+.section_albuminfo .cont_albuminfo {
+	position: relative;
+	padding: 5px 0 45px;
+}
+
+.section_albuminfo .dtl_albuminfo {
+	min-height: 141px;
+	line-height: 24px;
+	color: #767676;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.section_albuminfo .dtl_albuminfo.on {
+	height: auto !important;
+	overflow: visible;
+}
+
+.section_albuminfo .dtl_albuminfo .wrap_albuminfo {
+	float: right;
+}
+
+.section_albuminfo .cont_albuminfo .button_more {
+	display: none;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-left: -28px;
+}
+
+.section_albuminfo .cont_albuminfo .button_more .text {
+	color: #575757;
+	font-size: 14px;
+}
+
+.section_albuminfo .cont_albuminfo .button_more.arrow_d .arrow_d {
+	width: 11px;
+	height: 6px;
+	background-position: -308px 0;
+}
+
+.section_albuminfo .cont_albuminfo .button_more.arrow_u .arrow_d {
+	width: 11px;
+	height: 6px;
+	background-position: -308px -8px;
+}
+
+/* //20171114 */
+
+/* 관련영상 */
+.section_movie {
+	position: relative;
+	margin-bottom: 35px;
+}
+
+.section_movie .page {
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+
+/* 댓글 */
+.section_cmt {
+	margin-bottom: 35px;
+}
+
+/* 수록곡이 포함된 DJ 플레이리스트 */
+
+/* 20171114 */
+.section_playlist {
+	position: relative;
+	margin-bottom: 35px;
+}
+
+.section_playlist .page {
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+
+/* //20171114 */
+
+/* 좋아요 한 사람 */
+.section_intst {
+	position: relative;
+}
+
+.section_intst .list_person {
+	margin-top: 20px;
+}
+
+.section_intst .page {
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+
+/**/
+.page_header h5.title {
+	height: 28px;
+	line-height: 28px;
+	font-size: 20px;
+}
+
+.page_header .title .sum {
+	color: #767676;
+}
+
+/**/
+.service_list_video .thumb .bullet_icons {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.service_list_video.type03 .thumb {
+	width: 237px;
+	height: 139px;
+}
+
+.service_list_video.type03>ul>li {
+	width: 237px;
+	margin: 0 0 0 20px;
+}
+
+.service_list_video>ul>li {
+	float: left;
+	width: 461px;
+	margin: 20px 0 0 86px;
+}
+
+.section_movie .page {
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+
+.page .wrap_btn {
+	display: inline-block;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+
+.service_list_video.type03 .info .album_name {
+	display: block;
+	white-space: nowrap;
+	font-size: 16px;
+}
+
+.service_list_video .info .album_name {
+	display: block;
+	line-height: 20px;
+	margin-bottom: 6px;
+	color: #333;
+	font-size: 14px;
+	white-space: normal;
+	max-height: 40px;
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.service_list_video .info .ellipsis.artist {
+	max-width: 120px;
+	font-size: 12px;
+	color: #00b423;
+}
+
+.service_list_video .info .artist_name {
+	color: #00b423;
+	font-size: 12px;
+}
+
+.service_list_video .meta {
+	line-height: 1;
+}
+
+.service_list_video .meta .view {
+	display: inline-block;
+	color: #777;
+	font-size: 13px;
+	vertical-align: top;
+	margin-top: 5px;
+}
+
+.button_etc.like {
+	height: 14px;
+	visibility: visible;
+	overflow: hidden;
+	margin-top: 5px;
+}
+
+.service_list_video .meta .view .cnt_view {
+	position: relative;
+	top: 2px;
+	vertical-align: top;
+}
+
+.bullet_icons.cnt_view {
+	width: 16px;
+	height: 11px;
+	background-position: -105px -27px;
+}
+
+.section_cmt {
+	margin-bottom: 35px;
+}
+
+.re_notice {
+	display: block;
+	position: relative;
+	margin-bottom: 24px;
+	padding: 15px 101px 8px 28px;
+	background-color: #f5f5f5;
+	border: 1px solid #d1d1d1;
+	z-index: 40;
+	zoom: 1;
+}
+
+.cm_count {
+	margin-bottom: 8px;
+}
+
+.cm_count .cm_left {
+	float: left;
+}
+
+.cm_count .cm_point {
+	color: #7cb710;
 }

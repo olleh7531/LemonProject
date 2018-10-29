@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class ChartFrontController extends HttpServlet {
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	private void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
@@ -20,41 +20,48 @@ public class ChartFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		if(command.equals("/LemonChart.ct")){
-    	/*	forward = new ActionForward();
-    		forward.setPath("./board/musicUpload.jsp");
-    		forward.setRedirect(false); */
-    		action = new LemonChartAction();
-    		try {
+		if (command.equals("/LemonChart.ct")) {
+			/*
+			 * forward = new ActionForward();
+			 * forward.setPath("./board/musicUpload.jsp");
+			 * forward.setRedirect(false);
+			 */
+			action = new LemonChartAction();
+			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}else if(command.equals("/MusicUploadAction.ams")){
+		} else if (command.equals("/MusicUploadAction.ams")) {
 
-    	}else if(command.equals("/LemonLatest_Chart.ct")){
-    		action = new LemonLatest_Chart();
-    		
-    		try {
+		} else if (command.equals("/LemonLatest_Chart.ct")) {
+			action = new LemonLatest_Chart();
+
+			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    	}
-		
-		
-		
-		
-		if(forward != null){ // 이동할 정보가 있으면
-			// 이동방식 따른 페이지 이동 
-			if(forward.isRedirect()){//true
+		} else if (command.equals("/LemonDetai.ct")) {
+			action = new LemonDetail();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		if (forward != null) { // 이동할 정보가 있으면
+			// 이동방식 따른 페이지 이동
+			if (forward.isRedirect()) {// true
 				response.sendRedirect(forward.getPath());
-			}else{//false
-				RequestDispatcher dis=
-						request.getRequestDispatcher(forward.getPath());
+			} else {// false
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}
-			
+
 		}
 	}
 

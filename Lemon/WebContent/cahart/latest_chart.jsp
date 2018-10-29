@@ -141,8 +141,9 @@
 									</td>
 									<td style="width: 60px;">
 										<div class="wrap">
-											<a href="#" title="Sun And Moon Part.1" class="image_typeAll">
-												<img onerror="WEBPOCIMG.defaultAlbumImg(this);" width="60"
+											<a href="./LemonDetai.ct" title="Sun And Moon Part.1"
+												class="image_typeAll"> <img
+												onerror="WEBPOCIMG.defaultAlbumImg(this);" width="60"
 												height="60"
 												src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/120/quality/80/optimize"
 												alt="Sun And Moon Part.1 - 페이지 이동"> <span
@@ -176,7 +177,7 @@
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank03">
-													<a href="javascript:melon.link.goAlbumDetail('10215272');"
+													<a href="./LemonDetai.ct"
 														title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon
 														Part.1</a>
 												</div>
@@ -241,9 +242,56 @@
 					<div class="service_list_song">
 						<div class="wrap_btn_tb top">
 							<div class="service_list">
-								<!-- <div class="service_list_album">
+
+								<div class="service_list_album">
 									<div class="thumb">
-										<img width="180" height="180"
+										<a href="./LemonDetai.ct"> <img width="180" height="160"
+											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
+											alt="">
+										</a>
+									</div>
+									<div class="entry">
+										<div class="info">
+											<span class="vdo_name">[EP]</span> <a href="./LemonDetai.ct"
+												class="ellipsis album_name"
+												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
+											<span class="ellipsis artist"> <a href=""
+												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
+													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
+													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
+														(SAM KIM)</a></span>
+											</span>
+										</div>
+										<div class="meta">
+											<span class="reg_date" title="발매일">2018.10.23</span> <i
+												class="bar"></i>
+											<button type="button" class="button_etc like"
+												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
+												data-album-menuid="18020123">
+												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
+													class="none">총건수</strong>4,113</span>
+											</button>
+										</div>
+										<div class="wrap_btn_tb">
+											<button type="button" onclick="" title="앨범듣기"
+												class="button_rbox">
+												<span class="button_icons type02 play"></span><span
+													class="cnt">앨범듣기</span>
+											</button>
+											<button type="button" onclick="" title="앨범 다운로드"
+												class="button_rbox">
+												<span class="button_icons type02 download"></span><span
+													class="cnt">앨범다운</span>
+											</button>
+
+
+
+										</div>
+									</div>
+								</div>
+								<div class="service_list_album">
+									<div class="thumb">
+										<img width="180" height="160"
 											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
 											alt="">
 									</div>
@@ -268,53 +316,6 @@
 												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
 													class="none">총건수</strong>4,113</span>
 											</button>
-											<i class="bar"></i> <span class="tot_song" title="총 수록곡">3곡</span>
-										</div>
-
-										<div class="wrap_btn_tb">
-											<button type="button" onclick="" title="앨범듣기"
-												class="button_rbox">
-												<span class="button_icons type02 play"></span><span
-													class="cnt">앨범듣기</span>
-											</button>
-											<button type="button" onclick="" title="앨범 다운로드"
-												class="button_rbox">
-												<span class="button_icons type02 download"></span><span
-													class="cnt">앨범다운</span>
-											</button>
-
-
-
-										</div>
-									</div>
-								</div> -->
-								<div class="service_list_album">
-									<div class="thumb">
-										<img width="180" height="160"
-											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
-											alt="">
-									</div>
-									<div class="entry">
-										<div class="info">
-											<span class="vdo_name">[EP]</span>
-											<a href="" class="ellipsis album_name"
-												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
-											<span class="ellipsis artist"> <a href=""
-												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
-													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-														(SAM KIM)</a></span>
-											</span>
-										</div>
-										<div class="meta">
-											<span class="reg_date" title="발매일">2018.10.23</span> <i
-												class="bar"></i>
-											<button type="button" class="button_etc like"
-												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
-												data-album-menuid="18020123">
-												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
-													class="none">총건수</strong>4,113</span>
-											</button>
 										</div>
 										<div class="wrap_btn_tb">
 											<button type="button" onclick="" title="앨범듣기"
@@ -341,53 +342,8 @@
 									</div>
 									<div class="entry">
 										<div class="info">
-											<span class="vdo_name">[EP]</span>
-											<a href="" class="ellipsis album_name"
-												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
-											<span class="ellipsis artist"> <a href=""
-												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
-													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-														(SAM KIM)</a></span>
-											</span>
-										</div>
-										<div class="meta">
-											<span class="reg_date" title="발매일">2018.10.23</span> <i
-												class="bar"></i>
-											<button type="button" class="button_etc like"
-												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
-												data-album-menuid="18020123">
-												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
-													class="none">총건수</strong>4,113</span>
-											</button>
-										</div>
-										<div class="wrap_btn_tb">
-											<button type="button" onclick="" title="앨범듣기"
-												class="button_rbox">
-												<span class="button_icons type02 play"></span><span
-													class="cnt">앨범듣기</span>
-											</button>
-											<button type="button" onclick="" title="앨범 다운로드"
-												class="button_rbox">
-												<span class="button_icons type02 download"></span><span
-													class="cnt">앨범다운</span>
-											</button>
-
-
-
-										</div>
-									</div>
-								</div>
-								<div class="service_list_album">
-									<div class="thumb">
-										<img width="180" height="160"
-											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
-											alt="">
-									</div>
-									<div class="entry">
-										<div class="info">
-											<span class="vdo_name">[EP]</span>
-											<a href="" class="ellipsis album_name"
+											<span class="vdo_name">[EP]</span> <a href=""
+												class="ellipsis album_name"
 												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
 											<span class="ellipsis artist"> <a href=""
 												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
