@@ -56,6 +56,7 @@ CREATE TABLE `artist_photo` (
   `ar_registerdate` date DEFAULT NULL,
   `ar_readcount` int(11) DEFAULT NULL,
   `ar_singer_num` int(11) NOT NULL,
+  `ar_photo` text,
   PRIMARY KEY (`ar_num`),
   CONSTRAINT `ar_singer_num_fk` FOREIGN KEY (`ar_num`) REFERENCES `singer` (`si_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -323,7 +324,7 @@ DROP TABLE IF EXISTS `member`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `member` (
   `email_id` varchar(100) NOT NULL,
-  `pass` varchar(30) NOT NULL,
+  `pass` varchar(30) DEFAULT NULL,
   `name` varchar(20) NOT NULL,
   `nickname` varchar(30) NOT NULL,
   `gender` varchar(5) NOT NULL,
@@ -340,6 +341,7 @@ CREATE TABLE `member` (
   `address2` text,
   `email_cert` tinyint(4) DEFAULT NULL,
   `receive_email` tinyint(4) DEFAULT NULL,
+  `code` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`email_id`),
   UNIQUE KEY `nickname_UNIQUE` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -623,4 +625,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-30  9:58:28
+-- Dump completed on 2018-10-30 17:15:39

@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>레몬 Lemon</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
@@ -19,19 +18,23 @@
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-	<script type="text/javascript" src="./assets/js/menu/main_search_real_time.js"></script><!-- 실시간 검색어 -->
+	<script type="text/javascript" src="./assets/js/menu/main_search_real_time.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
+	<script type="text/javascript" src="./assets/js/main/main_login.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 </head>
 <body>
 <%
+// 	request.setCharacterEncoding("UTF-8");
+
 	// LoginAction에서 받아온 세션값 id 정보를 저장 
 	String email_id = (String) session.getAttribute("email_id");
 	String nickname = (String) session.getAttribute("nickname");
-
-	System.out.println(email_id);
+	
+	System.out.println("email_id : "+email_id );
 %>
 
 	<!-- 메뉴 -->
@@ -1427,14 +1430,27 @@
 										</span>
 									</button>
 								</div>
+								
 								<div class="main_naver_login">
 									<a href="">네이버 로그인</a>
 								</div>
-								<div class="main_kakao_login">
-									<a href="">카카오 로그인</a>
+								
+								<div class="main_google_login">
+									<input type="button" id="googleLogin" value="Checking..." 
+									onclick="
+									   if(this.value === 'Google Login'){  
+										gauth.signIn().then(function(){ 
+									    	checkLoginStatus();
+										});
+								       } else {
+									   	gauth.signOut().then(function(){
+									   		checkLoginStatus();
+										});
+								    }">
 								</div>
+								
 								<div class="wrap_member">
-									<a href="" title="아이디/비밀번호 찾기">아이디/비밀번호 찾기</a>
+									<a href="./MemberFind.mb" title="아이디/비밀번호 찾기">아이디/비밀번호 찾기</a>
 									<a href="./MemberJoin.mb" title="회원가입">회원가입</a>
 								</div>
 							</fieldset>

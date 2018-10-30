@@ -28,7 +28,7 @@ public class MemberSendJoinMailAction implements Action {
 				
 		/* DB에 code 값 저장 */
 		String email_id = (String)request.getAttribute("email_id");
-		System.out.println("email_id : "+email_id);
+		System.out.println("email_id : " + email_id);
 		
 		MemberDAO mdao = new MemberDAO();
 		MemberBean mb = mdao.getMember(email_id);
@@ -39,7 +39,7 @@ public class MemberSendJoinMailAction implements Action {
 		String text = email_id+mb.getReg_date();
 
 		System.out.println("text : "+text);
-		
+	
 		//암호화
 		AES256Util aes256 = new AES256Util(key);
 		String code = aes256.aesEncode(text);

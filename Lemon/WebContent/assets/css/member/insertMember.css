@@ -17739,9 +17739,7 @@ input.text53:-ms-input-placeholder {
 
 .mnMembers input[type=text], .mnMembers input[type=password], .mnMembers input[type=email],
 	.mnMembers input[type=number], .mnMembers input[type=tel] {
-	height: 47px;
 	font-size: 17px;
-	line-height: 48px
 }
 
 .mnMembers input[type=number]::-webkit-outer-spin-button, .mnMembers input[type=number]::-webkit-inner-spin-button
@@ -17755,7 +17753,6 @@ input.text53:-ms-input-placeholder {
 }
 
 .mnMembers select {
-	padding: 15px 5px 14px 10px;
 	font-size: 17px;
 	color: #3a3635
 }
@@ -17859,7 +17856,7 @@ input.text53:-ms-input-placeholder {
 .mnMembers .formGroup.basic .row.id .at {
 	width: 30px;
 	font-size: 17px;
-	line-height: 50px;
+	line-height: 30px;
 	text-align: center
 }
 
@@ -17889,7 +17886,7 @@ input.text53:-ms-input-placeholder {
 
 .mnMembers .formGroup.basic .row.jender .col input[type=radio] {
 	float: left;
-	margin: 15px 0 0 1px
+	margin: 8px 0 0 1px
 }
 
 .mnMembers .formGroup.basic .row.jender .col label {

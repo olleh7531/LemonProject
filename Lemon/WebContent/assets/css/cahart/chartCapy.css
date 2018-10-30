@@ -497,7 +497,7 @@ button,
     overflow: hidden;
 }
 
-.button_etc.like .odd_span {
+/* .button_etc.like .odd_span {
     display: inline-block;
     position: relative;
     top: 1px;
@@ -508,7 +508,7 @@ button,
     line-height: 0;
     font-size: 0;
     overflow: hidden;
-}
+} */
 
 .button_etc.like.type02 .cnt {
     margin-left: 4px;

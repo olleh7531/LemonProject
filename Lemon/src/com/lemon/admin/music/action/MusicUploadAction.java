@@ -62,7 +62,15 @@ public class MusicUploadAction implements Action {
 			String artist = tag.getFirst(FieldKey.ARTIST);
 			String album = tag.getFirst(FieldKey.ALBUM);
 			album=album.replace("?", "");
+			album=album.trim();
 			String year = tag.getFirst(FieldKey.YEAR);
+			if(year.length()<8){
+				year="20180229";
+				// 2월29일(실제로 존재하지 않는 날) 로 설정된 앨범에 대해서는 따로 발매일 업데이트 해주어야함
+			}
+			year = year.replace(".", "");
+			year = year.trim();
+			year = Integer.toString(Integer.parseInt(year)+1);
 			String genre = tag.getFirst(FieldKey.GENRE);
 			String Lyrics = tag.getFirst(FieldKey.LYRICS);
 			String track = tag.getFirst(FieldKey.TRACK);
@@ -70,6 +78,7 @@ public class MusicUploadAction implements Action {
 
 			 
 			
+
 /*			System.out.println("musicfile : " + musicfile);
 			System.out.println("Song Name : " + title);
 			System.out.println("Artist : " + artist);
@@ -89,7 +98,7 @@ public class MusicUploadAction implements Action {
 				musictime=minute+":"+second;
 			}
 			
-			System.out.println("음악 길이 : "+musictime);
+//			System.out.println("음악 길이 : "+musictime);
 	
 
 			Artwork art = tag.getFirstArtwork();
@@ -108,7 +117,7 @@ public class MusicUploadAction implements Action {
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");	
 			Date d = new Date(format.parse(year).getTime());
 			ab.setAl_release(d);
-			ab.setAl_art_img(realpath+album+".jpg");
+			ab.setAl_art_img(album+".jpg");
 			
 			
 			

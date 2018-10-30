@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
-<!-- layout -->
 
 <head>
+<meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1" />
 
@@ -18,24 +18,33 @@
 </head>
 
 <body>
+	<%
+		
+		String email_id = (String) request.getParameter("email_id");
+		System.out.println("InertForm에서의 email_id : " + email_id);
+		String name = (String) request.getParameter("name");
+	%>
+
 	<div id="wrap" class="join">
 		<!-- header -->
 		<div id="member_header">
 			<!-- GNB -->
 			<div id="gnb">
 				<h1>
-					<a href="#" title="Lemon 메인" onclick="javascript:MemberEtc.goPage('MAIN');">
+					<a href="./main.mi" title="Lemon 메인" onclick="javascript:MemberEtc.goPage('MAIN');">
 						<img src="./assets/img/menu/menu_logo.png" width="142" height="100" alt="Lemon" /></a>
 				</h1>
 			</div>
 		</div>
-
+		
 		<article class="mnMembers pgJoinEmail">
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data">
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
-						<label for="email" class="lb">이메일</label>
+						<label for="email" class="lb">email</label>
 						<div class="col">
+							<%if(email_id == null) { %>
+							
 							<div class="formPadding">
 								<div class="formItem">
 									<input type="text" id="email_1" name="email_1" value="" />
@@ -44,47 +53,60 @@
 							</div>
 							
 							<select id="email_2" name="email_2">
-								<option value="naver.com">naver.com</option>
-								<option value="hanmail.net">hanmail.net</option>
-								<option value="daum.net">daum.net</option>
-								<option value="nate.com">nate.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="hotmail.com">hotmail.com</option>
-								<option value="lycos.co.kr">lycos.co.kr</option>
-								<option value="empal.com">empal.com</option>
-								<option value="cyworld.com">cyworld.com</option>
-								<option value="yahoo.co.kr">yahoo.co.kr</option>
-								<option value="paran.com">paran.com</option>
-								<option value="dreamwiz.com">dreamwiz.com</option>
+								<option value="@naver.com">naver.com</option>
+								<option value="@google.com">google.com</option>
+								<option value="@hanmail.net">hanmail.net</option>
+								<option value="@daum.net">daum.net</option>
+								<option value="@nate.com">nate.com</option>
+								<option value="@gmail.com">gmail.com</option>
+								<option value="@hotmail.com">hotmail.com</option>
+								<option value="@lycos.co.kr">lycos.co.kr</option>
+								<option value="@empal.com">empal.com</option>
+								<option value="@cyworld.com">cyworld.com</option>
+								<option value="@yahoo.co.kr">yahoo.co.kr</option>
+								<option value="@paran.com">paran.com</option>
+								<option value="@dreamwiz.com">dreamwiz.com</option>
 							</select>
+							
+							<%} else {%>
+							<div class="formPadding">
+								<input type="text" id="email_1" name="email_1" value="<%=email_id %>" readonly style="width: 346px"/>
+								<input type="hidden" id="email_2" name="email_2" value="" />
+							</div>
+							<%} %>
 							
 						</div>
 						<!-- 공통 : 안내 문구 처리 시 desc 비노출 -->
 						<p class="desc">이메일은 결제내역 받기, 비밀번호 찾기 등에 사용되므로 정확하게 입력해 주세요.</p>
 					</div>
-
-					<div class="row">
-						<label for="password" class="lb">비밀번호</label>
-						<div class="col" id="divPassword">
-							<div class="placeholderForm">
-								<input type="password" id="password" name="password" placeholder="비밀번호 입력">
-								
+					
+					<%if(email_id == null) { %>
+						<div class="row">
+							<label for="password" class="lb">비밀번호</label>
+							<div class="col" id="divPassword">
+								<div class="placeholderForm">
+									<input type="password" id="password" name="password" placeholder="비밀번호 입력">
+								</div>
+							</div>
+							<p class="desc" id="descPassword">6~20자 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
+	
+							<div class="col" id="divPasswordCheck">
+								<div class="placeholderForm">
+									<input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 다시 입력">
+								</div>
 							</div>
 						</div>
-						<p class="desc" id="descPassword">6~20자 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
-
-						<div class="col" id="divPasswordCheck">
-							<div class="placeholderForm">
-								<input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 다시 입력">
-							</div>
-						</div>
-					</div>
-
+					<%} %>
+					
 					<div class="row" id="divName">
 						<label for="Name" class="lb">이름</label>
 						<div class="col">
 							<div class="placeholderForm">
+								<%if(email_id == null) { %>
 								<input type="text" id="name" name="name" value="" maxlength="12" />
+								<%} else {%>
+								<input type="text" id="name" name="name" value="<%=name %>" readonly />
+								<%} %>
 							</div>
 						</div>
 					</div>
@@ -93,7 +115,7 @@
 						<label for="nickName" class="lb">닉네임</label>
 						<div class="col">
 							<div class="placeholderForm">
-								<input type="text" id="nickname" name="nickname" value="" maxlength="12" />
+								<input type="text" id="nickname" name="nickname" value="" maxlength="12"/>
 							</div>
 						</div>
 						<p class="desc">레몬 회원들과 감상을 나눌 수 있는 별명으로 사용됩니다.</p>
@@ -108,17 +130,17 @@
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="row" id="divBirthDt">
 						<label for="birthDt" class="lb">생년월일</label>
 						<div class="col">
 							<div class="placeholderForm" id="divBirthDt">
 								<input type="number" id="birth" name="birth" maxlength="8"
-									value="" placeholder="생년월일 8자리로 입력 예)19890207"/>
+									value="" placeholder="ex) 19890207" style="width: 358px"/>
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="row jender" id="divGender">
 						<label for="gender" class="lb">성별</label>
 						<div class="col">
