@@ -53,7 +53,6 @@ public class MemberLoginAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("email_id", email_id);
 		
-		
 		MemberBean mb = mdao.getMember(email_id);		
 		session.setAttribute("nickname", mb.getNickname());
 

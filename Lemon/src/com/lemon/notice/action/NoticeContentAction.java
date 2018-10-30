@@ -23,6 +23,7 @@ public class NoticeContentAction implements Action {
 		
 		// 2. 해당 번호 정보를 db에서 가져오기
 		NoticeBean nb = ndao.getNotice(num);
+		
 		// 저장
 		request.setAttribute("nb", nb);
 		request.setAttribute("pageNum", pageNum);

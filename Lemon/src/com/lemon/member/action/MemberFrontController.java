@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		
+		request.setCharacterEncoding("UTF-8");
+		
 		String requestURI = request.getRequestURI();
 		System.out.println("requestURI : " + requestURI);
 		String contextPath = request.getContextPath();
@@ -128,6 +131,34 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/MemberPassUpdateAction.mb")){
 			action = new MemberPassUpdateAction();
 
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MemberFind.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/findForm.jsp");
+			forward.setRedirect(false);	
+			
+		} else if(command.equals("/IdFindChk.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/findCheck.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/MemberPwFind.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/findPwForm.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/PwFindChk.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/findPwCheck.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/GoogleLoginAction.mb")){
+			// 로그인 처리 
+			action = new GoogleLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

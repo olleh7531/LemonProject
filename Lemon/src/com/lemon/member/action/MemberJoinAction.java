@@ -38,8 +38,8 @@ public class MemberJoinAction implements Action{
 		
 		String email_1 = multi.getParameter("email_1");
 		String email_2 = multi.getParameter("email_2");
-		String email = email_1 + "@" + email_2;
-
+		String email = email_1+email_2;
+		
 		mb.setEmail_id(email);
 		mb.setPass(multi.getParameter("password"));
 		mb.setName(multi.getParameter("name"));
@@ -56,16 +56,14 @@ public class MemberJoinAction implements Action{
 			mb.setReceive_email(1);			
 		}
 		
-		
 		// DB 처리 객체 생성 net.member.db / MemberDAO
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertMember(mb);
-
 		
 		System.out.println(mb.getEmail_id());
 		//JoinAuthAction 페이지에 보낼 아이디
 		request.setAttribute("email_id", mb.getEmail_id());
-
+		
 		// ActionForward 객체에 이동정보(경로/방법) 담아서 이동
 		// 로그인 페이지로 이동
 		ActionForward forward = new ActionForward();

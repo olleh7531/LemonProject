@@ -811,24 +811,28 @@ legend, #IE8#HACK {
 	text-decoration: none;
 }
 
-.main_kakao_login {
+.main_google_login {
 	position: absolute;
 	right: 1px;
 	top: -23px;
 }
 
-.main_kakao_login a {
+.main_google_login input {
 	display: block;
 	padding-left: 16px;
+	border: 1px solid #fff;
+	background-color: #fff;
 	background-image:
-		url("../../../assets/img/main/login/main_login_kakao2.png");
+		url("../../../assets/img/main/login/main_login_google.jpg");
 	background-repeat: no-repeat;
+	background-size: 12px 12px;
 	background-position: 1px 3px;
 	font-size: 11px;
 	font-family: "Dotum", "Apple Gothic", sans-serif;
 	color: #6f5552;
 	letter-spacing: -1px;
 	text-decoration: none;
+	outline: 0;
 }
 
 .wrap_member {
