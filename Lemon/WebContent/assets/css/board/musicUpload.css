@@ -79,4 +79,11 @@ line-height: 40px;
     background-color: initial;
     border: 0;
     -webkit-appearance: none;}
+    
+.btn:HOVER{
+	color: #dc9d05;
+}
 svg{fill: currentColor;}
+.bg_01{    position: fixed;
+    bottom: 100px;
+    right: 30px;}

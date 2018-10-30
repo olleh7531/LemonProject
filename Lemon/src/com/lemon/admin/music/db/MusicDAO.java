@@ -53,7 +53,7 @@ public class MusicDAO {
 			albumnum=mb.getAlbum_num();
 			if(albumnum!=0) {
 				// sql 쿼리
-				sql = "insert into music (num,music_name,lyrics,musicfile,music_genre,music_time,album_num,track_num)"
+				sql = "insert into music (mu_num,music_name,lyrics,musicfile,music_genre,music_time,album_num,track_num)"
 						+ "values(null,?,?,?,?,?,?,?)";
 				// pstmt 객체생성
 				pstmt = con.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class MusicDAO {
 			}else {
 				
 			// sql 쿼리
-			sql = "insert into music (num,music_name,lyrics,musicfile,music_genre,music_time,track_num)"
+			sql = "insert into music (mu_num,music_name,lyrics,musicfile,music_genre,music_time,track_num)"
 					+ "values(null,?,?,?,?,?,?)";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class MusicDAO {
 			con = getCon();
 
 //			System.out.println("앨범이름 : "+ab.getAl_name());
-			sql="select num from album where al_name=? and al_release=?";
+			sql="select al_num from album where al_name=? and al_release=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ab.getAl_name());
 			pstmt.setDate(2, ab.getAl_release());
@@ -109,10 +109,10 @@ public class MusicDAO {
 			if(rs.next()) {
 				rs.last();
 				if(rs.getRow()==1) {
-					albumnum=rs.getInt("num");					
+					albumnum=rs.getInt("al_num");					
 				}
 			}else {
-				sql ="insert into album (num,al_name,al_release,al_art_img,al_agency,al_content)"
+				sql ="insert into album (al_num,al_name,al_release,al_art_img,al_agency,al_content)"
 						+ "values(null,?,?,?,?,?)";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, ab.getAl_name());
@@ -123,7 +123,7 @@ public class MusicDAO {
 						
 						pstmt.executeUpdate();
 						
-						sql="select num from album where al_name=? and al_release=?";
+						sql="select al_num from album where al_name=? and al_release=?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, ab.getAl_name());
 						pstmt.setDate(2, ab.getAl_release());
@@ -131,7 +131,7 @@ public class MusicDAO {
 						rs=pstmt.executeQuery();
 						
 						rs.next();
-						albumnum=rs.getInt("num");
+						albumnum=rs.getInt("al_num");
 				
 			}
 		
