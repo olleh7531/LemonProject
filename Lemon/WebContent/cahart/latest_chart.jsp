@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -126,6 +127,11 @@
 								</tr>
 							</thead>
 							<tbody>
+								<%
+									ArrayList chartList = (ArrayList) request.getAttribute("chartList");
+
+									for (int i = 0; i < chartList.size(); i++) {
+								%>
 								<tr>
 									<td>
 										<div class="wrap t_right">
@@ -227,6 +233,11 @@
 										</div>
 									</td>
 								</tr>
+
+								<%
+									}
+								%>
+
 							</tbody>
 
 						</table>

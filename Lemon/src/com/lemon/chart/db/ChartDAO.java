@@ -23,7 +23,6 @@ public class ChartDAO {
 		return con;
 	}
 
-	
 	public void CloseDB() {
 		if (rs != null) {
 			try {
@@ -48,8 +47,8 @@ public class ChartDAO {
 			}
 		}
 	}
-	
-	public List getMuReadCount(){
+
+	public List getMuReadCount() {
 		List<ChartBean> arr = new ArrayList<ChartBean>();
 		ChartBean cb = new ChartBean();
 		try {
@@ -60,7 +59,6 @@ public class ChartDAO {
 					+ "values(null,?,?,?,?,?,?)";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
-			
 
 			// pstmt 객체 실행
 			pstmt.executeQuery();
@@ -70,17 +68,45 @@ public class ChartDAO {
 		} finally {
 			CloseDB();
 		}
-		
-		
+
 		return arr;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public ArrayList<ChartBean> selectChart() {
+		ArrayList<ChartBean> chartList = new ArrayList<>();
+		ChartBean ch = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b where "
+					+ "b.album_num = a.al_num order by al_release desc;";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ch = new ChartBean();
+				ch.setAl_agency(rs.getString("al_agency"));
+				ch.setAl_art_img(rs.getString("al_art_img"));
+				ch.setAl_content(rs.getString("al_content"));
+				ch.setAl_name(rs.getString("al_name"));
+				ch.setAl_num(rs.getInt("al_num"));
+				ch.setAl_release(rs.getDate("al_release"));
+				ch.setAlbum_num(rs.getInt("album_num"));
+				ch.setLyrics(rs.getString("lyrics"));
+				ch.setMu_num(rs.getInt("mu_num"));
+				ch.setMusic_genre(rs.getString("music_genre"));
+				ch.setMusic_name(rs.getString("music_name"));
+				ch.setMusic_time(rs.getString("music_time"));
+				ch.setMusic_video(rs.getString("music_video"));
+				ch.setMusicfile(rs.getString("musicfile"));
+				ch.setSinger_num(rs.getInt("singer_num"));
+				ch.setTrack_num(rs.getInt("track_num"));
+				chartList.add(ch);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return chartList;
+	}
+
 }
