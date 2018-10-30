@@ -24,7 +24,7 @@ public class MemberSendJoinMailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("MemberJoinAuthAction의 execute 호출");
+		System.out.println("MemberSendJoinMailAction의 execute 호출");
 				
 		/* DB에 code 값 저장 */
 		String email_id = (String)request.getAttribute("email_id");
@@ -65,8 +65,8 @@ public class MemberSendJoinMailAction implements Action {
 		content += "<table cellpadding='1' cellspacing='0' border='0' width='524' bgcolor='#f5f5f5' style='font-size:12px;color:#666;text-align:left;border-top:1px solid #bfbfbf;border-bottom:1px solid #bfbfbf;margin:0 auto;'>";
 		content += "<tr><td style='width:112px;color:#000;font-weight:bold;padding-left:20px;text-align:left;'>인증링크</td><td style='text-align:left;background-color:#ffffff;padding:8px 0 8px 20px;'>";	
 		content += "<p style='word-break:break-all;word-wrap:break-word;line-height:140%;margin:0;'>";
-		content += "			<a href='http://localhost:8088/Lemon/member/joinEnd.jsp?code="+code+"' target='_blank' style='color:#525f9f;font-size:11px;text-decoration:underline;' rel='noreferrer noopener'>";
-		content += "				http://localhost:8088/Lemon/member/joinEnd.jsp";
+		content += "			<a href='http://localhost:8088/Lemon/MemberJoinAuthAction.mb?code="+code+"' target='_blank' style='color:#525f9f;font-size:11px;text-decoration:underline;' rel='noreferrer noopener'>";
+		content += "				http://localhost:8088/Lemon/MemberJoinAuthAction.mb";
 		content += "			</a>";
 		content += "			</p>";
 		content += "	</td></tr>";

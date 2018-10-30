@@ -233,6 +233,7 @@ public class MemberDAO {
 				mb.setReceive_email(rs.getInt("receive_email"));
 				
 				mb.setReg_date(rs.getDate("register_datetime"));
+				mb.setEmail_cert(rs.getInt("email_cert"));
 			}
 			
 		} catch (Exception e) {
@@ -351,5 +352,27 @@ public class MemberDAO {
 		}
 	}
 	// initMailAuth()
+
+	// emailAuth(code)
+	public void emailAuth(String code) {
+		try {
+			con = getCon();
+			
+			sql = "update member set email_cert=? where code=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setString(2, code);
+			
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+	}
+	// emailAuth(code)
 
 }

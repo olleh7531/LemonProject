@@ -14,11 +14,19 @@ public class MemberLoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberLoginAction의 execute 호출");
-
-		String email_id = request.getParameter("email_id");
-		String pass = request.getParameter("pass");
 		
-		MemberDAO mdao = new MemberDAO();
+		MemberDAO mdao = new MemberDAO();		
+		
+		String email_id = request.getParameter("email_id");
+		
+		MemberBean mb = new MemberBean();
+		mb = mdao.getMember(email_id);
+		
+//		if(mb.getEmail_cert() != 1){
+//			
+//		}
+
+		String pass = request.getParameter("pass");
 		
 		int check = mdao.idCheck(email_id, pass);
 		// 0 - "비밀번호 오류"
@@ -53,8 +61,6 @@ public class MemberLoginAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("email_id", email_id);
 		
-		
-		MemberBean mb = mdao.getMember(email_id);		
 		session.setAttribute("nickname", mb.getNickname());
 
 		// 페이지 이동
