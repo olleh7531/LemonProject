@@ -20,7 +20,7 @@ import javax.mail.Authenticator;
 import java.util.Properties;
 
 
-public class MemberJoinAuthMailAction implements Action {
+public class MemberSendJoinMailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -50,7 +50,7 @@ public class MemberJoinAuthMailAction implements Action {
 		
 		/* Mail 보내기 */
 		String from = "hongkongbaksa@gmail.com";
-		String to = request.getParameter("email_id");
+		String to = email_id;
 
 		String script="";
 		String subject = "안녕하세요, 레몬입니다.";

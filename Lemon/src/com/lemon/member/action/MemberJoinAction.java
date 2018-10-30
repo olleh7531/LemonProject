@@ -50,6 +50,13 @@ public class MemberJoinAction implements Action{
 		mb.setImg(img);
 		mb.setReg_ip(request.getRemoteAddr());
 		
+		if(multi.getParameter("mailTermsAgree") == null){
+			mb.setReceive_email(0);	
+		}else if(multi.getParameter("mailTermsAgree").equals("on")){
+			mb.setReceive_email(1);			
+		}
+		
+		
 		// DB 처리 객체 생성 net.member.db / MemberDAO
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertMember(mb);
@@ -62,7 +69,7 @@ public class MemberJoinAction implements Action{
 		// ActionForward 객체에 이동정보(경로/방법) 담아서 이동
 		// 로그인 페이지로 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("MemberJoinAuthMailAction.mb");
+		forward.setPath("MemberSendJoinMailAction.mb");
 		forward.setRedirect(false);
 		
 		return forward;	

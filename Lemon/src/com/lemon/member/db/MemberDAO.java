@@ -54,19 +54,11 @@ public class MemberDAO {
 		
 		try {
 			con = getCon();
-			sql = "select max(no) from member";
-
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
-				num = rs.getInt("max(no)") + 1;
-			}
-			
-			sql = "insert into member (email_id, pass, name, nickname, gender, birth, level, img, no, register_datetime, register_ip, is_deny, chk, email_cert)"
+			sql = "insert into member(email_id, pass, name, nickname, gender, birth, level, img, register_datetime, register_ip, is_deny, chk, email_cert, receive_email)"
 					+ "values(?,?,?,?,?,"
-					+ "?,?,?,?,now(),"
-					+ "?,?,?,0)";
+					+ "?,?,?,now(),"
+					+ "?,?,?,0,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getEmail_id());
@@ -77,10 +69,10 @@ public class MemberDAO {
 			pstmt.setString(6, mb.getBirth());
 			pstmt.setInt(7, 0);
 			pstmt.setString(8, mb.getImg());
-			pstmt.setInt(9, num);
-			pstmt.setString(10, mb.getReg_ip());
+			pstmt.setString(9, mb.getReg_ip());
+			pstmt.setInt(10, 0);
 			pstmt.setInt(11, 0);
-			pstmt.setInt(12, 0);
+			pstmt.setInt(12, mb.getReceive_email());
 			
 			pstmt.executeUpdate();
 			
