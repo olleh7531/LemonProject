@@ -21,7 +21,6 @@
 	<%
 		
 		String email_id = (String) request.getParameter("email_id");
-		System.out.println("InertForm에서의 email_id : " + email_id);
 		String name = (String) request.getParameter("name");
 	%>
 
@@ -41,7 +40,7 @@
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data">
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
-						<label for="email" class="lb">email</label>
+						<label for="email" class="lb">이메일</label>
 						<div class="col">
 							<%if(email_id == null) { %>
 							
@@ -89,7 +88,7 @@
 								</div>
 							</div>
 							<p class="desc" id="descPassword">6~20자 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
-	
+							
 							<div class="col" id="divPasswordCheck">
 								<div class="placeholderForm">
 									<input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 다시 입력">
@@ -173,7 +172,7 @@
 								<label for="bugsInfoTermsAgree">(선택) 레몬 홍보성 제3자 정보 제공에 동의합니다.</label></li>
 					</ul>
 				</fieldset>
-
+				
 				<p class="btns">
 					<input type="submit" value="가입 완료">
 				</p>

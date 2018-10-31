@@ -24,22 +24,17 @@ public class GoogleLoginAction implements Action{
 		System.out.println(check);
 		
 		ActionForward forward = new ActionForward();
-		PrintWriter out = response.getWriter();
 		
 		// 아이디가 가입되어 있으면 check = 1
 		// -> 로그인
 		if(check == 1) {
 			forward.setPath("main.mi");
-			forward.setRedirect(false);
+			forward.setRedirect(true);
 		}
 		
 		// 아이디가 가입되어 있지 않으면 check = 0
 		// -> 추가 정보를 입력해야함
 		if(check == 0) {
-			/*out.println("<script>");
-			out.println(" alert('추가 정보 입력창으로 이동합니다.');");
-			out.println("</script>");
-			out.close();*/
 			forward.setPath("MemberJoin.mb?email_id="+email_id+"&name="+name);
 			forward.setRedirect(false);
 		}

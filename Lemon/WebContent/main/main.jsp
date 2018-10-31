@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>레몬 Lemon</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
@@ -1438,8 +1438,8 @@
 								<div class="main_google_login">
 									<input type="button" id="googleLogin" value="Checking..." 
 									onclick="
-									   if(this.value === 'Google Login'){  
-										gauth.signIn().then(function(){ 
+									   if(this.value === 'Google Login'){
+										gauth.signIn().then(function(){
 									    	checkLoginStatus();
 										});
 								       } else {
