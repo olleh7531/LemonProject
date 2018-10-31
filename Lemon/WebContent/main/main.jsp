@@ -32,11 +32,11 @@
 	
 	// LoginAction에서 받아온 세션값 id 정보를 저장 
 	String email_id = (String) session.getAttribute("email_id");
-	String nickname = (String) session.getAttribute("nickname");
+	String name = (String) session.getAttribute("name");
 	
 	System.out.println("email_id : "+email_id );
 %>
-
+	
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
@@ -1466,7 +1466,7 @@
 						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
-								<a href="" class="id_area"><%=nickname %></a>님
+								<a href="" class="id_area"><%=name %></a>님
 							</strong>
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>

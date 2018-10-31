@@ -25,18 +25,16 @@ public class GoogleLoginAction implements Action{
 		System.out.println(check);
 		
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
+		session.setAttribute("email_id", email_id);
+		session.setAttribute("name", name);
 		
 		// 아이디가 가입되어 있으면 check = 1
 		// -> 로그인
 		if(check == 1) {
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("email_id", email_id);
-			session.setAttribute("name", name);
-			
 			forward.setPath("main.mi");
 			// forward.setPath("MemberJoin.mb?email_id="+email_id+"&name="+name);
-			forward.setRedirect(false);
+			forward.setRedirect(true);
 		}
 		
 		// 아이디가 가입되어 있지 않으면 check = 0
@@ -45,7 +43,6 @@ public class GoogleLoginAction implements Action{
 			forward.setPath("MemberJoin.mb?email_id="+email_id+"&name="+name);
 			forward.setRedirect(false);
 		}
-		
 		return forward;
 	}
 }
