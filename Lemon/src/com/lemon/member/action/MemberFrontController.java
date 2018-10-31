@@ -57,7 +57,7 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("MemberSendJoinMailAction.mb")) {
+		} else if (command.equals("/MemberSendJoinMailAction.mb")) {
 			// 회원가입 메일 보내기 처리
 			action = new MemberSendJoinMailAction();
 			
@@ -66,6 +66,22 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		} else if (command.equals("/MemberJoinAuthAction.mb")) {
+			// 회원가입 메일 인증 처리
+			action = new MemberJoinAuthAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+			
+		} else if(command.equals("/MemberJoinWelcome.mb")){
+			// 가입 환영 페이지
+			forward = new ActionForward();
+			forward.setPath("./member/joinComplete.jsp");
+			forward.setRedirect(true);
 			
 		} else if(command.equals("/MemberLoginAction.mb")){
 			// 로그인 처리 
