@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lemon.member.db.MemberDAO;
 
@@ -28,8 +29,14 @@ public class GoogleLoginAction implements Action{
 		// 아이디가 가입되어 있으면 check = 1
 		// -> 로그인
 		if(check == 1) {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("email_id", email_id);
+			session.setAttribute("name", name);
+			
 			forward.setPath("main.mi");
-			forward.setRedirect(true);
+			// forward.setPath("MemberJoin.mb?email_id="+email_id+"&name="+name);
+			forward.setRedirect(false);
 		}
 		
 		// 아이디가 가입되어 있지 않으면 check = 0

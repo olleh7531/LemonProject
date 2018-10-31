@@ -60,7 +60,6 @@ public class MemberJoinAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertMember(mb);
 		
-		System.out.println(mb.getEmail_id());
 		//JoinAuthAction 페이지에 보낼 아이디
 		request.setAttribute("email_id", mb.getEmail_id());
 		
