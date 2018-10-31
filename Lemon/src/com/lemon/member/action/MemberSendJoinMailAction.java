@@ -18,6 +18,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.Session;
 import javax.mail.Authenticator;
 import java.util.Properties;
+import java.util.Random;
 
 
 public class MemberSendJoinMailAction implements Action {
@@ -25,26 +26,54 @@ public class MemberSendJoinMailAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberSendJoinMailAction의 execute 호출");
+		String email_id = request.getParameter("email_id");
+		System.out.println(email_id);
+
+ 		StringBuffer temp = new StringBuffer();
+ 		
+ 		/*난수 생성*/
+		Random rnd = new Random();
+		for (int i = 0; i < 6; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		} 
+		
+		String code = temp.toString();
+ 		/*난수 생성*/
+		
 				
 		/* DB에 code 값 저장 */
-		String email_id = (String)request.getAttribute("email_id");
-		System.out.println("email_id : " + email_id);
-		
-		MemberDAO mdao = new MemberDAO();
-		MemberBean mb = mdao.getMember(email_id);
-		
-		System.out.println("register_datetime : "+mb.getReg_date());
-		
-		String key = "iamaboyyouareagirl";
-		String text = email_id+mb.getReg_date();
-
-		System.out.println("text : "+text);
+//		String email_id = (String)request.getAttribute("email_id");
+//		System.out.println("email_id : " + email_id);
+//		
+//		MemberDAO mdao = new MemberDAO();
+//		MemberBean mb = mdao.getMember(email_id);
+//		
+//		System.out.println("register_datetime : "+mb.getReg_date());
+//		
+//		String key = "iamaboyyouareagirl";
+//		String text = email_id+mb.getReg_date();
+//
+//		System.out.println("text : "+text);
 	
 		//암호화
-		AES256Util aes256 = new AES256Util(key);
-		String code = aes256.aesEncode(text);
-
-		mdao.initMailAuth(code, email_id);
+//		AES256Util aes256 = new AES256Util(key);
+//		String code = aes256.aesEncode(text);
+//
+//		mdao.initMailAuth(code, email_id);
 		/* DB에 code 값 저장 */
 
 		
@@ -59,14 +88,13 @@ public class MemberSendJoinMailAction implements Action {
 		content += "<tbody><tr><td style='padding-bottom:14px;font-size:16px;color:#6377b9;font-weight:bold;'>안녕하세요, 고객님</td></tr>";
 		content += "<tr><td style='padding:0 0 25px 4px;color:#666;line-height:150%;'>";
 		content += "		회원가입을 위해 이메일 인증을 진행합니다.<br>";
-		content += "		<b style='color:#ff6600;'>회원가입을 완료하시려면 아래의 인증링크를 클릭</b>하세요.";
+		content += "		<b style='color:#ff6600;'>회원가입을 완료하시려면 아래 인증번호를 입력</b>하세요.";
 		content += "	</td></tr>";
 		content += "</tbody></table>";
 		content += "<table cellpadding='1' cellspacing='0' border='0' width='524' bgcolor='#f5f5f5' style='font-size:12px;color:#666;text-align:left;border-top:1px solid #bfbfbf;border-bottom:1px solid #bfbfbf;margin:0 auto;'>";
-		content += "<tr><td style='width:112px;color:#000;font-weight:bold;padding-left:20px;text-align:left;'>인증링크</td><td style='text-align:left;background-color:#ffffff;padding:8px 0 8px 20px;'>";	
+		content += "<tr><td style='width:112px;color:#000;font-weight:bold;padding-left:20px;text-align:left;'>인증번호</td><td style='text-align:left;background-color:#ffffff;padding:8px 0 8px 20px;'>";	
 		content += "<p style='word-break:break-all;word-wrap:break-word;line-height:140%;margin:0;'>";
-		content += "			<a href='http://localhost:8088/Lemon/MemberJoinAuthAction.mb?code="+code+"' target='_blank' style='color:#525f9f;font-size:11px;text-decoration:underline;' rel='noreferrer noopener'>";
-		content += "				http://localhost:8088/Lemon/MemberJoinAuthAction.mb";
+		content += code;
 		content += "			</a>";
 		content += "			</p>";
 		content += "	</td></tr>";
@@ -91,6 +119,8 @@ public class MemberSendJoinMailAction implements Action {
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"); 
 		p.put("mail.smtp.socketFactory.fallback", "false");
 
+		request.setAttribute("email_id", email_id);
+		request.setAttribute("code", code);
 		
 		try{
 			Authenticator auth = new SMTPAuthenticator();
@@ -115,10 +145,7 @@ public class MemberSendJoinMailAction implements Action {
 		        
 		    // 발송하기
 		    Transport.send(msg);
-	
-			// 대기페이지로 이동
-			response.sendRedirect("./member/waitingJoin.jsp");
-		
+		    		    
 		} catch (Exception e) {
 		    e.printStackTrace();
 		    script = "<script type='text/javascript'>\n";
@@ -134,8 +161,12 @@ public class MemberSendJoinMailAction implements Action {
 			
 		}
 		/* Mail 보내기 */
+		
+	    ActionForward forward = new ActionForward();
+		forward.setPath("./member/chkEmail.jsp");
+		forward.setRedirect(false);		
 
-		return null;
+		return forward;
 	}
 
 }

@@ -62,12 +62,14 @@ public class AES256Util {
         String key = "apsoejfurhwgduti";       // key는 16자 이상
         AES256Util aes256 = new AES256Util(key);
          
-        String text = "아이티윌";
+        String text = "hongkongbaksa201810311431";
         String encText = aes256.aesEncode(text);
-        String decText = aes256.aesDecode(encText);
+        String decText = aes256.aesDecode("JeiS+aFz/irFNYFE4mQj+f+C6q7VjcdfwBAVOTFgyic=");
          
         System.out.println("암호화할 문자 : " + text);
         System.out.println("암호화된 문자 : " + encText);
+        System.out.println(encText.length());
+        
         System.out.println("암호화된 문자 : " + encText.length());
         System.out.println("복호화된 문자 : " + decText);
 	}

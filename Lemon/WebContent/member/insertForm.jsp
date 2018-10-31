@@ -14,12 +14,25 @@
 
 <script type="text/javascript" src="./assets/js/member/join_main_checkAll.js" ></script>
 <script type="text/javascript" src="./assets/js/member/join_main.js" ></script>
+<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+function chkEmail() {
+	if(document.fr.email_1.value == ""){
+		alert("아이디를 입력 해 주세요.");
+		document.fr.email_1.focus();
+		return;
+	}
+	var email_id = document.fr.email_1.value+document.fr.email_2.value;
+	// 새창 열기
+	window.open("./MemberSendJoinMailAction.mb?email_id="+email_id,"","width=400,height=250");
+}
+</script>
 
 </head>
 
 <body>
 	<%
-		
 		String email_id = (String) request.getParameter("email_id");
 		String name = (String) request.getParameter("name");
 	%>
@@ -37,7 +50,7 @@
 		</div>
 		
 		<article class="mnMembers pgJoinEmail">
-			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data">
+			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
 						<label for="email" class="lb">이메일</label>
@@ -75,9 +88,21 @@
 							<%} %>
 							
 						</div>
+						<script type="text/javascript">
+						function fun1(){
+							var a = document.getElementById("fromInput").value;
+							alert(a);
+							if (a == "hallow") {
+								document.getElementById("ab").style.visibility="hidden";
+							}
+						}
+						</script>
 						<!-- 공통 : 안내 문구 처리 시 desc 비노출 -->
 						<p class="desc">이메일은 결제내역 받기, 비밀번호 찾기 등에 사용되므로 정확하게 입력해 주세요.</p>
+						<input type="text" id="fromInput" >
+						<input type="button" id="ab" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
 					</div>
+
 					
 					<%if(email_id == null) { %>
 						<div class="row">
