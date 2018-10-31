@@ -110,16 +110,11 @@ public class MusicUploadAction implements Action {
 			File filex = new File(realpath+album+".jpg");
 			ImageIO.write(thumb, "jpg", filex );
 			
-			
-
-			
 			ab.setAl_name(album);
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");	
 			Date d = new Date(format.parse(year).getTime());
 			ab.setAl_release(d);
 			ab.setAl_art_img(album+".jpg");
-			
-			
 			
 			mb.setMusic_name(title);
 			mb.setLyrics(Lyrics);

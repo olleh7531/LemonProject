@@ -1,3 +1,4 @@
+<%@page import="com.lemon.chart.db.ChartBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -131,6 +132,7 @@
 									ArrayList chartList = (ArrayList) request.getAttribute("chartList");
 
 									for (int i = 0; i < chartList.size(); i++) {
+										ChartBean cb = (ChartBean) chartList.get(i);
 								%>
 								<tr>
 									<td>
@@ -151,8 +153,8 @@
 												class="image_typeAll"> <img
 												onerror="WEBPOCIMG.defaultAlbumImg(this);" width="60"
 												height="60"
-												src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/120/quality/80/optimize"
-												alt="Sun And Moon Part.1 - 페이지 이동"> <span
+												src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>"
+												alt="<%=cb.getMusic_name()%>"> <span
 												class="bg_album_frame"></span>
 											</a>
 										</div>
@@ -167,13 +169,12 @@
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank01">
-													<span> <a href="#" title="Make Up (Feat. Crush) 재생">Make
-															Up (Feat. Crush)</a>
+													<span> <a href="#" title="<%=cb.getMusic_name()%>"><%=cb.getMusic_name()%></a>
 													</span>
 												</div>
 												<br>
 												<div class="ellipsis rank02">
-													<a href="#" title="샘김 (SAM KIM) - 페이지 이동">샘김 (SAM KIM)</a>
+													<a href="#" title="샘김 (SAM KIM) - 페이지 이동">아이유</a>
 												</div>
 
 											</div>
@@ -183,9 +184,7 @@
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank03">
-													<a href="./LemonDetai.ct"
-														title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon
-														Part.1</a>
+													<a href="./LemonDetai.ct" title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
 												</div>
 											</div>
 										</div>
@@ -496,9 +495,6 @@
 					</div>
 				</form>
 			</div>
-
-
-
 		</div>
 	</div>
 	<script>
