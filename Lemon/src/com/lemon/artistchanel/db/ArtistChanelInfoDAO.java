@@ -55,7 +55,7 @@ public class ArtistChanelInfoDAO {
 			con = getCon();
 			System.out.println(con);
 			// num 계산 -> 아티스트 정보 등록
-			sql = "select max(num) from singer";
+			sql = "select max(si_num) from singer";
 			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -69,7 +69,7 @@ public class ArtistChanelInfoDAO {
 			
 			// sql - insert
 			sql = "insert into singer("
-						+ "num, activity_type, singer_name, si_group_name, debut_year,"
+						+ "si_num, activity_type, singer_name, si_group_name, debut_year,"
 						+ "debut_song, si_agency, si_picture, si_genre, si_birth"
 					+ ")"
 					+ "values (?, ?, ?, ?, ?,"
@@ -77,28 +77,48 @@ public class ArtistChanelInfoDAO {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, num); // 가수 번호
+			// 가수 번호
+			pstmt.setInt(1, num);
 			System.out.println(num);
-			pstmt.setString(2, acibean.getActivity_type()); // 솔로/그룹 유형
+			
+			// 솔로/그룹 유형
+			pstmt.setString(2, acibean.getActivity_type());
 			System.out.println(acibean.getActivity_type());
-			pstmt.setString(3, acibean.getSinger_name()); // 가수 활동 이름(예명)
+			
+			// 가수 활동 이름(예명)
+			pstmt.setString(3, acibean.getSinger_name());
 			System.out.println(acibean.getSinger_name());
-			pstmt.setString(4, acibean.getSi_group_name()); // 소속 그룹 이름
+			
+			// 소속 그룹 이름
+			pstmt.setString(4, acibean.getSi_group_name());
 			System.out.println(acibean.getSi_group_name());
-			pstmt.setDate(5, acibean.getDebut_year()); // 데뷔 날짜
+			
+			// 데뷔 날짜
+			pstmt.setDate(5, acibean.getDebut_year());
 			System.out.println(acibean.getDebut_year());
-			pstmt.setString(6, acibean.getDebut_song()); // 데뷔 노래
+			
+			// 데뷔 노래
+			pstmt.setString(6, acibean.getDebut_song());
 			System.out.println(acibean.getDebut_song());
-			pstmt.setString(7, acibean.getSi_agency()); // 소속사 이름
+			
+			// 소속사 이름
+			pstmt.setString(7, acibean.getSi_agency());
 			System.out.println(acibean.getSi_agency());
-			pstmt.setString(8, acibean.getSi_picture()); // 프로필 사진
+			
+			// 프로필 사진
+			pstmt.setString(8, acibean.getSi_picture());
 			System.out.println(acibean.getSi_picture());
-			pstmt.setString(9, acibean.getSi_genre()); // 노래 장르
+			
+			// 노래 장르
+			pstmt.setString(9, acibean.getSi_genre());
 			System.out.println(acibean.getSi_genre());
-			pstmt.setDate(10, acibean.getSi_birth()); // 생일
+			
+			// 생일
+			pstmt.setDate(10, acibean.getSi_birth());
 			System.out.println(acibean.getSi_birth());
 			
-			System.out.println("AArtist");
+			System.out.println("아티스트 정보 글쓰기");
+
 			pstmt.executeUpdate();
 		}
 		catch (Exception e) {
@@ -118,7 +138,7 @@ public class ArtistChanelInfoDAO {
 			con = getCon();
 			
 			// sql 작성 [count()]
-			sql = "select max(num) from singer";
+			sql = "select max(si_num) from singer";
 			
 			// 객체 생성
 			pstmt = con.prepareStatement(sql);
@@ -148,7 +168,7 @@ public class ArtistChanelInfoDAO {
 		try {
 			con = getCon();
 			
-			sql = "select * from singer where num = ?";
+			sql = "select * from singer where si_num = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);

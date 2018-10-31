@@ -1,0 +1,99 @@
+@CHARSET "UTF-8";
+
+/* 전체 영역*/
+.photo_list {
+    width: 1008px;
+    padding-bottom: 20px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.photo_wrap .photo_list {
+    padding: 0;
+}
+
+.photo_list ul {
+    width: 110%;
+    display: inline-block;
+}
+
+.photo_wrap .photo_list ul {
+    padding-bottom: 20px;
+}
+
+/* 사진 영역 */
+.photo_list ul li.photo02_li {
+    float: left;
+    margin-right: 24px;
+    padding-top: 24px;
+    text-align: left;
+    z-index: 1;
+}
+
+.photo_list .photo02_li .wrap_photo02 {
+    max-height: 148px;
+    padding: 0;
+    border: 0;
+    background: 0;
+}
+
+.photo_list .wrap_photo02 .thumb_wrap {
+    overflow: hidden;
+    position: relative;
+    width: 154px;
+    height: 154px;
+}
+
+.photo_list .photo02_li .wrap_photo02 .thumb_wrap {
+    width: 148px;
+    height: 148px;
+}
+
+.photo_list .wrap_photo02 .thumb_wrap .thumb {
+    overflow: hidden;
+    position: absolute;
+    display: block;
+    left: -173px;
+    top: -173px;
+    width: 500px;
+    height: 500px;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+}
+
+.photo_list .photo02_li .wrap_photo02 .thumb_wrap .thumb {
+    left: -176px;
+    top: -176px;
+}
+
+.photo_list .photo02_li .wrap_photo02 .thumb_wrap .thumb .thumb_frame {
+    left: 176px;
+    top: 176px;
+    width: 148px;
+    height: 148px;
+    background-image: url("../../../assets/img/common/common_bg_album_frame.png");
+    background-repeat: no-repeat;
+    background-position: -423px -1451px;
+}
+
+.photo_list .wrap_photo02 .thumb_wrap .thumb img {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: 154px;
+    vertical-align: middle;
+}
+
+.photo_list .photo02_li .wrap_photo02 .thumb_wrap .thumb img {
+    max-height: 148px;
+}
+
+.photo_list .wrap_photo02 .thumb_wrap .thumb .wrap_vertical {
+    display: inline-block;
+    width: 0;
+    height: 500px;
+    vertical-align: middle;
+    visibility: hidden;
+}

@@ -70,10 +70,10 @@ public class ArtistChanelPhotoDAO {
 			// sql - insert
 			sql = "insert into artist_photo("
 					+ "ar_subject, ar_content, ar_registerdate,"
-					+ "ar_readcount, ar_singer_num"
+					+ "ar_readcount, ar_singer_num, ar_photo"
 				+ ")"
-				+ "values (?, ?, ?, "
-					+ "?, ?)";
+				+ "values (?, ?, now(), "
+					+ "?, ?, ?)";
 		
 			pstmt = con.prepareStatement(sql);
 			
@@ -97,7 +97,12 @@ public class ArtistChanelPhotoDAO {
 			pstmt.setInt(5, acpbean.getAr_readcount());
 			System.out.println(acpbean.getAr_readcount());
 			
-			System.out.println("아티스트 포트 글쓰기");
+			// 사진
+			pstmt.setString(6, acpbean.getAr_photo());
+			System.out.println(acpbean.getAr_photo());
+			
+			System.out.println("아티스트 포토 글쓰기");
+			
 			pstmt.executeUpdate();
 		}
 		catch (Exception e) {
