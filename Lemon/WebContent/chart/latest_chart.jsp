@@ -1,3 +1,5 @@
+<%@page import="com.lemon.chart.db.ChartBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,9 +25,19 @@
 	href="./assets/css/common/footer.css">
 
 <link rel="stylesheet" type="text/css"
-	href="./assets/css/cahart/chart.css">
+	href="./assets/css/chart/chart.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/font-awesome/css/font-awesome.css">
+<!--  -->
+<!-- <link rel="stylesheet" type="text/css"
+	href="./assets/css/cahart/base.css"> -->
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/chart/flexslider.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/chart/main.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/chart/fonts.css" media="all">
+
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript"
@@ -35,7 +47,33 @@
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
+<style type="text/css">
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 10px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	color: #edae06;
+	border-bottom: 2px solid #edae06;
+}
+</style>
 </head>
+<%
+	ArrayList chartList = (ArrayList) request.getAttribute("chartList");
+	String pageNum = (String) request.getAttribute("pageNum");
+	int count = ((Integer) request.getAttribute("count")).intValue();
+	int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
+	int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
+	int startPage = ((Integer) request.getAttribute("startPage")).intValue();
+	int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+%>
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -125,7 +163,15 @@
 									</th>
 								</tr>
 							</thead>
+
+							<audio preload class="album"></audio>
 							<tbody>
+								<%
+									if (count != 0) {
+										for (int i = 0; i < chartList.size(); i++) {
+											ChartBean cb = (ChartBean) chartList.get(i);
+											int a = i + 1;
+								%>
 								<tr>
 									<td>
 										<div class="wrap t_right">
@@ -136,7 +182,7 @@
 
 									<td>
 										<div class="wrap t_center" style="color: #000;">
-											<span class="rank ">1</span><span class="none">위</span>
+											<span class="rank "><%=a%></span><span class="none">위</span>
 										</div>
 									</td>
 									<td style="width: 60px;">
@@ -145,8 +191,8 @@
 												class="image_typeAll"> <img
 												onerror="WEBPOCIMG.defaultAlbumImg(this);" width="60"
 												height="60"
-												src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/120/quality/80/optimize"
-												alt="Sun And Moon Part.1 - 페이지 이동"> <span
+												src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>"
+												alt="<%=cb.getMusic_name()%>"> <span
 												class="bg_album_frame"></span>
 											</a>
 										</div>
@@ -161,13 +207,12 @@
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank01">
-													<span> <a href="#" title="Make Up (Feat. Crush) 재생">Make
-															Up (Feat. Crush)</a>
+													<span> <a href="#" title="<%=cb.getMusic_name()%>"><%=cb.getMusic_name()%></a>
 													</span>
 												</div>
 												<br>
 												<div class="ellipsis rank02">
-													<a href="#" title="샘김 (SAM KIM) - 페이지 이동">샘김 (SAM KIM)</a>
+													<a href="#" title="샘김 (SAM KIM) - 페이지 이동">아이유</a>
 												</div>
 
 											</div>
@@ -177,9 +222,7 @@
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank03">
-													<a href="./LemonDetai.ct"
-														title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon
-														Part.1</a>
+													<a href="./LemonDetai.ct" title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
 												</div>
 											</div>
 										</div>
@@ -192,13 +235,15 @@
 												<span class="odd_span"><i class="fa fa-heart-o"></i><span
 													class="cnt">3,409</span></span>
 											</button>
-										</div> <!--<a href="#"><i class="fa  fa-heart-o"></i>222</a>-->
+										</div>
 									</td>
 									<td>
-										<div class="wrap t_center">
-											<button type="button" title="듣기" class="button_icons play">
-												<i class="fa fa-play"></i><span class="none">듣기</span>
-											</button>
+										<div class="block-tracklist">
+											<ol class="playlist">
+												<li><div class="as-link"
+														data-src="./musicUpload/music/<%=cb.getMusicfile()%>">
+													</div></li>
+											</ol>
 										</div>
 									</td>
 									<td>
@@ -212,7 +257,8 @@
 
 										<div class="wrap t_center">
 											<button type="button" title="다운로드"
-												class="button_icons download ">
+												class="button_icons download "
+												onclick="location.href='./chart/file_down.jsp?file_name=<%=cb.getMusicfile()%>'">
 												<i class="fa  fa-download "></i><span class="none">다운로드</span>
 											</button>
 										</div>
@@ -227,9 +273,45 @@
 										</div>
 									</td>
 								</tr>
-							</tbody>
 
+								<%
+									}
+									}
+								%>
+
+							</tbody>
 						</table>
+
+						<div style="text-align: center;">
+							<div class="pagination">
+								<%
+									if (count != 0) {
+										if (startPage > pageBlock) {
+								%>
+								<a
+									href="./LemonLatest_Chart.ct?pageNum=<%=startPage - pageBlock%>">
+									&laquo;</a>
+								<%
+									}
+
+										for (int i = startPage; i <= endPage; i++) {
+								%>
+								<a href="./LemonLatest_Chart.ct?pageNum=<%=i%>"
+									<%if (Integer.parseInt(pageNum) == i) {%> class="active" <%}%>><%=i%>
+								</a>
+								<%
+									}
+
+										if (endPage < pageCount) {
+								%>
+								<a
+									href="./LemonLatest_Chart.ct?pageNum=<%=startPage + pageBlock%>">&raquo;</a>
+								<%
+									}
+									}
+								%>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -485,11 +567,14 @@
 					</div>
 				</form>
 			</div>
-
-
-
 		</div>
 	</div>
+	<script src="./assets/js/chart/jquery.flexslider-min.js"></script>
+	<script src="./assets/js/chart/smooth-scroll.js"></script>
+	<script src="./assets/js/chart/audio.min.js"></script>
+	<script src="./assets/js/chart/twitterFetcher_min.js"></script>
+	<script src="./assets/js/chart/jquery.countdown.min.js"></script>
+	<script src="./assets/js/chart/script.js"></script>
 	<script>
 		$(function() {
 			$('ul.tab li').click(function() {

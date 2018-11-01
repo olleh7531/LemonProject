@@ -72,14 +72,16 @@ public class ChartDAO {
 		return arr;
 	}
 
-	public ArrayList<ChartBean> selectChart() {
+	public ArrayList<ChartBean> selectChart(int startRow, int pageSize) {
 		ArrayList<ChartBean> chartList = new ArrayList<>();
 		ChartBean ch = null;
 		try {
 			con = getCon();
 			sql = "select * from album a inner join music b where "
-					+ "b.album_num = a.al_num order by al_release desc;";
+					+ "b.album_num = a.al_num order by al_release desc  limit ?,?;";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ch = new ChartBean();
@@ -107,6 +109,25 @@ public class ChartDAO {
 			CloseDB();
 		}
 		return chartList;
+	}
+
+	public int getChartCount() {
+		int count = 0;
+		try {
+			con = getCon();
+			sql = "select count(*) from  album a inner join music b where b.album_num = a.al_num;";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return count;
 	}
 
 }
