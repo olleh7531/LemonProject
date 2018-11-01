@@ -49,27 +49,30 @@ public class MemberDAO {
 	}
 
 	public void insertMember(MemberBean mb) {
-		int num = 1;
-
 		try {
 			con = getCon();
-
-			sql = "insert into member(email_id, pass, name, nickname, gender, birth, level, img, register_datetime, register_ip, is_deny, chk, email_cert, receive_email)"
-					+ "values(?,?,?,?,?," + "?,?,?,now()," + "?,?,?,0,?)";
+			sql = "insert into member(email_id, pass, name, nickname, gender, "
+					+ "birth, level, img, register_datetime, register_ip, " + "is_deny, chk, email_cert, receive_email)"
+					+ "values(?,?,?,?,?," + "?,?,?,now(),?" + ",?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
+
 			pstmt.setString(1, mb.getEmail_id());
 			pstmt.setString(2, mb.getPass());
 			pstmt.setString(3, mb.getName());
 			pstmt.setString(4, mb.getNickname());
 			pstmt.setString(5, mb.getGender());
+
 			pstmt.setString(6, mb.getBirth());
-			pstmt.setInt(7, 0);
+			pstmt.setInt(7, 0); // level (admin=1, other=0)
 			pstmt.setString(8, mb.getImg());
+			// now()로 reg_date 입력
 			pstmt.setString(9, mb.getReg_ip());
-			pstmt.setInt(10, 0);
-			pstmt.setInt(11, 0);
-			pstmt.setInt(12, mb.getReceive_email());
+
+			pstmt.setInt(10, 0); // is_deny=0
+			pstmt.setInt(11, mb.getChk()); // chk (google/naver=1, other=0)
+			pstmt.setInt(12, 0); // email_crt=0;
+			pstmt.setInt(13, mb.getReceive_email());
 
 			pstmt.executeUpdate();
 
@@ -82,34 +85,34 @@ public class MemberDAO {
 	}
 
 	// idCheck(email_id)
-	public int idCheck(String email_id){
+	public int idCheck(String email_id) {
 		int check = 0;
-		
+
 		try {
 			// 디비 연결(+드라이버로드)
 			con = getCon();
 			// sql 작성 & pstmt 객체 생성
-			sql ="select * from member where email_id=?";
+			sql = "select * from member where email_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
 			// sql 실행 & 결과저장
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				// 이미 해당 아이디가 가입되어 있으면
 				check = 1;
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			CloseDB();
 		}
-		
+
 		return check;
 	}
 	// idCheck(email_id)
-	
+
 	// idCheck(email_id,pass)
 	public int idCheck(String email_id, String pass) {
 		int check = -1;
@@ -146,7 +149,34 @@ public class MemberDAO {
 		return check;
 	}
 	// idCheck(email_id,pass)
-	
+
+	public int chkCheck(MemberBean mb) {
+		int check = -1;
+
+		try {
+			con = getCon();
+			sql = "select chk from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mb.getEmail_id());
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				System.out.println("if로 들어옴");
+				System.out.println("if절 내의 chk : " + rs.getInt("chk"));
+				check = rs.getInt("chk");
+			} else {
+				System.out.println("else로 들어옴");
+				check = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		System.out.println("DAO 클래스 내의 chkCheck : " + check);
+		return check;
+	}
+
 	// updateMemPass()
 	public int updateMemPass(String email_id, String crtPass, String newPass, String chkPass) {
 		int check = -1;
@@ -250,6 +280,8 @@ public class MemberDAO {
 				mb.setGender(rs.getString("gender"));
 				mb.setBirth(rs.getString("birth"));
 				mb.setImg(rs.getString("img"));
+				mb.setChk(rs.getInt("chk"));
+
 				// 추가정보
 				mb.setMobile(rs.getString("mobile"));
 				mb.setZip_code(rs.getString("zip_code"));
@@ -274,54 +306,82 @@ public class MemberDAO {
 
 	// updateMember(mb)
 	public int updateMember(MemberBean mb) {
-		int check = -1;
+		int check = -1; // 일반 회원 체크용
+		int chk = mb.getChk(); // 구글, 네이버 로그인 회원 체크용
+		System.out.println("chk : "+chk);
+		if (chk == 0) {
+			try {
+				con = getCon();
 
-		try {
-			con = getCon();
+				sql = "select pass from member where email_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, mb.getEmail_id());
 
-			sql = "select pass from member where email_id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mb.getEmail_id());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					// 아이디 있음
+					if (mb.getPass().equals(rs.getString("pass"))) {
+						// 비밀번호 맞는경우
+						sql = "update member set name=?,nickname=?,gender=?,birth=?,img=?,mobile=?,zip_code=?,address1=?,address2=?,receive_email=? where email_id =?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, mb.getName());
+						pstmt.setString(2, mb.getNickname());
+						pstmt.setString(3, mb.getGender());
+						pstmt.setString(4, mb.getBirth());
+						pstmt.setString(5, mb.getImg());
 
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				// 아이디 있음
-				if (mb.getPass().equals(rs.getString("pass"))) {
-					// 비밀번호 맞는경우
-					sql = "update member set name=?,nickname=?,gender=?,birth=?,img=?,mobile=?,zip_code=?,address1=?,address2=?,receive_email=? where email_id =?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, mb.getName());
-					pstmt.setString(2, mb.getNickname());
-					pstmt.setString(3, mb.getGender());
-					pstmt.setString(4, mb.getBirth());
-					pstmt.setString(5, mb.getImg());
+						pstmt.setString(6, mb.getMobile());
+						pstmt.setString(7, mb.getZip_code());
+						pstmt.setString(8, mb.getAddress1());
+						pstmt.setString(9, mb.getAddress2());
+						pstmt.setInt(10, mb.getReceive_email());
+						pstmt.setString(11, mb.getEmail_id());
 
-					pstmt.setString(6, mb.getMobile());
-					pstmt.setString(7, mb.getZip_code());
-					pstmt.setString(8, mb.getAddress1());
-					pstmt.setString(9, mb.getAddress2());
-					pstmt.setInt(10, mb.getReceive_email());
-					pstmt.setString(11, mb.getEmail_id());
+						pstmt.executeUpdate();
+						check = 1;
 
-					pstmt.executeUpdate();
-					check = 1;
-
+					} else {
+						// 비밀번호 틀린경우
+						check = 0;
+					}
 				} else {
-					// 비밀번호 틀린경우
-					check = 0;
+					// 아이디 없음
+					check = -1;
 				}
-			} else {
-				// 아이디 없음
-				check = -1;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				CloseDB();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
+		} else {
+			try {
+				con = getCon();
+
+				sql = "update member set name=?,nickname=?,gender=?,birth=?,img=?,mobile=?,zip_code=?,address1=?,address2=? where email_id =?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, mb.getName());
+				pstmt.setString(2, mb.getNickname());
+				pstmt.setString(3, mb.getGender());
+				pstmt.setString(4, mb.getBirth());
+				pstmt.setString(5, mb.getImg());
+				
+				pstmt.setString(6, mb.getMobile());
+				pstmt.setString(7, mb.getZip_code());
+				pstmt.setString(8, mb.getAddress1());
+				pstmt.setString(9, mb.getAddress2());
+				
+				pstmt.setString(10, mb.getEmail_id());
+				pstmt.executeUpdate();
+				check = 1;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				CloseDB();
+			}
 		}
 
 		return check;
-
 	}
 	// updateMember(mb)
 
@@ -381,13 +441,13 @@ public class MemberDAO {
 	public void emailAuth(String code) {
 		try {
 			con = getCon();
-			
+
 			sql = "update member set email_cert=? where code=?";
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, 1);
 			pstmt.setString(2, code);
-			
+
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -395,11 +455,10 @@ public class MemberDAO {
 		} finally {
 			CloseDB();
 		}
-		
+
 	}
 	// emailAuth(code)
-	
-	
+
 	// findID(name, mobile)
 	public String findId(String name, String mobile) {
 		String str = null;
