@@ -22,9 +22,9 @@ public class MemberLoginAction implements Action {
 		MemberBean mb = new MemberBean();
 		mb = mdao.getMember(email_id);
 		
-//		if(mb.getEmail_cert() != 1){
-//			
-//		}
+		//	if(mb.getEmail_cert() != 1){
+		//		
+		//	}
 
 		String pass = request.getParameter("pass");
 		

@@ -33,7 +33,6 @@ public class GoogleLoginAction implements Action{
 		// -> 로그인
 		if(check == 1) {
 			forward.setPath("main.mi");
-			// forward.setPath("MemberJoin.mb?email_id="+email_id+"&name="+name);
 			forward.setRedirect(true);
 		}
 		

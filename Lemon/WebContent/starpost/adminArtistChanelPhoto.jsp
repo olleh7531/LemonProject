@@ -29,7 +29,7 @@
 			<tr>
 				<td>가수 이름</td>
 				<td>
-					<input type="text" name="singer_photo_name" class="singer_photo_name">
+					<input type="text" name="singer_photo_singer_name" class="singer_photo_singer_name">
 				</td>
 			</tr>
 			<tr>
@@ -41,8 +41,7 @@
 			<tr>
 				<td>내용</td>
 				<td>
-					<textarea name="singer_photo_content" class="singer_photo_content">
-					</textarea>
+					<textarea name="singer_photo_content" class="singer_photo_content"></textarea>
 				</td>
 			</tr>
 			<tr>

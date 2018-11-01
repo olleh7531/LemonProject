@@ -1,5 +1,6 @@
 package com.lemon.member.action;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 
 import javax.servlet.ServletContext;
@@ -7,11 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.lemon.member.db.MemberBean;
 import com.lemon.member.db.MemberDAO;
+import com.mysql.cj.ParseInfo;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class MemberJoinAction implements Action{
-
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberJoinAction의 execute 호출");
@@ -46,6 +48,7 @@ public class MemberJoinAction implements Action{
 		mb.setNickname(multi.getParameter("nickname"));
 		mb.setGender(multi.getParameter("gender"));
 		mb.setBirth(multi.getParameter("birth"));
+		mb.setChk(Integer.parseInt(multi.getParameter("chk")));
 		String img = multi.getFilesystemName("file");
 		mb.setImg(img);
 		mb.setReg_ip(request.getRemoteAddr());
@@ -60,15 +63,26 @@ public class MemberJoinAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertMember(mb);
 		
-		//JoinAuthAction 페이지에 보낼 아이디
-		request.setAttribute("email_id", mb.getEmail_id());
-		
-		// ActionForward 객체에 이동정보(경로/방법) 담아서 이동
-		// 로그인 페이지로 이동
+		/*int check = mdao.chkCheck(mb);*/
+		/*System.out.println("자 내가 set한 chk 값 보자~ " + mb.getChk());
+		System.out.println("check 값 머 받아옴? " + check);*/
 		ActionForward forward = new ActionForward();
-		forward.setPath("MemberSendJoinMailAction.mb");
-		forward.setRedirect(false);
 		
+		if(mb.getChk() == 1) {
+			// check 값이 1이면(google로그인/naver로그인) main 페이지 이동
+			
+			forward.setPath("main.mi");
+			forward.setRedirect(true);
+		
+		} else {
+			// chk 값이 0이면(일반회원가입) 이메일 인증 절차를 거침		
+
+			//JoinAuthAction 페이지에 보낼 아이디
+			request.setAttribute("email_id", mb.getEmail_id());
+			
+			forward.setPath("MemberSendJoinMailAction.mb");
+			forward.setRedirect(false);
+		}
 		return forward;	
 	}
 }

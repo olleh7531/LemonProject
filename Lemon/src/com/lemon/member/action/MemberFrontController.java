@@ -101,6 +101,15 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		} else if(command.equals("/GoogleLogoutAction.mb")){
+			// 로그아웃 처리
+			action = new GoogleLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		} else if(command.equals("/ChooseMemberUpdate.mb")){
 			// 회원정보 변경 메뉴 선택
 			forward = new ActionForward();

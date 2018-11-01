@@ -25,6 +25,7 @@ public class MemberUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		String email_id =(String)session.getAttribute("email_id");
 		
+		
 		// 세션이 없을경우 -> 로그인 
 		ActionForward forward = new ActionForward();
 		if(email_id == null){
@@ -52,18 +53,21 @@ public class MemberUpdateAction implements Action {
 		);
 		
 		String pass = multi.getParameter("pass");
-		String chkPass = multi.getParameter("chkPass");		
+		String chkPass = multi.getParameter("chkPass");
+		int chk = Integer.parseInt(multi.getParameter("chk"));
 		
-		if(!pass.equals(chkPass)){
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			
-			out.println("<script>");
-			out.println(" alert('비밀번호가 일치하지 않습니다.');");
-			out.println(" history.back(); ");
-			out.println("</script>");
-			out.close();
-			
+		if(chk == 0) {
+			if(!pass.equals(chkPass)){
+				response.setContentType("text/html; charset=UTF-8");
+				
+				PrintWriter out = response.getWriter();
+				
+				out.println("<script>");
+				out.println(" alert('비밀번호가 일치하지 않습니다.');");
+				out.println(" history.back(); ");
+				out.println("</script>");
+				out.close();
+			}
 		}
 		
 		img = multi.getFilesystemName("img");		
@@ -82,14 +86,14 @@ public class MemberUpdateAction implements Action {
 		if(img == null){
 			mb.setImg(multi.getParameter("preImg"));
 		}
-		
+		mb.setChk(chk);
 		mb.setMobile(multi.getParameter("mobile"));
 		mb.setZip_code(multi.getParameter("zip_code"));
 		mb.setAddress1(multi.getParameter("address1"));
 		mb.setAddress2(multi.getParameter("address2"));	
 		if(multi.getParameter("receive_email") == null){
 			mb.setReceive_email(0);	
-		}else if(multi.getParameter("receive_email").equals("on")){
+		} else if(multi.getParameter("receive_email").equals("on")){
 			mb.setReceive_email(1);			
 		}
 		
@@ -106,8 +110,9 @@ public class MemberUpdateAction implements Action {
 			out.println(" history.back();");
 			out.println("</script>");
 			out.close();
-			return null;			
-		}else if(check == -1){
+			return null;
+			
+		} else if(check == -1){
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -116,7 +121,7 @@ public class MemberUpdateAction implements Action {
 			out.println("</script>");
 			out.close();
 			return null;
-		}	
+		}
 
 		//check =1 
 		response.setContentType("text/html; charset=UTF-8");

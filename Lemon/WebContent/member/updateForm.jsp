@@ -19,7 +19,6 @@
 	<!-- Member CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/updateMember.css">
-		
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -37,13 +36,11 @@
 		window.open("./member/checkNick.jsp?fnickname="+fnickname,"","width=400,height=250");
 	}
 	</script>
-	
 </head>
 <body>
 <%
 
 	String email_id= (String)session.getAttribute("email_id");
-
 	MemberBean mb = (MemberBean)request.getAttribute("mb");
 	
 	String gender = mb.getGender();
@@ -53,7 +50,6 @@
 	
 	int chkRe = mb.getReceive_email();
 %>
-
 
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -67,6 +63,7 @@
 			<div id="contsMem">
 				<form action="./MemberUpdateAction.mb" method="post" enctype="multipart/form-data" name="fr">				
 					<input type="hidden" name="preImg" value="<%=mb.getImg()%>">
+					<input type="hidden" name="chk" value="<%=mb.getChk()%>">
 					
 					<h3><b>내 정보</b></h3><br/>
 					<div class="wrap_table">
@@ -98,6 +95,7 @@
 					      		</p>
 							</td>
 						</tr>
+						<%if(mb.getChk() == 0) { %>
 						<tr>
 							<th>비밀번호</th>
 							<td><input type="text" name="pass"></td>
@@ -106,15 +104,19 @@
 							<th>비밀번호 확인</th>
 							<td><input type="text" name="chkPass"></td>
 						</tr>
+						<%} %>
+						
 						<tr>
 							<th>이름</th>
 							<td><input type="text" name="name" value="<%=mb.getName()%>"></td>
 						</tr>
+						
 						<tr>
 							<th>닉네임</th>
 							<td><input type="text" name="nickname" value="<%=mb.getNickname()%>">
 						<input type="button" class="upBtn" value="중복 확인" onclick="checkNick()"></td>
 						</tr>
+						
 						<tr>
 							<th>성별</th>
 							<td><input type="radio" name="gender" value="남" 
@@ -129,10 +131,12 @@
 							     >여
 					       </td>
 						</tr>
+						
 						<tr>
 							<th>생일</th>
 							<td><input type="text" name="birth" value="<%=mb.getBirth()%>" ></td>
 						</tr>
+						
 						<tr>
 							<th>프로필 이미지 변경</th>
 							<td><input type="file" style="margin:10px 0 10px 20px" name="img" id="img" onchange="previewImage(this,'View_area')"><br/>
@@ -140,9 +144,9 @@
 						</tr>
 					</table>
 					</div>
-					<br/>
+					<br>
 					
-					<h3><b>추가 정보</b></h3><br/>
+					<h3><b>추가 정보</b></h3><br>
 					<div class="wrap_table">
 					<table>
 						<colgroup>
@@ -212,7 +216,7 @@
 					
 					<div id="wrap_buttons">
 						<input type="submit" class="btnConfirm" value="회원 수정" />
-						<input type="button" class="btnCancle" value="취소" />
+						<input type="button" class="btnCancle" value="취소"/>
 					</div>	
 				</form>
 			</div>

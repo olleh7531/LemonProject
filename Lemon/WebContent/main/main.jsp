@@ -35,6 +35,7 @@
 	String name = (String) session.getAttribute("name");
 	
 	System.out.println("email_id : "+email_id );
+	
 %>
 	
 	<!-- 메뉴 -->
@@ -1466,17 +1467,25 @@
 						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
-								<a href="" class="id_area"><%=name %></a>님
+								<a href="" class="id_area"><%=name %></a> 님
 							</strong>
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>
 							</a>
-							<div class="mem_btn" id="d_facebook_mem_btn">
+							<!-- <div class="mem_btn" id="d_facebook_mem_btn">
 								<button type="button" class="btn_info kakao" title="카카오톡 연동하기">
 									<span>카카오톡 연동하기</span>
 								</button>
-							</div>
-							<a href="./MemberLogoutAction.mb" title="로그아웃" class="btn_logout">
+							</div> -->
+							
+							<!-- <div class="main_google_login">
+								<input type="button" id="googleLogin" value="Checking..." 
+								onclick="
+									;
+								">
+							</div> -->
+							
+							<a href="./GoogleLogoutAction.mb" title="로그아웃" class="btn_logout">
 								<span>로그아웃</span>
 							</a>
 						</div>

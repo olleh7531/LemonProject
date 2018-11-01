@@ -31,7 +31,6 @@ public class ArtistChanelFrontController extends HttpServlet {
 		ActionForward forward = null;
 
 		// 가상주소와 내가 처리할 동작이랑 같은지 비교 
-		// 아티스트 채널
 		if(command.equals("/ArtistChanel.ac")) {
 			// 아티스트 채널 내용
 			action = new ArtistChanelAction(); 
@@ -42,9 +41,15 @@ public class ArtistChanelFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} 
-		else if(command.equals("/ArtistChanelWrtieAction.ac")) {
-			// 아티스트 채널 글쓰기 proc 
-			action = new ArtistChanelWrtieAction(); 
+		else if (command.equals("/AdminArtistChanelInfo.ac")) {
+			// 정보 글쓰기
+			forward = new ActionForward();
+			forward.setPath("./starpost/adminArtistChanelInfo.jsp");
+			forward.setRedirect(false);
+		}
+		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {
+			// 정보 글쓰기 proc 
+			action = new ArtistChanelInfoWrtieAction(); 
 			
 			try {
 				forward = action.execute(request, response);
@@ -52,15 +57,21 @@ public class ArtistChanelFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if (command.equals("/AdminArtistChanelInfo.ac")) { // 정보 글쓰기
-			forward = new ActionForward();
-			forward.setPath("./starpost/adminArtistChanelInfo.jsp");
-			forward.setRedirect(false);
-		}
-		else if (command.equals("/AdminArtistChanelPhoto.ac")) { // 포토 글쓰기
+		else if (command.equals("/AdminArtistChanelPhoto.ac")) {
+			// 포토 글쓰기
 			forward = new ActionForward();
 			forward.setPath("./starpost/adminArtistChanelPhoto.jsp");
 			forward.setRedirect(false);
+		}
+		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {
+			// 포토 글쓰기 proc 
+			action = new ArtistChanelInfoWrtieAction(); 
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		// 이동

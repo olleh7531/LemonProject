@@ -28,13 +28,13 @@ public class StarPostFrontController extends HttpServlet {
 		if (command.equals("/starpost.sp")) { // 스타포스트 메인 화면
 			// starPost/starPost.jsp
 			forward = new ActionForward();
-			forward.setPath("./starPost/starPost.jsp");
+			forward.setPath("./starpost/starPost.jsp");
 			forward.setRedirect(false);
 		}
 		else if (command.equals("/artistChanel.sp")) { // 스타포스트 아티스트 채널
 			// starPost/artistChanel.jsp
 			forward = new ActionForward();
-			forward.setPath("./starPost/artistChanel.jsp");
+			forward.setPath("./starpost/artistChanel.jsp");
 			forward.setRedirect(false);
 		}
 
