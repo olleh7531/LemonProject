@@ -1,3 +1,4 @@
+<%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -16,25 +17,38 @@
 <script type="text/javascript" src="./assets/js/member/join_main.js" ></script>
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 
-<script type="text/javascript">
-function chkEmail() {
-	if(document.fr.email_1.value == ""){
-		alert("아이디를 입력 해 주세요.");
-		document.fr.email_1.focus();
-		return;
-	}
-	var email_id = document.fr.email_1.value+document.fr.email_2.value;
-	// 새창 열기
-	window.open("./MemberSendJoinMailAction.mb?email_id="+email_id,"","width=400,height=250");
-}
-</script>
-
 </head>
 
 <body>
 	<%
 		String email_id = (String) request.getParameter("email_id");
 		String name = (String) request.getParameter("name");
+		
+ 		/*난수 생성*/
+ 		StringBuffer temp = new StringBuffer();
+		
+		Random rnd = new Random();
+		for (int i = 0; i < 6; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		} 
+		
+		String code = temp.toString();
+		System.out.println(code);
+ 		/*난수 생성*/
 	%>
 
 	<div id="wrap" class="join">
@@ -51,12 +65,13 @@ function chkEmail() {
 		
 		<article class="mnMembers pgJoinEmail">
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
+				<input type='hidden' id='code' value="<%=code%>"/>
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
 						<label for="email" class="lb">이메일</label>
 						<div class="col">
 							<%if(email_id == null) { %>
-							
+							<input type="hidden" name="chk" value="0">
 							<div class="formPadding">
 								<div class="formItem">
 									<input type="text" id="email_1" name="email_1" value="" />
@@ -88,19 +103,11 @@ function chkEmail() {
 							<%} %>
 							
 						</div>
-						<script type="text/javascript">
-						function fun1(){
-							var a = document.getElementById("fromInput").value;
-							alert(a);
-							if (a == "hallow") {
-								document.getElementById("ab").style.visibility="hidden";
-							}
-						}
-						</script>
 						<!-- 공통 : 안내 문구 처리 시 desc 비노출 -->
 						<p class="desc">이메일은 결제내역 받기, 비밀번호 찾기 등에 사용되므로 정확하게 입력해 주세요.</p>
-						<input type="text" id="fromInput" >
-						<input type="button" id="ab" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
+						<div id="authBox" style="display: block; height:70px; border: 1px solid blue">
+							<input type="button" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
+						</div>
 					</div>
 
 					
@@ -201,7 +208,7 @@ function chkEmail() {
 				<p class="btns">
 					<input type="submit" value="가입 완료">
 				</p>
-
+</form>
 				<div class="terms">
 					<aside id="policy" class="agreement">
 						<h1>이용약관</h1>
@@ -351,7 +358,7 @@ function chkEmail() {
 						</div>
 					</aside>
 				</div>
-			</form>
+			
 		</article>
 		<!-- footer -->
 		<div id="member_footer" class="">
@@ -386,8 +393,52 @@ function chkEmail() {
 			</p>
 		</div>
 		<!-- //footer -->
+		
 
 		<script type="text/javascript">
+			function chkEmail(){
+				alert('aaa');
+				var authBox = document.getElementById("authBox");
+				authBox.innerHTML="<div style='display: block; height:70px; border: 1px solid red'>"
+				+"<input type='text' id='abc'/>"
+				+"<input type='button' id='test' value='확인' onclick='test1()'/>"		
+				+"<input type='button' class='chkEmail' value='이메일 인증' onclick='chkEmail()' >"
+				+"<input type='hidden' name='email_cert' value='0'/>"
+				+"</div>";
+				
+				$.ajax({
+					type : "POST", // method="POST" 방식으로 출력 
+					url : "./MemberSendJoinMailAction.mb", // id 체크하는 jsp 파일 주소 불러오기 
+					data : {
+						email_id : $('#email_1').val()+$('#email_2').val(),
+						code : $('#code').val()
+					},
+					success : function(data) { // data를 가져오는 것이 성공하였을 때
+					    alert("인증메일을 발송하였습니다.");
+					},
+					error : function(xhr, status, error) { // 에러났을 때
+						alert("error : " + error);
+					}
+				});				
+			
+			}
+			
+			function test1(){
+				var tt = document.getElementById("code").value;
+				var abc = document.getElementById("abc").value;
+				var authBox = document.getElementById("authBox");
+
+				alert('test1');
+				alert(tt);
+				alert(abc);
+				if(abc == tt){
+					alert("성공!!!");	
+					authBox.innerHTML="<p>인증 성공하였습니다.</p><input type='hidden' name='email_cert' value='1'/>";
+
+				}
+			}
+		
+			
 			function oncheck(){
 				var checkBox = document.getElementById("joinCheckAll");
 				if(checkBox.checked == true){

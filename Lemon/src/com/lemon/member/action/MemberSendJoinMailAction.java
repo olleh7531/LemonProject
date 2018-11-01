@@ -27,32 +27,36 @@ public class MemberSendJoinMailAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberSendJoinMailAction의 execute 호출");
 		String email_id = request.getParameter("email_id");
-		System.out.println(email_id);
+		String code = request.getParameter("code");
 
- 		StringBuffer temp = new StringBuffer();
+		System.out.println("email_id : "+email_id);
+		System.out.println("code : "+code);
+
  		
- 		/*난수 생성*/
-		Random rnd = new Random();
-		for (int i = 0; i < 6; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0:
-				// a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1:
-				// A-Z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2:
-				// 0-9
-				temp.append((rnd.nextInt(10)));
-				break;
-			}
-		} 
-		
-		String code = temp.toString();
- 		/*난수 생성*/
+// 		/*난수 생성*/
+// 		StringBuffer temp = new StringBuffer();
+//		
+//		Random rnd = new Random();
+//		for (int i = 0; i < 6; i++) {
+//			int rIndex = rnd.nextInt(3);
+//			switch (rIndex) {
+//			case 0:
+//				// a-z
+//				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+//				break;
+//			case 1:
+//				// A-Z
+//				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+//				break;
+//			case 2:
+//				// 0-9
+//				temp.append((rnd.nextInt(10)));
+//				break;
+//			}
+//		} 
+//		
+//		String code = temp.toString();
+// 		/*난수 생성*/
 		
 				
 		/* DB에 code 값 저장 */
@@ -161,12 +165,8 @@ public class MemberSendJoinMailAction implements Action {
 			
 		}
 		/* Mail 보내기 */
-		
-	    ActionForward forward = new ActionForward();
-		forward.setPath("./member/chkEmail.jsp");
-		forward.setRedirect(false);		
-
-		return forward;
+				
+		return null;
 	}
 
 }

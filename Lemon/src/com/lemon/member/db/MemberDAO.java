@@ -71,7 +71,7 @@ public class MemberDAO {
 
 			pstmt.setInt(10, 0); // is_deny=0
 			pstmt.setInt(11, mb.getChk()); // chk (google/naver=1, other=0)
-			pstmt.setInt(12, 0); // email_crt=0;
+			pstmt.setInt(12, mb.getEmail_cert()); // email_crt=0;
 			pstmt.setInt(13, mb.getReceive_email());
 
 			pstmt.executeUpdate();

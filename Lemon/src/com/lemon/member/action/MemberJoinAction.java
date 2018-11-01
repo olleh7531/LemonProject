@@ -33,6 +33,17 @@ public class MemberJoinAction implements Action{
 		MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "UTF-8",
 				new DefaultFileRenamePolicy());
 		
+		if(multi.getParameter("email_cert") == null || multi.getParameter("email_cert").equals("0")){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script>");
+			out.println(" alert('이메일 인증을 받지 않았습니다. ');");
+			out.println(" history.back(); ");
+			out.println("</script>");
+			out.close();
+		}
+		
 		// 2. 전달받은 데이터를 저장 -> 자바빈(DTO) -> 디비 처리 객체(DAO) -> DB 테이블
 		// 자바빈 객체 생성 net.member.db / MemberBean
 		MemberBean mb = new MemberBean();
@@ -52,7 +63,8 @@ public class MemberJoinAction implements Action{
 		String img = multi.getFilesystemName("file");
 		mb.setImg(img);
 		mb.setReg_ip(request.getRemoteAddr());
-		
+		System.out.println(Integer.parseInt(multi.getParameter("email_cert")));
+		mb.setEmail_cert(Integer.parseInt(multi.getParameter("email_cert")));
 		if(multi.getParameter("mailTermsAgree") == null){
 			mb.setReceive_email(0);	
 		}else if(multi.getParameter("mailTermsAgree").equals("on")){
@@ -63,26 +75,11 @@ public class MemberJoinAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		mdao.insertMember(mb);
 		
-		/*int check = mdao.chkCheck(mb);*/
-		/*System.out.println("자 내가 set한 chk 값 보자~ " + mb.getChk());
-		System.out.println("check 값 머 받아옴? " + check);*/
 		ActionForward forward = new ActionForward();
 		
-		if(mb.getChk() == 1) {
-			// check 값이 1이면(google로그인/naver로그인) main 페이지 이동
-			
-			forward.setPath("main.mi");
-			forward.setRedirect(true);
+		forward.setPath("main.mi");
+		forward.setRedirect(true);
 		
-		} else {
-			// chk 값이 0이면(일반회원가입) 이메일 인증 절차를 거침		
-
-			//JoinAuthAction 페이지에 보낼 아이디
-			request.setAttribute("email_id", mb.getEmail_id());
-			
-			forward.setPath("MemberSendJoinMailAction.mb");
-			forward.setRedirect(false);
-		}
 		return forward;	
 	}
 }
