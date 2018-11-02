@@ -437,7 +437,6 @@
 
 				}
 			}
-		
 			
 			function oncheck(){
 				var checkBox = document.getElementById("joinCheckAll");
