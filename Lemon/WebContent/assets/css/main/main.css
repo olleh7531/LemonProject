@@ -952,7 +952,7 @@ legend, #IE8#HACK {
 /* 로그아웃 버튼 */
 .mem_info .btn_logout {
 	float: right;
-	width: 41px;
+	width: 50px;
 	margin: 0;
 	padding: 1px 5px 0 5px;
 	border: 1px solid #d9d9d9;
@@ -960,6 +960,8 @@ legend, #IE8#HACK {
 	background-color: #fff;
 	letter-spacing: -1px;
 	text-decoration: none;
+	font-size: 11px;
+	color: #7d7d7d;
 }
 
 /* 로그인한 유저 이용권 관련 */

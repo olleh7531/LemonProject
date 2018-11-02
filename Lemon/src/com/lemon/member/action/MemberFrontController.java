@@ -19,7 +19,7 @@ public class MemberFrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		System.out.println("test : " + command);
-
+		
 		Action action = null;
 		ActionForward forward = null;
 
@@ -95,15 +95,6 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/MemberLogoutAction.mb")){
 			// 로그아웃 처리
 			action = new MemberLogoutAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if(command.equals("/GoogleLogoutAction.mb")){
-			// 로그아웃 처리
-			action = new GoogleLogoutAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -190,9 +181,7 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 		
-
 		if (forward != null) {
 			if (forward.isRedirect()) {// true
 				response.sendRedirect(forward.getPath());

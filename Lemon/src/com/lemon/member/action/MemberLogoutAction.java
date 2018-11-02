@@ -25,6 +25,4 @@ public class MemberLogoutAction implements Action {
 		out.println("</script>");
 		return null;
 	}
-	
-
 }

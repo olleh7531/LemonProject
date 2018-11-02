@@ -415,6 +415,31 @@ public class MemberDAO {
 	}
 	// checkNick(nickname)
 
+	// getNick(String email_id)
+	public String getNick(String email_id) {
+		String nickname = null;
+		try {
+			con = getCon();
+			
+			sql = "select nickname from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				nickname = rs.getString("nickname");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		System.out.println("getNick fun : " + nickname);
+		return nickname;
+	}
+	
+	// getNick(String email_id)
+	
 	// initMailAuth()
 	public void initMailAuth(String code, String email_id) {
 		try {
