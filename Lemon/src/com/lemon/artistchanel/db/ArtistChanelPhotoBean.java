@@ -11,8 +11,8 @@ public class ArtistChanelPhotoBean {
 	 * 		`ar_content` text, // 내용
 	 * 		`ar_registerdate` date DEFAULT NULL, // 등록 날짜
 	 * 		`ar_readcount` int(11) DEFAULT NULL, // 조회수
-	 * 		`ar_singer_num` int(11) NOT NULL,
-	 * 		`ar_photo` text,
+	 * 		`ar_singer_num` int(11) NOT NULL, // 가수
+	 * 		`ar_photo` text, // 사진
 	 * 		PRIMARY KEY (`ar_num`),
 	 * 			CONSTRAINT `ar_singer_num_fk`
 	 * 				FOREIGN KEY (`ar_num`)

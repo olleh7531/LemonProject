@@ -23,6 +23,7 @@ public class ArtistChanelInfoBean {
 	private String si_picture; // 프로필 사진
 	private String si_genre; // 노래 장르
 	private Date si_birth; // 생일
+	private String si_gender; // 성별
 
 	public int getSi_num() {
 		return si_num;
@@ -102,5 +103,13 @@ public class ArtistChanelInfoBean {
 
 	public void setSi_birth(Date si_birth) {
 		this.si_birth = si_birth;
+	}
+	
+	public String getSi_gender() {
+		return si_gender;
+	}
+
+	public void setSi_gender(String si_gender) {
+		this.si_gender = si_gender;
 	}
 }

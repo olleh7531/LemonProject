@@ -17,7 +17,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class ArtistChanelInfoWrtieAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ArtistChanelWriteAction.java execute()");
+		System.out.println("ArtistChanelInfoWrtieAction.java execute()");
 		/*-------------------------------------------------------*/
 		/*                         정보                                                      */
 		/*-------------------------------------------------------*/
@@ -26,8 +26,8 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		// 업로드 할 실제 서버 경로를 가져오기
 		ServletContext infoContext = request.getServletContext();
 		String infoRealPath = infoContext.getRealPath("/upload/starpost/singerProfile");
-		System.out.println("ArtistChanelInfoWrite.java infoContext : " + infoContext);
-		System.out.println("ArtistChanelInfoWrite.java infoRealPath : " + infoRealPath);
+		System.out.println("ArtistChanelInfoWrtieAction.java infoContext : " + infoContext);
+		System.out.println("ArtistChanelInfoWrtieAction.java infoRealPath : " + infoRealPath);
 
 		// 한번에 업로드할 파일의 최대 용량 지정 
 		int infoMaxSize = 10*1024*1024; // 10MB
@@ -55,28 +55,28 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		
 		// 솔로/그룹 유형
 		acibean.setActivity_type(infoMulti.getParameter("singer_solo_group"));
-		System.out.println("ArtistChanelWriteAction.java singer_solo_group : " + infoMulti.getParameter("singer_solo_group"));
+		System.out.println("ArtistChanelInfoWrtieAction.java singer_solo_group : " + infoMulti.getParameter("singer_solo_group"));
 		
 		// 가수 활동 이름(예명)
 		acibean.setSinger_name(infoMulti.getParameter("singer_name"));
-		System.out.println("ArtistChanelWriteAction.java singer_name : " + infoMulti.getParameter("singer_name"));
+		System.out.println("ArtistChanelInfoWrtieAction.java singer_name : " + infoMulti.getParameter("singer_name"));
 		
 		// 소속 그룹 이름
 		acibean.setSi_group_name(infoMulti.getParameter("singer_affiliate_group"));
-		System.out.println("ArtistChanelWriteAction.java singer_affiliate_group : " + infoMulti.getParameter("singer_affiliate_group"));
+		System.out.println("ArtistChanelInfoWrtieAction.java singer_affiliate_group : " + infoMulti.getParameter("singer_affiliate_group"));
 		
 		// 데뷔 날짜
         Date debut_year = new Date(format.parse(infoMulti.getParameter("singer_debut_day")).getTime());
         acibean.setDebut_year(debut_year);
-        System.out.println("ArtistChanelInfoWrite.java debut_year : " + debut_year);
+        System.out.println("ArtistChanelInfoWrtieAction.java debut_year : " + debut_year);
         
         // 데뷔 노래
         acibean.setDebut_song(infoMulti.getParameter("singer_debut_song"));
-        System.out.println("ArtistChanelWriteAction.java singer_debut_song : " + infoMulti.getParameter("singer_debut_song"));
+        System.out.println("ArtistChanelInfoWrtieAction.java singer_debut_song : " + infoMulti.getParameter("singer_debut_song"));
         
         // 소속사 이름
         acibean.setSi_agency(infoMulti.getParameter("singer_agency_name"));
-        System.out.println("ArtistChanelWriteAction.java singer_agency_name : " + infoMulti.getParameter("singer_agency_name"));
+        System.out.println("ArtistChanelInfoWrtieAction.java singer_agency_name : " + infoMulti.getParameter("singer_agency_name"));
         
 		// 프로필 사진
         acibean.setSi_picture(infoMulti.getFilesystemName("singer_picture"));
@@ -94,16 +94,20 @@ public class ArtistChanelInfoWrtieAction implements Action {
 				genres += genreParam[i];
 			}
 			
-			System.out.println("ArtistChanelInfoWrite.java singer_song_genres : " + infoMulti.getParameterValues("singer_song_genres")[i]);
+			System.out.println("ArtistChanelInfoWrtieAction.java singer_song_genres : " + infoMulti.getParameterValues("singer_song_genres")[i]);
 		}
 		acibean.setSi_genre(genres);
-		System.out.println("ArtistChanelInfoWrite.java genres : " + genres);
+		System.out.println("ArtistChanelInfoWrtieAction.java genres : " + genres);
 		
 		// 생일
 		Date si_birth = new Date(format.parse(infoMulti.getParameter("singer_birth")).getTime());
 		acibean.setSi_birth(si_birth);
-		System.out.println("ArtistChanelInfoWrite.java singer_birth : " + infoMulti.getParameter("singer_birth"));
+		System.out.println("ArtistChanelInfoWrtieAction.java singer_birth : " + infoMulti.getParameter("singer_birth"));
 		
+		// 성별
+		acibean.setSi_gender(infoMulti.getParameter("singer_gender"));
+		System.out.println("ArtistChanelInfoWrtieAction.java singer_gender : " + infoMulti.getParameter("singer_gender"));
+	        
 		// ArtistChanelDAO 객체 생성
 		ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
 		
@@ -118,7 +122,7 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		int artist = acidao.getArtistChanelInfoNum();
 		
 		// 페이지 이동
-		// /AStartPostWriteAction.asp
+		// /ArtistChanelInfoWrtieAction.asp
 		ActionForward forward = new ActionForward();
 		
 		forward.setPath("./ArtistChanel.ac?artist=" + artist);
