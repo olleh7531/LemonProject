@@ -58,7 +58,8 @@ CREATE TABLE `artist_photo` (
   `ar_singer_num` int(11) NOT NULL,
   `ar_photo` text,
   PRIMARY KEY (`ar_num`),
-  CONSTRAINT `ar_singer_num_fk` FOREIGN KEY (`ar_num`) REFERENCES `singer` (`si_num`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `ar_singer_num_fk_idx` (`ar_singer_num`),
+  CONSTRAINT `ar_singer_num_fk` FOREIGN KEY (`ar_singer_num`) REFERENCES `singer` (`si_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,11 +80,11 @@ DROP TABLE IF EXISTS `chart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `chart` (
-  `ch_num` int(11) NOT NULL,
+  `ch_num` int(11) NOT NULL AUTO_INCREMENT,
+  `ch_music_num` int(11) DEFAULT NULL,
   `ch_playcnt` int(11) DEFAULT NULL,
   `ch_downcnt` int(11) DEFAULT NULL,
-  `ch_music_num` int(11) DEFAULT NULL,
-  `ch_datetime` datetime DEFAULT NULL,
+  `ch_updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`ch_num`),
   KEY `ch_music_num_idx` (`ch_music_num`),
   CONSTRAINT `ch_music_num` FOREIGN KEY (`ch_music_num`) REFERENCES `music` (`mu_num`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -542,7 +543,7 @@ DROP TABLE IF EXISTS `playlog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `playlog` (
-  `pl_num` int(11) NOT NULL,
+  `pl_num` int(11) NOT NULL AUTO_INCREMENT,
   `pl_user_email` varchar(100) NOT NULL,
   `pl_music_num` int(11) NOT NULL,
   `pl_playtime` timestamp NOT NULL,
@@ -687,4 +688,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-01 20:38:08
+-- Dump completed on 2018-11-02 17:28:41

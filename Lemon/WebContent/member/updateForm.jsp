@@ -215,25 +215,25 @@
 					</div>					
 					
 					<div id="wrap_buttons">
-						<input type="submit" class="btnConfirm" value="회원 수정" />
-						<input type="button" class="btnCancle" value="취소"/>
-					</div>	
+						<input type="submit" class="btnConfirm" value="회원 수정"/>
+						<input type="button" class="btnCancle" onclick="location.href='./main.mi'" value="취소"/>
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<!-- 본문 -->			
+	<!-- 본문 -->
 	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
 	<!-- 이미지 미리보기 JavaScript -->
 	<script src="./assets/js/member/previewImage.js"></script>
-
+	
 	<!-- 주소 검색 API -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="./assets/js/member/searchAddress.js"></script>
-
-
+	
+	
 	</body>
 </html>
