@@ -206,7 +206,7 @@
 				</fieldset>
 				
 				<p class="btns">
-					<input type="submit" value="가입 완료">
+					<input type="submit" onclick="return chkAgree();" value="가입 완료">
 				</p>
 </form>
 				<div class="terms">
@@ -455,7 +455,11 @@
 					document.getElementById("bugsInfoTermsAgree").checked = false;
 				}
 			}
+			
+
 		</script>
 	</div>
+	
+	<script type="text/javascript" src="./assets/js/member/joinMember.js"></script>
 </body>
 </html>
