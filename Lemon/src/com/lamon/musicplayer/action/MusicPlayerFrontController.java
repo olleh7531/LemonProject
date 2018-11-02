@@ -2,6 +2,7 @@ package com.lamon.musicplayer.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MusicPlayerFrontController extends HttpServlet {
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
+	private void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
@@ -17,6 +19,30 @@ public class MusicPlayerFrontController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
+
+		if (command.equals("/LemonPlayerList.mp")) {
+			forward = new ActionForward();
+			forward.setPath("./player/musicplayer.jsp");
+			forward.setRedirect(false);
+		} else if (command.equals("/LemonPlayerListAction.mp")) {
+			action = new LemonPlayerListAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (forward != null) {
+			if (forward.isRedirect()) {// true
+				response.sendRedirect(forward.getPath());
+			} else {// false
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+				dis.forward(request, response);
+			}
+
+		}
 
 	}
 
