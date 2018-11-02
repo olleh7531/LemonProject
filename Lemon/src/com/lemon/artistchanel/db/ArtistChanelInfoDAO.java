@@ -71,9 +71,11 @@ public class ArtistChanelInfoDAO {
 			sql = "insert into singer("
 						+ "si_num, activity_type, singer_name, si_group_name, debut_year,"
 						+ "debut_song, si_agency, si_picture, si_genre, si_birth"
+						+ "si_gender"
 					+ ")"
 					+ "values (?, ?, ?, ?, ?,"
-						+ "?, ?, ?, ?, ?)";
+						+ "?, ?, ?, ?, ?, "
+						+ "?)";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -116,6 +118,10 @@ public class ArtistChanelInfoDAO {
 			// 생일
 			pstmt.setDate(10, acibean.getSi_birth());
 			System.out.println(acibean.getSi_birth());
+			
+			// 성별
+			pstmt.setString(11, acibean.getSi_gender());
+			System.out.println(acibean.getSi_gender());
 			
 			System.out.println("아티스트 정보 글쓰기");
 
@@ -203,6 +209,9 @@ public class ArtistChanelInfoDAO {
 			
 				// 생일
 				acibean.setSi_birth(rs.getDate("si_birth"));
+				
+				// 성별
+				acibean.setSi_gender(rs.getString("si_gender"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

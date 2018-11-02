@@ -60,7 +60,6 @@ public class MemberLoginAction implements Action {
 	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.mi		
 		HttpSession session = request.getSession();
 		session.setAttribute("email_id", email_id);
-		
 		session.setAttribute("nickname", mb.getNickname());
 
 		// 페이지 이동

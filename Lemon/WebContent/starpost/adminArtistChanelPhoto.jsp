@@ -24,8 +24,14 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
 	<!-- 내용 -->
-	<form action="./ArtistChanelWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
+	<form action="./ArtistChanelPhotoWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
 		<table border="1">
+			<tr>
+				<td>가수 번호</td>
+				<td>
+					<input type="text" name="singer_photo_singer_num" class="singer_photo_singer_num">
+				</td>
+			</tr>
 			<tr>
 				<td>가수 이름</td>
 				<td>

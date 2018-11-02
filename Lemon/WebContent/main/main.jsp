@@ -1,3 +1,4 @@
+<%@page import="com.lemon.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -25,23 +26,24 @@
 	<script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 	<script type="text/javascript" src="./assets/js/main/main_login.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-	
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 </head>
 <body>
 <%
-	// 	request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	
 	// LoginAction에서 받아온 세션값 id 정보를 저장 
 	String email_id = (String) session.getAttribute("email_id");
-	String name = (String) session.getAttribute("name");
-	
-	System.out.println("email_id : "+email_id );
-	
+	String nickname = (String) session.getAttribute("nickname");
+	MemberDAO mdao = new MemberDAO();
+	String nickName = mdao.getNick(email_id);
+	System.out.println("email_id : " + email_id );
 %>
-	
+
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
+	<input type="hidden" id="gg_email">
+	<input type="hidden" id="gg_name">
 	
 	<!-- 본문 -->
 	<div id="cont_wrap" class="clfix">
@@ -1405,12 +1407,13 @@
 					</div> -->
 				</div>
 				<!-- //이벤트 -->
-	
+				
 				<!-- 로그인 -->
 				<div class="id_wrap mt24">
 					
 					<c:set var="e_id" value="<%=email_id %>"/>				
 					<c:if test="${empty e_id}">
+					
 					<!-- 로그인하지 않았을 때 -->
 					<form action="./MemberLoginAction.mb" method="post">
 					<div class="login_wrap" id="gnbLoginDiv">
@@ -1470,7 +1473,7 @@
 									   	gauth.signOut().then(function(){
 									   		checkLoginStatus();
 										});
-								    }">
+								   			 }">
 								</div>
 								
 								<div class="wrap_member">
@@ -1483,34 +1486,24 @@
 					</form>
 					</c:if>
 					<!-- 로그인하지 않았을 때 -->
-	
+					
 					<!-- 로그인하였을 때 -->
 					<c:if test="${!empty e_id}">
 					<div class="logout_wrap">
 						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
-								<a href="" class="id_area"><%=name %></a> 님
+								<a href="" class="id_area"><%=nickName %></a> 님
 							</strong>
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>
 							</a>
-							<!-- <div class="mem_btn" id="d_facebook_mem_btn">
-								<button type="button" class="btn_info kakao" title="카카오톡 연동하기">
-									<span>카카오톡 연동하기</span>
-								</button>
-							</div> -->
-							
-							<!-- <div class="main_google_login">
-								<input type="button" id="googleLogin" value="Checking..." 
-								onclick="
-									;
-								">
-							</div> -->
-							
-							<a href="./GoogleLogoutAction.mb" title="로그아웃" class="btn_logout">
-								<span>로그아웃</span>
-							</a>
+														
+							<input type="button" class="btn_logout" value="로그아웃"
+									onclick="
+									gauth.signOut().then(function(){
+										location.href='./MemberLogoutAction.mb';
+									});">
 						</div>
 						<!-- 로그인 유저 정보 관련
 						로그인한 유저 이용권 관련 -->

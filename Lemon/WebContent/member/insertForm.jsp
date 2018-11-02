@@ -66,8 +66,12 @@
 		<article class="mnMembers pgJoinEmail">
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
 				<input type='hidden' id='code' value="<%=code%>"/>
+				<%if(email_id != null) { %>
+					<input type='hidden' id='chk' value="<%=1%>"/>
+				<%} %>
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
+					
 						<label for="email" class="lb">이메일</label>
 						<div class="col">
 							<%if(email_id == null) { %>
@@ -105,9 +109,11 @@
 						</div>
 						<!-- 공통 : 안내 문구 처리 시 desc 비노출 -->
 						<p class="desc">이메일은 결제내역 받기, 비밀번호 찾기 등에 사용되므로 정확하게 입력해 주세요.</p>
-						<div id="authBox" style="display: block; height:70px; border: 1px solid blue">
-							<input type="button" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
-						</div>
+							<%if(email_id == null) { %>
+							<div id="authBox" style="display: block; height:70px; border: 1px solid blue">
+								<input type="button" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
+							</div>
+							<%} %>
 					</div>
 
 					
@@ -206,7 +212,7 @@
 				</fieldset>
 				
 				<p class="btns">
-					<input type="submit" value="가입 완료">
+					<input type="submit" onclick="return chkAgree();" value="가입 완료">
 				</p>
 </form>
 				<div class="terms">
@@ -437,7 +443,6 @@
 
 				}
 			}
-		
 			
 			function oncheck(){
 				var checkBox = document.getElementById("joinCheckAll");
@@ -455,7 +460,11 @@
 					document.getElementById("bugsInfoTermsAgree").checked = false;
 				}
 			}
+			
+
 		</script>
 	</div>
+	
+	<script type="text/javascript" src="./assets/js/member/joinMember.js"></script>
 </body>
 </html>

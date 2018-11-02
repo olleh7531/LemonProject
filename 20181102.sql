@@ -58,7 +58,8 @@ CREATE TABLE `artist_photo` (
   `ar_singer_num` int(11) NOT NULL,
   `ar_photo` text,
   PRIMARY KEY (`ar_num`),
-  CONSTRAINT `ar_singer_num_fk` FOREIGN KEY (`ar_num`) REFERENCES `singer` (`si_num`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `ar_singer_num_fk_idx` (`ar_singer_num`),
+  CONSTRAINT `ar_singer_num_fk` FOREIGN KEY (`ar_singer_num`) REFERENCES `singer` (`si_num`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,11 +80,11 @@ DROP TABLE IF EXISTS `chart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `chart` (
-  `ch_num` int(11) NOT NULL,
+  `ch_num` int(11) NOT NULL AUTO_INCREMENT,
+  `ch_music_num` int(11) DEFAULT NULL,
   `ch_playcnt` int(11) DEFAULT NULL,
   `ch_downcnt` int(11) DEFAULT NULL,
-  `ch_music_num` int(11) DEFAULT NULL,
-  `ch_datetime` datetime DEFAULT NULL,
+  `ch_updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`ch_num`),
   KEY `ch_music_num_idx` (`ch_music_num`),
   CONSTRAINT `ch_music_num` FOREIGN KEY (`ch_music_num`) REFERENCES `music` (`mu_num`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -139,6 +140,36 @@ LOCK TABLES `comment` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `download_config`
+--
+
+DROP TABLE IF EXISTS `download_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `download_config` (
+  `doc_user_email` varchar(100) NOT NULL,
+  `doc_cookie1` varchar(45) DEFAULT NULL,
+  `doc_cookie2` varchar(45) DEFAULT NULL,
+  `doc_cookie3` varchar(45) DEFAULT NULL,
+  `doc_downcnt` int(11) DEFAULT NULL,
+  `doc_ckcnt` int(11) DEFAULT NULL,
+  `ck1_updatetime` datetime DEFAULT NULL,
+  `ck2_updatetime` datetime DEFAULT NULL,
+  `ck3_updatetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`doc_user_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `download_config`
+--
+
+LOCK TABLES `download_config` WRITE;
+/*!40000 ALTER TABLE `download_config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `download_config` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `download_log`
 --
 
@@ -151,7 +182,7 @@ CREATE TABLE `download_log` (
   `do_user_email` varchar(100) NOT NULL,
   `do_user_ip` varchar(15) NOT NULL,
   `do_music_num` int(11) NOT NULL,
-  `do_datetime` timestamp NOT NULL,
+  `do_downtime` timestamp NOT NULL,
   PRIMARY KEY (`do_num`),
   KEY `down_mem_email_fk_idx` (`do_user_email`),
   KEY `down_music_num_fk_idx` (`do_music_num`),
@@ -167,6 +198,37 @@ CREATE TABLE `download_log` (
 LOCK TABLES `download_log` WRITE;
 /*!40000 ALTER TABLE `download_log` DISABLE KEYS */;
 /*!40000 ALTER TABLE `download_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `download_log2`
+--
+
+DROP TABLE IF EXISTS `download_log2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `download_log2` (
+  `do2_num` int(11) NOT NULL AUTO_INCREMENT,
+  `do2_level` tinyint(4) NOT NULL,
+  `do2_user_email` varchar(100) NOT NULL,
+  `do2_user_ip` varchar(15) NOT NULL,
+  `do2_music_num` int(11) NOT NULL,
+  `do2_downtime` timestamp NOT NULL,
+  PRIMARY KEY (`do2_num`),
+  KEY `do2_mem_email_fk_idx` (`do2_user_email`),
+  KEY `do2_music_num_fk_idx` (`do2_music_num`),
+  CONSTRAINT `do2_mem_email_fk` FOREIGN KEY (`do2_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `do2_music_num_fk` FOREIGN KEY (`do2_music_num`) REFERENCES `music` (`mu_num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='재다운로드 할때 구매기록갱신이 필요한 경우 사용하는 로그';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `download_log2`
+--
+
+LOCK TABLES `download_log2` WRITE;
+/*!40000 ALTER TABLE `download_log2` DISABLE KEYS */;
+/*!40000 ALTER TABLE `download_log2` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -333,6 +395,7 @@ CREATE TABLE `member` (
   `img` text,
   `register_datetime` datetime NOT NULL,
   `register_ip` varchar(15) NOT NULL,
+  `level_updatetime` datetime DEFAULT NULL,
   `is_deny` tinyint(4) NOT NULL DEFAULT '0',
   `chk` tinyint(4) NOT NULL,
   `mobile` varchar(13) DEFAULT NULL,
@@ -480,7 +543,7 @@ DROP TABLE IF EXISTS `playlog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `playlog` (
-  `pl_num` int(11) NOT NULL,
+  `pl_num` int(11) NOT NULL AUTO_INCREMENT,
   `pl_user_email` varchar(100) NOT NULL,
   `pl_music_num` int(11) NOT NULL,
   `pl_playtime` timestamp NOT NULL,
@@ -625,4 +688,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-30 17:15:39
+-- Dump completed on 2018-11-02 17:28:41

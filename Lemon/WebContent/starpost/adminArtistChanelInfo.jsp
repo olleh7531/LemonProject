@@ -26,7 +26,7 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
 	<!-- 내용 -->
-	<form action="./ArtistChanelWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
+	<form action="./ArtistChanelInfoWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
 		<table border="1">
 			<tr>
 				<td>가수 이름(예명)</td>
