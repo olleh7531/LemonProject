@@ -151,14 +151,11 @@ function check() {
 		</div>
 		
 		<article class="mnMembers pgJoinEmail">
-<<<<<<< HEAD
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" 
 			enctype="multipart/form-data" name="fr" onsubmit="return check()">
 				<input type='hidden' id='code' value="<%=code%>"/>
-=======
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
 				<input type='hidden' id='code'/>
->>>>>>> refs/remotes/origin/master
 				<%if(email_id != null) { %>
 					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
 					<input type='hidden' id='email_cert' name="email_cert" value="<%=1%>"/>
