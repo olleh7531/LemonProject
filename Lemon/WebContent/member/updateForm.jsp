@@ -88,7 +88,7 @@
 						<tr style="height: 70px">
 							<th>레몬 ID</th>
 							<td>
-								<input type="text" name="email_id" value="<%=mb.getEmail_id() %>"><br/>	
+								<input type="text" name="email_id" value="<%=mb.getEmail_id() %>" readonly><br/>	
 								<p><input type="checkbox" style="width:auto;" name="receive_email" <%if(chkRe == 1){ %>
 					          			checked
 					      			<% } %>><label>이메일 수신동의</label>
@@ -108,7 +108,7 @@
 						
 						<tr>
 							<th>이름</th>
-							<td><input type="text" name="name" value="<%=mb.getName()%>"></td>
+							<td><input type="text" name="name" value="<%=mb.getName()%>" readonly></td>
 						</tr>
 						
 						<tr>

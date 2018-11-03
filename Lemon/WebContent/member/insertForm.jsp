@@ -67,7 +67,8 @@
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
 				<input type='hidden' id='code' value="<%=code%>"/>
 				<%if(email_id != null) { %>
-					<input type='hidden' id='chk' value="<%=1%>"/>
+					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
+					<input type='hidden' id='email_cert' name="email_cert" value="<%=1%>"/>
 				<%} %>
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
@@ -125,6 +126,7 @@
 									<input type="password" id="password" name="password" placeholder="비밀번호 입력">
 								</div>
 							</div>
+							
 							<p class="desc" id="descPassword">6~20자 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
 							
 							<div class="col" id="divPasswordCheck">

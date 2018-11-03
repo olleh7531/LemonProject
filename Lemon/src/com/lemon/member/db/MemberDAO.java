@@ -56,7 +56,7 @@ public class MemberDAO {
 					+ "values(?,?,?,?,?," + "?,?,?,now(),?" + ",?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
-
+			
 			pstmt.setString(1, mb.getEmail_id());
 			pstmt.setString(2, mb.getPass());
 			pstmt.setString(3, mb.getName());

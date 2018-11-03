@@ -8,11 +8,15 @@ public class MemberBean {
 	private String name;
 	private String nickname;
 	private String gender;
+	
 	private String birth;
 	private int level;
 	private String img;
 	private Date reg_date;
 	private String reg_ip;
+	
+	
+	private Date level_updatetime;
 	private int is_deny;
 	private int chk;
 	
@@ -84,6 +88,12 @@ public class MemberBean {
 	}
 	public void setReg_ip(String reg_ip) {
 		this.reg_ip = reg_ip;
+	}
+	public Date getLevel_updatetime() {
+		return level_updatetime;
+	}
+	public void setLevel_updatetime(Date level_updatetime) {
+		this.level_updatetime = level_updatetime;
 	}
 	public int getIs_deny() {
 		return is_deny;

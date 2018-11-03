@@ -63,7 +63,7 @@ public class MemberJoinAction implements Action{
 		String img = multi.getFilesystemName("file");
 		mb.setImg(img);
 		mb.setReg_ip(request.getRemoteAddr());
-		System.out.println(Integer.parseInt(multi.getParameter("email_cert")));
+		System.out.println("email_cert : " + Integer.parseInt(multi.getParameter("email_cert")));
 		mb.setEmail_cert(Integer.parseInt(multi.getParameter("email_cert")));
 		if(multi.getParameter("mailTermsAgree") == null){
 			mb.setReceive_email(0);	
