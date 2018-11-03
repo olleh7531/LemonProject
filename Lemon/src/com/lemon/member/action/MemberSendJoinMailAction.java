@@ -5,9 +5,8 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lemon.member.auth.AES256Util;
-import com.lemon.member.db.MemberBean;
-import com.lemon.member.db.MemberDAO;
+
+
 import com.lemon.member.mail.SMTPAuthenticator;
 
 import javax.mail.Transport;
@@ -27,36 +26,36 @@ public class MemberSendJoinMailAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberSendJoinMailAction의 execute 호출");
 		String email_id = request.getParameter("email_id");
-		String code = request.getParameter("code");
+//		String code = request.getParameter("code");
 
 		System.out.println("email_id : "+email_id);
-		System.out.println("code : "+code);
+//		System.out.println("code : "+code);
 
  		
-// 		/*난수 생성*/
-// 		StringBuffer temp = new StringBuffer();
-//		
-//		Random rnd = new Random();
-//		for (int i = 0; i < 6; i++) {
-//			int rIndex = rnd.nextInt(3);
-//			switch (rIndex) {
-//			case 0:
-//				// a-z
-//				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-//				break;
-//			case 1:
-//				// A-Z
-//				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-//				break;
-//			case 2:
-//				// 0-9
-//				temp.append((rnd.nextInt(10)));
-//				break;
-//			}
-//		} 
-//		
-//		String code = temp.toString();
-// 		/*난수 생성*/
+ 		/*난수 생성*/
+ 		StringBuffer temp = new StringBuffer();
+		
+		Random rnd = new Random();
+		for (int i = 0; i < 6; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		} 
+		
+		String code = temp.toString();
+ 		/*난수 생성*/
 		
 				
 		/* DB에 code 값 저장 */
@@ -85,7 +84,7 @@ public class MemberSendJoinMailAction implements Action {
 		String from = "hongkongbaksa@gmail.com";
 		String to = email_id;
 
-		String script="";
+		
 		String subject = "안녕하세요, 레몬입니다.";
 
 		String content="<table cellpadding='0' cellspacing='0' border='0' width='524' style='font-size:12px;text-align:left;margin:0 auto;'>";
@@ -149,21 +148,22 @@ public class MemberSendJoinMailAction implements Action {
 		        
 		    // 발송하기
 		    Transport.send(msg);
+		    
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println(code);
 		    		    
 		} catch (Exception e) {
 		    e.printStackTrace();
-		    script = "<script type='text/javascript'>\n";
-		    script += "alert('메일발송에 실패했습니다.');\n";
-		    script += "history.back();\n";
-		    script += "</script>";
 		    
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			
-		    out.print(script);
+		    out.print("fail");
 		    return null;
 			
 		}
+
 		/* Mail 보내기 */
 				
 		return null;
