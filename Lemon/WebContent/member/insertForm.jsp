@@ -151,9 +151,14 @@ function check() {
 		</div>
 		
 		<article class="mnMembers pgJoinEmail">
+<<<<<<< HEAD
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" 
 			enctype="multipart/form-data" name="fr" onsubmit="return check()">
 				<input type='hidden' id='code' value="<%=code%>"/>
+=======
+			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
+				<input type='hidden' id='code'/>
+>>>>>>> refs/remotes/origin/master
 				<%if(email_id != null) { %>
 					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
 					<input type='hidden' id='email_cert' name="email_cert" value="<%=1%>"/>
@@ -504,10 +509,19 @@ function check() {
 					url : "./MemberSendJoinMailAction.mb", // id 체크하는 jsp 파일 주소 불러오기 
 					data : {
 						email_id : email,
-						code : $('#code').val()
+						code : $('#code').val(),
+						email_id : $('#email_1').val()+$('#email_2').val()
 					},
 					success : function(data) { // data를 가져오는 것이 성공하였을 때
 					    alert(email+"주소로 인증메일을 발송하였습니다.");
+						if(data == "fail"){
+							alert("메일 발송이 실패하였습니다.")
+						}else{
+						alert("이메일 발송 성공");
+						data = data.trim();
+						document.getElementById("code").value=data;
+							
+						}
 					},
 					error : function(xhr, status, error) { // 에러났을 때
 						alert("error : " + error);
@@ -523,7 +537,7 @@ function check() {
 				alert('test1');
 				alert(tt);
 				alert(abc);
-				if(abc == tt){
+				if(abc == tt && tt.length == 6){
 					alert("성공!!!");	
 					authBox.innerHTML="<p>인증 성공하였습니다.</p><input type='hidden' name='email_cert' value='1'/>";
 
