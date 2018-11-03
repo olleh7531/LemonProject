@@ -161,8 +161,6 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("if로 들어옴");
-				System.out.println("if절 내의 chk : " + rs.getInt("chk"));
 				check = rs.getInt("chk");
 			} else {
 				System.out.println("else로 들어옴");
@@ -177,6 +175,29 @@ public class MemberDAO {
 		return check;
 	}
 
+	public int chkCheck(String email_id) {
+		int check = -1;
+
+		try {
+			con = getCon();
+			sql = "select chk from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = rs.getInt("chk");
+			} else {
+				check = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
+	
 	// updateMemPass()
 	public int updateMemPass(String email_id, String crtPass, String newPass, String chkPass) {
 		int check = -1;
@@ -388,20 +409,20 @@ public class MemberDAO {
 	// checkNick(nickname)
 	public int checkNick(String nickname) {
 		int check = 0;
-
+		
 		try {
 			con = getCon();
 
 			sql = "select * from member where nickname=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, nickname);
-
+			
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
-				check = 1;
+				check = 1; // 아이디 있음
 			} else {
-				check = 0;
+				check = 0; // 아이디 없음
 			}
 			System.out.println("아이디 중복 검사 완료 ");
 
@@ -542,5 +563,25 @@ public class MemberDAO {
 		return str;
 	}
 	// findPW(id, mobile)
-
+	
+	public int check_id(String email_id) {
+		int check = 0;
+		
+		try {
+			con = getCon();
+			sql = "select email_id from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			
+			if(rs.next()) {
+				check = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();			
+		}
+		
+		return check;
+	}
 }

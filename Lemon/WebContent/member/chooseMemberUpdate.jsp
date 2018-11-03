@@ -1,3 +1,4 @@
+<%@page import="com.lemon.member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,8 +27,8 @@
 	
 	.upMemMenu{
 		border: 2px solid #d3d3d3;
-		margin: 10px;
-		width: 250px;
+		margin: 20px;
+		width: 200px;
 		text-align: center;
 		float: left;
 	}
@@ -48,7 +49,12 @@
 	</style>
 </head>
 <body>
-
+	<%
+	String email_id = (String) session.getAttribute("email_id");
+	MemberDAO mdao = new MemberDAO();
+	int check = mdao.chkCheck(email_id);
+	System.out.println("check ::: " + check );	
+	%>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
@@ -62,12 +68,14 @@
 			<div id="contsMem">
 				<div>
 					<div class="upMemMenu"><a href="./MemberUpdate.mb">회원정보 변경</a></div>
+					<%if(check == 0) { %>
 					<div class="upMemMenu"><a href="./MemberPassUpdate.mb">비밀번호 변경</a></div>
+					<%} %>
+					<div class="upMemMenu"><a href="./MemberFriend.mb">Lemon 친구</a></div>
 					<div class="upMemMenu"><a href="./MemberDelete.mb">회원 탈퇴</a></div>
-					<div class="clear"></div>		
+					<div class="clear"></div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 	<!-- 본문 -->			

@@ -50,7 +50,7 @@
 			
 			<div id="contsMem">
 				<p class="txt_info_mem"><strong>회원탈퇴 전 안내사항을 꼭 확인해주세요.</strong><br/>
-					<strong>탈퇴 후 회원님의 멜론 이용정보가 삭제되어 복구 불가능하오니 신중히 선택하시기 바랍니다.</strong>
+					<strong>탈퇴 후 회원님의 레몬 이용정보가 삭제되어 복구 불가능하오니 신중히 선택하시기 바랍니다.</strong>
 				</p>
 				<div class="mt14">
 					<p>

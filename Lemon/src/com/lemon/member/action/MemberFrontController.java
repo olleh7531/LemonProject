@@ -173,14 +173,30 @@ public class MemberFrontController extends HttpServlet {
 			forward.setRedirect(false);
 			
 		} else if(command.equals("/GoogleLoginAction.mb")){
-			// 로그인 처리 
 			action = new GoogleLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if(command.equals("/MemberFriend.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/memberFriend.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/NicknameCheck.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/checkNick.jsp");
+			forward.setRedirect(false);
+			
 		}
+		
+		
+		
+		
+		
+		
+		
 		
 		if (forward != null) {
 			if (forward.isRedirect()) {// true

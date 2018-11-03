@@ -15,8 +15,95 @@
 
 <script type="text/javascript" src="./assets/js/member/join_main_checkAll.js" ></script>
 <script type="text/javascript" src="./assets/js/member/join_main.js" ></script>
+<script type="text/javascript" src="./assets/js/member/nickCheck.js" ></script>
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 
+<script type="text/javascript">
+function check() {
+	// 아이디 입력 유무 확인
+	if(!document.fr.email_1.value) {
+		alert("이메일을 입력하세요");
+		document.fr.email_1.focus();
+		return false;
+	}
+	
+	// 아이디 유효성 검사
+	for(var i = 0; i < document.fr.email_1.value.length; i++) {
+		var ch = document.fr.email_1.value.charAt(i)
+		if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+			alert("이메일에는 대/소문자, 숫자만 입력가능합니다.");
+			document.fr.email_1.focus();
+			document.fr.email_1.select();
+			return false;
+			}
+		}
+	
+	// 비밀번호 입력 유무 확인
+	if(!document.fr.password.value) {
+		alert("비밀번호를 입력하세요");
+		document.fr.password.focus();
+		document.fr.password.select();
+		return false;
+	}
+	
+	// 비밀번호 길이 체크(4~16자)
+	if(document.fr.password.value.length<4 || document.fr.password.value.length>16) {
+		alert("비밀번호를 4~16자리까지 입력해주세요");
+		document.fr.password.focus();
+		document.fr.password.select();
+		return false;
+	}
+	
+	/* if(!document.fr.passwordCheck.value) {
+		alert("비밀번호 확인을 입력하세요");
+		document.fr.passwordCheck.focus();
+		return false;
+	}
+	
+	// 비밀번호와 비밀번호 확인이 같은지 검사		
+	if(document.fr.pass.value != document.fr.passwordCheck.value) {
+		alert("비밀번호와 비밀번호 확인이 같지 않습니다 \n다시 확인해주세요");
+		return false;
+	} */
+	
+	if(!document.fr.name.value) {
+		alert("이름을 입력하세요");
+		document.fr.name.focus();
+		document.fr.name.select();
+		return false;
+	}
+	
+	if(!document.fr.nickname.value) {
+		alert("닉네임을 입력하세요");
+		document.fr.nickname.focus();
+		document.fr.nickname.select();
+		return false;
+	}
+	
+	// 닉네임 길이 체크 (2~10자)
+	if (document.fr.nickname.value.length<2 || document.fr.id.value.length>10) {
+		alert("닉네임을 2~10자까지 입력해주세요.")
+		document.fr.nickname.focus();
+		document.fr.nickname.select();
+		return false;
+	}
+	
+	// 닉네임에 공백 사용하지 않기
+	if (document.fr.nickname.value.indexOf(" ") >= 0) {
+		alert("닉네임에 공백을 사용할 수 없습니다.");
+	 	document.fr.nickname.focus();
+		document.fr.nickname.select();
+		return false;
+	}
+	
+	if(!document.fr.birth.value) {
+		alert("생년월일을 입력하세요");
+		document.fr.birth.focus();
+		return false;
+	}
+}
+
+</script>
 </head>
 
 <body>
@@ -47,7 +134,7 @@
 		} 
 		
 		String code = temp.toString();
-		System.out.println(code);
+		System.out.println("code : " + code);
  		/*난수 생성*/
 	%>
 
@@ -64,7 +151,8 @@
 		</div>
 		
 		<article class="mnMembers pgJoinEmail">
-			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
+			<form id="joinform" method="post" action="./MemberJoinAction.mb" 
+			enctype="multipart/form-data" name="fr" onsubmit="return check()">
 				<input type='hidden' id='code' value="<%=code%>"/>
 				<%if(email_id != null) { %>
 					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
@@ -79,7 +167,7 @@
 							<input type="hidden" name="chk" value="0">
 							<div class="formPadding">
 								<div class="formItem">
-									<input type="text" id="email_1" name="email_1" value="" />
+									<input type="text" id="email_1" name="email_1"/>
 								</div>
 								<span class="at">@</span>
 							</div>
@@ -110,13 +198,14 @@
 						</div>
 						<!-- 공통 : 안내 문구 처리 시 desc 비노출 -->
 						<p class="desc">이메일은 결제내역 받기, 비밀번호 찾기 등에 사용되므로 정확하게 입력해 주세요.</p>
-							<%if(email_id == null) { %>
+							<%if(email_id == null) {
+								// 일반 회원 가입일 때
+							%>
 							<div id="authBox" style="display: block; height:70px; border: 1px solid blue">
 								<input type="button" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
 							</div>
 							<%} %>
 					</div>
-
 					
 					<%if(email_id == null) { %>
 						<div class="row">
@@ -127,13 +216,8 @@
 								</div>
 							</div>
 							
-							<p class="desc" id="descPassword">6~20자 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
+							<p class="desc" id="descPassword">4~16자 영문 대,소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
 							
-							<div class="col" id="divPasswordCheck">
-								<div class="placeholderForm">
-									<input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호 다시 입력">
-								</div>
-							</div>
 						</div>
 					<%} %>
 					
@@ -142,7 +226,7 @@
 						<div class="col">
 							<div class="placeholderForm">
 								<%if(email_id == null) { %>
-								<input type="text" id="name" name="name" value="" maxlength="12" />
+								<input type="text" id="name" name="name" maxlength="12" />
 								<%} else {%>
 								<input type="text" id="name" name="name" value="<%=name %>" readonly />
 								<%} %>
@@ -154,9 +238,10 @@
 						<label for="nickName" class="lb">닉네임</label>
 						<div class="col">
 							<div class="placeholderForm">
-								<input type="text" id="nickname" name="nickname" value="" maxlength="12"/>
+								<input type="text" id="nickname" name="nickname" maxlength="12"/>
 							</div>
 						</div>
+						<span id="idchk" class="desc"></span></td>
 						<p class="desc">레몬 회원들과 감상을 나눌 수 있는 별명으로 사용됩니다.</p>
 					</div>
 
@@ -174,8 +259,7 @@
 						<label for="birthDt" class="lb">생년월일</label>
 						<div class="col">
 							<div class="placeholderForm" id="divBirthDt">
-								<input type="number" id="birth" name="birth" maxlength="8"
-									value="" placeholder="ex) 19890207" style="width: 358px"/>
+								<input type="date" id="birth" name="birth"/>
 							</div>
 						</div>
 					</div>
@@ -183,7 +267,7 @@
 					<div class="row jender" id="divGender">
 						<label for="gender" class="lb">성별</label>
 						<div class="col">
-							<input type="radio" id="gender" name="gender" value="남" />
+							<input type="radio" id="gender" name="gender" value="남" checked/>
 							<label for="남">남</label>
 							<input type="radio" id="gender" name="gender" value="여" />
 							<label for="여">여</label>
@@ -214,9 +298,9 @@
 				</fieldset>
 				
 				<p class="btns">
-					<input type="submit" onclick="return chkAgree();" value="가입 완료">
+					<input type="submit" onclick="return chkAgree()" value="가입 완료">
 				</p>
-</form>
+			</form>
 				<div class="terms">
 					<aside id="policy" class="agreement">
 						<h1>이용약관</h1>
@@ -401,15 +485,16 @@
 			</p>
 		</div>
 		<!-- //footer -->
-		
 
 		<script type="text/javascript">
 			function chkEmail(){
-				alert('aaa');
 				var authBox = document.getElementById("authBox");
-				authBox.innerHTML="<div style='display: block; height:70px; border: 1px solid red'>"
+				var email = $('#email_1').val()+$('#email_2').val();
+				
+				authBox.innerHTML=
+				"<div style='display: block; height:70px; border: 1px solid red'>"
 				+"<input type='text' id='abc'/>"
-				+"<input type='button' id='test' value='확인' onclick='test1()'/>"		
+				+"<input type='button' id='test' value='확인' onclick='test1()'/>"	
 				+"<input type='button' class='chkEmail' value='이메일 인증' onclick='chkEmail()' >"
 				+"<input type='hidden' name='email_cert' value='0'/>"
 				+"</div>";
@@ -418,17 +503,16 @@
 					type : "POST", // method="POST" 방식으로 출력 
 					url : "./MemberSendJoinMailAction.mb", // id 체크하는 jsp 파일 주소 불러오기 
 					data : {
-						email_id : $('#email_1').val()+$('#email_2').val(),
+						email_id : email,
 						code : $('#code').val()
 					},
 					success : function(data) { // data를 가져오는 것이 성공하였을 때
-					    alert("인증메일을 발송하였습니다.");
+					    alert(email+"주소로 인증메일을 발송하였습니다.");
 					},
 					error : function(xhr, status, error) { // 에러났을 때
 						alert("error : " + error);
 					}
-				});				
-			
+				});
 			}
 			
 			function test1(){
@@ -462,11 +546,28 @@
 					document.getElementById("bugsInfoTermsAgree").checked = false;
 				}
 			}
-			
-
 		</script>
 	</div>
-	
 	<script type="text/javascript" src="./assets/js/member/joinMember.js"></script>
+	<script type="text/javascript">
+	$(function(){
+	    $('#nickname').blur(function(){
+	        $.ajax({
+	            type:"POST",
+	            url:"./NicknameCheck.mb",
+	            data:{
+	                "nickname": $('#nickname').val()
+	            },
+	            success:function(data){
+	                if($.trim(data) == "YES"){
+	                    $('#idchk').html('<b style="font-size:11px;color:blue">닉네임 사용이 가능합니다.</b>');
+	                }else{
+	                    $('#idchk').html('<b style="font-size:11px;color:red">닉네임 사용이 불가능합니다.</b>');
+	                }
+	            }
+	        });    
+	    });
+	});
+	</script>
 </body>
 </html>
