@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.lemon.chart.db.ChartBean;
+import com.lemon.chart.db.ChartBean1;
 import com.lemon.chart.db.ChartDAO;
 
 public class LemonChartAction implements Action{
@@ -21,12 +22,11 @@ public class LemonChartAction implements Action{
 		
 		// ChartDAO 객체 생성 -> 메서드 getChart(id) -> 차트정보를 가져오기(JavaBean)
 		ChartDAO cdao = new ChartDAO();
-		List<ChartBean> list = cdao.getMuReadCount();
-		ChartBean cb = new ChartBean();
+		List<ChartBean1> list = cdao.getChart();
 		
 		
 		// 차트정보를 request 객체에 저장 ,페이지 이동 (./board/lemonChart.jsp)-Actionforward
-		request.setAttribute("cb", cb);
+		request.setAttribute("list", list);
 		
 		forward.setPath("./board/lemonChart.jsp");
 		forward.setRedirect(false);
