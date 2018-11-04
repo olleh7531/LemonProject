@@ -1422,10 +1422,10 @@
 								<legend>로그인 영역</legend>
 								<div class="input_area">
 									<input type="text" placeholder="아이디" name="email_id"
-										class="text_id_main" title="아이디 입력 편집창" style="width: 199px">
+										class="text_id_main" title="아이디 입력 편집창" style="width: 199px; outline: 0;">
 									<input type="password" placeholder="비밀번호" name="pass"
 										title="비밀번호 입력 편집창" class="text_password_main"
-										style="width: 199px">
+										style="width: 199px; outline: 0;">
 									<div class="save_id">
 										<input type="checkbox" name="saveId" id="id_save01" class="">
 										<label for="id_save01">아이디 저장</label>
