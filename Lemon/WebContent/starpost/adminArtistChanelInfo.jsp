@@ -29,7 +29,7 @@
 	<form action="./ArtistChanelInfoWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
 		<table border="1">
 			<tr>
-				<td>가수 이름(예명)</td>
+				<td>가수 이름(예명)/본명</td>
 				<td>
 					<input type="text" name="singer_name" class="singer_name">
 				</td>
@@ -59,17 +59,24 @@
 				</td>
 			</tr>
 			<tr>
-				<td>유형</td>
+				<td>솔로/그룹</td>
 				<td>
-					<!-- http://victoryan.tistory.com/85 -->
-					<!-- https://blog.naver.com/jung20619/221104836168 -->
-					<!-- http://jindo.dev.naver.com/docs/jindo-component/1.8.0/doc/external/classes/jindo.SelectBox.html -->
-					<!-- https://blog.naver.com/horu_kaya/221033455801 -->
 					<select name="singer_solo_group" size="1">
 						<option disabled="disabled">솔로/그룹</option>
 						<option value="솔로" class="singer_solo_group_solo">솔로</option>
 						<option value="그룹" class="singer_solo_group_group">그룹</option>
 					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>그룹 번호</td>
+				<td>
+					<input type="text" name="singer_group_num" class="singer_group_num">
+				</td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>
 					<select name="singer_gender" size="1">
 						<option disabled="disabled">성별</option>
 						<option value="여성">여성</option>
@@ -139,12 +146,12 @@
 					<input type="text" name="singer_agency_name" class="singer_agency_name">
 				</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td>소속그룹</td>
 				<td>
 					<input type="text" name="singer_affiliate_group" class="singer_affiliate_group">
 				</td>
-			</tr>
+			</tr> -->
 		</table>
 		<br><br>
 		<button type="button" name="submit0" onclick="artist_changel_submit()">제출</button>

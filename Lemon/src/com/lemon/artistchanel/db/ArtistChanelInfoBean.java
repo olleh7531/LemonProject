@@ -8,8 +8,7 @@ public class ArtistChanelInfoBean {
 	 * (
 	 * 		`si_num` int(11) NOT NULL AUTO_INCREMENT,
 	 * 		`activity_type` varchar(10) NOT NULL,
-	 * 		`singer_name` varchar(200) NOT NULL,
-	 * 		`si_group_name` varchar(200) DEFAULT NULL,
+	 * 		`singer_name` varchar(200) DEFAULT NULL,
 	 * 		`debut_year` date DEFAULT NULL,
 	 * 		`debut_song` varchar(100) DEFAULT NULL,
 	 * 		`si_agency` varchar(100) DEFAULT NULL,
@@ -17,15 +16,18 @@ public class ArtistChanelInfoBean {
 	 * 		`si_genre` text,
 	 * 		`si_birth` date DEFAULT NULL,
 	 * 		`si_gender` varchar(5) DEFAULT NULL,
+	 * 		`group_music_num` text,
 	 * 		PRIMARY KEY (`si_num`)
 	 * )
-	 * ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+	 * ENGINE=InnoDB
+	 * 		AUTO_INCREMENT=2
+	 * 		DEFAULT CHARSET=utf8mb4
+	 * 		COLLATE=utf8mb4_0900_ai_ci
 	 */
 
 	private int si_num; // 가수 번호
 	private String activity_type; // 솔로/그룹 유형
-	private String singer_name; // 가수 활동 이름(예명)
-	private String si_group_name; // 소속 그룹 이름
+	private String singer_name; // 가수 활동 이름(예명)/본명
 	private Date debut_year; // 데뷔 날짜
 	private String debut_song; // 데뷔 노래
 	private String si_agency; // 소속사 이름
@@ -33,6 +35,7 @@ public class ArtistChanelInfoBean {
 	private String si_genre; // 노래 장르
 	private Date si_birth; // 생일
 	private String si_gender; // 성별
+	private String group_music_num; // 그룹 번호
 
 	public int getSi_num() {
 		return si_num;
@@ -56,14 +59,6 @@ public class ArtistChanelInfoBean {
 
 	public void setSinger_name(String singer_name) {
 		this.singer_name = singer_name;
-	}
-
-	public String getSi_group_name() {
-		return si_group_name;
-	}
-
-	public void setSi_group_name(String si_group_name) {
-		this.si_group_name = si_group_name;
 	}
 
 	public Date getDebut_year() {
@@ -120,5 +115,13 @@ public class ArtistChanelInfoBean {
 
 	public void setSi_gender(String si_gender) {
 		this.si_gender = si_gender;
+	}
+
+	public String getGroup_music_num() {
+		return group_music_num;
+	}
+
+	public void setGroup_music_num(String group_music_num) {
+		this.group_music_num = group_music_num;
 	}
 }

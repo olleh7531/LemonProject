@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: lemon
 -- ------------------------------------------------------
--- Server version	8.0.12
+-- Server version	8.0.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -219,7 +219,7 @@ CREATE TABLE `download_log2` (
   KEY `do2_music_num_fk_idx` (`do2_music_num`),
   CONSTRAINT `do2_mem_email_fk` FOREIGN KEY (`do2_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `do2_music_num_fk` FOREIGN KEY (`do2_music_num`) REFERENCES `music` (`mu_num`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='재다운로드 할때 구매기록갱신이 필요한 경우 사용하는 로그';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='???ٿ??ε? ?Ҷ? ???ű??ϰ????? ?ʿ??? ???? ?????ϴ? ?α';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,13 +241,12 @@ DROP TABLE IF EXISTS `friends`;
 CREATE TABLE `friends` (
   `fr_num` int(11) NOT NULL AUTO_INCREMENT,
   `sender_id` varchar(100) NOT NULL,
-  `receive_id` varchar(100) NOT NULL,
+  `receiver_id` varchar(100) NOT NULL,
   `check` tinyint(4) DEFAULT '0',
-  `follow_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`fr_num`),
-  KEY `member_follow_fk_idx` (`sender_id`,`receive_id`),
-  KEY `member_receive_fk_idx` (`receive_id`),
-  CONSTRAINT `fr_receive_email_fk` FOREIGN KEY (`receive_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  KEY `member_follow_fk_idx` (`sender_id`,`receiver_id`),
+  KEY `member_receive_fk_idx` (`receiver_id`),
+  CONSTRAINT `fr_receive_email_fk` FOREIGN KEY (`receiver_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fr_send_email_fk` FOREIGN KEY (`sender_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -272,7 +271,7 @@ CREATE TABLE `good` (
   `go_num` int(11) NOT NULL AUTO_INCREMENT,
   `go_user_email` varchar(100) NOT NULL,
   `go_category` int(11) NOT NULL,
-  `go_text_num` int(11) NOT NULL COMMENT '각 카테고리의 글번호',
+  `go_text_num` int(11) NOT NULL COMMENT '?? ī?װ????? ?۹',
   PRIMARY KEY (`go_num`),
   KEY `go_user_email_fk_idx` (`go_user_email`),
   CONSTRAINT `go_user_email_fk` FOREIGN KEY (`go_user_email`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -329,7 +328,7 @@ CREATE TABLE `helpboard` (
   `os` varchar(30) DEFAULT NULL,
   `browser` varchar(30) DEFAULT NULL,
   `anwser_status` varchar(20) DEFAULT '0',
-  `he_nickname` varchar(30) NOT NULL COMMENT '?????? ?г??',
+  `he_nickname` varchar(30) NOT NULL COMMENT '?????? ?????',
   `he_register_date` timestamp NOT NULL,
   `he_subject` varchar(100) NOT NULL,
   `he_content` text NOT NULL,
@@ -601,10 +600,12 @@ DROP TABLE IF EXISTS `search`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `search` (
   `se_num` int(11) NOT NULL AUTO_INCREMENT,
-  `search_keyword` text NOT NULL,
-  `search_date` timestamp NULL DEFAULT NULL,
-  `search_ip` varchar(15) NOT NULL,
-  `search_eamil` varchar(100) DEFAULT NULL,
+  `se_keyword` text NOT NULL,
+  `se_date` timestamp NULL DEFAULT NULL,
+  `se_ip` varchar(15) DEFAULT NULL,
+  `se_eamil` varchar(100) DEFAULT NULL,
+  `se_gender` varchar(5) DEFAULT NULL,
+  `se_generation` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`se_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -629,7 +630,6 @@ CREATE TABLE `singer` (
   `si_num` int(11) NOT NULL AUTO_INCREMENT,
   `activity_type` varchar(10) NOT NULL,
   `singer_name` varchar(200) DEFAULT NULL,
-  `si_group_name` varchar(200) DEFAULT NULL,
   `debut_year` date DEFAULT NULL,
   `debut_song` varchar(100) DEFAULT NULL,
   `si_agency` varchar(100) DEFAULT NULL,
@@ -637,7 +637,7 @@ CREATE TABLE `singer` (
   `si_genre` text,
   `si_birth` date DEFAULT NULL,
   `si_gender` varchar(5) DEFAULT NULL,
-  `group_music_num` text,
+  `group_singer_num` text,
   PRIMARY KEY (`si_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -689,4 +689,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 17:11:33
+-- Dump completed on 2018-11-05 20:22:23
