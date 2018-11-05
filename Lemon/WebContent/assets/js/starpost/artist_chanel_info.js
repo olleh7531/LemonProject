@@ -13,7 +13,7 @@ $(function() {
 		prevText : '이전 달', // prev 아이콘의 툴팁.
 		nextText : '다음 달', // next 아이콘의 툴팁.
 		currentText: '오늘 날짜', // 오늘 날짜로 이동하는 버튼 패널
-		tepMonths: 3, // next, prev 버튼을 클릭했을때 얼마나 많은 월을 이동하여 표시하는가. 
+		// tepMonths: 1, // next, prev 버튼을 클릭했을때 얼마나 많은 월을 이동하여 표시하는가. 
 		weekHeader : 'Wk',
 		dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
 		autoSize : false, // 오토리사이즈(body등 상위태그의 설정에 따른다)
@@ -30,8 +30,6 @@ $(function() {
 		showOtherMonths: true, // 다른 달 보여줌
 		selectOtherMonths: true, // 다른 달 선택 가능
 		yearRange : '1990:2020' // 1990년부터 2020년까지
-		// 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시
-		// numberOfMonths: [1,1],
 	};
 
 	$(".singer_debut_day").datepicker(calendarFrom);
