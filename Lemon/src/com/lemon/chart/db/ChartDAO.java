@@ -130,4 +130,34 @@ public class ChartDAO {
 		return count;
 	}
 
+	public int userPlaryList(String user, int mu_num) {
+		int check = -1;
+		try {
+			con = getCon();
+			sql = "select count(pls_music_num) from playlist where pls_user_email= ? AND pls_music_num= ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			pstmt.setInt(2, mu_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				if (rs.getInt(1) == 0) {
+					check = 0;
+					sql = "insert into playlist(pls_user_email, pls_music_num) values(?,?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user);
+					pstmt.setInt(2, mu_num);
+					pstmt.executeUpdate();
+				} else {
+					check = 1;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
+
 }

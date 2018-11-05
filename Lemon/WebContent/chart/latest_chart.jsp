@@ -248,7 +248,8 @@
 									</td>
 									<td>
 										<div class="wrap t_center">
-											<button type="button" title="담기" class="button_icons scrap">
+											<button type="button" title="담기" class="button_icons scrap"
+												onclick="location.href='./UserPlaylistUP.ct?mu_num=<%=cb.getMu_num()%>'">
 												<i class="fa  fa-plus"></i><span class="none">담기</span>
 											</button>
 										</div>
