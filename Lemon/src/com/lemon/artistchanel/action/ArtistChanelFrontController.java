@@ -65,7 +65,17 @@ public class ArtistChanelFrontController extends HttpServlet {
 		}
 		else if(command.equals("/ArtistChanelPhotoWrtieAction.ac")) {
 			// 포토 글쓰기 proc 
-			action = new ArtistChanelInfoWrtieAction(); 
+			action = new ArtistChanelPhotoWriteAction(); 
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/ArtistChanelPhotoWrtieCheckAction.ac")) {
+			// 포토 글쓰기 -> 가수 번호 체크해서 가수 이름 / 그룹 이름 가져오기
+			action = new ArtistChanelPhotoWriteCheckAction(); 
 			
 			try {
 				forward = action.execute(request, response);

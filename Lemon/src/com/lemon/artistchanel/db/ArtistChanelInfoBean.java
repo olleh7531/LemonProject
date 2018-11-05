@@ -4,12 +4,21 @@ import java.sql.Date;
 
 public class ArtistChanelInfoBean {
 	/*
-	 * CREATE TABLE `singer` ( `si_num` int(11) NOT NULL AUTO_INCREMENT,
-	 * `activity_type` varchar(10) NOT NULL, `singer_name` varchar(200) NOT
-	 * NULL, `si_group_name` varchar(200) DEFAULT NULL, `debut_year` date
-	 * DEFAULT NULL, `debut_song` varchar(100) DEFAULT NULL, `si_agency`
-	 * varchar(100) DEFAULT NULL, `si_picture` varchar(200) DEFAULT NULL,
-	 * `si_genre` text, `si_birth` date DEFAULT NULL, PRIMARY KEY (`num`) )
+	 * CREATE TABLE `singer`
+	 * (
+	 * 		`si_num` int(11) NOT NULL AUTO_INCREMENT,
+	 * 		`activity_type` varchar(10) NOT NULL,
+	 * 		`singer_name` varchar(200) NOT NULL,
+	 * 		`si_group_name` varchar(200) DEFAULT NULL,
+	 * 		`debut_year` date DEFAULT NULL,
+	 * 		`debut_song` varchar(100) DEFAULT NULL,
+	 * 		`si_agency` varchar(100) DEFAULT NULL,
+	 * 		`si_picture` varchar(200) DEFAULT NULL,
+	 * 		`si_genre` text,
+	 * 		`si_birth` date DEFAULT NULL,
+	 * 		`si_gender` varchar(5) DEFAULT NULL,
+	 * 		PRIMARY KEY (`si_num`)
+	 * )
 	 * ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 	 */
 
@@ -104,7 +113,7 @@ public class ArtistChanelInfoBean {
 	public void setSi_birth(Date si_birth) {
 		this.si_birth = si_birth;
 	}
-	
+
 	public String getSi_gender() {
 		return si_gender;
 	}

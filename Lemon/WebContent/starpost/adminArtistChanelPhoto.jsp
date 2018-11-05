@@ -18,6 +18,7 @@
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/starpost/artist_chanel_photo.js"></script>
 </head>
 <body>
 	<!-- 메뉴 -->
@@ -29,7 +30,7 @@
 			<tr>
 				<td>가수 번호</td>
 				<td>
-					<input type="text" name="singer_photo_singer_num" class="singer_photo_singer_num">
+					<input type="text" name="singer_photo_singer_num" class="singer_photo_singer_num" onblur="singerNumCheck()">
 				</td>
 			</tr>
 			<tr>

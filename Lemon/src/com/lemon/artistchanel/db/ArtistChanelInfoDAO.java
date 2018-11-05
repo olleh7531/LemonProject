@@ -70,7 +70,7 @@ public class ArtistChanelInfoDAO {
 			// sql - insert
 			sql = "insert into singer("
 						+ "si_num, activity_type, singer_name, si_group_name, debut_year,"
-						+ "debut_song, si_agency, si_picture, si_genre, si_birth"
+						+ "debut_song, si_agency, si_picture, si_genre, si_birth, "
 						+ "si_gender"
 					+ ")"
 					+ "values (?, ?, ?, ?, ?,"
