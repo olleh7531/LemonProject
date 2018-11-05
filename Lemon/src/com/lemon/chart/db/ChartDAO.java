@@ -160,4 +160,39 @@ public class ChartDAO {
 		return check;
 	}
 
+	public ChartBean selectMusizDetail(int mu_num) {
+		ChartBean cb = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b where  b.album_num = a.al_num AND a.al_num = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mu_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				cb = new ChartBean();
+				cb.setAl_num(rs.getInt("al_num"));
+				cb.setAl_name(rs.getString("al_name"));
+				cb.setAl_release(rs.getDate("al_release"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				cb.setMu_num(rs.getInt("mu_num"));
+				cb.setMusic_name(rs.getString("music_name"));
+				cb.setLyrics(rs.getString("lyrics"));
+				cb.setMusicfile(rs.getString("musicfile"));
+				cb.setMusic_genre(rs.getString("music_genre"));
+				cb.setMusic_time(rs.getString("music_time"));
+				cb.setAlbum_num(rs.getInt("album_num"));
+				cb.setTrack_num(rs.getInt("track_num"));
+				cb.setMusic_video(rs.getString("music_video"));
+				cb.setSinger_num(rs.getInt("singer_num"));
+				cb.setAl_agency(rs.getString("al_agency"));
+				cb.setAl_content(rs.getString("al_content"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return cb;
+	}
+
 }
