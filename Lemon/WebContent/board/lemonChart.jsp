@@ -49,6 +49,37 @@
 	        }
 	    }
 	});
+/*    bb.generate({
+	    "data": {
+	        "columns": [
+	            ["data1", 10, 100, 111, 350, 150,100,200,300,400,500,600,700,800,900,1000],
+	            ["data2", 20, 200, 7, 400, 155,150,250,350,450,550,650,750,850,950,990],
+	            ["data3", 30, 250, 5, 430, 152,10,20,30,40,50,60,70,80,90,55],
+	        ],
+	    },
+	    "axis": {
+	        "x": {
+	            "show": true,
+	             "type": "category",
+	          "categories": ["21", "22","23", "00","01","07","08","09","10","11","12","13","14","15","16","17"],
+	           "tick": {
+	                "outer": false,
+	            centered: true,
+	            }
+	        },
+	        "y": {
+	            "show": false
+	        }
+	    },  grid:{
+	       x: {
+	    show: false,
+	         lines: [
+	      {value: 0},{value:1},{value:2},{value:3},{value:4},{value:5},{value:6},{value:7},{value:8},{value:9},{value:10},{value:11},{value:12},{value:13},{value:14},{value:15},{value:16},
+	    ]
+	  },
+	       front: true,
+	    },
+	}) */
    </script>
 <!-- 본문 -->
 <!-- 푸터 -->
