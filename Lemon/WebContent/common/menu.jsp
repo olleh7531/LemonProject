@@ -253,7 +253,7 @@
 						</a>
 					</li>
 					<li class="menu5">
-						<a href="./ArtistChanel.ac?artist=1" class="cur_menu mlog">
+						<a href="./AdminArtistChanelInfo.ac" class="cur_menu mlog">
 							<span class="menu_more menu05">스타포스트</span>
 						</a>
 					</li>
