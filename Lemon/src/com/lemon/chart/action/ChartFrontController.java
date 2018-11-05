@@ -51,6 +51,15 @@ public class ChartFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if (command.equals("/UserPlaylistUP.ct")) {
+			action = new UserPlaylistUP();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) { // 이동할 정보가 있으면

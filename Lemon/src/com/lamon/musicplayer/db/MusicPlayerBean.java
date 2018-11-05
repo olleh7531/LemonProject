@@ -3,6 +3,12 @@ package com.lamon.musicplayer.db;
 import java.sql.Date;
 
 public class MusicPlayerBean {
+	/* playlist */
+	private int pls_num;
+	private String pls_user_email;
+	private int pls_music_num;
+	private int pls_order;
+
 	/* album */
 	private int al_num;
 	private String al_name;
@@ -23,7 +29,38 @@ public class MusicPlayerBean {
 	private int track_num;
 	private String music_video;
 
-	/* album */
+	public int getPls_num() {
+		return pls_num;
+	}
+
+	public void setPls_num(int pls_num) {
+		this.pls_num = pls_num;
+	}
+
+	public String getPls_user_email() {
+		return pls_user_email;
+	}
+
+	public void setPls_user_email(String pls_user_email) {
+		this.pls_user_email = pls_user_email;
+	}
+
+	public int getPls_music_num() {
+		return pls_music_num;
+	}
+
+	public void setPls_music_num(int pls_music_num) {
+		this.pls_music_num = pls_music_num;
+	}
+
+	public int getPls_order() {
+		return pls_order;
+	}
+
+	public void setPls_order(int pls_order) {
+		this.pls_order = pls_order;
+	}
+
 	public int getAl_num() {
 		return al_num;
 	}
@@ -72,7 +109,6 @@ public class MusicPlayerBean {
 		this.al_content = al_content;
 	}
 
-	/* music */
 	public int getMu_num() {
 		return mu_num;
 	}

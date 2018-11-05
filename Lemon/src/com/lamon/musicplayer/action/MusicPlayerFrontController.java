@@ -20,18 +20,30 @@ public class MusicPlayerFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
+		// if (command.equals("/LemonPlayerList.mp")) {
+		// forward = new ActionForward();
+		// forward.setPath("./player/musicplayer.jsp");
+		// forward.setRedirect(false);
+		// } else if (command.equals("/LemonPlayerListAction.mp")) {
+		// action = new LemonPlayerListAction();
+		//
+		// try {
+		// forward = action.execute(request, response);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		// }
+
 		if (command.equals("/LemonPlayerList.mp")) {
-			forward = new ActionForward();
-			forward.setPath("./player/musicplayer.jsp");
-			forward.setRedirect(false);
-		} else if (command.equals("/LemonPlayerListAction.mp")) {
-			action = new LemonPlayerListAction();
+			action = new LemonPlayList();
 
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 		}
 
 		if (forward != null) {

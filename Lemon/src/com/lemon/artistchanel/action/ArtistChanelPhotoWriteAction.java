@@ -1,5 +1,6 @@
 package com.lemon.artistchanel.action;
 
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
@@ -46,9 +47,9 @@ public class ArtistChanelPhotoWriteAction implements Action {
 		// Data 포맷 설정
 		SimpleDateFormat photoFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 
-		// 가수 이름
-		acpbean.setAr_singer_num(Integer.parseInt(photoMulti.getParameter("singer_photo_singer_name")));
-        System.out.println("ArtistChanelWriteAction.java singer_photo_singer_name : " + photoMulti.getParameter("singer_photo_singer_name"));
+		// 가수 번호
+		acpbean.setAr_singer_num(Integer.parseInt(photoMulti.getParameter("singer_photo_singer_num")));
+        System.out.println("ArtistChanelWriteAction.java singer_photo_singer_num : " + photoMulti.getParameter("singer_photo_singer_num"));
         
 		// 제목
 		acpbean.setAr_subject(photoMulti.getParameter("singer_photo_title"));

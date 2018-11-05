@@ -55,9 +55,20 @@
 							<span class="thumb">
 								<span class="thumb_frame"></span>
 								<span id="artistImgArea">
+									<%
+										if(acibean.getSi_picture() != null) {
+									%>
 									<img width="208" height="208"
 										src="./upload/starpost/singerProfile/<%=acibean.getSi_picture()%>"
 										alt="">
+									<%
+										}
+										else {
+									%>
+									<img width="208" height="208" src="" alt="">
+									<%
+										}
+									%>
 							</span>
 							</span>
 						</div>

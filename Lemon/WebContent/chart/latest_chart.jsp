@@ -175,7 +175,7 @@
 								<tr>
 									<td>
 										<div class="wrap t_right">
-											<input type="checkbox" title="Make Up (Feat. Crush) 곡 선택"
+											<input type="checkbox" title=""
 												class="input_check " name="input_check" value="31376041">
 										</div>
 									</td>
@@ -187,10 +187,8 @@
 									</td>
 									<td style="width: 60px;">
 										<div class="wrap">
-											<a href="./LemonDetai.ct" title="Sun And Moon Part.1"
-												class="image_typeAll"> <img
-												onerror="WEBPOCIMG.defaultAlbumImg(this);" width="60"
-												height="60"
+											<a href="./LemonDetai.ct?mu_num=<%=cb.getMu_num()%>&pageNum=<%=pageNum%>" title="Sun And Moon Part.1"
+												class="image_typeAll"> <img width="60" height="60"
 												src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>"
 												alt="<%=cb.getMusic_name()%>"> <span
 												class="bg_album_frame"></span>
@@ -212,7 +210,7 @@
 												</div>
 												<br>
 												<div class="ellipsis rank02">
-													<a href="#" title="샘김 (SAM KIM) - 페이지 이동">아이유</a>
+													<a href="#" title="<%=cb.getMusicfile().split("-")[0]%>"><%=cb.getMusicfile().split("-")[0]%></a>
 												</div>
 
 											</div>
@@ -222,16 +220,17 @@
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank03">
-													<a href="./LemonDetai.ct" title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
+													<a
+														href="./LemonDetai.ct?mu_num=<%=cb.getMu_num()%>&pageNum=<%=pageNum%>"
+														title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
 												</div>
 											</div>
 										</div>
 									</td>
 									<td>
 										<div class="wrap" style="text-align: center">
-											<button type="button" class="button_etc like"
-												title="Make Up (Feat. Crush) 좋아요" data-song-no="31376041"
-												data-song-menuid="18030123">
+											<button type="button" class="button_etc like" title=""
+												data-song-no="" data-song-menuid="">
 												<span class="odd_span"><i class="fa fa-heart-o"></i><span
 													class="cnt">3,409</span></span>
 											</button>
@@ -248,7 +247,8 @@
 									</td>
 									<td>
 										<div class="wrap t_center">
-											<button type="button" title="담기" class="button_icons scrap">
+											<button type="button" title="담기" class="button_icons scrap"
+												onclick="location.href='./UserPlaylistUP.ct?mu_num=<%=cb.getMu_num()%>'">
 												<i class="fa  fa-plus"></i><span class="none">담기</span>
 											</button>
 										</div>

@@ -67,14 +67,14 @@
 					<!-- https://blog.naver.com/horu_kaya/221033455801 -->
 					<select name="singer_solo_group" size="1">
 						<option disabled="disabled">솔로/그룹</option>
-						<option value="solo" class="singer_solo_group_solo">솔로</option>
-						<option value="group" class="singer_solo_group_group">그룹</option>
+						<option value="솔로" class="singer_solo_group_solo">솔로</option>
+						<option value="그룹" class="singer_solo_group_group">그룹</option>
 					</select>
 					<select name="singer_gender" size="1">
 						<option disabled="disabled">성별</option>
-						<option value="woman">여성</option>
-						<option value="man">남성</option>
-						<option value="mixed_gender">혼성</option>
+						<option value="여성">여성</option>
+						<option value="남성">남성</option>
+						<option value="혼성">혼성</option>
 					</select>
 				</td>
 			</tr>

@@ -50,72 +50,70 @@ public class MusicUploadAction implements Action {
 		MusicDAO mdao = new MusicDAO();
 		AlbumBean ab = new AlbumBean();
 		while (files.hasMoreElements()) {
-			String musicfile = (String)files.nextElement();
+			String musicfile = (String) files.nextElement();
 
-//			System.out.println(musicfile);
+			// System.out.println(musicfile);
 			File f = multi.getFile(musicfile);
 			MP3File mp3 = (MP3File) AudioFileIO.read(f);
 			AudioFile af = AudioFileIO.read(f);
-			
+
 			Tag tag = mp3.getTag();
 			String title = tag.getFirst(FieldKey.TITLE);
 			String artist = tag.getFirst(FieldKey.ARTIST);
 			String album = tag.getFirst(FieldKey.ALBUM);
-			album=album.replace("?", "");
-			album=album.trim();
+			album = album.replace("?", "");
+			album = album.trim();
 			String year = tag.getFirst(FieldKey.YEAR);
-			if(year.length()<8){
-				year="20180229";
+			if (year.length() < 8) {
+				year = "20180229";
 				// 2월29일(실제로 존재하지 않는 날) 로 설정된 앨범에 대해서는 따로 발매일 업데이트 해주어야함
 			}
 			year = year.replace(".", "");
 			year = year.trim();
-			year = Integer.toString(Integer.parseInt(year)+1);
+			year = Integer.toString(Integer.parseInt(year) + 1);
 			String genre = tag.getFirst(FieldKey.GENRE);
 			String Lyrics = tag.getFirst(FieldKey.LYRICS);
 			String track = tag.getFirst(FieldKey.TRACK);
 			musicfile = multi.getFilesystemName(musicfile);
 
-			 
-			
+			/*
+			 * System.out.println("musicfile : " + musicfile);
+			 * System.out.println("Song Name : " + title);
+			 * System.out.println("Artist : " + artist);
+			 * System.out.println("Album : " + album);
+			 * System.out.println("Year : " + year);
+			 * System.out.println("Genre : " + genre);
+			 * System.out.println("Lyrics : " + Lyrics);
+			 * System.out.println("track : "+track);
+			 */
 
-/*			System.out.println("musicfile : " + musicfile);
-			System.out.println("Song Name : " + title);
-			System.out.println("Artist : " + artist);
-			System.out.println("Album : " + album);
-			System.out.println("Year : " + year);
-			System.out.println("Genre : " + genre);
-			System.out.println("Lyrics : " + Lyrics);
-			System.out.println("track : "+track);*/
-					
 			int duration = af.getAudioHeader().getTrackLength();
-			int minute = duration/60;
-			int second = duration%60;
-			String musictime;
-			if(second<10){				
-				musictime=minute+":0"+second;
-			}else{
-				musictime=minute+":"+second;
-			}
-			
-//			System.out.println("음악 길이 : "+musictime);
-	
+			// int minute = duration/60;
+			// int second = duration%60;
+			String musictime = String.valueOf(duration);
+			// if(second<10){
+			// musictime=minute+":0"+second;
+			// }else{
+			// musictime=minute+":"+second;
+			// }
+
+			// System.out.println("음악 길이 : "+musictime);
 
 			Artwork art = tag.getFirstArtwork();
-			BufferedImage bi = (BufferedImage)art.getImage();
-			BufferedImage thumb = new BufferedImage(bi.getWidth(),bi.getHeight(),BufferedImage.TYPE_INT_RGB);
-			Graphics2D g=thumb.createGraphics();
-			g.drawImage((BufferedImage)art.getImage(), 0, 0, bi.getWidth(),bi.getHeight(),null);
+			BufferedImage bi = (BufferedImage) art.getImage();
+			BufferedImage thumb = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
+			Graphics2D g = thumb.createGraphics();
+			g.drawImage((BufferedImage) art.getImage(), 0, 0, bi.getWidth(), bi.getHeight(), null);
 			realpath = ctx.getRealPath("/musicUpload/albumcover/");
-			File filex = new File(realpath+album+".jpg");
-			ImageIO.write(thumb, "jpg", filex );
-			
+			File filex = new File(realpath + album + ".jpg");
+			ImageIO.write(thumb, "jpg", filex);
+
 			ab.setAl_name(album);
-			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");	
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			Date d = new Date(format.parse(year).getTime());
 			ab.setAl_release(d);
-			ab.setAl_art_img(album+".jpg");
-			
+			ab.setAl_art_img(album + ".jpg");
+
 			mb.setMusic_name(title);
 			mb.setLyrics(Lyrics);
 			mb.setMusicfile(musicfile);

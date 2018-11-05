@@ -6,23 +6,21 @@ public class ArtistChanelPhotoBean {
 	/*
 	 * CREATE TABLE `artist_photo`
 	 * (
-	 * 		`ar_num` int(11) NOT NULL AUTO_INCREMENT, // 사진 번호
-	 * 		`ar_subject` varchar(200) DEFAULT NULL, // 제목
-	 * 		`ar_content` text, // 내용
-	 * 		`ar_registerdate` date DEFAULT NULL, // 등록 날짜
-	 * 		`ar_readcount` int(11) DEFAULT NULL, // 조회수
-	 * 		`ar_singer_num` int(11) NOT NULL, // 가수
-	 * 		`ar_photo` text, // 사진
+	 * 		`ar_num` int(11) NOT NULL AUTO_INCREMENT,
+	 * 		`ar_subject` varchar(200) DEFAULT NULL,
+	 * 		`ar_content` text,
+	 * 		`ar_registerdate` date DEFAULT NULL,
+	 * 		`ar_readcount` int(11) DEFAULT NULL,
+	 * 		`ar_singer_num` int(11) NOT NULL,
+	 * 		`ar_photo` text,
 	 * 		PRIMARY KEY (`ar_num`),
-	 * 			CONSTRAINT `ar_singer_num_fk`
-	 * 				FOREIGN KEY (`ar_num`)
-	 * 					REFERENCES `singer` (`si_num`)
-	 * 					ON
-	 * 						DELETE CASCADE ON UPDATE CASCADE
+	 * 		KEY `ar_singer_num_fk_idx` (`ar_singer_num`),
+	 * 		CONSTRAINT `ar_singer_num_fk`
+	 * 			FOREIGN KEY (`ar_singer_num`)
+	 * 				REFERENCES `singer` (`si_num`)
+	 * 					ON DELETE CASCADE ON UPDATE CASCADE
 	 * )
-	 * ENGINE=InnoDB
-	 * DEFAULT CHARSET=utf8mb4
-	 * COLLATE=utf8mb4_0900_ai_ci
+	 * ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 	 */
 
 	private int ar_num; // 번호
@@ -80,7 +78,7 @@ public class ArtistChanelPhotoBean {
 	public void setAr_singer_num(int ar_singer_num) {
 		this.ar_singer_num = ar_singer_num;
 	}
-	
+
 	public String getAr_photo() {
 		return ar_photo;
 	}

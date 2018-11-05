@@ -1,28 +1,44 @@
+<%@page import="com.lemon.chart.db.ChartBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>레몬 Lemon</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css">
-    <!-- 메인 / 메뉴 슬라이더 -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<meta charset="UTF-8">
+<title>레몬 Lemon</title>
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/main_menu_bxslider.css">
+<!-- 메인 / 메뉴 슬라이더 -->
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/footer.css">
 
-    <link rel="stylesheet" type="text/css" href="./assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/cahart/chart.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/cahart/chartCapy.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/chart/chart.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/chart/chartCapy.css">
 
-    <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
-    <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript"
+	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 </head>
+<%
+	//request.setAttribute("cb", cb);
+	ChartBean cb = (ChartBean) request.getAttribute("cb");
+%>
 <body>
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<div id="cont_wrap" class="clfix">
@@ -34,12 +50,11 @@
 			<div class="section_info">
 				<div class="wrap_info">
 					<div class="thumb">
-						<a href="#" title="Golden Child 3rd Mini Album [WISH] 앨범이미지 "
-							class="image_typeAll" id="d_album_org"> <img
+						<a href="#" title="" class="image_typeAll" id="d_album_org"> <img
 							onerror="WEBPOCIMG.defaultAlbumImg(this);" width="282"
 							height="282"
-							src="https://cdnimg.melon.co.kr/cm/album/images/102/15/695/10215695_500.jpg?f3da599c96bc5d25c1317307276da016/melon/quality/80/optimize"
-							alt=""> <span class="bg_album_frame"></span>
+							src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>" alt="">
+							<span class="bg_album_frame"></span>
 						</a>
 						<button type="button" title="듣기" class="button_icons type05 play"
 							onclick="#">
@@ -53,25 +68,24 @@
 						<div class="info">
 							<span class="gubun"> [EP] </span>
 							<div class="song_name">
-								<strong class="none">앨범명</strong> Golden Child 3rd Mini Album
-								[WISH]
+								<strong class="none">앨범명</strong>
+								<%=cb.getAl_name()%>
 							</div>
 							<div class="artist">
-								<a href="javascript:melon.link.goArtistDetail('1907513')"
-									title="골든차일드" class="artist_name"><span>골든차일드</span>
-								</a>
+								<a href="#"
+									title="" class="artist_name"><span>이름 필요</span> </a>
 							</div>
 						</div>
 						<div class="meta">
 							<dl class="list">
 								<dt>발매일</dt>
-								<dd>2018.10.24</dd>
+								<dd><%=cb.getAl_release() %></dd>
 								<dt>장르</dt>
-								<dd>Dance, Ballad</dd>
-								<dt>발매사</dt>
+								<dd><%=cb.getMusic_genre() %></dd>
+								<!-- <dt>발매사</dt>
 								<dd>로엔엔터테인먼트</dd>
 								<dt>기획사</dt>
-								<dd>울림 엔터테인먼트</dd>
+								<dd>울림 엔터테인먼트</dd> -->
 							</dl>
 						</div>
 						<div class="button d_album_like">
@@ -82,26 +96,23 @@
 								<span class="odd_span">좋아요</span> <span id="d_like_count"
 									class="cnt">2,057</span>
 							</button>
-							<button type="button" title="앨범다운" class="btn"
-								onclick="#">
+							<!-- <button type="button" title="앨범다운" class="btn" onclick="#">
 								<span class="button_icons download type03"></span> <span
 									class="text">앨범다운</span> <span
 									class="button_icons arrow_link02"></span>
 							</button>
 
-							<button type="button" title="FLAC앨범다운" class="btn "
-								onclick="#">
+							<button type="button" title="FLAC앨범다운" class="btn " onclick="#">
 								<span class="button_icons download type03"></span> <span
 									class="text">FLAC앨범다운</span> <span
 									class="button_icons arrow_link02"></span>
 							</button>
 
-							<button type="button" title="선물하기" class="btn"
-								onclick="#">
+							<button type="button" title="선물하기" class="btn" onclick="#">
 								<span class="button_icons type03 gift"></span> <span
 									class="text">선물하기</span> <span
 									class="button_icons arrow_link02"></span>
-							</button>
+							</button> -->
 
 						</div>
 						<div class="share">
@@ -187,8 +198,7 @@
 								<dd>
 									<div class="wrap_sns">
 										<button type="button" title="친구에게 음악메시지 보내기"
-											class="bullet_icons sns frend"
-											onclick="#">
+											class="bullet_icons sns frend" onclick="#">
 											<span class="none">친구</span>
 										</button>
 										<button type="button" title="페이스북" id="albumFacebook"
@@ -327,9 +337,10 @@
 									<div class="wrap">
 										<div class="wrap_song_info">
 											<div class="ellipsis rank03">
-												<a href=#"
-													title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon
-													Part.1</a>
+												<a href=#
+													"
+													title="Sun And Moon Part.1 - 페이지 이동">Sun
+													And Moon Part.1</a>
 											</div>
 										</div>
 									</div>
@@ -543,9 +554,8 @@
 
 						<li>
 							<div class="thumb">
-								<a
-									href="#"
-									title="꽃 (LIKE A FLOWER) - 페이지 이동" class="image_typeAll"> <img
+								<a href="#" title="꽃 (LIKE A FLOWER) - 페이지 이동"
+									class="image_typeAll"> <img
 									onerror="WEBPOCIMG.defaultMvImg(this);" width="237"
 									height="139"
 									src="https://cdnimg.melon.co.kr/cm/mv/images/wide/501/92/226/50192226_640.jpg/melon/resize/480/quality/80/optimize"
@@ -554,10 +564,8 @@
 							</div>
 							<div class="entry">
 								<div class="info">
-									<a
-										href="#"
-										class="ellipsis album_name" title="비디오상세 이동">꽃 (LIKE A
-										FLOWER)</a> <span class="ellipsis artist"> <a
+									<a href="#" class="ellipsis album_name" title="비디오상세 이동">꽃
+										(LIKE A FLOWER)</a> <span class="ellipsis artist"> <a
 										href="javascript:melon.link.goArtistDetail('861430');"
 										title="엔플라잉 (N.Flying) - 페이지 이동" class="artist_name">엔플라잉
 											(N.Flying)</a>
@@ -582,9 +590,7 @@
 
 						<li>
 							<div class="thumb">
-								<a
-									href="#"
-									title="꽃 (LIKE A FLOWER) (Teaser) - 페이지 이동"
+								<a href="#" title="꽃 (LIKE A FLOWER) (Teaser) - 페이지 이동"
 									class="image_typeAll"> <img
 									onerror="WEBPOCIMG.defaultMvImg(this);" width="237"
 									height="139"
@@ -594,11 +600,9 @@
 							</div>
 							<div class="entry">
 								<div class="info">
-									<a
-										href="#"
-										class="ellipsis album_name" title="비디오상세 이동">꽃 (LIKE A
-										FLOWER) (Teaser)</a> <span class="ellipsis artist"> <a
-										href="javascript:melon.link.goArtistDetail('861430');"
+									<a href="#" class="ellipsis album_name" title="비디오상세 이동">꽃
+										(LIKE A FLOWER) (Teaser)</a> <span class="ellipsis artist">
+										<a href="javascript:melon.link.goArtistDetail('861430');"
 										title="엔플라잉 (N.Flying) - 페이지 이동" class="artist_name">엔플라잉
 											(N.Flying)</a>
 									</span>
