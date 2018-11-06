@@ -284,83 +284,98 @@ h2.f_tit {
 }
 
 /*------------------------------------*/
+/*             관리자 모드                              */
+/*------------------------------------*/
+/* 관리자 영역 */
+.wrap_dtl_atist .wrap_intst {
+	float: left;
+	position: relative;
+	width: 240px;
+	min-height: 208px;
+	margin-left: 25px;
+	padding-left: 24px;
+	border-left: 1px solid #e6e6e6;
+	*z-index: 5;
+}
+
+/*------------------------------------*/
 /*                탭                                     */
 /*------------------------------------*/
 /* 탭 영역 */
 .wrap_tab_atist ul {
-    position: relative;
-    width: 1008px;
-    margin-top: 15px;
-    border-top: 2px solid #838383;
-    border-bottom: 1px solid #dbdbdb;
-    background: #eaefeb;
+	position: relative;
+	width: 1008px;
+	margin-top: 15px;
+	border-top: 2px solid #838383;
+	border-bottom: 1px solid #dbdbdb;
+	background: #eaefeb;
 }
 
 /* 탭 메뉴 */
 .wrap_tab_atist ul li {
-    float: left;
-    width: 110px;
-    border-right: 1px solid #dbdbdb;
-    border-left: 1px solid #ffffff;
-    height: 34px;
+	float: left;
+	width: 110px;
+	border-right: 1px solid #dbdbdb;
+	border-left: 1px solid #ffffff;
+	height: 34px;
 }
 
 .wrap_tab_atist ul li.first_child {
-    border-left: 0;
+	border-left: 0;
 }
 
 .wrap_tab_atist ul li a {
-    display: block;
-    position: relative;
-    padding: 10px 0 7px 0px;
-    color: #1b1b1b;
-    text-align: center;
+	display: block;
+	position: relative;
+	padding: 10px 0 7px 0px;
+	color: #1b1b1b;
+	text-align: center;
 }
 
 .wrap_tab_atist ul li.on a {
-    z-index: 3;
-    border-bottom: 1px solid #fff;
-    background-color: #fff;
-    color: #1a1a1a;
-    font-weight: bold;
-    height: 17px;
-    color: #EDAE06;
+	z-index: 3;
+	border-bottom: 1px solid #fff;
+	background-color: #fff;
+	color: #1a1a1a;
+	font-weight: bold;
+	height: 17px;
+	color: #EDAE06;
 }
 
 .wrap_tab_atist .icon_timeline {
-    display: block;
-    position: absolute;
-    top: 9px;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin-left: -10px;
-    text-indent: -9999px;
-    overflow: hidden;
+	display: block;
+	position: absolute;
+	top: 9px;
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	margin-left: -10px;
+	text-indent: -9999px;
+	overflow: hidden;
 }
 
 .wrap_tab_atist ul li.last_child {
-    width: 112px;
-    border-right: 0;
+	width: 112px;
+	border-right: 0;
 }
 
 .wrap_tab_atist ul:after {
-    content: "";
-    display: block;
-    clear: both;
-    height: 0;
-    visibility: hidden;
+	content: "";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
 }
 
 /*------------------------------------*/
 /*               폰트 색상                           */
 /*------------------------------------*/
 .fc_gray {
-    color: #333 !important;
+	color: #333 !important;
 }
 
 .fc_mgray {
-    color: #777 !important;
+	color: #777 !important;
 }
 
 /*------------------------------------*/
@@ -375,12 +390,12 @@ h2.f_tit {
 }
 
 .sort_info .wrap_sort {
-    margin-top: 3px;
+	margin-top: 3px;
 }
 
 .wrap_sort .ico_radio {
-    display: inline-block;
-    margin-right: 8px;
+	display: inline-block;
+	margin-right: 8px;
 }
 
 .ico_radio .icon {
@@ -448,97 +463,99 @@ h2.f_tit {
 /*              페이지 영역                            */
 /*------------------------------------*/
 .paginate {
-    margin-top: 24px;
-    text-align: center;
+	margin-top: 24px;
+	text-align: center;
 }
 
 .paginate a {
-    display: inline-block;
-    position: relative;
-    width: 24px;
-    height: 24px;
-    background-image: url("../../../assets/img/artistChanel/artist_chanel_btn_paginate.png");
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	background-image:
+		url("../../../assets/img/artistChanel/artist_chanel_btn_paginate.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	vertical-align: middle;
 }
 
 .paginate .btn_first {
-    background-position: 0 0;
-    margin-right: -2px;
+	background-position: 0 0;
+	margin-right: -2px;
 }
 
 .paginate .btn_first.disabled {
-    background-position: 0 -108px;
-    margin-right: -2px;
+	background-position: 0 -108px;
+	margin-right: -2px;
 }
 
 .paginate a span {
-    border: none;
-    font-size: 0;
-    line-height: 0;
+	border: none;
+	font-size: 0;
+	line-height: 0;
 }
 
 .paginate .btn_pre {
-    background-position: -26px 0;
+	background-position: -26px 0;
 }
 
 .paginate .btn_pre.disabled {
-    background-position: -26px -108px;
+	background-position: -26px -108px;
 }
 
 .paginate .page_num {
-    display: inline-block;
-    margin: 0 0 0 2px;
-    *margin: -1px 5px 0 1px;
-    color: #666;
-    font-size: 12px;
-    line-height: 1.2em;
-    font-family: "돋움","dotum",sans-serif, "Apple Gothic", sans-serif;
-    vertical-align: middle;
+	display: inline-block;
+	margin: 0 0 0 2px;
+	*margin: -1px 5px 0 1px;
+	color: #666;
+	font-size: 12px;
+	line-height: 1.2em;
+	font-family: "돋움", "dotum", sans-serif, "Apple Gothic", sans-serif;
+	vertical-align: middle;
 }
 
 .paginate .page_num strong {
-    position: relative;
-    display: inline-block;
-    padding: 5px 6px 3px;
-    border: 1px solid #EDAE06;
-    background-color: #fff;
-    font-weight: bold;
-    min-width: 10px;
-    margin-left: -1px;
-    color: #80ba00;
-    vertical-align: middle;
-    text-decoration: none;
-    z-index: 2;
+	position: relative;
+	display: inline-block;
+	padding: 5px 6px 3px;
+	border: 1px solid #EDAE06;
+	background-color: #fff;
+	font-weight: bold;
+	min-width: 10px;
+	margin-left: -1px;
+	color: #80ba00;
+	vertical-align: middle;
+	text-decoration: none;
+	z-index: 2;
 }
 
 .paginate .page_num a {
-    position: relative;
-    height: auto;
-    margin-left: -1px;
-    color: #666;
-    text-indent: 0;
-    background-image: url("../../../assets/img/artistChanel/artist_chanel_btn_paginate.png");
-    background-repeat: no-repeat;
-    background-position: 0 4px;
-    display: inline-block;
-    padding: 5px 7px 3px;
-    width: auto;
-    height: auto;
-    min-width: 18px;
-    font-weight: bold;
+	position: relative;
+	height: auto;
+	margin-left: -1px;
+	color: #666;
+	text-indent: 0;
+	background-image:
+		url("../../../assets/img/artistChanel/artist_chanel_btn_paginate.png");
+	background-repeat: no-repeat;
+	background-position: 0 4px;
+	display: inline-block;
+	padding: 5px 7px 3px;
+	width: auto;
+	height: auto;
+	min-width: 18px;
+	font-weight: bold;
 }
 
 .paginate .btn_next {
-    background-position: -84px 0;
+	background-position: -84px 0;
 }
 
 .paginate .btn_next.disabled {
-    background-position: -84px -108px;
+	background-position: -84px -108px;
 }
 
 .paginate .btn_last {
-    background-position: -110px 0;
-    margin-left: -2px;
+	background-position: -110px 0;
+	margin-left: -2px;
 }

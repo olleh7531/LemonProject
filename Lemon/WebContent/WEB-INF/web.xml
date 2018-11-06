@@ -194,7 +194,6 @@
 		<servlet-name>LemonGoodController</servlet-name>
 		<url-pattern>*.go</url-pattern>
 	</servlet-mapping>
-
 	<!-- 검색 -->
 	<servlet>
 		<servlet-name>SearchFrontController</servlet-name>
