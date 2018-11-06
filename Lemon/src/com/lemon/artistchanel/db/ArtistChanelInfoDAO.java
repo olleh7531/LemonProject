@@ -3,6 +3,7 @@ package com.lemon.artistchanel.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.StringTokenizer;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -71,7 +72,7 @@ public class ArtistChanelInfoDAO {
 			sql = "insert into singer("
 						+ "si_num, activity_type, singer_name, debut_year,"
 						+ "debut_song, si_agency, si_picture, si_genre,"
-						+ "si_birth, si_gender, group_music_num"
+						+ "si_birth, si_gender, group_singer_num"
 					+ ")"
 					+ "values (?, ?, ?, ?,"
 						+ "?, ?, ?, ?,"
@@ -120,8 +121,8 @@ public class ArtistChanelInfoDAO {
 			System.out.println(acibean.getSi_gender());
 			
 			// 그룹 번호
-			pstmt.setString(11, acibean.getGroup_music_num());
-			System.out.println(acibean.getGroup_music_num());
+			pstmt.setString(11, acibean.getGroup_singer_num());
+			System.out.println(acibean.getGroup_singer_num());
 			
 			System.out.println("아티스트 정보 글쓰기");
 
@@ -210,8 +211,24 @@ public class ArtistChanelInfoDAO {
 				// 성별
 				acibean.setSi_gender(rs.getString("si_gender"));
 				
+
+				String g_singer_name="";
+				String group_num = rs.getString("group_singer_num").substring(1,rs.getString("group_singer_num").length()-1);
+				StringTokenizer g_number= new StringTokenizer(group_num,",");
+				while(g_number.hasMoreTokens()){
+					group_num = g_number.nextToken();
+					sql = "select singer_name from singer where si_num = ?";
+					
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, Integer.parseInt(group_num));
+					rs = pstmt.executeQuery();
+					while(rs.next()){
+						g_singer_name+=rs.getString("singer_name")+",";
+					}
+				}
 				// 그룹 번호
-				acibean.setGroup_music_num(rs.getString("group_music_num"));
+				acibean.setGroup_singer_num(g_singer_name);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

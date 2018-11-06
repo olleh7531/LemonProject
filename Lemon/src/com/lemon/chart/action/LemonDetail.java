@@ -1,5 +1,7 @@
 package com.lemon.chart.action;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,11 +20,18 @@ public class LemonDetail implements Action {
 
 		System.out.println("글 번호 : " + mu_num);
 		System.out.println("페이지 : " + pageNum);
-		
+
 		ChartDAO cdao = new ChartDAO();
 		ChartBean cb = cdao.selectMusizDetail(mu_num);
-		
+
+		System.out.println("이름 : " + cb.getAl_name());
+
+		String name = cb.getAl_name();
+
+		ArrayList<ChartBean> MusizList = cdao.DetailMusizName(name);
+
 		request.setAttribute("cb", cb);
+		request.setAttribute("MusizList", MusizList);
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("./chart/chart_detail.jsp");

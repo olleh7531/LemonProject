@@ -630,6 +630,7 @@ CREATE TABLE `singer` (
   `si_num` int(11) NOT NULL AUTO_INCREMENT,
   `activity_type` varchar(10) NOT NULL,
   `singer_name` varchar(200) DEFAULT NULL,
+  `real_name` varchar(200) DEFAULT NULL,
   `debut_year` date DEFAULT NULL,
   `debut_song` varchar(100) DEFAULT NULL,
   `si_agency` varchar(100) DEFAULT NULL,
@@ -689,4 +690,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-05 20:22:23
+-- Dump completed on 2018-11-06 17:41:46

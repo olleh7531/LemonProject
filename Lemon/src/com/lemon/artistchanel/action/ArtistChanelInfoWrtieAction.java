@@ -126,7 +126,7 @@ public class ArtistChanelInfoWrtieAction implements Action {
 				.println("ArtistChanelInfoWrtieAction.java singer_gender : " + infoMulti.getParameter("singer_gender"));
 
 		// 그룹 번호
-		acibean.setGroup_music_num((infoMulti.getParameter("singer_group_num")));
+		acibean.setGroup_singer_num(infoMulti.getParameter("singer_group_num"));
 		System.out.println(
 				"ArtistChanelInfoWrtieAction.java singer_group_num : " + infoMulti.getParameter("singer_group_num"));
 

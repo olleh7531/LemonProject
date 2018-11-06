@@ -1,3 +1,4 @@
+<%@page import="java.util.StringTokenizer"%>
 <%@page import="java.sql.Date"%>
 <%@page import="com.lemon.artistchanel.db.ArtistChanelInfoDAO"%>
 <%@page import="com.lemon.artistchanel.db.ArtistChanelInfoBean"%>
@@ -38,9 +39,31 @@
 	// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
 	ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
 	
-	Date test1 = acibean.getDebut_year();
-	Date test2 = acibean.getSi_birth();
-
+	// 아티스트 명 / 기준 글자 자르기
+	// -> 예명 / 본명
+	String[] name = acibean.getSinger_name().split("/");
+	String name1 = ""; // 예명
+	String name2 = ""; // 본명
+	
+	name1 = name[0];
+	
+	if(name.length > 1)
+		name2 = name[1];
+	
+	// null일 때 처리 사항 관련
+		// 데뷔 날짜
+		Date debut_year = acibean.getDebut_year();
+		
+		// 생일
+		Date siger_birth = acibean.getSi_birth();
+		
+		// 소속사
+		String agency = acibean.getSi_agency();
+	
+		// 소속 그룹 번호 
+		String group_num = acibean.getGroup_singer_num();
+		group_num = group_num.substring(0,group_num.length()-1);
+		
 %>
 
 	<!-- 메뉴 -->
@@ -82,16 +105,6 @@
 						<!-- 아티스트 정보 -->
 						<div class="wrap_atist_info">
 							<p class="title_atist">
-								<%
-									// 아티스트 명 / 기준 글자 자르기
-									// -> 예명 / 본명
-									String[] name = acibean.getSinger_name().split("/");
-									String name1 = "";
-									String name2 = "";
-									name1 = name[0];
-									if(name.length > 1)
-										name2 = name[1];
-								%>
 								<strong class="none">아티스트명</strong><%=name1%>
 								<span class="realname">
 								<%if(!name2.equals("")) {%>
@@ -100,114 +113,70 @@
 								</span>
 							</p>
 							<dl class="atist_info clfix">
-							<%	if(test1!=null){%>
+								<%	if(debut_year != null) {%>
 								<dt>데뷔</dt>
-									<dd><%=test1%>
+									<dd><%=debut_year%>
 										<span class="gubun"></span>
 										<a href="" title="<%=acibean.getDebut_song()%> 재생" class="btn_play_song">
 											<span class="icon_play">곡재생</span>
 											<span class="songname12"><%=acibean.getDebut_song()%></span>
 										</a>
 									</dd>
-							<% } %>
-							<%	if(test2!=null){%>
+								<% } %>
+								<% if(siger_birth != null) {%>
 								<dt>생일</dt>
-									<dd><%=test2%></dd>
-									<% } %>
+									<dd><%=siger_birth%></dd>
+								<% } %>
 								<dt>활동유형</dt>
 									<dd><%=acibean.getActivity_type()%></dd>
+								<% if(!agency.equals("")) { %>
 								<dt>소속사</dt>
 									<dd><%=acibean.getSi_agency()%></dd>
+								<%} %>
 							</dl>
 						</div>
 						<!-- 아티스트 정보 -->
 						
 						<!-- 관리자 전용 -->
 						<div class="wrap_intst">
-							<!-- 팬 -->
 							<div class="fan_area">
-								<button type="button" title="이유 갓지(GOD G) 않은 이유 (박명수, 아이유) 팬맺기" class="btn_fan_b" data-artist-no="889388" data-target-id="d_like_count" data-artist-menuid="27060101" data-artist-cancel="true"><span class="odd_span">팬맺기</span></button><span class="cnt_fan_b"><span class="cnt_span"><span class="no" id="d_like_count">9,532</span>명</span></span>
-								<!-- 20131213 수정 _pom -->
-								<div class="fan_info none commerceBanner2" style="display:none;">
-									<p>아티스트의 팬이 되어 보세요.</p>
-										<ul>
-											<li>최근 소식을 받아 볼 수 있어요.</li>
-											<li>아티스트 순위에 기여할 수 있어요.</li>
-											<li>아티스트와 친밀도가 높아져요.</li>
-										</ul>
-										<span>다시보지 않기</span>
-										<button type="button" class="btn_close d_limit_btn" data-cookie-id="commerceBanner2">닫기</button>
-								</div>
-								<!-- //20131213 수정 _pom -->
 								<div class="list_userlk01">
 									<strong class="none">이 아티스트 팬</strong>
-									<ul class="clfix" id="artistTopLikeUserLayer">
-									
+									<ul class="clfix" id="artistTopLikeUserLayer">										
 										<li>
-											<a href="javascript:melon.link.goMyMusic(36991140)" title="이토록재밌는하루" class="box_userlk01" id="fan_36991140">
-												<span class="thumb">
-													<span class="thumb_frame"></span>
-													<img onerror="WEBPOCIMG.defaultMemberImg(this);" width="54" height="54" src="https://cdnimg.melon.co.kr/resource/image/web/default/noArtist_300_160727.jpg/melon/resize/54" alt="이토록재밌는하루 이미지">
-												</span>
-												<span class="memid">
-												
-												이토록재밌는하루</span>
+											<a href="" title="비디오 글쓰기" class="box_userlk01">
+												<span class="memid">비디오 글쓰기</span>
 											</a>
 										</li>
-									
 										<li>
-											<a href="javascript:melon.link.goMyMusic(21717629)" title="y2zzang" class="box_userlk01" id="fan_21717629">
-												<span class="thumb">
-													<span class="thumb_frame"></span>
-													<img onerror="WEBPOCIMG.defaultMemberImg(this);" width="54" height="54" src="https://cdnimg.melon.co.kr/resource/image/web/default/noArtist_300_160727.jpg/melon/resize/54" alt="y2zzang 이미지">
-												</span>
-												<span class="memid">
-												
-												y2zzang</span>
+											<a href="" title="비디오 수정" class="box_userlk01">
+												<span class="memid">비디오 수정</span>
 											</a>
 										</li>
-									
 										<li>
-											<a href="javascript:melon.link.goMyMusic(36038619)" title="아이유하투" class="box_userlk01" id="fan_36038619">
-												<span class="thumb">
-													<span class="thumb_frame"></span>
-													<img onerror="WEBPOCIMG.defaultMemberImg(this);" width="54" height="54" src="https://cdnimg.melon.co.kr/svc/user_images/user/361/39/36038619_86.jpg?tm=1541417112126" alt="아이유하투 이미지">
-												</span>
-												<span class="memid">
-												
-												아이유하투</span>
+											<a href="./AdminArtistChanelPhoto.ac" title="포토/스토리 글쓰기" class="box_userlk01">
+												<span class="memid">포토/스토리 글쓰기</span>
 											</a>
 										</li>
-									
 										<li>
-											<a href="javascript:melon.link.goMyMusic(36039194)" title="msm9902" class="box_userlk01" id="fan_36039194">
-												<span class="thumb">
-													<span class="thumb_frame"></span>
-													<img onerror="WEBPOCIMG.defaultMemberImg(this);" width="54" height="54" src="https://cdnimg.melon.co.kr/svc/user_images/user/361/40/36039194_86.jpg?tm=1541417112126" alt="msm9902 이미지">
-												</span>
-												<span class="memid">
-												
-												msm9902</span>
+											<a href="" title="포토/스토리 수정" class="box_userlk01">
+												<span class="memid">포토/스토리 수정</span>
 											</a>
 										</li>
-									
+										<li>
+											<a href="./AdminArtistChanelInfo.ac" title="소개 글쓰기" class="box_userlk01">
+												<span class="memid">소개 글쓰기</span>
+											</a>
+										</li>
+										<li>
+											<a href="" title="소개 수정" class="box_userlk01">
+												<span class="memid">소개 수정</span>
+											</a>
+										</li>
 									</ul>
 								</div>
 							</div>
 							<!-- //팬 -->
-							<!-- 친밀도 -->
-							<div class="intimacy" id="degreeType">
-								<a href="#" class="d_temp_more" title="나의 친밀도는 더보기">
-									<span class="temperature"><em>?</em></span>
-									<img src="https://cdnimg.melon.co.kr/resource/image/web/artist/btn_intimacy.png" alt="나와의 친밀도 더보기">
-								</a>
-							</div>
-							<!-- //친밀도 -->
-							<!-- 스마트 라디오 듣기 -->
-							<div class="intimacy smart_area">
-								<a href="javascript:smartRadio.playArtist('889388', 'N', '27180000');" title="이 아티스트로 스마트 라디오 듣기" class="btn_listen_radio"><img width="215" height="18" src="https://cdnimg.melon.co.kr/resource/image/web/artist/btn_smart_radio.png" alt="이 아티스트로 스마트 라디오 듣기"></a>
-							</div>
-							<!-- //스마트 라디오 듣기 -->
 						</div> <!-- 관리자 전용 -->
 					</div>
 				</div>
@@ -4241,9 +4210,9 @@
 					<div class="section_atistinfo03">
 						<h3 class="title line arr">활동정보</h3>
 						<dl class="list_define clfix">
-						<%	if(test1!=null){%>
+						<%	if(debut_year!=null){%>
 							<dt>데뷔</dt>
-								<dd><%=test1%></dd>
+								<dd><%=debut_year%></dd>
 							<dt>데뷔곡</dt>
 								<dd>
 									<a href="" class="ellipsis" title="<%=acibean.getDebut_song()%>"><%=acibean.getDebut_song()%></a>
@@ -4255,12 +4224,16 @@
 								</dd>
 							<dt>장르</dt>
 								<dd><%=acibean.getSi_genre()%></dd>
+							<% if(!agency.equals("")) { %>
 							<dt>소속사명</dt>
-								<dd><%=acibean.getSi_agency()%></dd>
+								<dd><%=agency%></dd>
+							<%} %>
+							<% if(!group_num.equals("")) { %>
 							<dt>소속그룹</dt>
 								<dd>
-									<a href=""><%=acibean.getGroup_music_num()%></a>
+									<a href=""><%=group_num%></a>
 								</dd>
+							<%} %>
 						</dl>
 						<!-- 그룹멤버 시작-->
 						
@@ -4272,17 +4245,23 @@
 					<!-- //활동정보 -->
 					
 					<!-- 신상정보 -->
+					<%if(!name2.equals("") || siger_birth!=null) { %>
 					<div class="section_atistinfo04">
 						<h3 class="title line arr">신상정보</h3>
 						<dl class="list_define clfix">
+							<%
+								if(!name2.equals("")) {
+							%>
 							<dt>본명</dt>
 								<dd><%=name2%></dd>
-								<%	if(test2!=null){%>
+							<%} %>
+							<% if(siger_birth!=null){%>
 							<dt>생일</dt>
-								<dd><%=test2%></dd>
-								<%} %>
+								<dd><%=siger_birth%></dd>
+							<%} %>
 						</dl>
 					</div> <!-- //신상정보 -->
+					<%} %>
 				</div> <!-- 상세정보 -->
 			</div>
 		</div>

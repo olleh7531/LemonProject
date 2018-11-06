@@ -27,7 +27,7 @@
 						<span class="odd_span">자동검색 펼침</span>
 					</button>
 					<!-- open/close 클래스 사용 -->
-					<button type="button" class="btn_icon search_m" title="검색">
+					<button type="button" class="btn_icon search_m" title="검색" onclick="location='./search.sc'">
 						<span class="odd_span">검색</span>
 					</button>
 					<div class="auto_complete" id="top_search_autocomplete">
