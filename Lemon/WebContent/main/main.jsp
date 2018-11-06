@@ -27,8 +27,7 @@
 	<script type="text/javascript" src="./assets/js/main/main_login.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 	
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	
 
 	
@@ -1443,7 +1442,7 @@
 								</div>
 								
 								<div class="main_naver_login">
-									<div id="naver_id_login"></div>
+									<div id="naverIdLogin"></div>
 <!-- 									<a href="./member/loginForm.jsp">네이버 로그인</a> -->
 								</div>
 
@@ -3101,14 +3100,20 @@
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
-	  <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("u_l9OH4U_bgTtjEq1yu_", "http://localhost:8088/Lemon/member/callbackNaver.jsp");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 2,40);
-//   	naver_id_login.setDomain("YOUR_SERVICE_URL");
-  	naver_id_login.setState(state);
-  	naver_id_login.init_naver_id_login();
-  </script>
+<script type="text/javascript">
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "GZJyb8Yn7TxRCuHu2w07",
+			callbackUrl: "http://localhost:8088/Lemon/MemberJoin.mb",
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 1, height: 15} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
+	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	naverLogin.init();
+
+</script>
 	
 
 	

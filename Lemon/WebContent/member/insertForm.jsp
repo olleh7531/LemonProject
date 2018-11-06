@@ -151,10 +151,8 @@ function check() {
 		</div>
 		
 		<article class="mnMembers pgJoinEmail">
-			<form id="joinform" method="post" action="./MemberJoinAction.mb" 
-			enctype="multipart/form-data" name="fr" onsubmit="return check()">
-				<input type='hidden' id='code' value="<%=code%>"/>
-			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr">
+				<input type='hidden' id='code' value="<%=code%>">
+			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr" onsubmit="return check()">
 				<input type='hidden' id='code'/>x
 				<%if(email_id != null) { %>
 					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
