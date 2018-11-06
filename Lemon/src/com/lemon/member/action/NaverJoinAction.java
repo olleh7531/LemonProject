@@ -69,7 +69,7 @@ public class NaverJoinAction implements Action{
 		
 		ActionForward forward = new ActionForward();
 		
-		forward.setPath("main.mi");
+		forward.setPath("CallbackNaver.mb");
 		forward.setRedirect(true);
 		
 		return forward;	
