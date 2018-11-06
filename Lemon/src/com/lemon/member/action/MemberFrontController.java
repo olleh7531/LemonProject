@@ -189,6 +189,34 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/checkNick.jsp");
 			forward.setRedirect(false);
 			
+		} else if(command.equals("/CallbackNaver.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/callbackNaver.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/NaverloginAction.mb")){
+			action = new NaverloginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/NaverJoin.mb")){
+			// 회원정보 변경 메뉴 선택
+			forward = new ActionForward();
+			forward.setPath("./member/naverInsertForm.jsp");
+			forward.setRedirect(false);
+			
+		}else if (command.equals("/NaverJoinAction.mb")) {
+			// 회원가입 처리
+			action = new NaverJoinAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		

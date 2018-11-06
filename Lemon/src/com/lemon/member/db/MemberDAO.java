@@ -573,6 +573,8 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
 			
+			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				check = 1;
 			}
@@ -584,4 +586,40 @@ public class MemberDAO {
 		
 		return check;
 	}
+
+	public void insertNMember(MemberBean mb){
+		try {
+			con = getCon();
+			sql = "insert into member(email_id, name, nickname, gender, "
+					+ "birth, level, img, register_datetime, register_ip, " + "is_deny, chk, email_cert, receive_email)"
+					+ "values(?,?,?,?," + "?,?,?,now(),?" + ",?,?,?,?)";
+
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, mb.getEmail_id());
+			pstmt.setString(2, mb.getName());
+			pstmt.setString(3, mb.getNickname());
+			pstmt.setString(4, mb.getGender());
+
+			pstmt.setString(5, mb.getBirth());
+			pstmt.setInt(6, 0); // level (admin=1, other=0)
+			pstmt.setString(7, mb.getImg());
+			// now()로 reg_date 입력
+			pstmt.setString(8, mb.getReg_ip());
+
+			pstmt.setInt(9, 0); // is_deny=0
+			pstmt.setInt(10, mb.getChk()); // chk (google/naver=1, other=0)
+			pstmt.setInt(11, mb.getEmail_cert()); // email_crt=0;
+			pstmt.setInt(12, mb.getReceive_email());
+
+			pstmt.executeUpdate();
+
+			System.out.println("naver insert 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	
 }

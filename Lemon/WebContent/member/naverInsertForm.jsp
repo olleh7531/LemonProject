@@ -1,144 +1,95 @@
-<%@page import="java.util.Random"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html lang="ko">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1" />
-
-<title>Lemon::음악이 필요한 순간, 레몬</title>
-
-<link rel="stylesheet" href="./assets/css/member/insertMember.css" type="text/css" />
-
-<script type="text/javascript" src="./assets/js/member/join_main_checkAll.js" ></script>
-<script type="text/javascript" src="./assets/js/member/join_main.js" ></script>
-<script type="text/javascript" src="./assets/js/member/nickCheck.js" ></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NaverLogin Page</title>
+	<link rel="stylesheet" href="./assets/css/member/insertMember.css" type="text/css" />
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-
-<script type="text/javascript">
-function check() {
-	// 아이디 입력 유무 확인
-	if(!document.fr.email_1.value) {
-		alert("이메일을 입력하세요");
-		document.fr.email_1.focus();
-		return false;
-	}
-	
-	// 아이디 유효성 검사
-	for(var i = 0; i < document.fr.email_1.value.length; i++) {
-		var ch = document.fr.email_1.value.charAt(i)
-		if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
-			alert("이메일에는 대/소문자, 숫자만 입력가능합니다.");
-			document.fr.email_1.focus();
-			document.fr.email_1.select();
-			return false;
-			}
-		}
-	
-	// 비밀번호 입력 유무 확인
-	if(!document.fr.password.value) {
-		alert("비밀번호를 입력하세요");
-		document.fr.password.focus();
-		document.fr.password.select();
-		return false;
-	}
-	
-	// 비밀번호 길이 체크(4~16자)
-	if(document.fr.password.value.length<4 || document.fr.password.value.length>16) {
-		alert("비밀번호를 4~16자리까지 입력해주세요");
-		document.fr.password.focus();
-		document.fr.password.select();
-		return false;
-	}
-	
-	/* if(!document.fr.passwordCheck.value) {
-		alert("비밀번호 확인을 입력하세요");
-		document.fr.passwordCheck.focus();
-		return false;
-	}
-	
-	// 비밀번호와 비밀번호 확인이 같은지 검사		
-	if(document.fr.pass.value != document.fr.passwordCheck.value) {
-		alert("비밀번호와 비밀번호 확인이 같지 않습니다 \n다시 확인해주세요");
-		return false;
-	} */
-	
-	if(!document.fr.name.value) {
-		alert("이름을 입력하세요");
-		document.fr.name.focus();
-		document.fr.name.select();
-		return false;
-	}
-	
-	if(!document.fr.nickname.value) {
-		alert("닉네임을 입력하세요");
-		document.fr.nickname.focus();
-		document.fr.nickname.select();
-		return false;
-	}
-	
-	// 닉네임 길이 체크 (2~10자)
-	if (document.fr.nickname.value.length<2 || document.fr.id.value.length>10) {
-		alert("닉네임을 2~10자까지 입력해주세요.")
-		document.fr.nickname.focus();
-		document.fr.nickname.select();
-		return false;
-	}
-	
-	// 닉네임에 공백 사용하지 않기
-	if (document.fr.nickname.value.indexOf(" ") >= 0) {
-		alert("닉네임에 공백을 사용할 수 없습니다.");
-	 	document.fr.nickname.focus();
-		document.fr.nickname.select();
-		return false;
-	}
-	
-	if(!document.fr.birth.value) {
-		alert("생년월일을 입력하세요");
-		document.fr.birth.focus();
-		return false;
-	}
-}
-
-</script>
 </head>
-
 <body>
-	<%
-		String email_id = (String) request.getParameter("email_id");
-		String name = (String) request.getParameter("name");
-		
- 		/*난수 생성*/
- 		StringBuffer temp = new StringBuffer();
-		
-		Random rnd = new Random();
-		for (int i = 0; i < 6; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0:
-				// a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1:
-				// A-Z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2:
-				// 0-9
-				temp.append((rnd.nextInt(10)));
-				break;
+<div id="naverIdLogin" style="display: none;"></div>
+	<!-- (2) LoginWithNaverId Javscript SDK -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+	
+	<!-- (3) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+	<script>
+	function check_all0() {
+		if(document.fr.joinCheckAll.checked){
+			document.fr.check1.checked=true;
+			document.fr.check2.checked=true;
+			document.fr.check3.checked=true;
+			document.fr.check4.checked=true;
+			document.fr.check5.checked=true;
+		}else{
+			document.fr.check1.checked=false;
+			document.fr.check2.checked=false;
+			document.fr.check3.checked=false;
+			document.fr.check4.checked=false;
+			document.fr.check5.checked=false;
+		}
+	}
+	
+	function check_all1(id){
+		if(!document.getElementById(id).checked)
+			document.fr.joinCheckAll.checked=false;
+		else if(<%for (int i = 1; i < 5; i++) {
+					if (i < 4) {%>		
+			document.fr.check<%=i%>.checked&&
+			<%} else {%>	document.fr.check<%=i%>.checked)<%}
+				}%>{
+			document.fr.joinCheckAll.checked=true;
+		}
+	}
+	
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "GZJyb8Yn7TxRCuHu2w07",
+				callbackUrl: "http://localhost:8088/Lemon/NaverJoin.mb",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 60}
 			}
-		} 
+		);
+		/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+		naverLogin.init();
 		
-		String code = temp.toString();
-		System.out.println("code : " + code);
- 		/*난수 생성*/
-	%>
+		/* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
+// 		$("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
 
-	<div id="wrap" class="join">
+		/* (5) 현재 로그인 상태를 확인 */
+		window.addEventListener('load', function () {
+			naverLogin.getLoginStatus(function (status) {
+				if (status) {
+					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+					setLoginStatus();
+				}
+			});
+		});
+
+		/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+		function setLoginStatus() {
+			var email = naverLogin.user.getEmail();
+			var name = naverLogin.user.getName();
+			var gender = naverLogin.user.getGender();
+			if(gender=="M"){
+				$("#gender1").attr('checked', 'checked');
+			}else{
+				$("#gender2").attr('checked', 'checked');				
+			}
+			
+			$("#email").val(email);
+			$("#name").val(name);
+			/* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
+/* 			$("#gnbLogin").click(function () {
+				naverLogin.logout();
+				location.reload();
+			}); */
+		}
+	</script>
+
+<div id="wrap" class="join">
 		<!-- header -->
 		<div id="member_header">
 			<!-- GNB -->
@@ -151,85 +102,30 @@ function check() {
 		</div>
 		
 		<article class="mnMembers pgJoinEmail">
-				<input type='hidden' id='code' value="<%=code%>">
-			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr" onsubmit="return check()">
-				<input type='hidden' id='code'/>
-				<%if(email_id != null) { %>
-					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
-					<input type='hidden' id='email_cert' name="email_cert" value="<%=1%>"/>
-				<%} %>
+			<form id="joinform" method="post" action="./NaverJoinAction.mb" enctype="multipart/form-data" name="fr" onsubmit="return check()">
+					<input type='hidden' id='chk' name="chk" value="1"/>
+					<input type='hidden' id='email_cert' name="email_cert" value="1"/>
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
 					
 						<label for="email" class="lb">이메일</label>
 						<div class="col">
-							<%if(email_id == null) { %>
-							<input type="hidden" name="chk" value="0">
-							<div class="formPadding">
-								<div class="formItem">
-									<input type="text" id="email_1" name="email_1"/>
-								</div>
-								<span class="at">@</span>
-							</div>
 							
-							<select id="email_2" name="email_2">
-								<option value="@naver.com">naver.com</option>
-								<option value="@google.com">google.com</option>
-								<option value="@hanmail.net">hanmail.net</option>
-								<option value="@daum.net">daum.net</option>
-								<option value="@nate.com">nate.com</option>
-								<option value="@gmail.com">gmail.com</option>
-								<option value="@hotmail.com">hotmail.com</option>
-								<option value="@lycos.co.kr">lycos.co.kr</option>
-								<option value="@empal.com">empal.com</option>
-								<option value="@cyworld.com">cyworld.com</option>
-								<option value="@yahoo.co.kr">yahoo.co.kr</option>
-								<option value="@paran.com">paran.com</option>
-								<option value="@dreamwiz.com">dreamwiz.com</option>
-							</select>
-							
-							<%} else {%>
 							<div class="formPadding">
-								<input type="text" id="email_1" name="email_1" value="<%=email_id %>" readonly style="width: 346px"/>
-								<input type="hidden" id="email_2" name="email_2" value="" />
+								<input type="text" id="email" name="email" value="" readonly style="width: 346px"/>
 							</div>
-							<%} %>
 							
 						</div>
 						<!-- 공통 : 안내 문구 처리 시 desc 비노출 -->
-						<p class="desc">이메일은 결제내역 받기, 비밀번호 찾기 등에 사용되므로 정확하게 입력해 주세요.</p>
-							<%if(email_id == null) {
-								// 일반 회원 가입일 때
-							%>
-							<div id="authBox" style="display: block; height:70px; border: 1px solid blue">
-								<input type="button" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
-							</div>
-							<%} %>
 					</div>
 					
-					<%if(email_id == null) { %>
-						<div class="row">
-							<label for="password" class="lb">비밀번호</label>
-							<div class="col" id="divPassword">
-								<div class="placeholderForm">
-									<input type="password" id="password" name="password" placeholder="비밀번호 입력">
-								</div>
-							</div>
-							
-							<p class="desc" id="descPassword">4~16자 영문 대,소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
-							
-						</div>
-					<%} %>
 					
 					<div class="row" id="divName">
 						<label for="Name" class="lb">이름</label>
 						<div class="col">
 							<div class="placeholderForm">
-								<%if(email_id == null) { %>
-								<input type="text" id="name" name="name" maxlength="12" />
-								<%} else {%>
-								<input type="text" id="name" name="name" value="<%=name %>" readonly />
-								<%} %>
+
+								<input type="text" id="name" name="name" value="" readonly />
 							</div>
 						</div>
 					</div>
@@ -241,7 +137,7 @@ function check() {
 								<input type="text" id="nickname" name="nickname" maxlength="12"/>
 							</div>
 						</div>
-						<span id="idchk" class="desc"></span></td>
+						<span id="idchk" class="desc"></span>
 						<p class="desc">레몬 회원들과 감상을 나눌 수 있는 별명으로 사용됩니다.</p>
 					</div>
 
@@ -259,17 +155,18 @@ function check() {
 						<label for="birthDt" class="lb">생년월일</label>
 						<div class="col">
 							<div class="placeholderForm" id="divBirthDt">
-								<input type="date" id="birth" name="birth"/>
+								<input type="date" id="birth" name="birth" />
 							</div>
 						</div>
 					</div>
+
 					
 					<div class="row jender" id="divGender">
 						<label for="gender" class="lb">성별</label>
 						<div class="col">
-							<input type="radio" id="gender" name="gender" value="남" checked/>
+							<input type="radio" id="gender1" name="gender" value="남" />
 							<label for="남">남</label>
-							<input type="radio" id="gender" name="gender" value="여" />
+							<input type="radio" id="gender2" name="gender" value="여" />
 							<label for="여">여</label>
 						</div>
 					</div>
@@ -279,20 +176,20 @@ function check() {
 					<legend>회원 가입 약관 체크</legend>
 
 					<p>
-						<input type="checkbox" id="joinCheckAll" name="joinCheckAll" onclick="oncheck()">
+						<input type="checkbox" id="joinCheckAll" name="joinCheckAll" onclick="check_all0()">
 						<label for="allTermsAgree">아래 내용에 모두 동의합니다.</label>
 					</p>
 
 					<ul>
-						<li><input type="checkbox" id="userTermsAgree" name="userTermsAgree" />
+						<li><input type="checkbox" id="check1" name="check1" onclick="check_all1(id)"/>
 							<label for="userTermsAgree">이용약관에 동의합니다.</label></li>
-						<li id="privacyTerms"><input type="checkbox" id="privacyTermsAgree" name="privacyTermsAgree" />
+						<li id="privacyTerms"><input type="checkbox" id="check2" name="check2" onclick="check_all1(id)"/>
 							<label for="privacyTermsAgree">개인정보 수집 및 이용에 대한 안내에 동의합니다.</label></li>
-						<li><input type="checkbox" id="mailTermsAgree" name="mailTermsAgree" />
+						<li><input type="checkbox" id="check3" name="check3" onclick="check_all1(id)"/>
 								<label for="mailTermsAgree">(선택) 레몬 소식, 이벤트 등 홍보/알림 메일 수신에 동의합니다.</label></li>
-						<li><input type="checkbox" id="bugsprivacyTermsAgree" name="bugsprivacyTermsAgree" />
+						<li><input type="checkbox" id="check4" name="check4" onclick="check_all1(id)"/>
 								<label for="bugsprivacyTermsAgree">(선택) 레몬 홍보성 개인정보 수집/이용에 동의합니다.</label></li>
-						<li><input type="checkbox" id="bugsInfoTermsAgree" name="bugsInfoTermsAgree" />
+						<li><input type="checkbox" id="check5" name="check5" onclick="check_all1(id)"/>
 								<label for="bugsInfoTermsAgree">(선택) 레몬 홍보성 제3자 정보 제공에 동의합니다.</label></li>
 					</ul>
 				</fieldset>
@@ -310,7 +207,7 @@ function check() {
 							<button class="tabBugsServiceAgree"
 									onClick	="javascript:tabBugsServiceAgree();return false;">서비스 상품 약관</button>
 						</div>
-						<div class="summary" tabindex="0">
+						<div class="summary" >
 							<div id="bugsAgreeZone">
 								<strong>제1장. 총칙</strong> <strong id="agree1">제 1 조 (목적)</strong>
 								<p>본 약관은 회원이 ㈜아이티윌(이하 “회사”라 합니다)에서 제공하는 유무선 인터넷 음악포탈 레몬
@@ -324,7 +221,7 @@ function check() {
 
 					<aside id="privacy" class="agreement">
 						<h1>개인정보 수집 및 이용에 대한 안내</h1>
-						<div class="summary" tabindex="0">
+						<div class="summary" >
 							<strong id="privacy4">개인정보의 수집목적 및 이용목적</strong>
 							<p>회사는 수집한 개인정보를 다음의 목적으로 활용합니다.</p>
 							<ul class="depth1">
@@ -343,7 +240,7 @@ function check() {
 							</ul>
 						</div>
 
-						<div class="summary" tabindex="0">
+						<div class="summary" >
 							<strong id="privacy3">개인정보의 수집범위 및 수집방법</strong>
 							<ul class="depth1">
 								<li>1. 회사는 회원가입, 상담, 서비스 신청 등 서비스 제공 및 계약이행을 위해 아래와 같이
@@ -363,7 +260,7 @@ function check() {
 							</ul>
 						</div>
 
-						<div class="summary" tabindex="0">
+						<div class="summary">
 							<strong id="privacy9">개인정보의 보관기간 및 이용기간</strong>
 							<ul class="depth1">
 								<li>1. 이용자의 개인정보는 개인정보의 수집목적 또는 제공받은 목적이 달성되면 파기됩니다. 회원이
@@ -423,7 +320,7 @@ function check() {
 
 					<aside id="bugsPrivacy" class="agreement">
 						<h1>레몬 홍보성 개인정보 수집/이용에 대한 안내</h1>
-						<div class="summary" tabindex="0">
+						<div class="summary" >
 							<ul class="depth1 privacyManage">
 								<li>1. 앱가드(보안솔루션) 설치 시
 									<ul>
@@ -440,7 +337,7 @@ function check() {
 
 					<aside id="bugsInfo" class="agreement">
 						<h1>레몬 홍보성 제3자 정보 제공에 대한 안내</h1>
-						<div class="summary" tabindex="0">
+						<div class="summary" >
 							<ul class="depth1 privacy3rdProvide">
 								<li>- 개인정보를 제공받는 자: 아이티엔페이코(주)</li>
 								<li>- 제공항목: 광고ID, 이용자 단말기 내 설치된 어플리케이션 정보(앱 설치·실행시각 포함)</li>
@@ -485,98 +382,7 @@ function check() {
 			</p>
 		</div>
 		<!-- //footer -->
-
-		<script type="text/javascript">
-			function chkEmail(){
-				var authBox = document.getElementById("authBox");
-				var email = $('#email_1').val()+$('#email_2').val();
-				
-				authBox.innerHTML=
-				"<div style='display: block; height:70px; border: 1px solid red'>"
-				+"<input type='text' id='abc'/>"
-				+"<input type='button' id='test' value='확인' onclick='test1()'/>"	
-				+"<input type='button' class='chkEmail' value='이메일 인증' onclick='chkEmail()' >"
-				+"<input type='hidden' name='email_cert' value='0'/>"
-				+"</div>";
-				
-				$.ajax({
-					type : "POST", // method="POST" 방식으로 출력 
-					url : "./MemberSendJoinMailAction.mb", // id 체크하는 jsp 파일 주소 불러오기 
-					data : {
-						email_id : email,
-						code : $('#code').val(),
-						email_id : $('#email_1').val()+$('#email_2').val()
-					},
-					success : function(data) { // data를 가져오는 것이 성공하였을 때
-					    alert(email+"주소로 인증메일을 발송하였습니다.");
-						if(data == "fail"){
-							alert("메일 발송이 실패하였습니다.")
-						}else{
-						alert("이메일 발송 성공");
-						data = data.trim();
-						document.getElementById("code").value=data;
-							
-						}
-					},
-					error : function(xhr, status, error) { // 에러났을 때
-						alert("error : " + error);
-					}
-				});
-			}
-			
-			function test1(){
-				var tt = document.getElementById("code").value;
-				var abc = document.getElementById("abc").value;
-				var authBox = document.getElementById("authBox");
-
-				alert('test1');
-				alert(tt);
-				alert(abc);
-				if(abc == tt && tt.length == 6){
-					alert("성공!!!");	
-					authBox.innerHTML="<p>인증 성공하였습니다.</p><input type='hidden' name='email_cert' value='1'/>";
-
-				}
-			}
-			
-			function oncheck(){
-				var checkBox = document.getElementById("joinCheckAll");
-				if(checkBox.checked == true){
-					document.getElementById("userTermsAgree").checked = true;
-					document.getElementById("privacyTermsAgree").checked = true;
-					document.getElementById("mailTermsAgree").checked = true;
-					document.getElementById("bugsprivacyTermsAgree").checked = true;
-					document.getElementById("bugsInfoTermsAgree").checked = true;
-				}else {
-					document.getElementById("userTermsAgree").checked = false;
-					document.getElementById("privacyTermsAgree").checked = false;
-					document.getElementById("mailTermsAgree").checked = false;
-					document.getElementById("bugsprivacyTermsAgree").checked = false;
-					document.getElementById("bugsInfoTermsAgree").checked = false;
-				}
-			}
-		</script>
-	</div>
-	<script type="text/javascript" src="./assets/js/member/joinMember.js"></script>
-	<script type="text/javascript">
-	$(function(){
-	    $('#nickname').blur(function(){
-	        $.ajax({
-	            type:"POST",
-	            url:"./NicknameCheck.mb",
-	            data:{
-	                "nickname": $('#nickname').val()
-	            },
-	            success:function(data){
-	                if($.trim(data) == "YES"){
-	                    $('#idchk').html('<b style="font-size:11px;color:blue">닉네임 사용이 가능합니다.</b>');
-	                }else{
-	                    $('#idchk').html('<b style="font-size:11px;color:red">닉네임 사용이 불가능합니다.</b>');
-	                }
-	            }
-	        });    
-	    });
-	});
-	</script>
+		</div>
+		
 </body>
 </html>

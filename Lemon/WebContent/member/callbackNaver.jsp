@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>NaverLoginSDK</title>
+		<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
@@ -20,7 +21,7 @@
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "GZJyb8Yn7TxRCuHu2w07",
-				callbackUrl: "http://localhost:8088/Lemon/MemberJoin.mb",
+				callbackUrl: "http://localhost:8088/Lemon/NaverJoin.mb",
 				isPopup: false,
 				callbackHandle: true
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
@@ -37,8 +38,7 @@
 					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
 					var email = naverLogin.user.getEmail();
 					var name = naverLogin.user.getName();
-					var birthday = naverLogin.user.getBirthday();
-					var gender = naverLogin.user.getGenderl();
+					var gender = naverLogin.user.getGender();
 					
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
@@ -50,19 +50,38 @@
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
 						naverLogin.reprompt();
 						return;
-					}else if(birthday == undefined || birthday == null){
-						alert("생일은 필수정보입니다. 정보제공을 동의해주세요.");
-						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-						naverLogin.reprompt();
-						return;
 					}else if(gender == undefined || gender == null){
 						alert("성별은 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
 						naverLogin.reprompt();
 						return;
 					}
-
-					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/Lemon/MemberJoin.mb");
+					
+					
+					if(email != undefined && email != null){
+						
+					$.ajax({
+						type : "POST", // method="POST" 방식으로 출력 
+						url : "./NaverloginAction.mb", // id 체크하는 jsp 파일 주소 불러오기 
+						data : {
+							email : email,
+						},
+						success : function(data) { // data를 가져오는 것이 성공하였을 때
+							if(data == 1){
+					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/Lemon/MemberLoginAction.mb?email_id="+email+"");
+								
+							}else{
+					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/Lemon/NaverJoin.mb");
+								
+							}
+						},
+						error : function(xhr, status, error) { // 에러났을 때
+							alert("error : " + error);
+						}
+					});
+					
+					}
+					
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}

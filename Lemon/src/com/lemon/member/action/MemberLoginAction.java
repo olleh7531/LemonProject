@@ -15,6 +15,8 @@ public class MemberLoginAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberLoginAction의 execute 호출");
 		
+		HttpSession session = request.getSession();
+		
 		MemberDAO mdao = new MemberDAO();		
 		
 		String email_id = request.getParameter("email_id");
@@ -26,6 +28,9 @@ public class MemberLoginAction implements Action {
 		//		
 		//	}
 
+		int naverchk = mdao.chkCheck(email_id);
+		
+		if(naverchk==0||naverchk==-1){
 		String pass = request.getParameter("pass");
 		
 		int check = mdao.idCheck(email_id, pass);
@@ -57,11 +62,13 @@ public class MemberLoginAction implements Action {
 			return null;
 		}
 		
+		}
 	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.mi		
-		HttpSession session = request.getSession();
+
 		session.setAttribute("email_id", email_id);
 		session.setAttribute("nickname", mb.getNickname());
-
+			
+		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./main.mi");
