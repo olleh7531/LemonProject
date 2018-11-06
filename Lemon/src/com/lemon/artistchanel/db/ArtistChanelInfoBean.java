@@ -16,13 +16,12 @@ public class ArtistChanelInfoBean {
 	 * 		`si_genre` text,
 	 * 		`si_birth` date DEFAULT NULL,
 	 * 		`si_gender` varchar(5) DEFAULT NULL,
-	 * 		`group_music_num` text,
+	 * 		`group_singer_num` text,
 	 * 		PRIMARY KEY (`si_num`)
 	 * )
 	 * ENGINE=InnoDB
-	 * 		AUTO_INCREMENT=2
 	 * 		DEFAULT CHARSET=utf8mb4
-	 * 		COLLATE=utf8mb4_0900_ai_ci
+	 * 			COLLATE=utf8mb4_0900_ai_ci
 	 */
 
 	private int si_num; // 가수 번호
@@ -35,7 +34,7 @@ public class ArtistChanelInfoBean {
 	private String si_genre; // 노래 장르
 	private Date si_birth; // 생일
 	private String si_gender; // 성별
-	private String group_music_num; // 그룹 번호
+	private String group_singer_num; // 그룹 번호
 
 	public int getSi_num() {
 		return si_num;
@@ -117,11 +116,11 @@ public class ArtistChanelInfoBean {
 		this.si_gender = si_gender;
 	}
 
-	public String getGroup_music_num() {
-		return group_music_num;
+	public String getGroup_singer_num() {
+		return group_singer_num;
 	}
 
-	public void setGroup_music_num(String group_music_num) {
-		this.group_music_num = group_music_num;
+	public void setGroup_singer_num(String group_singer_num) {
+		this.group_singer_num = group_singer_num;
 	}
 }
