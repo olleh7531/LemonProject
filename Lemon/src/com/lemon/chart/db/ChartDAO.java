@@ -48,7 +48,7 @@ public class ChartDAO {
 		}
 	}
 
-	public List getChart() {
+	public List<ChartBean1> getChart(int hour) {
 		// 1시간단위 차트
 		List<ChartBean1> arr = new ArrayList<ChartBean1>();
 		ChartBean1 cb = null;
@@ -63,16 +63,16 @@ public class ChartDAO {
 
 			// sql 쿼리
 			sql = "select ch_music_num from chart where ch_updatetime =  DATE_SUB"
-					+ "(DATE_FORMAT(now(),'%Y-%m-%d %H'),	INTERVAL 1 HOUR)  "
+					+"(DATE_FORMAT(now(),'%Y-%m-%d %"+hour+"'),	INTERVAL 1 HOUR)  "
 					+ "group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 
 			// pstmt 객체 실행
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				sql = "select * from chart where ch_num=? AND ch_updatetime between "
-						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'),	INTERVAL 1 DAY)"
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				sql ="select * from chart where ch_num=? AND ch_updatetime between "
+						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),	INTERVAL 24 HOUR)"
 						+ "and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 HOUR)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, rs.getInt("ch_music_num"));
