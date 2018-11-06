@@ -52,32 +52,32 @@ public class ChartDAO {
 		// 1시간단위 차트
 		List<ChartBean1> arr = new ArrayList<ChartBean1>();
 		ChartBean1 cb = null;
-/*		최근 1시간 select 먼저 해서 높은그룹 3개를 뽑고
-		(playcnt와downcnt 를 정렬한뒤 각각 limit로 3개를 가져온다
-		 그 후 playcnt*4 + downcnt*6 을 하여 6개중 높은 3개의 nun을 구한다)
-		-> where을 이용해 쿼리하나로 변경
-		높은 3개의 그룹에 대하여 24시간을 select를 하고
-		*4+*6을 한뒤 차트에서는 상수가 아닌 %의 그래프를 보여준다*/
+		/*
+		 * 최근 1시간 select 먼저 해서 높은그룹 3개를 뽑고 (playcnt와downcnt 를 정렬한뒤 각각 limit로 3개를
+		 * 가져온다 그 후 playcnt*4 + downcnt*6 을 하여 6개중 높은 3개의 nun을 구한다) -> where을
+		 * 이용해 쿼리하나로 변경 높은 3개의 그룹에 대하여 24시간을 select를 하고 4+*6을 한뒤 차트에서는 상수가 아닌 %의
+		 * 그래프를 보여준다
+		 */
 		try {
 			con = getCon();
 
 			// sql 쿼리
 			sql = "select ch_music_num from chart where ch_updatetime =  DATE_SUB"
-					+"(DATE_FORMAT(now(),'%Y-%m-%d %H'),	INTERVAL 1 HOUR)  "
+					+ "(DATE_FORMAT(now(),'%Y-%m-%d %H'),	INTERVAL 1 HOUR)  "
 					+ "group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 
 			// pstmt 객체 실행
-			rs=pstmt.executeQuery();
-			while(rs.next()){
-				sql ="select * from chart where ch_num=? AND ch_updatetime between "
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				sql = "select * from chart where ch_num=? AND ch_updatetime between "
 						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'),	INTERVAL 1 DAY)"
 						+ "and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 HOUR)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, rs.getInt("ch_music_num"));
-				rs=pstmt.executeQuery();
-				while(rs.next()){
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
 					cb = new ChartBean1();
 					cb.setCh_num(rs.getInt("ch_num"));
 					cb.setCh_music_num(rs.getInt("ch_music_num"));
@@ -101,8 +101,8 @@ public class ChartDAO {
 		ChartBean ch = null;
 		try {
 			con = getCon();
-			sql = "select * from album a inner join music b where "
-					+ "b.album_num = a.al_num order by a.al_release desc  limit ?,?;";
+			sql = "select * from album a inner join music b "
+					+ "on b.album_num = a.al_num GROUP BY al_name order by a.al_release desc  limit ?,?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -217,6 +217,44 @@ public class ChartDAO {
 			CloseDB();
 		}
 		return cb;
+	}
+
+	public ArrayList<ChartBean> DetailMusizName(String name) {
+		ChartBean cb = null;
+		ArrayList<ChartBean> MusizList = new ArrayList<>();
+		System.out.println("이름 DAO :" + name);
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b on b.album_num = a.al_num where a.al_name = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cb = new ChartBean();
+				cb.setAl_num(rs.getInt("al_num"));
+				cb.setAl_name(rs.getString("al_name"));
+				cb.setAl_release(rs.getDate("al_release"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				cb.setAl_agency(rs.getString("al_agency"));
+				cb.setAl_content(rs.getString("al_content"));
+				cb.setMu_num(rs.getInt("mu_num"));
+				cb.setMusic_name(rs.getString("music_name"));
+				cb.setLyrics(rs.getString("lyrics"));
+				cb.setMusicfile(rs.getString("musicfile"));
+				cb.setMusic_genre(rs.getString("music_genre"));
+				cb.setMusic_time(rs.getString("music_time"));
+				cb.setSinger_num(rs.getInt("singer_num"));
+				cb.setAlbum_num(rs.getInt("album_num"));
+				cb.setTrack_num(rs.getInt("track_num"));
+				cb.setMusic_video(rs.getString("music_video"));
+				MusizList.add(cb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return MusizList;
 	}
 
 }

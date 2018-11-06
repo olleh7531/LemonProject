@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.lemon.chart.db.ChartBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -38,6 +39,7 @@
 <%
 	//request.setAttribute("cb", cb);
 	ChartBean cb = (ChartBean) request.getAttribute("cb");
+	ArrayList MusizList = (ArrayList) request.getAttribute("MusizList");
 %>
 <body>
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -72,16 +74,16 @@
 								<%=cb.getAl_name()%>
 							</div>
 							<div class="artist">
-								<a href="#"
-									title="" class="artist_name"><span>이름 필요</span> </a>
+								<a href="#" title="" class="artist_name"><span>이름 필요</span>
+								</a>
 							</div>
 						</div>
 						<div class="meta">
 							<dl class="list">
 								<dt>발매일</dt>
-								<dd><%=cb.getAl_release() %></dd>
+								<dd><%=cb.getAl_release()%></dd>
 								<dt>장르</dt>
-								<dd><%=cb.getMusic_genre() %></dd>
+								<dd><%=cb.getMusic_genre()%></dd>
 								<!-- <dt>발매사</dt>
 								<dd>로엔엔터테인먼트</dd>
 								<dt>기획사</dt>
@@ -254,7 +256,7 @@
 								</th>
 								<th scope="col">
 									<div class="wrap t_center">
-										<span class="rank">NO</span>
+										<span class="rank">번호</span>
 									</div>
 								</th>
 								<th scope="col">
@@ -266,9 +268,9 @@
 								<th scope="col">
 									<div class="wrap pd_l_12">곡정보</div>
 								</th>
-								<th scope="col">
+								<!-- <th scope="col">
 									<div class="wrap pd_l_12">앨범</div>
-								</th>
+								</th> -->
 								<th scope="col">
 									<div class="wrap pd_l_30">좋아요</div>
 								</th>
@@ -287,6 +289,11 @@
 							</tr>
 						</thead>
 						<tbody>
+							<%
+								for (int i = 0; i < MusizList.size(); i++) {
+									ChartBean mcb = (ChartBean) MusizList.get(i);
+									int a = i + 1;
+							%>
 							<tr>
 								<td>
 									<div class="wrap t_right">
@@ -297,7 +304,7 @@
 
 								<td>
 									<div class="wrap t_center" style="color: #000;">
-										<span class="rank ">1</span><span class="none">위</span>
+										<span class="rank "><%=a%></span>
 									</div>
 								</td>
 								<td style="width: 60px;">
@@ -305,9 +312,8 @@
 										<a href="#" title="Sun And Moon Part.1" class="image_typeAll">
 											<img onerror="WEBPOCIMG.defaultAlbumImg(this);" width="60"
 											height="60"
-											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/120/quality/80/optimize"
-											alt="Sun And Moon Part.1 - 페이지 이동"> <span
-											class="bg_album_frame"></span>
+											src="./musicUpload/albumcover/<%=mcb.getAl_art_img()%>"
+											alt=""> <span class="bg_album_frame"></span>
 										</a>
 									</div>
 								</td>
@@ -321,19 +327,18 @@
 									<div class="wrap">
 										<div class="wrap_song_info">
 											<div class="ellipsis rank01">
-												<span> <a href="#" title="Make Up (Feat. Crush) 재생">Make
-														Up (Feat. Crush)</a>
+												<span> <a href="#" title="<%=mcb.getMusic_name()%>"><%=mcb.getMusic_name()%></a>
 												</span>
 											</div>
 											<br>
 											<div class="ellipsis rank02">
-												<a href="#" title="샘김 (SAM KIM) - 페이지 이동">샘김 (SAM KIM)</a>
+												<a href="#" title="샘김 (SAM KIM) - 페이지 이동"><%=mcb.getMusicfile().split("-")[0]%></a>
 											</div>
 
 										</div>
 									</div>
 								</td>
-								<td>
+								<!-- <td>
 									<div class="wrap">
 										<div class="wrap_song_info">
 											<div class="ellipsis rank03">
@@ -344,7 +349,7 @@
 											</div>
 										</div>
 									</div>
-								</td>
+								</td> -->
 								<td>
 									<div class="wrap" style="text-align: center">
 										<button type="button" class="button_etc like"
@@ -388,6 +393,10 @@
 									</div>
 								</td>
 							</tr>
+							<%
+								}
+							%>
+
 						</tbody>
 
 					</table>

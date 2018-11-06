@@ -171,12 +171,14 @@
 										for (int i = 0; i < chartList.size(); i++) {
 											ChartBean cb = (ChartBean) chartList.get(i);
 											int a = i + 1;
-								%>
+								%><%=cb.getMu_num()%>
+								<%-- <input type="hidden" id="go_text_num"
+									value="<%=cb.getMu_num()%>"> --%>
 								<tr>
 									<td>
 										<div class="wrap t_right">
-											<input type="checkbox" title=""
-												class="input_check " name="input_check" value="31376041">
+											<input type="checkbox" title="" class="input_check "
+												name="input_check" value="31376041">
 										</div>
 									</td>
 
@@ -187,8 +189,10 @@
 									</td>
 									<td style="width: 60px;">
 										<div class="wrap">
-											<a href="./LemonDetai.ct?mu_num=<%=cb.getMu_num()%>&pageNum=<%=pageNum%>" title="Sun And Moon Part.1"
-												class="image_typeAll"> <img width="60" height="60"
+											<a
+												href="./LemonDetai.ct?mu_num=<%=cb.getMu_num()%>&pageNum=<%=pageNum%>"
+												title="Sun And Moon Part.1" class="image_typeAll"> <img
+												width="60" height="60"
 												src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>"
 												alt="<%=cb.getMusic_name()%>"> <span
 												class="bg_album_frame"></span>
@@ -230,7 +234,8 @@
 									<td>
 										<div class="wrap" style="text-align: center">
 											<button type="button" class="button_etc like" title=""
-												data-song-no="" data-song-menuid="">
+												data-song-no="" data-song-menuid=""
+												onclick="goodMusic(<%=cb.getMu_num()%>)">
 												<span class="odd_span"><i class="fa fa-heart-o"></i><span
 													class="cnt">3,409</span></span>
 											</button>
@@ -585,6 +590,44 @@
 				$('#' + activeTab).addClass('current');
 			})
 		});
+	</script>
+	<script type="text/javascript">
+		/* $(document).ready(function() {
+			$('#GoodMusic').click(function() {
+				$.ajax({
+					type : "POST",
+					url : "./GoodMusicAction.go"
+				})
+				data: {
+					go_num: $("#go_text_num").val();
+				},
+				success : function(data) {
+					if (data == 1) {
+						$("#comment").val("");
+						select_comment();
+					}
+				},
+			});
+		}); */
+		
+		function goodMusic(num){
+			$.ajax({
+				type : "POST",
+				url : "./GoodMusicAction.go",
+				data: {
+					go_num: num
+				},
+				success : function(data) {
+					if (data == 1) {
+						
+					}
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			})
+			
+		}
 	</script>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
