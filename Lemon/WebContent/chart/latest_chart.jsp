@@ -236,7 +236,7 @@
 												data-song-no="" data-song-menuid=""
 												onclick="goodMusic(<%=cb.getMu_num()%>)">
 												<span class="odd_span"><i class="fa fa-heart-o"></i><span
-													class="cnt">213</span></span>
+													class="cnt"><%=cb.getMu_good() %></span></span>
 											</button>
 										</div>
 									</td>

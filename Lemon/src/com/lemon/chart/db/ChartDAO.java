@@ -124,7 +124,7 @@ public class ChartDAO {
 				ch.setMusic_video(rs.getString("music_video"));
 				ch.setMusicfile(rs.getString("musicfile"));
 				ch.setSinger_num(rs.getInt("singer_num"));
-				ch.setTrack_num(rs.getInt("track_num"));
+				ch.setTrack_num(rs.getInt("track_num"));					
 				chartList.add(ch);
 			}
 		} catch (Exception e) {
@@ -257,14 +257,43 @@ public class ChartDAO {
 		return MusizList;
 	}
 
-	public int GoodList(int al_num) {
+	public ArrayList<ChartBean> GoodList(ArrayList<ChartBean> chart) {
+		// ArrayList<Integer> GoodNum = new ArrayList<>();
+		ArrayList<ChartBean> Chart = new ArrayList<ChartBean>();
+		try {
+			con = getCon();
+			sql = "select count(*) from good where go_text_num = ?";
+			
+			int GoodNum = 0;
+			for (int i = 0; i < chart.size(); i++) {
+				ChartBean cb = chart.get(i);
+				
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, cb.getMu_num());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					cb.setMu_good(rs.getInt(1));
+				}
+				Chart.add(cb);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return Chart;
+	}
+/*	public int GoodList(int mu_num) {
 		int goodList = 0;
 		// ArrayList<Integer> GoodNum = new ArrayList<>();
 		try {
 			con = getCon();
-			sql = "select count(*) from good where go_text_num = ?;";
+			sql = "select count(*) from good where go_text_num = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, al_num);
+			pstmt.setInt(1, mu_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				goodList = rs.getInt(1);
@@ -278,5 +307,5 @@ public class ChartDAO {
 		}
 		return goodList;
 	}
-
+*/
 }

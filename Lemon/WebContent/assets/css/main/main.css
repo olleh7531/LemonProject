@@ -799,8 +799,8 @@ legend, #IE8#HACK {
 .main_naver_login a {
 	display: block;
 	padding-left: 16px;
-	background-image:
-		url("../../../assets/img/main/login/main_login_naver.png");
+/* 	background-image:
+		url("../../../assets/img/main/login/main_login_naver.png"); */
 	background-repeat: no-repeat;
 	background-size: 11px 11px;
 	background-position: 1px 3px;
