@@ -23,6 +23,23 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/search/common.css">
 	
 	<style type="text/css">
+	h3.title{
+		margin-bottom: 12px;
+	    color: #1a1a1a;
+	    font-weight: bold;
+	    font-size: 18px;
+	    line-height: 24px;
+	    font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+	}
+	
+	h3.title span.cnt{
+		color: #666;
+	}
+	
+	.wrap_cntt{
+		border-top: 1px solid #ccc;
+	} 
+	
 	</style>
 </head>
 <body>
@@ -36,8 +53,16 @@
 			<div id="contsSc">			
 			
 			<div class="section_artist">
-				<h3 class="title">아티스트</h3>
-				<div class="wrap_cntt"></div>
+				<h3 class="title">아티스트
+					<span class="cnt">(482)</span>
+				</h3>
+				<div class="wrap_cntt">aaaaa</div>
+				<div class="btn_link">
+					<a href="#">
+						<span></span>
+						<span></span>
+					</a>
+				</div>
 			</div>
 <!-- 			<div class="section_song"> -->
 <!-- 			</div> -->
