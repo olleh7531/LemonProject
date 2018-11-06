@@ -257,4 +257,26 @@ public class ChartDAO {
 		return MusizList;
 	}
 
+	public int GoodList(int al_num) {
+		int goodList = 0;
+		// ArrayList<Integer> GoodNum = new ArrayList<>();
+		try {
+			con = getCon();
+			sql = "select count(*) from good where go_text_num = ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, al_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				goodList = rs.getInt(1);
+				// GoodNum.add(goodList);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return goodList;
+	}
+
 }

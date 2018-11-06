@@ -67,6 +67,7 @@
 </head>
 <%
 	ArrayList chartList = (ArrayList) request.getAttribute("chartList");
+	/* int inta = ((Integer) request.getAttribute("inta")).intValue(); */
 	String pageNum = (String) request.getAttribute("pageNum");
 	int count = ((Integer) request.getAttribute("count")).intValue();
 	int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
@@ -171,9 +172,7 @@
 										for (int i = 0; i < chartList.size(); i++) {
 											ChartBean cb = (ChartBean) chartList.get(i);
 											int a = i + 1;
-								%><%=cb.getMu_num()%>
-								<%-- <input type="hidden" id="go_text_num"
-									value="<%=cb.getMu_num()%>"> --%>
+								%>
 								<tr>
 									<td>
 										<div class="wrap t_right">
@@ -237,7 +236,7 @@
 												data-song-no="" data-song-menuid=""
 												onclick="goodMusic(<%=cb.getMu_num()%>)">
 												<span class="odd_span"><i class="fa fa-heart-o"></i><span
-													class="cnt">3,409</span></span>
+													class="cnt">213</span></span>
 											</button>
 										</div>
 									</td>
@@ -618,8 +617,11 @@
 					go_num: num
 				},
 				success : function(data) {
-					if (data == 1) {
-						
+					alert(data);
+					if(data == 0){
+						alert("좋아요 반영되었습니다.");
+					}else if(data == 1){
+						alert("좋아요 취소되었습니다.");
 					}
 				},
 				error : function(xhr, status, error) {

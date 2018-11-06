@@ -65,6 +65,11 @@ public class GoodDAO {
 					pstmt.executeUpdate();
 					check = 0;
 				} else {
+					sql = "delete from good where go_user_email= ? AND go_text_num = ?;";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user);
+					pstmt.setInt(2, go_text_num);
+					pstmt.executeUpdate();
 					check = 1;
 				}
 

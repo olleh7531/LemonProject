@@ -19,9 +19,13 @@ public class GoodMusicAction implements Action {
 		int go_text_num = Integer.parseInt(request.getParameter("go_num"));
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email_id");
+
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
 		if (user == null) {
 			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
+			out = response.getWriter();
 			out.println("<script>");
 			out.println(" alert('로그인이 해주세요. ');");
 			out.println(" history.back(); ");
@@ -33,25 +37,7 @@ public class GoodMusicAction implements Action {
 		GoodDAO gdao = new GoodDAO();
 		int check = gdao.MusicGoodUp(go_text_num, user);
 
-		if (check == -1) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println(" alert('노래가 없음');");
-			out.println(" history.back(); ");
-			out.println("</script>");
-			out.close();
-			return null;
-		} else if (check == 1) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println(" alert('로그인이 해주세요. ');");
-			out.println(" history.back(); ");
-			out.println("</script>");
-			out.close();
-			return null;
-		}
+		out.println(check);
 
 		return null;
 	}
