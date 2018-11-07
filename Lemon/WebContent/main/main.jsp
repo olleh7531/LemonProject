@@ -38,7 +38,6 @@
 	
 	// LoginAction에서 받아온 세션값 id 정보를 저장 
 	String email_id = (String) session.getAttribute("email_id");
-	String nickname = (String) session.getAttribute("nickname");
 	MemberDAO mdao = new MemberDAO();
 	String nickName = mdao.getNick(email_id);
 	System.out.println("email_id : " + email_id );

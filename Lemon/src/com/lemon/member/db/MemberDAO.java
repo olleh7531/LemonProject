@@ -453,7 +453,6 @@ public class MemberDAO {
 		} finally {
 			CloseDB();
 		}
-		System.out.println("getNick fun : " + nickname);
 		return nickname;
 	}
 	

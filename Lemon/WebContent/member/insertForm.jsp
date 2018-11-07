@@ -84,7 +84,6 @@ function check() {
 		document.fr.password.focus();
 		return false;
 	}
-	
 }
 
 </script>
@@ -242,7 +241,7 @@ function check() {
 						<label for="birthDt" class="lb">생년월일</label>
 						<div class="col">
 							<div class="placeholderForm" id="divBirthDt">
-								<input type="date" id="birth" name="birth"/>
+								<input type="date" id="birth" name="birth" min="1900-01-01" max="2018-01-01"/>
 							</div>
 						</div>
 					</div>

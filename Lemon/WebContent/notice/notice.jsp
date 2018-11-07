@@ -41,6 +41,7 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
+            	alert("성공");
 				$('.no_tbody').html(result);
             }, error:function() {
 				alert("실패");

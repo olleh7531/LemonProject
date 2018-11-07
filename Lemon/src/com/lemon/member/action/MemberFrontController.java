@@ -184,6 +184,23 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/memberFriend.jsp");
 			forward.setRedirect(false);
 			
+		} else if(command.equals("/findFriend.mb")){
+			action = new FindFriend();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/AddFriend.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/addFriend.jsp");
+			forward.setRedirect(false);
+			
+		} else if(command.equals("/FriendList.mb")){
+			forward = new ActionForward();
+			forward.setPath("./member/friendList.jsp");
+			forward.setRedirect(false);
+			
 		} else if(command.equals("/NicknameCheck.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/checkNick.jsp");
