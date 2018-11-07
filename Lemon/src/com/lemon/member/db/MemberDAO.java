@@ -187,9 +187,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				check = rs.getInt("chk");
-			} else {
-				check = 0;
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

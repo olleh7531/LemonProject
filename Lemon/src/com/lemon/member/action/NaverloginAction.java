@@ -16,7 +16,7 @@ public class NaverloginAction implements Action{
 		System.out.println("email : "+email);
 		
 		MemberDAO mdao = new MemberDAO();
-		int check = mdao.check_id(email);
+		int check = mdao.chkCheck(email);
 		
 		
 		response.setContentType("text/html; charset=UTF-8");

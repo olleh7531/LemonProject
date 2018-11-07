@@ -70,9 +70,12 @@
 							if(data == 1){
 					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/Lemon/MemberLoginAction.mb?email_id="+email+"");
 								
-							}else{
+							}else if(data == -1){
 					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/Lemon/NaverJoin.mb");
 								
+							} else if(data == 0){
+								alert("일반회원으로 가입된 이메일입니다.");
+					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/Lemon/main.mi");			
 							}
 						},
 						error : function(xhr, status, error) { // 에러났을 때
