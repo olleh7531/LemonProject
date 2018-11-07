@@ -36,6 +36,7 @@ public class GoodMusicAction implements Action {
 
 		GoodDAO gdao = new GoodDAO();
 		int check = gdao.MusicGoodUp(go_text_num, user);
+		System.out.println("check :  " + check);
 
 		out.println(check);
 

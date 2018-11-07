@@ -28,7 +28,7 @@ public class FindFriend implements Action {
 		PrintWriter out = response.getWriter();
 		
 		String result = 
-				"<input type='text' id='f_nickname' name='f_nickname' value=''>" + 
+				"<input type='text' id='f_nickname' name='f_nickname'>" + 
 				"<input type='button' value='찾기' onclick='friendSearch()'> <br><br>" + 
 				"<span class='findResult'> </span>";
 		out.print(result);

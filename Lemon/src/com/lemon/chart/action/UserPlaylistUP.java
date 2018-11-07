@@ -53,11 +53,12 @@ public class UserPlaylistUP implements Action {
 			out.close();
 			return null;
 		}
-
-		ActionForward forward = new ActionForward();
-		forward.setPath("./LemonLatest_Chart.ct");
-		forward.setRedirect(true);
-		return forward;
+		return null;
+		/*
+		 * ActionForward forward = new ActionForward();
+		 * forward.setPath("./LemonLatest_Chart.ct"); forward.setRedirect(true);
+		 * return forward;
+		 */
 	}
 
 }
