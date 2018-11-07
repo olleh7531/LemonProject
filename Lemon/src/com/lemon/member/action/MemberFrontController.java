@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		
+
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String requestURI = request.getRequestURI();
 		System.out.println("requestURI : " + requestURI);
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		System.out.println("test : " + command);
-		
+
 		Action action = null;
 		ActionForward forward = null;
 
@@ -46,53 +46,53 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/insertForm.jsp");
 			// 이동할 방식
 			forward.setRedirect(false);
-			
+
 		} else if (command.equals("/MemberJoinAction.mb")) {
 			// 회원가입 처리
 			action = new MemberJoinAction();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		} else if (command.equals("/MemberSendJoinMailAction.mb")) {
 			// 회원가입 메일 보내기 처리
 			action = new MemberSendJoinMailAction();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		} else if (command.equals("/MemberJoinAuthAction.mb")) {
 			// 회원가입 메일 인증 처리
 			action = new MemberJoinAuthAction();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}			
-			
-		} else if(command.equals("/MemberJoinWelcome.mb")){
+			}
+
+		} else if (command.equals("/MemberJoinWelcome.mb")) {
 			// 가입 환영 페이지
 			forward = new ActionForward();
 			forward.setPath("./member/joinComplete.jsp");
 			forward.setRedirect(true);
-			
-		} else if(command.equals("/MemberLoginAction.mb")){
-			// 로그인 처리 
+
+		} else if (command.equals("/MemberLoginAction.mb")) {
+			// 로그인 처리
 			action = new MemberLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		} else if(command.equals("/MemberLogoutAction.mb")){
+
+		} else if (command.equals("/MemberLogoutAction.mb")) {
 			// 로그아웃 처리
 			action = new MemberLogoutAction();
 			try {
@@ -100,38 +100,38 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		} else if(command.equals("/ChooseMemberUpdate.mb")){
+
+		} else if (command.equals("/ChooseMemberUpdate.mb")) {
 			// 회원정보 변경 메뉴 선택
 			forward = new ActionForward();
 			forward.setPath("./member/chooseMemberUpdate.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/MemberUpdate.mb")){
+
+		} else if (command.equals("/MemberUpdate.mb")) {
 			// 회원정보 변경
 			action = new MemberUpdate(); // Action
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		} else if(command.equals("/MemberUpdateAction.mb")){	
+
+		} else if (command.equals("/MemberUpdateAction.mb")) {
 			// 회원정보 수정 처리
 			action = new MemberUpdateAction();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}  else if(command.equals("/MemberDelete.mb")){
+		} else if (command.equals("/MemberDelete.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/deleteForm.jsp");
-			forward.setRedirect(false);			
+			forward.setRedirect(false);
 
-		} else if(command.equals("/MemberDeleteAction.mb")){
+		} else if (command.equals("/MemberDeleteAction.mb")) {
 			action = new MemberDeleteAction();
 
 			try {
@@ -139,12 +139,12 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/MemberPassUpdate.mb")){
+		} else if (command.equals("/MemberPassUpdate.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/updatePassForm.jsp");
-			forward.setRedirect(false);		
-			
-		} else if(command.equals("/MemberPassUpdateAction.mb")){
+			forward.setRedirect(false);
+
+		} else if (command.equals("/MemberPassUpdateAction.mb")) {
 			action = new MemberPassUpdateAction();
 
 			try {
@@ -152,97 +152,83 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/MemberFind.mb")){
+		} else if (command.equals("/MemberFind.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/findForm.jsp");
-			forward.setRedirect(false);	
-			
-		} else if(command.equals("/IdFindChk.mb")){
+			forward.setRedirect(false);
+
+		} else if (command.equals("/IdFindChk.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/findCheck.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/MemberPwFind.mb")){
+
+		} else if (command.equals("/MemberPwFind.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/findPwForm.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/PwFindChk.mb")){
+
+		} else if (command.equals("/PwFindChk.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/findPwCheck.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/GoogleLoginAction.mb")){
+
+		} else if (command.equals("/GoogleLoginAction.mb")) {
 			action = new GoogleLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/MemberFriend.mb")){
+		} else if (command.equals("/MemberFriend.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/memberFriend.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/findFriend.mb")){
-			action = new FindFriend();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if(command.equals("/AddFriend.mb")){
+
+		} else if (command.equals("/AddFriend.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/addFriend.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/FriendList.mb")){
+
+		} else if (command.equals("/FriendList.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/friendList.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/NicknameCheck.mb")){
+
+		} else if (command.equals("/NicknameCheck.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/checkNick.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/CallbackNaver.mb")){
+
+		} else if (command.equals("/CallbackNaver.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/callbackNaver.jsp");
 			forward.setRedirect(false);
-			
-		} else if(command.equals("/NaverloginAction.mb")){
+
+		} else if (command.equals("/NaverloginAction.mb")) {
 			action = new NaverloginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/NaverJoin.mb")){
+		} else if (command.equals("/NaverJoin.mb")) {
 			// 회원정보 변경 메뉴 선택
 			forward = new ActionForward();
 			forward.setPath("./member/naverInsertForm.jsp");
 			forward.setRedirect(false);
-			
-		}else if (command.equals("/NaverJoinAction.mb")) {
+
+		} else if (command.equals("/NaverJoinAction.mb")) {
 			// 회원가입 처리
 			action = new NaverJoinAction();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		}
-		
-		
-		
-		
-		
-		
-		
-		
+
 		if (forward != null) {
 			if (forward.isRedirect()) {// true
 				response.sendRedirect(forward.getPath());

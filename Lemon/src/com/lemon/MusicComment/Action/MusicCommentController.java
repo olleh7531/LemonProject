@@ -29,6 +29,16 @@ public class MusicCommentController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if (command.equals("/MusicCommentSelect.mcm")) {
+			action = new MusicCommentSelect();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 		if (forward != null) {

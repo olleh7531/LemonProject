@@ -20,7 +20,6 @@ public class MusicCommentAction implements Action {
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email_id");
 		int mu_num = Integer.parseInt(request.getParameter("mu_num"));
-		System.out.println("개시판 번호 : " + mu_num);
 		String ip = request.getRemoteAddr();
 		MusicCommentDAO mcdao = new MusicCommentDAO();
 		int check = mcdao.MusicComment(mu_num, comment, user, ip);

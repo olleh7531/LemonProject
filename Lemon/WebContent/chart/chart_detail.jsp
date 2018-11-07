@@ -672,7 +672,7 @@
 								<th>
 									<button
 										style="margin-left: 20px; width: 72px; height: 80px; background-color: #F8F8F8; border: 1px solid #BDBDBD;"
-										onclick="comment()">등록</button>
+										onclick="comment_insert(<%=mu_num%>)">등록</button>
 								</th>
 							</tr>
 						</table>
@@ -741,16 +741,60 @@
 				alert("로그인 해주세요.");
 			}
 		}
-		function comment(){
-			$.getJSON("./MusicCommentAction.mcm", { comment : $("#comment").val(),mu_num : <%=mu_num%> }, function(data){
-				  if(data == 1){
-					  $("#comment").val("");
-					  commentselect();
-				  }
-			});
-		}
-		function commentselect(){
+		function comment_insert(num){
 			
+			$.ajax({
+				type : "POST",
+				url : "./MusicCommentAction.mcm",
+				data: {
+					comment : $("#comment").val(),
+					mu_num : num
+				},
+				success : function(data) {
+					if(data == 1){
+						  $("#comment").val("");
+						  commentselect(num);
+					  }
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}) 
+		}
+				
+		$(document).ready(function() {
+			
+		});
+		function commentselect(num){
+			//alert(num);
+			/* $.getJSON("./MusicCommentSelect.mcm",{mu_num : num },function(data){
+				//alert(data);
+				//alert("adwdw");
+				$.each(data, function(index, item){
+					alert(item.cmt_num);
+				}) 
+			}); */
+			$.getJSON("./MusicCommentSelect.mcm",{mu_num : num},function(data){
+				alert("sadww")
+			});
+			
+			/* $.ajax({
+				type : "POST",
+				url : "./MusicCommentSelect.mcm",
+				dataType:'json',
+				data: {
+					mu_num : num
+				},
+				success : function(data) {
+					$.each(data, function(index, item){
+						alert(item.cmt_num);
+					})
+					alert(data);
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			})  */
 		}
 	</script>
 
