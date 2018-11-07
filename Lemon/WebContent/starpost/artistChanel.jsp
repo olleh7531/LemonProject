@@ -39,18 +39,11 @@
 	// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
 	ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
 	
-	// 아티스트 명 / 기준 글자 자르기
-	// -> 예명 / 본명
-	String[] name = acibean.getSinger_name().split("/");
-	String name1 = ""; // 예명
-	String name2 = ""; // 본명
-	
-	name1 = name[0];
-	
-	if(name.length > 1)
-		name2 = name[1];
-	
 	// null일 때 처리 사항 관련
+	// -> 에러나서 여기에서 불러옴
+		// 본명
+		String real_name = acibean.getReal_name();
+		
 		// 데뷔 날짜
 		Date debut_year = acibean.getDebut_year();
 		
@@ -60,10 +53,13 @@
 		// 소속사
 		String agency = acibean.getSi_agency();
 	
-		// 소속 그룹 번호 
-		String group_num = acibean.getGroup_singer_num();
-		group_num = group_num.substring(0,group_num.length()-1);
+		// 소속 그룹 번호
+		 String group_num="";
 		
+		 if(!acibean.getGroup_singer_num().equals("")) {
+			group_num = acibean.getGroup_singer_num();
+			group_num = group_num.substring(0, group_num.length() - 1);
+		 }
 %>
 
 	<!-- 메뉴 -->
@@ -105,12 +101,8 @@
 						<!-- 아티스트 정보 -->
 						<div class="wrap_atist_info">
 							<p class="title_atist">
-								<strong class="none">아티스트명</strong><%=name1%>
-								<span class="realname">
-								<%if(!name2.equals("")) {%>
-									(<%=name2%>)
-								<%}%>
-								</span>
+								<strong class="none">아티스트명</strong><%=acibean.getSinger_name()%>
+								<span class="realname"><%=real_name%></span>
 							</p>
 							<dl class="atist_info clfix">
 								<%	if(debut_year != null) {%>
@@ -4245,15 +4237,15 @@
 					<!-- //활동정보 -->
 					
 					<!-- 신상정보 -->
-					<%if(!name2.equals("") || siger_birth!=null) { %>
+					<%if(!real_name.equals("") || siger_birth!=null) { %>
 					<div class="section_atistinfo04">
 						<h3 class="title line arr">신상정보</h3>
 						<dl class="list_define clfix">
 							<%
-								if(!name2.equals("")) {
+								if(!real_name.equals("")) {
 							%>
 							<dt>본명</dt>
-								<dd><%=name2%></dd>
+								<dd><%=real_name%></dd>
 							<%} %>
 							<% if(siger_birth!=null){%>
 							<dt>생일</dt>

@@ -72,6 +72,11 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		String test = infoMulti.getParameter("singer_debut_day").trim();
 		System.out.println("xxx1"+test);
 		System.out.println("yyy2"+infoMulti.getParameter("singer_birth"));
+		
+		// 본명
+		acibean.setReal_name(infoMulti.getParameter("singer_real_name"));
+		System.out.println("ArtistChanelInfoWrtieAction.java singer_real_name : " + infoMulti.getParameter("singer_real_name"));
+
 		// 데뷔 날짜
 		if(!infoMulti.getParameter("singer_debut_day").equals("")){
 			System.out.println("xx1");
@@ -79,6 +84,7 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		acibean.setDebut_year(debut_year);
 		System.out.println("ArtistChanelInfoWrtieAction.java debut_year : " + debut_year);
 		}
+		
 		// 생일
 		if(!infoMulti.getParameter("singer_birth").equals("")){		
 			System.out.println("yy");
@@ -126,7 +132,7 @@ public class ArtistChanelInfoWrtieAction implements Action {
 				.println("ArtistChanelInfoWrtieAction.java singer_gender : " + infoMulti.getParameter("singer_gender"));
 
 		// 그룹 번호
-		acibean.setGroup_singer_num(infoMulti.getParameter("singer_group_num"));
+		acibean.setGroup_singer_num(","+infoMulti.getParameter("singer_group_num")+",");
 		System.out.println(
 				"ArtistChanelInfoWrtieAction.java singer_group_num : " + infoMulti.getParameter("singer_group_num"));
 
