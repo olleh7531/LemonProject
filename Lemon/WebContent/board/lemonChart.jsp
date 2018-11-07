@@ -136,10 +136,10 @@ ol, ul, li {
 		
 if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 작동할시간 주기위해서 5분전에는 어제날짜 보이게
 	$('.year').html(nowdate.substring(0, n-1)+(parseInt(nowdate.substring(n-1,n))-1).toString());
-	$('.hhmm').html('23:00');
+// 	$('.hhmm').html('23:00');
 }else{
 	$('.year').html(nowdate);
-	$('.hhmm').html(nowhour + ':00');
+// 	$('.hhmm').html(nowhour + ':00');
 }
 		$('.time_list li').each(function() {
 			var time = $(this).find('.time').html().substring(0, 2).trim();
@@ -167,7 +167,7 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 	<!-- 본문 -->
 	<div class="calendar_prid">
 		<span class="yyyymmdd"> <span class="year"></span>
-		</span> <span class="hhmm"> <span class="hour"></span>
+		</span> <span class="hhmm">${dayTime}:00 <span class="hour"></span>
 		</span>
 		<div class="time_layer">
 			<button title="시간선택" class="button_icons etc arrow_d" name="1"
@@ -252,13 +252,14 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 		 }
 		 }); */
 		<c:set var="arr" value="${requestScope.list}"/>
-		var arr = '${list}';
+// 		var list = "${arr}";
+
+
 
 		bb.generate({
 			"data" : {
 				"columns" : [
-						[ "data1", 10, 100, 111, 350, 150, 100, 200, 300, 400,
-								500, 600, 700, 800, 900, 1000 ],
+						[ "data1", <c:forEach items="${arr}" var="list"> "${(list.ch_playcnt*4)+(list.ch_downcnt*6)}" , </c:forEach> 0],
 						[ "data2", 20, 200, 7, 400, 155, 150, 250, 350, 450,
 								550, 650, 750, 850, 950, 990 ],
 						[ "data3", 30, 250, 5, 430, 152, 10, 20, 30, 40, 50,

@@ -1,13 +1,13 @@
 package com.lemon.chart.db;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ChartBean1 {
 	private int ch_num;
 	private int ch_music_num;
 	private int ch_playcnt;
 	private int ch_downcnt;
-	private Date ch_updatetime;
+	private Timestamp ch_updatetime;
 	
 	public int getCh_num() {
 		return ch_num;
@@ -33,12 +33,13 @@ public class ChartBean1 {
 	public void setCh_downcnt(int ch_downcnt) {
 		this.ch_downcnt = ch_downcnt;
 	}
-	public Date getCh_updatetime() {
+	public Timestamp getCh_updatetime() {
 		return ch_updatetime;
 	}
-	public void setCh_updatetime(Date ch_updatetime) {
+	public void setCh_updatetime(Timestamp ch_updatetime) {
 		this.ch_updatetime = ch_updatetime;
 	}
+
 	
 	
 }
