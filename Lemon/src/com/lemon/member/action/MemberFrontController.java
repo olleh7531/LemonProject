@@ -152,6 +152,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if(command.equals("/MemberFind.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/findForm.jsp");
@@ -179,6 +180,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if(command.equals("/MemberFriend.mb")){
 			forward = new ActionForward();
 			forward.setPath("./member/memberFriend.jsp");
@@ -198,9 +200,12 @@ public class MemberFrontController extends HttpServlet {
 			}
 			
 		} else if(command.equals("/requestFriend.mb")){
-			forward = new ActionForward();
-			forward.setPath("./member/requestFriend.jsp");
-			forward.setRedirect(false);
+			action = new requestFriend();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		} else if(command.equals("/NicknameCheck.mb")){
 			forward = new ActionForward();

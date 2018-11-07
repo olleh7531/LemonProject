@@ -24,16 +24,14 @@
 		
 		ArrayList<String> check = fdao.requestFriend(myNickname); 
 		// 친구 요청받은지 유무
-		System.out.println("check :::::: " + check.size());
+		
 		if(check.size() != 0) {
-			System.out.println("요청받음");
 	%>
 		<script type="text/javascript">
 			alert("'<%=check%>'에게 친구요청 받음 ^^");
 		</script>
 	<%
 		} else {
-			System.out.println("안받음");
 	%>
 		<script type="text/javascript">
 			alert("친구요청 안받음 ^^");
