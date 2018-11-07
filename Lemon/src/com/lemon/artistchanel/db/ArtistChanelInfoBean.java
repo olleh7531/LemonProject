@@ -37,7 +37,8 @@ public class ArtistChanelInfoBean {
 	private Date si_birth; // 생일
 	private String si_gender; // 성별
 	private String group_singer_num; // 그룹 번호
-
+	private String group_singer_name;
+	
 	public int getSi_num() {
 		return si_num;
 	}
@@ -134,4 +135,13 @@ public class ArtistChanelInfoBean {
 		this.group_singer_num = group_singer_num;
 	}
 
+	public String getGroup_singer_name() {
+		return group_singer_name;
+	}
+
+	public void setGroup_singer_name(String group_singer_name) {
+		this.group_singer_name = group_singer_name;
+	}
+
+	
 }
