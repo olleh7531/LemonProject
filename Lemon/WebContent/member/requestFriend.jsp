@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.lemon.member.db.FriendDAO"%>
 <%@page import="com.lemon.member.db.FriendBean"%>
 <%@page import="com.lemon.member.db.MemberDAO"%>
@@ -21,24 +22,22 @@
 		FriendBean fb = new FriendBean();
 		FriendDAO fdao = new FriendDAO();
 		
-		fb.setReceiver_nick(friendNickname);
-		fb.setSender_nick(myNickname);
-		
-		int check = fdao.addFriend(fb);
-		
-		System.out.println(check);
-		
-		if(check == 1){
+		ArrayList<String> check = fdao.requestFriend(myNickname); 
+		// 친구 요청받은지 유무
+		System.out.println("check :::::: " + check.size());
+		if(check.size() != 0) {
+			System.out.println("요청받음");
 	%>
 		<script type="text/javascript">
-			alert("친구요청이 완료되었습니다.");
+			alert("'<%=check%>'에게 친구요청 받음 ^^");
 		</script>
 	<%
 		} else {
+			System.out.println("안받음");
 	%>
 		<script type="text/javascript">
-			history.back();
-		</script>
+			alert("친구요청 안받음 ^^");
+		</script>	
 	<%
 		}
 	%>

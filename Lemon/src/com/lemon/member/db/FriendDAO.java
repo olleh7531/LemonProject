@@ -49,7 +49,6 @@ public class FriendDAO {
 	}
 
 	/* 친구 요청 메서드 */
-	
 	public int addFriend(FriendBean fb){
 		int check = 0;
 		
@@ -58,24 +57,19 @@ public class FriendDAO {
 			
 			sql = "select * from friends where receiver_nick=? and sender_nick=?";
 			pstmt = con.prepareStatement(sql);
-			
 			pstmt.setString(1, fb.getReceiver_nick());
 			pstmt.setString(2, fb.getSender_nick());
 			
 			rs = pstmt.executeQuery();
-			System.out.println("1");
 			if(!rs.next()){
 				sql = "select * from friends where receiver_nick=? and sender_nick=?";
 				pstmt = con.prepareStatement(sql);
-				
 				pstmt.setString(1, fb.getSender_nick());
 				pstmt.setString(2, fb.getReceiver_nick());
 				
 				rs = pstmt.executeQuery();
-				System.out.println("2");
 	            if(!rs.next()){
 	               sql="insert into friends(receiver_nick, sender_nick) values(?,?)";
-	               
 	               pstmt = con.prepareStatement(sql);
 	               pstmt.setString(1, fb.getReceiver_nick());
 	               pstmt.setString(2, fb.getSender_nick());
@@ -92,5 +86,30 @@ public class FriendDAO {
 	      }
 		return check;
 	}
+	
+	// 친구 요청온 것 보기
+	public ArrayList<String> requestFriend(String nickname){
+		ArrayList<String> check = new ArrayList<String>();
+		
+		try {
+			con = getCon();
+			
+			sql = "select * from friends where receiver_nick=? and fr_check=0";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				check.add(rs.getString("sender_nick"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
+	
 
 }

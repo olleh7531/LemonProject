@@ -12,6 +12,7 @@
    </head>
    <body>
 	<%
+		System.out.println("addFriend.jsp 들어옴");
 		String friendNickname = (String)request.getParameter("f_nickname");
 		String myNickname = (String)request.getParameter("m_nickname");
 		
@@ -26,18 +27,19 @@
 		
 		int check = fdao.addFriend(fb);
 		
-		System.out.println(check);
-		
-		if(check == 1){
+		if(check == 1) {
+			System.out.println("친구 요청함");
 	%>
 		<script type="text/javascript">
-			alert("친구요청이 완료되었습니다.");
+			alert("친구 요청함 ^^");
 		</script>
+			
 	<%
 		} else {
+			System.out.println("이미 요청함");
 	%>
 		<script type="text/javascript">
-			history.back();
+			alert("이미 요청함 ^^");
 		</script>
 	<%
 		}
