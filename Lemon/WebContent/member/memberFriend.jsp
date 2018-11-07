@@ -23,7 +23,6 @@
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script>
-
 	// 닉네임 입력 후 찾기 버튼 눌렀을 때
 	function friendSearch() {
 		var m_nickname = document.getElementById("m_nickname").value;
@@ -37,7 +36,7 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-				$('.findResult').html(result);
+				$('.findResult1').html(result);
             }, error:function() {
 				alert("실패");
             }
@@ -74,12 +73,22 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-            	$('.findResult').html(result);
+            	$('.findResult2').html(result);
             }, 
             error:function() {}
         });
 	}
 	
+	function refuse() {
+		var nick = document.getElementById("nick").value;
+		alert(nick);
+		
+	}
+	
+	function acception() {
+		alert("?");
+		
+	}
 	
 	function show1() {
 		$(".friend1").show();
@@ -113,6 +122,8 @@
 			MemberDAO mdao = new MemberDAO();
 			String nickName = mdao.getNick(email_id);
 			String f_nickname = request.getParameter("f_nickname");
+			String nick = request.getParameter("nick");
+			System.out.println("nick : " + nick);
 		%>
 			<input type="hidden" id="m_nickname" value=<%=nickName %>>
 			
@@ -123,22 +134,27 @@
 			<div class="friend1">
 				<input type='text' id='f_nickname' name='f_nickname' value=''>
 				<input type='button' value='찾기' onclick='friendSearch()'> <br><br>
-				<span class="findResult"></span>
+				<span class="findResult1"></span>
 			</div>
 			
 			<div class="friend2">
-				친구목록
+				친구목록 <br><br><br>
+				<span class="findResult2">
+					<%
+						nick = request.getParameter("nick");
+						System.out.println("nick : " + nick);
+					%>
+				</span>
 			</div>
 			
 			<div class="friend3">
 				대화하기
+				<span class="findResult3"></span>
 			</div>
-			
-			
 		</div>
 	</div>
 	<!-- 내용 -->
-
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

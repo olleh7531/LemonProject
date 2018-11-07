@@ -15,8 +15,6 @@ public class FriendSearch implements Action {
 		
 		String f_nickname = request.getParameter("f_nickname");
 		String m_nickname = request.getParameter("m_nickname");
-		System.out.println(f_nickname + " : f");
-		System.out.println(m_nickname + " : m");
 		
 		MemberDAO mdao = new MemberDAO();
 		
@@ -25,6 +23,8 @@ public class FriendSearch implements Action {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		
+		System.out.println("들어옴....");
 		
 		if(!f_nickname.equals(m_nickname)) {
 			if(check == 1) {
