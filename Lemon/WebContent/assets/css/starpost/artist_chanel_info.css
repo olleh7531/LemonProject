@@ -39,7 +39,7 @@ h3.arr {
 /* 활동정보 내용 */
 .section_atistinfo03 .list_define {
     width: 1000px;
-    height: 170px;
+    min-height: 100px;
     margin-left: 10px;
 }
 
@@ -70,6 +70,93 @@ h3.arr {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+/* 그룹 정보 내용 */
+.section_atistinfo03 .wrap_gmem {
+    margin-bottom: -16px;
+    *margin-bottom: 0;
+}
+
+.list_atist13 {
+    margin-left: -16px;
+}
+
+.list_atist13 li {
+    float: left;
+    width: 240px;
+    margin: 0 0 0 16px;
+    padding: 16px 0 17px;
+}
+
+.section_atistinfo03 .wrap_gmem .list_atist13 li {
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+.wrap_atist13 {
+    position: relative;
+}
+
+.wrap_atist13 .thumb {
+    display: block;
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    text-decoration: none;
+}
+
+.wrap_atist13 .thumb .thumb_frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 96px;
+    height: 96px;
+    background-image: url("../../../assets/img/common/common_bg_album_frame.png");
+    background-repeat: no-repeat;
+    background-position: -683px 0;
+}
+
+.wrap_atist13 .atist_info {
+    height: 96px;
+    padding: 0 0 0 108px;
+}
+
+.wrap_atist13 .atist_info dt {
+    padding: 2px 0 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #1a1a1a;
+}
+
+.wrap_atist13 .atist_info dt .ellipsis {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.wrap_atist13 .atist_info dd.gubun {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 13px;
+    color: #1a1a1a;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.wrap_atist13 .atist_info dd.gnr {
+    margin-top: 3px;
+    padding: 0 18px 0 0;
+    font-size: 11px;
+    line-height: 13px;
+    color: #1a1a1a;
+}
+
+
 
 /* 신상정보 내용 */
 .section_atistinfo04 .list_define {

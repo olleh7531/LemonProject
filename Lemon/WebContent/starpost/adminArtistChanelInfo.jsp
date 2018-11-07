@@ -29,9 +29,15 @@
 	<form action="./ArtistChanelInfoWrtieAction.ac" method="post" enctype="multipart/form-data" name="form" >
 		<table border="1">
 			<tr>
-				<td>가수 이름(예명)/본명</td>
+				<td>가수 이름(예명)</td>
 				<td>
 					<input type="text" name="singer_name" class="singer_name">
+				</td>
+			</tr>
+			<tr>
+				<td>본명</td>
+				<td>
+					<input type="text" name="singer_real_name" class="singer_real_name">
 				</td>
 			</tr>
 			<tr>

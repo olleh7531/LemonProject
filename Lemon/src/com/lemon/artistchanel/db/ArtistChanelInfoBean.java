@@ -9,6 +9,7 @@ public class ArtistChanelInfoBean {
 	 * 		`si_num` int(11) NOT NULL AUTO_INCREMENT,
 	 * 		`activity_type` varchar(10) NOT NULL,
 	 * 		`singer_name` varchar(200) DEFAULT NULL,
+	 * 		`real_name` varchar(200) DEFAULT NULL,
 	 * 		`debut_year` date DEFAULT NULL,
 	 * 		`debut_song` varchar(100) DEFAULT NULL,
 	 * 		`si_agency` varchar(100) DEFAULT NULL,
@@ -26,7 +27,8 @@ public class ArtistChanelInfoBean {
 
 	private int si_num; // 가수 번호
 	private String activity_type; // 솔로/그룹 유형
-	private String singer_name; // 가수 활동 이름(예명)/본명
+	private String singer_name; // 가수 활동 이름(예명)
+	private String real_name; // 본명
 	private Date debut_year; // 데뷔 날짜
 	private String debut_song; // 데뷔 노래
 	private String si_agency; // 소속사 이름
@@ -35,7 +37,8 @@ public class ArtistChanelInfoBean {
 	private Date si_birth; // 생일
 	private String si_gender; // 성별
 	private String group_singer_num; // 그룹 번호
-
+	private String group_singer_name;
+	
 	public int getSi_num() {
 		return si_num;
 	}
@@ -58,6 +61,14 @@ public class ArtistChanelInfoBean {
 
 	public void setSinger_name(String singer_name) {
 		this.singer_name = singer_name;
+	}
+
+	public String getReal_name() {
+		return real_name;
+	}
+
+	public void setReal_name(String real_name) {
+		this.real_name = real_name;
 	}
 
 	public Date getDebut_year() {
@@ -123,4 +134,14 @@ public class ArtistChanelInfoBean {
 	public void setGroup_singer_num(String group_singer_num) {
 		this.group_singer_num = group_singer_num;
 	}
+
+	public String getGroup_singer_name() {
+		return group_singer_name;
+	}
+
+	public void setGroup_singer_name(String group_singer_name) {
+		this.group_singer_name = group_singer_name;
+	}
+
+	
 }

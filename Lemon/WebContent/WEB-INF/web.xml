@@ -203,6 +203,15 @@
 		<servlet-name>SearchFrontController</servlet-name>
 		<url-pattern>*.sc</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>MusicCommentController</servlet-name>
+		<servlet-class>com.lemon.MusicComment.Action.MusicCommentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MusicCommentController</servlet-name>
+		<url-pattern>*.mcm</url-pattern>
+	</servlet-mapping>
 
 
 	<resource-ref>

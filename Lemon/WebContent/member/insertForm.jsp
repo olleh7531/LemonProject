@@ -27,22 +27,54 @@ function check() {
 		return false;
 	}
 	
-	// 아이디 유효성 검사
-	for(var i = 0; i < document.fr.email_1.value.length; i++) {
-		var ch = document.fr.email_1.value.charAt(i)
-		if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
-			alert("이메일에는 대/소문자, 숫자만 입력가능합니다.");
-			document.fr.email_1.focus();
-			document.fr.email_1.select();
-			return false;
+	function IdCheck() {
+		// 아이디 유효성 검사
+		for(var i = 0; i < document.fr.email_1.value.length; i++) {
+			var ch = document.fr.email_1.value.charAt(i)
+			if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z') && !(ch >= 'A' && ch <= 'Z')) {
+				alert("이메일에는 대/소문자, 숫자만 입력가능합니다.");
+				document.fr.email_1.focus();
+				return false;
 			}
 		}
+	}
+	
+	if(!document.fr.name.value) {
+		alert("이름을 입력하세요");
+		document.fr.name.focus();
+		return false;
+	}
+	
+	if(!document.fr.nickname.value) {
+		alert("닉네임을 입력하세요");
+		document.fr.nickname.focus();
+		return false;
+	}
+
+	// 닉네임 길이 체크 (2~10자)
+	if(document.fr.nickname.value.length<2 || document.fr.nickname.value.length>10) {
+		alert("닉네임을 2~10자까지 입력해주세요.")
+		document.fr.nickname.focus();
+		return false;
+	}
+	
+	// 닉네임에 공백 사용하지 않기
+	if(document.fr.nickname.value.indexOf(" ") >= 0) {
+		alert("닉네임에 공백을 사용할 수 없습니다.");
+	 	document.fr.nickname.focus();
+		return false;
+	}
+	
+	if(!document.fr.birth.value) {
+		alert("생년월일을 입력하세요");
+		document.fr.birth.focus();
+		return false;
+	}
 	
 	// 비밀번호 입력 유무 확인
 	if(!document.fr.password.value) {
 		alert("비밀번호를 입력하세요");
 		document.fr.password.focus();
-		document.fr.password.select();
 		return false;
 	}
 	
@@ -50,55 +82,6 @@ function check() {
 	if(document.fr.password.value.length<4 || document.fr.password.value.length>16) {
 		alert("비밀번호를 4~16자리까지 입력해주세요");
 		document.fr.password.focus();
-		document.fr.password.select();
-		return false;
-	}
-	
-	/* if(!document.fr.passwordCheck.value) {
-		alert("비밀번호 확인을 입력하세요");
-		document.fr.passwordCheck.focus();
-		return false;
-	}
-	
-	// 비밀번호와 비밀번호 확인이 같은지 검사		
-	if(document.fr.pass.value != document.fr.passwordCheck.value) {
-		alert("비밀번호와 비밀번호 확인이 같지 않습니다 \n다시 확인해주세요");
-		return false;
-	} */
-	
-	if(!document.fr.name.value) {
-		alert("이름을 입력하세요");
-		document.fr.name.focus();
-		document.fr.name.select();
-		return false;
-	}
-	
-	if(!document.fr.nickname.value) {
-		alert("닉네임을 입력하세요");
-		document.fr.nickname.focus();
-		document.fr.nickname.select();
-		return false;
-	}
-	
-	// 닉네임 길이 체크 (2~10자)
-	if (document.fr.nickname.value.length<2 || document.fr.id.value.length>10) {
-		alert("닉네임을 2~10자까지 입력해주세요.")
-		document.fr.nickname.focus();
-		document.fr.nickname.select();
-		return false;
-	}
-	
-	// 닉네임에 공백 사용하지 않기
-	if (document.fr.nickname.value.indexOf(" ") >= 0) {
-		alert("닉네임에 공백을 사용할 수 없습니다.");
-	 	document.fr.nickname.focus();
-		document.fr.nickname.select();
-		return false;
-	}
-	
-	if(!document.fr.birth.value) {
-		alert("생년월일을 입력하세요");
-		document.fr.birth.focus();
 		return false;
 	}
 }
@@ -153,11 +136,12 @@ function check() {
 		<article class="mnMembers pgJoinEmail">
 				<input type='hidden' id='code' value="<%=code%>">
 			<form id="joinform" method="post" action="./MemberJoinAction.mb" enctype="multipart/form-data" name="fr" onsubmit="return check()">
-				<input type='hidden' id='code'/>
+				
 				<%if(email_id != null) { %>
 					<input type='hidden' id='chk' name="chk" value="<%=1%>"/>
 					<input type='hidden' id='email_cert' name="email_cert" value="<%=1%>"/>
 				<%} %>
+				
 				<fieldset class="formGroup basic">
 					<div class="row id" id="divEmail">
 					
@@ -167,7 +151,7 @@ function check() {
 							<input type="hidden" name="chk" value="0">
 							<div class="formPadding">
 								<div class="formItem">
-									<input type="text" id="email_1" name="email_1"/>
+									<input type="text" id="email_1" name="email_1" onblur="IdCheck()"/>
 								</div>
 								<span class="at">@</span>
 							</div>
@@ -215,9 +199,7 @@ function check() {
 									<input type="password" id="password" name="password" placeholder="비밀번호 입력">
 								</div>
 							</div>
-							
 							<p class="desc" id="descPassword">4~16자 영문 대,소문자, 숫자, 특수문자 중 2가지 이상 조합</p>
-							
 						</div>
 					<%} %>
 					
@@ -259,7 +241,7 @@ function check() {
 						<label for="birthDt" class="lb">생년월일</label>
 						<div class="col">
 							<div class="placeholderForm" id="divBirthDt">
-								<input type="date" id="birth" name="birth"/>
+								<input type="date" id="birth" name="birth" min="1900-01-01" max="2018-01-01"/>
 							</div>
 						</div>
 					</div>
@@ -569,9 +551,9 @@ function check() {
 	            },
 	            success:function(data){
 	                if($.trim(data) == "YES"){
-	                    $('#idchk').html('<b style="font-size:11px;color:blue">닉네임 사용이 가능합니다.</b>');
+	                    $('#idchk').html('<b style="font-size:11px;color:blue">닉네임 중복이 아닙니다.</b>');
 	                }else{
-	                    $('#idchk').html('<b style="font-size:11px;color:red">닉네임 사용이 불가능합니다.</b>');
+	                    $('#idchk').html('<b style="font-size:11px;color:red">닉네임 중복입니다.</b>');
 	                }
 	            }
 	        });    

@@ -69,13 +69,14 @@ public class ChartDAO {
 			con = getCon();
 
 			// sql 쿼리
-			sql = "select ch_music_num from chart where ch_updatetime =  DATE_SUB"
-					+"(DATE_FORMAT(now(),'%Y-%m-%d %"+hour+"'),	INTERVAL 1 HOUR)  "
+			sql = "select ch_music_num from chart where ch_updatetime =  DATE_SUB" + "(DATE_FORMAT(now(),'%Y-%m-%d %"
+					+ hour + "'),	INTERVAL 1 HOUR)  "
 					+ "group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 
 			// pstmt 객체 실행
+
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				sql2 ="select * from chart where ch_music_num=? AND ch_updatetime between "
@@ -86,6 +87,7 @@ public class ChartDAO {
 				pstmt2.setInt(1, rs.getInt("ch_music_num"));
 				rs2 = pstmt2.executeQuery();
 				while (rs2.next()) {
+
 					cb = new ChartBean1();
 					cb.setCh_num(rs2.getInt("ch_num"));
 					cb.setCh_music_num(rs2.getInt("ch_music_num"));
@@ -145,7 +147,7 @@ public class ChartDAO {
 				ch.setMusic_video(rs.getString("music_video"));
 				ch.setMusicfile(rs.getString("musicfile"));
 				ch.setSinger_num(rs.getInt("singer_num"));
-				ch.setTrack_num(rs.getInt("track_num"));					
+				ch.setTrack_num(rs.getInt("track_num"));
 				chartList.add(ch);
 			}
 		} catch (Exception e) {
@@ -243,7 +245,6 @@ public class ChartDAO {
 	public ArrayList<ChartBean> DetailMusizName(String name) {
 		ChartBean cb = null;
 		ArrayList<ChartBean> MusizList = new ArrayList<>();
-		System.out.println("이름 DAO :" + name);
 		try {
 			con = getCon();
 			sql = "select * from album a inner join music b on b.album_num = a.al_num where a.al_name = ?";
@@ -284,12 +285,9 @@ public class ChartDAO {
 		try {
 			con = getCon();
 			sql = "select count(*) from good where go_text_num = ?";
-			
-			int GoodNum = 0;
+			// int GoodNum = 0;
 			for (int i = 0; i < chart.size(); i++) {
 				ChartBean cb = chart.get(i);
-				
-				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, cb.getMu_num());
 				rs = pstmt.executeQuery();
@@ -298,7 +296,7 @@ public class ChartDAO {
 				}
 				Chart.add(cb);
 			}
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -307,26 +305,4 @@ public class ChartDAO {
 		}
 		return Chart;
 	}
-/*	public int GoodList(int mu_num) {
-		int goodList = 0;
-		// ArrayList<Integer> GoodNum = new ArrayList<>();
-		try {
-			con = getCon();
-			sql = "select count(*) from good where go_text_num = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, mu_num);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				goodList = rs.getInt(1);
-				// GoodNum.add(goodList);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}
-		return goodList;
-	}
-*/
 }

@@ -115,13 +115,10 @@ CREATE TABLE `comment` (
   `cmt_content` text NOT NULL,
   `cmt_email` varchar(100) NOT NULL,
   `cmt_timestamp` timestamp NOT NULL,
-  `cmt_updated_timestamp` timestamp NULL DEFAULT NULL,
   `cmt_ip` varchar(15) NOT NULL,
   `cmt_like` int(11) DEFAULT '0',
   `cmt_dislike` int(11) DEFAULT '0',
   `cmt_blame` mediumint(9) DEFAULT '0',
-  `cmt_device` varchar(45) NOT NULL,
-  `cmt_del` tinyint(4) DEFAULT '0',
   `cmt_ref` int(11) DEFAULT NULL,
   `cmt_lev` int(11) DEFAULT NULL,
   PRIMARY KEY (`cmt_num`),
@@ -240,14 +237,14 @@ DROP TABLE IF EXISTS `friends`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `friends` (
   `fr_num` int(11) NOT NULL AUTO_INCREMENT,
-  `sender_id` varchar(100) NOT NULL,
-  `receiver_id` varchar(100) NOT NULL,
-  `check` tinyint(4) DEFAULT '0',
+  `sender_nick` varchar(100) NOT NULL,
+  `receiver_nick` varchar(100) NOT NULL,
+  `fr_check` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`fr_num`),
-  KEY `member_follow_fk_idx` (`sender_id`,`receiver_id`),
-  KEY `member_receive_fk_idx` (`receiver_id`),
-  CONSTRAINT `fr_receive_email_fk` FOREIGN KEY (`receiver_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fr_send_email_fk` FOREIGN KEY (`sender_id`) REFERENCES `member` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fr_send_nickl_fk_idx` (`sender_nick`),
+  KEY `fr_receive_nick_fk_idx` (`receiver_nick`),
+  CONSTRAINT `fr_receive_nick_fk` FOREIGN KEY (`receiver_nick`) REFERENCES `member` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fr_send_nickl_fk` FOREIGN KEY (`sender_nick`) REFERENCES `member` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -690,4 +687,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-06 17:41:46
+-- Dump completed on 2018-11-07 16:44:21

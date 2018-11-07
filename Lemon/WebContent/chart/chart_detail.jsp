@@ -40,6 +40,8 @@
 	//request.setAttribute("cb", cb);
 	ChartBean cb = (ChartBean) request.getAttribute("cb");
 	ArrayList MusizList = (ArrayList) request.getAttribute("MusizList");
+	String email_id = (String) session.getAttribute("email_id");
+	String mu_num = request.getParameter("mu_num");
 %>
 <body>
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -59,7 +61,7 @@
 							<span class="bg_album_frame"></span>
 						</a>
 						<button type="button" title="듣기" class="button_icons type05 play"
-							onclick="#">
+							onclick="">
 							<span class="none">듣기</span>
 						</button>
 						<!-- [DP] 앨범보기 -->
@@ -92,9 +94,7 @@
 						</div>
 						<div class="button d_album_like">
 							<button type="button" class="button_etc like type02" id="btnLike"
-								title="Golden Child 3rd Mini Album [WISH] 좋아요"
-								data-album-no="10215695" data-album-menuid="28010101"
-								data-target-id="d_like_count">
+								title="" data-album-no="" data-album-menuid="" data-target-id="">
 								<span class="odd_span">좋아요</span> <span id="d_like_count"
 									class="cnt">2,057</span>
 							</button>
@@ -200,7 +200,7 @@
 								<dd>
 									<div class="wrap_sns">
 										<button type="button" title="친구에게 음악메시지 보내기"
-											class="bullet_icons sns frend" onclick="#">
+											class="bullet_icons sns frend" onclick="">
 											<span class="none">친구</span>
 										</button>
 										<button type="button" title="페이스북" id="albumFacebook"
@@ -354,9 +354,10 @@
 									<div class="wrap" style="text-align: center">
 										<button type="button" class="button_etc like"
 											title="Make Up (Feat. Crush) 좋아요" data-song-no="31376041"
-											data-song-menuid="18030123">
+											data-song-menuid="18030123"
+											onclick="goodMusic(<%=mcb.getMu_num()%>)">
 											<span class="odd_span"><i class="fa fa-heart-o"></i><span
-												class="cnt">3,409</span></span>
+												class="cnt"><%=mcb.getMu_good()%></span></span>
 										</button>
 									</div> <!--<a href="#"><i class="fa  fa-heart-o"></i>222</a>-->
 								</td>
@@ -378,7 +379,8 @@
 
 									<div class="wrap t_center">
 										<button type="button" title="다운로드"
-											class="button_icons download ">
+											class="button_icons download "
+											onclick="location.href='./chart/file_down.jsp?file_name=<%=mcb.getMusicfile()%>'">
 											<i class="fa  fa-download "></i><span class="none">다운로드</span>
 										</button>
 									</div>
@@ -665,11 +667,12 @@
 									</div>
 								</th>
 								<th><textarea
-										style="height: 68px; width: 780px; resize: none;"></textarea>
-								</th>
+										style="height: 68px; width: 780px; resize: none;" id="comment"
+										onkeyup="comment_log(<%=email_id%>)"></textarea></th>
 								<th>
 									<button
-										style="margin-left: 20px; width: 72px; height: 80px; background-color: #F8F8F8; border: 1px solid #BDBDBD;">등록</button>
+										style="margin-left: 20px; width: 72px; height: 80px; background-color: #F8F8F8; border: 1px solid #BDBDBD;"
+										onclick="comment()">등록</button>
 								</th>
 							</tr>
 						</table>
@@ -708,6 +711,47 @@
 				}
 			});
 		});
+	</script>
+	<script type="text/javascript">	
+		function goodMusic(num){
+			//alert(num);
+			$.ajax({
+				type : "POST",
+				url : "./GoodMusicAction.go",
+				data: {
+					go_num: num
+				},
+				success : function(data) {
+					if(data == 0){
+						alert("좋아요 반영되었습니다.");
+						location.reload();
+					}else if(data == 1){
+						alert("좋아요 취소되었습니다.");
+						location.reload();
+					}
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}) 
+			
+		}
+		function comment_log(email_id){
+			if(email_id == null){
+				alert("로그인 해주세요.");
+			}
+		}
+		function comment(){
+			$.getJSON("./MusicCommentAction.mcm", { comment : $("#comment").val(),mu_num : <%=mu_num%> }, function(data){
+				  if(data == 1){
+					  $("#comment").val("");
+					  commentselect();
+				  }
+			});
+		}
+		function commentselect(){
+			
+		}
 	</script>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
