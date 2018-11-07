@@ -239,7 +239,7 @@ CREATE TABLE `friends` (
   `fr_num` int(11) NOT NULL AUTO_INCREMENT,
   `sender_nick` varchar(100) NOT NULL,
   `receiver_nick` varchar(100) NOT NULL,
-  `check` tinyint(4) DEFAULT '0',
+  `fr_check` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`fr_num`),
   KEY `fr_send_nickl_fk_idx` (`sender_nick`),
   KEY `fr_receive_nick_fk_idx` (`receiver_nick`),
@@ -687,4 +687,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-07 14:11:04
+-- Dump completed on 2018-11-07 16:44:21
