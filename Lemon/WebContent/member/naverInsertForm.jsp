@@ -155,7 +155,7 @@
 						<label for="birthDt" class="lb">생년월일</label>
 						<div class="col">
 							<div class="placeholderForm" id="divBirthDt">
-								<input type="date" id="birth" name="birth" />
+								<input type="date" id="birth" name="birth" min="1900-01-01" max="2018-12-31" />
 							</div>
 						</div>
 					</div>

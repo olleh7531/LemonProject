@@ -20,34 +20,46 @@ public class MemberLoginAction implements Action {
 		MemberDAO mdao = new MemberDAO();		
 		
 		String email_id = request.getParameter("email_id");
+		String pass = request.getParameter("pass");
 		
 		MemberBean mb = new MemberBean();
 		mb = mdao.getMember(email_id);
 		
-		//	if(mb.getEmail_cert() != 1){
-		//		
-		//	}
+		int check;
+		int chkChk = mdao.chkCheck(email_id); 
 
-		int naverchk = mdao.chkCheck(email_id);
+		if(pass == null && chkChk != 0){
+			check = chkChk;
+		}else{
+			check = mdao.idCheck(email_id, pass);
+		}
 		
-		if(naverchk==0||naverchk==-1){
-		String pass = request.getParameter("pass");
-		
-		int check = mdao.idCheck(email_id, pass);
 		// 0 - "비밀번호 오류"
 		// -1 - "아이디 없음"
 		// 1 - 로그인 
 		
-		if(check ==0){
+		if(check == 0 && chkChk != 0){
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			
+
+			out.println("<script>");
+			out.println(" alert('이메일 계정 로그인 해주세요 ');");
+			out.println(" history.back(); ");
+			out.println("</script>");
+			out.close();								
+				
+			return null;
+
+		}else if(check ==0){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+
 			out.println("<script>");
 			out.println(" alert('비밀번호 오류 ');");
 			out.println(" history.back(); ");
 			out.println("</script>");
-			out.close();
-			
+			out.close();								
+				
 			return null;
 		}else if(check == -1){
 			response.setContentType("text/html; charset=UTF-8");
@@ -62,7 +74,6 @@ public class MemberLoginAction implements Action {
 			return null;
 		}
 		
-		}
 	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.mi		
 
 		session.setAttribute("email_id", email_id);
