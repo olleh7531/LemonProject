@@ -142,6 +142,4 @@ public class ArtistChanelInfoBean {
 	public void setGroup_singer_name(String group_singer_name) {
 		this.group_singer_name = group_singer_name;
 	}
-
-	
 }

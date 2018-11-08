@@ -253,6 +253,7 @@ public class ArtistChanelInfoDAO {
 		return acibean;
 	}
 	
+	// 그룹 멤버 한 명씩 가져오기
 	public List getGroupMember(String g_singer_num){
 		List group = new ArrayList();
 		
@@ -260,7 +261,7 @@ public class ArtistChanelInfoDAO {
 			con = getCon();
 			System.out.println("디비 연결 성공");
 
-			String group_num = g_singer_num.substring(1, g_singer_num.length()-1);
+			String group_num = g_singer_num.substring(1, g_singer_num.length() - 1);
 			StringTokenizer g_number= new StringTokenizer(group_num,",");
 			
 			while(g_number.hasMoreTokens()) {
@@ -296,7 +297,7 @@ public class ArtistChanelInfoDAO {
 		return group;
 	}
 	
-	// 그룹 가수 번호 있는 가수 불러오기
+	// 솔로 -> 그룹에 솔로 번호 가지고 있는 그룹 불러오기
 	public ArtistChanelInfoBean getArtistChanelSingerGroupNum(int num) {
 		ArtistChanelInfoBean acibean = null;
 		
@@ -342,6 +343,7 @@ public class ArtistChanelInfoDAO {
 				// 성별
 				acibean.setSi_gender(rs.getString("si_gender"));
 				
+				// 그룹 번호
 				acibean.setGroup_singer_num(rs.getString("group_singer_num"));
 				
 				// 그룹 이름 가져오기
@@ -359,7 +361,7 @@ public class ArtistChanelInfoDAO {
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()) {
-						g_singer_name+=rs.getString("singer_name")+",";
+						g_singer_name += rs.getString("singer_name")+",";
 					}
 				}
 				

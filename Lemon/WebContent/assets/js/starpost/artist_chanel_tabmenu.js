@@ -9,7 +9,7 @@ $(function() {
 		$('#' + activeTab).addClass('current');
 		
 		// 색상 변경
-		$('.artist_chanel_tab li').removeClass("current");
-		$(this).addClass("current");
+		$('.artist_chanel_tab li').removeClass("on");
+		$(this).addClass("on");
 	})
 });

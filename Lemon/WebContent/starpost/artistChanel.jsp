@@ -57,12 +57,12 @@
 		// 소속사 -> ""
 		String agency = acibean.getSi_agency();
 	
-		// 소속 그룹 번호 -> ""
-		String group_num="";
+		// 소속 그룹 멤버 -> ""
+		String group_name = "";
 		
 		if(!acibean.getGroup_singer_name().equals("")) {
-			group_num = acibean.getGroup_singer_name();
-			group_num = group_num.substring(0, group_num.length()-1);
+			group_name = acibean.getGroup_singer_name();
+			group_name = group_name.substring(0, group_name.length() - 1);
 		}
 %>
 
@@ -127,10 +127,27 @@
 								<% } %>
 								<dt>활동유형</dt>
 									<dd><%=acibean.getActivity_type()%></dd>
-								<% if(!group_num.equals("")) { %>
+								<%
+									if(!group_name.equals("")) {
+								%>
 								<dt>멤버</dt>
-									<dd><%=group_num %></dd>
-								<% } %>
+									<dd>
+								<%
+										for(int i=0;i<group.size();i++){
+								    		ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
+								%>
+									<%-- <dd><%=group_num %></dd> --%>
+									
+										<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>"
+											title="<%=gbean.getSinger_name() %>" class="ellipsis"><%=gbean.getSinger_name()%>
+										</a>
+								<%
+										}
+								%>
+									</dd>
+								<%
+									}
+								%>
 								<% if(!agency.equals("")) { %>
 								<dt>소속사</dt>
 									<dd><%=acibean.getSi_agency()%></dd>
@@ -4230,67 +4247,59 @@
 							<dt>소속사명</dt>
 								<dd><%=agency%></dd>
 							<%} %>
-							<% if(!group_num.equals("")) { %>
+							<%-- <% if(!group_num.equals("")) { %>
 							<dt>멤버</dt>
 								<dd>
-								<%=group_num%>
-<%-- 									<a href="./ArtistChanel.ac?artist=<%=acibean.getSi_num()%>"><%=group_num%></a> --%>
+									<%=group_num%>
+									<a href="./ArtistChanel.ac?artist=<%=acibean.getSi_num()%>"><%=group_num%></a>
 								</dd>
-							<%} %>
+							<%} %> --%>
 						</dl>
-						<!-- 그룹멤버 시작-->
-						
+						<!-- 그룹멤버-->
+						<%
+							if(!group_name.equals("")) {
+						%>
+	 					<div class="wrap_gmem">
+							<h3 class="title line arr">그룹멤버</h3>						
+							<ul class="list_atist13 d_artist_list">
+								<%
+									for(int i=0;i<group.size();i++){
+							    		ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
+							    %>
+								<li>
+									<div class="wrap_atist13">
+										<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>" title="<%=gbean.getSinger_name() %>" class="thumb">
+											<span class="thumb_frame"></span>
+											<img width="96" height="96"
+												src="./upload/starpost/singerProfile/<%=gbean.getSi_picture()%>"
+												alt="<%=gbean.getSinger_name()%> 프로필 이미지">
+										</a>
+										<div class="atist_info">
+											<dl>
+												<dt>
+													<strong class="none">아티스트명</strong>
+													<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>" title="<%=gbean.getSinger_name() %>" class="ellipsis"><%=gbean.getSinger_name()%></a>
+												</dt>
+												<dd class="gubun"><%=gbean.getSi_gender()%>/<%=gbean.getActivity_type()%></dd>
+												<dd class="gnr">
+													<strong class="none">음악장르</strong>
+													<div class="ellipsis fc_strong"><%=gbean.getSi_genre()%></div>
+												</dd>
+											</dl>
+											</div> 
+										</div>
+									</li>
+								<%
+							    	}
+							  	%>
+							</ul>
+						</div>
+						<%
+							}
+						%> 
 						<!-- //그룹멤버 종료 -->
-						<!-- 다른활동 -->
-						
-						<!--// 다른활동 -->
 					</div>
 					<!-- //활동정보 -->
-					
-					<!-- 그룹 멤버 -->
-				
-					<%
-						if(!group_num.equals("")) {
-					%>
- 					<div class="wrap_gmem">
-						<h3 class="title line arr">그룹멤버</h3>						
-						<ul class="list_atist13 d_artist_list">
-							<%
-								for(int i=0;i<group.size();i++){
-						    	ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
-						    %>							
-							<li>
-								<div class="wrap_atist13">
-									<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>" title="<%=gbean.getSinger_name() %>" class="thumb">
-										<span class="thumb_frame"></span>
-										<img width="96" height="96"
-											src="./upload/starpost/singerProfile/<%=gbean.getSi_picture()%>"
-											alt="<%=gbean.getSinger_name()%> 프로필 이미지">
-									</a>
-									<div class="atist_info">
-										<dl>
-											<dt>
-												<strong class="none">아티스트명</strong>
-												<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>" title="<%=gbean.getSinger_name() %>" class="ellipsis"><%=gbean.getSinger_name()%></a>
-											</dt>
-											<dd class="gubun"><%=gbean.getSi_gender()%>/<%=gbean.getActivity_type()%></dd>
-											<dd class="gnr">
-												<strong class="none">음악장르</strong>
-												<div class="ellipsis fc_strong"><%=gbean.getSi_genre()%></div>
-											</dd>
-										</dl>
-										</div> 
-									</div>
-								</li>
-							<%
-						    	}
-						  	%>
-						</ul>
-					</div>
-					<%
-						}
-					%> 
-					<!-- 그룹 멤버 -->
 					
 					<!-- 신상정보 -->
 					<%if(!real_name.equals("") || siger_birth!=null) { %>
