@@ -216,6 +216,43 @@ public class BoardDAO {
 		return check;
 	}
 
+	public ArrayList<BoardBean> selectboardList(int startRow, int pageSize) {
+		ArrayList<BoardBean> boardList = new ArrayList<>();
+		BoardBean bb = null;
+
+		try {
+			con = getCon();
+
+			sql = "select * from magazine order by ma_num desc limit ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				bb = new BoardBean();
+
+				bb.setMa_num(rs.getInt("ma_num"));
+				bb.setMa_subject(rs.getString("ma_subject"));
+				bb.setMa_category(rs.getString("ma_category"));
+				bb.setMa_content(rs.getString("ma_content"));
+				bb.setMa_date(rs.getDate("ma_register_date"));
+				bb.setMa_readcount(rs.getInt("ma_readcount"));
+
+				// boardList 한칸에 저장
+				boardList.add(bb);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return boardList;
+	}
+
 	// updateBoard(bb)
 	// deleteBoard(num,pass)
 	// public void deleteBoard(int num) {

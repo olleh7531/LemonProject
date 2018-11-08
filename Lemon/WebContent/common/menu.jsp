@@ -258,7 +258,7 @@
 						</a>
 					</li>
 					<li class="menu6">
-						<a href="" class="cur_menu mlog">
+						<a href="./magazineList.maga" class="cur_menu mlog">
 							<span class="menu_more menu06">매거진</span>
 						</a>
 					</li>
