@@ -1,6 +1,7 @@
 package com.lemon.chart.action;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import com.lemon.chart.db.ChartDAO;
 public class LemonChartAction implements Action{
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {  
 		System.out.println("LemonChart_execute()");
 		String daytime = request.getParameter("dayTime");
 		if(daytime==null){
@@ -29,15 +30,31 @@ public class LemonChartAction implements Action{
 		
 		// ChartDAO 객체 생성 -> 메서드 getChart(id) -> 차트정보를 가져오기(JavaBean)
 		ChartDAO cdao = new ChartDAO();
-		List<ChartBean1> list1 = cdao.getChart(daytimex);
-		List<ChartBean1> list2 = cdao.getChart(daytimex);
-		List<ChartBean1> list3 = cdao.getChart(daytimex);
+		List<ChartBean1> list = cdao.getChart(daytimex);
+		List<Double> total = new ArrayList();
+		double temp=0;
+		for(int i=0; i<24; i++){
+		for(int j=i; j<list.size();j=j+24){
+			temp+=(list.get(j).getCh_playcnt()*4) + (list.get(j).getCh_downcnt()*6);
+		}
+		total.add(temp);
+		temp = 0;
+		}
+		List totalarr = new ArrayList();
+		
+		for(int i=0; i<24; i++){
+			for(int j=i; j<list.size();j=j+24){
+				totalarr.add((int)Math.round((((list.get(j).getCh_playcnt()*4) + (list.get(j).getCh_downcnt()*6)) / total.get(i))*100));
+			}
+			temp = 0;
+			}
+		for(int i=0; i<72; i++){
+			list.get(i).setCh_num((int)totalarr.get(i));			
+		}
 		
 		
 		// 차트정보를 request 객체에 저장 ,페이지 이동 (./board/lemonChart.jsp)-Actionforward
-		request.setAttribute("list1", list1);
-		request.setAttribute("list2", list2);
-		request.setAttribute("list3", list3);
+		request.setAttribute("list", list);
 		
 		forward.setPath("./board/lemonChart.jsp?dayTime="+daytime+"");
 		forward.setRedirect(false);

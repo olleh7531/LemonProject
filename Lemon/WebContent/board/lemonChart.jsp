@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -109,6 +110,18 @@ ol, ul, li {
 	top: 30px;
 	right: 15px;
 }
+
+
+
+#bg_contsChart{   
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+}
+
+
+
+
 </style>
 <script type="text/javascript">
 	function btnevent() {
@@ -136,10 +149,8 @@ ol, ul, li {
 		
 if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 작동할시간 주기위해서 5분전에는 어제날짜 보이게
 	$('.year').html(nowdate.substring(0, n-1)+(parseInt(nowdate.substring(n-1,n))-1).toString());
-// 	$('.hhmm').html('23:00');
 }else{
 	$('.year').html(nowdate);
-// 	$('.hhmm').html(nowhour + ':00');
 }
 		$('.time_list li').each(function() {
 			var time = $(this).find('.time').html().substring(0, 2).trim();
@@ -231,7 +242,13 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 			</div>
 		</div>
 	</div>
-	<div id="chart"></div>
+	
+		<!-- 본문 -->
+		<div id="bg_contsChart">
+	<div id="chart" style="	display: inline-block;"></div>
+
+		</div>
+		<!-- 본문 -->	
 	<script type="text/javascript">
 		/*    var chart = bb.generate({
 		 bindto: "#chart",
@@ -252,33 +269,67 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 		 }
 		 }); */
 		<c:set var="arr" value="${requestScope.list}"/>
-// 		var list = "${arr}";
-
 
 
 		bb.generate({
 			"data" : {
 				"columns" : [
-						[ "data1", <c:forEach items="${arr}" var="list"> "${(list.ch_playcnt*4)+(list.ch_downcnt*6)}" , </c:forEach> 0],
-						[ "data2", 20, 200, 7, 400, 155, 150, 250, 350, 450,
-								550, 650, 750, 850, 950, 990 ],
-						[ "data3", 30, 250, 5, 430, 152, 10, 20, 30, 40, 50,
-								60, 70, 80, 90, 55 ], ],
-			},
+						[ "data1", <c:forEach items="${arr}" var="list" varStatus="status" begin="0" end="71" step="3">
+						<c:if test="${status.index!=69}">
+						"${list.ch_num}" ,
+						</c:if>	
+						<c:if test="${status.index==69}">
+						"${list.ch_num}"
+						</c:if>
+						</c:forEach> ],
+						
+						[ "data2", <c:forEach items="${arr}" var="list" varStatus="status" begin="1" end="71" step="3">
+						<c:if test="${status.index!=70}">
+						"${list.ch_num}" ,
+						</c:if>	
+						<c:if test="${status.index==70}">
+						"${list.ch_num}"
+						</c:if>
+						</c:forEach> ],
+						
+						[ "data3", <c:forEach items="${arr}" var="list" varStatus="status" begin="2" end="71" step="3">
+						<c:if test="${status.index!=71}">
+						"${list.ch_num}" , 
+						</c:if>	
+						<c:if test="${status.index==71}">
+						"${list.ch_num}"
+						</c:if>
+						</c:forEach> ], ],
+						"type": "line"
+			},"size": {
+		        "width": 650
+		    },
 			"axis" : {
 				"x" : {
 					"show" : true,
 					"type" : "category",
-					"categories" : [ "${dayTime-14}", "${dayTime-13}", "${dayTime-12}", "${dayTime-11}", "${dayTime-10}", "${dayTime-9}",
-						"${dayTime-8}", "${dayTime-7}", "${dayTime-6}", "${dayTime-5}", "${dayTime-4}", "${dayTime-3}",
-						"${dayTime-2}", "${dayTime-1}", "${dayTime}" ],
+					"categories" : [ <c:forEach items="${arr}" var="list" varStatus="status" begin="0" end="23" step="1">
+					<c:set var="test" value="${list.ch_updatetime}"/>
+					<c:if test="${status.index!=23}">
+						"${fn:substring(test,11,13)}" , 
+					</c:if>	
+					<c:if test="${status.index==23}">
+						"${fn:substring(test,11,13)}" 
+					</c:if>
+					
+						</c:forEach>  ],
 					"tick" : {
 						"outer" : false,
 						centered : true,
 					}
 				},
 				"y" : {
-					"show" : false
+					"show" : false,
+					"tick" : {
+					format: function(d) {
+						return d +"%";
+	                }
+					}
 				}
 			},
 			grid : {
@@ -318,6 +369,22 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 						value : 15
 					}, {
 						value : 16
+					},{
+						value : 17
+					},{
+						value : 18
+					},{
+						value : 19
+					},{
+						value : 20
+					},{
+						value : 21
+					},{
+						value : 22
+					},{
+						value : 23
+					},{
+						value : 24
 					}, ]
 				},
 				front : true,
