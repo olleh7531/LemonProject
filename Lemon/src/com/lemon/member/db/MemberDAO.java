@@ -56,7 +56,7 @@ public class MemberDAO {
 					+ "values(?,?,?,?,?," + "?,?,?,now(),?" + ",?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
-			
+
 			pstmt.setString(1, mb.getEmail_id());
 			pstmt.setString(2, mb.getPass());
 			pstmt.setString(3, mb.getName());
@@ -187,7 +187,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				check = rs.getInt("chk");
-			} 
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -195,7 +195,7 @@ public class MemberDAO {
 		}
 		return check;
 	}
-	
+
 	// updateMemPass()
 	public int updateMemPass(String email_id, String crtPass, String newPass, String chkPass) {
 		int check = -1;
@@ -327,7 +327,7 @@ public class MemberDAO {
 	public int updateMember(MemberBean mb) {
 		int check = -1; // 일반 회원 체크용
 		int chk = mb.getChk(); // 구글, 네이버 로그인 회원 체크용
-		System.out.println("chk : "+chk);
+		System.out.println("chk : " + chk);
 		if (chk == 0) {
 			try {
 				con = getCon();
@@ -384,12 +384,12 @@ public class MemberDAO {
 				pstmt.setString(3, mb.getGender());
 				pstmt.setString(4, mb.getBirth());
 				pstmt.setString(5, mb.getImg());
-				
+
 				pstmt.setString(6, mb.getMobile());
 				pstmt.setString(7, mb.getZip_code());
 				pstmt.setString(8, mb.getAddress1());
 				pstmt.setString(9, mb.getAddress2());
-				
+
 				pstmt.setString(10, mb.getEmail_id());
 				pstmt.executeUpdate();
 				check = 1;
@@ -407,16 +407,16 @@ public class MemberDAO {
 	// checkNick(nickname)
 	public int checkNick(String nickname) {
 		int check = 0;
-		
+
 		try {
 			con = getCon();
 
 			sql = "select * from member where nickname=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, nickname);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				check = 1; // 아이디 있음
 			} else {
@@ -439,13 +439,13 @@ public class MemberDAO {
 		String nickname = null;
 		try {
 			con = getCon();
-			
+
 			sql = "select nickname from member where email_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
 
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				nickname = rs.getString("nickname");
 			}
 		} catch (Exception e) {
@@ -455,9 +455,9 @@ public class MemberDAO {
 		}
 		return nickname;
 	}
-	
+
 	// getNick(String email_id)
-	
+
 	// initMailAuth()
 	public void initMailAuth(String code, String email_id) {
 		try {
@@ -560,31 +560,31 @@ public class MemberDAO {
 		return str;
 	}
 	// findPW(id, mobile)
-	
+
 	public int check_id(String email_id) {
 		int check = 0;
-		
+
 		try {
 			con = getCon();
 			sql = "select email_id from member where email_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email_id);
-			
+
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				check = 1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			CloseDB();			
+			CloseDB();
 		}
-		
+
 		return check;
 	}
 
-	public void insertNMember(MemberBean mb){
+	public void insertNMember(MemberBean mb) {
 		try {
 			con = getCon();
 			sql = "insert into member(email_id, name, nickname, gender, "
@@ -592,7 +592,7 @@ public class MemberDAO {
 					+ "values(?,?,?,?," + "?,?,?,now(),?" + ",?,?,?,?)";
 
 			pstmt = con.prepareStatement(sql);
-			
+
 			pstmt.setString(1, mb.getEmail_id());
 			pstmt.setString(2, mb.getName());
 			pstmt.setString(3, mb.getNickname());
@@ -618,5 +618,26 @@ public class MemberDAO {
 			CloseDB();
 		}
 	}
-	
+
+	public MemberBean nickname_img(String cmt_email) {
+		MemberBean mb = null;
+		try {
+			con = getCon();
+			sql = "select nickname, img from member where email_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cmt_email);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				mb = new MemberBean();
+				mb.setNickname(rs.getString("nickname"));
+				mb.setImg(rs.getString("img"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return mb;
+	}
+
 }

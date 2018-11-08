@@ -16,7 +16,7 @@ public class MusicCommentAction implements Action {
 		System.out.println(" MusicCommentAction execute()!!!!!!!!!!!! ");
 
 		String comment = request.getParameter("comment");
-		System.out.println("comment : " + comment);
+		//System.out.println("comment : " + comment);
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email_id");
 		int mu_num = Integer.parseInt(request.getParameter("mu_num"));
@@ -28,6 +28,7 @@ public class MusicCommentAction implements Action {
 		PrintWriter out = response.getWriter();
 
 		out.println(check);
+		out.close();
 		return null;
 	}
 
