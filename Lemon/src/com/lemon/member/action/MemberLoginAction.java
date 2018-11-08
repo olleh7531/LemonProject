@@ -14,20 +14,19 @@ public class MemberLoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberLoginAction의 execute 호출");
-		
+
 		HttpSession session = request.getSession();
-		
-		MemberDAO mdao = new MemberDAO();		
-		
+
+		MemberDAO mdao = new MemberDAO();
+
 		String email_id = request.getParameter("email_id");
 		String pass = request.getParameter("pass");
-		
+
 		MemberBean mb = new MemberBean();
 		mb = mdao.getMember(email_id);
 		
 		int check;
 		int chkChk = mdao.chkCheck(email_id); 
-
 		if(pass == null && chkChk != 0){
 			check = chkChk;
 		}else{
@@ -73,17 +72,17 @@ public class MemberLoginAction implements Action {
 			
 			return null;
 		}
-		
-	    // check ==1 일때  로그인 처리 ,세션값 생성 "id" -> Main.mi		
 
+		// check ==1 일때 로그인 처리 ,세션값 생성 "id" -> Main.mi
+		//System.out.println("이미지 확인 : " + mb.getImg());
 		session.setAttribute("email_id", email_id);
 		session.setAttribute("nickname", mb.getNickname());
-			
-		
+		session.setAttribute("img_user", mb.getImg());
+
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./main.mi");
-		forward.setRedirect(true);		
+		forward.setRedirect(true);
 		return forward;
 	}
 

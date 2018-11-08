@@ -35,16 +35,163 @@
 <script type="text/javascript"
 	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type='text/javascript' src="./assets/js/player/jquery.js"></script>
+<style type="text/css">
+.wrap_cmt_cntt {
+	display: block;
+	position: relative;
+	padding: 15px 0 7px;
+	padding-left: 235px;
+}
+
+.wrap_cmt_cntt .wrap_nicnmname {
+	overflow: hidden;
+	float: left;
+	width: 196px;
+	margin-left: -235px;
+	padding: 0 15px 0 24px;
+}
+
+.wrap_cmt_cntt .wrap_nicnmname .thumb_wrap {
+	position: relative;
+	display: inline-block;
+	float: left;
+	padding-right: 23px;
+}
+
+.list_cmt .ellipsis {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.list_cmt ul li {
+	border-top: 1px solid #e6e6e6;
+}
+
+.wrap_cmt_cntt .wrap_nicnmname .ellipsis a {
+	color: #999;
+}
+</style>
 </head>
 <%
 	//request.setAttribute("cb", cb);
 	ChartBean cb = (ChartBean) request.getAttribute("cb");
 	ArrayList MusizList = (ArrayList) request.getAttribute("MusizList");
 	String email_id = (String) session.getAttribute("email_id");
+	String img_user = (String) session.getAttribute("img_user");
+
 	String mu_num = request.getParameter("mu_num");
 %>
 <body>
 	<jsp:include page="../common/menu.jsp"></jsp:include>
+	<script type="text/javascript">	
+		$(document).ready( function() {
+			commentselect(<%=mu_num%>);
+		});
+	
+		function goodMusic(num){
+			//alert(num);
+			$.ajax({
+				type : "POST",
+				url : "./GoodMusicAction.go",
+				data: {
+					go_num: num
+				},
+				success : function(data) {
+					if(data == 0){
+						alert("좋아요 반영되었습니다.");
+						location.reload();
+					}else if(data == 1){
+						alert("좋아요 취소되었습니다.");
+						location.reload();
+					}
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}) 
+			
+		}
+		function comment_log(email_id){
+			if(email_id == null){
+				alert("로그인 해주세요.");
+			}
+		}
+		function comment_insert(num){
+			
+			$.ajax({
+				type : "POST",
+				url : "./MusicCommentAction.mcm",
+				data: {
+					comment : $("#comment").val(),
+					mu_num : num
+				},
+				success : function(data) {
+					if(data == 1){
+						  $("#comment").val("");
+						  commentselect(num);
+					  }
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}) 
+		}
+				
+		
+		function commentselect(num){
+			
+			$.getJSON("./MusicCommentSelect01.mcm",{mu_num : num }, function(data) {
+				//alert(data); d_cmtpgn_cmt_list_wrapper
+				var html;
+				$(data).each(function(index,item){
+
+					var content = item.content;
+					html = "<li data-cmt-id='' data-cmt-owner='off' class='first_child' style='height: 100px;'>"+
+											"<div class='wrap_cmt_cntt d_cmtpgn_cmt_wrapper'>"+
+												"<div class='wrap_nicnmname d_cmtpgn_cmt_member_wrapper'>"+
+													"<span class='none'>작성자</span> <span class='thumb_wrap'>"+
+														"<a class='thumb d_cmtpgn_user' data-member-key=''	style='cursor: pointer; text-decoration: none;'>"+
+															"<img  src='./upload/member/img/"+item.img+"' width='54' height='54' alt='''>"+
+															"<span class='thumb_frame'></span>"+
+														"</a>"+
+													"</span>"+
+													"<div class='ellipsis' style='max-width: 102px;'>"+
+														"<a class='thumb d_cmtpgn_user' data-member-key='' style='cursor: pointer; text-decoration: none;'>"+
+															"<span class='d_cmtpgn_member_nickname' title='"+item.nickname+"'>"+
+															item.nickname+
+															"</span>"+
+														"</a>"+
+													"</div>"+
+												"</div>"+	
+												"<div class='wrap_cntt d_cmtpgn_cmt_cont_wrapper'>"+
+													"<div class='cntt'>"+
+														"<div class='cmt_text d_cmtpgn_cmt_full_contents' style='-ms-word-break: break-all; word-break: break-all; word-break: break-word; word-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; display: block'>"+
+															"<div class='cmt_cont'>"+
+																"<span class='none'>내용</span>"+
+																content+
+															"</div>"+
+														"</div>"+
+													"</div>"+
+													"<div>"+
+														"<span class='none'>작성일자</span>"+
+														"<span class='date'>"+
+															"<span>"+item.time+"</span>"+
+															"<span class='time'></span>"+
+														"</div>"+
+													"</div>"+
+												"</div>"+
+											"</div>"+
+										"</div>"+
+									"</li>"
+				});
+				$( "#d_cmtpgn_cmt_list_wrapper ul").append(html);
+			})
+		}
+	</script>
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="pr_none">
 			<div class="page_header">
@@ -662,8 +809,24 @@
 							<tr>
 								<th>
 									<div style="width: 54px; height: 54px; margin-right: 20px;">
-										<img src="./assets/img/main/chart/user.jpeg" width="54"
+										<%
+											if (email_id != null) {
+												if (img_user.equals(null)) {
+										%><img src="./assets/img/main/chart/user.jpeg" width="54"
 											height="54" style="border-radius: 50%;">
+										<%
+											} else {
+										%>
+										<img src="./upload/member/img/<%=img_user%>" width="54"
+											height="54" style="border-radius: 50%;">
+										<%
+											}
+											} else {
+										%><img src="./assets/img/main/chart/user.jpeg" width="54"
+											height="54" style="border-radius: 50%;">
+										<%
+											}
+										%>
 									</div>
 								</th>
 								<th><textarea
@@ -687,6 +850,13 @@
 							class="cm_point">00</span>개
 						</strong>
 					</div>
+				</div>
+
+				<!-- <div style="width: 100%; height: 30px; border: 1px solid #000;"></div>	 -->
+				<div class="list_cmt" id="d_cmtpgn_cmt_list_wrapper" style="">
+					<ul style="">
+
+					</ul>
 				</div>
 			</div>
 
@@ -712,91 +882,7 @@
 			});
 		});
 	</script>
-	<script type="text/javascript">	
-		function goodMusic(num){
-			//alert(num);
-			$.ajax({
-				type : "POST",
-				url : "./GoodMusicAction.go",
-				data: {
-					go_num: num
-				},
-				success : function(data) {
-					if(data == 0){
-						alert("좋아요 반영되었습니다.");
-						location.reload();
-					}else if(data == 1){
-						alert("좋아요 취소되었습니다.");
-						location.reload();
-					}
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			}) 
-			
-		}
-		function comment_log(email_id){
-			if(email_id == null){
-				alert("로그인 해주세요.");
-			}
-		}
-		function comment_insert(num){
-			
-			$.ajax({
-				type : "POST",
-				url : "./MusicCommentAction.mcm",
-				data: {
-					comment : $("#comment").val(),
-					mu_num : num
-				},
-				success : function(data) {
-					if(data == 1){
-						  $("#comment").val("");
-						  commentselect(num);
-					  }
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			}) 
-		}
-				
-		$(document).ready(function() {
-			
-		});
-		function commentselect(num){
-			//alert(num);
-			/* $.getJSON("./MusicCommentSelect.mcm",{mu_num : num },function(data){
-				//alert(data);
-				//alert("adwdw");
-				$.each(data, function(index, item){
-					alert(item.cmt_num);
-				}) 
-			}); */
-			$.getJSON("./MusicCommentSelect.mcm",{mu_num : num},function(data){
-				alert("sadww")
-			});
-			
-			/* $.ajax({
-				type : "POST",
-				url : "./MusicCommentSelect.mcm",
-				dataType:'json',
-				data: {
-					mu_num : num
-				},
-				success : function(data) {
-					$.each(data, function(index, item){
-						alert(item.cmt_num);
-					})
-					alert(data);
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			})  */
-		}
-	</script>
+
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

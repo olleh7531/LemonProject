@@ -56,7 +56,7 @@ public class MusicCommentDAO {
 			pstmt.setInt(1, mu_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				sql = "insert into comment(cmt_category, cmt_text_num, cmt_content, cmt_email,  cmt_ip, cmt_timestamp) "
+				sql = "insert into comment(cmt_category, cmt_text_num, cmt_content, cmt_email,  cmt_ip, cmt_timestamp)"
 						+ "values(?,?,?,?,?,now())";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, 1);
@@ -76,6 +76,37 @@ public class MusicCommentDAO {
 	}
 
 	public ArrayList<MusicCommentBean> SelectMusicComment(int mu_num) {
+		MusicCommentBean mcb = null;
+		ArrayList<MusicCommentBean> ListComm = new ArrayList<>();
+		try {
+			con = getCon();
+			sql = "select * from comment where  cmt_text_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, mu_num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				mcb = new MusicCommentBean();
+				mcb.setCmt_num(rs.getInt("cmt_num"));
+				mcb.setCmt_category(rs.getInt("cmt_category"));
+				mcb.setCmt_text_num(rs.getInt("cmt_text_num"));
+				mcb.setCmt_content(rs.getString("cmt_content"));
+				mcb.setCmt_email(rs.getString("cmt_email"));
+				mcb.setCmt_timestamp(rs.getDate("cmt_timestamp"));
+				mcb.setCmt_ip(rs.getString("cmt_ip"));
+				mcb.setCmt_like(rs.getInt("cmt_like"));
+				mcb.setCmt_dislike(rs.getInt("cmt_dislike"));
+				mcb.setCmt_blame(rs.getInt("cmt_blame"));
+				ListComm.add(mcb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return ListComm;
+	}
+
+	public ArrayList<MusicCommentBean> selectMusic(int mu_num) {
 		MusicCommentBean mcb = null;
 		ArrayList<MusicCommentBean> ListComm = new ArrayList<>();
 		try {
