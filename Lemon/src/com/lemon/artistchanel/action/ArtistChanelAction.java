@@ -17,11 +17,18 @@ public class ArtistChanelAction implements Action {
 		int artist = Integer.parseInt(request.getParameter("artist"));
 		
 		// 디비 처리 객체
-		ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
+		/*		ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
 		
 		// 디비에서 아티스트 정보 가져오기(아티스트 번호에 해당하는 정보)
 		ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
-
+		String g_singer_num = acibean.getGroup_singer_num();
+*/		
+		/*지연 추가*/
+		// 그룹 정보 저장
+		
+		/*지연 추가*/
+		
+		
 		// 전달, info 저장
 		// 아티스트 정보를 ArtistChanel.jsp 페이지에 전달
 		request.setAttribute("artist", artist);

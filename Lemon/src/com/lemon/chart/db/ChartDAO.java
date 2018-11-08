@@ -3,7 +3,9 @@ package com.lemon.chart.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.naming.Context;
@@ -15,6 +17,9 @@ public class ChartDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
+	PreparedStatement pstmt2 = null;
+	ResultSet rs2 = null;
+	String sql2 = "";
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -24,17 +29,19 @@ public class ChartDAO {
 	}
 
 	public void CloseDB() {
-		if (rs != null) {
+		if (rs != null || rs2 != null) {
 			try {
 				rs.close();
+				rs2.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 
-		if (pstmt != null) {
+		if (pstmt != null || pstmt2 != null) {
 			try {
 				pstmt.close();
+				pstmt2.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -69,23 +76,39 @@ public class ChartDAO {
 			pstmt = con.prepareStatement(sql);
 
 			// pstmt 객체 실행
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				sql = "select * from chart where ch_num=? AND ch_updatetime between "
-						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),	INTERVAL 24 HOUR)"
-						+ "and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 HOUR)";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, rs.getInt("ch_music_num"));
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
+
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				sql2 ="select * from chart where ch_music_num=? AND ch_updatetime between "
+						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"'),	INTERVAL 24 HOUR)"
+						+ "and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"'), INTERVAL 1 HOUR)"
+								+ "order by ch_updatetime asc";
+				pstmt2 = con  .prepareStatement(sql2);
+				pstmt2.setInt(1, rs.getInt("ch_music_num"));
+				rs2 = pstmt2.executeQuery();
+				while (rs2.next()) {
+
 					cb = new ChartBean1();
-					cb.setCh_num(rs.getInt("ch_num"));
-					cb.setCh_music_num(rs.getInt("ch_music_num"));
-					cb.setCh_playcnt(rs.getInt("ch_playcnt"));
-					cb.setCh_downcnt(rs.getInt("ch_downcnt"));
-					cb.setCh_updatetime(rs.getDate("ch_updatetime"));
+					cb.setCh_num(rs2.getInt("ch_num"));
+					cb.setCh_music_num(rs2.getInt("ch_music_num"));
+					cb.setCh_playcnt(rs2.getInt("ch_playcnt"));
+					cb.setCh_downcnt(rs2.getInt("ch_downcnt"));
+					
+					
+					
+	
+					Calendar cal = Calendar.getInstance(); 
+					cal.setTimeInMillis(rs2.getTimestamp("ch_updatetime").getTime()); 
+					cal.add(Calendar.SECOND, -32400); 
+					
+					Timestamp later = new Timestamp(cal.getTime().getTime()); 
+					
+					System.out.println(later);
+					cb.setCh_updatetime(later);
+					
 					arr.add(cb);
 				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

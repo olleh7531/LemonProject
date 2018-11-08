@@ -29,11 +29,15 @@ public class LemonChartAction implements Action{
 		
 		// ChartDAO 객체 생성 -> 메서드 getChart(id) -> 차트정보를 가져오기(JavaBean)
 		ChartDAO cdao = new ChartDAO();
-		List<ChartBean1> list = cdao.getChart(daytimex);
+		List<ChartBean1> list1 = cdao.getChart(daytimex);
+		List<ChartBean1> list2 = cdao.getChart(daytimex);
+		List<ChartBean1> list3 = cdao.getChart(daytimex);
 		
 		
 		// 차트정보를 request 객체에 저장 ,페이지 이동 (./board/lemonChart.jsp)-Actionforward
-		request.setAttribute("list", list);
+		request.setAttribute("list1", list1);
+		request.setAttribute("list2", list2);
+		request.setAttribute("list3", list3);
 		
 		forward.setPath("./board/lemonChart.jsp?dayTime="+daytime+"");
 		forward.setRedirect(false);

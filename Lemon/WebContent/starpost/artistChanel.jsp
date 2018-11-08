@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="java.sql.Date"%>
 <%@page import="com.lemon.artistchanel.db.ArtistChanelInfoDAO"%>
@@ -38,28 +39,31 @@
 	
 	// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
 	ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
+	String g_singer_name = acibean.getGroup_singer_name();
+	String g_singer_num = acibean.getGroup_singer_num();
+ 	List group = acidao.getGroupMember(g_singer_num);
 	
-	// null일 때 처리 사항 관련
+	// null이거나 "" 일 때 처리 사항 관련
 	// -> 에러나서 여기에서 불러옴
-		// 본명
+		// 본명 -> ""
 		String real_name = acibean.getReal_name();
 		
-		// 데뷔 날짜
+		// 데뷔 날짜 -> null
 		Date debut_year = acibean.getDebut_year();
 		
-		// 생일
+		// 생일 -> null
 		Date siger_birth = acibean.getSi_birth();
 		
-		// 소속사
+		// 소속사 -> ""
 		String agency = acibean.getSi_agency();
 	
-		// 소속 그룹 번호
-		 String group_num="";
+		// 소속 그룹 번호 -> ""
+		String group_num="";
 		
-		 if(!acibean.getGroup_singer_num().equals("")) {
-			group_num = acibean.getGroup_singer_num();
-			group_num = group_num.substring(0, group_num.length() - 1);
-		 }
+		if(!acibean.getGroup_singer_name().equals("")) {
+			group_num = acibean.getGroup_singer_name();
+			group_num = group_num.substring(0, group_num.length()-1);
+		}
 %>
 
 	<!-- 메뉴 -->
@@ -102,7 +106,9 @@
 						<div class="wrap_atist_info">
 							<p class="title_atist">
 								<strong class="none">아티스트명</strong><%=acibean.getSinger_name()%>
-								<span class="realname"><%=real_name%></span>
+								<% if(!real_name.equals("")) { %>
+								<span class="realname">(<%=real_name%>)</span>
+								<% } %>
 							</p>
 							<dl class="atist_info clfix">
 								<%	if(debut_year != null) {%>
@@ -121,6 +127,10 @@
 								<% } %>
 								<dt>활동유형</dt>
 									<dd><%=acibean.getActivity_type()%></dd>
+								<% if(!group_num.equals("")) { %>
+								<dt>멤버</dt>
+									<dd><%=group_num %></dd>
+								<% } %>
 								<% if(!agency.equals("")) { %>
 								<dt>소속사</dt>
 									<dd><%=acibean.getSi_agency()%></dd>
@@ -4221,9 +4231,10 @@
 								<dd><%=agency%></dd>
 							<%} %>
 							<% if(!group_num.equals("")) { %>
-							<dt>소속그룹</dt>
+							<dt>멤버</dt>
 								<dd>
-									<a href=""><%=group_num%></a>
+								<%=group_num%>
+<%-- 									<a href="./ArtistChanel.ac?artist=<%=acibean.getSi_num()%>"><%=group_num%></a> --%>
 								</dd>
 							<%} %>
 						</dl>
@@ -4235,6 +4246,51 @@
 						<!--// 다른활동 -->
 					</div>
 					<!-- //활동정보 -->
+					
+					<!-- 그룹 멤버 -->
+				
+					<%
+						if(!group_num.equals("")) {
+					%>
+ 					<div class="wrap_gmem">
+						<h3 class="title line arr">그룹멤버</h3>						
+						<ul class="list_atist13 d_artist_list">
+							<%
+								for(int i=0;i<group.size();i++){
+						    	ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
+						    %>							
+							<li>
+								<div class="wrap_atist13">
+									<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>" title="<%=gbean.getSinger_name() %>" class="thumb">
+										<span class="thumb_frame"></span>
+										<img width="96" height="96"
+											src="./upload/starpost/singerProfile/<%=gbean.getSi_picture()%>"
+											alt="<%=gbean.getSinger_name()%> 프로필 이미지">
+									</a>
+									<div class="atist_info">
+										<dl>
+											<dt>
+												<strong class="none">아티스트명</strong>
+												<a href="./ArtistChanel.ac?artist=<%=gbean.getSi_num() %>" title="<%=gbean.getSinger_name() %>" class="ellipsis"><%=gbean.getSinger_name()%></a>
+											</dt>
+											<dd class="gubun"><%=gbean.getSi_gender()%>/<%=gbean.getActivity_type()%></dd>
+											<dd class="gnr">
+												<strong class="none">음악장르</strong>
+												<div class="ellipsis fc_strong"><%=gbean.getSi_genre()%></div>
+											</dd>
+										</dl>
+										</div> 
+									</div>
+								</li>
+							<%
+						    	}
+						  	%>
+						</ul>
+					</div>
+					<%
+						}
+					%> 
+					<!-- 그룹 멤버 -->
 					
 					<!-- 신상정보 -->
 					<%if(!real_name.equals("") || siger_birth!=null) { %>

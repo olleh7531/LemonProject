@@ -152,6 +152,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		} else if (command.equals("/MemberFind.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/findForm.jsp");
@@ -179,6 +180,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		} else if (command.equals("/MemberFriend.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/memberFriend.jsp");
@@ -189,10 +191,21 @@ public class MemberFrontController extends HttpServlet {
 			forward.setPath("./member/addFriend.jsp");
 			forward.setRedirect(false);
 
-		} else if (command.equals("/FriendList.mb")) {
-			forward = new ActionForward();
-			forward.setPath("./member/friendList.jsp");
-			forward.setRedirect(false);
+		} else if (command.equals("/FriendSearch.mb")) {
+			action = new FriendSearch();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/requestFriend.mb")) {
+			action = new requestFriend();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		} else if (command.equals("/NicknameCheck.mb")) {
 			forward = new ActionForward();

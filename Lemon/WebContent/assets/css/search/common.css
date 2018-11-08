@@ -4,24 +4,21 @@ div{
 	display: block;
 }
 	
-#bg_contsSc{  border: 1px solid red;  
+#bg_contsSc{  /* border: 1px solid red; */  
 	width: 100%;
 	text-align: center;
 }
 	
-#wrap_contsSc{  border: 1px solid blue;  
+#wrap_contsSc{  /* border: 1px solid blue; */  
 	display: inline-block;
 	width: 1008px;
 	text-align: left;
 }
 	
-#contsSc{  border: 1px solid gray; 
+#contsSc{  /* border: 1px solid gray; */ 
 	display: block;
 	margin-top: 30px;
 }
-
-
-
 
 .clear{
 	clear: both;
