@@ -26,7 +26,7 @@ public class SearchFrontController extends HttpServlet {
 		if (command.equals("/search.sc")) {
 			System.out.println("ttttt");
 			forward = new ActionForward();
-			forward.setPath("./search/list.jsp");
+			forward.setPath("./search/lyric.jsp");
 			forward.setRedirect(false);
 		}
 			

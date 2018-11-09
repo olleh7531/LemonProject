@@ -16,7 +16,23 @@
 				<!-- 로고 -->
 
 				<!-- 통합검색 영역 -->
+				<form id="searchFrm" method="get" action="./search.sc">
 				<fieldset>
+					<legend>통합검색영역</legend>
+					<input type="text" title="검색 입력 편집창" name="search"
+						id="top_search" style="width: 249px">
+<!-- 					<input type="hidden" name="keywordLink" id="keywordLink" value=""> -->
+					<button type="submit" class="btn_icon search_m" title="검색" >
+						<span class="odd_span">검색</span>
+					</button>						
+				</fieldset>				
+				</form>
+<!-- 				<form style="display: none" id="searchFrm" method="get" action=""> -->
+<!-- 					<input type="hidden" name="q"> <input type="hidden" name="section"> -->
+<!-- 				</form> -->
+								
+				
+<!-- 				<fieldset>
 					<legend>통합검색영역</legend>
 					<input type="text" title="검색 입력 편집창" placeholder="" name=""
 						id="top_search" style="width: 249px">
@@ -26,25 +42,25 @@
 						class="btn_icon btn_auto close" title="자동검색 펼침">
 						<span class="odd_span">자동검색 펼침</span>
 					</button>
-					<!-- open/close 클래스 사용 -->
+					open/close 클래스 사용
 					<button type="button" class="btn_icon search_m" title="검색" onclick="location='./search.sc'">
 						<span class="odd_span">검색</span>
 					</button>
 					<div class="auto_complete" id="top_search_autocomplete">
 						<div class="auto_complete_cont" style="display: block;">
-							<!-- 자동완성 레이어 -->
+							자동완성 레이어
 						</div>
 					</div>
 					<div class="auto_complete" id="top_search_autocomplete_template"
 						style="display: none;">
-						<!-- 자동완성 레이어 템플릿 -->
-						<!-- 텍스트 결과 -->
+						자동완성 레이어 템플릿
+						텍스트 결과
 						<ul class="text_result">
 							<li>
 								<a href="#" class="autocomplete-label"></a>
 							</li>
 						</ul>
-						<!-- 섬네일 결과 -->
+						섬네일 결과
 						<ul class="thumb_result">
 							<li class="cate"></li>
 							<li class="class02">
@@ -62,7 +78,7 @@
 								</a>
 							</li>
 						</ul>
-						<!-- 검색어가 없을 때 -->
+						검색어가 없을 때
 						<ul class="text_result">
 							<li class="result_none">
 								<span>해당글자로 시작하는 단어가 없습니다.</span>
@@ -72,7 +88,7 @@
 				</fieldset>
 				<form style="display: none" id="searchFrm" method="get" action="">
 					<input type="hidden" name="q"> <input type="hidden" name="section">
-				</form>
+				</form> -->
 				<!-- //통합검색 영역 -->
 
 				<!-- 실시간 검색어 -->
