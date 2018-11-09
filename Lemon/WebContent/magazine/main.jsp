@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
-<link rel="stylesheet" type="text/css" href="./assets/css/magazine/table.css">	<!-- 메인페이지 css -->
+<link rel="stylesheet" type="text/css"	href="./assets/css/magazine/table.css">
+<!-- 메인페이지 css -->
 
 
 <link rel="stylesheet" type="text/css"	href="./assets/css/common/common.css">
@@ -29,8 +30,7 @@
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_login.js"></script>
-<script src="https://apis.google.com/js/platform.js?onload=init" async
-	defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async	defer></script>
 
 <script type="text/javascript"	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
 	charset="utf-8"></script>
@@ -58,67 +58,77 @@
 
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	<section id="listForm">
-		<h1>list</h1>
-		<table border="1">
-			<tr id="tr_top">
-				<td>번호</td>
-				<td>이미지</td>
-				<td>제목</td>
-				<td>날짜</td>
-				<td>조회수</td>
-			</tr>
-			<%
-				if (count != 0) {
-					for (int i = 0; i < boardList.size(); i++) {
-						BoardBean bb = (BoardBean) boardList.get(i);
-			%>
-			<tr>
-				<td><%=bb.getMa_Num()%></td>
-				<td>썸넬</td>
-				<td><%=bb.getMa_subject()%></td>
-				<td><%=bb.getMa_date()%></td>
-				<td><%=bb.getMa_readcount()%></td>
-			</tr>
-			<%
-				}
-				}
-			%>
-		</table>
-		<a href="/Lemon/magazineBoardWrite.maga">글쓰기</a>
-		<div style="text-align: center;">
-			<div class="pagination">
-				<%
-					if (count != 0) {
-						if (startPage > pageBlock) {
-				%>
-				<a href="./magazineList.maga?pageNum=<%=startPage - pageBlock%>">
-				&laquo;
-				</a>
-				<%
-					}
-						for(int i = startPage; i <= endPage; i++){
-				%>
-				<a href="./magazineList.maga?pageNum=<%=i%>"
-					<%if (Integer.parseInt(pageNum) == i) {%> class="active" <%}%>><%=i%>
-				</a>
-				<%
-					}
-						if (endPage < pageCount) {
-				%>
-				<a href="./magazineList.maga?pageNum=<%=startPage + pageBlock%>">&raquo;</a>
-				<%
-					}
-					}
-				%>
-			</div>
+	<div id="cont_wrap" class="clfix">
+		<div id="conts_section" class="pr_none">
+			<section id="listForm">
+				<h1>list</h1>
+			<div id="pageList">
+				<table>
+					<colgroup>
+						<col style="width: 60px">
+						<col style="width: 120px">
+						<col style="width: 647px">
+						<col style="width: 100px">
+						<col style="width: 100px">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">NO.</th>
+							<th scope="col">이미지</th>
+							<th scope="col">제목</th>
+							<th scope="col">날짜</th>
+							<th scope="col">조회수</th>
+						</tr>
+					</thead>
+					<%
+						if (count != 0) {
+							for (int i = 0; i < boardList.size(); i++) {
+								BoardBean bb = (BoardBean) boardList.get(i);
+					%>
+					<tr>
+						<td><%=bb.getMa_Num()%></td>
+						<td>썸넬</td>
+						<td><%=bb.getMa_subject()%></td>
+						<td><%=bb.getMa_date()%></td>
+						<td><%=bb.getMa_readcount()%></td>
+					</tr>
+					<%
+						}
+						}
+					%>
+				</table>
+				</div>
+				<a href="/Lemon/magazineBoardWrite.maga">글쓰기</a>
+				<div style="text-align: center;">
+					<div class="pagination">
+						<%
+							if (count != 0) {
+								if (startPage > pageBlock) {
+						%>
+						<a href="./magazineList.maga?pageNum=<%=startPage - pageBlock%>">
+							&laquo; </a>
+						<%
+							}
+								for (int i = startPage; i <= endPage; i++) {
+						%>
+						<a href="./magazineList.maga?pageNum=<%=i%>"
+							<%if (Integer.parseInt(pageNum) == i) {%> class="active" <%}%>><%=i%>
+						</a>
+						<%
+							}
+								if (endPage < pageCount) {
+						%>
+						<a href="./magazineList.maga?pageNum=<%=startPage + pageBlock%>">&raquo;</a>
+						<%
+							}
+							}
+						%>
+					</div>
+				</div>
+
+			</section>
 		</div>
-
-
-
-
-	</section>
-
+	</div>
 
 
 

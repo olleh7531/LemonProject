@@ -11,11 +11,15 @@ h1 {
 	font-weight: bold;
 }
 
+#conts_section.pr_none {
+	padding: 0 20px;
+}
+
 table.type09 {
 	border-collapse: collapse;
 	text-align: left;
 	line-height: 1.5;
-	width: 1048px;
+	width: 800px;
 	margin: 30px;
 }
 
@@ -54,6 +58,10 @@ input[type=text], select {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+}
+
+#frm {
+	padding: 0 20px;
 }
 
 .button {
