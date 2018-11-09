@@ -220,6 +220,7 @@ public class ArtistChanelInfoDAO {
 				// 성별
 				acibean.setSi_gender(rs.getString("si_gender"));
 				
+				// 그룹 번호
 				acibean.setGroup_singer_num(rs.getString("group_singer_num"));
 				
 				// 그룹 이름 가져오기
@@ -241,8 +242,10 @@ public class ArtistChanelInfoDAO {
 					}
 				}
 				
-				// 그룹 번호
+				// 그룹 멤버 이름
 				acibean.setGroup_singer_name(g_singer_name);
+				
+				System.out.println("아티스트 번호에 해당하는 아티스트 정보 가져오기");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -253,7 +256,7 @@ public class ArtistChanelInfoDAO {
 		return acibean;
 	}
 	
-	// 그룹 멤버 한 명씩 가져오기
+	// 그룹 -> 그룹 멤버 한 명씩 가져오기
 	public List getGroupMember(String g_singer_num){
 		List group = new ArrayList();
 		
@@ -286,7 +289,7 @@ public class ArtistChanelInfoDAO {
 					group.add(bean);
 				}
 			}
-			System.out.println("그룹 멤버 정보 저장 성공 ");
+			System.out.println("그룹 -> 그룹 멤버 불러오기 ");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -298,75 +301,28 @@ public class ArtistChanelInfoDAO {
 	}
 	
 	// 솔로 -> 그룹에 솔로 번호 가지고 있는 그룹 불러오기
-	public ArtistChanelInfoBean getArtistChanelSingerGroupNum(int num) {
-		ArtistChanelInfoBean acibean = null;
+	public List<ArtistChanelInfoBean> getArtistChanelSoloGroupName(int num) {
+		List singer_name = new ArrayList();
 		
 		try {
 			con = getCon();
 			
-			sql = "select si_num from singer where group_singer_num like '%,si_num = ?,%'";
+			sql = "select si_num, singer_name from singer where group_singer_num like '%," + num + ",%'";
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				acibean = new ArtistChanelInfoBean();
+
+			while(rs.next()) {
+				ArtistChanelInfoBean acibean = new ArtistChanelInfoBean();
 				
-				// 솔로/그룹 유형
-				acibean.setActivity_type(rs.getString("activity_type"));
+				// 가수 번호
+				acibean.setSi_num(rs.getInt("si_num"));
 				
 				// 가수 활동 이름(예명)
 				acibean.setSinger_name(rs.getString("singer_name"));
 				
-				// 본명
-				acibean.setReal_name(rs.getString("real_name"));
-				
-				// 데뷔 날짜
-				acibean.setDebut_year(rs.getDate("debut_year"));
-				
-				// 데뷔 노래
-				acibean.setDebut_song(rs.getString("debut_song"));
-				
-				// 소속사 이름
-				acibean.setSi_agency(rs.getString("si_agency"));
-				
-				// 프로필 사진
-				acibean.setSi_picture(rs.getString("si_picture"));
-				
-				// 노래 장르
-				acibean.setSi_genre(rs.getString("si_genre"));
-			
-				// 생일
-				acibean.setSi_birth(rs.getDate("si_birth"));
-				
-				// 성별
-				acibean.setSi_gender(rs.getString("si_gender"));
-				
-				// 그룹 번호
-				acibean.setGroup_singer_num(rs.getString("group_singer_num"));
-				
-				// 그룹 이름 가져오기
-				String g_singer_name = "";
-				String group_num = rs.getString("group_singer_num").substring(1, rs.getString("group_singer_num").length() - 1);
-				StringTokenizer g_number= new StringTokenizer(group_num,",");
-				
-				while(g_number.hasMoreTokens()) {
-					group_num = g_number.nextToken();
-					
-					sql = "select singer_name from singer where si_num = ?";
-					
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, Integer.parseInt(group_num));
-					rs = pstmt.executeQuery();
-					
-					while(rs.next()) {
-						g_singer_name += rs.getString("singer_name")+",";
-					}
-				}
-				
-				// 그룹 번호
-				acibean.setGroup_singer_name(g_singer_name);
+				singer_name.add(acibean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -374,6 +330,6 @@ public class ArtistChanelInfoDAO {
 			CloseDB();
 		}
 		
-		return acibean;
+		return singer_name;
 	}
 }

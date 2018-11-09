@@ -2,6 +2,8 @@ package com.lemon.artistchanel.action;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -136,6 +138,8 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		System.out.println(
 				"ArtistChanelInfoWrtieAction.java singer_group_num : " + infoMulti.getParameter("singer_group_num"));
 
+		// 그룹 이름
+		
 		// ArtistChanelDAO 객체 생성
 		ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
 
@@ -148,7 +152,7 @@ public class ArtistChanelInfoWrtieAction implements Action {
 
 		// 아티스트 정보 - 번호
 		int artist = acidao.getArtistChanelInfoNum();
-
+	
 		// 페이지 이동
 		// /ArtistChanelInfoWrtieAction.asp
 		ActionForward forward = new ActionForward();
