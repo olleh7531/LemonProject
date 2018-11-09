@@ -16,8 +16,8 @@ public class requestFriend implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String friendNickname = (String)request.getParameter("f_nickname");
-		String myNickname = (String)request.getParameter("m_nickname");
+		String f_nickname = (String)request.getParameter("f_nickname");
+		String m_nickname = (String)request.getParameter("m_nickname");
 		
 		MemberBean db = new MemberBean();
 		MemberDAO ddao = new MemberDAO();
@@ -25,7 +25,8 @@ public class requestFriend implements Action{
 		FriendBean fb = new FriendBean();
 		FriendDAO fdao = new FriendDAO();
 		
-		ArrayList<String> check = fdao.requestFriend(myNickname);
+		ArrayList<String> check = fdao.requestFriend(m_nickname);
+		ArrayList<String> friendList = fdao.listFriend(m_nickname);
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -37,16 +38,34 @@ public class requestFriend implements Action{
 				System.out.println(nickname);
 				
 				String result =
-						"<input type='hidden' id='nick"+i+"' value='"+ nickname +"'>"+ 
+						"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
 						"<br> <label>"+nickname+"</label>" + 
-						"<input type='button' value='수락' onclick='acception()'>" + 
-						"<input type='button' value='거절' onclick='refuse()'> <br>";
+						"<input type='button' class='acception' value='수락'>" + 
+						"<input type='button' class='refuse' value='거절'> <br>";
 				out.print(result);
 			}
 		} else {
 			String result = "<label>받은 요청이 없습니다.</label>"; 
 			out.print(result);
 		}
+		System.out.println("friendList.size() : " + friendList.size());
+		if(friendList.size() != 0) {
+			System.out.println("friendList out : " + friendList);
+			for(int i=0 ; i<friendList.size() ; i++) {
+				String nickname = friendList.get(i);
+				System.out.println(nickname);
+				
+				String result =
+						"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
+						"<br><br> <label>"+nickname+"</label>" + 
+						"<input type='button' class='info' value='정보보기'> <br>";
+				out.print(result);
+			}
+		} else {
+			String result = "<br><br><label>현재 친구가 없습니다.</label><br>"; 
+			out.print(result);
+		}
+		
 		return null;
 	}
 }

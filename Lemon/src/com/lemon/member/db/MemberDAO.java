@@ -422,7 +422,6 @@ public class MemberDAO {
 			} else {
 				check = 0; // 아이디 없음
 			}
-			System.out.println("아이디 중복 검사 완료 ");
 
 		} catch (Exception e) {
 			e.printStackTrace();

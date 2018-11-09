@@ -23,11 +23,12 @@
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script>
+	
 	// 닉네임 입력 후 찾기 버튼 눌렀을 때
 	function friendSearch() {
 		var m_nickname = document.getElementById("m_nickname").value;
 		var f_nickname = document.getElementById("f_nickname").value;
-	
+		
 		$.ajax({
         	url: "./FriendSearch.mb",
         	data: {
@@ -53,9 +54,11 @@
             data: {
             	f_nickname: f_nickname,
 	            m_nickname : m_nickname},
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+	        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
-            success:function(result) {},
+            success:function(result) {
+				alert(result);            	
+            },
             error:function() {}
         });
 	}
@@ -70,24 +73,66 @@
             data: {
             	f_nickname: f_nickname,
 	            m_nickname : m_nickname},
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
             	$('.findResult2').html(result);
-            }, 
+            	
+            	$('.refuse').click(function(){
+            		refuse($(this).prev().prev().prev().prev().val())
+            	});
+            	
+            	$('.acception').click(function(){
+            		acception($(this).prev().prev().prev().val())
+            	});
+            	
+            	$('.info').click(function(){
+            		info($(this).prev().prev().prev().prev().val());
+            	});
+            },
             error:function() {}
         });
 	}
 	
-	function refuse() {
-		var nick = document.getElementById("nick").value;
-		alert(nick);
+	// 친구 목록에서 수락을 눌렀을 때
+	function acception(param) {
+		var m_nickname = document.getElementById("m_nickname").value;
 		
+		$.ajax({
+        	url: "./acceptionFriend.mb",
+            data: {
+            	f_nickname : param,
+            	m_nickname : m_nickname},
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            type: 'POST',
+            success:function(result) {
+            	$('.findResult2').html(result);
+            	alert("친구 수락 성공")
+            },
+            error:function() {}
+        });
+		location.reload();
 	}
 	
-	function acception() {
-		alert("?");
-		
+	// 친구 목록에서 거절을 눌렀을 때
+	function refuse(param) {
+		var m_nickname = document.getElementById("m_nickname").value;
+		console.log(m_nickname);
+		console.log(param);
+		$.ajax({
+        	url: "./refuseFriend.mb",
+            data: {
+            	f_nickname : param,
+            	m_nickname : m_nickname},
+            	contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            type: 'POST',
+            success:function(result) {
+            	$('.findResult2').html(result);
+            	alert("친구 삭제 성공")
+            },
+            error:function() {}
+        });
+		location.reload();
 	}
 	
 	function show1() {
@@ -122,8 +167,6 @@
 			MemberDAO mdao = new MemberDAO();
 			String nickName = mdao.getNick(email_id);
 			String f_nickname = request.getParameter("f_nickname");
-			String nick = request.getParameter("nick");
-			System.out.println("nick : " + nick);
 		%>
 			<input type="hidden" id="m_nickname" value=<%=nickName %>>
 			
@@ -138,13 +181,8 @@
 			</div>
 			
 			<div class="friend2">
-				친구목록 <br><br><br>
-				<span class="findResult2">
-					<%
-						nick = request.getParameter("nick");
-						System.out.println("nick : " + nick);
-					%>
-				</span>
+				<br><br>
+				<span class="findResult2"></span>
 			</div>
 			
 			<div class="friend3">
