@@ -29,19 +29,17 @@ public class ChartDAO {
 	}
 
 	public void CloseDB() {
-		if (rs != null || rs2 != null) {
+		if (rs != null ) {
 			try {
 				rs.close();
-				rs2.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 
-		if (pstmt != null || pstmt2 != null) {
+		if (pstmt != null) {
 			try {
 				pstmt.close();
-				pstmt2.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -55,6 +53,24 @@ public class ChartDAO {
 		}
 	}
 
+	public void CloseDB2() {
+		if (rs2 != null) {
+			try {
+				rs2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (pstmt2 != null) {
+			try {
+				pstmt2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public List<ChartBean1> getChart(int hour) {
 		// 1시간단위 차트
 		List<ChartBean1> arr = new ArrayList<ChartBean1>();
@@ -107,6 +123,7 @@ public class ChartDAO {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
+			CloseDB2();
 		}
 
 		return arr;
