@@ -225,7 +225,15 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+			
+		} else if (command.equals("/InfoFriend.mb")) {
+			action = new infoFriend();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		} else if (command.equals("/NicknameCheck.mb")) {
 			forward = new ActionForward();
 			forward.setPath("./member/checkNick.jsp");

@@ -38,9 +38,7 @@
             type: 'POST',
             success:function(result) {
 				$('.findResult1').html(result);
-            }, error:function() {
-				alert("실패");
-            }
+            }, error:function() {}
         });
 	}
 	
@@ -78,14 +76,17 @@
             success:function(result) {
             	$('.findResult2').html(result);
             	
+            	// 거절 버튼을 눌렀을 때
             	$('.refuse').click(function(){
             		refuse($(this).prev().prev().prev().prev().val())
             	});
             	
+            	// 수락 버튼을 눌렀을 때
             	$('.acception').click(function(){
             		acception($(this).prev().prev().prev().val())
             	});
             	
+            	// 정보보기 버튼을 눌렀을 때
             	$('.info').click(function(){
             		info($(this).prev().prev().prev().prev().val());
             	});
@@ -93,6 +94,25 @@
             error:function() {}
         });
 	}
+	
+	// 친구 목록에서 정보보기를 눌렀을 때
+	function info(param) {
+		var nickname = document.getElementById("f_nickname").value;
+		
+		$.ajax({
+        	url: "./InfoFriend.mb",
+            data: {
+            	nickname : param,
+            },
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            type: 'POST',
+            success:function(result) {
+            	$('.info').html(result);
+            },
+            error:function() {}
+        });
+	}
+	
 	
 	// 친구 목록에서 수락을 눌렀을 때
 	function acception(param) {
@@ -183,6 +203,7 @@
 			<div class="friend2">
 				<br><br>
 				<span class="findResult2"></span>
+				<span class="info"></span>
 			</div>
 			
 			<div class="friend3">
