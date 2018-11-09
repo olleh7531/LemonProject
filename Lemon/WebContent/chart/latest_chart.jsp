@@ -170,6 +170,7 @@
 									if (count != 0) {
 										for (int i = 0; i < chartList.size(); i++) {
 											ChartBean cb = (ChartBean) chartList.get(i);
+
 											int a = i + 1;
 								%>
 								<tr>
@@ -188,7 +189,7 @@
 									<td style="width: 60px;">
 										<div class="wrap">
 											<a
-												href="./LemonDetai.ct?mu_num=<%=cb.getMu_num()%>&pageNum=<%=pageNum%>"
+												href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>"
 												title="Sun And Moon Part.1" class="image_typeAll"> <img
 												width="60" height="60"
 												src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>"
@@ -199,7 +200,8 @@
 									</td>
 									<td>
 										<div class="wrap" style="text-align: center;">
-											<a href="#" class="btn button_icons type03 song_info"><i class="fa fa-file-text-o"></i></a>
+											<a href="#" class="btn button_icons type03 song_info"><i
+												class="fa fa-file-text-o"></i></a>
 										</div>
 									</td>
 									<td>
@@ -222,7 +224,7 @@
 											<div class="wrap_song_info">
 												<div class="ellipsis rank03">
 													<a
-														href="./LemonDetai.ct?mu_num=<%=cb.getMu_num()%>&pageNum=<%=pageNum%>"
+														href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>"
 														title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
 												</div>
 											</div>

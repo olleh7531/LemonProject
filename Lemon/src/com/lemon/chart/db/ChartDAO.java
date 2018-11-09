@@ -29,7 +29,7 @@ public class ChartDAO {
 	}
 
 	public void CloseDB() {
-		if (rs != null ) {
+		if (rs != null) {
 			try {
 				rs.close();
 			} catch (Exception e) {
@@ -70,7 +70,7 @@ public class ChartDAO {
 			}
 		}
 	}
-	
+
 	public List<ChartBean1> getChart(int hour) {
 		// 1시간단위 차트
 		List<ChartBean1> arr = new ArrayList<ChartBean1>();
@@ -87,13 +87,12 @@ public class ChartDAO {
 
 			// pstmt 객체 실행
 
-			rs=pstmt.executeQuery();
-			while(rs.next()){
-				sql2 ="select * from chart where ch_music_num=? AND ch_updatetime between "
-						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"'),	INTERVAL 23 HOUR)"
-						+ "and DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"')"
-								+ "order by ch_updatetime asc";
-				pstmt2 = con  .prepareStatement(sql2);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				sql2 = "select * from chart where ch_music_num=? AND ch_updatetime between "
+						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "'),	INTERVAL 23 HOUR)"
+						+ "and DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "')" + "order by ch_updatetime asc";
+				pstmt2 = con.prepareStatement(sql2);
 				pstmt2.setInt(1, rs.getInt("ch_music_num"));
 				rs2 = pstmt2.executeQuery();
 				while (rs2.next()) {
@@ -103,21 +102,18 @@ public class ChartDAO {
 					cb.setCh_music_num(rs2.getInt("ch_music_num"));
 					cb.setCh_playcnt(rs2.getInt("ch_playcnt"));
 					cb.setCh_downcnt(rs2.getInt("ch_downcnt"));
-					
-					
-					
-	
-					Calendar cal = Calendar.getInstance(); 
-					cal.setTimeInMillis(rs2.getTimestamp("ch_updatetime").getTime()); 
-					cal.add(Calendar.SECOND, -32400); 
-					
-					Timestamp later = new Timestamp(cal.getTime().getTime()); 
-					
+
+					Calendar cal = Calendar.getInstance();
+					cal.setTimeInMillis(rs2.getTimestamp("ch_updatetime").getTime());
+					cal.add(Calendar.SECOND, -32400);
+
+					Timestamp later = new Timestamp(cal.getTime().getTime());
+
 					cb.setCh_updatetime(later);
-					
+
 					arr.add(cb);
 				}
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -221,7 +217,7 @@ public class ChartDAO {
 		ChartBean cb = null;
 		try {
 			con = getCon();
-			sql = "select * from album a inner join music b where  b.album_num = a.al_num AND a.al_num = ? ";
+			sql = "select * from album a inner join music b where  b.album_num = a.al_num AND b.album_num = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, mu_num);
 			rs = pstmt.executeQuery();
@@ -257,7 +253,7 @@ public class ChartDAO {
 		ArrayList<ChartBean> MusizList = new ArrayList<>();
 		try {
 			con = getCon();
-			sql = "select * from album a inner join music b on b.album_num = a.al_num where a.al_name = ?";
+			sql = "select * from album a inner join music b on b.album_num = a.al_num where a.al_name = ?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();

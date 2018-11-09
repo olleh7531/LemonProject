@@ -19,7 +19,7 @@ public class LemonDetail implements Action {
 
 		ChartDAO cdao = new ChartDAO();
 		ChartBean cb = cdao.selectMusizDetail(mu_num);
-
+		System.out.println("ggg : " + cb.getAl_name());
 		String name = cb.getAl_name();
 
 		ArrayList<ChartBean> MusizList = cdao.DetailMusizName(name);
