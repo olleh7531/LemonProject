@@ -16,6 +16,9 @@ public class ChattingFrontController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
+		
+		
+		
 
 	}
 

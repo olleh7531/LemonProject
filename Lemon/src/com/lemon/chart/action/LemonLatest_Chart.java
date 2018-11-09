@@ -39,12 +39,13 @@ public class LemonLatest_Chart implements Action {
 		// 전체 글개수 가져오겠음.
 		ArrayList<ChartBean> chartList = cdao.selectChart(startRow, pageSize);
 		ArrayList<ChartBean> ChartList = cdao.GoodList(chartList);
-/*		int GoodNum = 0;
-		for (int i = 0; i < chartList.size(); i++) {
-			ChartBean cb = chartList.get(i);
-			
-		}*/
-//		request.setAttribute("GoodNum", GoodNum);
+		/*
+		 * int GoodNum = 0; for (int i = 0; i < chartList.size(); i++) {
+		 * ChartBean cb = chartList.get(i);
+		 * 
+		 * }
+		 */
+		// request.setAttribute("GoodNum", GoodNum);
 		/***********************************************************************/
 		// 전체 페이지수 계산 => 게시판 글 50개 , 한페이지에 10개씩 보여줌 => 5페이지
 		// 게시판 글 77개 , 한페이지에 10개씩 보여줌 => 8페이지( 7+1 )
@@ -70,6 +71,7 @@ public class LemonLatest_Chart implements Action {
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("./chart/latest_chart.jsp");
+		forward.setRedirect(false);
 		return forward;
 	}
 

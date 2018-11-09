@@ -148,7 +148,6 @@
 				//alert(data); d_cmtpgn_cmt_list_wrapper
 				var html;
 				$(data).each(function(index,item){
-
 					var content = item.content;
 					html = "<li data-cmt-id='' data-cmt-owner='off' class='first_child' style='height: 100px;'>"+
 											"<div class='wrap_cmt_cntt d_cmtpgn_cmt_wrapper'>"+
