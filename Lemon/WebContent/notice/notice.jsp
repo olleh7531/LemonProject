@@ -32,11 +32,8 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-            	alert("성공");
 				$('.no_tbody').html(result);
-            }, error:function() {
-				alert("실패");
-            }
+            }, error:function() {}
         });
 	}
 	</script>
@@ -52,6 +49,7 @@
 		//	request.setAttribute("pageBlock", pageBlock);
 		//	request.setAttribute("startPage", startPage);
 		//	request.setAttribute("endPage", endPage);
+		
 		List NoticeList = (List) request.getAttribute("noticeList");
 		String pageNum = (String) request.getAttribute("pageNum");
 		String category = (String) request.getAttribute("category");

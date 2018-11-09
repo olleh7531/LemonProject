@@ -30,19 +30,18 @@ public class AddFriendAction implements Action{
 		String str = "";
 		
 		if(check == 1) {
-			str = "지금 친구 요청을 함";
+			str = "'"+f_nickname+"'에게 친구 요청을 했습니다!";
 		} else {
 			if(friendChk == 1) {
-				str = "이미 친구 상태";
+				str = "이미 '"+f_nickname+"'와 친구입니다!";
 			} else {
-				str = "이미 친구 요청을 함";
+				str = "이미 '"+f_nickname+"'에게 요청을 했거나, 요청이 온 상태입니다.";
 			}
 		}
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		// int[] result = {check, friendChk};
 		out.print(str);
 		
 		return null;

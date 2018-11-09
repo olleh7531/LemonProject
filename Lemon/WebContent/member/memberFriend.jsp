@@ -55,7 +55,7 @@
 	        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-				alert(result);            	
+				alert(result); 	
             },
             error:function() {}
         });
@@ -78,18 +78,24 @@
             	
             	// 거절 버튼을 눌렀을 때
             	$('.refuse').click(function(){
-            		refuse($(this).prev().prev().prev().prev().val())
+            		refuse($(this).prev().prev().prev().val())
             	});
             	
             	// 수락 버튼을 눌렀을 때
             	$('.acception').click(function(){
-            		acception($(this).prev().prev().prev().val())
+            		acception($(this).prev().prev().val())
             	});
             	
             	// 정보보기 버튼을 눌렀을 때
             	$('.info').click(function(){
-            		info($(this).prev().prev().prev().prev().val());
+            		info($(this).prev().prev().val());
             	});
+            	
+            	// 친구삭제 버튼을 눌렀을 때
+            	$('.del').click(function(){
+            		del($(this).prev().prev().prev().val());
+            	});
+            	
             },
             error:function() {}
         });
@@ -97,8 +103,6 @@
 	
 	// 친구 목록에서 정보보기를 눌렀을 때
 	function info(param) {
-		var nickname = document.getElementById("f_nickname").value;
-		
 		$.ajax({
         	url: "./InfoFriend.mb",
             data: {
@@ -107,14 +111,34 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-            	$('.info').html(result);
+            	$('.infoMember').html(result);
             },
             error:function() {}
         });
 	}
 	
+	// 친구 목록에서 삭제하기를 눌렀을 때
+	function del(param) {
+		
+		var m_nickname = document.getElementById("m_nickname").value;
+		
+		$.ajax({
+        	url: "./deleteFriend.mb",
+            data: {
+        		m_nickname : m_nickname, 
+            	f_nickname : param
+            },
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            type: 'POST',
+            success:function(result) {
+            	alert("친구 '"+result+"' 삭제 성공");
+            	location.reload();
+            },
+            error:function() {}
+        });
+	}
 	
-	// 친구 목록에서 수락을 눌렀을 때
+	// 친구 신청 목록에서 수락을 눌렀을 때
 	function acception(param) {
 		var m_nickname = document.getElementById("m_nickname").value;
 		
@@ -127,14 +151,14 @@
             type: 'POST',
             success:function(result) {
             	$('.findResult2').html(result);
-            	alert("친구 수락 성공")
+            	alert("친구 수락 성공!");
             },
             error:function() {}
         });
 		location.reload();
 	}
 	
-	// 친구 목록에서 거절을 눌렀을 때
+	// 친구 신청 목록에서 거절을 눌렀을 때
 	function refuse(param) {
 		var m_nickname = document.getElementById("m_nickname").value;
 		console.log(m_nickname);
@@ -148,7 +172,7 @@
             type: 'POST',
             success:function(result) {
             	$('.findResult2').html(result);
-            	alert("친구 삭제 성공")
+            	alert("친구 거절 성공")
             },
             error:function() {}
         });
@@ -173,7 +197,59 @@
 		$(".friend2").hide();
 		$(".friend3").show();
 	}
-	</script>
+</script>
+	
+<style type="text/css">
+
+.ListBtn {
+	margin: auto;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+.ListBtn:HOVER {
+	background-color: #EDAE06;
+}
+
+.FindBtn {
+	margin: auto;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 4px 10px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+.FindBtn:HOVER {
+	background-color: #EDAE06;
+}
+
+.info, .del, .acception, .refuse{
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 4px 10px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+    margin-left: 13px;
+}
+
+.info, .del, .acception, .refuse{
+	background-color: #EDAE06;
+}
+
+</style>
 </head>
 <body onload="show1()">
 	<!-- 메뉴 -->
@@ -190,25 +266,25 @@
 		%>
 			<input type="hidden" id="m_nickname" value=<%=nickName %>>
 			
-			<input type="button" value="친구검색" onclick="show1()">
-			<input type="button" value="친구목록" onclick="show2()">
-			<input type="button" value="대화하기" onclick="show3()"> <br><br>
+			<input type="button" class="ListBtn" value="친구검색" onclick="show1()">
+			<input type="button" class="ListBtn" value="친구목록" onclick="show2()">
+			<input type="button" class="ListBtn" value="대화하기" onclick="show3()"> <br><br>
 			
 			<div class="friend1">
-				<input type='text' id='f_nickname' name='f_nickname' value=''>
-				<input type='button' value='찾기' onclick='friendSearch()'> <br><br>
+				<input type='text' id='f_nickname' name='f_nickname' value='' placeholder="닉네임 입력">
+				<input type='button' class="FindBtn" value='찾기' onclick='friendSearch()'> <br><br>
 				<span class="findResult1"></span>
 			</div>
 			
 			<div class="friend2">
-				<br><br>
+				<br>
 				<span class="findResult2"></span>
-				<span class="info"></span>
+				<span class="findResult3"></span>
+				<div class="infoMember"></div>
 			</div>
 			
 			<div class="friend3">
-				대화하기
-				<span class="findResult3"></span>
+				<span class="findResult4"></span>
 			</div>
 		</div>
 	</div>

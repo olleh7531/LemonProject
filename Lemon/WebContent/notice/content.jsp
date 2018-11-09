@@ -22,7 +22,21 @@
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<style type="text/css">
 
+.noticeBtn {
+	margin: auto;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -68,9 +82,9 @@
 						</tr>
 					</tbody>
 				</table>
-				<input type="button" value="글 수정" onclick="location.href='./NoticeUpdate.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" value="글 삭제" onclick="location.href='./NoticeDeleteAction.nt?num=<%=nb.getNum()%>'">
-				<input type="button" value="글 목록" onclick ="location.href='./noticeInit.nt?pageNum=<%=pageNum%>'">
+				<input type="button" class="noticeBtn" value="글 수정" onclick="location.href='./NoticeUpdate.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="noticeBtn" value="글 삭제" onclick="location.href='./NoticeDeleteAction.nt?num=<%=nb.getNum()%>'">
+				<input type="button" class="noticeBtn" value="글 목록" onclick ="location.href='./noticeInit.nt?pageNum=<%=pageNum%>'">
 			</div>
 		</div>
 	</div>
