@@ -82,10 +82,10 @@ public class NoticeListAction implements Action{
 			NoticeBean nb = noticeList.get(i);
 			String result =
 					"<tr>"+
-						"<td>"+nb.getNum()+"</td>"+
+						"<td>"+nb.getNo_num()+"</td>"+
 						"<td>"+nb.getNo_category()+"</td>"+
 						"<td id='subject'>"+
-						"<a href='./noticeContent.nt?num="+nb.getNum()+"&pageNum="+pageNum+"'>"+nb.getNo_subject()+"</a>"+
+						"<a href='./noticeContent.nt?num="+nb.getNo_num()+"&pageNum="+pageNum+"'>"+nb.getNo_subject()+"</a>"+
 						"</td>"+
 						"<td>"+nb.getNo_readcount()+"</td>"+
 						"<td><div class='wrap'>"+nb.getNo_reg_date()+"</div></td>"+

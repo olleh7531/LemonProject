@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css">
+
 <!-- 메인 / 메뉴 슬라이더 -->
 <link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
@@ -22,10 +23,11 @@
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+
 <style type="text/css">
 
-.noticeBtn {
-	margin: auto;
+.noticeContentBtn {
+	margin-top: 10px;
     border: 1px solid #d3d3d3;
     border-radius: 40px;
     background-color: #F9B700;
@@ -36,7 +38,14 @@
     outline: 0;
 }
 
+.noticeContentBtn:HOVER {
+    background-color: #F9B700;
+}
+
+
+
 </style>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -65,7 +74,7 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col"><%=nb.getNum()%></th>
+							<th scope="col"><%=nb.getNo_num()%></th>
 							<th scope="col"><%=nb.getNo_category()%></th>
 							<th scope="col"><%=nb.getNo_subject()%></th>
 							<th scope="col"><%=nb.getNo_readcount()%></th>
@@ -82,9 +91,9 @@
 						</tr>
 					</tbody>
 				</table>
-				<input type="button" class="noticeBtn" value="글 수정" onclick="location.href='./NoticeUpdate.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>'">
-				<input type="button" class="noticeBtn" value="글 삭제" onclick="location.href='./NoticeDeleteAction.nt?num=<%=nb.getNum()%>'">
-				<input type="button" class="noticeBtn" value="글 목록" onclick ="location.href='./noticeInit.nt?pageNum=<%=pageNum%>'">
+				<input type="button" class="noticeContentBtn" value="글 수정" onclick="location.href='./NoticeUpdate.nt?num=<%=nb.getNo_num()%>&pageNum=<%=pageNum%>'">
+				<input type="button" class="noticeContentBtn" value="글 삭제" onclick="location.href='./NoticeDeleteAction.nt?num=<%=nb.getNo_num()%>'">
+				<input type="button" class="noticeContentBtn" value="글 목록" onclick ="location.href='./noticeInit.nt?pageNum=<%=pageNum%>'">
 			</div>
 		</div>
 	</div>

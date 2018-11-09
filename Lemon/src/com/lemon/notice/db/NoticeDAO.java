@@ -55,7 +55,7 @@ public class NoticeDAO {
 			con = getCon();
 
 			// 글 번호 no
-			sql = "select max(num) from notice";
+			sql = "select max(no_num) from notice";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -65,7 +65,7 @@ public class NoticeDAO {
 			}
 			
 			// db 글 저장(insert)
-			sql = "insert into notice(num, no_category, no_subject, no_content, no_readcount, no_reg_date) " 
+			sql = "insert into notice(no_num, no_category, no_subject, no_content, no_readcount, no_reg_date) " 
 			+ "values(?,?,?,?,?,now())";
 			
 			pstmt = con.prepareStatement(sql);
@@ -138,7 +138,7 @@ public class NoticeDAO {
 		
 		try {
 			con = getCon();
-			sql = "select * from notice order by num desc limit ?,?";
+			sql = "select * from notice order by no_num desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
@@ -147,7 +147,7 @@ public class NoticeDAO {
 			
 			while (rs.next()) {
 				NoticeBean nb = new NoticeBean();
-				nb.setNum(rs.getInt("num"));
+				nb.setNo_num(rs.getInt("no_num"));
 				nb.setNo_category(rs.getString("no_category"));
 				nb.setNo_subject(rs.getString("no_subject"));
 				nb.setNo_content(rs.getString("no_content"));
@@ -175,7 +175,7 @@ public class NoticeDAO {
 				category = "%";
 			}
 			
-			sql = "select * from notice where no_category like ? order by num desc limit ?,?";
+			sql = "select * from notice where no_category like ? order by no_num desc limit ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, category);
 			pstmt.setInt(2, startRow - 1);
@@ -185,7 +185,7 @@ public class NoticeDAO {
 			
 			while (rs.next()) {
 				NoticeBean nb = new NoticeBean();
-				nb.setNum(rs.getInt("num"));
+				nb.setNo_num(rs.getInt("no_num"));
 				nb.setNo_category(rs.getString("no_category"));
 				nb.setNo_subject(rs.getString("no_subject"));
 				nb.setNo_content(rs.getString("no_content"));
@@ -207,7 +207,7 @@ public class NoticeDAO {
 	public void updateReadCount(int num) {
 		try {
 			con = getCon();
-			sql = "update notice set no_readcount=no_readcount+1 where num=?";
+			sql = "update notice set no_readcount=no_readcount+1 where no_num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
@@ -223,7 +223,7 @@ public class NoticeDAO {
 		NoticeBean nb = null;
 		try {
 			con = getCon();
-			sql = "select * from notice where num=?";
+			sql = "select * from notice where no_num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
@@ -231,7 +231,7 @@ public class NoticeDAO {
 			if (rs.next()) {
 				nb = new NoticeBean();
 				
-				nb.setNum(rs.getInt("num"));
+				nb.setNo_num(rs.getInt("no_num"));
 				nb.setNo_category(rs.getString("no_category"));
 				nb.setNo_subject(rs.getString("no_subject"));
 				nb.setNo_content(rs.getString("no_content"));
@@ -249,12 +249,12 @@ public class NoticeDAO {
 	public void updateNotice(NoticeBean nb) {
 		try {
 			con = getCon();
-			sql = "update notice set no_subject=?, no_category=? ,no_content=? where num=?";
+			sql = "update notice set no_subject=?, no_category=? ,no_content=? where no_num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, nb.getNo_subject());
 			pstmt.setString(2, nb.getNo_category());
 			pstmt.setString(3, nb.getNo_content());
-			pstmt.setInt(4, nb.getNum());
+			pstmt.setInt(4, nb.getNo_num());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -268,7 +268,7 @@ public class NoticeDAO {
 		int check = 0;
 		try {
 			con = getCon();
-			sql = "delete from notice where num=?";
+			sql = "delete from notice where no_num=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			

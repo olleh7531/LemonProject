@@ -36,6 +36,7 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		// 글 내용 보기
 		} else if(command.equals("/noticeContent.nt")) {
 			action = new NoticeContentAction();
@@ -44,8 +45,7 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} 
-		else if(command.equals("/NoticeWrite.nt")) {
+		} else if(command.equals("/NoticeWrite.nt")) {
 			forward = new ActionForward();
     		forward.setPath("./notice/writeForm.jsp");
     		forward.setRedirect(false);

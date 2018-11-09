@@ -15,10 +15,9 @@ public class requestFriend implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		String f_nickname = (String)request.getParameter("f_nickname");
 		String m_nickname = (String)request.getParameter("m_nickname");
-		
+
 		FriendDAO fdao = new FriendDAO();
 		
 		ArrayList<String> check = fdao.requestFriend(m_nickname);
@@ -35,8 +34,7 @@ public class requestFriend implements Action{
 			out.print(count);
 			for(int i=0 ; i<check.size() ; i++) {
 				String nickname = check.get(i);
-				System.out.println(nickname);
-				
+
 				result =
 					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
 					"<label>"+nickname+"</label>" + 
@@ -49,14 +47,11 @@ public class requestFriend implements Action{
 			out.print(result);
 		}
 		
-		System.out.println("friendList.size() : " + friendList.size());
-		
 		if(friendList.size() != 0) {
 			String count = "<br><label style='font-size:14px;color:blue;'>----------["+friendList.size()+"]명의 친구가 있습니다!----------</label><br>";
 			out.print(count);
 			for(int i=0 ; i<friendList.size() ; i++) {
 				String nickname = friendList.get(i);
-				System.out.println(nickname);
 				
 				result = 
 					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 

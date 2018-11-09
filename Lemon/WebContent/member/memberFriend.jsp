@@ -251,7 +251,7 @@
 
 </style>
 </head>
-<body onload="show1()">
+<body onload="show2()">
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	

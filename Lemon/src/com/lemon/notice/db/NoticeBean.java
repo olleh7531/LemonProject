@@ -1,18 +1,18 @@
 package com.lemon.notice.db;
 
 public class NoticeBean {
-	private int num;
+	private int no_num;
 	private String no_category;
 	private String no_subject;
 	private String no_content;
 	private int no_readcount;
 	private String no_reg_date;
 	
-	public int getNum() {
-		return num;
+	public int getNo_num() {
+		return no_num;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setNo_num(int no_num) {
+		this.no_num = no_num;
 	}
 	public String getNo_category() {
 		return no_category;
@@ -44,6 +44,4 @@ public class NoticeBean {
 	public void setNo_reg_date(String no_reg_date) {
 		this.no_reg_date = no_reg_date;
 	}
-
-
 }
