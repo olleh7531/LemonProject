@@ -639,4 +639,29 @@ public class MemberDAO {
 		return mb;
 	}
 
+	public MemberBean MemberInfo(String nickname) {
+		MemberBean mb = null;
+		try {
+			con = getCon();
+			sql = "select * from member where nickname = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				mb = new MemberBean();
+				mb.setEmail_id(rs.getString("email_id"));
+				mb.setName(rs.getString("name"));
+				mb.setGender(rs.getString("gender"));
+				mb.setBirth(rs.getString("birth"));
+				mb.setImg(rs.getString("img"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return mb;
+	}
+	
 }

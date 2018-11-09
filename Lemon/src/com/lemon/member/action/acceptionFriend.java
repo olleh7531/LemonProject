@@ -15,6 +15,7 @@ public class acceptionFriend implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("acceptionFriend execute");
+		
 		String f_nickname = (String)request.getParameter("f_nickname");
 		String m_nickname = (String)request.getParameter("m_nickname");
 		
