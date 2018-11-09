@@ -30,8 +30,16 @@ public class LemonPlayList implements Action {
 
 		MusicPlayerDAO mdao = new MusicPlayerDAO();
 		ArrayList<MusicPlayerBean> arr = mdao.selectPlayerList(user);
+		ArrayList<MusicPlayerBean> mpb01 = null;
+		for (int i = 0; i < arr.size(); i++) {
+			MusicPlayerBean mpb = arr.get(i);
+			mpb01 = mdao.albumImg(mpb.getAlbum_num());
+			System.out.println("mpb01 : " + mpb01.size());
+			request.setAttribute("mpb01", mpb01);
+		}
 
-		
+		System.out.println("arr : " + arr.size());
+
 		request.setAttribute("arr", arr);
 
 		ActionForward forward = new ActionForward();

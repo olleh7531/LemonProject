@@ -131,7 +131,7 @@ public class ChartDAO {
 		try {
 			con = getCon();
 			sql = "select * from album a inner join music b "
-					+ "on b.album_num = a.al_num GROUP BY al_name order by a.al_release desc  limit ?,?;";
+					+ "on b.album_num = a.al_num order by a.al_release desc  limit ?,?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);

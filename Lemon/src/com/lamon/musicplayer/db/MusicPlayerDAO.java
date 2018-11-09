@@ -9,11 +9,17 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.lemon.member.action.refuseFriend;
+
 public class MusicPlayerDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
+
+	PreparedStatement pstmt2 = null;
+	ResultSet rs2 = null;
+	String sql2 = "";
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -47,48 +53,77 @@ public class MusicPlayerDAO {
 		}
 	}
 
+	public void CloseDB2() {
+		if (rs2 != null) {
+			try {
+				rs2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (pstmt2 != null) {
+			try {
+				pstmt2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public ArrayList<MusicPlayerBean> selectPlayerList(String user) {
 		MusicPlayerBean mpb = null;
 		ArrayList<MusicPlayerBean> mpblist = new ArrayList<>();
 		try {
 			con = getCon();
-			// sql = "select * from album a inner join music b where b.album_num
-			// = a.al_num order by a.al_num desc;";
-			sql = "select a.pls_music_num, b.al_art_img, c.music_name, c.musicfile,c.music_time  from playlist a "
-					+ "inner join album b inner join music c where a.pls_music_num = b.al_num AND a.pls_music_num = c.mu_num AND pls_user_email = ?;";
+			sql = "select a.music_name, a.musicfile, a.music_time, a.album_num,b.pls_music_num from music a inner join playlist b on a.mu_num = b.pls_music_num where b.pls_user_email = ?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				mpb = new MusicPlayerBean();
 				mpb.setPls_music_num(rs.getInt("pls_music_num"));
-				mpb.setAl_art_img(rs.getString("al_art_img"));
 				mpb.setMusic_name(rs.getString("music_name"));
 				mpb.setMusicfile(rs.getString("musicfile"));
 				mpb.setMusic_time(rs.getString("music_time"));
-				// mpb.setAl_agency(rs.getString("al_agency"));
-				// mpb.setAl_art_img(rs.getString("al_art_img"));
-				// mpb.setAl_content(rs.getString("al_content"));
-				// mpb.setAl_name(rs.getString("al_name"));
-				// mpb.setAl_num(rs.getInt("al_num"));
-				// mpb.setAl_release(rs.getDate("al_release"));
-				// mpb.setAlbum_num(rs.getInt("album_num"));
-				// mpb.setLyrics(rs.getString("lyrics"));
-				// mpb.setMu_num(rs.getInt("mu_num"));
-				// mpb.setMusic_genre(rs.getString("music_genre"));
-				// mpb.setMusic_name(rs.getString("music_name"));
-				// mpb.setMusic_time(rs.getString("music_time"));
-				// mpb.setMusic_video(rs.getString("music_video"));
-				// mpb.setMusicfile(rs.getString("musicfile"));
-				// mpb.setSinger_num(rs.getInt("singer_num"));
-				// mpb.setTrack_num(rs.getInt("track_num"));
+				mpb.setAlbum_num(rs.getInt("album_num"));
+				sql2 = "select al_art_img from album where al_num = ?";
+				pstmt2 = con.prepareStatement(sql2);
+				pstmt2.setInt(1, rs.getInt("album_num"));
+				rs2 = pstmt.executeQuery();
+				if (rs2.next()) {
+					mpb.setAl_art_img(rs.getString("al_art_img"));
+				}
 				mpblist.add(mpb);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
+			CloseDB2();
 		}
 		return mpblist;
+	}
+
+	public ArrayList<MusicPlayerBean> albumImg(int album_num) {
+		MusicPlayerBean mpbb = null;
+		ArrayList<MusicPlayerBean> armpb = new ArrayList<>();
+		try {
+			con = getCon();
+			sql = "select al_art_img from album where al_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, album_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				mpbb = new MusicPlayerBean();
+				mpbb.setAl_art_img(rs.getString("al_art_img"));
+				armpb.add(mpbb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return armpb;
 	}
 }

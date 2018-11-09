@@ -53,6 +53,13 @@ public class UserPlaylistUP implements Action {
 			out.close();
 			return null;
 		}
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println(" alert('추가 되었습니다.');");
+		out.println(" history.back(); ");
+		out.println("</script>");
+		out.close();
 		return null;
 		/*
 		 * ActionForward forward = new ActionForward();
