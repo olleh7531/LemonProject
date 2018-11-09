@@ -24,7 +24,7 @@ public class infoFriend implements Action {
 		
 		System.out.println("mb.getImg() : " + mb.getImg());
 		if(img == null) {
-			img = "lemon.png";
+			img = "noimg.gif";
 		}
 		
 		response.setCharacterEncoding("UTF-8");

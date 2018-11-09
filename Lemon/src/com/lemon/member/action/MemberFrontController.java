@@ -185,7 +185,7 @@ public class MemberFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("./member/memberFriend.jsp");
 			forward.setRedirect(false);
-
+			
 		} else if (command.equals("/AddFriend.mb")) {
 			action = new AddFriendAction();
 			try {
@@ -228,6 +228,14 @@ public class MemberFrontController extends HttpServlet {
 			
 		} else if (command.equals("/InfoFriend.mb")) {
 			action = new infoFriend();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/deleteFriend.mb")) {
+			action = new deleteFriend();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

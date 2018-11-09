@@ -28,16 +28,16 @@ public class FriendSearch implements Action {
 			if(check == 1) {
 				// 아이디 있음
 				String result =
-						"<b style='font-size:14px;color:blue'>'"+f_nickname+"' 친구를 찾았습니다.</b><br>" +
-						"<input type='button' value='친구맺기' onclick='addFriend()'>";
+						"<b style='font-size:14px;color:blue;'>'"+f_nickname+"' 친구를 찾았습니다.</b><br>" +
+						"<input type='button' class='FindBtn' value='친구맺기' onclick='addFriend()'>";
 				out.print(result);
 			} else {
 				// 아이디 없음
-				String result = "<b style='font-size:14px;color:red'>'"+f_nickname+"' 친구를 찾지 못했습니다.</b>";
+				String result = "<b style='font-size:14px;color:red;'>'"+f_nickname+"' 친구를 찾지 못했습니다.</b>";
 				out.print(result);
 			}
 		} else {
-			String result = "<b style='font-size:14px;color:red'>본인입니다.</b>";
+			String result = "<b style='font-size:14px;color:red;'>본인입니다.</b>";
 			out.print(result);
 		}
 		out.close();

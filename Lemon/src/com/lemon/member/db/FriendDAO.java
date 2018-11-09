@@ -146,7 +146,6 @@ public class FriendDAO {
 	
 	// 친구요청 거절하기
 	public void refuseFriend(String m_nickname, String f_nickname) {
-		System.out.println("요청 거절하기");
 		System.out.println(m_nickname);
 		System.out.println(f_nickname);
 		try {
@@ -155,7 +154,6 @@ public class FriendDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m_nickname);
 			pstmt.setString(2, f_nickname);
-			System.out.println("요청 거절하기1");
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -163,7 +161,6 @@ public class FriendDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, m_nickname);
 				pstmt.setString(2, f_nickname);
-				System.out.println("요청 거절하기2");
 				pstmt.executeUpdate();
 			}
 			
@@ -176,8 +173,6 @@ public class FriendDAO {
 	
 	// 친구요청 수락하기
 	public void acceptionFriend(String m_nickname, String f_nickname) {
-		System.out.println("요청 수락하기");
-		
 		try {
 			con = getCon();
 			sql = "select * from friends where receiver_nick=? and sender_nick=? and fr_check=0";
@@ -203,7 +198,6 @@ public class FriendDAO {
 
 	// 친구상태 or 요청한 상태인지 확인하기
 	public int FriendCheck(String m_nickname, String f_nickname) {
-		System.out.println("FriendCheck 들어옴");
 		int check= -1;
 		
 		try {
@@ -246,7 +240,44 @@ public class FriendDAO {
 		return check;
 	}
 	
-	
+	// 친구 삭제하기
+	public void deleteFriend(String m_nickname, String f_nickname) {
+		System.out.println("친구 삭제하기");
+		
+		try {
+			con = getCon();
+			sql = "select * from friends "
+					+ "where (receiver_nick=? and sender_nick=? and fr_check=1)"
+					+ "or (sender_nick=? and receiver_nick=? and fr_check=1)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, m_nickname);
+			pstmt.setString(2, f_nickname);
+			pstmt.setString(3, m_nickname);
+			pstmt.setString(4, f_nickname);
+			
+			System.out.println("친구 삭제 1");
+			rs = pstmt.executeQuery();			
+			if(rs.next()) {
+				sql = "delete from friends "
+						+ "where (receiver_nick=? and sender_nick=? and fr_check=1)"
+						+ "or (sender_nick=? and receiver_nick=? and fr_check=1)";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, m_nickname);
+				pstmt.setString(2, f_nickname);
+				pstmt.setString(3, m_nickname);
+				pstmt.setString(4, f_nickname);
+				
+				System.out.println("친구 삭제 완료");
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
 	
 	
 	

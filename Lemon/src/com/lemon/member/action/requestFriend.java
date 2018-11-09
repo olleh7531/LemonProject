@@ -15,14 +15,9 @@ public class requestFriend implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		String f_nickname = (String)request.getParameter("f_nickname");
 		String m_nickname = (String)request.getParameter("m_nickname");
-		
-		MemberBean db = new MemberBean();
-		MemberDAO ddao = new MemberDAO();
-		
-		FriendBean fb = new FriendBean();
+
 		FriendDAO fdao = new FriendDAO();
 		
 		ArrayList<String> check = fdao.requestFriend(m_nickname);
@@ -32,37 +27,41 @@ public class requestFriend implements Action{
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		String result = "";
+		
 		if(check.size() != 0) {
+			String count = "<label style='font-size:14px;color:blue;'>--------["+check.size()+"]개의 친구 요청이 있습니다!--------</label><br>";
+			out.print(count);
 			for(int i=0 ; i<check.size() ; i++) {
 				String nickname = check.get(i);
-				System.out.println(nickname);
-				
-				String result =
-						"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
-						"<br> <label>"+nickname+"</label>" + 
-						"<input type='button' class='acception' value='수락'>" + 
-						"<input type='button' class='refuse' value='거절'> <br>";
+
+				result =
+					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
+					"<label>"+nickname+"</label>" + 
+					"<input type='button' class='acception' value='수락'>" + 
+					"<input type='button' class='refuse' value='거절'> <br>";
 				out.print(result);
 			}
 		} else {
-			String result = "<label>받은 요청이 없습니다.</label>"; 
+			result = "<label style='font-size:14px;color:red;'>받은 친구요청이 없습니다.</label><br><br>"; 
 			out.print(result);
 		}
-		System.out.println("friendList.size() : " + friendList.size());
+		
 		if(friendList.size() != 0) {
-			System.out.println("friendList out : " + friendList);
+			String count = "<br><label style='font-size:14px;color:blue;'>----------["+friendList.size()+"]명의 친구가 있습니다!----------</label><br>";
+			out.print(count);
 			for(int i=0 ; i<friendList.size() ; i++) {
 				String nickname = friendList.get(i);
-				System.out.println(nickname);
 				
-				String result =
-						"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
-						"<br><br> <label>"+nickname+"</label>" + 
-						"<input type='button' class='info' value='정보보기'> <br>";
+				result = 
+					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
+					"<label>"+nickname+"</label>" + 
+					"<input type='button' class='info' value='정보보기'>" +
+					"<input type='button' class='del' value='친구삭제'> <br>";
 				out.print(result);
 			}
 		} else {
-			String result = "<br><br><label>현재 친구가 없습니다.</label><br>"; 
+			result = "<br><br><label style='font-size:14px;color:red;'>친구가 없습니다....</label><br>"; 
 			out.print(result);
 		}
 		

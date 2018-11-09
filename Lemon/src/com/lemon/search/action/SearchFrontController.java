@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lemon.admin.music.action.MusicUploadAction;
+
 public class SearchFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -23,12 +25,34 @@ public class SearchFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
+		
 		if (command.equals("/search.sc")) {
-			System.out.println("ttttt");
-			forward = new ActionForward();
-			forward.setPath("./search/lyric.jsp");
-			forward.setRedirect(false);
+			
+			action = new LyricAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 			
 			if (forward != null) {
 				if (forward.isRedirect()) {// true

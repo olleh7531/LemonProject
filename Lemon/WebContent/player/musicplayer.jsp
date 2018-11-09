@@ -63,8 +63,7 @@ body {
 									data-src="./musicUpload/music/<%=mb.getMusicfile()%>"
 									data-type="audio/ogg" />
 							</li>
-						</ul>
-
+						</ul> 
 						<%
 							}
 						%>
