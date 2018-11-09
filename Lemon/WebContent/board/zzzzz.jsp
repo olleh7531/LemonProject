@@ -41,28 +41,43 @@
  =========================================================================================
  // 1시간마다 5분단위 데이터들 하나로 모아서 insert  1분 3초정도 (1분00에 시작했다가 59초에 들어갈까봐)에 시작
   INSERT INTO chart (ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) 
-select null,ch_music_num,sum(ch_playcnt) ch_playcnt,sum(ch_downcnt),DATE_FORMAT(now(),'%Y-%m-%d %H:%i') from chart where ch_updatetime 
+select null,ch_music_num,sum(ch_playcnt) ch_playcnt,sum(ch_downcnt),DATE_FORMAT(now(),'%Y-%m-%d %H:%1') from chart where ch_updatetime 
  between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),	INTERVAL 1 HOUR)
  and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 SECOND) group by ch_music_num;
  ============================================================================================
  // 1시간마다 5분단위 데이터들 모아서 insert 하고난 뒤 삭제 2분10초정도에 시작
   delete from chart where ch_updatetime 
  between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),	INTERVAL 1 HOUR)
- and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 SECOND) AND NOT ch_updatetime=DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 1 MINUTE);
+ and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 SECOND) AND NOT ch_updatetime=DATE_FORMAT(NOW(),'%Y-%m-%d %H:%1'));
  ===========================================================================
- // 하루마다 1시간단위 데이터들 모아서 insert , insert한 데이터를 music_sub에 update
+ // 하루마다 1시간단위 데이터들 모아서 insert 
    INSERT INTO chart (ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) 
-select null,ch_music_num,sum(ch_playcnt) ch_playcnt,sum(ch_downcnt),DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d'), INTERVAL 2 DAY) from chart where ch_updatetime 
+select null,ch_music_num,sum(ch_playcnt) ch_playcnt,sum(ch_downcnt),DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%2'), INTERVAL 2 DAY) from chart where ch_updatetime 
  between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY)
- and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) group by ch_music_num;
- -----------------------------------------------------------------------------------------
- 
+ and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) group by ch_music_num; 
  ===========================================================================
  하루마다 1시간단위 데이터들 모아서 insert 후 delete
+ delete from chart where ch_updatetime 
+ between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'),	INTERVAL 2 DAY)
+ and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) AND NOT ch_updatetime=DATE_FORMAT(NOW(),'%Y-%m-%d %H:%2');
+ -----------------------------------------------------------------------------
+ 하루단위 insert한 데이터를 music_sub에 update
+ INSERT INTO chart (ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) 
+ select null,mu_num,0,0,DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%2'), INTERVAL 2 DAY) from music
+ where mu_num not in ( select ch_music_num from chart where ch_updatetime 
+ between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY)
+ and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) group by ch_music_num);
  ===========================================================================
  일주일마다 하루단위 데이터들 모아서 insert
+    INSERT INTO chart (ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) 
+select null,ch_music_num,sum(ch_playcnt) ch_playcnt,sum(ch_downcnt),DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%3'), INTERVAL 7 DAY) from chart where ch_updatetime 
+ between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 7 DAY)
+ and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) group by ch_music_num; 
  ===========================================================================
  일주일마다 하루단위 데이터들 모아서 insert 후 delete
+  delete from chart where ch_updatetime 
+ between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'),	INTERVAL 7 DAY)
+ and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) AND NOT ch_updatetime=DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%3'), INTERVAL 7 DAY);
  ===========================================================================
 </body>
 </html>
