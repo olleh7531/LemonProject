@@ -62,6 +62,7 @@ public class MusicUploadAction implements Action {
 			String artist = tag.getFirst(FieldKey.ARTIST);
 			String album = tag.getFirst(FieldKey.ALBUM);
 			album = album.replace("?", "");
+			album = album.replace("*", "");
 			album = album.trim();
 			String year = tag.getFirst(FieldKey.YEAR);
 			if (year.length() < 8) {

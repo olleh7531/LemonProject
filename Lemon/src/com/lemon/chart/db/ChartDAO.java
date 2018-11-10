@@ -17,9 +17,6 @@ public class ChartDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
-	PreparedStatement pstmt2 = null;
-	ResultSet rs2 = null;
-	String sql2 = "";
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -53,23 +50,6 @@ public class ChartDAO {
 		}
 	}
 
-	public void CloseDB2() {
-		if (rs2 != null) {
-			try {
-				rs2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		if (pstmt2 != null) {
-			try {
-				pstmt2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 
 	public List<ChartBean1> getChart(int hour) {
 		// 1시간단위 차트
@@ -119,7 +99,6 @@ public class ChartDAO {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
-			CloseDB2();
 		}
 
 		return arr;
