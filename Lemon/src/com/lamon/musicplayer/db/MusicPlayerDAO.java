@@ -73,6 +73,7 @@ public class MusicPlayerDAO {
 
 	public ArrayList<MusicPlayerBean> selectPlayerList(String user) {
 		MusicPlayerBean mpb = null;
+		MusicPlayerBean mpb2 = null;
 		ArrayList<MusicPlayerBean> mpblist = new ArrayList<>();
 		try {
 			con = getCon();
@@ -81,20 +82,28 @@ public class MusicPlayerDAO {
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				mpb = new MusicPlayerBean();
-				mpb.setPls_music_num(rs.getInt("pls_music_num"));
-				mpb.setMusic_name(rs.getString("music_name"));
-				mpb.setMusicfile(rs.getString("musicfile"));
-				mpb.setMusic_time(rs.getString("music_time"));
-				mpb.setAlbum_num(rs.getInt("album_num"));
+				System.out.println("q번호 : " + rs.getInt("album_num"));
 				sql2 = "select al_art_img from album where al_num = ?";
 				pstmt2 = con.prepareStatement(sql2);
 				pstmt2.setInt(1, rs.getInt("album_num"));
-				rs2 = pstmt.executeQuery();
-				if (rs2.next()) {
-					mpb.setAl_art_img(rs.getString("al_art_img"));
+				rs2 = pstmt2.executeQuery();
+				while (rs2.next()) {
+					// System.out.println(rs.getInt("pls_music_num"));
+					// System.out.println(rs.getString("music_name"));
+					// System.out.println(rs.getString("musicfile"));
+					// System.out.println(rs.getString("music_time"));
+					// System.out.println(rs.getInt("album_num"));
+					// System.out.println(rs2.getString("al_art_img"));
+					mpb = new MusicPlayerBean();
+					mpb.setPls_music_num(rs.getInt("pls_music_num"));
+					mpb.setMusic_name(rs.getString("music_name"));
+					mpb.setMusicfile(rs.getString("musicfile"));
+					mpb.setMusic_time(rs.getString("music_time"));
+					mpb.setAlbum_num(rs.getInt("album_num"));
+					mpb.setAl_art_img(rs2.getString("al_art_img"));
+					mpblist.add(mpb);
 				}
-				mpblist.add(mpb);
+				// mpblist.add(mpb);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
