@@ -6,34 +6,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css"	href="./assets/css/magazine/table.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/magazine/table.css">
 <!-- 메인페이지 css -->
 
-<link rel="stylesheet" type="text/css"	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"	href="./assets/css/common/menu.css">
-<link rel="stylesheet" type="text/css"	href="./assets/css/common/main_menu_bxslider.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
-<link rel="stylesheet" type="text/css"	href="./assets/css/common/font.css">
-<link rel="stylesheet" type="text/css"	href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css"	href="./assets/css/font/nanumgothic.css">
-<link rel="stylesheet" type="text/css"	href="./assets/css/common/footer.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css"
+	href="./assets/css/common/footer.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript"
+	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-<script type="text/javascript"	src="./assets/js/menu/main_search_real_time.js"></script>
+<script type="text/javascript"
+	src="./assets/js/menu/main_search_real_time.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_login.js"></script>
-<script src="https://apis.google.com/js/platform.js?onload=init" async	defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>
 
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="./assets/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="./assets/SE2/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 <script>
 	$(document).ready(function() {
 		var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함. 
@@ -79,33 +90,30 @@
 		}
 		return true;
 	}
-	</script>
+</script>
 
 </head>
 <body>
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<div id="cont_wrap" class="clfix">
-	<div id="conts_section" class="pr_none">
-		<h1>글쓰기</h1>
+		<div id="conts_section" class="pr_none">
+			<h1>글쓰기</h1>
 			<form action="./magazineBoardWriteAction.maga" method="post" id="frm">
-				<table class="type09">
-					<thead>
-						<tr>
-							<th scope="cols">제목</th>
-							<td><input type="text" name="ma_subject"></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">내용</th>
-							<td><textarea name="smarteditor" id="smarteditor" cols="100"
-									style="width: 766px; height: 412px;"></textarea></td>
-						</tr>
-					</tbody>
-				</table>
-				<br><br>
+				<div class="cate_sub">
+					<select name="ma_category">
+						<option value="금주의 신보">금주의 신보</option>
+						<option value="아티스트 갤러리">아티스트 갤러리</option>
+						<option value="아이돌 탐구생활">아이돌 탐구생활</option>
+						<option value="SM STATION">SM STATION</option>
+						<option value="HIPHOP">HIPHOP</option>
+					</select> <input type="text" name="ma_subject" id="ma_subject"
+						placeholder="제목을 입력하세요" size="80"> <br>
+				</div>
+				<textarea name="ma_content" id="smarteditor"></textarea>
+				<br>
+				<br>
 				<center>
-					<input type="button" id="savebutton" class="button" value="글쓰기">
+					<input type="submit" id="savebutton" class="button" value="글쓰기">
 					<input type="button" class="button" value="글목록" onclick="">
 				</center>
 			</form>

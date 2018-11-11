@@ -61,15 +61,15 @@
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="pr_none">
 			<section id="listForm">
-				<h1>list</h1>
+				<h1>Magazine</h1>
 			<div id="pageList">
-				<table>
+				<table class="type04">
 					<colgroup>
-						<col style="width: 60px">
+						<col style="width: 30px">
 						<col style="width: 120px">
 						<col style="width: 647px">
 						<col style="width: 100px">
-						<col style="width: 100px">
+						<col style="width: 40px">
 					</colgroup>
 					<thead>
 						<tr>
@@ -77,7 +77,7 @@
 							<th scope="col">이미지</th>
 							<th scope="col">제목</th>
 							<th scope="col">날짜</th>
-							<th scope="col">조회수</th>
+							<th scope="col">조회</th>
 						</tr>
 					</thead>
 					<%
@@ -98,6 +98,8 @@
 					%>
 				</table>
 				</div>
+				<br>
+				<br>
 				<a href="/Lemon/magazineBoardWrite.maga">글쓰기</a>
 				<div style="text-align: center;">
 					<div class="pagination">

@@ -11,48 +11,41 @@ h1 {
 	font-weight: bold;
 }
 
+.cate_sub {
+   text-align: left
+}
+
 #conts_section.pr_none {
 	padding: 0 20px;
 }
 
-table.type09 {
-	border-collapse: collapse;
-	text-align: left;
-	line-height: 1.5;
-	width: 800px;
-	margin: 30px;
+table.type04 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+ 	margin : 20px 10px;
 }
 
-table.type09 thead th {
-	font-weight: bold;
-	background: #F2F2F2;
-	border-bottom: 3px solid #fff;
-	height: 50px;
-	margin: auto;
-	text-align: center;
-	width: 30px;
+table.type04 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+table.type04 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
 }
 
-table.type09 tbody th {
-	width: 150px;
-	font-weight: bold;
-	border-bottom: 1px solid #ccc;
-	background: #F2F2F2;
-	margin: auto;
-	text-align: center;
-	width: 30px;
-}
-
-table.type09 td {
-	width: 350px;
-	padding: 10px;
-	vertical-align: top;
-	border-bottom: 1px solid #F2F2F2;
-}
 
 input[type=text], select {
 	width: 100%;
-	padding: 15px 20px;
+	padding: 15px 20px
 	margin: 5px 0;
 	display: inline-block;
 	border: 1px solid #ccc;
