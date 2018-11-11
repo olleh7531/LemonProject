@@ -17,9 +17,6 @@ public class ChartDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
-	PreparedStatement pstmt2 = null;
-	ResultSet rs2 = null;
-	String sql2 = "";
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -47,24 +44,6 @@ public class ChartDAO {
 		if (con != null) {
 			try {
 				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void CloseDB2() {
-		if (rs2 != null) {
-			try {
-				rs2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		if (pstmt2 != null) {
-			try {
-				pstmt2.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -119,7 +98,6 @@ public class ChartDAO {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
-			CloseDB2();
 		}
 
 		return arr;
@@ -310,5 +288,44 @@ public class ChartDAO {
 			CloseDB();
 		}
 		return Chart;
+	}
+
+	public ArrayList<ChartBean> selectalbumList(int startRow, int pageSize) {
+		ArrayList<ChartBean> arr = new ArrayList<>();
+		ChartBean cb = null;
+		try {
+			con = getCon();
+			sql = "select * from album inner join music  on album_num = al_num "
+					+ "GROUP BY al_num  order by al_release desc limit ?,?;";
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cb = new ChartBean();
+				cb.setAl_agency(rs.getString("al_agency"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				cb.setAl_content(rs.getString("al_content"));
+				cb.setAl_name(rs.getString("al_name"));
+				cb.setAl_num(rs.getInt("al_num"));
+				cb.setAl_release(rs.getDate("al_release"));
+				cb.setAlbum_num(rs.getInt("album_num"));
+				cb.setLyrics(rs.getString("lyrics"));
+				cb.setMu_num(rs.getInt("mu_num"));
+				cb.setMusic_genre(rs.getString("music_genre"));
+				cb.setMusic_name(rs.getString("music_name"));
+				cb.setMusic_time(rs.getString("music_time"));
+				cb.setMusic_video(rs.getString("music_video"));
+				cb.setMusicfile(rs.getString("musicfile"));
+				cb.setSinger_num(rs.getInt("singer_num"));
+				cb.setTrack_num(rs.getInt("track_num"));
+				arr.add(cb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return arr;
 	}
 }
