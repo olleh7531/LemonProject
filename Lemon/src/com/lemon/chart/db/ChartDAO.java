@@ -291,40 +291,41 @@ public class ChartDAO {
 	}
 
 	public ArrayList<ChartBean> selectalbumList(int startRow, int pageSize) {
-		ArrayList<ChartBean> arr = new ArrayList<>();
-		ChartBean cb = null;
+		ArrayList<ChartBean> chartList = new ArrayList<>();
+		ChartBean ch = null;
 		try {
 			con = getCon();
-			sql = "select * from album a inner join music b on b.album_num = a.al_num GROUP BY a.al_num  order by a.al_release desc limit ?,?";
+			sql = "select * from album a inner join music b "
+					+ "on b.album_num = a.al_num GROUP BY a.al_num order by a.al_release desc  limit ?,?;";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
-			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				cb = new ChartBean();
-				cb.setAl_agency(rs.getString("al_agency"));
-				cb.setAl_art_img(rs.getString("al_art_img"));
-				cb.setAl_content(rs.getString("al_content"));
-				cb.setAl_name(rs.getString("al_name"));
-				cb.setAl_num(rs.getInt("al_num"));
-				cb.setAl_release(rs.getDate("al_release"));
-				cb.setAlbum_num(rs.getInt("album_num"));
-				cb.setLyrics(rs.getString("lyrics"));
-				cb.setMu_num(rs.getInt("mu_num"));
-				cb.setMusic_genre(rs.getString("music_genre"));
-				cb.setMusic_name(rs.getString("music_name"));
-				cb.setMusic_time(rs.getString("music_time"));
-				cb.setMusic_video(rs.getString("music_video"));
-				cb.setMusicfile(rs.getString("musicfile"));
-				cb.setSinger_num(rs.getInt("singer_num"));
-				cb.setTrack_num(rs.getInt("track_num"));
-				arr.add(cb);
+				ch = new ChartBean();
+				ch.setAl_agency(rs.getString("al_agency"));
+				ch.setAl_art_img(rs.getString("al_art_img"));
+				ch.setAl_content(rs.getString("al_content"));
+				ch.setAl_name(rs.getString("al_name"));
+				ch.setAl_num(rs.getInt("al_num"));
+				ch.setAl_release(rs.getDate("al_release"));
+				ch.setAlbum_num(rs.getInt("album_num"));
+				ch.setLyrics(rs.getString("lyrics"));
+				ch.setMu_num(rs.getInt("mu_num"));
+				ch.setMusic_genre(rs.getString("music_genre"));
+				ch.setMusic_name(rs.getString("music_name"));
+				ch.setMusic_time(rs.getString("music_time"));
+				ch.setMusic_video(rs.getString("music_video"));
+				ch.setMusicfile(rs.getString("musicfile"));
+				ch.setSinger_num(rs.getInt("singer_num"));
+				ch.setTrack_num(rs.getInt("track_num"));
+				chartList.add(ch);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
-		return arr;
+		return chartList;
 	}
 }
