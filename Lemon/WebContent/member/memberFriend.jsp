@@ -206,7 +206,6 @@
 	
 	// 닉네임 옆의 대화하기를 눌렀을 때
 	function fr_converse(param) {
-		alert("?");
 		
 		var m_nickname = document.getElementById("m_nickname").value;
 		var f_nickname = document.getElementById("f_nickname").value;
