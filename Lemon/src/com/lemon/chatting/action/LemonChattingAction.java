@@ -14,6 +14,7 @@ public class LemonChattingAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email_id");
+		System.out.println("접속자 : " + user);
 		if (user == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -30,5 +31,4 @@ public class LemonChattingAction implements Action {
 		forward.setRedirect(false);
 		return forward;
 	}
-
 }

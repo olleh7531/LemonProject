@@ -18,10 +18,10 @@ public class ChattingFrontController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-
+		
 		if (command.equals("/LemonChatting.ch")) {
 			action = new LemonChattingAction();
-
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -29,7 +29,7 @@ public class ChattingFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
+		
 		if (forward != null) {
 			if (forward.isRedirect()) {// true
 				response.sendRedirect(forward.getPath());
