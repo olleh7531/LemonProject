@@ -18,9 +18,7 @@ public class SearchDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
-	PreparedStatement pstmt2 = null;
-	ResultSet rs2 = null;
-	String sql2 = "";
+
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -54,41 +52,32 @@ public class SearchDAO {
 		}
 	}
 	
-	public void CloseDB2() {
-		if (rs2 != null) {
-			try {
-				rs2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 
-		if (pstmt2 != null) {
-			try {
-				pstmt2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	
+
 	public List lyricSearch(String search,String sort){
 		// 1시간단위 차트
 				List<SearchBean> arr = new ArrayList<SearchBean>();
 				SearchBean sb = null;
+				
+				System.out.println(search);
 				try {
 					con = getCon();
 
 					// sql 쿼리
 					if(sort.equals("정확도순")){
 						
-					sql = "select * from music where lyrics like '%"+search+"%' group by mu_num"
+					sql = "select mu_num,lyrics,music_name,al_name "/*, singer_name from singer*/
+							+ " from music, album where lyrics like '%"+search+"%' and al_num=album_num group by mu_num " /*where si_num=singer_num*/
+							//검색어 카운트 순
 							+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc";
 					}else if(sort.equals("최신순")){
-						sql = "select * from music where lyrics like '%"+search+"%' group by mu_num"
+						sql = "select mu_num,lyrics,music_name,al_name "
+								+ " from music where lyrics like '%"+search+"%' group by mu_num"
 								+ " order by (select al_release from album where al_num=album_num) desc";
 					}else if(sort.equals("가나다순")){
-						sql = "select * from music where lyrics like '%"+search+"%' group by mu_num"
+						sql = "select mu_num,lyrics,music_name,al_name "
+								+ " from music where lyrics like '%"+search+"%' group by mu_num"
 								+ " order by music_name asc";
 					}
 					// pstmt 객체생성
@@ -102,22 +91,10 @@ public class SearchDAO {
 						sb.setMu_num(rs.getInt("mu_num"));
 						sb.setLyrics(rs.getString("lyrics"));
 						sb.setMusic_name(rs.getString("music_name"));
-						sb.setAl_num(rs.getInt("album_num"));
-						sb.setSi_num(rs.getInt("singer_num"));
 						
-						sql2 ="select al_name from album where al_num=?";
-//						sql ="select al_name , singer_name from album,singer where al_num=? AND si_num=?";
-						pstmt2 = con.prepareStatement(sql2);
-						pstmt2.setInt(1, rs.getInt("album_num"));
-//						pstmt.setInt(2, rs.getInt("singer_num"));
-						rs2 = pstmt2.executeQuery();
-						
-						if(rs2.next()) {
-							sb.setAl_name(rs2.getString("al_name"));
-//							sb.setSinger_name(rs.getString("singer_name"));
-							arr.add(sb);
-						}
-						
+						sb.setAl_name(rs.getString("al_name"));
+//						sb.setSinger_name(rs.getString("singer_name"));							
+						arr.add(sb);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -128,7 +105,82 @@ public class SearchDAO {
 				return arr;
 	}
 	
+	public List lyricSearch(String search,int startRow,int pageSize,String sort){
+		// 1시간단위 차트
+		List<SearchBean> resultList = new ArrayList<SearchBean>();
+		SearchBean sb = null;
+				
+		System.out.println(search);
+			try {
+				con = getCon();
 
+				// sql 쿼리
+				if(sort.equals("정확도순")){
+				sql = "select mu_num,lyrics,music_name,al_name"
+						+ " from music, album"
+						+ " where lyrics like '%"+search+"%' and al_num=album_num"
+						+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc";	
+				}else if(sort.equals("최신순")){
+					sql = "select mu_num,lyrics,music_name,al_name"
+							+ " from music, album"
+							+ " where lyrics like '%"+search+"%' and al_num=album_num"
+							+ " order by (select al_release from album where al_num=album_num) desc";
+				}else if(sort.equals("가나다순")){
+					sql = "select mu_num,lyrics,music_name,al_name"
+							+ " from music, album"
+							+ " where lyrics like '%"+search+"%' and al_num=album_num"
+							+ " order by music_name asc limit ?,?";
+				}
+//				+ " ";
+//				+ " ";
+				// pstmt 객체생성
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow-1);
+				pstmt.setInt(2, pageSize);
+				// pstmt 객체 실행
 
+				rs=pstmt.executeQuery();
+				while(rs.next()){
+					sb = new SearchBean();
+					sb.setMu_num(rs.getInt("mu_num"));
+					sb.setLyrics(rs.getString("lyrics"));
+					sb.setMusic_name(rs.getString("music_name"));
+					sb.setAl_name(rs.getString("al_name"));
+					resultList.add(sb);
+				}
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					CloseDB();
+				}
+
+				return resultList;
+	}
+	
+	public int getSearchResultCount(String search){
+		int count=0;
+		
+		try {
+			con = getCon();
+			
+			sql ="select count(*)"
+					+ " from music, album"
+					+ " where lyrics like '%"+search+"%' and al_num=album_num";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return count;
+	}
 
 }

@@ -23,7 +23,7 @@
 						id="top_search" style="width: 249px">
 					<input type="hidden" name="keywordLink" id="keywordLink" value="">
 					<input type="hidden" name="sort" id="sort" value="정확도순">
-					<button type="submit" class="btn_icon search_m" name="test" title="검색" >
+					<button type="submit" class="btn_icon search_m" title="검색" >
 						<span class="odd_span">검색</span>
 					</button>						
 				</fieldset>				
