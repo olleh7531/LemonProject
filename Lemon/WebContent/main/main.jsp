@@ -29,7 +29,7 @@
 	
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	
-
+<link rel="shortcut icon" href="./assets/img/common/Lemontitle.png">
 	
 </head>
 <body>
@@ -1415,8 +1415,7 @@
 				<div class="id_wrap mt24">
 					
 					<c:set var="e_id" value="<%=email_id %>"/>				
-					<c:if test="${empty e_id}">
-					
+					<c:if test="${empty e_id  || e_id == 'null'}">
 					<!-- 로그인하지 않았을 때 -->
 					<form action="./MemberLoginAction.mb" method="post">
 					<div class="login_wrap" id="gnbLoginDiv">
@@ -1448,7 +1447,7 @@
 									
 								
 								<div class="main_google_login">
-									<input type="button" id="googleLogin" value="Checking..." 
+									<input type="button" id="googleLogin" value="Checking..."
 									onclick="
 									   if(this.value === 'Google Login'){
 										gauth.signIn().then(function(){

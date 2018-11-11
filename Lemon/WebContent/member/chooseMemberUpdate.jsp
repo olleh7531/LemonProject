@@ -17,14 +17,12 @@
 	
 	<!-- Member CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
-	
+	<link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript"
-	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	
 	<style>
-	
 	.upMemMenu{
 		border: 2px solid #d3d3d3;
 		margin: 20px;
@@ -59,8 +57,8 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	
 	<!-- 본문 -->
-	<div id="bg_contsMem">
-		<div id="wrap_contsMem">
+	<div id="wrap_conts" style="text-align: center">
+		<div id="conts">
 			<div id="wrap_tit">
 				<h2>회원정보 관리</h2>
 			</div>

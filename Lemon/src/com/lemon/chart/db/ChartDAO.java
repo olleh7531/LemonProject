@@ -17,9 +17,6 @@ public class ChartDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
-	PreparedStatement pstmt2 = null;
-	ResultSet rs2 = null;
-	String sql2 = "";
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -53,24 +50,6 @@ public class ChartDAO {
 		}
 	}
 
-	public void CloseDB2() {
-		if (rs2 != null) {
-			try {
-				rs2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		if (pstmt2 != null) {
-			try {
-				pstmt2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public List<ChartBean1> getChart(int hour) {
 		// 1시간단위 차트
 		List<ChartBean1> arr = new ArrayList<ChartBean1>();
@@ -79,9 +58,13 @@ public class ChartDAO {
 			con = getCon();
 
 			// sql 쿼리
-			sql = "select ch_music_num from chart where ch_updatetime =  DATE_SUB" + "(DATE_FORMAT(now(),'%Y-%m-%d %"
-					+ hour + "'),	INTERVAL 1 HOUR)  "
-					+ "group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3";
+			sql = "select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime,music_name from chart,music where ch_music_num in (select ch_music_num from "
+					+ "(select ch_music_num from chart where ch_updatetime =  "
+					+ "DATE_FORMAT(now(),'%Y-%m-%d %"+hour+"') group by ch_num "
+					+ "order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3) as test) "
+					+ "AND ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"'),	"
+					+ "INTERVAL 23 HOUR) and DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"') and mu_num=ch_music_num order by "
+					+ "ch_music_num asc ,ch_updatetime asc";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 
@@ -89,37 +72,26 @@ public class ChartDAO {
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				sql2 = "select * from chart where ch_music_num=? AND ch_updatetime between "
-						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "'),	INTERVAL 23 HOUR)"
-						+ "and DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "')" + "order by ch_updatetime asc";
-				pstmt2 = con.prepareStatement(sql2);
-				pstmt2.setInt(1, rs.getInt("ch_music_num"));
-				rs2 = pstmt2.executeQuery();
-				while (rs2.next()) {
-
 					cb = new ChartBean1();
-					cb.setCh_num(rs2.getInt("ch_num"));
-					cb.setCh_music_num(rs2.getInt("ch_music_num"));
-					cb.setCh_playcnt(rs2.getInt("ch_playcnt"));
-					cb.setCh_downcnt(rs2.getInt("ch_downcnt"));
-
+					cb.setCh_num(rs.getInt("ch_num"));
+					cb.setCh_music_num(rs.getInt("ch_music_num"));
+					cb.setCh_playcnt(rs.getInt("ch_playcnt"));
+					cb.setCh_downcnt(rs.getInt("ch_downcnt"));
+					cb.setMusic_name(rs.getString("music_name"));
 					Calendar cal = Calendar.getInstance();
-					cal.setTimeInMillis(rs2.getTimestamp("ch_updatetime").getTime());
+					cal.setTimeInMillis(rs.getTimestamp("ch_updatetime").getTime());
 					cal.add(Calendar.SECOND, -32400);
 
 					Timestamp later = new Timestamp(cal.getTime().getTime());
 
 					cb.setCh_updatetime(later);
-
 					arr.add(cb);
 				}
 
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
-			CloseDB2();
 		}
 
 		return arr;
@@ -310,5 +282,44 @@ public class ChartDAO {
 			CloseDB();
 		}
 		return Chart;
+	}
+
+	public ArrayList<ChartBean> selectalbumList(int startRow, int pageSize) {
+		ArrayList<ChartBean> chartList = new ArrayList<>();
+		ChartBean ch = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b "
+					+ "on b.album_num = a.al_num GROUP BY a.al_num order by a.al_release desc  limit ?,?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ch = new ChartBean();
+				ch.setAl_agency(rs.getString("al_agency"));
+				ch.setAl_art_img(rs.getString("al_art_img"));
+				ch.setAl_content(rs.getString("al_content"));
+				ch.setAl_name(rs.getString("al_name"));
+				ch.setAl_num(rs.getInt("al_num"));
+				ch.setAl_release(rs.getDate("al_release"));
+				ch.setAlbum_num(rs.getInt("album_num"));
+				ch.setLyrics(rs.getString("lyrics"));
+				ch.setMu_num(rs.getInt("mu_num"));
+				ch.setMusic_genre(rs.getString("music_genre"));
+				ch.setMusic_name(rs.getString("music_name"));
+				ch.setMusic_time(rs.getString("music_time"));
+				ch.setMusic_video(rs.getString("music_video"));
+				ch.setMusicfile(rs.getString("musicfile"));
+				ch.setSinger_num(rs.getInt("singer_num"));
+				ch.setTrack_num(rs.getInt("track_num"));
+				chartList.add(ch);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return chartList;
 	}
 }

@@ -20,8 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/updateMember.css">
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript"
-	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	
 	<script type="text/javascript">
@@ -88,7 +87,7 @@
 						<tr style="height: 70px">
 							<th>레몬 ID</th>
 							<td>
-								<input type="text" name="email_id" value="<%=mb.getEmail_id() %>" readonly><br/>	
+								<input type="text" name="email_id" value="<%=mb.getEmail_id() %>" readonly size="30"><br/>	
 								<p><input type="checkbox" style="width:auto;" name="receive_email" <%if(chkRe == 1){ %>
 					          			checked
 					      			<% } %>><label>이메일 수신동의</label>

@@ -53,9 +53,7 @@ public class SearchDAO {
 	}
 	
 
-	
-
-	public List lyricSearch(String search,String sort){
+	public List<SearchBean> lyricSearch(String search,String sort){
 		// 1시간단위 차트
 				List<SearchBean> arr = new ArrayList<SearchBean>();
 				SearchBean sb = null;
@@ -91,10 +89,11 @@ public class SearchDAO {
 						sb.setMu_num(rs.getInt("mu_num"));
 						sb.setLyrics(rs.getString("lyrics"));
 						sb.setMusic_name(rs.getString("music_name"));
-						
+			
 						sb.setAl_name(rs.getString("al_name"));
 //						sb.setSinger_name(rs.getString("singer_name"));							
 						arr.add(sb);
+
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -105,7 +104,7 @@ public class SearchDAO {
 				return arr;
 	}
 	
-	public List lyricSearch(String search,int startRow,int pageSize,String sort){
+	public List<SearchBean> lyricSearch(String search,int startRow,int pageSize,String sort){
 		// 1시간단위 차트
 		List<SearchBean> resultList = new ArrayList<SearchBean>();
 		SearchBean sb = null;

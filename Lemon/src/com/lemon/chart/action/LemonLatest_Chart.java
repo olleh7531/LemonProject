@@ -12,8 +12,7 @@ public class LemonLatest_Chart implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("LemonLatest_Chart execute()!!!");
-
+		System.out.println("LemonLatest_Chart execute()!!!"); 
 		ChartDAO cdao = new ChartDAO();
 
 		// 게시판 전체 글 개수 확인
@@ -68,6 +67,8 @@ public class LemonLatest_Chart implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
+		
+		request.setAttribute("album", request.getParameter("album"));
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("./chart/latest_chart.jsp");

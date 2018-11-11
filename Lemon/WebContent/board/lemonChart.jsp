@@ -270,11 +270,10 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 		 }); */
 		<c:set var="arr" value="${requestScope.list}"/>
 
-
 		bb.generate({
 			"data" : {
 				"columns" : [
-						[ "data1", <c:forEach items="${arr}" var="list" varStatus="status" begin="0" end="71" step="3">
+						[ "${list[0].music_name}", <c:forEach items="${arr}" var="list" varStatus="status" begin="0" end="71" step="3">
 						<c:if test="${status.index!=69}">
 						"${list.ch_num}" ,
 						</c:if>	
@@ -283,7 +282,7 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 						</c:if>
 						</c:forEach> ],
 						
-						[ "data2", <c:forEach items="${arr}" var="list" varStatus="status" begin="1" end="71" step="3">
+						[ "${list[25].music_name}", <c:forEach items="${arr}" var="list" varStatus="status" begin="1" end="71" step="3">
 						<c:if test="${status.index!=70}">
 						"${list.ch_num}" ,
 						</c:if>	
@@ -292,7 +291,7 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 						</c:if>
 						</c:forEach> ],
 						
-						[ "data3", <c:forEach items="${arr}" var="list" varStatus="status" begin="2" end="71" step="3">
+						[ "${list[49].music_name}", <c:forEach items="${arr}" var="list" varStatus="status" begin="2" end="71" step="3">
 						<c:if test="${status.index!=71}">
 						"${list.ch_num}" , 
 						</c:if>	

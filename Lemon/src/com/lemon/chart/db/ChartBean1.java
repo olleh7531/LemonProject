@@ -8,7 +8,14 @@ public class ChartBean1 {
 	private int ch_playcnt;
 	private int ch_downcnt;
 	private Timestamp ch_updatetime;
+	private String music_name;
 	
+	public String getMusic_name() {
+		return music_name;
+	}
+	public void setMusic_name(String music_name) {
+		this.music_name = music_name;
+	}
 	public int getCh_num() {
 		return ch_num;
 	}

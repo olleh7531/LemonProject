@@ -44,6 +44,15 @@ public class MusicPlayerFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/LemonPlayer.mp")) {
+			action = new LemonPlayer();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {

@@ -1418,6 +1418,22 @@ var AmazingAudioPlatforms = {
                 if (this.options.stopotherplayers) this.stopOthers()
             },
             playAudio: function (startTime) {
+            	//ajax
+            			$.ajax({
+					type : "POST", // method="POST" 방식으로 출력 
+					url : "./PlayLogUp.ct", 
+					data : {
+						musicfile : this.elemArray[this.currentItem].source[0].src.substring(20),
+					},
+					success : function(data) { // data를 가져오는 것이 성공하였을 때
+					    alert("성공");
+				
+					},
+					error : function(xhr, status, error) { // 에러났을 때
+						alert("error : " + error);
+					}
+				});
+            	//ajax
                 this.audioPlayer.play(startTime, this.elemArray[this.currentItem].duration);
                 this.container.trigger("amazingaudioplayer.played", this.currentItem);
                 if (this.options.stopotherplayers) this.stopOthers()

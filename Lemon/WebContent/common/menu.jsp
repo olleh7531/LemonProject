@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <div id="wrap">
 	<div id="header" class="main">
 		<div id="header_wrap" class="pr_none">

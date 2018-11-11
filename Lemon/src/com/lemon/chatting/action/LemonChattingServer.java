@@ -41,5 +41,4 @@ public class LemonChattingServer {
 		// Remove session from the connected sessions set
 		clients.remove(session);
 	}
-
 }

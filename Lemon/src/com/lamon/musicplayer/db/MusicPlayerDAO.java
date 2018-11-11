@@ -73,28 +73,26 @@ public class MusicPlayerDAO {
 
 	public ArrayList<MusicPlayerBean> selectPlayerList(String user) {
 		MusicPlayerBean mpb = null;
+		MusicPlayerBean mpb2 = null;
 		ArrayList<MusicPlayerBean> mpblist = new ArrayList<>();
 		try {
 			con = getCon();
-			sql = "select a.music_name, a.musicfile, a.music_time, a.album_num,b.pls_music_num from music a inner join playlist b on a.mu_num = b.pls_music_num where b.pls_user_email = ?;";
+			sql = "select a.music_name, a.musicfile, a.music_time, a.album_num,b.pls_music_num, c.al_art_img from "
+					+ "music a inner join playlist b inner join album c on a.mu_num = b.pls_music_num where  al_num = album_num AND b.pls_user_email = ?;";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+
 				mpb = new MusicPlayerBean();
 				mpb.setPls_music_num(rs.getInt("pls_music_num"));
 				mpb.setMusic_name(rs.getString("music_name"));
 				mpb.setMusicfile(rs.getString("musicfile"));
 				mpb.setMusic_time(rs.getString("music_time"));
 				mpb.setAlbum_num(rs.getInt("album_num"));
-				sql2 = "select al_art_img from album where al_num = ?";
-				pstmt2 = con.prepareStatement(sql2);
-				pstmt2.setInt(1, rs.getInt("album_num"));
-				rs2 = pstmt.executeQuery();
-				if (rs2.next()) {
-					mpb.setAl_art_img(rs.getString("al_art_img"));
-				}
+				mpb.setAl_art_img(rs.getString("al_art_img"));
 				mpblist.add(mpb);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
