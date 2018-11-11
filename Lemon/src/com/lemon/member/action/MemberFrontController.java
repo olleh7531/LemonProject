@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lemon.chatting.action.LemonChattingAction;
+
 public class MemberFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -236,6 +238,14 @@ public class MemberFrontController extends HttpServlet {
 			
 		} else if (command.equals("/deleteFriend.mb")) {
 			action = new deleteFriend();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/ChattingFriend.mb")) {
+			action = new chatFriend();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

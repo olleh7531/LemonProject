@@ -216,7 +216,8 @@
 					</div>
 					<div class="entry">
 						<div class="info">
-							<span class="gubun"> [EP] </span>
+							<span class="gubun"> [<%=cb.getMusic_genre()%>]
+							</span>
 							<div class="song_name">
 								<strong class="none">앨범명</strong>
 								<%=cb.getAl_name()%>

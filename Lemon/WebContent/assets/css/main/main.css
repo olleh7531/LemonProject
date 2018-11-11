@@ -835,6 +835,10 @@ legend, #IE8#HACK {
 	outline: 0;
 }
 
+.main_google_login:HOVER {
+	cursor: pointer;
+}
+
 .wrap_member {
 	position: absolute;
 	bottom: 13px;

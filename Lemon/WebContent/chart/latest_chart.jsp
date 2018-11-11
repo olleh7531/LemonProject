@@ -83,9 +83,10 @@
 			style="border-top: 1px solid #b8b8b8; border-bottom: 1px solid #eaeaea; height: 50px; background-color: #fcfcfc;">
 			<div class="div_tab">
 				<ul class="tab">
-					<li class="current" data-tab="tab1"><a href="#"
-						class="cur_menu mlog"><span class="menu_bg menu01">최신곡</span></a></li>
-					<li data-tab="tab2"><a href="#">최신 앨범</a></li>
+					<li class="current" data-tab="tab1"><a
+						href="./LemonLatest_Chart.ct" class="cur_menu mlog"><span
+							class="menu_bg menu01">최신곡</span></a></li>
+					<li data-tab="tab2"><a href="./LemonAlbumList.ct">최신 앨범</a></li>
 					<li data-tab="tab3"><a href="#">최신 뮤직비디오</a></li>
 				</ul>
 			</div>
@@ -321,7 +322,7 @@
 			</div>
 
 			<div id="tab2" class="tabcontent">
-				<div class="page_header">
+				<!-- <div class="page_header">
 					<h2 class="title">최신 앨범</h2>
 				</div>
 				<form action="#">
@@ -468,7 +469,7 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				</form> -->
 			</div>
 
 			<div id="tab3" class="tabcontent">

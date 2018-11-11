@@ -50,7 +50,6 @@ public class ChartDAO {
 		}
 	}
 
-
 	public List<ChartBean1> getChart(int hour) {
 		// 1시간단위 차트
 		List<ChartBean1> arr = new ArrayList<ChartBean1>();
@@ -283,5 +282,44 @@ public class ChartDAO {
 			CloseDB();
 		}
 		return Chart;
+	}
+
+	public ArrayList<ChartBean> selectalbumList(int startRow, int pageSize) {
+		ArrayList<ChartBean> chartList = new ArrayList<>();
+		ChartBean ch = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b "
+					+ "on b.album_num = a.al_num GROUP BY a.al_num order by a.al_release desc  limit ?,?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow - 1);
+			pstmt.setInt(2, pageSize);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ch = new ChartBean();
+				ch.setAl_agency(rs.getString("al_agency"));
+				ch.setAl_art_img(rs.getString("al_art_img"));
+				ch.setAl_content(rs.getString("al_content"));
+				ch.setAl_name(rs.getString("al_name"));
+				ch.setAl_num(rs.getInt("al_num"));
+				ch.setAl_release(rs.getDate("al_release"));
+				ch.setAlbum_num(rs.getInt("album_num"));
+				ch.setLyrics(rs.getString("lyrics"));
+				ch.setMu_num(rs.getInt("mu_num"));
+				ch.setMusic_genre(rs.getString("music_genre"));
+				ch.setMusic_name(rs.getString("music_name"));
+				ch.setMusic_time(rs.getString("music_time"));
+				ch.setMusic_video(rs.getString("music_video"));
+				ch.setMusicfile(rs.getString("musicfile"));
+				ch.setSinger_num(rs.getInt("singer_num"));
+				ch.setTrack_num(rs.getInt("track_num"));
+				chartList.add(ch);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return chartList;
 	}
 }

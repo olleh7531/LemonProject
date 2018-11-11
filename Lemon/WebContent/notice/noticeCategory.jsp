@@ -8,28 +8,19 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/menu.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/main_menu_bxslider.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/board/notice.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/font.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/footer.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script>
 	function Select(elm) {
@@ -113,10 +104,10 @@
 									NoticeBean nb = (NoticeBean) NoticeList.get(i);
 						%>
 						<tr>
-							<td scope="col"><%=nb.getNum()%></td>
+							<td scope="col"><%=nb.getNo_num()%></td>
 							<td scope="col"><%=nb.getNo_category()%></td>
 							<td id="subject" scope="col"><a
-								href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a></td>
+								href="./noticeContent.nt?num=<%=nb.getNo_num()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a></td>
 							<td scope="col"><%=nb.getNo_readcount()%></td>
 							<td><div class="wrap"><%=nb.getNo_reg_date()%></div></td>
 						</tr>
