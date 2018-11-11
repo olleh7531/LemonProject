@@ -295,8 +295,7 @@ public class ChartDAO {
 		ChartBean cb = null;
 		try {
 			con = getCon();
-			sql = "select * from album a inner join music b on "
-					+ "b.album_num = a.al_num GROUP BY a.al_num  order by a.al_release desc limit ?,?;";
+			sql = "select * from album a inner join music b on b.album_num = a.al_num GROUP BY a.al_num  order by a.al_release desc limit ?,?";
 			pstmt.setInt(1, startRow - 1);
 			pstmt.setInt(2, pageSize);
 			pstmt = con.prepareStatement(sql);
