@@ -251,7 +251,7 @@
 										</div> --%>
 										<div class="wrap t_center">
 											<button type="button" title="담기" class="button_icons scrap"
-												onclick="LemonPlayer(<%=cb.getMu_num()%>)">
+												onclick="LemonPlayer(<%=cb.getMu_num()%>,<%=cb.getAlbum_num()%>)">
 												<i class="fa fa-play"></i><span class="none">담기</span>
 											</button>
 										</div>
@@ -624,8 +624,8 @@
 	</script>
 
 	<script type="text/javascript">
-		function LemonPlayer(Musicfile){
-			window.open("./LemonPlayer.mp?musicName="+Musicfile+"","a","width=378,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
+		function LemonPlayer(mu_num,album_num){
+			window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=378,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 		}
 	</script>
 	<!-- footer -->
