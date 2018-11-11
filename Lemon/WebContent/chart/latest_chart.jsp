@@ -242,12 +242,18 @@
 										</div>
 									</td>
 									<td>
-										<div class="block-tracklist">
+										<%-- <div class="block-tracklist">
 											<ol class="playlist">
 												<li><div class="as-link"
 														data-src="./musicUpload/music/<%=cb.getMusicfile()%>">
 													</div></li>
 											</ol>
+										</div> --%>
+										<div class="wrap t_center">
+											<button type="button" title="담기" class="button_icons scrap"
+												onclick="LemonPlayer(<%=cb.getMu_num()%>)">
+												<i class="fa fa-play"></i><span class="none">담기</span>
+											</button>
 										</div>
 									</td>
 									<td>
@@ -614,6 +620,12 @@
 				}
 			})
 			
+		}
+	</script>
+
+	<script type="text/javascript">
+		function LemonPlayer(Musicfile){
+			window.open("./LemonPlayer.mp?musicName="+Musicfile+"","a","width=378,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 		}
 	</script>
 	<!-- footer -->
