@@ -61,9 +61,9 @@ line-height: 40px;
     width: 100% ;
     text-align: center;}
     
-#header_wrap{
+/* #header_wrap{
  	width: auto !important; 
-}
+} */
 
 .btn{    display: inline-block;
     padding: 0;
