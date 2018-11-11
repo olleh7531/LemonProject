@@ -7,5 +7,5 @@
 	 driverClassName="com.mysql.cj.jdbc.Driver" 
 	 url="jdbc:mysql://localhost:3306/lemon01?serverTimezone=UTC"
 	 username="root" 
-	 password="liks4689" />
+	 password="1234" />
 </Context>
