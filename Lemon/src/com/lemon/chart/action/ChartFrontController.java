@@ -60,6 +60,14 @@ public class ChartFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if (command.equals("/PlayLogUp.ct")) {
+			action = new PlayLogUpAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) { // 이동할 정보가 있으면

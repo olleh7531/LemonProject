@@ -59,9 +59,13 @@ public class ChartDAO {
 			con = getCon();
 
 			// sql 쿼리
-			sql = "select ch_music_num from chart where ch_updatetime =  DATE_SUB" + "(DATE_FORMAT(now(),'%Y-%m-%d %"
-					+ hour + "'),	INTERVAL 1 HOUR)  "
-					+ "group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3";
+			sql = "select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime,music_name from chart,music where ch_music_num in (select ch_music_num from "
+					+ "(select ch_music_num from chart where ch_updatetime =  "
+					+ "DATE_FORMAT(now(),'%Y-%m-%d %"+hour+"') group by ch_num "
+					+ "order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3) as test) "
+					+ "AND ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"'),	"
+					+ "INTERVAL 23 HOUR) and DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"') and mu_num=ch_music_num order by "
+					+ "ch_music_num asc ,ch_updatetime asc";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 
@@ -69,32 +73,22 @@ public class ChartDAO {
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				sql2 = "select * from chart where ch_music_num=? AND ch_updatetime between "
-						+ "DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "'),	INTERVAL 23 HOUR)"
-						+ "and DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "')" + "order by ch_updatetime asc";
-				pstmt2 = con.prepareStatement(sql2);
-				pstmt2.setInt(1, rs.getInt("ch_music_num"));
-				rs2 = pstmt2.executeQuery();
-				while (rs2.next()) {
-
 					cb = new ChartBean1();
-					cb.setCh_num(rs2.getInt("ch_num"));
-					cb.setCh_music_num(rs2.getInt("ch_music_num"));
-					cb.setCh_playcnt(rs2.getInt("ch_playcnt"));
-					cb.setCh_downcnt(rs2.getInt("ch_downcnt"));
-
+					cb.setCh_num(rs.getInt("ch_num"));
+					cb.setCh_music_num(rs.getInt("ch_music_num"));
+					cb.setCh_playcnt(rs.getInt("ch_playcnt"));
+					cb.setCh_downcnt(rs.getInt("ch_downcnt"));
+					cb.setMusic_name(rs.getString("music_name"));
 					Calendar cal = Calendar.getInstance();
-					cal.setTimeInMillis(rs2.getTimestamp("ch_updatetime").getTime());
+					cal.setTimeInMillis(rs.getTimestamp("ch_updatetime").getTime());
 					cal.add(Calendar.SECOND, -32400);
 
 					Timestamp later = new Timestamp(cal.getTime().getTime());
 
 					cb.setCh_updatetime(later);
-
 					arr.add(cb);
 				}
 
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
