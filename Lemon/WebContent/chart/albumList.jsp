@@ -336,31 +336,33 @@
 								%>
 								<div class="service_list_album">
 									<div class="thumb">
-										<a href="./LemonDetai.ct"> <img width="180" height="160"
+										<a
+											href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>">
+											<img width="180" height="160"
 											src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>" alt="">
 										</a>
 									</div>
 									<div class="entry">
 										<div class="info">
-											<span class="vdo_name">[EP]</span> <a href="./LemonDetai.ct"
-												class="ellipsis album_name"
-												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
+											<span class="vdo_name">[<%=cb.getMusic_genre()%>]
+											</span> <a
+												href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>"
+												class="ellipsis album_name" title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
 											<span class="ellipsis artist"> <a href=""
-												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
-													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-														(SAM KIM)</a></span>
+												class="artist_name  " title=""></a><span
+												class="checkEllipsis" style="display: none;"><a
+													href="" class="artist_name  " title=""></a></span>
 											</span>
 										</div>
 										<div class="meta">
-											<span class="reg_date" title="발매일">2018.10.23</span> <i
-												class="bar"></i>
+											<span class="reg_date" title="발매일"><%=cb.getAl_release()%></span>
+											<!-- <i class="bar"></i>
 											<button type="button" class="button_etc like"
 												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
 												data-album-menuid="18020123">
 												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
 													class="none">총건수</strong>4,113</span>
-											</button>
+											</button> -->
 										</div>
 										<div class="wrap_btn_tb">
 											<button type="button" onclick="" title="앨범듣기"
@@ -373,153 +375,43 @@
 												<span class="button_icons type02 download"></span><span
 													class="cnt">앨범다운</span>
 											</button>
-
-
-
 										</div>
 									</div>
 								</div>
-
 								<%
 									}
 									}
 								%>
-								<!-- <div class="service_list_album">
-									<div class="thumb">
-										<a href="./LemonDetai.ct"> <img width="180" height="160"
-											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
-											alt="">
-										</a>
-									</div>
-									<div class="entry">
-										<div class="info">
-											<span class="vdo_name">[EP]</span> <a href="./LemonDetai.ct"
-												class="ellipsis album_name"
-												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
-											<span class="ellipsis artist"> <a href=""
-												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
-													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-														(SAM KIM)</a></span>
-											</span>
-										</div>
-										<div class="meta">
-											<span class="reg_date" title="발매일">2018.10.23</span> <i
-												class="bar"></i>
-											<button type="button" class="button_etc like"
-												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
-												data-album-menuid="18020123">
-												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
-													class="none">총건수</strong>4,113</span>
-											</button>
-										</div>
-										<div class="wrap_btn_tb">
-											<button type="button" onclick="" title="앨범듣기"
-												class="button_rbox">
-												<span class="button_icons type02 play"></span><span
-													class="cnt">앨범듣기</span>
-											</button>
-											<button type="button" onclick="" title="앨범 다운로드"
-												class="button_rbox">
-												<span class="button_icons type02 download"></span><span
-													class="cnt">앨범다운</span>
-											</button>
 
+							</div>
 
+						</div>
+						<div style="text-align: center;">
+							<div class="pagination">
+								<%
+									if (count != 0) {
+										if (startPage > pageBlock) {
+								%>
+								<a href="./LemonAlbumList.ct?pageNum=<%=startPage - pageBlock%>">
+									&laquo;</a>
+								<%
+									}
 
-										</div>
-									</div>
-								</div> -->
-								<!-- <div class="service_list_album">
-									<div class="thumb">
-										<img width="180" height="160"
-											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
-											alt="">
-									</div>
-									<div class="entry">
-										<div class="info">
-											<span class="vdo_name">[EP]</span> <a href=""
-												class="ellipsis album_name"
-												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
-											<span class="ellipsis artist"> <a href=""
-												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
-													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-														(SAM KIM)</a></span>
-											</span>
-										</div>
-										<div class="meta">
-											<span class="reg_date" title="발매일">2018.10.23</span> <i
-												class="bar"></i>
-											<button type="button" class="button_etc like"
-												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
-												data-album-menuid="18020123">
-												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
-													class="none">총건수</strong>4,113</span>
-											</button>
-										</div>
-										<div class="wrap_btn_tb">
-											<button type="button" onclick="" title="앨범듣기"
-												class="button_rbox">
-												<span class="button_icons type02 play"></span><span
-													class="cnt">앨범듣기</span>
-											</button>
-											<button type="button" onclick="" title="앨범 다운로드"
-												class="button_rbox">
-												<span class="button_icons type02 download"></span><span
-													class="cnt">앨범다운</span>
-											</button>
+										for (int i = startPage; i <= endPage; i++) {
+								%>
+								<a href="./LemonAlbumList.ct?pageNum=<%=i%>"
+									<%if (Integer.parseInt(pageNum) == i) {%> class="active" <%}%>><%=i%>
+								</a>
+								<%
+									}
 
-
-
-										</div>
-									</div>
-								</div> -->
-								<!-- <div class="service_list_album">
-									<div class="thumb">
-										<img width="180" height="160"
-											src="https://cdnimg.melon.co.kr/cm/album/images/102/15/272/10215272_500.jpg/melon/resize/180/quality/80/optimize"
-											alt="">
-									</div>
-									<div class="entry">
-										<div class="info">
-											<span class="vdo_name">[EP]</span> <a href=""
-												class="ellipsis album_name"
-												title="Sun And Moon Part.1 - 페이지 이동">Sun And Moon Part.1</a>
-											<span class="ellipsis artist"> <a href=""
-												class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-													(SAM KIM)</a><span class="checkEllipsis" style="display: none;"><a
-													href="" class="artist_name  " title="샘김 (SAM KIM) - 페이지 이동">샘김
-														(SAM KIM)</a></span>
-											</span>
-										</div>
-										<div class="meta">
-											<span class="reg_date" title="발매일">2018.10.23</span> <i
-												class="bar"></i>
-											<button type="button" class="button_etc like"
-												title="Sun And Moon Part.1 좋아요" data-album-no="10215272"
-												data-album-menuid="18020123">
-												<i class="fa fa-heart-o"></i> <span class="cnt"><strong
-													class="none">총건수</strong>4,113</span>
-											</button>
-										</div>
-										<div class="wrap_btn_tb">
-											<button type="button" onclick="" title="앨범듣기"
-												class="button_rbox">
-												<span class="button_icons type02 play"></span><span
-													class="cnt">앨범듣기</span>
-											</button>
-											<button type="button" onclick="" title="앨범 다운로드"
-												class="button_rbox">
-												<span class="button_icons type02 download"></span><span
-													class="cnt">앨범다운</span>
-											</button>
-
-
-
-										</div>
-									</div>
-								</div> -->
+										if (endPage < pageCount) {
+								%>
+								<a href="./LemonAlbumList.ct?pageNum=<%=startPage + pageBlock%>">&raquo;</a>
+								<%
+									}
+									}
+								%>
 							</div>
 						</div>
 					</div>
