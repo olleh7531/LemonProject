@@ -8,10 +8,7 @@
 
 <%
 	String nickname = (String) session.getAttribute("nickname");
-	String nickname1 = (String) request.getParameter("nickname");
-	
 	System.out.println("nickname : " + nickname);
-	System.out.println(nickname1);
 %>
 
 <body>

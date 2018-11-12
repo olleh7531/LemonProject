@@ -32,11 +32,25 @@ public class LemonChattingAction implements Action {
 			out.close();
 			
 			return null;
+			
+		} else {
+			PrintWriter out = response.getWriter();
+			String str = 
+			"<input type='hidden' value='"+nickname+"' id='nickname'>" +
+			"<fieldset>" +
+				"<textarea id='messageWindow' rows='10' cols='50' readonly='true'></textarea>" +
+				"<br>" + 
+				"<input id='inputMessage' type='text'/>" +
+				"<input type='submit' value='send' onclick='send()'/>" +
+			"</fieldset>";
+			out.println(str);			
 		}
 		
-		ActionForward forward = new ActionForward();
-		forward.setPath("./Chatting/ChattingView.jsp?nickname="+nickname);
-		forward.setRedirect(false);
-		return forward;
+		//	ActionForward forward = new ActionForward();
+		//	forward.setPath("./Chatting/ChattingView.jsp");
+		//	forward.setRedirect(false);
+		//	return forward;
+		
+		return null;
 	}
 }
