@@ -197,7 +197,7 @@
             	
             	// 대화하기 버튼을 눌렀을 때
             	$('.fr_converse').click(function(){
-            		fr_converse(alert($(this).prev().prev().val()));
+            		fr_converse(($(this).prev().prev().val()));
             	});
             },
             error:function() {}
@@ -206,7 +206,6 @@
 	
 	// 닉네임 옆의 대화하기를 눌렀을 때
 	function fr_converse(param) {
-		
 		var m_nickname = document.getElementById("m_nickname").value;
 		var f_nickname = document.getElementById("f_nickname").value;
 		
@@ -218,8 +217,7 @@
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-            	$('.findResult4').html(result);
-            	
+            	$('.friendChat').html(result);
             },
             error:function() {}
         });
@@ -243,6 +241,41 @@
 		$(".friend2").hide();
 		$(".friend3").show();
 		friendChat();
+	}
+	
+	var textarea = document.getElementById("messageWindow");
+	var nickname = document.getElementById("nickname");
+	var webSocket = new WebSocket('ws://localhost:8088/Lemon/LemonChatting');
+	var inputMessage = document.getElementById('inputMessage');
+	
+	webSocket.onerror = function(event) {
+		onError(event)
+	};
+	
+	webSocket.onopen = function(event) {
+		onOpen(event)
+	};
+	
+	webSocket.onmessage = function(event) {
+		onMessage(event)
+	};
+	
+	function onMessage(event) {
+		textarea.value += "상대 : " + event.data + "\n";
+	}
+	
+	function onOpen(event) {
+		textarea.value += "연결 성공\n";
+	}
+	
+	function onError(event) {
+		alert(event.data);
+	}
+	
+	function send() {
+		textarea.value += nickname.value+" : " + inputMessage.value + "\n";
+		webSocket.send(textarea.value);
+		inputMessage.value = "";
 	}
 </script>
 
@@ -280,6 +313,7 @@
 			
 			<div class="friend3">
 				<span class="findResult3"></span>
+				<div class="friendChat"></div>
 			</div>
 		</div>
 	</div>

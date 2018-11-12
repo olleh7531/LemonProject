@@ -14,7 +14,7 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint(value = "/LemonChatting")
 public class LemonChattingServer {
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-
+	
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
 		System.out.println(message);
@@ -35,7 +35,7 @@ public class LemonChattingServer {
 		System.out.println(session);
 		clients.add(session);
 	}
-
+	
 	@OnClose
 	public void onClose(Session session) {
 		// Remove session from the connected sessions set

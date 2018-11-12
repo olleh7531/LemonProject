@@ -7,28 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/menu.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/main_menu_bxslider.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/board/notice.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/font.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/footer.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 
 <script type="text/javascript">
@@ -54,11 +45,13 @@ function find_info() {
 		document.find.phone.focus();
 		return;
 	}
-		var fname = document.find.name.value;
-		var fphone = document.find.phone.value;
-		// 새 창 열기("이동할 위치(페이지)", "창 이름", "창 크기", "옵션")
-		wr = window.open("./IdFindChk.mb?fname="+fname+"&fphone="+fphone, "", "width=300, height=250");
-		wr.moveTo(x,y);
+	
+	var fname = document.find.name.value;
+	var fphone = document.find.phone.value;
+	
+	// 새 창 열기("이동할 위치(페이지)", "창 이름", "창 크기", "옵션")
+	wr = window.open("./IdFindChk.mb?fname="+fname+"&fphone="+fphone, "", "width=300, height=250");
+	wr.moveTo(x,y);
 }
 
 function fun_cancel() {
@@ -83,7 +76,7 @@ function fun_cancel() {
 						이　　름 :
 						<input type="text" id="name" name="name" placeholder="ex) 김시현" size="50"> <br><br>
 						전화번호 : 
-						<input type="text" id="phone" name="phone" placeholder="ex) 01088884444" size="50"> <br>
+						<input type="text" id="phone" name="phone" placeholder="ex) 01050079309" size="50"> <br>
 					</div>
 					<input type="button" value="찾기" onclick="find_info()">
 					<input type="button" value="취소" onclick="fun_cancel()">
