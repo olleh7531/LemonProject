@@ -14,7 +14,7 @@
 	// 파일 업로드된 경로
 	String root = request.getSession().getServletContext().getRealPath("/");
 	System.out.println("root 경로 : " + root);
-	String savePath = root + "/musicUpload/music/";
+	String savePath = root + "musicUpload/music/";
 
 	// 서버에 실제 저장된 파일명
 	String filename = file_name;

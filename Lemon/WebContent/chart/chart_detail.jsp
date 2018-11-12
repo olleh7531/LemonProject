@@ -36,6 +36,7 @@
 	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type='text/javascript' src="./assets/js/player/jquery.js"></script>
+<script type="text/javascript" src="./assets/js/chart/chartCheckBox.js"></script>
 <style type="text/css">
 .wrap_cmt_cntt {
 	display: block;
@@ -240,11 +241,11 @@
 							</dl>
 						</div>
 						<div class="button d_album_like">
-							<button type="button" class="button_etc like type02" id="btnLike"
+							<!-- <button type="button" class="button_etc like type02" id="btnLike"
 								title="" data-album-no="" data-album-menuid="" data-target-id="">
 								<span class="odd_span">좋아요</span> <span id="d_like_count"
 									class="cnt">2,057</span>
-							</button>
+							</button> -->
 							<!-- <button type="button" title="앨범다운" class="btn" onclick="#">
 								<span class="button_icons download type03"></span> <span
 									class="text">앨범다운</span> <span
@@ -380,7 +381,7 @@
 								class="cnt">듣기</span>
 						</button>
 						<button type="button" title="선택된 곡 담기" class="button_rbox"
-							onclick="">
+							onclick="checkMusicList()">
 							<i class="fa  fa-plus" style="color: #969696;"></i><span
 								class="cnt">담기</span>
 						</button>
@@ -445,7 +446,8 @@
 								<td>
 									<div class="wrap t_right">
 										<input type="checkbox" title="Make Up (Feat. Crush) 곡 선택"
-											class="input_check " name="input_check" value="31376041">
+											class="input_check " name="input_check"
+											value="<%=mcb.getMu_num()%>">
 									</div>
 								</td>
 
@@ -518,7 +520,8 @@
 								</td>
 								<td>
 									<div class="wrap t_center">
-										<button type="button" title="담기" class="button_icons scrap">
+										<button type="button" title="담기" class="button_icons scrap"
+											onclick="location.href='./UserPlaylistUP.ct?mu_num=<%=mcb.getMu_num()%>'">
 											<i class="fa  fa-plus"></i><span class="none">담기</span>
 										</button>
 									</div>

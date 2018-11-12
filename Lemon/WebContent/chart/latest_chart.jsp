@@ -47,6 +47,7 @@
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
+<script type="text/javascript" src="./assets/js/chart/chartCheckBox.js"></script>
 <style type="text/css">
 .pagination {
 	display: inline-block;
@@ -102,7 +103,6 @@
 				<form action="#">
 					<div class="service_list_song">
 						<div class="wrap_btn_tb top">
-
 							<button type="button" title="선택된 곡 듣기" class="button_rbox"
 								onclick="">
 								<i class="fa fa-play" style="color: #969696;"></i><span
@@ -114,7 +114,7 @@
 									class="cnt">담기</span>
 							</button>
 							<button type="button" title="선택된 곡 다운로드" class="button_rbox"
-								onclick="">
+								onclick="CheckMusicDownload()">
 								<i class="fa  fa-download " style="color: #969696;"><span
 									class="cnt"></i>다운</span>
 							</button>
@@ -245,7 +245,7 @@
 										<div class="wrap t_center">
 											<button type="button" title="담기" class="button_icons scrap"
 												onclick="LemonPlayer(<%=cb.getMu_num()%>,<%=cb.getAlbum_num()%>)">
-												<i class="fa fa-play"></i><span class="none">담기</span>
+												<i class="fa fa-play"></i><span class="none">듣기</span>
 											</button>
 										</div>
 									</td>
@@ -591,60 +591,7 @@
 		});
 	</script>
 	<script type="text/javascript">	
-		function goodMusic(num){
-			$.ajax({
-				type : "POST",
-				url : "./GoodMusicAction.go",
-				data: {
-					go_num: num
-				},
-				success : function(data) {
-					
-					if(data == 0){
-						alert("좋아요 반영되었습니다.");
-						location.reload();
-					}else if(data == 1){
-						alert("좋아요 취소되었습니다.");
-						location.reload();
-					}
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			})
-			
-		}
 		
-		function checkMusicList(){
-			//alert("확인");
-			var input_check = document.getElementsByName("input_check");
-			//alert(input_check.length);
-			for (var i = 0; i < input_check.length; i++) {
-				if(input_check[i].checked == true){
-					//alert(input_check[i].value);
-					$.ajax({
-						type : "POST",
-						url : "./UserCheckBoxPlaylist.ct",
-						data : {
-							mu_num : input_check[i].value
-						},
-						success: function(data){
-							if(data == 2){
-								alert("로그인 해주세요");
-								return false;
-							}else if(data == 1){
-								alert("노래가 있습니다.");
-								return false;
-							}else{
-								alert('추가 되었습니다.');
-							}
-						}
-						
-					})
-				}
-				
-			}
-		}
 	</script>
 
 	<script type="text/javascript">
