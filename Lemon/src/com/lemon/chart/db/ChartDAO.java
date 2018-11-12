@@ -340,4 +340,53 @@ public class ChartDAO {
 		}
 		return fileName;
 	}
+
+	public void insertPlaylog(String email_id, String file, String ip) {
+		try {
+			con = getCon();
+			sql = "insert into playlog(pl_num,pl_user_email,pl_music_num,pl_playtime,pl_user_ip) values(null,?,(select mu_num from music where musicfile=?),now(),?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			pstmt.setString(2, file);
+			pstmt.setString(3, ip);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+
+	public int insertDownloadlog(String user, int mu_num) {
+		int check = -1;
+		try {
+			con = getCon();
+			sql = "select * from download_log where do_user_email= ? AND do_music_num= ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			pstmt.setInt(2, mu_num);
+			rs = pstmt.executeQuery();
+			System.out.println("yyyyyyyyyyyyyyyyy");
+			if (rs.next()) {
+				System.out.println("testxxxxxxxxxxx");
+				if (rs.getInt(1) == 0) {
+					check = 0;
+					sql = "insert into playlist(pls_user_email, pls_music_num) values(?,?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user);
+					pstmt.setInt(2, mu_num);
+					pstmt.executeUpdate();
+				} else {
+					check = 1;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
 }
