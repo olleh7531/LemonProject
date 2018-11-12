@@ -137,8 +137,6 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		acibean.setGroup_singer_num(","+infoMulti.getParameter("singer_group_num")+",");
 		System.out.println(
 				"ArtistChanelInfoWrtieAction.java singer_group_num : " + infoMulti.getParameter("singer_group_num"));
-
-		// 그룹 이름
 		
 		// ArtistChanelDAO 객체 생성
 		ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();

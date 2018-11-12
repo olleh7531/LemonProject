@@ -37,7 +37,9 @@ public class ArtistChanelInfoBean {
 	private Date si_birth; // 생일
 	private String si_gender; // 성별
 	private String group_singer_num; // 그룹 번호
-	private String group_singer_name;
+	
+	// DB에 없음 -> 그룹 이름때문에 추가
+	private String group_singer_name; // 그룹 이름
 	
 	public int getSi_num() {
 		return si_num;

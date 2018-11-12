@@ -31,9 +31,49 @@
 <script type="text/javascript" src="./assets/js/starpost/artist_chanel_tabmenu.js"></script>
 </head>
 <body>
+<%-- <%
+	// 아티스트 정보 번호
+	int artist = Integer.parseInt(request.getParameter("artist"));
+ 	// 디비 처리 객체 ArtistChanelInfoDAO 객체 생성
+	ArtistChanelInfoDAO acidao = new ArtistChanelInfoDAO();
+	
+	// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
+	ArtistChanelInfoBean acibean = acidao.getArtistChanelInfo(artist);
+	String g_singer_name = acibean.getGroup_singer_name();
+	String g_singer_num = acibean.getGroup_singer_num();
+ 	List group = acidao.getGroupMember(g_singer_num);
+	
+	// null이거나 "" 일 때 처리 사항 관련
+	// -> 에러나서 여기에서 불러옴
+		// 본명 -> ""
+		String real_name = acibean.getReal_name();
+		
+		// 데뷔 날짜 -> null
+		Date debut_year = acibean.getDebut_year();
+		
+		// 생일 -> null
+		Date siger_birth = acibean.getSi_birth();
+		
+		// 소속사 -> ""
+		String agency = acibean.getSi_agency();
+	
+		// 소속 그룹 멤버 -> ""
+		String group_name = "";
+		
+		if(!acibean.getGroup_singer_name().equals("")) {
+			group_name = acibean.getGroup_singer_name();
+			group_name = group_name.substring(0, group_name.length() - 1);
+		}
+%> --%>
 
 	<!-- ArtistChanelInfoBean 불러오기 -->
-	<c:set var="acibean" value="${requestScope.acibean}"/>
+	<c:set var="info" value="${requestScope.info}"/>
+	
+	<!-- 그룹 -> 그룹 멤버 가져오기  -->
+	<c:set var="group_member" value="${requestScope.group_member}"/>
+	
+	<!-- 솔로 -> 그룹 이름 불러오기 -->
+	<c:set var="solo_group" value="${requestScope.solo_group}"/>
 	
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -52,10 +92,24 @@
 							<span class="thumb">
 								<span class="thumb_frame"></span>
 								<span id="artistImgArea">
+									<%-- <%
+										if(acibean.getSi_picture() != null) {
+									%>
+									<img width="208" height="208"
+										src="./upload/starpost/singerProfile/<%=acibean.getSi_picture()%>"
+										alt="">
+									<%
+										}
+										else {
+									%>
+									<img width="208" height="208" src="" alt="">
+									<%
+										}
+									%> --%>
 									<c:choose>
-										<c:when test="${acibean.si_picture!=null}">
+										<c:when test="${info.si_picture!=null}">
 											<img width="208" height="208"
-												src="./upload/starpost/singerProfile/${acibean.si_picture}"
+												src="./upload/starpost/singerProfile/${info.si_picture}"
 												alt="">
 											</c:when>
 										<c:otherwise>
@@ -70,52 +124,79 @@
 						<!-- 아티스트 정보 -->
 						<div class="wrap_atist_info">
 							<p class="title_atist">
-								<strong class="none">아티스트명</strong>${acibean.singer_name}
-								<c:if test="${acibean.real_name}">
-									<span class="realname">(${acibean.real_name})</span>
+								<%-- <strong class="none">아티스트명</strong><%=acibean.getSinger_name()%>
+								<% if(!real_name.equals("")) { %>
+								<span class="realname">(<%=real_name%>)</span>
+								<% } %> --%>
+								<strong class="none">아티스트명</strong>${info.singer_name}
+								<c:if test="${info.real_name != ''}">
+									<span class="realname">(${info.real_name})</span>
 								</c:if>
 							</p>
 							<dl class="atist_info clfix">
-								<c:if test="${acibean.debut_year}">
+								<%-- <%	if(debut_year != null) {%> --%>
+								<c:if test="${info.debut_year != null}">
 								<dt>데뷔</dt>
-									<dd>${acibean.debut_year}
+									<%-- <dd><%=debut_year%> --%>
+									<dd>${info.debut_year}
 										<span class="gubun"></span>
-										<a href="" title="${acibean.debut_song} 재생" class="btn_play_song">
+										<%-- <a href="" title="<%=acibean.getDebut_song()%> 재생" class="btn_play_song"> --%>
+										<a href="" title="${info.debut_song} 재생" class="btn_play_song">
 											<span class="icon_play">곡재생</span>
-											<span class="songname12">${acibean.debut_song}</span>
+											<%-- <span class="songname12"><%=acibean.getDebut_song()%></span> --%>
+											<span class="songname12">${info.debut_song}</span>
 										</a>
 									</dd>
 								</c:if>
-								<c:if test="${acibean.si_birth}">
+								<%-- <% } %>
+								<% if(siger_birth != null) {%> --%>
+								<c:if test="${info.si_birth != null}">
 								<dt>생일</dt>
-									<dd>${acibean.si_birth}</dd>
+									<%-- <dd><%=siger_birth%></dd>
+								<% } %> --%>
+									<dd>${info.si_birth}</dd>
 								</c:if>
 								<dt>활동유형</dt>
-									<dd>${acibean.activity_type}</dd>
-								<c:if test="${acibean.group_singer_num}">
+									<%-- <dd><%=acibean.getActivity_type()%></dd> --%>
+									<dd>${info.activity_type}</dd>
+								<%-- <%
+									if(!group_name.equals("")) {
+								%> --%>
+								<c:forEach items="${group_member}" var="list_group_member" varStatus="status_group_member">
+								<c:if test="${list_group_member.singer_name != null}">
+								<c:if test="${status_group_member.first}">
 								<dt>멤버</dt>
 									<dd>
-									<c:set var="group" value="${requestScope.group}"/>
-									<c:forEach items="${arr}" var="list" varStatus="status">
-								<%
-										for(int i = 0; i < acibean.group_singer_num.size(); i++) {
-								    		ArtistChanelInfoBean acibean_group_member = (ArtistChanelInfoBean) group.get(i);
-								%>
-									<%-- <dd><%=group_num %></dd> --%>
-									
-										<a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>"
-											title="<%=acibean_group_member.getSinger_name() %>" class="ellipsis"><%=acibean_group_member.getSinger_name()%>
-										</a>
-								<%
-										}
-								%>
-										</c:forEach>
-									</dd>
 								</c:if>
-								<% if(!agency.equals("")) { %>
+									<%-- <%
+										for(int i = 0; i < group.size(); i++) {
+								    		ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
+									%> --%>
+									<%-- <dd><%=group_num %></dd> --%>
+										<%-- <a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>"
+											title="<%=acibean_group_member.getSinger_name() %>" class="ellipsis"><%=acibean_group_member.getSinger_name()%>
+										</a> --%>
+										<a href="./ArtistChanel.ac?artist=${list_group_member.si_num}"
+											title="${list_group_member.singer_name}" class="ellipsis">${list_group_member.singer_name}
+										</a>
+								<%-- <%
+										}
+								%> --%>
+								<c:if test="${status_group_member.last}">
+									</dd>									
+								</c:if>
+								<%-- <%
+									}
+								%> --%>
+								</c:if>
+								</c:forEach>
+								<%-- <% if(!agency.equals("")) { %> --%>
+								<c:if test="${info.si_agency != ''}">
 								<dt>소속사</dt>
-									<dd><%=acibean.getSi_agency()%></dd>
-								<%} %>
+									<%-- <dd><%=acibean.getSi_agency()%></dd> --%>
+									<dd>${info.si_agency}</dd>
+								<%-- <%} %> --%>
+								</c:if>
 							</dl>
 						</div>
 						<!-- 아티스트 정보 -->
@@ -4193,104 +4274,142 @@
 					<div class="section_atistinfo03">
 						<h3 class="title line arr">활동정보</h3>
 						<dl class="list_define clfix">
-						<%	if(debut_year!=null){%>
+						<%-- <%	if(debut_year!=null){%> --%>
+							<c:if test="${info.debut_year != null}">
 							<dt>데뷔</dt>
-								<dd><%=debut_year%></dd>
+								<%-- <dd><%=debut_year%></dd> --%>
+								<dd>${info.debut_year}</dd>
+							<%-- <%} %> --%>
+							</c:if>
 							<dt>데뷔곡</dt>
 								<dd>
-									<a href="" class="ellipsis" title="<%=acibean.getDebut_song()%>"><%=acibean.getDebut_song()%></a>
+									<%-- <a href="" class="ellipsis" title="<%=acibean.getDebut_song()%>"><%=acibean.getDebut_song()%></a> --%>
+									<a href="" class="ellipsis" title="${info.debut_song}">${info.debut_song}</a>
 								</dd>
-								<%} %>
 							<dt>유형</dt>
-								<dd><%=acibean.getActivity_type()%>
-									<span class="bar">|</span><%=acibean.getSi_gender()%>
+								<%-- <dd><%=acibean.getActivity_type()%>
+									<span class="bar">|</span><%=acibean.getSi_gender()%> --%>
+								<dd>${info.activity_type}
+									<span class="bar">|</span>${info.si_gender}
 								</dd>
 							<dt>장르</dt>
-								<dd><%=acibean.getSi_genre()%></dd>
-							<% if(!agency.equals("")) { %>
+								<%-- <dd><%=acibean.getSi_genre()%></dd> --%>
+								<dd>${info.si_genre}</dd>
+							<%-- <% if(!agency.equals("")) { %> --%>
+							<c:if test="${info.si_agency != ''}">
 							<dt>소속사명</dt>
-								<dd><%=agency%></dd>
-							<%} %>
+								<%-- <dd><%=agency%></dd> --%>
+								<dd>${info.si_agency}</dd>
+							<%-- <%} %> --%>
+							</c:if>
 							
-							<c:if test="${requestScope.list!=null}">
-							<c:set var="arr" value="${requestScope.list}"/>
+							<c:if test="${solo_group != null}">
 							<dt>소속그룹</dt>
 								<dd>
-									<c:forEach items="${arr}" var="list" varStatus="status">
-									<c:if test="${!status.last}">
-									<a href='./ArtistChanel.ac?artist=${list.si_num}'>${list.singer_name}</a>, 
+									<c:forEach items="${solo_group}" var="list_solo_group" varStatus="status_solo_group">
+									<c:if test="${!status_solo_group.last}">
+									<a href='./ArtistChanel.ac?artist=${list_solo_group.si_num}'>${list_solo_group.singer_name}</a>, 
 									</c:if>
-									<c:if test="${status.last}">
-									<a href='./ArtistChanel.ac?artist=${list.si_num}'>${list.singer_name}</a>
+									<c:if test="${status_solo_group.last}">
+									<a href='./ArtistChanel.ac?artist=${list_solo_group.si_num}'>${list_solo_group.singer_name}</a>
 									</c:if>
 									</c:forEach>
 								</dd>
 							</c:if>
 						</dl>
 						<!-- 그룹멤버-->
-						<%
+						<%-- <%
 							if(!group_member.equals("")) {
-						%>
+						%> --%>
+						<c:forEach items="${group_member}" var="list_group_member" varStatus="status_group_member">
+						<c:if test="${list_group_member.singer_name != null}">
+						<c:if test="${status_group_member.first}">
 	 					<div class="wrap_gmem">
 							<h3 class="title line arr">그룹멤버</h3>						
 							<ul class="list_atist13 d_artist_list">
-								<%
+								<%-- <%
 									for(int i = 0; i < group.size(); i++){
 							    		ArtistChanelInfoBean acibean_group_member = (ArtistChanelInfoBean) group.get(i);
-							    %>
+							    %> --%>
+									</c:if>
 								<li>
 									<div class="wrap_atist13">
-										<a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>" title="<%=acibean_group_member.getSinger_name() %>" class="thumb">
-											<span class="thumb_frame"></span>
-											<img width="96" height="96"
+										<%-- <a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>"
+											title="<%=acibean_group_member.getSinger_name() %>" class="thumb"> --%>
+										<a href="./ArtistChanel.ac?artist=${list_group_member.si_num}"
+											title="${list_group_member.singer_name}" class="thumb">
+										<span class="thumb_frame"></span>
+											<%-- <img width="96" height="96"
 												src="./upload/starpost/singerProfile/<%=acibean_group_member.getSi_picture()%>"
-												alt="<%=acibean_group_member.getSinger_name()%> 프로필 이미지">
+												alt="<%=acibean_group_member.getSinger_name()%> 프로필 이미지"> --%>
+											<img width="96" height="96"
+												src="./upload/starpost/singerProfile/${list_group_member.si_picture}"
+												alt="${list_group_member.singer_name} 프로필 이미지">
 										</a>
 										<div class="atist_info">
 											<dl>
 												<dt>
 													<strong class="none">아티스트명</strong>
-													<a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>" title="<%=acibean_group_member.getSinger_name() %>" class="ellipsis"><%=acibean_group_member.getSinger_name()%></a>
+													<%-- <a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>"
+														title="<%=acibean_group_member.getSinger_name() %>" class="ellipsis"><%=acibean_group_member.getSinger_name()%>
+													</a> --%>
+													<a href="./ArtistChanel.ac?artist=${list.si_num}"
+														title="${list_group_member.singer_name}" class="ellipsis">${list_group_member.singer_name}
+													</a>
 												</dt>
-												<dd class="gubun"><%=acibean_group_member.getSi_gender()%>/<%=acibean_group_member.getActivity_type()%></dd>
+												<%-- <dd class="gubun"><%=acibean_group_member.getSi_gender()%>/<%=acibean_group_member.getActivity_type()%></dd> --%>
+												<dd class="gubun">${list_group_member.si_gender}/${list_group_member.activity_type}</dd>
 												<dd class="gnr">
 													<strong class="none">음악장르</strong>
-													<div class="ellipsis fc_strong"><%=acibean_group_member.getSi_genre()%></div>
+													<%-- <div class="ellipsis fc_strong"><%=acibean_group_member.getSi_genre()%></div> --%>
+													<div class="ellipsis fc_strong">${list_group_member.si_genre}</div>
 												</dd>
 											</dl>
-											</div> 
 										</div>
-									</li>
-								<%
+										<c:if test="${status_group_member.last}">
+									</div>
+								</li>
+								<%-- <%
 							    	}
-							  	%>
+							  	%> --%>
+							  	</c:if>
+						<%-- <%
+							}
+						%>  --%>
+						</c:if>
+						</c:forEach>
 							</ul>
 						</div>
-						<%
-							}
-						%> 
 						<!-- //그룹멤버 종료 -->
 					</div>
 					<!-- //활동정보 -->
 					
 					<!-- 신상정보 -->
-					<%if(!real_name.equals("") || siger_birth!=null) { %>
+					<%-- <%if(!real_name.equals("") || siger_birth!=null) { %> --%>
+					<c:if test="${info.real_name || acibean.si_birth != null}">
 					<div class="section_atistinfo04">
 						<h3 class="title line arr">신상정보</h3>
 						<dl class="list_define clfix">
-							<%
+							<%-- <%
 								if(!real_name.equals("")) {
-							%>
+							%> --%>
+							<c:if test="${info.real_name}">
 							<dt>본명</dt>
-								<dd><%=real_name%></dd>
-							<%} %>
-							<% if(siger_birth!=null){%>
+								<%-- <dd><%=real_name%></dd> --%>
+								<dd>${info.real_name}</dd>
+							<%-- <%} %> --%>
+							</c:if>
+							<%-- <% if(siger_birth!=null){%> --%>
+							<c:if test="${info.si_birth != null}">
 							<dt>생일</dt>
-								<dd><%=siger_birth%></dd>
-							<%} %>
+								<%-- <dd><%=siger_birth%></dd> --%>
+								<dd>${info.si_birth}</dd>
+							<%-- <%} %> --%>
+							</c:if>
 						</dl>
 					</div> <!-- //신상정보 -->
-					<%} %>
+					<%-- <%} %> --%>
+					</c:if>
 				</div> <!-- 상세정보 -->
 			</div>
 		</div>
