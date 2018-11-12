@@ -96,7 +96,36 @@ public class ChartFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/DownLogUp.ct")) {
+			action = new DownLogUpAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/Search.ct")) {
+			action = new SearchAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		if (forward != null) { // 이동할 정보가 있으면
 			// 이동방식 따른 페이지 이동

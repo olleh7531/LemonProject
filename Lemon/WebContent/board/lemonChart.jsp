@@ -119,9 +119,18 @@ ol, ul, li {
 	display: inline-block;
 }
 
+#chart .bb-xgrid-line line {stroke: #556079;}
+#chart .bb-xgrid-line:NTH-CHILD(24) line {stroke: #a0aac3;}
 
+#chart .bb-region-0 {fill:#4f6595;
+    
+}
+.bb-event-rects .bb-event-rect {
+     fill: #4c576f !important;
+    background: url(//cdnimg.melon.co.kr/resource/image/web/chart/bg_realtimechart_20180614.png) no-repeat 0 0 !important;
+}
 
-
+.bb-circle {opacity: 0 !important;} 
 </style>
 <script type="text/javascript">
 	function btnevent() {
@@ -387,7 +396,17 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 					}, ]
 				},
 				front : true,
-			},
+			},regions: [
+			    {
+			        start: -1,
+			        end: 24
+			      },
+			    ], legend: {
+			    show: false
+			  },tooltip: {
+				    grouped: false
+			  },
+			  bindto: "#chart"
 		})
 	</script>
 	<!-- 본문 -->
