@@ -1426,11 +1426,9 @@ var AmazingAudioPlatforms = {
 						musicfile : this.elemArray[this.currentItem].source[0].src.substring(20),
 					},
 					success : function(data) { // data를 가져오는 것이 성공하였을 때
-					    alert("성공");
 				
 					},
 					error : function(xhr, status, error) { // 에러났을 때
-						alert("error : " + error);
 					}
 				});
             	//ajax

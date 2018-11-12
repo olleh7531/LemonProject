@@ -59,12 +59,11 @@ public class ChartDAO {
 
 			// sql 쿼리
 			sql = "select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime,music_name from chart,music where ch_music_num in (select ch_music_num from "
-					+ "(select ch_music_num from chart where ch_updatetime =  "
-					+ "DATE_FORMAT(now(),'%Y-%m-%d %"+hour+"') group by ch_num "
-					+ "order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3) as test) "
-					+ "AND ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"'),	"
-					+ "INTERVAL 23 HOUR) and DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour+"') and mu_num=ch_music_num order by "
-					+ "ch_music_num asc ,ch_updatetime asc";
+					+ "(select ch_music_num from chart where ch_updatetime =  " + "DATE_FORMAT(now(),'%Y-%m-%d %" + hour
+					+ "') group by ch_num " + "order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3) as test) "
+					+ "AND ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour + "'),	"
+					+ "INTERVAL 23 HOUR) and DATE_FORMAT(NOW(),'%Y-%m-%d %" + hour
+					+ "') and mu_num=ch_music_num order by " + "ch_music_num asc ,ch_updatetime asc";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 
@@ -72,21 +71,21 @@ public class ChartDAO {
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-					cb = new ChartBean1();
-					cb.setCh_num(rs.getInt("ch_num"));
-					cb.setCh_music_num(rs.getInt("ch_music_num"));
-					cb.setCh_playcnt(rs.getInt("ch_playcnt"));
-					cb.setCh_downcnt(rs.getInt("ch_downcnt"));
-					cb.setMusic_name(rs.getString("music_name"));
-					Calendar cal = Calendar.getInstance();
-					cal.setTimeInMillis(rs.getTimestamp("ch_updatetime").getTime());
-					cal.add(Calendar.SECOND, -32400);
+				cb = new ChartBean1();
+				cb.setCh_num(rs.getInt("ch_num"));
+				cb.setCh_music_num(rs.getInt("ch_music_num"));
+				cb.setCh_playcnt(rs.getInt("ch_playcnt"));
+				cb.setCh_downcnt(rs.getInt("ch_downcnt"));
+				cb.setMusic_name(rs.getString("music_name"));
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeInMillis(rs.getTimestamp("ch_updatetime").getTime());
+				cal.add(Calendar.SECOND, -32400);
 
-					Timestamp later = new Timestamp(cal.getTime().getTime());
+				Timestamp later = new Timestamp(cal.getTime().getTime());
 
-					cb.setCh_updatetime(later);
-					arr.add(cb);
-				}
+				cb.setCh_updatetime(later);
+				arr.add(cb);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -322,4 +321,58 @@ public class ChartDAO {
 		}
 		return chartList;
 	}
+
+	public void insertPlaylog(String email_id, String file, String ip) {
+		try {
+			con = getCon();
+			sql = "insert into playlog(pl_num,pl_user_email,pl_music_num,pl_playtime,pl_user_ip) values(null,?,(select mu_num from music where musicfile=?),now(),?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+			pstmt.setString(2, file);
+			pstmt.setString(3, ip);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	
+	
+	public int insertDownloadlog(String user, int mu_num) {
+		int check = -1;
+		try {
+			con = getCon();
+			sql = "select * from download_log where do_user_email= ? AND do_music_num= ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			pstmt.setInt(2, mu_num);
+			rs = pstmt.executeQuery();
+			System.out.println("yyyyyyyyyyyyyyyyy");
+			if (rs.next()) {
+				System.out.println("testxxxxxxxxxxx");
+				if (rs.getInt(1) == 0) {
+					check = 0;
+					sql = "insert into playlist(pls_user_email, pls_music_num) values(?,?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, user);
+					pstmt.setInt(2, mu_num);
+					pstmt.executeUpdate();
+				} else {
+					check = 1;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
+	
+	
+	
+
 }
