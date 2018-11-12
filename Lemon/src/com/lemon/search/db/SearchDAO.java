@@ -118,12 +118,12 @@ public class SearchDAO {
 				sql = "select mu_num,lyrics,music_name,al_name"
 						+ " from music, album"
 						+ " where lyrics like '%"+search+"%' and al_num=album_num"
-						+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc";	
+						+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc limit ?,?";	
 				}else if(sort.equals("최신순")){
 					sql = "select mu_num,lyrics,music_name,al_name"
 							+ " from music, album"
 							+ " where lyrics like '%"+search+"%' and al_num=album_num"
-							+ " order by (select al_release from album where al_num=album_num) desc";
+							+ " order by (select al_release from album where al_num=album_num) desc limit ?,?";
 				}else if(sort.equals("가나다순")){
 					sql = "select mu_num,lyrics,music_name,al_name"
 							+ " from music, album"

@@ -3,6 +3,8 @@
 <%@page import="com.lemon.search.db.SearchDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,7 @@
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	
+	<c:set var="search" value="${requestScope.search}"/>
 	<%	
 		String search = request.getParameter("search");
 		List resultList = (List) request.getAttribute("resultList");
@@ -49,15 +51,15 @@
 	<!-- 본문 -->
 	<div id="bg_contsSc">
 		<div id="wrap_contsSc">
-			<div id="contsSc">
-			
+		<div><p><strong>'${search}'</strong>에 대한 검색 결과입니다.</p></div>
+			<input type="hidden" id="pageNum" value="1">
 			<ul>
-				<li><a href="#">정확도순</a></li>
-				<li><a href="#">최신순</a></li>
-				<li><a href="#">가나다순</a></li>
+				<li><a  id="li_weight">정확도순</a></li>
+				<li><a  id="li_date">최신순</a></li>
+				<li><a  id="li_ganada">가나다순</a></li>
 			</ul>
-			
 			<h1><b>총 <%=count %> 건</b></h1>
+			<div id="contsSc">
 			
 			<%
 			 for(int i=0;i<resultList.size();i++){
@@ -112,37 +114,89 @@
 		$('#top_search').val("${search}");
 		$('#li_weight').click(function(){
 			$('#sort').val("정확도순");	
+			$('#pageNum').val(1);
+			ajax();
 		});
 		$('#li_date').click(function(){
 			$('#sort').val("최신순");
+			$('#pageNum').val(1);
+			ajax();
 		});
 		$('#li_ganada').click(function(){
 			$('#sort').val("가나다순");
+			$('#pageNum').val(1);
+			ajax();
 		});
+
 	}); 
 	
+	function ajax(){
 	$.ajax({
 		type : "POST", // method="POST" 방식으로 출력 
 		url : "./search.sc", // id 체크하는 jsp 파일 주소 불러오기 
+		dataType: 'json',
 		data : {
 			search : $('#top_search').val(),			
 			sort : $('#sort').val(),
+			test : "test",
+ 			pageNum : $('#pageNum').val(),
 		},
 		success : function(data) { // data를 가져오는 것이 성공하였을 때
-		    alert(email+"주소로 인증메일을 발송하였습니다.");
-			if(data == "fail"){
-				alert("메일 발송이 실패하였습니다.")
-			}else{
-			alert("이메일 발송 성공");
-			data = data.trim();
-			document.getElementById("code").value=data;
-				
-			}
+
+		$('#contsSc').empty();
+			$(data).each(function(index){
+					
+			var text="";
+				if(data.length-1!=index){
+
+				text+='<div><b>'+this.music_name+'</b></div>';
+				text+='<div style="    display: block;';
+				text+='	margin-bottom: 4px;';
+				text+='	white-space: nowrap;';
+				text+='	text-overflow: ellipsis;';
+				text+='	overflow: hidden;">'+this.lyrics+'</div>';
+				text+='<div>| '+this.al_name+'</div>';
+				text+='<hr>';
+				$('#contsSc').append(text);
+				}else{
+					if(this.startPage>this.pageBlock){
+						  text+='<a id="prev" class="'+(this.startPage-this.pageBlock)+'">[이전]</a>'
+					}
+					// 1~10,11~20,21~30,....
+					for(var i = this.startPage;i<=this.endPage;i++){
+						  text+='<a class="xxx">['+i+']</a>';
+					}
+					// 다음
+					if(this.endPage < this.pageCount){
+						    text+='<a id="next" class="'+(this.startPage+this.pageBlock)+'">[다음]</a>' 
+				}
+					
+					$('#contsSc').append(text);
+					
+							$('#prev').click(function(){
+								alert($(this))
+					 			$('#pageNum').val($(this).attr('class'));
+					 			ajax();
+							});
+							$('#next').click(function(){
+					 			$('#pageNum').val($(this).attr('class'));
+					 			ajax();
+							});
+							$('.xxx').click(function(){
+								$('#pageNum').val($(this).text().replace("[","").replace("]",""));
+								ajax();
+							});
+				}
+			});
+			
+
+			
 		},
 		error : function(xhr, status, error) { // 에러났을 때
 			alert("error : " + error);
 		}
 	});
+	}
 	</script>
 	</body>
 </html>
