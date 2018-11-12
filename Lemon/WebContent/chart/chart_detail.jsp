@@ -510,7 +510,8 @@
 								</td>
 								<td>
 									<div class="wrap t_center">
-										<button type="button" title="듣기" class="button_icons play">
+										<button type="button" title="듣기" class="button_icons play"
+											onclick="LemonPlayer(<%=mcb.getMu_num()%>,<%=mcb.getAlbum_num()%>)">
 											<i class="fa fa-play"></i><span class="none">듣기</span>
 										</button>
 									</div>
@@ -882,7 +883,11 @@
 			});
 		});
 	</script>
-
+	<script type="text/javascript">
+		function LemonPlayer(mu_num,album_num){
+			window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=320,height=315,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
+		}
+	</script>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

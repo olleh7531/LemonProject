@@ -60,7 +60,7 @@ public class ChartFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if (command.equals("/PlayLogUp.ct")) {
+		} else if (command.equals("/PlayLogUp.ct")) {
 			action = new PlayLogUpAction();
 
 			try {
@@ -68,16 +68,25 @@ public class ChartFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/LemonAlbumList.ct")){
+		} else if (command.equals("/LemonAlbumList.ct")) {
 			action = new AlbumList();
-			
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
+		} else if (command.equals("/UserCheckBoxPlaylist.ct")) {
+			action = new UserCheckBoxPlaylist();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) { // 이동할 정보가 있으면

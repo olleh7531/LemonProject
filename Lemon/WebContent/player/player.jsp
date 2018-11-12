@@ -23,9 +23,9 @@ body {
 </style>
 </head>
 <%
-	// request.setAttribute("arr", arr);
+	//request.setAttribute("mpb", mpb);
 
-	ArrayList<MusicPlayerBean> muplayer = (ArrayList) request.getAttribute("arr");
+	MusicPlayerBean mpb = (MusicPlayerBean) request.getAttribute("mpb");
 %>
 <body>
 	<script>
@@ -47,63 +47,22 @@ body {
 					<div id="amazingaudioplayer-8"
 						style="display: block; position: relative; min-width: 300px; height: auto; margin: 0px auto 0px;">
 						<ul class="amazingaudioplayer-audios" style="display: none;">
-							<li data-artist="pinkzebra"
-								data-title="In The Moment of Inspiration"
+
+							<li data-artist="pinkzebra" data-title="<%=mpb.getMusic_name()%>"
 								data-album="AudioJungle" data-info=""
-								data-image="http://snote88.dothome.co.kr/assets/img/img.jpg"
+								data-image="./musicUpload/albumcover/<%=mpb.getAl_art_img()%>"
 								data-duration="230">
 								<div class="amazingaudioplayer-source"
-									data-src="http://snote88.dothome.co.kr/assets/audio/aaa.mp3"
+									data-src="./musicUpload/music/<%=mpb.getMusicfile()%>"
 									data-type="audio/mpeg" />
 								<div class="amazingaudioplayer-source"
-									data-src="http://snote88.dothome.co.kr/assets/audio/aaa.mp3"
+									data-src="./musicUpload/music/<%=mpb.getMusicfile()%>"
 									data-type="audio/ogg" />
 							</li>
-							<li data-artist="pinkzebra"
-								data-title="Inspiring Ideas into Motion"
-								data-album="AudioJungle" data-info=""
-								data-image="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/sunny-day.jpg"
-								data-duration="137">
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Inspiring%20Ideas%20into%20Motion.mp3"
-									data-type="audio/mpeg" />
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Inspiring%20Ideas%20into%20Motion.ogg"
-									data-type="audio/ogg" />
-							</li>
-							<li data-artist="pinkzebra" data-title="Peaceful Dawn"
-								data-album="AudioJungle" data-info=""
-								data-image="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/desert-sunrise.jpg"
-								data-duration="129">
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Peaceful%20Dawn.mp3"
-									data-type="audio/mpeg" />
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Peaceful%20Dawn.ogg"
-									data-type="audio/ogg" />
-							</li>
-							<li data-artist="pinkzebra" data-title="Photos and Memories"
-								data-album="AudioJungle" data-info=""
-								data-image="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/dandelion.jpg"
-								data-duration="133">
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Photos%20and%20Memories.mp3"
-									data-type="audio/mpeg" />
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Photos%20and%20Memories.ogg"
-									data-type="audio/ogg" />
-							</li>
-							<li data-artist="pinkzebra" data-title="Soaring Spirit"
-								data-album="AudioJungle" data-info=""
-								data-image="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/tulips.jpg"
-								data-duration="130">
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Soaring%20Spirit.mp3"
-									data-type="audio/mpeg" />
-								<div class="amazingaudioplayer-source"
-									data-src="https://amazingaudioplayer.com/wp-content/uploads/amazingaudioplayer/8/audios/Soaring%20Spirit.ogg"
-									data-type="audio/ogg" />
-							</li>
+
+
+
+
 						</ul>
 					</div>
 					<script src="./assets/js/player/initaudioplayer.js"></script>

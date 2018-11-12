@@ -9,17 +9,11 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.lemon.member.action.refuseFriend;
-
 public class MusicPlayerDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String sql = "";
-
-	PreparedStatement pstmt2 = null;
-	ResultSet rs2 = null;
-	String sql2 = "";
 
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
@@ -53,24 +47,6 @@ public class MusicPlayerDAO {
 		}
 	}
 
-	public void CloseDB2() {
-		if (rs2 != null) {
-			try {
-				rs2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		if (pstmt2 != null) {
-			try {
-				pstmt2.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public ArrayList<MusicPlayerBean> selectPlayerList(String user) {
 		MusicPlayerBean mpb = null;
 		MusicPlayerBean mpb2 = null;
@@ -98,7 +74,6 @@ public class MusicPlayerDAO {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
-			CloseDB2();
 		}
 		return mpblist;
 	}
@@ -123,5 +98,30 @@ public class MusicPlayerDAO {
 			CloseDB();
 		}
 		return armpb;
+	}
+
+	public MusicPlayerBean lemonPlayer(int musicNum, int album) {
+		MusicPlayerBean mpb = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b on a.al_num = b.album_num where b.mu_num = ? AND a.al_num = ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, musicNum);
+			pstmt.setInt(2, album);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				mpb = new MusicPlayerBean();
+				mpb.setAl_art_img(rs.getString("al_art_img"));
+				mpb.setMusic_name(rs.getString("music_name"));
+				mpb.setMusicfile(rs.getString("musicfile"));
+				mpb.setMusic_time(rs.getString("music_time"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return mpb;
 	}
 }

@@ -16,12 +16,13 @@ public class UserPlaylistUP implements Action {
 
 		System.out.println("UserPlaylistUP execute()!!!!!!!!!!! ");
 		int mu_num = Integer.parseInt(request.getParameter("mu_num"));
+		System.out.println("mu_num : " + mu_num);
+
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email_id");
 		if (user == null) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-
 			out.println("<script>");
 			out.println(" alert('로그인이 해주세요. ');");
 			out.println(" history.back(); ");

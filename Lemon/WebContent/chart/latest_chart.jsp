@@ -109,7 +109,7 @@
 									class="cnt">듣기</span>
 							</button>
 							<button type="button" title="선택된 곡 담기" class="button_rbox"
-								onclick="">
+								onclick="checkMusicList()">
 								<i class="fa  fa-plus" style="color: #969696;"></i><span
 									class="cnt">담기</span>
 							</button>
@@ -171,14 +171,14 @@
 									if (count != 0) {
 										for (int i = 0; i < chartList.size(); i++) {
 											ChartBean cb = (ChartBean) chartList.get(i);
-
 											int a = i + 1;
 								%>
 								<tr>
 									<td>
 										<div class="wrap t_right">
 											<input type="checkbox" title="" class="input_check "
-												name="input_check" value="31376041">
+												name="input_check" id="input_check"
+												value="<%=cb.getMu_num()%>">
 										</div>
 									</td>
 
@@ -242,13 +242,6 @@
 										</div>
 									</td>
 									<td>
-										<%-- <div class="block-tracklist">
-											<ol class="playlist">
-												<li><div class="as-link"
-														data-src="./musicUpload/music/<%=cb.getMusicfile()%>">
-													</div></li>
-											</ol>
-										</div> --%>
 										<div class="wrap t_center">
 											<button type="button" title="담기" class="button_icons scrap"
 												onclick="LemonPlayer(<%=cb.getMu_num()%>,<%=cb.getAlbum_num()%>)">
@@ -621,11 +614,42 @@
 			})
 			
 		}
+		
+		function checkMusicList(){
+			//alert("확인");
+			var input_check = document.getElementsByName("input_check");
+			//alert(input_check.length);
+			for (var i = 0; i < input_check.length; i++) {
+				if(input_check[i].checked == true){
+					//alert(input_check[i].value);
+					$.ajax({
+						type : "POST",
+						url : "./UserCheckBoxPlaylist.ct",
+						data : {
+							mu_num : input_check[i].value
+						},
+						success: function(data){
+							if(data == 2){
+								alert("로그인 해주세요");
+								return false;
+							}else if(data == 1){
+								alert("노래가 있습니다.");
+								return false;
+							}else{
+								alert('추가 되었습니다.');
+							}
+						}
+						
+					})
+				}
+				
+			}
+		}
 	</script>
 
 	<script type="text/javascript">
 		function LemonPlayer(mu_num,album_num){
-			window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=378,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
+			window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=320,height=315,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 		}
 	</script>
 	<!-- footer -->
