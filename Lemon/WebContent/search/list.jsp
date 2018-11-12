@@ -43,9 +43,9 @@
 		int startPage = ((Integer)request.getAttribute("startPage")).intValue();
 		int endPage = ((Integer)request.getAttribute("endPage")).intValue();
 		
-
+		System.out.println(startPage);
 		System.out.println(endPage);
-		System.out.println(search);
+		System.out.println(pageBlock);
 	%>
 	
 	<!-- 본문 -->
@@ -54,9 +54,9 @@
 		<div><p><strong>'${search}'</strong>에 대한 검색 결과입니다.</p></div>
 			<input type="hidden" id="pageNum" value="1">
 			<ul>
-				<li><a  id="li_weight">정확도순</a></li>
-				<li><a  id="li_date">최신순</a></li>
-				<li><a  id="li_ganada">가나다순</a></li>
+				<li><a id="li_weight">정확도순</a></li>
+				<li><a id="li_date">최신순</a></li>
+				<li><a id="li_ganada">가나다순</a></li>
 			</ul>
 			<h1><b>총 <%=count %> 건</b></h1>
 			<div id="contsSc">
@@ -84,19 +84,19 @@
 				// 이전
 				if(startPage>pageBlock){
 					%>
-					  <a href="./search.sc?search=<%=search%>&pageNum=<%=startPage-pageBlock%>"> [이전]</a>
+					  <a id="prev" class="<%=startPage-pageBlock %>"> [이전]</a>
 					<%
 				}
 				// 1~10,11~20,21~30,....
 				for(int i = startPage;i<=endPage;i++){
 					%>
-					  <a href="./search.sc?search=<%=search%>&pageNum=<%=i%>">[<%=i %>]</a>
+					  <a class="xxx">[<%=i %>]</a>
 					<%
 				}
 				// 다음
 				if(endPage < pageCount){
 					%>
-					    <a href="./search.sc?search=<%=search%>&pageNum=<%=startPage+pageBlock%>">[다음]</a> 
+					    <a id="next" class="<%=startPage+pageBlock %>">[다음]</a> 
 					<%	
 				}
 			}			
@@ -127,10 +127,23 @@
 			$('#pageNum').val(1);
 			ajax();
 		});
-
+		$('#prev').click(function(){
+ 			$('#pageNum').val($(this).attr('class'));
+ 			ajax();
+		});
+		$('#next').click(function(){
+ 			$('#pageNum').val($(this).attr('class'));
+ 			ajax();
+		});
+		$('.xxx').click(function(){
+			$('#pageNum').val($(this).text().replace("[","").replace("]",""));
+			ajax();
+		});
+		
 	}); 
 	
 	function ajax(){
+		
 	$.ajax({
 		type : "POST", // method="POST" 방식으로 출력 
 		url : "./search.sc", // id 체크하는 jsp 파일 주소 불러오기 
@@ -148,16 +161,15 @@
 					
 			var text="";
 				if(data.length-1!=index){
-
-				text+='<div><b>'+this.music_name+'</b></div>';
-				text+='<div style="    display: block;';
-				text+='	margin-bottom: 4px;';
-				text+='	white-space: nowrap;';
-				text+='	text-overflow: ellipsis;';
-				text+='	overflow: hidden;">'+this.lyrics+'</div>';
-				text+='<div>| '+this.al_name+'</div>';
-				text+='<hr>';
-				$('#contsSc').append(text);
+					text+='<div><b>'+this.music_name+'</b></div>';
+					text+='<div style="    display: block;';
+					text+='	margin-bottom: 4px;';
+					text+='	white-space: nowrap;';
+					text+='	text-overflow: ellipsis;';
+					text+='	overflow: hidden;">'+this.lyrics+'</div>';
+					text+='<div>| '+this.al_name+'</div>';
+					text+='<hr>';
+					$('#contsSc').append(text);
 				}else{
 					if(this.startPage>this.pageBlock){
 						  text+='<a id="prev" class="'+(this.startPage-this.pageBlock)+'">[이전]</a>'
@@ -169,28 +181,24 @@
 					// 다음
 					if(this.endPage < this.pageCount){
 						    text+='<a id="next" class="'+(this.startPage+this.pageBlock)+'">[다음]</a>' 
-				}
-					
+					}
 					$('#contsSc').append(text);
+				}					
 					
-							$('#prev').click(function(){
-								alert($(this))
-					 			$('#pageNum').val($(this).attr('class'));
-					 			ajax();
-							});
-							$('#next').click(function(){
-					 			$('#pageNum').val($(this).attr('class'));
-					 			ajax();
-							});
-							$('.xxx').click(function(){
-								$('#pageNum').val($(this).text().replace("[","").replace("]",""));
-								ajax();
-							});
-				}
-			});
-			
-
-			
+					$('#prev').click(function(){
+						$('#pageNum').val($(this).attr('class'));
+						ajax();
+					});
+					$('#next').click(function(){
+						 $('#pageNum').val($(this).attr('class'));
+						 ajax();
+					});
+					$('.xxx').click(function(){
+						 $('#pageNum').val($(this).text().replace("[","").replace("]",""));
+						 ajax();
+					});
+				});
+						
 		},
 		error : function(xhr, status, error) { // 에러났을 때
 			alert("error : " + error);

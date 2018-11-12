@@ -15,7 +15,7 @@
 				<!-- 로고 -->
 
 				<!-- 통합검색 영역 -->
-				<form id="searchFrm" method="get" action="./search.sc" >
+				<form id="searchFrm" method="get" action="./UniSearch.sc" >
 				<fieldset>
 					<legend>통합검색영역</legend>
 					<input type="text" title="검색 입력 편집창" name="search"

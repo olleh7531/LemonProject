@@ -52,58 +52,6 @@ public class SearchDAO {
 		}
 	}
 	
-
-	public List<SearchBean> lyricSearch(String search,String sort){
-		// 1시간단위 차트
-				List<SearchBean> arr = new ArrayList<SearchBean>();
-				SearchBean sb = null;
-				
-				System.out.println(search);
-				try {
-					con = getCon();
-
-					// sql 쿼리
-					if(sort.equals("정확도순")){
-						
-					sql = "select mu_num,lyrics,music_name,al_name "/*, singer_name from singer*/
-							+ " from music, album where lyrics like '%"+search+"%' and al_num=album_num group by mu_num " /*where si_num=singer_num*/
-							//검색어 카운트 순
-							+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc";
-					}else if(sort.equals("최신순")){
-						sql = "select mu_num,lyrics,music_name,al_name "
-								+ " from music where lyrics like '%"+search+"%' group by mu_num"
-								+ " order by (select al_release from album where al_num=album_num) desc";
-					}else if(sort.equals("가나다순")){
-						sql = "select mu_num,lyrics,music_name,al_name "
-								+ " from music where lyrics like '%"+search+"%' group by mu_num"
-								+ " order by music_name asc";
-					}
-					// pstmt 객체생성
-					pstmt = con.prepareStatement(sql);
-
-					// pstmt 객체 실행
-
-					rs=pstmt.executeQuery();
-					while(rs.next()){
-						sb = new SearchBean();
-						sb.setMu_num(rs.getInt("mu_num"));
-						sb.setLyrics(rs.getString("lyrics"));
-						sb.setMusic_name(rs.getString("music_name"));
-			
-						sb.setAl_name(rs.getString("al_name"));
-//						sb.setSinger_name(rs.getString("singer_name"));							
-						arr.add(sb);
-
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					CloseDB();
-				}
-
-				return arr;
-	}
-	
 	public List<SearchBean> lyricSearch(String search,int startRow,int pageSize,String sort){
 		// 1시간단위 차트
 		List<SearchBean> resultList = new ArrayList<SearchBean>();
@@ -181,5 +129,44 @@ public class SearchDAO {
 		
 		return count;
 	}
+	
+/*	public List<SearchBean> artistSearch(String search){
+		List<SearchBean> list = new ArrayList<SearchBean>();
+		SearchBean sb = null;
+		
+		System.out.println(search);
+		
+		try {
+			con = getCon();
+			
+			sql ="select si_num from singer where singer_name like '%아이유%' limit 1";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				sb = new SearchBean();
+				
+				
+				sb.setSi_num(rs.getInt("si_num"));
+				sb.setActivity_type(rs.getString("activity_type"));
+				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setReal_name(rs.getString("real_name"));
+				sb.setDebut_year(rs.getDate("debut_year"));
+				sb.setDebut_song(rs.getString("debut_song"));
+				
+				list.add(sb);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
 
+		return list;
+	}*/
+	
+
+	
 }

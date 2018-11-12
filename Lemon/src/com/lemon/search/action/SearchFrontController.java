@@ -24,7 +24,14 @@ public class SearchFrontController extends HttpServlet {
 		ActionForward forward = null;
 
 		
-		if (command.equals("/search.sc")) {
+		if (command.equals("/UniSearch.sc")) {
+			action = new UniSearchAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/search.sc")) {
 			action = new SearchResultAction();
     		try {
 				forward = action.execute(request, response);
@@ -33,14 +40,6 @@ public class SearchFrontController extends HttpServlet {
 			}
 		}
 
-		
-//		if (command.equals("/search.sc")) {
-//			forward = new ActionForward();
-//			forward.setPath("./search/list.jsp");
-//			forward.setRedirect(false);
-//		}
-		
-			
 			if (forward != null) {
 				if (forward.isRedirect()) {// true
 					response.sendRedirect(forward.getPath());

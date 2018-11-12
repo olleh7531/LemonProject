@@ -69,38 +69,35 @@ public class SearchResultAction implements Action {
 			endPage = pageCount;
 		}
 		
-		
 		if(test!=null){
 			
 		JSONArray arr = new JSONArray();	
-		
-		
-		
+				
 		for(SearchBean sb:resultList){
 			
 			JSONObject obj = new JSONObject();
 			
-
 			obj.put("mu_num", sb.getMu_num());
 			obj.put("lyrics", sb.getLyrics());
 			obj.put("music_name", sb.getMusic_name());
 			obj.put("al_name", sb.getAl_name());
 			arr.add(obj);
+
 		}
-		JSONObject obj = new JSONObject();
-		obj.put("startPage", startPage);
-		obj.put("pageBlock", pageBlock);
-		obj.put("endPage", endPage);
-		obj.put("pageCount", pageCount);
-		arr.add(obj);
-		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		out.println(arr);
-		out.close();								
+			JSONObject obj = new JSONObject();
+			obj.put("startPage", startPage);
+			obj.put("pageBlock", pageBlock);
+			obj.put("endPage", endPage);
+			obj.put("pageCount", pageCount);
+			arr.add(obj);
 			
-		return null;
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println(arr);
+			out.close();								
+			
+			return null;
 		}
 		
 		// request 데이터 저장 
@@ -118,7 +115,6 @@ public class SearchResultAction implements Action {
 		forward.setPath("./search/list.jsp");
 		forward.setRedirect(false);
 		return forward;
-		
 
 	}
 
