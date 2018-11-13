@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -130,8 +131,7 @@ public class SearchDAO {
 		return count;
 	}
 	
-/*	public List<SearchBean> artistSearch(String search){
-		List<SearchBean> list = new ArrayList<SearchBean>();
+	public SearchBean ArtistProfileSearch(String search){
 		SearchBean sb = null;
 		
 		System.out.println(search);
@@ -139,23 +139,21 @@ public class SearchDAO {
 		try {
 			con = getCon();
 			
-			sql ="select si_num from singer where singer_name like '%아이유%' limit 1";
+			sql ="select * from singer where singer_name like '%"+search+"%' limit 1";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			rs=pstmt.executeQuery();
-			while(rs.next()){
+			if(rs.next()){
 				sb = new SearchBean();
 				
-				
 				sb.setSi_num(rs.getInt("si_num"));
-				sb.setActivity_type(rs.getString("activity_type"));
+				sb.setSi_picture(rs.getString("si_picture"));
 				sb.setSinger_name(rs.getString("singer_name"));
-				sb.setReal_name(rs.getString("real_name"));
-				sb.setDebut_year(rs.getDate("debut_year"));
-				sb.setDebut_song(rs.getString("debut_song"));
-				
-				list.add(sb);
+				sb.setSi_gender(rs.getString("si_gender"));
+				sb.setActivity_type(rs.getString("activity_type"));
+				sb.setSi_genre(rs.getString("si_genre"));
+				sb.setSi_birth(rs.getDate("si_birth"));
 			}
 			
 		} catch (Exception e) {
@@ -164,10 +162,10 @@ public class SearchDAO {
 			CloseDB();
 		}
 
-		return list;
-	}*/
+		return sb;
+	}
 	
-	/*public List<SearchBean> songSearch(String search){
+	public List<SearchBean> ArtistSearch(String search){
 		List<SearchBean> list = new ArrayList<SearchBean>();
 		SearchBean sb = null;
 		
@@ -175,25 +173,50 @@ public class SearchDAO {
 		
 		try {
 			con = getCon();
+
+			sql ="select si_num from singer where singer_name like '%"+search+"%' limit 1";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			
-			sql ="select si_num from singer where singer_name like '%아이유%' limit 1";
+			int si_num = 0;
+			if(rs.next()){
+				si_num = rs.getInt("si_num");
+			}
+			
+			sql = "select * from singer where group_singer_num like '%,"+si_num+",%'";
+
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			while(rs.next()){
-				sb = new SearchBean();
-				
-				
-				sb.setSi_num(rs.getInt("si_num"));
-				sb.setActivity_type(rs.getString("activity_type"));
-				sb.setSinger_name(rs.getString("singer_name"));
-				sb.setReal_name(rs.getString("real_name"));
-				sb.setDebut_year(rs.getDate("debut_year"));
-				sb.setDebut_song(rs.getString("debut_song"));
-				
-				list.add(sb);
+			String group_singer_num = "";
+			if(rs.next()){
+				group_singer_num = rs.getString("group_singer_num");
 			}
 			
+			String group_num = rs.getString("group_singer_num").substring(1, rs.getString("group_singer_num").length() - 1);
+			StringTokenizer g_number= new StringTokenizer(group_num,",");
+			while(g_number.hasMoreTokens()) {
+				group_num = g_number.nextToken();
+				
+				sql = "select singer_name, si_gender, activity_type, si_genre, si_picture"
+						+ " from singer where si_num = ? AND si_num NOT IN ("+si_num+")";
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(group_num));
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					sb = new SearchBean();
+
+					sb.setSi_picture(rs.getString("si_picture"));
+					sb.setSinger_name(rs.getString("singer_name"));
+					sb.setSi_gender(rs.getString("si_gender"));
+					sb.setActivity_type(rs.getString("activity_type"));
+					sb.setSi_genre(rs.getString("si_genre"));
+						
+					list.add(sb);						
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -201,7 +224,8 @@ public class SearchDAO {
 		}
 
 		return list;
-	}*/
+	}
+	
 
 	public List<SearchBean> SongArtistSearch(String search) {
 		List<SearchBean> list = new ArrayList<SearchBean>();
@@ -337,6 +361,44 @@ public class SearchDAO {
 		
 		return list;
 	}
+	
+	public List<SearchBean> LyricSearch(String search){
+		List<SearchBean> list = new ArrayList<SearchBean>();
+		SearchBean sb = null;
+				
+		try {
+			con = getCon();
+
+			sql = "select mu_num,lyrics,music_name,al_name"
+					+ " from music, album"
+					+ " where lyrics like '%"+search+"%' and al_num=album_num"
+					+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc limit 0,6";	
+
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				sb = new SearchBean();
+				sb.setMu_num(rs.getInt("mu_num"));
+				sb.setLyrics(rs.getString("lyrics"));
+				sb.setMusic_name(rs.getString("music_name"));
+				sb.setAl_name(rs.getString("al_name"));
+
+				list.add(sb);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return list;
+	}
+
+	
+	
+	
 	
 	public void insertSearchLog(String email_id, String keyword, String ip){
 		try {

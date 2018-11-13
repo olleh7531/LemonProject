@@ -4059,8 +4059,8 @@
 									</c:when>
 									<c:otherwise>
 									<a href="">${i}</a>
-									</c:choose>
 									</c:otherwise>
+									</c:choose>
 								</span>
 								</c:forEach>
 								

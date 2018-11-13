@@ -36,11 +36,13 @@
 	<%	
 		String search = request.getParameter("search");
 	
+		SearchBean at_pro = (SearchBean) request.getAttribute("artist_profile");
+		List artist_list = (List) request.getAttribute("artist_list");
 		List song_ar_list = (List) request.getAttribute("song_ar_list");
 		List song_mn_list = (List) request.getAttribute("song_mn_list");
 		List song_an_list = (List) request.getAttribute("song_an_list");
-		
 		List album_list = (List) request.getAttribute("album_list");
+		List lyric_list = (List) request.getAttribute("lyric_list");
 
 		
 		System.out.println(search);
@@ -50,7 +52,54 @@
 	<div id="bg_contsSc">
 		<div id="wrap_contsSc">
 			<div id="contsSc">
-			
+				
+				<!-- 아티스트 -->
+				<!-- 아티스트 프로필 -->
+				<%
+					if(at_pro != null){
+				%>
+				<div>
+					<div>
+					<p><%=at_pro.getSi_picture() %></p>
+					<p><%=at_pro.getSinger_name() %></p>
+					<p><%=at_pro.getSi_gender() %></p>
+					<p><%=at_pro.getActivity_type() %></p>
+					<p><%=at_pro.getSi_genre() %></p>
+					<p><%=at_pro.getSi_birth() %></p>
+					</div>
+				</div>
+				<hr>
+				<%
+					}
+				%>				
+				
+				
+				<!-- 아티스트 리스트 -->
+				<%
+					if(!(artist_list.size() == 0)){
+				%>
+				<div>
+					<%
+						for (int i=0; i<artist_list.size(); i++) {
+							SearchBean arSb = (SearchBean) artist_list.get(i);	
+					%>
+					<div>
+					<p><%=arSb.getSi_picture() %></p>
+					<p><%=arSb.getSinger_name() %></p>
+					<p><%=arSb.getSi_gender() %></p>
+					<p><%=arSb.getActivity_type() %></p>
+					<p><%=arSb.getSi_genre() %></p>
+					</div>
+					<hr>
+					<%
+						}
+					%>
+				</div>
+				<%
+					}
+				%> 
+				<!-- 아티스트 -->
+				
 			
 				<!-- 곡 -->
 				<div>
@@ -200,10 +249,13 @@
 				<!-- 곡 -->
 				
 				<!-- 앨범 -->
+				<%
+					if(!(album_list.size() == 0)){
+				%>
  				<div>
 				<ul>
 				<%	
-					for (int i = 0; i < album_list.size(); i++) {
+					for (int i=0; i<album_list.size(); i++) {
 						SearchBean alSb = (SearchBean) album_list.get(i);
 				%>
 					<li>
@@ -220,7 +272,32 @@
 				%>
 				</ul>
 				</div>
+				<%	
+					}
+				%>
 				<!-- 앨범 -->
+				
+				
+				<!-- 가사 -->
+				<div>
+				<%
+					 for(int i=0; i<lyric_list.size(); i++){
+						SearchBean lySb =(SearchBean) lyric_list.get(i);				 
+				%>
+			
+				<div><b><%=lySb.getMusic_name() %></b></div>
+				<div style="    display: block;
+	    						margin-bottom: 4px;
+	   							white-space: nowrap;
+	    						text-overflow: ellipsis;
+	   							overflow: hidden;"><%=lySb.getLyrics() %></div>
+				<div><%-- ${list.singer_name} --%> | <%=lySb.getAl_name() %></div>
+				<hr>
+				<%	 
+				 }
+				%>
+				</div>
+				<!-- 가사 -->				
 								
 				
 			</div>
