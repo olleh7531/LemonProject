@@ -16,9 +16,10 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/common/friend.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css" hre	f="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -150,8 +151,9 @@
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
-            	$('.findResult4').html(result);
             	alert("친구 수락 성공!");
+            	$('.findResult4').html(result);
+            	location.reload();
             },
             error:function() {}
         });
@@ -161,8 +163,7 @@
 	// 친구 신청 목록에서 거절을 눌렀을 때
 	function fr_refuse(param) {
 		var m_nickname = document.getElementById("m_nickname").value;
-		console.log(m_nickname);
-		console.log(param);
+
 		$.ajax({
         	url: "./refuseFriend.mb",
             data: {
@@ -180,15 +181,13 @@
 	}
 	
 	// 목록에서의 대화하기 눌렀을 때
-	// 친구의 목록과 대화하기 버튼을 가져옴
+	// 친구 이름과 대화하기 버튼을 가져옴
 	function friendChat() {
 		var m_nickname = document.getElementById("m_nickname").value;
-		var f_nickname = document.getElementById("f_nickname").value;
 		
 		$.ajax({
         	url: "./ChattingFriend.mb",
             data: {
-            	f_nickname: f_nickname,
 	            m_nickname : m_nickname},
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
@@ -206,8 +205,9 @@
 	
 	// 닉네임 옆의 대화하기를 눌렀을 때
 	function fr_converse(param) {
+		
 		var m_nickname = document.getElementById("m_nickname").value;
-		var f_nickname = document.getElementById("f_nickname").value;
+		var f_nickname = param;
 		
 		$.ajax({
         	url: "./LemonChatting.ch",
@@ -217,6 +217,7 @@
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             type: 'POST',
             success:function(result) {
+            	
             	$('.friendChat').html(result);
             },
             error:function() {}

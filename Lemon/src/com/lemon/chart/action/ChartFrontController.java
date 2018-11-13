@@ -135,7 +135,6 @@ public class ChartFrontController extends HttpServlet {
 				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
 			}
-
 		}
 	}
 

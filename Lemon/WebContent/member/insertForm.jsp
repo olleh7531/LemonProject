@@ -12,6 +12,7 @@
 <title>Lemon::음악이 필요한 순간, 레몬</title>
 
 <link rel="stylesheet" href="./assets/css/member/insertMember.css" type="text/css" />
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/member/join_main_checkAll.js" ></script>
 <script type="text/javascript" src="./assets/js/member/join_main.js" ></script>
@@ -151,7 +152,7 @@ function check() {
 							<input type="hidden" name="chk" value="0">
 							<div class="formPadding">
 								<div class="formItem">
-									<input type="text" id="email_1" name="email_1" onblur="IdCheck()"/>
+									<input type="text" id="email_1" name="email_1" placeholder="e-mail 입력" onblur="IdCheck()"/>
 								</div>
 								<span class="at">@</span>
 							</div>
@@ -208,7 +209,7 @@ function check() {
 						<div class="col">
 							<div class="placeholderForm">
 								<%if(email_id == null) { %>
-								<input type="text" id="name" name="name" maxlength="12" />
+								<input type="text" id="name" name="name" placeholder="이름 입력" maxlength="12" />
 								<%} else {%>
 								<input type="text" id="name" name="name" value="<%=name %>" readonly />
 								<%} %>
@@ -220,7 +221,7 @@ function check() {
 						<label for="nickName" class="lb">닉네임</label>
 						<div class="col">
 							<div class="placeholderForm">
-								<input type="text" id="nickname" name="nickname" maxlength="12"/>
+								<input type="text" id="nickname" name="nickname" placeholder="닉네임 입력" maxlength="12"/>
 							</div>
 						</div>
 						<span id="idchk" class="desc"></span></td>

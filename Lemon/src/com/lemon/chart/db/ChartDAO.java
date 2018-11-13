@@ -341,6 +341,33 @@ public class ChartDAO {
 		return fileName;
 	}
 
+	public String[] DownLoads(int mu_num[]) {
+		for(int i=0 ; i<mu_num.length ; i++) {
+		}
+
+		String fileName[] = new String[mu_num.length];
+		
+		try {
+			con = getCon();
+			for(int i=0 ; i<mu_num.length ; i++) {
+				sql = "select musicfile from music where mu_num = ?;";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, mu_num[i]);
+				
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					fileName[i] = rs.getString("musicfile");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return fileName;
+	}
+	
 	public void insertPlaylog(String email_id, String file, String ip) {
 		try {
 			con = getCon();

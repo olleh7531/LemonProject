@@ -17,7 +17,8 @@
 	<!-- Member CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/deleteMember.css">
-		
+	<link rel="shortcut icon" href="./assets/img/common/favicon.png">
+	
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 	   src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
