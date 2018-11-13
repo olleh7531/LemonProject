@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ChattingFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		
+
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
@@ -19,10 +19,28 @@ public class ChattingFrontController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		
+
 		if (command.equals("/LemonChatting.ch")) {
 			action = new LemonChattingAction();
-			
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (command.equals("/LemonChAction.ch")) {
+			action = new LemonChAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (command.equals("/insertMessage.ch")) {
+			action = new inputMessageAction();
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -30,7 +48,7 @@ public class ChattingFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if (forward != null) {
 			if (forward.isRedirect()) {// true
 				response.sendRedirect(forward.getPath());

@@ -11,13 +11,13 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint(value = "/LemonChatting")
+@ServerEndpoint(value = "/LemonChatting/{client_id}")
 public class LemonChattingServer {
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-	
+
 	@OnMessage
 	public void onMessage(String message, Session session) throws IOException {
-		System.out.println(message);
+		// System.out.println(message);
 		synchronized (clients) {
 			// Iterate over the connected sessions
 			// and broadcast the received message
@@ -32,10 +32,10 @@ public class LemonChattingServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		// Add session to the connected sessions set
-		System.out.println(session);
+		// System.out.println(session);
 		clients.add(session);
 	}
-	
+
 	@OnClose
 	public void onClose(Session session) {
 		// Remove session from the connected sessions set

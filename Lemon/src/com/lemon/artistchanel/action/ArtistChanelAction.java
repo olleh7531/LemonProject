@@ -65,7 +65,6 @@ public class ArtistChanelAction implements Action {
 		
 		int photo_singer_num = acpbean.getAr_singer_num();
 		List photo = acpdao.getPhotoSinger(photo_singer_num);
-		System.out.println("-------------------------");
 		request.setAttribute("photo", photo);
  		
 		// 페이지

@@ -45,4 +45,26 @@ public class ChattingDAO {
 			}
 		}
 	}
+
+	public int selectCh_Num(String sender, String receiver) {
+		int ch_num = 0;
+		try {
+			con = getCon();
+			sql = "select fr_num from friends where (receiver_nick=? and sender_nick=? and fr_check=1) or (receiver_nick=? and sender_nick=? and fr_check=1);";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, receiver);
+			pstmt.setString(2, sender);
+			pstmt.setString(3, sender);
+			pstmt.setString(4, receiver);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				ch_num = Integer.parseInt(rs.getString("fr_num"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return ch_num;
+	}
 }

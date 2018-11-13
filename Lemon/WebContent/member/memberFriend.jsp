@@ -244,39 +244,46 @@
 		friendChat();
 	}
 	
-	var textarea = document.getElementById("messageWindow");
-	var nickname = document.getElementById("nickname");
-	var webSocket = new WebSocket('ws://localhost:8088/Lemon/LemonChatting');
-	var inputMessage = document.getElementById('inputMessage');
+
+	/* 	var textarea = document.getElementById("messageWindow");
+	 var nickname = document.getElementById("nickname");
+	 var webSocket = new WebSocket('ws://localhost:8088/Lemon/LemonChatting');
+	 var inputMessage = document.getElementById('inputMessage');
 	
-	webSocket.onerror = function(event) {
-		onError(event)
-	};
+	 webSocket.onerror = function(event) {
+	 onError(event)
+	 };
 	
-	webSocket.onopen = function(event) {
-		onOpen(event)
-	};
+	 webSocket.onopen = function(event) {
+	 onOpen(event)
+	 };
 	
-	webSocket.onmessage = function(event) {
-		onMessage(event)
-	};
+	 webSocket.onmessage = function(event) {
+	 onMessage(event)
+	 };
 	
-	function onMessage(event) {
-		textarea.value += "상대 : " + event.data + "\n";
-	}
+	 function onMessage(event) {
+	 textarea.value += "상대 : " + event.data + "\n";
+	 }
 	
-	function onOpen(event) {
-		textarea.value += "연결 성공\n";
-	}
+	 function onOpen(event) {
+	 textarea.value += "연결 성공\n";
+	 }
 	
-	function onError(event) {
-		alert(event.data);
-	}
+	 function onError(event) {
+	 alert(event.data);
+	 }
 	
-	function send() {
-		textarea.value += nickname.value+" : " + inputMessage.value + "\n";
-		webSocket.send(textarea.value);
-		inputMessage.value = "";
+	 function send() {
+	 textarea.value += nickname.value+" : " + inputMessage.value + "\n";
+	 webSocket.send(textarea.value);
+	 inputMessage.value = "";
+	 } */
+	 
+	 function Chtext() {
+	 	var m_nickname = document.getElementById("m_nickname").value;
+		var f_nickname = document.getElementById("nick").value;
+		window.open("./LemonChAction.ch?sender_id="+m_nickname+"&receiver_id="+f_nickname+"","a","width=400,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 	}
 </script>
 
