@@ -4034,28 +4034,36 @@
 						</c:if>
 						
 						<!-- 포토 페이지 -->
+						<c:if test="${count != null}">
 						<div id="pageObjNavgation" style="">
 							<div class="paginate">
 								<a href="" class="btn_first disabled">
 									<span>맨처음</span>
 								</a>
-								<a href="" class="btn_pre disabled">
+								<c:if test="${start_page > page_block}">
+								<a href="./ArtistChanel.ac?pageNum=${start_page - page_block}" class="btn_pre disabled">
 									<span>이전</span>
 								</a>
+								</c:if>
+								
+								<!-- begin = 시작숫자 -->
+								<!-- end = 마지막숫자 -->
+								<!-- step = 증가할 수 -->		
+								<c:forEach var="i" begin="${start_page}" end="${end_page}" step="1">
 								<span class="page_num">
+									<c:choose>
+									<c:when test="${i == currentPage}">
 									<strong>
-										<span class="none">현재페이지</span>1
+										<span class="none">현재페이지</span>${i}
 									</strong>
-									<a href="">2</a>
-									<a href="">3</a>
-									<a href="">4</a>
-									<a href="">5</a>
-									<a href="">6</a>
-									<a href="">7</a>
-									<a href="">8</a>
-									<a href="">9</a>
-									<a href="">10</a>
+									</c:when>
+									<c:otherwise>
+									<a href="">${i}</a>
+									</c:choose>
+									</c:otherwise>
 								</span>
+								</c:forEach>
+								
 								<a href="" class="btn_next disabled">
 									<span>다음</span>
 								</a>
@@ -4063,7 +4071,8 @@
 									<span>맨끝</span>
 								</a>
 							</div>
-						</div> /* 페이지 */
+						</div> <!-- 페이지 -->
+						</c:if>
 					</div>
 				</div>
 				<!-- 포토 -->
