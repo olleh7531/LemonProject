@@ -123,6 +123,7 @@ public class MusicUploadAction implements Action {
 			mb.setTrack_num(Integer.parseInt(track));
 
 			int albumnum = mdao.insertAlbum(ab);
+			
 			mb.setAlbum_num(albumnum);
 			mdao.insertMusic(mb);
 		}
