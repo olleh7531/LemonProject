@@ -11,7 +11,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint(value = "/LemonChatting")
+@ServerEndpoint(value = "/LemonChatting/{client_id}")
 public class LemonChattingServer {
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
 	

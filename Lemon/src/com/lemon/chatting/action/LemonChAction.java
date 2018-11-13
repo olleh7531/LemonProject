@@ -6,14 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lemon.chatting.db.ChattingDAO;
 import com.lemon.member.db.MemberDAO;
 
-public class LemonChattingAction implements Action {
+public class LemonChAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(" LemonChattingAction execute() ");
-
+		System.out.println("LemonChAction execute()!!!!!!!");
 		HttpSession session = request.getSession();
 		String email_id = (String) session.getAttribute("email_id");
 
@@ -21,6 +21,16 @@ public class LemonChattingAction implements Action {
 		String nickname = mdao.getNick(email_id);
 
 		System.out.println("접속자 : " + nickname);
+
+		System.out.println("sender_id : " + request.getParameter("sender_id"));
+		System.out.println("receiver_id : " + request.getParameter("receiver_id"));
+
+		String sender = request.getParameter("sender_id");
+		String receiver = request.getParameter("receiver_id");
+
+		ChattingDAO cdao = new ChattingDAO();
+		int ch_num = cdao.selectCh_Num(sender, receiver);
+		System.out.println("채널 : " + ch_num);
 
 		if (nickname == null) {
 			response.setContentType("text/html; charset=UTF-8");
@@ -30,28 +40,17 @@ public class LemonChattingAction implements Action {
 			out.println(" history.back(); ");
 			out.println("</script>");
 			out.close();
-
 			return null;
-
-		} else {
-			// PrintWriter out = response.getWriter();
-			// String str =
-			// "<input type='hidden' value='"+nickname+"' id='nickname'>" +
-			// "<fieldset>" +
-			// "<textarea id='messageWindow' rows='10' cols='50'
-			// readonly='true'></textarea>" +
-			// "<br>" +
-			// "<input id='inputMessage' type='text'/>" +
-			// "<input type='submit' value='send' onclick='send()'/>" +
-			// "</fieldset>";
-			// out.println(str);
 		}
 
+		request.setAttribute("sender", sender);
+		request.setAttribute("receiver", receiver);
+		request.setAttribute("ch_num", ch_num);
+
 		ActionForward forward = new ActionForward();
-		forward.setPath("./Chatting/ChattingView.jsp");
+		forward.setPath("./Chatting/chatting.jsp");
 		forward.setRedirect(false);
 		return forward;
-
-		// return null;
 	}
+
 }
