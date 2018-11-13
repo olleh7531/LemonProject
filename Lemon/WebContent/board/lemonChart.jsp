@@ -119,8 +119,12 @@ ol, ul, li {
 	display: inline-block;
 }
 
-#chart .bb-xgrid-line line {stroke: #556079;}
-#chart .bb-xgrid-line:NTH-CHILD(24) line {stroke: #a0aac3;}
+#chart .bb-xgrid-line line {stroke: #667080;
+z-index: 0;
+opacity: 0.3 !important;}
+#chart .bb-xgrid-line:NTH-CHILD(24) line {stroke: #a0aac3;
+z-index: 0;
+opacity: 0.3 !important;}
 
 #chart .bb-region-0 {fill:#4f6595;
     
@@ -130,7 +134,11 @@ ol, ul, li {
     background: url(//cdnimg.melon.co.kr/resource/image/web/chart/bg_realtimechart_20180614.png) no-repeat 0 0 !important;
 }
 
-.bb-circle {opacity: 0 !important;} 
+
+
+
+
+/* .bb-shapes .bb-circle {opacity: 0 !important;}  */
 </style>
 <script type="text/javascript">
 	function btnevent() {
@@ -152,6 +160,8 @@ ol, ul, li {
 	nowdate = nowdate.substring(0, n);
 	
 	$(document).ready(function() {
+
+	
 
 	<c:set var="dayTime" value="${param.dayTime}"/>
 
@@ -178,6 +188,56 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 		})
 
 	});
+	
+
+	
+			for (var i = 0;i<9999 ; i++) {
+			  (function (i) {
+			    setTimeout(function () {
+			      var j=i%3;
+			      if(j==0){
+					$('.bb-chart-line').eq(0).css('opacity','1');
+					$('.bb-circles').eq(0).children().css('opacity','1');
+					$('.bb-chart-line').eq(1).css('opacity','0.4');
+					$('.bb-circles').eq(1).children().css('opacity','0');
+					$('.bb-chart-line').eq(2).css('opacity','0.4');
+					$('.bb-circles').eq(2).children().css('opacity','0');
+			      }else if(j==1){
+						$('.bb-chart-line').eq(0).css('opacity','0.4');
+						$('.bb-circles').eq(0).children().css('opacity','0');
+						$('.bb-chart-line').eq(1).css('opacity','1');
+						$('.bb-circles').eq(1).children().css('opacity','1');
+						$('.bb-chart-line').eq(2).css('opacity','0.4');
+						$('.bb-circles').eq(2).children().css('opacity','0');
+			      }else if(j==2){
+						$('.bb-chart-line').eq(0).css('opacity','0.4');
+						$('.bb-circles').eq(0).children().css('opacity','0');
+						$('.bb-chart-line').eq(1).css('opacity','0.4');
+						$('.bb-circles').eq(1).children().css('opacity','0');
+						$('.bb-chart-line').eq(2).css('opacity','1');
+						$('.bb-circles').eq(2).children().css('opacity','1');
+			      }
+			    }, 7000*i);
+			  })(i);
+			};
+	
+ 			
+			setTimeout(function () {
+
+			$('.bb-chart-line').eq(0).css('opacity','1');
+			$('.bb-circles').eq(0).children().css('opacity','1');
+			$('.bb-chart-line').eq(1).css('opacity','0.4');
+			$('.bb-circles').eq(1).children().css('opacity','0');
+			$('.bb-chart-line').eq(2).css('opacity','0.4');
+			$('.bb-circles').eq(2).children().css('opacity','0');
+			}, 600);
+
+
+
+ 
+				
+
+
 </script>
 </head>
 <body>
@@ -259,24 +319,7 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 		</div>
 		<!-- 본문 -->	
 	<script type="text/javascript">
-		/*    var chart = bb.generate({
-		 bindto: "#chart",
-		 data: {
-		 type: "line",
-		 columns: [
-		 ["data1", 30, 200, 100, 170, 150, 250],
-		 ["data2", 130, 100, 140, 35, 110, 50]
-		 ]
-		 },
-		 "axis": {
-		 "rotated": false,
-		 "x": {
-		 },
-		 "y": {
-		 "show": false
-		 }
-		 }
-		 }); */
+
 		<c:set var="arr" value="${requestScope.list}"/>
 
 		bb.generate({
@@ -310,7 +353,8 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 						</c:forEach> ], ],
 						"type": "line"
 			},"size": {
-		        "width": 650
+		        "width": 680,
+		        "height" : 350
 		    },
 			"axis" : {
 				"x" : {
@@ -326,7 +370,7 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 					</c:if>
 					
 						</c:forEach>  ],
-					"tick" : {
+					 "tick" : {
 						"outer" : false,
 						centered : true,
 					}
@@ -339,7 +383,13 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 	                }
 					}
 				}
-			},
+			},   color: {
+			    pattern: [
+			        "#a7e52e",
+			        "#f6894e",
+			        "#58aadf",
+			      ]
+			    },
 			grid : {
 				x : {
 					show : false,
@@ -395,7 +445,6 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 						value : 24
 					}, ]
 				},
-				front : true,
 			},regions: [
 			    {
 			        start: -1,
@@ -407,7 +456,7 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 				    grouped: false
 			  },
 			  bindto: "#chart"
-		})
+		});
 	</script>
 	<!-- 본문 -->
 	<!-- 푸터 -->

@@ -51,16 +51,24 @@
 	<!-- 본문 -->
 	<div id="bg_contsSc">
 		<div id="wrap_contsSc">
-		<div><p><strong>'${search}'</strong>에 대한 검색 결과입니다.</p></div>
+		<div><strong>'${search}'</strong>에 대한 검색 결과입니다.</div>
 			<input type="hidden" id="pageNum" value="1">
+			<%if(count!=0){ %>
 			<ul>
 				<li><a id="li_weight">정확도순</a></li>
 				<li><a id="li_date">최신순</a></li>
 				<li><a id="li_ganada">가나다순</a></li>
 			</ul>
 			<h1><b>총 <%=count %> 건</b></h1>
+						<%}else{ %>
+						<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
+						<ul style="list-style: disc;    margin: 26px 0 0 276px;">
+						<li style="list-style: disc;">검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
+						<li style="list-style: disc;">검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
+						</ul>
+						<%} %>
 			<div id="contsSc">
-			
+
 			<%
 			 for(int i=0;i<resultList.size();i++){
 				SearchBean sb =(SearchBean) resultList.get(i);				 

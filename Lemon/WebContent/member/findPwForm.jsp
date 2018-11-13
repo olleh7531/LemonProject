@@ -7,28 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/menu.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/main_menu_bxslider.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/board/notice.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/font.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/board/notice.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/footer.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 
 <script type="text/javascript">
@@ -43,8 +35,14 @@ function find_info() {
 	x = (sx-wx)/2;
 	y = (sy-wy)/2;
 	
+	if (document.find.id.value == "") {
+		alert("ID를 입력하세요");
+		document.find.id.focus();
+		return;
+	}
+	
 	if (document.find.name.value == "") {
-		alert("id를 입력하세요");
+		alert("이름을 입력하세요");
 		document.find.name.focus();
 		return;
 	}
@@ -71,6 +69,25 @@ function fun_cancel() {
 	}
 }
 </script>
+
+<style type="text/css">
+.findMember {
+	margin-top: 30px;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+.findMember:HOVER {
+	background-color: #EDAE06;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
 	
@@ -90,8 +107,8 @@ function fun_cancel() {
 						전화번호 : 
 						<input type="text" id="phone" name="phone" placeholder="ex) 01088884444" size="50"> <br>
 					</div>
-					<input type="button" value="찾기" onclick="find_info()">
-					<input type="button" value="취소" onclick="fun_cancel()">
+					<input type="button" class="findMember" value="찾기" onclick="find_info()">
+					<input type="button" class="findMember" value="취소" onclick="fun_cancel()">
 				</form>
 			<div id="pageNavi"></div>
 			<div class="wrap_search"></div>

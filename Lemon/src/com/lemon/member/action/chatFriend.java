@@ -33,7 +33,7 @@ public class chatFriend implements Action{
 			out.print(count);
 			for(int i=0 ; i<friendList.size() ; i++) {
 				String nickname = friendList.get(i);
-				
+				System.out.println(nickname);
 				result = 
 					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
 					"<label>"+nickname+"</label>" + 

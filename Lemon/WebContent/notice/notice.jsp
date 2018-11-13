@@ -1,3 +1,4 @@
+<%@page import="com.lemon.member.db.MemberDAO"%>
 <%@page import="com.lemon.notice.db.NoticeBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,10 +18,12 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+	
 	<script>
 	function initialization() {
 		var category = document.getElementById("category").
@@ -41,16 +44,12 @@
 <body onload="initialization()">
 	<%
 		request.setCharacterEncoding("UTF-8");
-		//  request 데이터 저장
-		//	request.setAttribute("NoticeList", NoticeList);
-		//	request.setAttribute("pageNum", pageNum);
-		//	request.setAttribute("count", count);
-		//	request.setAttribute("pageCount", pageCount);
-		//	request.setAttribute("pageBlock", pageBlock);
-		//	request.setAttribute("startPage", startPage);
-		//	request.setAttribute("endPage", endPage);
+	
+		String email_id = (String) session.getAttribute("email_id");
+		MemberDAO mdao = new MemberDAO();
+		int level = mdao.getLevel(email_id);
 		
-		List NoticeList = (List) request.getAttribute("noticeList");
+		List NoticeList = (List) request.getAttribute("noticeList");		
 		String pageNum = (String) request.getAttribute("pageNum");
 		String category = (String) request.getAttribute("category");
 		int count = ((Integer) request.getAttribute("count")).intValue();
@@ -58,6 +57,8 @@
 		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
 		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
 		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+		
+		
 	%>
 	
 	<!-- 메뉴 -->
@@ -153,10 +154,14 @@
 						%>
 					</div>
 				</div>
-
-				<div class="writeNotice">
-					<a href="./NoticeWrite.nt">글쓰기</a>
-				</div>
+				
+				<%if(level == 1) {%>
+					<div class="writeNotice">
+						<a href="./NoticeWrite.nt">글쓰기</a>
+					</div>
+				<%} else {%>
+					<div class="writeNotice"></div>
+				<%} %>
 			</div>
 			
 			<div id="pageNavi"></div>
@@ -164,7 +169,7 @@
 		</div>
 	</div>
 	<!-- 내용 -->
-
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 

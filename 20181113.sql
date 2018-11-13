@@ -623,13 +623,13 @@ CREATE TABLE `search_chart` (
   `sc_num` int(11) NOT NULL AUTO_INCREMENT,
   `sc_keyword` text,
   `sc_date` datetime DEFAULT NULL,
-  `sc_gender1` varchar(6) DEFAULT NULL,
-  `sc_gender2` varchar(6) DEFAULT NULL,
-  `sc_generation1` varchar(6) DEFAULT NULL,
-  `sc_generation2` varchar(6) DEFAULT NULL,
-  `sc_generation3` varchar(6) DEFAULT NULL,
-  `sc_generation4` varchar(6) DEFAULT NULL,
-  `sc_generation5` varchar(6) DEFAULT NULL,
+  `sc_gender1` int(11) DEFAULT NULL,
+  `sc_gender2` int(11) DEFAULT NULL,
+  `sc_generation1` int(11) DEFAULT NULL,
+  `sc_generation2` int(11) DEFAULT NULL,
+  `sc_generation3` int(11) DEFAULT NULL,
+  `sc_generation4` int(11) DEFAULT NULL,
+  `sc_generation5` int(11) DEFAULT NULL,
   `sc_count` int(11) DEFAULT NULL,
   PRIMARY KEY (`sc_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -743,4 +743,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-12 20:09:02
+-- Dump completed on 2018-11-13 17:37:20

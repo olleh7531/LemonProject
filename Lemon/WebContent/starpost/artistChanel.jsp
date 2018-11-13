@@ -75,6 +75,18 @@
 	<!-- 솔로 -> 그룹 이름 불러오기 -->
 	<c:set var="solo_group" value="${requestScope.solo_group}"/>
 	
+	<!-- ArtistChanelPhotoBean 불러오기 -->
+	<c:set var="photo" value="${requestScope.photo}"/>
+	
+	<!-- ArtistChanelPhoto 페이지 처리하기 -->
+	<c:set var="photo_list" value="${requestScope.photo_list}"/>
+	<c:set var="page_num" value="${requestScope.page_num}"/>
+	<c:set var="count" value="${requestScope.count}"/>
+	<c:set var="page_count" value="${requestScope.page_count}"/>
+	<c:set var="page_block" value="${requestScope.page_block}"/>
+	<c:set var="start_page" value="${requestScope.start_page}"/>
+	<c:set var="end_page" value="${requestScope.end_page}"/>
+	
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
@@ -3990,280 +4002,68 @@
 								</li>
 							</ul>
 						</div>
+						<!-- 내용 -->
+						<c:if test="${photo != null}">
 						<div id="pageList">
 							<div class="photo_wrap">
+								<c:forEach items="${photo}" var="list_photo" varStatus="status_photo">
+								<c:if test="${status_photo.first}">
 								<div class="photo_list">
 									<ul>
+									</c:if>
 										<li class="photo02_li">
 											<div class="wrap_photo02">
 												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - 싱글 앨범 &lsquo;지쳤니&rsquo; 발매 D-day 커버 공개] 포토상세">
+													<!-- <a href="" class="thumb" title="[바닐라 어쿠스틱 - 싱글 앨범 &lsquo;지쳤니&rsquo; 발매 D-day 커버 공개] 포토상세"> -->
+													<a href="" class="thumb" title="[${info.singer_name} '-' ${list_photo.ar_subject}] 포토상세">
 														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/558/80050558_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
+														<!-- <img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/558/80050558_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트"> -->
+														<img width="148" src="./upload/starpost/singerPhoto/${list_photo.ar_photo}" alt="아티스트">
 														<span class="wrap_vertical"></span>
 													</a>
 												</div>
 											</div>
+											<c:if test="${status_photo.last}">
 										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;지쳤니&rsquo; 발매 D-5] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/233/80050233_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;지쳤니&rsquo; 발매 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/011/80050011_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱- 싱글 앨범 &lsquo;좋아해&rsquo; 발매 예고] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/40/625/80040625_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱- 단독 콘서트 &lsquo;어울리게 칠해줘&rsquo; D-1] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/39/487/80039487_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱-단독 콘서트 &lsquo;어울리게 칠해줘&rsquo; 듀엣 이벤트 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/39/453/80039453_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라어쿠스틱 - 바닐라맨 생일] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/39/243/80039243_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[ D-DAY, 바닐라 어쿠스틱 단독 콘서트 &lsquo;어울리게 칠해줘 &rsquo; 티켓 오픈] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/813/80038813_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - 두시탈출 컬투쇼 출연] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/695/80038695_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="바닐라 어쿠스틱-&lsquo;어울리게 칠해줘&rsquo; 발매기념 인터뷰 스토리상세">
-														<span class="thumb_frame"></span>
-														<span class="thumb_frame02"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/partrct/images/story/2018/04/18/103507/524043723830254/M/103507_700.jpg/melon/resize/154/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱 - 정규 발매기념 콘서트 &#39;어울리게 칠해줘&#39; 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/680/80038680_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱 - &lsquo;어울리게 칠해줘&rsquo; 라디오 스케줄] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/649/80038649_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱- &lsquo;어울리게 칠해줘&rsquo; 트랙리스트] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/427/80038427_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &#39;어울리게 칠해줘&rsquo; 온라인 예약 판매] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/425/80038425_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱- &lsquo;어울리게 칠해줘&rsquo; 발매 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/385/80038385_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="바닐라 어쿠스틱-&lsquo;너를 담아 봄(Feat.스무살) 스토리상세">
-														<span class="thumb_frame"></span>
-														<span class="thumb_frame02"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/partrct/images/story/2018/03/19/103296/521428973736060/M/103296_700.jpg/melon/resize/154/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;너를 담아 봄(Feat. ?)&rsquo; 발매 예고] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/954/80037954_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱-이미지 모델 2기 공개 모집] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/657/80037657_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱-바닐라맨 2017 한국음악 저작권협회 편곡 부문 대상 수상] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/563/80037563_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[ 바닐라 어쿠스틱 - 설 명절 인사] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/353/80037353_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[ 바닐라 어쿠스틱 - 2017 마무리 &amp; 2018 신년 인사] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/36/391/80036391_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[ 바닐라 어쿠스틱 - 2017 마무리 &amp; 2018 신년 인사] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/36/390/80036390_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - 성아 생일:-)] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/35/478/80035478_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;끝이 아닌 것 같아서&rsquo; 스트리밍 이벤트] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/35/230/80035230_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
+										</c:if>
+										</c:forEach>
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> <!-- 내용 -->
+						</c:if>
+						
+						<!-- 포토 페이지 -->
+						<div id="pageObjNavgation" style="">
+							<div class="paginate">
+								<a href="" class="btn_first disabled">
+									<span>맨처음</span>
+								</a>
+								<a href="" class="btn_pre disabled">
+									<span>이전</span>
+								</a>
+								<span class="page_num">
+									<strong>
+										<span class="none">현재페이지</span>1
+									</strong>
+									<a href="">2</a>
+									<a href="">3</a>
+									<a href="">4</a>
+									<a href="">5</a>
+									<a href="">6</a>
+									<a href="">7</a>
+									<a href="">8</a>
+									<a href="">9</a>
+									<a href="">10</a>
+								</span>
+								<a href="" class="btn_next disabled">
+									<span>다음</span>
+								</a>
+								<a href="" class="btn_last">
+									<span>맨끝</span>
+								</a>
+							</div>
+						</div> /* 페이지 */
 					</div>
 				</div>
 				<!-- 포토 -->
