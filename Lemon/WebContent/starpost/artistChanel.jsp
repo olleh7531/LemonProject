@@ -28,6 +28,8 @@
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/common/jquery.cookie.js"></script>
+<script type="text/javascript" src="./assets/js/common/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="./assets/js/starpost/artist_chanel_tabmenu.js"></script>
 </head>
 <body>
@@ -4003,10 +4005,10 @@
 							</ul>
 						</div>
 						<!-- 내용 -->
-						<c:if test="${photo != null}">
+						<c:if test="${photo_list != null}">
 						<div id="pageList">
 							<div class="photo_wrap">
-								<c:forEach items="${photo}" var="list_photo" varStatus="status_photo">
+								<c:forEach items="${photo_list}" var="list_photo" varStatus="status_photo">
 								<c:if test="${status_photo.first}">
 								<div class="photo_list">
 									<ul>
@@ -4041,7 +4043,7 @@
 									<span>맨처음</span>
 								</a>
 								<c:if test="${start_page > page_block}">
-								<a href="./ArtistChanel.ac?pageNum=${start_page - page_block}" class="btn_pre disabled">
+								<a href="./ArtistChanel.ac??artist=${info.si_num}&pageNum=${start_page - page_block}" class="btn_pre disabled">
 									<span>이전</span>
 								</a>
 								</c:if>
@@ -4058,15 +4060,18 @@
 									</strong>
 									</c:when>
 									<c:otherwise>
-									<a href="">${i}</a>
+									<a href="./ArtistChanel.ac?artist=${info.si_num}">${i}</a>
 									</c:otherwise>
 									</c:choose>
 								</span>
 								</c:forEach>
 								
+								<c:if test="${end_page > page_count}">
 								<a href="" class="btn_next disabled">
 									<span>다음</span>
 								</a>
+								</c:if>
+								
 								<a href="" class="btn_last">
 									<span>맨끝</span>
 								</a>

@@ -63,51 +63,66 @@ public class ArtistChanelAction implements Action {
 		// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
 		ArtistChanelPhotoBean acpbean = acpdao.getSingerNum(artist);
 		
-		int photo_singer_num = acpbean.getAr_singer_num();
-		List photo = acpdao.getPhotoSinger(photo_singer_num);
-		request.setAttribute("photo", photo);
- 		
+		if(acpdao != null) {
+			int photo_singer_num = acpbean.getAr_singer_num();
+			List photo = acpdao.getPhotoSinger(photo_singer_num);
+			request.setAttribute("photo", photo);
+		}
+		
 		// 페이지
 		// 게시판 전체 글 개수
-		int count = acpdao.getArtistChanelPhotoNum();
-		System.out.println("photo 전체 글 개수 : " + count);
+		int count = acpdao.getPhotoCount();
+		System.out.println("ArtistChanelAction.java photo 전체 글 개수 : " + count);
 		
 		// 한 페이지에서 보여줄 글 개수 설정
 		int pageSize = 24;
+		System.out.println("ArtistChanelAction.java photo 한 페이지에서 보여줄 글 개수 : " + pageSize);
 		
 		// 현재 페이지 위치
 		String page_num = request.getParameter("page_num");
+		System.out.println("ArtistChanelAction.java photo 현재 페이지 위치 : " + page_num);
 		
 		if(page_num == null) {
 			page_num = "1";
 		}
+		System.out.println("ArtistChanelAction.java photo 현재 페이지 위치 : " + page_num);
 		
 		// 시작행 계산하기 1 / 11 / 21 / 31 / ...
-		int currentPage = Integer.parseInt(page_num);
-		int startRow = (currentPage - 1) * pageSize + 1;
+		int currentPage = Integer.parseInt(page_num); // 현재 행
+		System.out.println("ArtistChanelAction.java photo 현재 행 : " + currentPage);
+		
+		int startRow = (currentPage - 1) * pageSize + 1; // 시작 행
+		System.out.println("ArtistChanelAction.java photo 시작 행 : " + startRow);
 		
 		// 끝 행 계산 10 / 20 / 30 / 40 / ...
 		int endRow = currentPage * pageSize;
+		System.out.println("ArtistChanelAction.java photo 끝 행 : " + endRow);
 		
 		// 전체 글 개수 가져오기
 		List photo_list = acpdao.getPhotoList(startRow, pageSize);
+		System.out.println("ArtistChanelAction.java photo 전체 글 개수 가져오기 : " + photo_list);
 		
 		// 전체 페이지수 계산 => 게시판 글 50개 , 한페이지에 10개씩 보여줌 => 5페이지
 		// 게시판 글 77개 , 한페이지에 10개씩 보여줌 => 8페이지( 7+1 )
 		int page_count = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		System.out.println("ArtistChanelAction.java photo 전체 페이지수 계산 : " + page_count);
 		
 		// 한 화면에 보여줄 페이지 번호의 개수
 		int pageBlock = 10;
+		System.out.println("ArtistChanelAction.java photo 한 화면에 보여줄 페이지 번호의 개수 : " + pageBlock);
 		
 		// 시작 페이지 번호
 		int start_page = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+		System.out.println("ArtistChanelAction.java photo 시작 페이지 번호 : " + start_page);
 		
 		// 끝 페이지 번호
 		int end_page = start_page + pageBlock - 1;
+		System.out.println("ArtistChanelAction.java photo 끝 페이지 번호 : " + end_page);
 		
 		if(end_page > page_count) {
 			end_page = page_count;
 		}
+		System.out.println("ArtistChanelAction.java photo 끝 페이지 번호 : " + end_page);
 		
 		request.setAttribute("photo_list", photo_list);
 		request.setAttribute("page_num", page_num);

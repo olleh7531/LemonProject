@@ -51,7 +51,7 @@ public class ArtistChanelPhotoDAO {
 		}
 	}
 	
-	// 정보 글쓰기
+	// 포토 글쓰기
 	public void photoWrite(ArtistChanelPhotoBean acpbean) {
 		int num = 0;
 		
@@ -108,7 +108,7 @@ public class ArtistChanelPhotoDAO {
 			pstmt.setString(6, acpbean.getAr_photo());
 			System.out.println(acpbean.getAr_photo());
 			
-			System.out.println("아티스트 포토 글쓰기");
+			System.out.println("ArtistChanelPhotoDAO photoWrite(ArtistChanelPhotoBean acpbean) 포토 글 쓰기");
 			
 			pstmt.executeUpdate();
 		}
@@ -120,7 +120,7 @@ public class ArtistChanelPhotoDAO {
 		}
 	}
 	
-	// 가수 번호 체크
+	// 글 쓸 때 가수 번호 체크해서 해당 번호 가수 이름 가져오기
 	public String singerCheckNum(int singerNum) {
 		String singer_name="";
 		
@@ -138,6 +138,8 @@ public class ArtistChanelPhotoDAO {
 			if(rs.next()){
 				singer_name=rs.getString("singer_name");
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO singerCheckNum(int singerNum) 글 쓸 때 가수 번호 체크해서 해당 번호 가수 이름 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -168,6 +170,8 @@ public class ArtistChanelPhotoDAO {
 			if(rs.next()) {
 				num = rs.getInt(1);
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO getArtistChanelPhotoNum() 포토 해당 가수 번호 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -214,6 +218,8 @@ public class ArtistChanelPhotoDAO {
 				// 사진
 				acpbean.setAr_photo(rs.getString("ar_photo"));
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO getSingerNum(int num) 포토 글 번호에 해당하는 정보 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -244,9 +250,9 @@ public class ArtistChanelPhotoDAO {
 				acpbean.setAr_subject(rs.getString("ar_subject"));
 				
 				photo.add(acpbean);
-				
-				System.out.println("가수 사진 불러오기");
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO getPhotoSinger(int singer_num) 해당 가수 포토 한 장씩 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -271,6 +277,8 @@ public class ArtistChanelPhotoDAO {
 			if(rs.next()) {
 				count = rs.getInt(1);
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO getPhotoCount() 포토 글 개수 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -288,7 +296,7 @@ public class ArtistChanelPhotoDAO {
 			con = getCon();
 			
 			// 최신글 처음에
-			sql = "select * from artist_photo order by ar_num desc ?, ?";
+			sql = "select * from artist_photo order by ar_num desc limit ?, ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);
@@ -309,6 +317,8 @@ public class ArtistChanelPhotoDAO {
 				
 				photoList.add(acpbean);
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO getPhotoList(int startRow, int pageSize) 포토 글 ( 최신 순 ) 리스트 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -332,6 +342,8 @@ public class ArtistChanelPhotoDAO {
 			
 			// pstmt 객체 실행
 			pstmt.executeQuery();
+			
+			System.out.println("ArtistChanelPhotoDAO photoUpdateReadcount(int num) 조회수 증가");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -362,6 +374,8 @@ public class ArtistChanelPhotoDAO {
 				acpbean.setAr_singer_num(rs.getInt("ar_singer_num"));
 				acpbean.setAr_subject(rs.getString("ar_subject"));
 			}
+			
+			System.out.println("ArtistChanelPhotoDAO getPhotoContentNum(int num) 글 번호에 해당하는 게시글 가져오기");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -190,6 +190,9 @@ public class ArtistChanelInfoDAO {
 			if(rs.next()) {
 				acibean = new ArtistChanelInfoBean();
 				
+				// 아티스트 정보 글 번호
+				acibean.setSi_num(rs.getInt("si_num"));
+				
 				// 솔로/그룹 유형
 				acibean.setActivity_type(rs.getString("activity_type"));
 				
