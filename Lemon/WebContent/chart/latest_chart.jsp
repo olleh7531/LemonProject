@@ -7,41 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/common.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/menu.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/main_menu_bxslider.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/menu.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/main_menu_bxslider.css">
 <!-- 메인 / 메뉴 슬라이더 -->
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/font.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumbarungothic.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/font/nanumgothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/font.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/common/footer.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
 
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/chart/chart.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/font-awesome/css/font-awesome.css">
-<!--  -->
+<link rel="stylesheet" type="text/css" href="./assets/css/chart/chart.css">
+<link rel="stylesheet" type="text/css" href="./assets/font-awesome/css/font-awesome.css">
+
 <!-- <link rel="stylesheet" type="text/css"
 	href="./assets/css/cahart/base.css"> -->
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/chart/flexslider.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/chart/main.css">
-<link rel="stylesheet" type="text/css"
-	href="./assets/css/chart/fonts.css" media="all">
+<link rel="stylesheet" type="text/css" href="./assets/css/chart/flexslider.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/chart/main.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/chart/fonts.css" media="all">
 
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_new_album.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_event.js"></script>
@@ -105,21 +93,16 @@
 						<div class="wrap_btn_tb top">
 							<button type="button" title="선택된 곡 듣기" class="button_rbox"
 								onclick="">
-								<i class="fa fa-play" style="color: #969696;"></i><span
-									class="cnt">듣기</span>
+								<i class="fa fa-play" style="color: #969696;"><span	class="cnt">듣기</span></i>
 							</button>
 							<button type="button" title="선택된 곡 담기" class="button_rbox"
 								onclick="checkMusicList()">
-								<i class="fa  fa-plus" style="color: #969696;"></i><span
-									class="cnt">담기</span>
+								<i class="fa  fa-plus" style="color: #969696;"><span class="cnt">담기</span></i>
 							</button>
 							<button type="button" title="선택된 곡 다운로드" class="button_rbox"
 								onclick="CheckMusicDownload()">
-								<i class="fa  fa-download " style="color: #969696;"><span
-									class="cnt"></i>다운</span>
+								<i class="fa  fa-download " style="color: #969696;"><span class="cnt">다운</span></i>
 							</button>
-
-
 						</div>
 						<table style="width: 100%">
 							<thead>
@@ -258,15 +241,13 @@
 										</div>
 									</td>
 									<td>
-
 										<div class="wrap t_center">
 											<button type="button" title="다운로드"
-												class="button_icons download "
-												onclick="location.href='./chart/file_down.jsp?file_name=<%=cb.getMusicfile()%>'">
-												<i class="fa  fa-download "></i><span class="none">다운로드</span>
+												class="button_icons download"
+												onclick="MusicDownload('<%=cb.getMusicfile()%>')">
+												<i class="fa  fa-download"></i><span class="none">다운로드</span>
 											</button>
 										</div>
-
 									</td>
 									<td>
 										<div class="wrap t_center">
@@ -579,6 +560,7 @@
 	<script src="./assets/js/chart/twitterFetcher_min.js"></script>
 	<script src="./assets/js/chart/jquery.countdown.min.js"></script>
 	<script src="./assets/js/chart/script.js"></script>
+	
 	<script>
 		$(function() {
 			$('ul.tab li').click(function() {
@@ -590,13 +572,15 @@
 			})
 		});
 	</script>
-	<script type="text/javascript">	
-		
-	</script>
 
 	<script type="text/javascript">
 		function LemonPlayer(mu_num,album_num){
 			window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=320,height=315,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
+		}
+		
+		function MusicDownload(singer) {
+			var afterEncoding = encodeURI(singer);
+			location.href="./chart/file_down.jsp?file_name="+afterEncoding;
 		}
 	</script>
 	<!-- footer -->

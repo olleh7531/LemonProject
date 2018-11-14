@@ -23,7 +23,7 @@ public class ArtistChanelPhotoBean {
 	 * ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 	 */
 
-	private int ar_num; // 번호
+	private int ar_num; // 글 번호
 	private String ar_subject; // 제목
 	private String ar_content; // 내용
 	private Date ar_registerdate; // 등록한 날짜

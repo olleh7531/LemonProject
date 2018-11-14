@@ -44,7 +44,6 @@ public class MusicCommentSelect01 implements Action {
 			obj.put("nickname", mb.getNickname());
 			arr.add(obj);
 		}
-		System.out.println(arr);
 		out.println(arr);
 		out.close();
 		return null;

@@ -36,18 +36,15 @@ public class ArtistChanelInfoWrtieAction implements Action {
 
 		// MultipartRequest 객체 사용 파일 업로드
 		// MultipartRequest 생성만 해주면 파일이 업로드 된다. (파일 자체의 업로드 완료)
-		MultipartRequest infoMulti = new MultipartRequest(request, // form 태그에서
-																	// 가져온 파일,
-																	// 텍스트 정보를
-																	// 가져오기 위해서
-																	// , request
-																	// 영역의 데이터를
-																	// 전달
+		MultipartRequest infoMulti = new MultipartRequest
+		(
+				// form 태그에서 가져온 파일, 텍스트 정보를 가져오기 위해서, request 영역의 데이터를 전달
+				request,
 				infoRealPath, // 업로드 파일의 위치
 				infoMaxSize, // 업로드할 파일의 최대 크기 지정
 				"UTF-8", // 파일 이름이 한글처리 인코딩 처리 (UTF-8)
-				new DefaultFileRenamePolicy() // 똑같은 파일이름에 대해서 업로드시 자동으로 파일이름을
-												// 변경해주는 객체
+				// 똑같은 파일이름에 대해서 업로드시 자동으로 파일이름을 변경해주는 객체
+				new DefaultFileRenamePolicy()
 		);
 
 		// 정보 -> JSP 페이지 -> Controller -> Action -> DB
@@ -80,19 +77,19 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		System.out.println("ArtistChanelInfoWrtieAction.java singer_real_name : " + infoMulti.getParameter("singer_real_name"));
 
 		// 데뷔 날짜
-		if(!infoMulti.getParameter("singer_debut_day").equals("")){
-			System.out.println("xx1");
-		Date debut_year = new Date(format.parse(infoMulti.getParameter("singer_debut_day")).getTime());
-		acibean.setDebut_year(debut_year);
-		System.out.println("ArtistChanelInfoWrtieAction.java debut_year : " + debut_year);
+		if(!infoMulti.getParameter("singer_debut_day").equals("")) {
+			Date debut_year = new Date(format.parse(infoMulti.getParameter("singer_debut_day")).getTime());
+			
+			acibean.setDebut_year(debut_year);
+			System.out.println("ArtistChanelInfoWrtieAction.java debut_year : " + debut_year);
 		}
 		
 		// 생일
-		if(!infoMulti.getParameter("singer_birth").equals("")){		
-			System.out.println("yy");
-		Date si_birth = new Date(format.parse(infoMulti.getParameter("singer_birth")).getTime());
-		acibean.setSi_birth(si_birth);
-		System.out.println("ArtistChanelInfoWrtieAction.java singer_birth : " + infoMulti.getParameter("singer_birth"));
+		if(!infoMulti.getParameter("singer_birth").equals("")) {
+			Date si_birth = new Date(format.parse(infoMulti.getParameter("singer_birth")).getTime());
+			
+			acibean.setSi_birth(si_birth);
+			System.out.println("ArtistChanelInfoWrtieAction.java singer_birth : " + infoMulti.getParameter("singer_birth"));
 		}
 
 		// 데뷔 노래

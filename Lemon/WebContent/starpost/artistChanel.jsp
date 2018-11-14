@@ -28,6 +28,8 @@
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<script type="text/javascript" src="./assets/js/common/jquery.cookie.js"></script>
+<script type="text/javascript" src="./assets/js/common/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="./assets/js/starpost/artist_chanel_tabmenu.js"></script>
 </head>
 <body>
@@ -43,9 +45,9 @@
 	String g_singer_num = acibean.getGroup_singer_num();
  	List group = acidao.getGroupMember(g_singer_num);
 	
-	// null이거나 "" 일 때 처리 사항 관련
+	// null이거나"" 일 때 처리 사항 관련
 	// -> 에러나서 여기에서 불러옴
-		// 본명 -> ""
+		// 본명 ->""
 		String real_name = acibean.getReal_name();
 		
 		// 데뷔 날짜 -> null
@@ -54,11 +56,11 @@
 		// 생일 -> null
 		Date siger_birth = acibean.getSi_birth();
 		
-		// 소속사 -> ""
+		// 소속사 ->""
 		String agency = acibean.getSi_agency();
 	
-		// 소속 그룹 멤버 -> ""
-		String group_name = "";
+		// 소속 그룹 멤버 ->""
+		String group_name ="";
 		
 		if(!acibean.getGroup_singer_name().equals("")) {
 			group_name = acibean.getGroup_singer_name();
@@ -69,11 +71,23 @@
 	<!-- ArtistChanelInfoBean 불러오기 -->
 	<c:set var="info" value="${requestScope.info}"/>
 	
-	<!-- 그룹 -> 그룹 멤버 가져오기  -->
+	<!-- 그룹 -> 그룹 멤버 가져오기 -->
 	<c:set var="group_member" value="${requestScope.group_member}"/>
 	
 	<!-- 솔로 -> 그룹 이름 불러오기 -->
 	<c:set var="solo_group" value="${requestScope.solo_group}"/>
+	
+	<!-- ArtistChanelPhotoBean 불러오기 -->
+	<c:set var="photo" value="${requestScope.photo}"/>
+	
+	<!-- ArtistChanelPhoto 페이지 처리하기 -->
+	<c:set var="photo_list" value="${requestScope.photo_list}"/>
+	<c:set var="page_num" value="${requestScope.page_num}"/>
+	<c:set var="count" value="${requestScope.count}"/>
+	<c:set var="page_count" value="${requestScope.page_count}"/>
+	<c:set var="page_block" value="${requestScope.page_block}"/>
+	<c:set var="start_page" value="${requestScope.start_page}"/>
+	<c:set var="end_page" value="${requestScope.end_page}"/>
 	
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
@@ -170,7 +184,7 @@
 								</c:if>
 									<%-- <%
 										for(int i = 0; i < group.size(); i++) {
-								    		ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
+								  		ArtistChanelInfoBean gbean = (ArtistChanelInfoBean) group.get(i);
 									%> --%>
 									<%-- <dd><%=group_num %></dd> --%>
 										<%-- <a href="./ArtistChanel.ac?artist=<%=acibean_group_member.getSi_num() %>"
@@ -249,7 +263,7 @@
 				<!-- 탭 메뉴 -->
 				<div class="wrap_tab_atist">
 					<ul class="artist_chanel_tab">
-						<li class="first_child on" data-tab="artist_chanel_tab1">
+						<li class="first_child" data-tab="artist_chanel_tab1">
 							<a href="" title="아이유 곡정보">
 								<span class="cntt">곡</span>
 							</a>
@@ -2162,7 +2176,7 @@
 															class="btn btn_more" data-control="dropdown">
 															<span class="odd_span">아티스트명 더보기</span>
 														</button>
-														<!-- [DP] 아티스트 더보기 레이어  -->
+														<!-- [DP] 아티스트 더보기 레이어 -->
 														<div class="l_popup small"
 															style="display: none; width: 168px;">
 															<div class="l_cntt">
@@ -2184,7 +2198,7 @@
 															<span class="shadow"></span> <span
 																class="bullet_vertical"></span>
 														</div>
-														<!-- //[DP] 아티스트 더보기 레이어  -->
+														<!-- //[DP] 아티스트 더보기 레이어 -->
 													</div>
 
 												</div></td>
@@ -2263,7 +2277,7 @@
 															class="btn btn_more" data-control="dropdown">
 															<span class="odd_span">아티스트명 더보기</span>
 														</button>
-														<!-- [DP] 아티스트 더보기 레이어  -->
+														<!-- [DP] 아티스트 더보기 레이어 -->
 														<div class="l_popup small"
 															style="display: none; width: 168px;">
 															<div class="l_cntt">
@@ -2285,7 +2299,7 @@
 															<span class="shadow"></span> <span
 																class="bullet_vertical"></span>
 														</div>
-														<!-- //[DP] 아티스트 더보기 레이어  -->
+														<!-- //[DP] 아티스트 더보기 레이어 -->
 													</div>
 
 												</div></td>
@@ -2837,7 +2851,7 @@
 															class="btn btn_more" data-control="dropdown">
 															<span class="odd_span">아티스트명 더보기</span>
 														</button>
-														<!-- [DP] 아티스트 더보기 레이어  -->
+														<!-- [DP] 아티스트 더보기 레이어 -->
 														<div class="l_popup small"
 															style="display: none; width: 168px;">
 															<div class="l_cntt">
@@ -2859,7 +2873,7 @@
 															<span class="shadow"></span> <span
 																class="bullet_vertical"></span>
 														</div>
-														<!-- //[DP] 아티스트 더보기 레이어  -->
+														<!-- //[DP] 아티스트 더보기 레이어 -->
 													</div>
 
 												</div></td>
@@ -2942,7 +2956,7 @@
 															class="btn btn_more" data-control="dropdown">
 															<span class="odd_span">아티스트명 더보기</span>
 														</button>
-														<!-- [DP] 아티스트 더보기 레이어  -->
+														<!-- [DP] 아티스트 더보기 레이어 -->
 														<div class="l_popup small"
 															style="display: none; width: 168px;">
 															<div class="l_cntt">
@@ -2964,7 +2978,7 @@
 															<span class="shadow"></span> <span
 																class="bullet_vertical"></span>
 														</div>
-														<!-- //[DP] 아티스트 더보기 레이어  -->
+														<!-- //[DP] 아티스트 더보기 레이어 -->
 													</div>
 
 												</div></td>
@@ -3955,316 +3969,628 @@
 				
 				<!-- 포토 -->
 				<div class="tab_content" id="artist_chanel_tab4">
-					<div class="section_photo d_photo_list">
+					<!-- 포토 리스트 -->
+					<!-- 포토 리스트 -->
+					
+					<!-- 포토 내용 -->
+					<div class="section_photo">
 						<div class="sort_info clfix">
-							<!-- <div class="wrap_sort fl_left" id="sort_layer">
-								<a href=""  title="전체 보기" class="ico_radio on" radio-value="0">
-									<span class="icon"></span>
-									<span class="text">
-										<span>전체</span>(138)
+							<div class="wrap_sort fl_left">
+								<p class="photo_count">
+									<strong>1</strong> / 
+									<em id="totCnt">239</em>
+								</p>
+							</div>
+							<div class="fl_right">
+								<a href="" title="전체 목록보기" class="btn btn_big short">
+									<span class="odd_span">
+										<span class="even_span">전체 목록보기</span>
 									</span>
 								</a>
-								<a href=""  title="포토 보기" class="ico_radio" radio-value="1">
-									<span class="icon"></span>
-									<span class="text">
-										<span>포토</span>(136)
-									</span>
-								</a>
-								<a href="" title="스토리 보기" class="ico_radio" radio-value="2">
-									<span class="icon"></span>
-									<span class="text">
-										<span>스토리</span>(2)
-									</span>
-								</a>
-							</div> -->
-							<ul class="list_sort fl_right">
-								<li class="first_child on">
-									<a href="" id="NEW" class="orderClass" title="포토리스트 최신순으로 정렬">
-										최신순
-									</a>
-								</li>
-								<li class="">
-									<a href="" id="LIKE" class="orderClass" title="포토리스트 좋아요순으로 정렬">
-										좋아요순
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div id="pageList">
-							<div class="photo_wrap">
-								<div class="photo_list">
-									<ul>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - 싱글 앨범 &lsquo;지쳤니&rsquo; 발매 D-day 커버 공개] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/558/80050558_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;지쳤니&rsquo; 발매 D-5] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/233/80050233_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;지쳤니&rsquo; 발매 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/011/80050011_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱- 싱글 앨범 &lsquo;좋아해&rsquo; 발매 예고] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/40/625/80040625_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱- 단독 콘서트 &lsquo;어울리게 칠해줘&rsquo; D-1] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/39/487/80039487_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱-단독 콘서트 &lsquo;어울리게 칠해줘&rsquo; 듀엣 이벤트 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/39/453/80039453_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라어쿠스틱 - 바닐라맨 생일] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/39/243/80039243_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[ D-DAY, 바닐라 어쿠스틱 단독 콘서트 &lsquo;어울리게 칠해줘 &rsquo; 티켓 오픈] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/813/80038813_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - 두시탈출 컬투쇼 출연] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/695/80038695_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="바닐라 어쿠스틱-&lsquo;어울리게 칠해줘&rsquo; 발매기념 인터뷰 스토리상세">
-														<span class="thumb_frame"></span>
-														<span class="thumb_frame02"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/partrct/images/story/2018/04/18/103507/524043723830254/M/103507_700.jpg/melon/resize/154/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱 - 정규 발매기념 콘서트 &#39;어울리게 칠해줘&#39; 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/680/80038680_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱 - &lsquo;어울리게 칠해줘&rsquo; 라디오 스케줄] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/649/80038649_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[바닐라 어쿠스틱- &lsquo;어울리게 칠해줘&rsquo; 트랙리스트] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/427/80038427_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &#39;어울리게 칠해줘&rsquo; 온라인 예약 판매] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/425/80038425_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱- &lsquo;어울리게 칠해줘&rsquo; 발매 공지] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/38/385/80038385_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="바닐라 어쿠스틱-&lsquo;너를 담아 봄(Feat.스무살) 스토리상세">
-														<span class="thumb_frame"></span>
-														<span class="thumb_frame02"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/partrct/images/story/2018/03/19/103296/521428973736060/M/103296_700.jpg/melon/resize/154/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;너를 담아 봄(Feat. ?)&rsquo; 발매 예고] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/954/80037954_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱-이미지 모델 2기 공개 모집] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/657/80037657_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱-바닐라맨 2017 한국음악 저작권협회 편곡 부문 대상 수상] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/563/80037563_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb ex_height" title="[ 바닐라 어쿠스틱 - 설 명절 인사] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/37/353/80037353_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[ 바닐라 어쿠스틱 - 2017 마무리 &amp; 2018 신년 인사] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/36/391/80036391_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[ 바닐라 어쿠스틱 - 2017 마무리 &amp; 2018 신년 인사] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/36/390/80036390_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - 성아 생일:-)] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/35/478/80035478_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-										<li class="photo02_li">
-											<div class="wrap_photo02">
-												<div class="thumb_wrap">
-													<a href="" class="thumb" title="[바닐라 어쿠스틱 - &lsquo;끝이 아닌 것 같아서&rsquo; 스트리밍 이벤트] 포토상세">
-														<span class="thumb_frame"></span>
-														<img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/35/230/80035230_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트">
-														<span class="wrap_vertical"></span>
-													</a>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
 							</div>
 						</div>
-					</div>
+						<div class="photo_list02">
+							<ul>
+								<li class="on">
+									<div class="thumb_wrap">
+										<a href="" class="thumb" title="[D-1] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #5 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/258/80050258_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="">
+									<div class="thumb_wrap">
+										<a href="" class="thumb ex_height" title="[D-4] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #4 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/998/80049998_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="">
+									<div class="thumb_wrap">
+										<a href="" class="thumb" title="[D-7] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #3 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/560/80049560_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="" data-photo-row="4" data-photoid="80049457" data-orderby="NEW">
+									<div class="thumb_wrap">
+										<a href="" class="thumb ex_height" title="[D-10] 10주년 투어콘서트 <이지금 dlwlrma> Teaser Poster #2 이미지">
+											<img onerror="WEBPOCIMG.defaultPhotoImg(this);" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/457/80049457_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="">
+									<div class="thumb_wrap">
+										<a href="" class="thumb ex_height" title="[D-14] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #1 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/48/987/80048987_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="">
+									<div class="thumb_wrap">
+										<a href="" class="thumb" title="IU Digital Single [삐삐] Album Cover 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/48/555/80048555_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="">
+									<div class="thumb_wrap">
+										<a href="" class="thumb" title="IU Digital Single [삐삐] Concept Photo 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/48/402/80048402_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+								<li class="" data-photo-row="8" data-photoid="80048403" data-orderby="NEW">
+									<div class="thumb_wrap">
+										<a href="" class="thumb" title="IU Digital Single [삐삐] Concept Photo 이미지">
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/48/403/80048403_1000.jpg/melon/resize/104/quality/80/optimize"
+												alt="아티스트">
+											<span class="wrap_vertical"></span>
+											<span class="bor"></span>
+										</a>
+									</div>
+								</li>
+							</ul>
+							<button type="button" title="이전" class="btn_photo_pre disabled" data-action="pre" disabled="disabled">
+								<span class="odd_span">
+									<span class="even_span">이전</span>
+								</span>
+							</button>
+							<button type="button" title="다음" class="btn_photo_next" data-action="next">
+								<span class="odd_span">
+									<span class="even_span">다음</span>
+								</span>
+							</button>
+						</div>
+						<div class="photo_detail_view">
+							<div class="photo_detail_list_ajax d_photo_list">
+								<div class="photo_detail_list">
+									<div class="photo_detail_image">
+										<a href="" title="이미지 확대보기" class="thumb">
+											<span class="wrap_vertical"></span>
+											<img id="photoViewLayer"
+												src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/258/80050258_org.jpg/melon/quality/80/optimize"
+												alt="">
+											<span class="icon_viewlk_image"></span>
+										</a>
+									</div>
+									<div class="photo_detail_info">
+										<div class="photo_info_view">
+											<!-- class="on" 추가시 활성 -->
+											<a class="btn_like_big d_btn" title="[D-1] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #5 좋아요"
+												href="">
+												<span class="icon">좋아요</span>
+												<strong class="none">총건수</strong>2,586
+											</a>
+											<em class="bar">|</em>
+											<span class="cnt_view">조회 
+												<strong>45,003</strong>
+											</span>
+										</div>
+										<div class="photo_info_text">
+											[D-1] 10주년 투어콘서트 &lt;이 지금 dlwlrma&gt;<br>Teaser Poster #5 : 더 이상한 나라의 이지금
+										</div>
+										<div class="photo_info_btm">
+											<p class="date">
+												<span>등록일</span> 
+												<strong>2018.10.27</strong>
+											</p>
+											<p class="review">
+												<span>리뷰</span> 
+												<strong>
+													<a href="">29</a>개
+												</strong>
+											</p>
+										</div>
+									</div>
+								</div> <!-- 사진 내용 -->
+								<!-- 댓글 -->
+								<div class="section_cmt" id="cmt">
+									<div class="d_cmtpgn" id="d_cmtpgn">
+										<div id="d_cmtpgn_cmt_write_box" class="re_notice d_cmtpgn_cmt_edit_box" data-cmt-id="-1">
+											<div class="thumb_wrap">
+												<a class="thumb d_cmtpgn_user" id="commentWriteBoxImage">
+													<img src="//cdnimg.melon.co.kr/resource/image/cmt/web/common/noArtist02_300.jpg/melon/resize/120"
+														width="54" height="54" alt="">
+													<span class="thumb_frame"></span>
+												</a>
+											</div>
+											<div class="re_textarea_wrap">
+												<div title="리뷰 입력 창 (1000자 이내 입력 가능)" class="textarea" style="min-height: 60px; overflow: hidden;">
+													<div class="ancm d_cmtpgn_cmt_guide" style="min-height: 54px;">
+														<p>* 게시물의 저작권 등 분쟁, 개인정보 노출로 인한 책임은 작성자 또는 게시자에게 있음을 유의해 주세요.</p>
+													</div>
+													<div class="scroll d_cmtpgn_cmt_edit_area" style="display: none; max-height: 144px;"></div>	
+													<span class="num_board d_cmtpgn_char_count">
+														<span class="none">현재 입력 글자수</span>
+														<strong class="d_cmtpgn_char_cnt">0</strong> / 
+														<span class="none">총 입력 가능 글자수</span>1000자
+													</span>
+												</div>
+												<div class="wrap_btn">	
+													<div class="wrap_btn_atach_cmt d_cmtpgn_atach_btn_wrapper">
+														<div class="wrap_btn_attach first_child">
+															<button type="button" title="음악 첨부" class="btn_atach_cmt sound">
+																<span class="odd_span">음원</span>
+															</button>
+														<div style="position:absolute; left:0; bottom:-8px; *bottom:-5px; display:none;"
+															class="mt8 d_dropdown d_notpos d_cmtpgn_atach_music_layer">
+															<div class="l_popup_cmt" style="width:456px;">
+																<div class="cntt">
+																	<h1>음악 첨부</h1>
+																	<div class="wrap_search d_cmtpgn_atach_srch_box">
+																		<input type="text" class="d_cmtpgn_atach_music_srch_hidden"
+																			style="display: none;">
+																		<input type="text" title="검색 입력 창 (검색어를 입력해 주세요)"
+																			placeholder="검색어를 입력해 주세요" class="text31 d_cmtpgn_atach_music_srch_input"
+																			style="width:344px;">	
+																		<button type="button" title="검색" class="btn_b31 d_cmtpgn_atach_music_srch_btn">
+																			<span class="odd_span">
+																				<span class="even_span">검색</span>
+																			</span>
+																		</button>
+																	</div>
+																	<div class="search_loading d_cmtpgn_loading" style="display: none;">
+																		<img src="//cdnimg.melon.co.kr/resource/image/cmt/web/common/img_loading.gif"
+																			width="40" height="40" alt="">
+																		<p>잠시 기다려 주세요.</p>
+																	</div>
+																	<p class="search_wrong d_cmtpgn_noresult" style="display: none;">검색 된 내용이 없습니다.</p>
+																	<p class="search_wrong d_cmtpgn_fallback" style="display: none;">
+																		접속이 지연되고 있습니다.<br>
+																		잠시 후 다시 이용해 주시기 바랍니다.<br>이용에 불편을 드려 대단히 죄송합니다.
+																	</p>	
+																</div>
+																<button type="button" title="음악 첨부 닫기" class="btn_close d_cmtpgn_layer_close_btn">
+																	<span class="odd_span">닫기</span>
+																</button>
+																<span class="shadow"></span>
+																<span class="bullet" style="left:9px;"></span>
+															</div>
+														</div>
+													</div>
+													<div class="wrap_btn_attach">
+														<button type="button" title="사진 첨부" class="btn_atach_cmt photo">
+															<span class="odd_span">사진</span>
+														</button>
+														<div style="position:absolute; left:-29px; bottom:-8px; *bottom:-5px; display:none;"
+															class="mt8 d_dropdown d_notpos d_cmtpgn_atach_image_layer">
+															<div class="l_popup_cmt" style="width:456px;">
+																<form name="imageUploadForm" method="post" enctype="multipart/form-data"
+																	encoding="multipart/form-data"
+																	action="https://cmtimgup.melon.com/hs_upload_jsonp_html.php?callback=parent._imageAtachUploadHandler"
+																	target="d_cmtpgn_atach_image_frame">
+																	<div class="cntt">	
+																		<h1>사진 첨부</h1>
+																		<div class="wrap_search">
+																			<input type="file" title="첨부 이미지 찾아보기" placeholder="파일을 선택해 주세요"
+																				class="text31 d_cmtpgn_atach_image_input" style="width:408px;padding:0">
+																		</div>	
+																		<div class="wrap_btn_c">
+																			<button type="button" title="사진 첨부 등록 완료"
+																				class="btn_emphs_small d_cmtpgn_atach_image_btn">
+																				<span class="odd_span">
+																					<span class="even_span">등록</span>
+																				</span>
+																			</button>
+																			<button type="button" title="사진 첨부 취소" class="btn_emphs02_small d_close">
+																				<span class="odd_span">
+																					<span class="even_span">취소</span>
+																				</span>
+																			</button>
+																		</div>
+																	</div>
+																	<button type="button" title="사진 첨부 닫기" class="btn_close d_cmtpgn_layer_close_btn">
+																		<span class="odd_span">닫기</span>
+																	</button>
+																	<span class="shadow"></span>
+																	<span class="bullet" style="left:38px;"></span>
+																</form>
+															</div>
+														</div>
+													</div>
+												<div class="wrap_btn_attach">
+													<button type="button" title="영상 첨부" class="btn_atach_cmt video">
+														<span class="odd_span">영상</span>
+													</button>
+													<div style="position:absolute; left:-59px; bottom:-8px; *bottom:-5px; display:none;"
+														class="mt8 d_dropdown d_notpos d_cmtpgn_atach_video_layer">
+														<div class="l_popup_cmt" style="width:456px;">
+															<div class="cntt">
+																<h1>영상 첨부</h1>
+																<div class="wrap_search d_cmtpgn_atach_srch_box">
+																	<input type="text" class="d_cmtpgn_atach_video_srch_hidden" style="display: none;">
+																	<input type="text" title="검색 입력 창 (검색어를 입력해 주세요)"
+																		placeholder="검색어를 입력해 주세요" class="text31 d_cmtpgn_atach_video_srch_input"
+																		style="width:344px;">
+																	<button type="button" title="검색" class="btn_b31 d_cmtpgn_atach_video_srch_btn">
+																		<span class="odd_span">
+																			<span class="even_span">검색</span>
+																		</span>
+																	</button>
+																</div>
+																<div class="search_loading d_cmtpgn_loading" style="display: none;">
+																	<img src="//cdnimg.melon.co.kr/resource/image/cmt/web/common/img_loading.gif"
+																		width="40" height="40" alt="">
+																	<p>잠시 기다려 주세요.</p>
+																</div>
+																<p class="search_wrong d_cmtpgn_noresult" style="display: none;">검색 된 내용이 없습니다.</p>
+																<p class="search_wrong d_cmtpgn_fallback" style="display: none;">
+																	접속이 지연되고 있습니다.<br>
+																	잠시 후 다시 이용해 주시기 바랍니다.<br>
+																	이용에 불편을 드려 대단히 죄송합니다.
+																</p>
+															</div>
+															<button type="button" title="영상 첨부 닫기" class="btn_close d_cmtpgn_layer_close_btn">
+																<span class="odd_span">닫기</span>
+															</button>
+															<span class="shadow"></span>
+															<span class="bullet" style="left:68px;"></span>
+														</div>
+													</div>
+												</div>
+												<div class="wrap_btn_attach">
+													<button type="button" title="링크 첨부" class="btn_atach_cmt link">
+														<span class="odd_span">링크</span>
+													</button>
+													<div style="position:absolute; left:-89px; bottom:-8px; *bottom:-5px; display:none;"
+														class="mt8 d_dropdown d_notpos d_cmtpgn_atach_link_layer">
+														<div class="l_popup_cmt" style="width:456px;">
+															<div class="cntt">
+																<h1>링크 첨부</h1>
+																<div class="wrap_search type02">
+																	<div class="select_wrap d_cmtpgn_atach_link_option_wrapper" style="display: none;">
+																		<select title="링크 종류 선택" class="d_selectbox"
+																			style="width: 60px; display: none;">
+																			<option value="link_video">영상링크</option>
+																		</select>
+																		<div class="select_type01">
+																			<span class="select_box" tabindex="0" title="링크 종류 선택">
+																				<span class="sel_r" style="width: 60px;">영상링크</span>
+																			</span>
+																			<div class="select_open" style="position: absolute; display: none;"
+																				tabindex="0">
+																				<ul>
+																					<li class="on">
+																						<a href="#" data-value="link_video" data-text="영상링크">영상링크</a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																	<input type="text" title="링크 첨부 입력 창 (첨부 URL을 입력해 주세요)"
+																		class="text31 d_cmtpgn_atach_link_input" style="width:408px;">
+																</div>
+																<p class="bul_info02 d_atach_video_link_guide">
+																	영상링크 첨부는 유튜브 영상 링크만 가능합니다.
+																</p>
+																<div class="wrap_btn_c">
+																	<button type="button" title="링크 첨부 등록 완료"
+																		class="btn_emphs_small d_cmtpgn_atach_link_btn">
+																		<span class="odd_span">
+																			<span class="even_span">등록</span>
+																		</span>
+																	</button>
+																	<button type="button" title="링크 첨부 취소" class="btn_emphs02_small d_close">
+																		<span class="odd_span">
+																			<span class="even_span">취소</span>
+																		</span>
+																	</button>
+																</div>
+															</div>
+															<button type="button" title="링크 첨부 닫기" class="btn_close d_cmtpgn_layer_close_btn">
+																<span class="odd_span">닫기</span>
+															</button>
+															<span class="shadow"></span>
+															<span class="bullet" style="left:97px;"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<div class="wrap_btn02">
+										<button type="button" title="글 등록" class="btn_reg d_cmtpgn_cmt_reg_btn">
+											<span class="odd_span">
+												<span class="even_span">등록</span>
+											</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="clfix mb8" id="d_cmtpgn_cmt_count_wrapper" style="">
+								<div class="fl_left">
+									<strong class="fc_strong">총 
+										<span class="fc_point d_cmtpgn_srch_cnt">29</span>개
+									</strong>
+								</div>
+								<ul class="list_sort fl_right d_cmtpgn_sort_option_wrapper" style="">
+									<li class="on first_child">
+										<strong title="최신순으로 보기">최신순</strong>
+									</li>
+									<li>
+										<a href="" class="sort_option_on_photo_recm" title="추천순으로 보기">추천순</a>
+									</li>
+									<li>
+										<a href="" class="sort_option_on_photo_adcmt" title="답글순으로 보기">답글순</a>
+									</li>
+								</ul>
+							</div>
+							<div class="list_cmt" id="d_cmtpgn_cmt_list_wrapper" style="">
+								<div class="search_loading d_cmtpgn_loading" style="display: none;">
+									<img src="//cdnimg.melon.co.kr/resource/image/cmt/web/common/img_loading.gif" width="40" height="40" alt="">
+									<p>잠시 기다려 주세요.</p>
+								</div>
+								<ul style="">
+									<li data-cmt-id="78360560" data-cmt-owner="off" class="first_child">
+										<div class="wrap_cmt_cntt d_cmtpgn_cmt_wrapper">
+											<div class="wrap_nicnmname d_cmtpgn_cmt_member_wrapper">
+												<span class="none">작성자</span>
+												<span class="thumb_wrap">
+													<a class="thumb d_cmtpgn_user" data-member-key="42575560"
+														style="cursor:pointer;text-decoration:none;">
+														<img src="https://cdnimg.melon.co.kr/svc/user_images/user/426/76/42575560_194.jpg?tm=20180223151702/melon/quality/80/optimize"
+															width="54" height="54" alt="">
+														<span class="thumb_frame"></span>
+													</a>
+												</span>
+												<div class="ellipsis" style="max-width: 102px;">
+													<a class="thumb d_cmtpgn_user" data-member-key="42575560"
+														style="cursor:pointer;text-decoration:none;">
+														<span class="d_cmtpgn_member_nickname" title="수연수빈">수연수빈</span>
+													</a>
+												</div>
+												<span class="icon_reg_mobile d_cmtpgn_icon">
+													<span class="none">모바일에서 작성된 글</span>
+												</span>
+											</div>
+											<div class="wrap_cntt d_cmtpgn_cmt_cont_wrapper">
+												<div class="cntt">
+													<div class="cmt_text d_cmtpgn_cmt_full_contents"
+														style="-ms-word-break: break-all; word-break: break-all; word-break: break-word;
+														word-wrap:break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; display:block">
+														<div class="cmt_cont">
+															<span class="none">내용</span>
+														</div>
+														아 근데 뒤에 댄서들 중에 스탑환이랑 비슷하게 생긴..사람이..있는듯?
+													</div>
+												</div>
+												<div>
+													<span class="none">작성일자</span>
+													<span class="date">
+														<span>2018.11.03</span>
+														<span class="time">15:44</span>
+													</span>
+												</div>
+												<div class="wrap_btn d_cmtpgn_cmt_info_wrapper">
+													<button type="button" title="답글 더보기"
+														class="btn_text arrow_d02 d_cmtpgn_adcmt_expand_btn"
+														data-expand-target="#cmt_adcmt_78360560" data-control="expand" role="button">
+														<span class="odd_span">
+															<span class="text">답글 
+																<strong class="d_cmtpgn_adcmt_cnt">0</strong>개
+															</span>
+															<span class="icon"></span>
+														</span>
+													</button>
+													<div class="wrap_btn_right">
+														<span class="wrap_btn_recm d_cmtpgn_recm_box">
+															<button type="button" title="글 추천" class="btn_recm positive d_cmtpgn_cmt_recm_btn">
+																<span class="odd_span">
+																	<span class="icon">추천</span>
+																	<span class="none">총건수</span>0
+																</span>
+															</button>
+															<button type="button" title="글 비추천" class="btn_recm negative d_cmtpgn_cmt_non_recm_btn">
+																<span class="odd_span">
+																	<span class="icon">비추천</span>
+																	<span class="none">총건수</span>0
+																</span>
+															</button>
+														</span>
+														<span class="wrap_btn_report d_cmtpgn_cmt_btn_wrapper">
+															<button type="button" title="글 신고하기" class="btn_reprt d_cmtpgn_cmt_reprt_btn">
+																<span class="odd_span">신고</span>
+															</button>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<ul class="lower_cmt d_cmtpgn_adcmt_list" id="cmt_adcmt_78360560" style=""></ul>
+									</li>
+									<li data-cmt-id="78265182" data-cmt-owner="off" class="">
+										<div class="wrap_cmt_cntt d_cmtpgn_cmt_wrapper">
+											<div class="wrap_nicnmname d_cmtpgn_cmt_member_wrapper">
+												<span class="none">작성자</span>
+												<span class="thumb_wrap">
+													<a class="thumb d_cmtpgn_user" data-member-key="40732985"
+														style="cursor:pointer;text-decoration:none;">
+														<img src="https://cdnimg.melon.co.kr/svc/user_images/user/408/33/40732985_194.jpg?tm=20181114115703/melon/quality/80/optimize"
+															width="54" height="54" alt="">
+														<span class="thumb_frame"></span>
+													</a>
+												</span>
+												<div class="ellipsis" style="max-width: 102px;">
+													<a class="thumb d_cmtpgn_user" data-member-key="40732985"
+														style="cursor:pointer;text-decoration:none;">
+														<span class="d_cmtpgn_member_nickname" title="Soul.Mate">Soul.Mate</span>
+													</a>
+												</div>
+											</div>
+											<div class="wrap_cntt d_cmtpgn_cmt_cont_wrapper">
+												<div class="cntt">
+													<div class="cmt_text d_cmtpgn_cmt_full_contents"
+														style="-ms-word-break: break-all; word-break: break-all;
+														word-break: break-word; word-wrap:break-word; -webkit-hyphens: auto;
+														-ms-hyphens: auto; hyphens: auto; display:block">
+														<div class="cmt_cont">
+															<span class="none">내용</span>
+														</div>
+														아이유 참 좋다!
+													</div>
+												</div>
+												<div>
+													<span class="none">작성일자</span>
+													<span class="date">
+														<span>2018.10.31</span>
+														<span class="time">21:20</span>
+													</span>
+												</div>
+												<div class="wrap_btn d_cmtpgn_cmt_info_wrapper">
+													<button type="button" title="답글 더보기" class="btn_text arrow_d02 d_cmtpgn_adcmt_expand_btn">
+														<span class="odd_span">
+															<span class="text">답글 
+																<strong class="d_cmtpgn_adcmt_cnt">1</strong>개
+															</span>
+															<span class="icon"></span>
+														</span>
+													</button>
+													<div class="wrap_btn_right">
+														<span class="wrap_btn_recm d_cmtpgn_recm_box">
+															<button type="button" title="글 추천" class="btn_recm positive d_cmtpgn_cmt_recm_btn">
+																<span class="odd_span">
+																	<span class="icon">추천</span>
+																	<span class="none">총건수</span>1
+																</span>
+															</button>
+															<button type="button" title="글 비추천" class="btn_recm negative d_cmtpgn_cmt_non_recm_btn">
+																<span class="odd_span">
+																	<span class="icon">비추천</span>
+																	<span class="none">총건수</span>0
+																</span>
+															</button>
+														</span>
+														<span class="wrap_btn_report d_cmtpgn_cmt_btn_wrapper">
+															<button type="button" title="글 신고하기" class="btn_reprt d_cmtpgn_cmt_reprt_btn">
+																<span class="odd_span">신고</span>
+															</button>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<ul class="lower_cmt d_cmtpgn_adcmt_list" id="cmt_adcmt_78265182" style=""></ul>
+									</li>
+								</ul>
+								<p class="search_wrong d_cmtpgn_nodata" style="display: none;">등록된 글이 없습니다.</p>
+								<div class="wrap_check_sys d_cmtpgn_fallback" style="display: none; margin-top: 40px; margin-bottom: 40px;">
+									<div>
+										<div class="img_check_sys" style="width:320px"></div>
+											<div class="msge">
+												<h3>접속이 지연되고 있습니다.</h3>
+												<p>
+													잠시 후 다시 이용해 주시기 바랍니다.<br>
+													이용에 불편을 드려 대단히 죄송합니다.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="paginate" id="d_cmtpgn_paginate_wrapper" style="">
+									<a class="btn_first disabled d_cmtpgn_navigator_on_photo_first" title="맨 처음">
+										<span>맨 처음</span>
+									</a>
+									<a class="btn_pre disabled d_cmtpgn_navigator_on_photo_before" title="이전">
+										<span>이전</span>
+									</a>
+									<span class="page_num">
+										<strong>
+											<span class="none">현재페이지</span>1
+										</strong>
+										<a href="" class="d_cmtpgn_navigator_on_photo">2</a>
+										<a href="" class="d_cmtpgn_navigator_on_photo">3</a>
+									</span>
+									<a class="btn_next disabled d_cmtpgn_navigator_on_photo_next" title="다음">
+										<span>다음</span>
+									</a>
+									<a href="" class="btn_last d_cmtpgn_navigator_on_photo_end" title="맨 끝">
+										<span>맨 끝</span>
+									</a>
+								</div>
+								<div class="wrap_search" id="d_cmtpgn_srch_wrapper" style="">
+									<div class="select_wrap d_cmtpgn_srch_option_wrapper">
+										<select title="검색 방법 선택" class="d_selectbox" style="width: 55px; display: none;">
+											<option value="2" selected="selected">내용</option>
+											<option value="1">작성자</option>
+										</select>
+										<div class="select_type02">
+											<span class="select_box" tabindex="0" title="검색 방법 선택">
+												<span class="sel_r" style="width: 55px;">내용</span>
+											</span>
+											<div class="select_open" style="position: absolute; display: none;" tabindex="0">
+												<ul>
+													<li class="on">
+														<a href="#" data-value="2" data-text="내용">내용</a>
+													</li>
+													<li>
+														<a href="#" data-value="1" data-text="작성자">작성자</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<input type="text" title="검색 입력 창 (검색어를 입력해 주세요)" placeholder="검색어를 입력해 주세요"
+										class="input_text d_cmtpgn_srch_input" style="width:184px;">
+									<button type="button" title="검색" class="btn_base02 d_cmtpgn_cmt_srch_btn">
+										<span class="odd_span">
+											<span class="even_span">검색</span>
+										</span>
+									</button>
+								</div>
+								<textarea id="d_cmtpgn_dummy_textarea" cols="30" rows="20"
+									style="display:block; width:652px; height:0px; margin:0; padding:0; border:0;"></textarea>
+								<form id="d_cmtpgn_dummy_form" name="d_cmtpgn_dummy_form"></form>
+							</div>
+						</div>
+						<button type="button" title="이전" class="btn_detail_pre disabled" disabled="disabled">
+							<span class="odd_span">선택이전</span>
+						</button>
+						<button type="button" title="다음" class="btn_detail_next">
+							<span class="odd_span">선택다음</span>
+						</button>
+					</div> <!-- 댓글 -->
+					</div><!-- 포토 내용 -->
 				</div>
 				<!-- 포토 -->
 				
@@ -4329,8 +4655,8 @@
 							<ul class="list_atist13 d_artist_list">
 								<%-- <%
 									for(int i = 0; i < group.size(); i++){
-							    		ArtistChanelInfoBean acibean_group_member = (ArtistChanelInfoBean) group.get(i);
-							    %> --%>
+							  		ArtistChanelInfoBean acibean_group_member = (ArtistChanelInfoBean) group.get(i);
+							  %> --%>
 									</c:if>
 								<li>
 									<div class="wrap_atist13">
@@ -4370,12 +4696,12 @@
 									</div>
 								</li>
 								<%-- <%
-							    	}
-							  	%> --%>
-							  	</c:if>
+							  	}
+							 	%> --%>
+							 	</c:if>
 						<%-- <%
 							}
-						%>  --%>
+						%> --%>
 						</c:if>
 						</c:forEach>
 							</ul>

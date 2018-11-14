@@ -11,8 +11,27 @@ function goMain() {
 	opener.location.href = "./main.mi";
 	window.close();
 }
-
 </script>
+
+<style type="text/css">
+.goMain {
+	margin-top: -15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+.goMain:HOVER {
+	background-color: #EDAE06;
+	cursor: pointer;
+}
+</style>
+
 </head>
 <body>
 <%
@@ -33,7 +52,7 @@ function goMain() {
 		%>
 			<h3>아이디 : <%=id %></h3>
 			<h3>비밀번호 : <%=pw %></h3>
-			<br><br><input type="button" value="초기 화면으로" onclick="goMain()">
+			<br><input type="button" class="goMain" value="초기 화면으로" onclick="goMain()">
 		<%
 		
 	%>

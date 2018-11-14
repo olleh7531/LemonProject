@@ -17,6 +17,25 @@ function findPw() {
 	window.close();	
 }
 </script>
+
+<style type="text/css">
+.findMember {
+	margin-top: -15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+.findMember:HOVER {
+	background-color: #EDAE06;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
 <%
@@ -37,12 +56,12 @@ function findPw() {
 		if(id.equals("없음")) {
 			out.println("아이디가 없습니다. ");
 			%>
-				<br><br><input type="button" value="회원가입" onclick="joinMember()">
+				<br><br><input type="button" class="findMember" value="회원가입" onclick="joinMember()">
 			<%
 		} else {
 			out.println("아이디 : " + id);
 			%>
-				<br><br><input type="button" value="비밀번호 찾기" onclick="findPw()">
+				<br><br><input type="button" class="findMember" value="비밀번호 찾기" onclick="findPw()">
 			<%
 		}
 	%>

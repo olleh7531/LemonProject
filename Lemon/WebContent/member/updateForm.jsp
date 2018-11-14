@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumbarungothic.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/starpost/common.css">
+	<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 	
 	<!-- Member CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/member/common.css">

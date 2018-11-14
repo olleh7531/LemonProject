@@ -37,7 +37,6 @@ function goodMusic(num) {
 			go_num : num
 		},
 		success : function(data) {
-
 			if (data == 0) {
 				alert("좋아요 반영되었습니다.");
 				location.reload();
@@ -50,31 +49,33 @@ function goodMusic(num) {
 			alert(error);
 		}
 	})
-
 }
 
 function CheckMusicDownload() {
-	// alert("dwdw");
 	var input_check = document.getElementsByName("input_check");
 	var arrNumber;
+	var saveList = [];
+
 	for (var i = 0; i < input_check.length; i++) {
 		if (input_check[i].checked == true) {
-			// alert(input_check[i].value);
-			$.ajax({
-				type : "POST",
-				url : "./file_down.ct",
-				data : {
-					mu_num : input_check[i].value
-				},
-				success : function(data) {
-					alert(data);
-					location.href = "./chart/file_down.jsp?file_name=" + data
-							+ "";
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			})
+			saveList.push(input_check[i].value);
 		}
 	}
+	
+	$.ajax({
+		type : "POST",
+		url : "./file_down.ct", // file_down.java 페이지 이동
+		data : {
+			"mu_num" : saveList
+		},
+		success : function(file_name) {
+			/*var MusicAddress = "./chart/file_downs.jsp?file_name="+file_name;
+			var encoded = encodeURI(MusicAddress);
+			alert(encoded);
+			location.href = encoded;*/
+		},
+		error : function(xhr, status, error) {
+			alert(error);
+		}
+	})
 }

@@ -27,6 +27,7 @@
 	var webSocket = new WebSocket('ws://localhost:8088/Lemon/LemonChatting');
 	var inputMessage = document.getElementById('inputMessage');
 	
+
 	webSocket.onerror = function(event) {
 		onError(event)
 	};

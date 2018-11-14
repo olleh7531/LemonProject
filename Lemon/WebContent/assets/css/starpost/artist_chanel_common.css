@@ -19,11 +19,11 @@
 /* #conts_section.my_fold, #conts_section.fold_off {
 	padding: 0 228px 0 20px;
 } */
-/* 
-------------------------------------
-                본문                               
-------------------------------------
-#conts {
+
+/*------------------------------------*/
+/*                본문                                 */
+/*------------------------------------*/
+/* #conts {
 	position: relative;
 	z-index: 10;
 	display: inline-block;
@@ -206,6 +206,11 @@ h2.f_tit {
 	*font-size: 0px;
 	*line-height: 0;
 	vertical-align: top;
+}
+
+a.btn_play_song:hover span.icon_play {
+	background-position: -18px 0;
+	text-decoration: none;
 }
 
 .btn_play_song span.songname12 {
@@ -523,7 +528,7 @@ h2.f_tit {
 	font-weight: bold;
 	min-width: 10px;
 	margin-left: -1px;
-	color: #80ba00;
+	color: #EDAE06;
 	vertical-align: middle;
 	text-decoration: none;
 	z-index: 2;
@@ -559,3 +564,240 @@ h2.f_tit {
 	background-position: -110px 0;
 	margin-left: -2px;
 }
+
+/*---------------------------------------------*/
+/*　　　　　　　　　　　　　　　댓글　　　　　　　　　　　　　　　*/
+/*---------------------------------------------*/
+/* 댓글 영역 */
+#d_cmtpgn div, #d_cmtpgn span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* 댓글 적는 영역 */
+#d_cmtpgn .re_notice {
+    display: block;
+    position: relative;
+    margin-bottom: 24px;
+    padding: 15px 101px 8px 28px;
+    background-color: #f5f5f5;
+    border: 1px solid #d1d1d1;
+    z-index: 40;
+    zoom: 1;
+}
+
+/* 프로필 사진 */
+#d_cmtpgn .re_notice .thumb_wrap {
+    position: relative;
+    float: left;
+    margin-top: 13px;
+}
+
+#d_cmtpgn a {
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+#d_cmtpgn .re_notice .thumb_wrap .thumb {
+    display: block;
+    width: 54px;
+    height: 54px;
+    cursor: pointer;
+}
+
+#d_cmtpgn img {
+    border: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+#d_cmtpgn a img {
+    border: 0;
+}
+
+#d_cmtpgn .re_notice .thumb_wrap .thumb .thumb_frame {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 54px;
+    height: 54px;
+    background-image: url("../../../assets/img/artistChanel/artist_chanel_bg_frame_54.png");
+    background-repeat: no-repeat;
+}
+
+/* 적는 영역 */
+#d_cmtpgn .re_notice .re_textarea_wrap {
+    float: right;
+    width: 804px;
+}
+
+#d_cmtpgn .textarea {
+    position: relative;
+    padding-bottom: 19px;
+    border: 1px solid #d1d1d1;
+    background-color: #fff;
+    color: #666;
+    font-family: "Dotum","돋음","Apple Gothic",sans-serif;
+}
+
+#d_cmtpgn .textarea .ancm {
+    padding: 6px 32px 0;
+    color: #b2b2b2;
+}
+
+/* 게시물의 저작권 등 분쟁, 개인정보 노출로 인한 책임은
+	작성자 또는 게시자에게 있음을 유의해 주세요. */
+#d_cmtpgn .textarea .ancm p {
+    padding-left: 11px;
+    text-indent: -11px;
+}
+
+#d_cmtpgn .re_notice .textarea .scroll {
+    overflow: hidden;
+    position: relative;
+    overflow-y: auto;
+    padding: 6px 7px 4px;
+}
+
+/* 글자 수 */
+#d_cmtpgn .num_board {
+    font-size: 12px;
+    color: #999;
+}
+
+#d_cmtpgn .textarea .num_board {
+    width: 100%;
+    display: block;
+    text-align: right;
+}
+
+#d_cmtpgn .textarea .num_board {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: auto;
+}
+
+#d_cmtpgn .none {
+    position: absolute;
+    top: -5000em;
+    left: 0;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    font-size: 12px;
+    text-indent: -9999px;
+}
+
+#d_cmtpgn .num_board strong {
+    color: #666;
+}
+
+/* 댓글  모든 버튼 영역 */
+#d_cmtpgn button, #d_cmtpgn .btn {
+    border: 1px solid red;
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: 0;
+    text-decoration: none !important;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#d_cmtpgn button span.odd_span, #d_cmtpgn .btn span.odd_span, #d_cmtpgn button span.even_span, #d_cmtpgn .btn span.even_span {
+    display: block;
+    position: relative;
+}
+
+/* 내용 적는 곳 밑에 아이콘 영역 */
+#d_cmtpgn .re_notice .wrap_btn {
+    margin-top: 8px;
+}
+
+#d_cmtpgn .wrap_btn_atach_cmt {
+    display: inline-block;
+    clear: both;
+    line-height: 28px;
+    vertical-align: middle;
+}
+
+#d_cmtpgn .re_notice .wrap_btn .wrap_btn_atach_cmt {
+    float: left;
+    clear: none;
+}
+
+#d_cmtpgn .wrap_btn_atach_cmt .wrap_btn_attach {
+    position: relative;
+    float: left;
+    margin-left: -1px;
+    font-size: 0;
+    line-height: 0;
+}
+
+#d_cmtpgn .btn_atach_cmt {
+    position: relative;
+}
+
+#d_cmtpgn .btn_atach_cmt .odd_span {
+    width: 31px;
+    height: 28px;
+    background-image: url("../../../assets/img/artistChanel/artist_chanel_bg_btn_atach.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    overflow: hidden;
+    line-height: 28px;
+    text-indent: -999px;
+}
+
+/* 음악 첨부 */
+#d_cmtpgn .re_notice .wrap_btn .wrap_btn_atach_cmt .wrap_btn_attach.first_child {
+    margin: 0;
+}
+
+#d_cmtpgn .btn_atach_cmt.sound .odd_span {
+    background-position: left top;
+}
+
+/* 음악 첨부 팝업 */
+
+/* 음악 첨부 팝업 닫기 */
+
+/* 사진 첨부 */
+#d_cmtpgn .btn_atach_cmt.photo .odd_span {
+    background-position: -40px top;
+}
+
+/* 사진 첨부 팝업 */
+
+/* 사진 첨부 팝업 닫기 */
+
+/* 영상 첨부 */
+#d_cmtpgn .btn_atach_cmt.video .odd_span {
+    background-position: -80px top;
+}
+
+/* 영상 첨부 팝업 */
+
+/* 영상 첨부 팝업 닫기 */
+
+/* 링크 첨부 */
+#d_cmtpgn .btn_atach_cmt.link .odd_span {
+    background-position: -120px top;
+}
+
+/* 링크 첨부 팝업 */
+
+/* 링크 첨부 팝업 닫기 */
+
+
