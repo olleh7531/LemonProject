@@ -53,7 +53,8 @@
 
 	function onMessage(event) {
 		textarea.value = "";
-		textarea.value +=  event.data ;
+		textarea.value += "상대 : " + event.data + "\n";
+		
 	}
 	function onOpen(event) {
 		textarea.value += "연결 성공\n";

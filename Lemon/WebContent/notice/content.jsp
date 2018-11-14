@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -46,16 +47,11 @@
 
 </style>
 
-<title>Insert title here</title>
+<title>레몬 lemon</title>
 </head>
 <body>
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<%
-		// 저장 
-		// request.setAttribute("bb", bb); 
-		// request.setAttribute("pageNum", pageNum);
-		// 전달 값 저장하기
-		
 		NoticeBean nb = (NoticeBean) request.getAttribute("nb");
 		String pageNum = (String) request.getAttribute("pageNum");
 	%>

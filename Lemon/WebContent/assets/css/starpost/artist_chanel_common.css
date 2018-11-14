@@ -208,6 +208,11 @@ h2.f_tit {
 	vertical-align: top;
 }
 
+a.btn_play_song:hover span.icon_play {
+	background-position: -18px 0;
+	text-decoration: none;
+}
+
 .btn_play_song span.songname12 {
 	color: #1a1a1a;
 	font-size: 12px;
@@ -523,7 +528,7 @@ h2.f_tit {
 	font-weight: bold;
 	min-width: 10px;
 	margin-left: -1px;
-	color: #80ba00;
+	color: #EDAE06;
 	vertical-align: middle;
 	text-decoration: none;
 	z-index: 2;

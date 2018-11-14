@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/font/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/main/main.css">
 <link rel="stylesheet" type="text/css" href="./assets/css/common/footer.css">
+<link rel="shortcut icon" href="./assets/img/common/favicon.png">
 
 <script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
@@ -35,7 +36,7 @@ function find_info() {
 	y = (sy-wy)/2;
 	
 	if (document.find.name.value == "") {
-		alert("id를 입력하세요");
+		alert("이름을 입력하세요");
 		document.find.name.focus();
 		return;
 	}
@@ -61,6 +62,25 @@ function fun_cancel() {
 	}
 }
 </script>
+
+<style type="text/css">
+.findMember {
+	margin-top: 30px;
+    border: 1px solid #d3d3d3;
+    border-radius: 40px;
+    background-color: #F9B700;
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: #fff;
+    outline: 0;
+}
+
+.findMember:HOVER {
+	background-color: #EDAE06;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
 	
@@ -78,8 +98,8 @@ function fun_cancel() {
 						전화번호 : 
 						<input type="text" id="phone" name="phone" placeholder="ex) 01050079309" size="50"> <br>
 					</div>
-					<input type="button" value="찾기" onclick="find_info()">
-					<input type="button" value="취소" onclick="fun_cancel()">
+					<input type="button" class="findMember" value="찾기" onclick="find_info()">
+					<input type="button" class="findMember" value="취소" onclick="fun_cancel()">
 				</form>
 			<div id="pageNavi"></div>
 			<div class="wrap_search"></div>

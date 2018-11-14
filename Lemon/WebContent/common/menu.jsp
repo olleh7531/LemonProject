@@ -15,13 +15,13 @@
 				<!-- 로고 -->
 
 				<!-- 통합검색 영역 -->
-				<form id="searchFrm" method="get" action="./UniSearch.sc" >
+				<form id="searchFrm" method="get" action="./Search.ct" >
 				<fieldset>
 					<legend>통합검색영역</legend>
 					<input type="text" title="검색 입력 편집창" name="search"
 						id="top_search" style="width: 249px">
 					<input type="hidden" name="keywordLink" id="keywordLink" value="">
-					<input type="hidden" name="sort" id="sort" value="정확도순">
+					<input type="hidden" name="sort" id="sort" value="최신순">
 					<button type="submit" class="btn_icon search_m" title="검색" >
 						<span class="odd_span">검색</span>
 					</button>						

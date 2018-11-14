@@ -190,6 +190,9 @@ public class ArtistChanelInfoDAO {
 			if(rs.next()) {
 				acibean = new ArtistChanelInfoBean();
 				
+				// 아티스트 정보 글 번호
+				acibean.setSi_num(rs.getInt("si_num"));
+				
 				// 솔로/그룹 유형
 				acibean.setActivity_type(rs.getString("activity_type"));
 				
@@ -277,16 +280,16 @@ public class ArtistChanelInfoDAO {
 				rs = pstmt.executeQuery();
 
 				while(rs.next()) {
-					ArtistChanelInfoBean bean = new ArtistChanelInfoBean();
+					ArtistChanelInfoBean acibean = new ArtistChanelInfoBean();
 					
-					bean.setSi_num(rs.getInt("si_num"));
-					bean.setSi_picture(rs.getString("si_picture"));
-					bean.setSinger_name(rs.getString("singer_name"));
-					bean.setSi_gender(rs.getString("si_gender"));
-					bean.setActivity_type(rs.getString("activity_type"));
-					bean.setSi_genre(rs.getString("si_genre"));
+					acibean.setSi_num(rs.getInt("si_num"));
+					acibean.setSi_picture(rs.getString("si_picture"));
+					acibean.setSinger_name(rs.getString("singer_name"));
+					acibean.setSi_gender(rs.getString("si_gender"));
+					acibean.setActivity_type(rs.getString("activity_type"));
+					acibean.setSi_genre(rs.getString("si_genre"));
 					
-					group.add(bean);
+					group.add(acibean);
 				}
 			}
 			System.out.println("그룹 -> 그룹 멤버 불러오기 ");

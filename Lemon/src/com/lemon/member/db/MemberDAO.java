@@ -664,4 +664,28 @@ public class MemberDAO {
 		return mb;
 	}
 	
+	public int getLevel(String email_id) {
+		int level = -1;
+		
+		try {
+			con = getCon();
+			sql = "select level from member where email_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email_id);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				level = rs.getInt("level");
+			} else {
+				level = 0;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return level;
+	}
+	
+	
 }

@@ -7,8 +7,8 @@ public class SearchBean {
 	/* album */
 	private int al_num;
 	private String al_name;
-//	private Date al_release;
-//	private String al_art_img;
+	private Date al_release;
+	private String al_art_img;
 //	private String al_agency;
 //	private String al_content;
 	
@@ -154,6 +154,18 @@ public class SearchBean {
 	}
 	public void setGroup_singer_num(String group_singer_num) {
 		this.group_singer_num = group_singer_num;
+	}
+	public Date getAl_release() {
+		return al_release;
+	}
+	public void setAl_release(Date al_release) {
+		this.al_release = al_release;
+	}
+	public String getAl_art_img() {
+		return al_art_img;
+	}
+	public void setAl_art_img(String al_art_img) {
+		this.al_art_img = al_art_img;
 	}
 	
 	

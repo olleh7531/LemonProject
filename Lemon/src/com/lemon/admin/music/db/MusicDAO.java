@@ -112,14 +112,15 @@ public class MusicDAO {
 					albumnum=rs.getInt("al_num");					
 				}
 			}else {
-				sql ="insert into album (al_num,al_name,al_release,al_art_img,al_agency,al_content)"
-						+ "values(null,?,?,?,?,?)";
+				sql ="insert into album (al_num,al_name,al_release,al_art_img,al_agency,al_content,al_singer_name)"
+						+ "values(null,?,?,?,?,?,?)";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, ab.getAl_name());
 						pstmt.setDate(2, ab.getAl_release());
 						pstmt.setString(3, ab.getAl_art_img());
 						pstmt.setString(4, ab.getAl_agency());
 						pstmt.setString(5, ab.getAl_content());
+						pstmt.setString(6, ab.getAl_singer_name());
 						
 						pstmt.executeUpdate();
 						

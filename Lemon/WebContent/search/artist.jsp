@@ -29,15 +29,18 @@
 	
 
 </head>
-
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	<c:set var="search" value="${requestScope.search}"/>
-	
+
 	<%	
 		String search = request.getParameter("search");
 		String sort = request.getParameter("sort");
+		
+		SearchBean at_pro = (SearchBean) request.getAttribute("artist_profile");
+		List artist_list = (List) request.getAttribute("artist_list");
+
+		System.out.println(search);
 	%>
 	
 	<!-- 본문 -->
@@ -52,46 +55,61 @@
 					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
 				</ul>
 			</div>
+
 		
 			<div id="contsSc">
-			<ul>
-				<li><button type="button" value="artist" onclick="changeCategory();" class="btnCategory">아티스트명에서</button></li>
-				<li><button type="button" value="musicname" onclick="changeCategory();" class="btnCategory">곡명에서</button></li>
-				<li><button type="button" value="albumname" onclick="changeCategory();" class="btnCategory">앨범명에서</button></li>
-			</ul>
-			
-			
-			
-		
 				
-			
+				<!-- 아티스트 -->
+				<!-- 아티스트 프로필 -->
+				<%
+					if(at_pro != null){
+				%>
+				<div>
+					<div>
+					<p><%=at_pro.getSi_picture() %></p>
+					<p><%=at_pro.getSinger_name() %></p>
+					<p><%=at_pro.getSi_gender() %></p>
+					<p><%=at_pro.getActivity_type() %></p>
+					<p><%=at_pro.getSi_genre() %></p>
+					<p><%=at_pro.getSi_birth() %></p>
+					</div>
+				</div>
+				<hr>
+				<%
+					}
+				%>				
+				
+				<!-- 아티스트 리스트 -->
+				<%
+					if(!(artist_list.size() == 0)){
+				%>
+				<div>
+					<%
+						for (int i=0; i<artist_list.size(); i++) {
+							SearchBean arSb = (SearchBean) artist_list.get(i);	
+					%>
+					<div>
+					<p><%=arSb.getSi_picture() %></p>
+					<p><%=arSb.getSinger_name() %></p>
+					<p><%=arSb.getSi_gender() %></p>
+					<p><%=arSb.getActivity_type() %></p>
+					<p><%=arSb.getSi_genre() %></p>
+					</div>
+					<hr>
+					<%
+						}
+					%>
+				</div>
+				<%
+					}
+				%> 
+				<!-- 아티스트 -->
+				
 			</div>
 		</div>
 	</div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-	
-	<script>
-	function changeCategory(){
-		$.ajax({
-			type : "POST", // method="POST" 방식으로 출력 
-			url : "./SongSearch.sc", // id 체크하는 jsp 파일 주소 불러오기 
-			dataType: 'json',
-			data : {
-				search : $('#top_search').val(),			
-	 			stateCategory : $('.btnCategory').val(),
-			},
-			success : function(data) { // data를 가져오는 것이 성공하였을 때
-							
-			},
-			error : function(xhr, status, error) { // 에러났을 때
-				alert("error : " + error);
-			}
-		});
-	}
-
-
-	</script>
 	
 	</body>
 </html>

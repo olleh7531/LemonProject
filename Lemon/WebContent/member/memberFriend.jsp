@@ -288,7 +288,6 @@
 	function Chtext(f_name) {
 		var m_nickname = document.getElementById("m_nickname").value;
 		var f_nickname = f_name/* document.getElementById("nick").value; */
-		
 		window.open("./LemonChAction.ch?sender_id="+m_nickname+"&receiver_id="+f_nickname+"","a","width=400,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 	}
 </script>

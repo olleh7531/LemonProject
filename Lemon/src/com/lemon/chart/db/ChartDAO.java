@@ -275,7 +275,6 @@ public class ChartDAO {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
 			CloseDB();
@@ -341,6 +340,33 @@ public class ChartDAO {
 		return fileName;
 	}
 
+	public String[] DownLoads(int mu_num[]) {
+		for(int i=0 ; i<mu_num.length ; i++) {
+		}
+
+		String fileName[] = new String[mu_num.length];
+		
+		try {
+			con = getCon();
+			for(int i=0 ; i<mu_num.length ; i++) {
+				sql = "select musicfile from music where mu_num = ?;";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, mu_num[i]);
+				
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					fileName[i] = rs.getString("musicfile");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return fileName;
+	}
+	
 	public void insertPlaylog(String email_id, String file, String ip) {
 		try {
 			con = getCon();
@@ -389,4 +415,112 @@ public class ChartDAO {
 		}
 		return check;
 	}
+	
+	
+	public List<SearchChartBean> getSearchChart(String search){
+		SearchChartBean scb = null;
+		List<SearchChartBean> arr = new ArrayList<SearchChartBean>();
+		try {
+			con = getCon();
+
+			// sql 쿼리
+			sql = "select * from search_chart where sc_date BETWEEN DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 10 DAY) "
+					+ "AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) AND sc_keyword = ? order by sc_date asc";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, search);
+			// pstmt 객체 실행
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				scb = new SearchChartBean();
+				scb.setSc_num(rs.getInt("sc_num"));
+				scb.setSc_keyword(rs.getString("sc_keyword"));
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeInMillis(rs.getTimestamp("sc_date").getTime());
+				cal.add(Calendar.SECOND, -32400);
+				
+				Timestamp later = new Timestamp(cal.getTime().getTime());
+				scb.setSc_date(later);
+				scb.setSc_gender1(rs.getInt("sc_gender1"));
+				scb.setSc_gender2(rs.getInt("sc_gender2"));
+				scb.setSc_generation1(rs.getInt("sc_generation1"));
+				scb.setSc_generation2(rs.getInt("sc_generation2"));
+				scb.setSc_generation3(rs.getInt("sc_generation3"));
+				scb.setSc_generation4(rs.getInt("sc_generation4"));
+				scb.setSc_generation5(rs.getInt("sc_generation5"));
+				scb.setSc_count(rs.getInt("sc_count"));
+				arr.add(scb);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return arr;
+	}
+	
+	
+	
+/*	public List popularSearches(String search){
+		try {
+			con = getCon();
+
+			// sql 쿼리
+			sql = "select * from search_chart where sc_date BETWEEN DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 10 DAY) "
+					+ "AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) AND sc_keyword = ? order by sc_date asc";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, search);
+			// pstmt 객체 실행
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				scb = new SearchChartBean();
+				scb.setSc_num(rs.getInt("sc_num"));
+				scb.setSc_keyword(rs.getString("sc_keyword"));
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeInMillis(rs.getTimestamp("sc_date").getTime());
+				cal.add(Calendar.SECOND, -32400);
+				
+				Timestamp later = new Timestamp(cal.getTime().getTime());
+				System.out.println("날짜 테스트 : "+later);
+				scb.setSc_date(later);
+				scb.setSc_gender1(rs.getInt("sc_gender1"));
+				scb.setSc_gender2(rs.getInt("sc_gender2"));
+				scb.setSc_generation1(rs.getInt("sc_generation1"));
+				scb.setSc_generation2(rs.getInt("sc_generation2"));
+				scb.setSc_generation3(rs.getInt("sc_generation3"));
+				scb.setSc_generation4(rs.getInt("sc_generation4"));
+				scb.setSc_generation5(rs.getInt("sc_generation5"));
+				scb.setSc_count(rs.getInt("sc_count"));
+				arr.add(scb);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return arr;
+	}
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
