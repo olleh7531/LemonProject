@@ -464,7 +464,7 @@ public class ChartDAO {
 	
 	
 	
-	public List popularSearches(String search){
+/*	public List popularSearches(String search){
 		try {
 			con = getCon();
 
@@ -507,7 +507,7 @@ public class ChartDAO {
 
 		return arr;
 	}
-	
+	*/
 	
 	
 	

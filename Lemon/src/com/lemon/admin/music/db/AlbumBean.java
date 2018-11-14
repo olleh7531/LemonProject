@@ -8,6 +8,7 @@ public class AlbumBean {
 	private String al_art_img;
 	private String al_agency;
 	private String al_content;
+	private String al_singer_name;
 	public String getAl_name() {
 		return al_name;
 	}
@@ -37,6 +38,12 @@ public class AlbumBean {
 	}
 	public void setAl_content(String al_content) {
 		this.al_content = al_content;
+	}
+	public String getAl_singer_name() {
+		return al_singer_name;
+	}
+	public void setAl_singer_name(String al_singer_name) {
+		this.al_singer_name = al_singer_name;
 	}
 	
 }

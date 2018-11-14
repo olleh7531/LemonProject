@@ -114,7 +114,8 @@ public class MusicUploadAction implements Action {
 			Date d = new Date(format.parse(year).getTime());
 			ab.setAl_release(d);
 			ab.setAl_art_img(album + ".jpg");
-
+			ab.setAl_singer_name(artist);
+			
 			mb.setMusic_name(title);
 			mb.setLyrics(Lyrics);
 			mb.setMusicfile(musicfile);
