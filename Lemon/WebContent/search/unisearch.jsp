@@ -24,7 +24,7 @@
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
 	
-		<style>
+	<style>
  	#bg_contsSc{ 
  		border: 1px solid red; 
  		text-align: center;
