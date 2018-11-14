@@ -509,11 +509,11 @@ public class ChartDAO {
 			con = getCon();
 			
 			// sql 쿼리
-			sql = "select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a, (select sc_keyword,sc_rank from search_chart where sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY) order by b.sc_rank";
+			sql = "select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a,(select sc_keyword,sc_rank from search_chart where sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 10 MINUTE) AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 0 MINUTE) AND sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 20 MINUTE) AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 10 MINUTE) AND a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) group by a.sc_keyword order by b.sc_rank";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 			// pstmt 객체 실행
-			// b가 1일전 a가 2일전 자료
+			// b가 10분전 a가 20분전 자료
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				scb = new SearchChartBean();

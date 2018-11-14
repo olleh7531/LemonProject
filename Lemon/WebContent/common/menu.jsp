@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="wrap">
 	<div id="header" class="main">
 		<div id="header_wrap" class="pr_none">
@@ -90,7 +92,7 @@
 					<input type="hidden" name="q"> <input type="hidden" name="section">
 				</form> -->
 				<!-- //통합검색 영역 -->
-
+<c:set var="arr" value="${requestScope.realtime}"/>
 				<!-- 실시간 검색어 -->
 				<div class="realtime_soar_keyword">
 					<a href="/search/trend/index.htm" class="title"
@@ -98,6 +100,7 @@
 					<div class="keyword_overlay">
 						<ol style="overflow: hidden; height: 20px;">
 							<!-- 롤링 영역 -->
+							
 							<li style="top: 0px; display: none;">
 								<strong class="order bg1 on">1 
 									<span class="gubun">.</span>
@@ -109,6 +112,7 @@
 									<span class="icon">순위 동일</span>
 								</span>
 							</li>
+							
 							<li style="top: 0px; display: none;">
 								<strong class="order bg2">2 
 									<span class="gubun">.</span>
@@ -124,7 +128,7 @@
 									<span class="gubun">.</span>
 									<span class="none"> 위</span>
 								</strong>
-								<a href="" class="ellipsis" title="최진혁 - 페이지 이동">최진혁</a>
+								<a href="" class="ellipsis" title="최진혁 - 페이지 이동"></a>
 								<span class="wrap_rank down">
 									<span class="icon">순위하락수</span>
 									<span class="num">1</span>
