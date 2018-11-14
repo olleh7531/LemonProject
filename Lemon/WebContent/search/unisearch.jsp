@@ -44,7 +44,6 @@
 		List song_an_list = (List) request.getAttribute("song_an_list");
 		List album_list = (List) request.getAttribute("album_list");
 		List lyric_list = (List) request.getAttribute("lyric_list");
-
 		
 		System.out.println(search);
 	%>

@@ -38,6 +38,8 @@
 	<%	
 		String search = request.getParameter("search");
 		String sort = request.getParameter("sort");
+		
+		List song_list = (List) request.getAttribute("song_list");
 	%>
 	
 	<!-- 본문 -->
@@ -52,18 +54,59 @@
 					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
 				</ul>
 			</div>
-		
-			<div id="contsSc">
+			
 			<ul>
-				<li><button type="button" value="artist" onclick="changeCategory();" class="btnCategory">아티스트명에서</button></li>
-				<li><button type="button" value="musicname" onclick="changeCategory();" class="btnCategory">곡명에서</button></li>
-				<li><button type="button" value="albumname" onclick="changeCategory();" class="btnCategory">앨범명에서</button></li>
+				<li><a id="btnArtist">아티스트명에서</a></li>
+				<li><a id="btnMusicName">곡명에서</a></li>
+				<li><a id="btnAlbumName">앨범명에서</a></li>
+				<input type="hidden" id="categoryType">
 			</ul>
 			
-			
-			
+			<ul>
+				<li><a id="li_date">최신순</a></li>
+				<li><a id="li_ganada">가나다순</a></li>
+			</ul>
 		
-				
+			<div id="contsSc">
+	
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th><div><input type="checkbox"></div></th>
+							<th><div>NO</div></th>
+							<th><div>곡명</div></th>
+							<th><div>아티스트</div></th>
+							<th><div>앨범</div></th>
+							<th><div>좋아요</div></th>
+							<th><div>재생</div></th>
+							<th><div>다운</div></th>
+							<th><div>뮤비</div></th>
+						</tr>
+					</thead>
+					<tbody id="songList">
+					<%
+						for (int i = 0; i < song_list.size(); i++) {
+							SearchBean sb = (SearchBean) song_list.get(i);	
+					%>
+						<tr>
+							<td><div><input type="checkbox"></div></td>
+							<td><div><%=(i+1) %></div></td>
+							<td><div><%=sb.getMusic_name() %></div></td>
+							<td><div><%=sb.getSinger_name() %></div></td>
+							<td><div><%=sb.getAl_name() %></div></td>
+							<td><div><span class="odd_span"><i class="fa fa-heart-o"></i>
+									 <span class="cnt">0</span></span></div></td>
+							<td><div><i class="fa fa-play"></i><span class="none">듣기</span></div></td>
+							<td><div><i class="fa  fa-download "></i><span class="none">다운로드</span></div></td>
+							<td><div><i class="fa  fa-youtube-play"></i><span class="none">뮤직비디오</span></div></td>
+						</tr>
+					<%
+						}
+					%>
+					</tbody>
+				</table>
+			</div>
 			
 			</div>
 		</div>
@@ -72,24 +115,67 @@
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
 	<script>
-	function changeCategory(){
+	$(document).ready(function(){
+		$('#top_search').val("${search}");
+		$('#btnArtist').click(function(){
+			$('#categoryType').val("artist");
+			changeCategory();
+		});
+		$('#btnMusicName').click(function(){
+			$('#categoryType').val("musicname");
+			changeCategory();
+		});
+		$('#btnAlbumName').click(function(){
+			$('#categoryType').val("albumname");
+			changeCategory();
+		});
+		$('#li_date').click(function(){
+			$('#sort').val("최신순");
+			ajax();
+		});
+		$('#li_ganada').click(function(){
+			$('#sort').val("가나다순");
+			ajax();
+		});
+		
+	}); 
+	
+	
+	function changeCategory(){		
 		$.ajax({
 			type : "POST", // method="POST" 방식으로 출력 
-			url : "./SongSearch.sc", // id 체크하는 jsp 파일 주소 불러오기 
+			url : "./SongSearch.sc", // id 체크하는 jsp파일 주소 불러오기 
 			dataType: 'json',
 			data : {
 				search : $('#top_search').val(),			
-	 			stateCategory : $('.btnCategory').val(),
+	 			stateCategory : $('#categoryType').val(),
 			},
 			success : function(data) { // data를 가져오는 것이 성공하였을 때
-							
+				$('#songList').empty();
+			
+ 				$(data).each(function(index){ 					
+ 					var text="";
+ 					
+ 					text+='<tr><td><div><input type="checkbox"></div></td>';
+ 					text+='<td><div>1</div></td>';
+ 					text+='<td><div>'+this.music_name+'</div></td>';
+ 					text+='<td><div>'+this.singer_name+'</div></td>';
+ 					text+='<td><div>'+this.al_name+'</div></td>';
+ 					text+='<td><div><span class="odd_span"><i class="fa fa-heart-o"></i>';
+ 					text+='<span class="cnt">0</span></span></div></td>';
+ 					text+='<td><div><i class="fa fa-play"></i><span class="none">듣기</span></div></td>';
+ 					text+='<td><div><i class="fa  fa-download "></i><span class="none">다운로드</span></div></td>';					
+ 					text+='<td><div><i class="fa  fa-youtube-play"></i><span class="none">뮤직비디오</span></div></td></tr>';					
+ 										
+ 					$('#songList').append(text);
+ 				});
 			},
 			error : function(xhr, status, error) { // 에러났을 때
 				alert("error : " + error);
 			}
 		});
 	}
-
+	
 
 	</script>
 	
