@@ -3970,13 +3970,125 @@
 				<!-- 포토 -->
 				<div class="tab_content" id="artist_chanel_tab4">
 					<!-- 포토 리스트 -->
+					<div class="section_photo d_photo_list">
+						<div class="sort_info clfix">
+							<div class="wrap_sort fl_left" id="sort_layer">
+								<a href=""  title="전체 보기" class="ico_radio on" radio-value="0">
+									<span class="icon"></span>
+									<span class="text">
+										<span>전체</span>(138)
+									</span>
+								</a>
+								<a href=""  title="포토 보기" class="ico_radio" radio-value="1">
+									<span class="icon"></span>
+									<span class="text">
+										<span>포토</span>(136)
+									</span>
+								</a>
+								<a href="" title="스토리 보기" class="ico_radio" radio-value="2">
+									<span class="icon"></span>
+									<span class="text">
+										<span>스토리</span>(2)
+									</span>
+								</a>
+							</div>
+							<ul class="list_sort fl_right">
+								<li class="first_child on">
+									<a href="" id="NEW" class="orderClass" title="포토리스트 최신순으로 정렬">
+										최신순
+									</a>
+								</li>
+								<li class="">
+									<a href="" id="LIKE" class="orderClass" title="포토리스트 좋아요순으로 정렬">
+										좋아요순
+									</a>
+								</li>
+							</ul>
+						</div>
+						
+						<!-- 포토 리스트 내용 -->
+						<c:if test="${photo_list != null}">
+						<div id="pageList">
+							<div class="photo_wrap">
+								<c:forEach items="${photo_list}" var="list_photo" varStatus="status_photo">
+								<c:if test="${status_photo.first}">
+								<div class="photo_list">
+									<ul>
+									</c:if>
+										<li class="photo02_li">
+											<div class="wrap_photo02">
+												<div class="thumb_wrap">
+													<!-- <a href="" class="thumb" title="[바닐라 어쿠스틱 - 싱글 앨범 &lsquo;지쳤니&rsquo; 발매 D-day 커버 공개] 포토상세"> -->
+													<a href="" class="thumb" title="[${info.singer_name} '-' ${list_photo.ar_subject}] 포토상세">
+														<span class="thumb_frame"></span>
+														<!-- <img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/558/80050558_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트"> -->
+														<img width="148" src="./upload/starpost/singerPhoto/${list_photo.ar_photo}" alt="아티스트">
+														<span class="wrap_vertical"></span>
+													</a>
+												</div>
+											</div>
+											<c:if test="${status_photo.last}">
+										</li>
+										</c:if>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+						</div>
+						</c:if> <!-- 포토 리스트 내용 -->
+						
+						<!-- 포토 페이지 -->
+						<c:if test="${count != null}">
+						<div id="pageObjNavgation" style="">
+							<div class="paginate">
+								<a href="" class="btn_first disabled">
+									<span>맨처음</span>
+								</a>
+								<c:if test="${start_page > page_block}">
+								<a href="./ArtistChanel.ac??artist=${info.si_num}&pageNum=${start_page - page_block}" class="btn_pre disabled">
+									<span>이전</span>
+								</a>
+								</c:if>
+								
+								<!-- begin = 시작숫자 -->
+								<!-- end = 마지막숫자 -->
+								<!-- step = 증가할 수 -->		
+								<c:forEach var="i" begin="${start_page}" end="${end_page}" step="1">
+								<span class="page_num">
+									<c:choose>
+									<c:when test="${i == currentPage}">
+									<strong>
+										<span class="none">현재페이지</span>${i}
+									</strong>
+									</c:when>
+									<c:otherwise>
+									<a href="./ArtistChanel.ac?artist=${info.si_num}">${i}</a>
+									</c:otherwise>
+									</c:choose>
+								</span>
+								</c:forEach>
+								
+								<c:if test="${end_page > page_count}">
+								<a href="" class="btn_next disabled">
+									<span>다음</span>
+								</a>
+								</c:if>
+								
+								<a href="" class="btn_last">
+									<span>맨끝</span>
+								</a>
+							</div>
+						</div> <!-- 페이지 -->
+						</c:if>
+					</div>
+					<!-- 포토 리스트 -->
 					
-					<!-- 포토 내용 -->
-					<div class="section_photo">
+					<!-- 포토 내용 보기 -->
+					<%-- <div class="section_photo">
 						<div class="sort_info clfix">
 							<div class="wrap_sort fl_left">
 								<p class="photo_count">
-									<strong>1</strong> / 
+									<strong>1</strong>/
 									<em id="totCnt">239</em>
 								</p>
 							</div>
@@ -3988,11 +4100,12 @@
 								</a>
 							</div>
 						</div>
+						<!-- 포토 슬라이더 -->
 						<div class="photo_list02">
 							<ul>
 								<li class="on">
 									<div class="thumb_wrap">
-										<a href="" class="thumb" title="[D-1] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #5 이미지">
+										<a href="" class="thumb" title="">
 											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/258/80050258_1000.jpg/melon/resize/104/quality/80/optimize"
 												alt="아티스트">
 											<span class="wrap_vertical"></span>
@@ -4020,10 +4133,10 @@
 										</a>
 									</div>
 								</li>
-								<li class="" data-photo-row="4" data-photoid="80049457" data-orderby="NEW">
+								<li class="">
 									<div class="thumb_wrap">
 										<a href="" class="thumb ex_height" title="[D-10] 10주년 투어콘서트 <이지금 dlwlrma> Teaser Poster #2 이미지">
-											<img onerror="WEBPOCIMG.defaultPhotoImg(this);" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/457/80049457_1000.jpg/melon/resize/104/quality/80/optimize"
+											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/457/80049457_1000.jpg/melon/resize/104/quality/80/optimize"
 												alt="아티스트">
 											<span class="wrap_vertical"></span>
 											<span class="bor"></span>
@@ -4060,7 +4173,7 @@
 										</a>
 									</div>
 								</li>
-								<li class="" data-photo-row="8" data-photoid="80048403" data-orderby="NEW">
+								<li class="">
 									<div class="thumb_wrap">
 										<a href="" class="thumb" title="IU Digital Single [삐삐] Concept Photo 이미지">
 											<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/48/403/80048403_1000.jpg/melon/resize/104/quality/80/optimize"
@@ -4071,17 +4184,19 @@
 									</div>
 								</li>
 							</ul>
-							<button type="button" title="이전" class="btn_photo_pre disabled" data-action="pre" disabled="disabled">
+							<button type="button" title="이전" class="btn_photo_pre disabled" disabled="disabled">
 								<span class="odd_span">
 									<span class="even_span">이전</span>
 								</span>
 							</button>
-							<button type="button" title="다음" class="btn_photo_next" data-action="next">
+							<button type="button" title="다음" class="btn_photo_next"">
 								<span class="odd_span">
 									<span class="even_span">다음</span>
 								</span>
 							</button>
-						</div>
+						</div> <!-- 포토 슬라이더 -->
+						
+						<!-- 포토 슬라이더 선택 내용 보여주기 -->
 						<div class="photo_detail_view">
 							<div class="photo_detail_list_ajax d_photo_list">
 								<div class="photo_detail_list">
@@ -4637,7 +4752,7 @@
 							</div>
 						</div>
 					</div> 댓글 -->
-					</div><!-- 포토 내용 -->
+					</div><!-- 포토 내용 보기 --> --%><!-- 포토 슬라이더 선택 내용 보여주기 -->
 				</div>
 				<!-- 포토 -->
 				
