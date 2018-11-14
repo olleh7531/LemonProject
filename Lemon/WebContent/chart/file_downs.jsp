@@ -7,7 +7,6 @@
 <%@ page import="java.net.*"%>
 <%@ page import="java.net.*"%>
 
-
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -88,16 +87,19 @@
 					os.write(b, 0, leng);
 					System.out.println("5");
 				}
-				System.out.println("done!");
+				System.out.println("6");
+				
 			} else {
+				System.out.println("여기오면 안됀다");
 				response.setContentType("text/html;charset=UTF-8");
 				out.println("<script language='javascript'>alert('파일을 찾을 수 없습니다');history.back();</script>");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+			System.out.println("7");
 			in.close();
 			os.close();
+			System.out.println("done!");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 %>
