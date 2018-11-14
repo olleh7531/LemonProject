@@ -61,12 +61,7 @@
 				<li><a id="btnAlbumName">앨범명에서</a></li>
 				<input type="hidden" id="categoryType">
 			</ul>
-			
-			<ul>
-				<li><a id="li_date">최신순</a></li>
-				<li><a id="li_ganada">가나다순</a></li>
-			</ul>
-		
+				
 			<div id="contsSc">
 	
 			<div>
