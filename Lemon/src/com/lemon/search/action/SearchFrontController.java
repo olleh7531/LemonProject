@@ -31,8 +31,29 @@ public class SearchFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if (command.equals("/search.sc")) {
-			action = new SearchResultAction();
+		}else if (command.equals("/ArtistSearch.sc")) {
+			action = new ArtistSearchAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/SongSearch.sc")) {
+			action = new SongSearchAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/AlbumSearch.sc")) {
+			action = new AlbumSearchAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/LyricSearch.sc")) {
+			action = new LyricSearchAction();
     		try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
