@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.lemon.chart.db.SearchChartBean;
 import com.lemon.search.db.SearchBean;
 import com.lemon.search.db.SearchDAO;
 
@@ -39,6 +40,8 @@ public class AlbumSearchAction implements Action {
 		int endRow = currentPage * pageSize;
 		
 		List<SearchBean> album_list = sdao.AlbumSearch(search, startRow, pageSize, sort);
+		List<SearchChartBean> searchchart = sdao.getSearchChart(search);
+		List<SearchChartBean> popular = sdao.popularSearches();
 
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 
@@ -86,6 +89,8 @@ public class AlbumSearchAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);	
+		request.setAttribute("searchchart", searchchart);
+		request.setAttribute("popular", popular);
 		
 		request.setAttribute("search", search);
 		request.setAttribute("sort", sort);

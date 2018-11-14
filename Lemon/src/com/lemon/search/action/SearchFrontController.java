@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 public class SearchFrontController extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -59,7 +60,12 @@ public class SearchFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if (command.equals("/TT.sc")) {
+			forward = new ActionForward();
+			forward.setPath("./search/test.jsp");
+			forward.setRedirect(false);
 		}
+		
 
 			if (forward != null) {
 				if (forward.isRedirect()) {// true

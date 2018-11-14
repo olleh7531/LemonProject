@@ -100,11 +100,11 @@
     zoom: 1;
 }
 #side_conts {
-    position: absolute;
+/*     position: absolute; */
     right: 21px;
     top: 16px;
     bottom: -0;
-    width: 230px;
+/*     width: 230px; */
     background-color: #fff;
     border: 1px solid #d9d9d9;
     border-bottom: 0;
@@ -179,7 +179,7 @@ ol, ul, li {
 </style>
 </head>
 <body>
-<c:set var="arr" value="${requestScope.list}"/>
+<c:set var="arr" value="${requestScope.searchchart}"/>
 <c:set var="popular" value="${requestScope.popular}"/>
 
 <c:set var = "gender1" value = "0" />
@@ -205,9 +205,9 @@ ol, ul, li {
 <fmt:formatNumber var="female2" value="${female1}" pattern="."/>
 <h1>서치차트</h1>
 <div id="side_conts">
+<div id="lineChart"></div>
 <div id="chart"></div>
 <div id="PieChart"></div>
-<div id="lineChart"></div>
 <div id="side_cont">
 <div class="wrap_title_side line">
 							<h2 class="f_tit_side ">인기키워드</h2>
@@ -281,7 +281,7 @@ bb.generate({
 				        },
 				      },
 	},"size": {
-        "width": 230,
+        "width": 182,
         "height" : 120
     },"axis": {
         "x": {
@@ -324,7 +324,7 @@ var chart = bb.generate({
 	            "show": false
 	        },
 	    },"size": {
-	        "width": 200,
+	        "width": 182,
 	        "height" : 150
 	    },  color: {
 	          tiles: function() {
@@ -387,7 +387,7 @@ var chart = bb.generate({
             "show": false
         }
 	  }, "size": {
-		        "width": 230,
+		        "width": 182,
 		        "height" : 150
 		    },  grid: {
 		        x: {

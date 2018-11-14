@@ -504,6 +504,42 @@ public class ChartDAO {
 	
 	
 	
+	public List<SearchChartBean> realTimeRising(){
+		SearchChartBean scb = null;
+		List<SearchChartBean> arr = new ArrayList<SearchChartBean>();
+		int chk1=0;
+		int chk2=0;
+		try {
+			con = getCon();
+			
+			// sql 쿼리
+			sql = "select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a, (select sc_keyword,sc_rank from search_chart where sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY) order by b.sc_rank";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			// pstmt 객체 실행
+			// b가 1일전 a가 2일전 자료
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				scb = new SearchChartBean();
+				scb.setSc_keyword(rs.getString("a.sc_keyword"));
+				
+				chk1=rs.getInt("a.sc_rank");
+				chk2=rs.getInt("b.sc_rank");
+				scb.setSc_rank(chk1-chk2);
+				arr.add(scb);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return arr;
+	}
+	
+	
+	
 	
 	
 	

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lemon.chart.db.SearchChartBean;
 import com.lemon.search.db.SearchBean;
 import com.lemon.search.db.SearchDAO;
 import java.util.List;
@@ -32,7 +33,11 @@ public class UniSearchAction implements Action {
 		List<SearchBean> song_an_list = sdao.SongAlbumNameSearch(search);
 		List<SearchBean> album_list = sdao.AlbumSearch(search);
 		List<SearchBean> lyric_list = sdao.LyricSearch(search);
+		List<SearchChartBean> searchchart = sdao.getSearchChart(search);
+		List<SearchChartBean> popular = sdao.popularSearches();
+//		List<SearchChartBean> realtime = cdao.popularSearches();
 		
+
 		if(test==null && email_id!=null){
 			int checkSL = sdao.checkSearchLog(email_id, search);
 		
@@ -55,6 +60,8 @@ public class UniSearchAction implements Action {
 		request.setAttribute("song_an_list", song_an_list);
 		request.setAttribute("album_list", album_list);
 		request.setAttribute("lyric_list", lyric_list);
+		request.setAttribute("searchchart", searchchart);
+		request.setAttribute("popular", popular);
 		 
 		request.setAttribute("search", search);
 		request.setAttribute("sort", sort);		

@@ -23,15 +23,47 @@
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
-
-	<!-- Search CSS -->
-	<link rel="stylesheet" type="text/css" href="./assets/css/search/common.css">
 	
+		<style>
+ 	#bg_contsSc{ 
+ 		border: 1px solid red; 
+ 		text-align: center;
+ 		width: 100%; 
+ 	} 
+	
+ 	#wrap_contsSc{ 
+ 	 border: 1px solid blue;    
+ 	 display: inline-block; 
+  	 width: 1008px;  
+ 	} 
+	
+ 	#contsSc { 
+	 	display: inline-block;
+ 		border: 1px solid green; 
+ 		width: 80%; 
+ 		float: left;  		
+ 		
+ 	} 
+	
+ 	#contsCh { 
+	 	display: inline-block;
+ 		border: 1px solid gray; 
+ 		width: 18%;
+ 		float: right;
+ 	}
+ 	
+ 	.clear {
+	 	display:none;
+	 	clear: both;
+ 	}
+	
+	</style>
 
 </head>
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
+
 
 	<%	
 		String search = request.getParameter("search");
@@ -51,6 +83,8 @@
 	<!-- 본문 -->
 	<div id="bg_contsSc">
 		<div id="wrap_contsSc">
+			<!-- 검색 결과 -->
+			<div id="contsSc">	
 			<div>
 				<ul>
 					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
@@ -60,10 +94,8 @@
 					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
 				</ul>
 			</div>
-		
-			<div id="contsSc">
-				
-				<!-- 아티스트 -->
+			
+			<!-- 아티스트 -->
 				<!-- 아티스트 프로필 -->
 				<%
 					if(at_pro != null){
@@ -307,12 +339,26 @@
 				 }
 				%>
 				</div>
-				<!-- 가사 -->				
-								
-				
+				<!-- 가사 -->		
+			
 			</div>
+			<!-- 검색 결과 -->
+			
+			
+			
+			<!-- 차트 -->
+			<div id="contsCh">			
+				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
+			</div>
+			<!-- 차트 -->
+			
+			
+	 		<div class="clear"></div>		
 		</div>
 	</div>
+	
+	
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
