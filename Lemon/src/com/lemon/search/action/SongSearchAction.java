@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.lemon.chart.db.SearchChartBean;
 import com.lemon.search.db.SearchBean;
 import com.lemon.search.db.SearchDAO;
 
@@ -25,6 +26,8 @@ public class SongSearchAction implements Action {
 		
 		SearchDAO sdao = new SearchDAO();
 		List<SearchBean> song_list = new ArrayList();
+		List<SearchChartBean> searchchart = sdao.getSearchChart(search);
+		List<SearchChartBean> popular = sdao.popularSearches();
 		
 		if(stateCategory == null){
 			song_list = sdao.SongArtistSearch(search);
@@ -62,6 +65,8 @@ public class SongSearchAction implements Action {
 		request.setAttribute("song_list", song_list);		
 		request.setAttribute("search", search);
 		request.setAttribute("sort", sort);
+		request.setAttribute("searchchart", searchchart);
+		request.setAttribute("popular", popular);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./search/song.jsp");

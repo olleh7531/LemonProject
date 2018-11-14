@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.lemon.chart.db.SearchChartBean;
 import com.lemon.search.db.SearchBean;
 import com.lemon.search.db.SearchDAO;
 
@@ -23,6 +24,8 @@ public class LyricSearchAction implements Action {
 		String test = request.getParameter("test");
 
 		SearchDAO sdao = new SearchDAO();
+		List<SearchChartBean> searchchart = sdao.getSearchChart(search);
+		List<SearchChartBean> popular = sdao.popularSearches();
 
 		int count = sdao.getLyricResultCount(search);
 		System.out.println("전체 글 개수 : " + count);
@@ -92,6 +95,8 @@ public class LyricSearchAction implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);	
+		request.setAttribute("searchchart", searchchart);
+		request.setAttribute("popular", popular);
 
 		request.setAttribute("search", search);	
 		request.setAttribute("sort", sort);
