@@ -241,15 +241,13 @@
 										</div>
 									</td>
 									<td>
-
 										<div class="wrap t_center">
 											<button type="button" title="다운로드"
-												class="button_icons download "
-												onclick="location.href='./chart/file_down.jsp?file_name=<%=cb.getMusicfile()%>'">
-												<i class="fa  fa-download "></i><span class="none">다운로드</span>
+												class="button_icons download"
+												onclick="MusicDownload('<%=cb.getMusicfile()%>')">
+												<i class="fa  fa-download"></i><span class="none">다운로드</span>
 											</button>
 										</div>
-
 									</td>
 									<td>
 										<div class="wrap t_center">
@@ -562,6 +560,7 @@
 	<script src="./assets/js/chart/twitterFetcher_min.js"></script>
 	<script src="./assets/js/chart/jquery.countdown.min.js"></script>
 	<script src="./assets/js/chart/script.js"></script>
+	
 	<script>
 		$(function() {
 			$('ul.tab li').click(function() {
@@ -573,13 +572,15 @@
 			})
 		});
 	</script>
-	<script type="text/javascript">	
-		
-	</script>
 
 	<script type="text/javascript">
 		function LemonPlayer(mu_num,album_num){
 			window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=320,height=315,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
+		}
+		
+		function MusicDownload(singer) {
+			var afterEncoding = encodeURI(singer);
+			location.href="./chart/file_down.jsp?file_name="+afterEncoding;
 		}
 	</script>
 	<!-- footer -->
