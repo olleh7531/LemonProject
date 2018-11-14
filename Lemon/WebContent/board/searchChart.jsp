@@ -34,9 +34,153 @@
 <script type="text/javascript"
 	src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
+<style type="text/css">
+
+.list_rank_side .rank {
+    display: inline-block;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+
+.wrap_rank {
+    display: inline-block;
+    color: #999;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Arial", "돋움", "Dotum", "Apple Gothic", sans-serif;
+    vertical-align: middle;
+}
+
+.wrap_rank span {
+    vertical-align: middle;
+    font-family: "Arial", "돋움", "Dotum", "Apple Gothic", sans-serif;
+    font-size: 10px;
+}
+
+.icon_down {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: -1px;
+    background: url(//cdnimg.melon.co.kr/resource/image/web/common/bg_sprite_rank.png) no-repeat -70px 0;
+    overflow: hidden;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    vertical-align: middle;
+}
+
+.icon_static {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: -1px;
+    margin-left: 0;
+    background: url(//cdnimg.melon.co.kr/resource/image/web/common/bg_sprite_rank.png) no-repeat -22px 0;
+    overflow: hidden;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    vertical-align: middle;
+}
+
+.icon_up {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: -1px;
+    background: url(//cdnimg.melon.co.kr/resource/image/web/common/bg_sprite_rank.png) no-repeat -80px 0;
+    overflow: hidden;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    vertical-align: middle;
+}
+
+.wrap_cont_side {
+    position: relative;
+    zoom: 1;
+}
+#side_conts {
+    position: absolute;
+    right: 21px;
+    top: 16px;
+    bottom: -0;
+    width: 230px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-bottom: 0;
+}
+#side_conts .side_cont {
+    position: relative;
+    width: 176px;
+    margin: 0 -1px;
+    padding: 22px 15px;
+    border-left: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+}
+
+.list_rank_side .wrap .no {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    background: url(//cdnimg.melon.co.kr/resource/image/web/search/bul_list_newst.png) no-repeat left top;
+    color: #666;
+    font-size: 11px;
+    line-height: 18px;
+    font-family: "Arial","돋움", "Dotum", "Apple Gothic", sans-serif;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.none {
+    position: absolute;
+    top: -5000em;
+    left: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.list_rank_side .wrap .cntt {
+    position: relative;
+    display: inline-block;
+    width: 104px;
+    vertical-align: middle;
+}
+
+.list_rank_side .ellipsis {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.list_rank_side .wrap .cntt a {
+    display: block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+ol, ul, li {
+    list-style: none;
+    font-weight: normal;
+}
+
+.list_rank_side .wrap {
+    display: inline-block;
+    vertical-align: middle;
+}
+</style>
 </head>
 <body>
 <c:set var="arr" value="${requestScope.list}"/>
+<c:set var="popular" value="${requestScope.popular}"/>
 
 <c:set var = "gender1" value = "0" />
 <c:set var = "gender2" value = "0" />
@@ -60,9 +204,68 @@
 <fmt:formatNumber var="male2" value="${male1}" pattern="."/>
 <fmt:formatNumber var="female2" value="${female1}" pattern="."/>
 <h1>서치차트</h1>
+<div id="side_conts">
 <div id="chart"></div>
 <div id="PieChart"></div>
 <div id="lineChart"></div>
+<div id="side_cont">
+<div class="wrap_title_side line">
+							<h2 class="f_tit_side ">인기키워드</h2>
+							<button type="button" title="인기키워드 접기" class="btn_text arrow_u">
+								<span class="none">더보기</span>
+								<span class="icon"></span>
+							</button>
+						</div>
+						<hr>
+						<div class="wrap_cont_side">
+							<div class="list_rank_side">
+								<ul>
+								
+									
+								<c:forEach var="psearch" items="${popular}" varStatus="status">
+									<li>
+										<div class="wrap">
+											<span class="no">${status.index+1}<span class="none">위</span></span>
+											<div class="cntt">
+												<span class="none">곡명</span>
+												<div class="ellipsis">
+													<a href="" title="${psearch.sc_keyword} 통합검색 - 페이지 이동">${psearch.sc_keyword}</a>
+												</div>
+											</div>
+										</div>
+										<div class="rank">
+										<c:if test="${psearch.sc_rank>0}">
+										<span title="${psearch.sc_rank}단계 상승" class="wrap_rank"> <span class="icon_up">단계 상승</span> <span>${psearch.sc_rank}</span> </span>
+										</c:if>
+										<c:if test="${psearch.sc_rank<0}">
+										<span title="${psearch.sc_rank}단계 하락" class="wrap_rank"> <span class="icon_down">단계 하락</span> <span>${psearch.sc_rank}</span> </span>
+										</c:if>
+										<c:if test="${psearch.sc_rank==0}">
+											<span title="순위 동일" class="wrap_rank"> <span class="icon_static">${psearch.sc_rank}</span> </span>
+										</c:if>
+										</div>
+									</li>
+								</c:forEach>	
+									
+									
+									
+								</ul>
+							</div>
+							<div class="wrap_btn_r_side line">
+								<span class="date"><c:forEach items="${arr}" var="list" varStatus="status" begin="9">
+			<c:set var="test" value="${list.sc_date}" />
+				${fn:substring(test,0,10)} 
+				</c:forEach>	</span>
+								<a href="javascript:;" title="인기키워드 전체보기 - 페이지 이동" class="btn btn_text arrow_r" onclick="location.href='/search/trend/index.htm'">
+									<span class="text">전체보기</span>
+									<span class="icon"></span>
+								</a>
+							</div>
+							
+						</div>
+						</div>
+						</div>
+
 <script type="text/javascript">
 bb.generate({
 	"data" : {
@@ -78,7 +281,7 @@ bb.generate({
 				        },
 				      },
 	},"size": {
-        "width": 176,
+        "width": 230,
         "height" : 120
     },"axis": {
         "x": {
@@ -121,7 +324,7 @@ var chart = bb.generate({
 	            "show": false
 	        },
 	    },"size": {
-	        "width": 176,
+	        "width": 200,
 	        "height" : 150
 	    },  color: {
 	          tiles: function() {
@@ -184,7 +387,7 @@ var chart = bb.generate({
             "show": false
         }
 	  }, "size": {
-		        "width": 276,
+		        "width": 230,
 		        "height" : 150
 		    },  grid: {
 		        x: {

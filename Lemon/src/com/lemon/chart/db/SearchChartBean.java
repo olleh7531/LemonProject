@@ -16,6 +16,7 @@ public class SearchChartBean {
 	private int sc_generation4;
 	private int sc_generation5;
 	private int sc_count;
+	private int sc_rank;
 	public int getSc_num() {
 		return sc_num;
 	}
@@ -81,6 +82,12 @@ public class SearchChartBean {
 	}
 	public void setSc_count(int sc_count) {
 		this.sc_count = sc_count;
+	}
+	public int getSc_rank() {
+		return sc_rank;
+	}
+	public void setSc_rank(int sc_rank) {
+		this.sc_rank = sc_rank;
 	}
 	
 	
