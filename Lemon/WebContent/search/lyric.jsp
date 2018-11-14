@@ -54,6 +54,23 @@
 	<!-- 본문 -->
 	<div id="bg_contsSc">
 		<div id="wrap_contsSc">
+			
+			<div id="contsSc">	
+			<p>test1</p>		
+			</div>
+			
+			<div id="contsCh">			
+			<p>test2</p>		
+			</div>
+			
+	 		<div class="clear"></div>		
+		</div>
+	</div>
+	
+	
+	
+	<div id="bg_contsSc">
+		<div id="wrap_contsSc">
 			<div>
 				<ul>
 					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
