@@ -385,9 +385,9 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 				}
 			},   color: {
 			    pattern: [
-			        "#a7e52e",
-			        "#f6894e",
-			        "#58aadf",
+			        "#ff9752",
+			        "#5ccfff",
+			        "#b5f832",
 			      ]
 			    },
 			grid : {
@@ -452,8 +452,6 @@ if((nowhour == 0 || nowhour == 00)&& nowmin < 5){ // 5분전에 db스케줄러 �
 			      },
 			    ], legend: {
 			    show: false
-			  },tooltip: {
-				    grouped: false
 			  },
 			  bindto: "#chart"
 		});

@@ -13,6 +13,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.lemon.chart.db.SearchChartBean;
+
 
 public class SearchDAO {
 	Connection con = null;
@@ -558,5 +560,88 @@ public class SearchDAO {
 		return list;
 	}
 	/* 앨범 */
+	
+	
+	
+	public List<SearchChartBean> getSearchChart(String search){
+		SearchChartBean scb = null;
+		List<SearchChartBean> arr = new ArrayList<SearchChartBean>();
+		try {
+			con = getCon();
+
+			// sql 쿼리
+			sql = "select * from search_chart where sc_date BETWEEN DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 10 DAY) "
+					+ "AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) AND sc_keyword = ? order by sc_date asc";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, search);
+			// pstmt 객체 실행
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				scb = new SearchChartBean();
+//				scb.setSc_num(rs.getInt("sc_num"));
+				scb.setSc_keyword(rs.getString("sc_keyword"));
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeInMillis(rs.getTimestamp("sc_date").getTime());
+				cal.add(Calendar.SECOND, -32400);
+				
+				Timestamp later = new Timestamp(cal.getTime().getTime());
+				scb.setSc_date(later);
+				scb.setSc_gender1(rs.getInt("sc_gender1"));
+				scb.setSc_gender2(rs.getInt("sc_gender2"));
+				scb.setSc_generation1(rs.getInt("sc_generation1"));
+				scb.setSc_generation2(rs.getInt("sc_generation2"));
+				scb.setSc_generation3(rs.getInt("sc_generation3"));
+				scb.setSc_generation4(rs.getInt("sc_generation4"));
+				scb.setSc_generation5(rs.getInt("sc_generation5"));
+				scb.setSc_count(rs.getInt("sc_count"));
+				arr.add(scb);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return arr;
+	}
+	
+	
+	
+	public List<SearchChartBean> popularSearches(){
+		SearchChartBean scb = null;
+		List<SearchChartBean> arr = new ArrayList<SearchChartBean>();
+		int chk1=0;
+		int chk2=0;
+		try {
+			con = getCon();
+
+			// sql 쿼리
+			sql = "select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a, (select sc_keyword,sc_rank from search_chart where sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY) order by b.sc_rank";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			// pstmt 객체 실행
+			// b가 1일전 a가 2일전 자료
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				scb = new SearchChartBean();
+				scb.setSc_keyword(rs.getString("a.sc_keyword"));
+
+				chk1=rs.getInt("a.sc_rank");
+				chk2=rs.getInt("b.sc_rank");
+				scb.setSc_rank(chk1-chk2);
+				arr.add(scb);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return arr;
+	}
 	
 }

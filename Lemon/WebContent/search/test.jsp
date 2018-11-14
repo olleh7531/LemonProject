@@ -76,7 +76,7 @@
 			</div>
 			
 			<div id="contsCh">			
-			<p>test2</p>		
+			<jsp:include page="../board/searchChart.jsp"></jsp:include>		
 			</div>
 			
 	 		<div class="clear"></div>		

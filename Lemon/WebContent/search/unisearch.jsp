@@ -64,6 +64,7 @@
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
+
 	<%	
 		String search = request.getParameter("search");
 		String sort = request.getParameter("sort");
@@ -347,7 +348,7 @@
 			
 			<!-- 차트 -->
 			<div id="contsCh">			
-			<p>test2</p>		
+				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
 			</div>
 			<!-- 차트 -->
 			

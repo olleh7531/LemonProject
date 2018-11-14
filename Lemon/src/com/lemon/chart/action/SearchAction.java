@@ -16,9 +16,11 @@ public class SearchAction implements Action {
 
 		String search = request.getParameter("search");
 		ChartDAO cdao = new ChartDAO();
-		List<SearchChartBean> list = cdao.getSearchChart(search);
+		List<SearchChartBean> searchchart = cdao.getSearchChart(search);
 		List<SearchChartBean> popular = cdao.popularSearches();
-		request.setAttribute("list", list);
+		List<SearchChartBean> realtime = cdao.popularSearches();
+		
+		request.setAttribute("searchchart", searchchart);
 		request.setAttribute("popular", popular);
 		
 		ActionForward forward = new ActionForward();
