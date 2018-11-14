@@ -38,7 +38,6 @@ public class MagazineFrontController extends HttpServlet {
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (command.equals("/magazineList.maga")) {
@@ -47,7 +46,6 @@ public class MagazineFrontController extends HttpServlet {
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else if(command.equals("/magazineth.maga")){
@@ -58,6 +56,44 @@ public class MagazineFrontController extends HttpServlet {
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/magazineContent.maga")){
+			action = new magazineContentAction(); 
+			
+			try{
+				forward = action.execute(request, response);
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/magazineUpdate.maga")){
+			// action
+			// BoardUpdate 객체생성 execute()
+			
+			action = new magazineUpdate();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/magazineUpdateAction.maga")){
+			action = new magazineUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/magazineDelete.maga")){
+			forward = new ActionForward();
+			forward.setPath("./magazine/deleteForm.jsp");
+			forward.setRedirect(false);
+		} else if(command.equals("/magazineDeleteAction.maga")){
+			action = new magazineDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}

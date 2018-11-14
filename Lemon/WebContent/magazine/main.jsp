@@ -65,11 +65,11 @@
 			<div id="pageList">
 				<table class="type04">
 					<colgroup>
-						<col style="width: 30px">
-						<col style="width: 120px">
-						<col style="width: 647px">
-						<col style="width: 100px">
-						<col style="width: 40px">
+						<col style="width: 5%">
+						<col style="width: 22%">
+						<col style="width: 55%">
+						<col style="width: 13%">
+						<col style="width: 5%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -85,9 +85,9 @@
 							for (int i = 0; i < boardList.size(); i++) {
 								BoardBean bb = (BoardBean) boardList.get(i);
 					%>
-					<tr>
+					<tr onclick="location.href='./magazineContent.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum %>'" style="cursor: pointer;">
 						<td><%=bb.getMa_Num()%></td>
-						<td>썸넬</td>
+						<td><img alt="" src="./magazine/image/<%=bb.getMa_file() %>" height="50"> </td>
 						<td><%=bb.getMa_subject()%></td>
 						<td><%=bb.getMa_date()%></td>
 						<td><%=bb.getMa_readcount()%></td>

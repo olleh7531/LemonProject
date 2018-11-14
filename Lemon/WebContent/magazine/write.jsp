@@ -98,7 +98,7 @@
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="pr_none">
 			<h1>글쓰기</h1>
-			<form action="./magazineBoardWriteAction.maga" method="post" id="frm">
+			<form action="./magazineBoardWriteAction.maga" method="post" id="frm"  enctype="multipart/form-data">
 				<div class="cate_sub">
 					<select name="ma_category">
 						<option value="금주의 신보">금주의 신보</option>
@@ -110,11 +110,13 @@
 						placeholder="제목을 입력하세요" size="80"> <br>
 				</div>
 				<textarea name="ma_content" id="smarteditor"></textarea>
+				<br><br>
+				썸네일 첨부 : <input type="file" name="file"><br>
 				<br>
 				<br>
 				<center>
 					<input type="submit" id="savebutton" class="button" value="글쓰기">
-					<input type="button" class="button" value="글목록" onclick="">
+					<input type="button" id="thumbnail" class="button" value="글목록" onclick="location.href='./magazineList.maga'">
 				</center>
 			</form>
 		</div>

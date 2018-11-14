@@ -70,14 +70,15 @@ public class BoardDAO {
 			System.out.println("글번호 : " + num);
 
 			// db글 저장(insert)
-			sql = "insert into magazine(ma_num, ma_category, ma_subject, ma_content, ma_readcount, ma_register_date) "
-					+ "values(?,?,?,?,?,now())";
+			sql = "insert into magazine(ma_num, ma_category, ma_subject, ma_content,"
+					+ " ma_readcount,ma_file ,ma_register_date)  values(?,?,?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, bb.getMa_category());
 			pstmt.setString(3, bb.getMa_subject());
 			pstmt.setString(4, bb.getMa_content());
 			pstmt.setInt(5, 0); // readcount 항상 0으로 초기화
+			pstmt.setString(6, bb.getMa_file());
 
 			pstmt.executeUpdate();
 
@@ -136,6 +137,7 @@ public class BoardDAO {
 				bb.setMa_subject(rs.getString("ma_subject"));
 				bb.setMa_category(rs.getString("ma_category"));
 				bb.setMa_content(rs.getString("ma_content"));
+				bb.setMa_file(rs.getString("ma_file"));
 				bb.setMa_date(rs.getDate("ma_register_date"));
 				bb.setMa_readcount(rs.getInt("ma_readcount"));
 
@@ -155,41 +157,65 @@ public class BoardDAO {
 	// getBoardList(startRow,pageSize)
 
 	// updateReadcount(num)
-	/*
-	 * public void updateReadcount(int num) {
-	 * 
-	 * try { con = getCon(); sql =
-	 * "update magazine set ma_readcount=ma_readcount+1 where ma_num=?"; pstmt =
-	 * con.prepareStatement(sql); pstmt.setInt(1, num);
-	 * 
-	 * pstmt.executeUpdate();
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); } finally { CloseDB(); }
-	 * 
-	 * }
-	 */
+
+	public void updateReadcount(int num) {
+
+		try {
+			con = getCon();
+			sql = "update magazine set ma_readcount=ma_readcount+1 where ma_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+	}
+
 	// updateReadcount(num)
 
 	// getBoard(num)
-	/*
-	 * public BoardBean getBoard(int num) {
-	 * 
-	 * BoardBean bb = null;
-	 * 
-	 * try { // 디비 연결 con = getCon(); // sql 작성 : num에 해당하는 게시판글 정보 전체 가져오기 sql
-	 * = "select * from magazine where num=?"; // pstmt 객체 생성 pstmt =
-	 * con.prepareStatement(sql); // pstmt 객체 실행 & rs 저장 pstmt.setInt(1, num);
-	 * rs = pstmt.executeQuery(); // rs정보 있을때 -> bb 객체 생성후 저장 -> 리턴 if
-	 * (rs.next()) { bb = new BoardBean(); bb.setMa_num(rs.getInt("Ma_num"));
-	 * bb.setMa_subject(rs.getString("Ma_subject"));
-	 * bb.setMa_category(rs.getString("Ma_category"));
-	 * bb.setMa_content(rs.getString("Ma_content"));
-	 * bb.setMa_readcount(rs.getInt("Ma_readcount"));
-	 * bb.setMa_date(rs.getDate("Ma_register_date")); } } catch (Exception e) {
-	 * e.printStackTrace(); } finally { CloseDB(); } return bb; }
-	 */
+
+	public BoardBean getBoard(int num) {
+
+		BoardBean bb = null;
+
+		try {
+			// 디비 연결
+			con = getCon();
+
+			// sql 작성 : num에 해당하는 게시판글 정보 전체 가져오기 sql
+			sql = "select * from magazine where num=?"; // pstmt 객체 생성 pstmt =
+			pstmt = con.prepareStatement(sql); // pstmt 객체 실행 & rs 저장
+			pstmt.setInt(1, num);
+
+			rs = pstmt.executeQuery(); // rs정보 있을때 -> bb 객체 생성후 저장 -> 리턴 if
+			if (rs.next()) {
+				bb = new BoardBean();
+				bb.setMa_num(rs.getInt("Ma_num"));
+				bb.setMa_subject(rs.getString("Ma_subject"));
+				bb.setMa_category(rs.getString("Ma_category"));
+				bb.setMa_content(rs.getString("Ma_content"));
+				bb.setMa_readcount(rs.getInt("Ma_readcount"));
+				bb.setMa_date(rs.getDate("Ma_register_date"));
+				bb.setMa_file(rs.getString("ma_file"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return bb;
+	}
 
 	// getBoard(num)
+
 	// updateBoard(bb)
 	public int updateBoard(BoardBean bb) {
 		int check = -1;
@@ -239,6 +265,7 @@ public class BoardDAO {
 				bb.setMa_content(rs.getString("ma_content"));
 				bb.setMa_date(rs.getDate("ma_register_date"));
 				bb.setMa_readcount(rs.getInt("ma_readcount"));
+				bb.setMa_file(rs.getString("ma_file"));
 
 				// boardList 한칸에 저장
 				boardList.add(bb);
@@ -253,8 +280,34 @@ public class BoardDAO {
 		return boardList;
 	}
 
+	
+	// deleteBoard(num)	
+	public int deleteBoard(int num) {
+		int check = -1;
+
+		try {
+			con = getCon();
+
+			sql = "delete from magazine where ma_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return 0;
+	}
+	
+	// deleteBoard(num)
+	
+
 	// updateBoard(bb)
-	// deleteBoard(num,pass)
+	// deleteBoard(num)
 	// public void deleteBoard(int num) {
 	//
 	// try {
