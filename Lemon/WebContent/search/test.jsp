@@ -32,17 +32,22 @@
  		width: 100%; 
  	} 
 	
- 	#wrap_contsSc{ 
+ 	#wrap_con{ 
  	 border: 1px solid blue;    
  	 display: inline-block; 
   	 width: 1008px;  
  	} 
-	
- 	#contsSc { 
-	 	display: inline-block;
+ 	
+ 	 #wrap_contsSc{ 
+ 	 	display: inline-block;
  		border: 1px solid green; 
  		width: 80%; 
  		float: left;  		
+ 	 
+ 	} 
+	
+ 	#contsSc { 
+ 		border: 1px solid pink; 
  		
  	} 
 	
@@ -53,11 +58,29 @@
  		float: right;
  	}
  	
- 	.clear {
-	 	display:none;
-	 	clear: both;
+ 	#menuSc{
+ 		display: inline-block;
+ 		border-top: 2px solid #848484;
+ 		width: 100%;
  	}
-	
+ 	
+ 	#menuSc div a{
+ 	 	display: inline-block;
+ 	 	float: left;
+ 	 	width: 20%;
+ 	 	background-color: #ebf0ed;
+ 	 	border-bottom: 1px solid #dbdbdb;
+ 	 	padding-top: 10px;
+ 	 	padding-bottom: 10px;
+ 	}
+ 	
+ 	#menuSc div a:hover{
+ 		font-weight: bold;
+ 		color: #333333;
+ 		background-color: #fff;
+ 	 	border-bottom: 1px solid #fff; 		
+ 	}
+ 	
 	</style>
 	
 
@@ -70,16 +93,28 @@
 	
 	<!-- 본문 -->
 	<div id="bg_contsSc">
-		<div id="wrap_contsSc">
-			<div id="contsSc">	
-			<p>test1</p>		
+		<div id="wrap_con">			
+			<div id="wrap_contsSc">	
+				<div id="menuSc">
+					<div><a>통합검색</a></div>
+					<div><a>아티스트</a></div>
+					<div><a>곡</a></div>
+					<div><a>앨범</a></div>
+					<div><a>가사</a></div>
+					<div style="display:none; clear: both;"></div>
+				</div>
+				
+				<div id="contsSc">
+				<p>test1</p>		
+				</div>
 			</div>
+			
 			
 			<div id="contsCh">			
 			<jsp:include page="../board/searchChart.jsp"></jsp:include>		
 			</div>
 			
-	 		<div class="clear"></div>		
+	 		<div style="display:none; clear: both;"></div>		
 		</div>
 	</div>
 

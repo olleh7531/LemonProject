@@ -25,38 +25,118 @@
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
 	
 	<style>
- 	#bg_contsSc{ 
- 		border: 1px solid red; 
+	
+	/* 레이아웃 */
+	#bg_contsSc{ 
+ 		/* border: 1px solid red;  */
  		text-align: center;
  		width: 100%; 
  	} 
 	
- 	#wrap_contsSc{ 
- 	 border: 1px solid blue;    
+ 	#wrap_con{ 
+ 	 /* border: 1px solid blue; */    
  	 display: inline-block; 
   	 width: 1008px;  
  	} 
-	
- 	#contsSc { 
-	 	display: inline-block;
- 		border: 1px solid green; 
+ 	
+ 	 #wrap_contsSc{ 
+ 	 	display: inline-block;
+ 		/* border: 1px solid green;  */
  		width: 80%; 
  		float: left;  		
- 		
+ 	 
  	} 
-	
+ 	#contsSc { 
+ 		border: 1px solid pink; 
+ 		text-align: left;
+ 	} 
  	#contsCh { 
 	 	display: inline-block;
  		border: 1px solid gray; 
  		width: 18%;
  		float: right;
  	}
- 	
- 	.clear {
-	 	display:none;
-	 	clear: both;
+	/* 레이아웃 */
+
+
+
+	/* 메뉴 */ 	
+ 	#menuSc{
+ 		display: inline-block;
+ 		border-top: 2px solid #848484;
+ 		width: 100%;
  	}
+ 	
+ 	#menuSc div a{
+ 	 	display: inline-block;
+ 	 	float: left;
+ 	 	width: 20%;
+ 	 	background-color: #ebf0ed;
+ 	 	border-bottom: 1px solid #dbdbdb;
+ 	 	padding-top: 10px;
+ 	 	padding-bottom: 10px;
+ 	}
+ 	
+ 	#menuSc div a:hover{
+ 		font-weight: bold;
+ 		color: #333333;
+ 		background-color: #fff;
+ 	 	border-bottom: 1px solid #fff; 		
+ 	}
+ 	/* 메뉴 */ 	
+ 	
+ 	
+ 	
+ 	/* 공통 기타 */ 	
+ 	h3.titleSc{
+ 		margin-bottom: 12px;
+	    color: #1a1a1a;
+	    font-weight: bold;
+	    font-size: 18px;
+	    line-height: 24px;
+	    font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+	    padding-top: 25px;
+	    padding-bottom: 12px;
+ 	}
+ 	/* 공통 기타 */ 	
+ 	
+ 	#artist_list{ 	
+	    padding: 16px 0 0;
+	    border-top: 1px solid #ccc;
+	    border-bottom: 1px solid #ccc;
+ 	}
+ 	
+ 	#artist_info{
+ 		display: inline-block;
+ 		margin-left: 24px;
+		width: 500px;
+ 	}
+ 	
+ 	dl#info dt{
+	 	float: left;
+	    clear: both;
+	    width: 70px;
+	    color: #666;
+	    font-size: 12px;
+	    line-height: 20px;
+	    margin-top: 2px;
+ 	}
+ 	
+ 	dl#info dd{
+    float: left;
+    width: 371px;
+    color: #1a1a1a;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 2px;
+	}
 	
+	.wrap_artist{
+		display: block;
+	}
+	.g_artist_info{
+	display: inline-block;
+	}
 	</style>
 
 </head>
@@ -82,60 +162,90 @@
 	
 	<!-- 본문 -->
 	<div id="bg_contsSc">
-		<div id="wrap_contsSc">
+		<div id="wrap_con">			
+			<div id="wrap_contsSc">	
+					
+			<c:set var="search" value="${requestScope.search}"/>
+			<div style="text-align: left; padding-top: 29px; padding-bottom: 8px;"><strong>'${search}'</strong>에 대한 검색 결과입니다.</div>
+			<!-- 메뉴 -->	
+			<div id="menuSc">
+				<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
+				<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
+				<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
+				<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
+				<div><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
+				<div style="display:none; clear: both;"></div>
+			</div>
+				
 			<!-- 검색 결과 -->
 			<div id="contsSc">	
-			<div>
-				<ul>
-					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
-					<li><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></li>
-					<li><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></li>
-					<li><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></li>
-					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
-				</ul>
-			</div>
 			
 			<!-- 아티스트 -->
 				<!-- 아티스트 프로필 -->
 				<%
 					if(at_pro != null){
 				%>
+				<h3 class="titleSc">아티스트</h3>
+				<div id="artist_list">
 				<div>
-					<div>
-					<p><%=at_pro.getSi_picture() %></p>
-					<p><%=at_pro.getSinger_name() %></p>
-					<p><%=at_pro.getSi_gender() %></p>
-					<p><%=at_pro.getActivity_type() %></p>
-					<p><%=at_pro.getSi_genre() %></p>
-					<p><%=at_pro.getSi_birth() %></p>
+					<div style="display: inline-block; width: 100%;">
+					<div style="display: inline-block; border: 1px solid #ccc; float:left;">
+						<img width="208" height="208"
+							 src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture() %>">
+					</div>
+										
+					<div id="artist_info">
+						<div style="display: inline-block; font-size: 18px;">
+							<strong><b><%=at_pro.getSinger_name() %></b></strong>				
+						</div>
+						<div style="border-top: 1px solid #e6e6e6">
+							<dl id="info" style="display:block; margin-top: 10px;">
+								<dt>활동유형</dt>
+								<dd><%=at_pro.getSi_gender() %>, <%=at_pro.getActivity_type() %></dd>
+								<dt>활동장르</dt>
+								<dd><%=at_pro.getSi_genre() %></dd>
+								<dt>생일</dt>						
+								<dd><%=at_pro.getSi_birth() %></dd>
+							</dl>
+						</div>
+					</div>
+			 		<div style="display:none; clear: both;"></div>	
 					</div>
 				</div>
-				<hr>
-				<%
-					}
-				%>				
-				
 				
 				<!-- 아티스트 리스트 -->
 				<%
 					if(!(artist_list.size() == 0)){
 				%>
-				<div>
+				<div style="border-top: 1px solid #e6e6e6; margin-top: 16px; display: block;"></div>
+				<div style="display: inline-block; margin-top: 16px;">
 					<%
 						for (int i=0; i<artist_list.size(); i++) {
 							SearchBean arSb = (SearchBean) artist_list.get(i);	
 					%>
-					<div>
-					<p><%=arSb.getSi_picture() %></p>
-					<p><%=arSb.getSinger_name() %></p>
-					<p><%=arSb.getSi_gender() %></p>
-					<p><%=arSb.getActivity_type() %></p>
-					<p><%=arSb.getSi_genre() %></p>
+					<div class="wrap_artist">
+						<div style="display: inline-block; border: 1px solid #ccc; float: left;">
+							<img width="96" height="96"
+								 src="./upload/starpost/singerProfile/<%=arSb.getSi_picture() %>">
+						</div>
+						<div style="display:none; clear: both;"></div>										
+						<div id="g_artist_info" style="display: inline-block;">
+						<dl>
+						<dd><strong><%=arSb.getSinger_name() %></strong></dd>
+						<dd><%=arSb.getSi_gender() %>,<%=arSb.getActivity_type() %></dd>
+						<dd><%=arSb.getSi_genre() %></dd>
+						</dl>
+						</div>
+						<div style="display:none; clear: both;"></div>
+						
 					</div>
-					<hr>
 					<%
 						}
 					%>
+				</div>
+				<%
+						}
+				%>
 				</div>
 				<%
 					}
@@ -144,7 +254,7 @@
 				
 			
 				<!-- 곡 -->
-				<div>
+				<div style="display: inline-block;">
 					<!-- 곡: 아티스트명으로 검색 -->
 					<%
 						if(!(song_ar_list.size() == 0)){
@@ -197,7 +307,7 @@
 					<%
 						if(!(song_mn_list.size() == 0)){
 					%>
-					<div>
+					<div style="display: inline-block;">
 						<p>곡명으로 검색</p>
 						<table>
 							<thead>
@@ -340,11 +450,9 @@
 				%>
 				</div>
 				<!-- 가사 -->		
-			
+				</div>
 			</div>
 			<!-- 검색 결과 -->
-			
-			
 			
 			<!-- 차트 -->
 			<div id="contsCh">			
@@ -353,7 +461,9 @@
 			<!-- 차트 -->
 			
 			
-	 		<div class="clear"></div>		
+	 		<div style="display:none; clear: both;"></div>
+
+	 				
 		</div>
 	</div>
 	
