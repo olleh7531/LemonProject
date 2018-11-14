@@ -33,7 +33,6 @@ public class UniSearchAction implements Action {
 		List<SearchBean> album_list = sdao.AlbumSearch(search);
 		List<SearchBean> lyric_list = sdao.LyricSearch(search);
 		
-		
 		if(test==null && email_id!=null){
 			int checkSL = sdao.checkSearchLog(email_id, search);
 		
@@ -56,7 +55,7 @@ public class UniSearchAction implements Action {
 		request.setAttribute("song_an_list", song_an_list);
 		request.setAttribute("album_list", album_list);
 		request.setAttribute("lyric_list", lyric_list);
-		
+		 
 		request.setAttribute("search", search);
 		request.setAttribute("sort", sort);		
 		

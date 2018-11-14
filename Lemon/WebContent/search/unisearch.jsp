@@ -35,6 +35,7 @@
 
 	<%	
 		String search = request.getParameter("search");
+		String sort = request.getParameter("sort");
 	
 		SearchBean at_pro = (SearchBean) request.getAttribute("artist_profile");
 		List artist_list = (List) request.getAttribute("artist_list");
@@ -51,6 +52,16 @@
 	<!-- 본문 -->
 	<div id="bg_contsSc">
 		<div id="wrap_contsSc">
+			<div>
+				<ul>
+					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
+					<li><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></li>
+					<li><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></li>
+					<li><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></li>
+					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
+				</ul>
+			</div>
+		
 			<div id="contsSc">
 				
 				<!-- 아티스트 -->
