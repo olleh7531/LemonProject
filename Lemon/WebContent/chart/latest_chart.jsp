@@ -197,7 +197,7 @@
 												</div>
 												<br>
 												<div class="ellipsis rank02">
-													<a href="#" title="<%=cb.getMusicfile().split("-")[0]%>"><%=cb.getMusicfile().split("-")[0]%></a>
+													<a href="#" title="<%=cb.getAl_singer_name()%>"><%=cb.getAl_singer_name()%></a>
 												</div>
 
 											</div>

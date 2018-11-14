@@ -181,15 +181,13 @@ public class BoardDAO {
 	// getBoard(num)
 
 	public BoardBean getBoard(int num) {
-
 		BoardBean bb = null;
-
 		try {
 			// 디비 연결
 			con = getCon();
 
 			// sql 작성 : num에 해당하는 게시판글 정보 전체 가져오기 sql
-			sql = "select * from magazine where num=?"; // pstmt 객체 생성 pstmt =
+			sql = "select * from magazine where ma_num=?"; // pstmt 객체 생성 pstmt =
 			pstmt = con.prepareStatement(sql); // pstmt 객체 실행 & rs 저장
 			pstmt.setInt(1, num);
 

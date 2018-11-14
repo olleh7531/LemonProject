@@ -29,7 +29,7 @@
 <script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 <script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 <script type="text/javascript" src="./assets/js/common/jquery.cookie.js"></script>
-<script type="text/javascript" src="./assets/js/common/jquery-migrate-3.0.1.js"></script>
+<!-- <script type="text/javascript" src="./assets/js/common/jquery-migrate-3.0.1.js"></script> -->
 <script type="text/javascript" src="./assets/js/starpost/artist_chanel_tabmenu.js"></script>
 </head>
 <body>
@@ -3970,7 +3970,6 @@
 				<!-- 포토 -->
 				<div class="tab_content" id="artist_chanel_tab4">
 					<!-- 포토 리스트 -->
-					<!-- 포토 리스트 -->
 					
 					<!-- 포토 내용 -->
 					<div class="section_photo">
@@ -4126,7 +4125,7 @@
 									</div>
 								</div> <!-- 사진 내용 -->
 								<!-- 댓글 -->
-								<div class="section_cmt" id="cmt">
+								<!-- <div class="section_cmt" id="cmt">
 									<div class="d_cmtpgn" id="d_cmtpgn">
 										<div id="d_cmtpgn_cmt_write_box" class="re_notice d_cmtpgn_cmt_edit_box" data-cmt-id="-1">
 											<div class="thumb_wrap">
@@ -4438,6 +4437,33 @@
 											</div>
 										</div>
 										<ul class="lower_cmt d_cmtpgn_adcmt_list" id="cmt_adcmt_78360560" style=""></ul>
+										댓글의 답글
+										<div class="wrap_insert_cmt d_cmtpgn_adcmt_write_box">
+											<div class="wrap_bg_insert">
+												<div class="wrap_all wide">
+													<span class="wrap_input">
+														<input type="text" title="답글 입력 창 (200자 이내 입력 가능)"
+															class="input_text d_cmtpgn_adcmt_input"
+															style="width:540px;float:left;ime-mode:auto !important;"
+															placeholder="답글을 입력해주세요." readonly="readonly">
+														<div class="wrap_staus">
+															<span class="no_staus">
+																<span class="none">현재 입력 글자 수</span>
+																<span class="no d_cmtpgn_char_cnt">0</span>/
+																<span class="none">입력 가능 글자 수</span>200자
+															</span>
+														</div>
+													</span>
+												</div>
+												<div class="wrap_btn_r">
+													<button type="button" title="글 등록" class="btn_base02 d_cmtpgn_adcmt_reg_btn">
+														<span class="odd_span">
+															<span class="even_span">등록</span>
+														</span>
+													</button>
+												</div>
+											</div>
+										</div>댓글의 답글
 									</li>
 									<li data-cmt-id="78265182" data-cmt-owner="off" class="">
 										<div class="wrap_cmt_cntt d_cmtpgn_cmt_wrapper">
@@ -4511,6 +4537,33 @@
 											</div>
 										</div>
 										<ul class="lower_cmt d_cmtpgn_adcmt_list" id="cmt_adcmt_78265182" style=""></ul>
+										댓글의 답글
+										<div class="wrap_insert_cmt d_cmtpgn_adcmt_write_box">
+											<div class="wrap_bg_insert">
+												<div class="wrap_all wide">
+													<span class="wrap_input">
+														<input type="text" title="답글 입력 창 (200자 이내 입력 가능)"
+															class="input_text d_cmtpgn_adcmt_input"
+															style="width:540px;float:left;ime-mode:auto !important;"
+															placeholder="답글을 입력해주세요." readonly="readonly">
+														<div class="wrap_staus">
+															<span class="no_staus">
+																<span class="none">현재 입력 글자 수</span>
+																<span class="no d_cmtpgn_char_cnt">0</span>/
+																<span class="none">입력 가능 글자 수</span>200자
+															</span>
+														</div>
+													</span>
+												</div>
+												<div class="wrap_btn_r">
+													<button type="button" title="글 등록" class="btn_base02 d_cmtpgn_adcmt_reg_btn">
+														<span class="odd_span">
+															<span class="even_span">등록</span>
+														</span>
+													</button>
+												</div>
+											</div>
+										</div>댓글의 답글
 									</li>
 								</ul>
 								<p class="search_wrong d_cmtpgn_nodata" style="display: none;">등록된 글이 없습니다.</p>
@@ -4583,13 +4636,7 @@
 								<form id="d_cmtpgn_dummy_form" name="d_cmtpgn_dummy_form"></form>
 							</div>
 						</div>
-						<button type="button" title="이전" class="btn_detail_pre disabled" disabled="disabled">
-							<span class="odd_span">선택이전</span>
-						</button>
-						<button type="button" title="다음" class="btn_detail_next">
-							<span class="odd_span">선택다음</span>
-						</button>
-					</div> <!-- 댓글 -->
+					</div> 댓글 -->
 					</div><!-- 포토 내용 -->
 				</div>
 				<!-- 포토 -->
