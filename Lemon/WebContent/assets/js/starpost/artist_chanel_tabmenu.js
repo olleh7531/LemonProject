@@ -1,3 +1,4 @@
+// 탭 클릭 후 새로고침 하였을 때 기존 탭 내용 가져오기 & 탭 클릭 시 색상 바꾸기
 $(function() {
 	// index 값 0으로 초기화
 	var index = 0;
@@ -12,10 +13,10 @@ $(function() {
 	
 	// .artist_chanel_tab li 자식 요소 li 중 index에 해당하는 요소에
 	// on 클래스 추가하고 on css 추가
-	 $(".artist_chanel_tab li").eq(index).addClass("on");
+	$(".artist_chanel_tab li").eq(index).addClass("on");
 	 
-	$('.artist_chanel_tab li').click(function() {
-		$('.artist_chanel_tab li').removeClass('on');
+	$('ul.artist_chanel_tab li').click(function() {
+		$('ul.artist_chanel_tab li').removeClass('on');
 		// $('.tab_content').removeClass('current');
 		
 		// 색상 변경
@@ -35,18 +36,3 @@ $(function() {
 		});
 	})
 });
-
-$(function () {
-    $(".tab_content").hide();
-    $(".tab_content:first").show();
-
-    $("ul.tabs li").click(function () {
-        $("ul.tabs li").removeClass("active").css("color", "#333");
-        //$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"}); 
-        $(this).addClass("active").css("color", "darkred");
-        $(".tab_content").hide()
-        var activeTab = $(this).attr("rel");
-        $("#" + activeTab).fadeIn()
-    });
-
-}); 

@@ -351,7 +351,7 @@ public class ArtistChanelPhotoDAO {
 		}
 	}
 	
-	// 글 번호에 해당하는 게시글 가져오기
+	// 글 번호에 해당하는 게시글 번호(내용) 가져오기
 	public ArtistChanelPhotoBean getPhotoContentNum(int num) {
 		ArtistChanelPhotoBean acpbean = null;
 		
