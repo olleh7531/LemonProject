@@ -20,16 +20,7 @@ public class ChattingFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		if (command.equals("/LemonChatting.ch")) {
-			action = new LemonChattingAction();
-
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else if (command.equals("/LemonChAction.ch")) {
+	if (command.equals("/LemonChAction.ch")) {
 			action = new LemonChAction();
 
 			try {
@@ -48,6 +39,15 @@ public class ChattingFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/selectMessage.ch")) {
+			action = new SelectMessage();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {

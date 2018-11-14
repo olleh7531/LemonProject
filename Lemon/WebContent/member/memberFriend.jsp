@@ -220,29 +220,9 @@
 
 				// 대화하기 버튼을 눌렀을 때
 				$('.fr_converse').click(function() {
-					fr_converse(($(this).prev().prev().val()));
+					//fr_converse(($(this).prev().prev().val()));
+					Chtext(($(this).prev().prev().val()));
 				});
-			},
-			error : function() {
-			}
-		});
-	}
-
-	// 닉네임 옆의 대화하기를 눌렀을 때
-	function fr_converse(param) {
-		var m_nickname = document.getElementById("m_nickname").value;
-		var f_nickname = document.getElementById("f_nickname").value;
-
-		$.ajax({
-			url : "./LemonChatting.ch",
-			data : {
-				f_nickname : f_nickname,
-				m_nickname : m_nickname
-			},
-			contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-			type : 'POST',
-			success : function(result) {
-				$('.friendChat').html(result);
 			},
 			error : function() {
 			}
@@ -305,9 +285,10 @@
 	}
 	// 	'sender_id' : sender,
 	// 	'receiver_id' : receiver.m_id,
-	function Chtext() {
+	function Chtext(f_name) {
 		var m_nickname = document.getElementById("m_nickname").value;
-		var f_nickname = document.getElementById("nick").value;
+		var f_nickname = f_name/* document.getElementById("nick").value; */
+		
 		window.open("./LemonChAction.ch?sender_id="+m_nickname+"&receiver_id="+f_nickname+"","a","width=400,height=360,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 	}
 </script>
