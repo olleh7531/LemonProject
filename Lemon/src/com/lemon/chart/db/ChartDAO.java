@@ -125,6 +125,7 @@ public class ChartDAO {
 				ch.setMusicfile(rs.getString("musicfile"));
 				ch.setSinger_num(rs.getInt("singer_num"));
 				ch.setTrack_num(rs.getInt("track_num"));
+				ch.setAl_singer_name(rs.getString("al_singer_name"));
 				chartList.add(ch);
 			}
 		} catch (Exception e) {
@@ -210,6 +211,7 @@ public class ChartDAO {
 				cb.setSinger_num(rs.getInt("singer_num"));
 				cb.setAl_agency(rs.getString("al_agency"));
 				cb.setAl_content(rs.getString("al_content"));
+				cb.setAl_singer_name(rs.getString("al_singer_name"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -246,6 +248,7 @@ public class ChartDAO {
 				cb.setAlbum_num(rs.getInt("album_num"));
 				cb.setTrack_num(rs.getInt("track_num"));
 				cb.setMusic_video(rs.getString("music_video"));
+				cb.setAl_singer_name(rs.getString("al_singer_name"));
 				MusizList.add(cb);
 			}
 		} catch (Exception e) {
@@ -311,6 +314,7 @@ public class ChartDAO {
 				ch.setMusicfile(rs.getString("musicfile"));
 				ch.setSinger_num(rs.getInt("singer_num"));
 				ch.setTrack_num(rs.getInt("track_num"));
+				ch.setAl_singer_name(rs.getString("al_singer_name"));
 				chartList.add(ch);
 			}
 		} catch (Exception e) {

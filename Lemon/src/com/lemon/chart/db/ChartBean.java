@@ -11,7 +11,8 @@ public class ChartBean {
 	private String al_art_img;
 	private String al_agency;
 	private String al_content;
-	
+	private String al_singer_name;
+
 	/* music */
 	private int mu_num;
 	private String music_name;
@@ -24,9 +25,9 @@ public class ChartBean {
 	private int track_num;
 	private String music_video;
 
-	/*music-good*/
+	/* music-good */
 	private int mu_good;
-	
+
 	/* album */
 	public int getAl_num() {
 		return al_num;
@@ -156,7 +157,7 @@ public class ChartBean {
 	public void setMusic_video(String music_video) {
 		this.music_video = music_video;
 	}
-	/*music-good*/
+	/* music-good */
 
 	public int getMu_good() {
 		return mu_good;
@@ -165,6 +166,13 @@ public class ChartBean {
 	public void setMu_good(int mu_good) {
 		this.mu_good = mu_good;
 	}
-	
-	
+
+	public String getAl_singer_name() {
+		return al_singer_name;
+	}
+
+	public void setAl_singer_name(String al_singer_name) {
+		this.al_singer_name = al_singer_name;
+	}
+
 }

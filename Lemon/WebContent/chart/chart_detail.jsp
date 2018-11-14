@@ -215,7 +215,7 @@
 								<%=cb.getAl_name()%>
 							</div>
 							<div class="artist">
-								<a href="#" title="" class="artist_name"><span>이름 필요</span>
+								<a href="#" title="" class="artist_name"><span><%=cb.getAl_singer_name() %></span>
 								</a>
 							</div>
 						</div>

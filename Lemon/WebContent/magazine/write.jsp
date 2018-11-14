@@ -99,7 +99,7 @@
 					</select> <input type="text" name="ma_subject" id="ma_subject"
 						placeholder="제목을 입력하세요" size="80"> <br>
 				</div>
-				<textarea name="ma_content" id="smarteditor"></textarea>
+				<textarea name="ma_content" id="smarteditor" style="width: 100%; height: 300px;"></textarea>
 				<br><br>
 				썸네일 첨부 : <input type="file" name="file"><br>
 				<br>
