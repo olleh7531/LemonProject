@@ -60,7 +60,7 @@
 	<div id="wrap_conts" style="text-align: center">
 		<div id="conts">
 			<div id="wrap_tit">
-				<h2>회원정보 관리</h2>
+				<h2>마이레몬</h2>
 			</div>
 			
 			<div id="contsMem">

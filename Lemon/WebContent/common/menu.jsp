@@ -1,7 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="com.lemon.member.db.MemberDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<%
+	String email_id = (String) session.getAttribute("email_id");
+	MemberDAO mdao = new MemberDAO();
+	int level = mdao.getLevel(email_id);
+%>
+
 <div id="wrap">
 	<div id="header" class="main">
 		<div id="header_wrap" class="pr_none">
@@ -29,70 +36,9 @@
 					</button>						
 				</fieldset>				
 				</form>
-<!-- 				<form style="display: none" id="searchFrm" method="get" action=""> -->
-<!-- 					<input type="hidden" name="q"> <input type="hidden" name="section"> -->
-<!-- 				</form> -->
-								
 				
-<!-- 				<fieldset>
-					<legend>통합검색영역</legend>
-					<input type="text" title="검색 입력 편집창" placeholder="" name=""
-						id="top_search" style="width: 249px">
-					<input type="hidden" name="keywordLink" id="keywordLink" value="">
-					<button type="button" style="display: none;"
-						id="top_search_autocomplete_toggle"
-						class="btn_icon btn_auto close" title="자동검색 펼침">
-						<span class="odd_span">자동검색 펼침</span>
-					</button>
-					open/close 클래스 사용
-					<button type="button" class="btn_icon search_m" title="검색" onclick="location='./search.sc'">
-						<span class="odd_span">검색</span>
-					</button>
-					<div class="auto_complete" id="top_search_autocomplete">
-						<div class="auto_complete_cont" style="display: block;">
-							자동완성 레이어
-						</div>
-					</div>
-					<div class="auto_complete" id="top_search_autocomplete_template"
-						style="display: none;">
-						자동완성 레이어 템플릿
-						텍스트 결과
-						<ul class="text_result">
-							<li>
-								<a href="#" class="autocomplete-label"></a>
-							</li>
-						</ul>
-						섬네일 결과
-						<ul class="thumb_result">
-							<li class="cate"></li>
-							<li class="class02">
-								<a href="#">
-									<span class="thumb_40">
-										<span class="thumb_frame"></span>
-										<img class="autocomplete-img" width="40" height="40" alt="">
-									</span>
-									<span class="info">
-										<span class="autocomplete-label"></span><br>
-										<span>
-											<span class="f11 autocomplete-info"></span>
-										</span>
-									</span>
-								</a>
-							</li>
-						</ul>
-						검색어가 없을 때
-						<ul class="text_result">
-							<li class="result_none">
-								<span>해당글자로 시작하는 단어가 없습니다.</span>
-							</li>
-						</ul>
-					</div>
-				</fieldset>
-				<form style="display: none" id="searchFrm" method="get" action="">
-					<input type="hidden" name="q"> <input type="hidden" name="section">
-				</form> -->
 				<!-- //통합검색 영역 -->
-<c:set var="realtime" value="${sessionScope.realtime}"/>
+				<c:set var="realtime" value="${sessionScope.realtime}"/>
 				<!-- 실시간 검색어 -->
 				<div class="realtime_soar_keyword">
 					<a href="/search/trend/index.htm" class="title"
@@ -101,9 +47,6 @@
 						<ol style="overflow: hidden; height: 20px;">
 							<!-- 롤링 영역 -->
 								<c:forEach var="psearch" items="${realtime}" varStatus="status">
-								
-
-									
 									<li class="testx" style="top: 0px; display: none;">
 								<strong class="order bg${status.index+1} on">${status.index+1} 
 									<span class="gubun">.</span>
@@ -133,14 +76,9 @@
 									<span class="icon">순위 동일</span>
 								</span>
 										</c:if>
-									
 					
 							</li>
-							
-
-									
 								</c:forEach>	
-							
 							
 							<!-- //롤링 영역 -->
 						</ol>
@@ -154,9 +92,6 @@
 							$('.keyword_overlay').removeClass('active');
 							
 						});
-						
-						
-						
 						
 						for (var i = 0;i<9999 ; i++) {
 							  (function (i) {
@@ -257,15 +192,22 @@
 						</a>
 					</li>
 					<li class="menu8">
-						<a href="" class="cur_menu mlog">
-							<span class="menu_bg menu07">마이뮤직</span>
+						<a href="./ChooseMemberUpdate.mb" class="cur_menu mlog">
+							<span class="menu_bg menu07">마이레몬</span>
 						</a>
 					</li>
+					
+					<% 
+						if(email_id != null) {
+							if(email_id.equals("admin")) { %> 
 					<li class="menu9">
 						<a href="./MusicUpload.ams" class="cur_menu mlog">
 							<span class="menu_bg menu08">업로드</span>
 						</a>
 					</li>
+					<%	}
+					} %>
+					
 				</ul>
 			</div>
 			<!-- 메뉴 -->
