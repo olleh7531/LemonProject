@@ -422,6 +422,7 @@ public class ChartDAO {
 	
 	
 	public List<SearchChartBean> getSearchChart(String search){
+		System.out.println("search : "+search);
 		SearchChartBean scb = null;
 		List<SearchChartBean> arr = new ArrayList<SearchChartBean>();
 		try {
@@ -477,7 +478,7 @@ public class ChartDAO {
 			con = getCon();
 
 			// sql 쿼리
-			sql = "select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a, (select sc_keyword,sc_rank from search_chart where sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date = DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY) order by b.sc_rank";
+			sql = "select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a, (select sc_keyword,sc_rank from search_chart where sc_date = DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY), INTERVAL 1 SECOND) order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date = DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY), INTERVAL 1 SECOND) order by b.sc_rank";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 			// pstmt 객체 실행
