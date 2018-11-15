@@ -110,5 +110,26 @@ left outer join
 	AND a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1
 	SECOND)) c on c.key2=d.keyword;
 ================================================================================================
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작';
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_gender='여';
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_gender='남';
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_generation=10;
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_generation=20;
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_generation=30;
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_generation=40;
+select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_keyword='시작' and se_generation=50;
+========================================================================================
+select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime,music_name from chart,music where ch_music_num in (select ch_music_num from 
+					(select ch_music_num from chart where ch_updatetime =  DATE_FORMAT(now(),'%Y-%m-%d %H') group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc limit 3) as test) 
+					AND ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),	
+					INTERVAL 1 HOUR) and DATE_FORMAT(NOW(),'%Y-%m-%d %H') and mu_num=ch_music_num order by ch_music_num asc ,ch_updatetime asc
 </body>
 </html>
