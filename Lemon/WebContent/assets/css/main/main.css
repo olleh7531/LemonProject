@@ -1306,10 +1306,6 @@ legend, #IE8#HACK {
 	margin-top: 32px;
 }
 
-.chart h2 {
-	border-bottom: 1px solid #d8ddde;
-}
-
 /* 멜론 차트 제목 */
 .chart h2 a.title_link {
 	float: left;
