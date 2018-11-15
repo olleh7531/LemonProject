@@ -241,7 +241,6 @@
 				
 			<!-- 검색 결과 -->
 			<div id="contsSc">	
-			
 			<!-- 아티스트 -->
 				<!-- 아티스트 프로필 -->
 				<%
@@ -251,7 +250,7 @@
 				<div id="artist_list">
 				<div>
 					<div style="display: inline-block; width: 100%;">
-					<div style="display: inline-block; border: 1px solid #ccc; float:left;">
+					<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float:left;">
 						<img width="208" height="208"
 							 src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture() %>">
 					</div>

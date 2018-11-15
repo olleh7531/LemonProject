@@ -22,17 +22,75 @@
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
-
-	<!-- Search CSS -->
-	<link rel="stylesheet" type="text/css" href="./assets/css/search/common.css">
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 	
+	<style>
+	/* 레이아웃 */
+	#bg_contsSc{ 
+ 		 border: 1px solid red;  
+ 		text-align: center;
+ 		width: 100%; 
+ 	} 
+	
+ 	#wrap_con{ 
+ 	  border: 1px solid blue;     
+ 	 display: inline-block; 
+  	 width: 1008px;  
+ 	} 
+ 	
+ 	 #wrap_contsSc{ 
+ 	 	display: inline-block;
+ 		 border: 1px solid green;  
+ 		width: 80%; 
+ 		float: left;  		
+ 	 
+ 	} 
+ 	#contsSc { 
+  		border: 1px solid pink;  
+ 		text-align: left;
+ 	} 
+ 	
+ 	#contsCh { 
+	 	display: inline-block;
+ 		border: 1px solid gray; 
+ 		width: 18%;
+ 		float: right;
+ 	}
+	/* 레이아웃 */
+	
+	
+	/* 메뉴 */ 	
+ 	#menuSc{
+ 		display: inline-block;
+ 		border-top: 2px solid #848484;
+ 		width: 100%;
+ 	}
+ 	
+ 	#menuSc div a{
+ 	 	display: inline-block;
+ 	 	float: left;
+ 	 	width: 20%;
+ 	 	background-color: #ebf0ed;
+ 	 	border-bottom: 1px solid #dbdbdb;
+ 	 	padding-top: 10px;
+ 	 	padding-bottom: 10px;
+ 	}
+ 	
+ 	#menuSc div a:hover{
+ 		font-weight: bold;
+ 		color: #333333;
+ 		background-color: #fff;
+ 	 	border-bottom: 1px solid #fff; 		
+ 	}
+ 	/* 메뉴 */ 	
+	
+	</style>
+		
 
 </head>
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	<c:set var="search" value="${requestScope.search}"/>
 	
 	<%	
 		String search = request.getParameter("search");
@@ -49,40 +107,29 @@
 		System.out.println(startPage);
 		System.out.println(endPage);
 		System.out.println(pageBlock);
+		System.out.println(search);
 	%>
 	
 	<!-- 본문 -->
 	<div id="bg_contsSc">
-		<div id="wrap_contsSc">
+		<div id="wrap_con">			
+			<div id="wrap_contsSc">	
 			
-			<div id="contsSc">	
-			<p>test1</p>		
+			<c:set var="search" value="${requestScope.search}"/>
+			<div style="text-align: left; padding-top: 29px; padding-bottom: 8px;"><strong>'${search}'</strong>에 대한 검색 결과입니다.</div>
+			<input type="hidden" id="pageNum" value="1">			
+
+			<!-- 메뉴 -->	
+			<div id="menuSc">
+				<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
+				<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
+				<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
+				<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
+				<div><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
+				<div style="display:none; clear: both;"></div>
 			</div>
 			
-			<div id="contsCh">			
-			<p>test2</p>		
-			</div>
 			
-	 		<div class="clear"></div>		
-		</div>
-	</div>
-	
-	
-	
-	<div id="bg_contsSc">
-		<div id="wrap_contsSc">
-			<div>
-				<ul>
-					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
-					<li><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></li>
-					<li><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></li>
-					<li><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></li>
-					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
-				</ul>
-			</div>
-		
-		<div><strong>'${search}'</strong>에 대한 검색 결과입니다.</div>
-			<input type="hidden" id="pageNum" value="1">
 			<%if(count!=0){ %>
 			<ul>
 				<li><a id="li_weight">정확도순</a></li>
@@ -97,8 +144,11 @@
 						<li style="list-style: disc;">검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
 						</ul>
 						<%} %>
-			<div id="contsSc">
-
+			
+				
+			<!-- 검색 결과 -->
+			<div id="contsSc">	
+			
 			<%
 			 for(int i=0;i<lyric_list.size();i++){
 				SearchBean sb =(SearchBean) lyric_list.get(i);				 
@@ -141,11 +191,32 @@
 			%>
 			
 			
+			
+				</div>
+				<!-- 검색 결과 -->
+				</div>
 			</div>
+			
+			<!-- 검색 결과 -->
+			</div>
+			<!-- 차트 -->
+			<div id="contsCh">			
+				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
+			</div>
+			<!-- 차트 -->
+			
+			
+	 		<div style="display:none; clear: both;"></div>
+
+	 				
 		</div>
 	</div>
+	
+	
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	
 	
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -244,5 +315,8 @@
 	});
 	}
 	</script>
+	
+	
 	</body>
 </html>
+

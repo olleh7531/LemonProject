@@ -184,9 +184,9 @@ public class SearchDAO {
 		try {
 			con = getCon();
 			
-			sql = "SELECT m.music_name, s.singer_name, a.al_name, a.al_release"
-					+ " FROM music m,album a,singer s"
-					+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num and s.singer_name like'%"+search+"%'"
+			sql = "SELECT m.music_name, a.al_singer_name, a.al_name, a.al_release"
+					+ " FROM music m,album a"
+					+ " WHERE m.album_num=a.al_num a.al_singer_name like'%"+search+"%'"
 					+ " ORDER BY s.singer_name asc, a.al_release desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -319,9 +319,9 @@ public class SearchDAO {
 		try {
 			con = getCon();
 
-			sql = "select mu_num,lyrics,music_name,al_name,singer_name"
+			sql = "select mu_num,lyrics,music_name,al_name,al_singer_name"
 					+ " from music, album, singer"
-					+ " where lyrics like '%"+search+"%' and al_num=album_num AND singer_num=si_num "
+					+ " where lyrics like '%"+search+"%' and al_num=album_num"
 					+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc limit 0,6";	
 
 					pstmt = con.prepareStatement(sql);
@@ -524,14 +524,14 @@ public class SearchDAO {
 			con = getCon();
 			
 			if(sort.equals("최신순")){
-				sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, s.singer_name"
-						+ " FROM music m,album a,singer s"
-						+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num AND a.al_name like'%"+search+"%'"
+				sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
+						+ " FROM music m,album a"
+						+ " WHERE m.album_num=a.al_num AND a.al_name like'%"+search+"%'"
 						+ " ORDER BY a.al_release desc, a.al_name asc limit ?,?";
 			}else if(sort.equals("가나다순")){
-				sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, s.singer_name"
-						+ " FROM music m,album a,singer s"
-						+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num AND a.al_name like'%"+search+"%'"
+				sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
+						+ " FROM music m,album a"
+						+ " WHERE m.album_num=a.al_num AND a.al_name like'%"+search+"%'"
 						+ " ORDER BY a.al_name asc, a.al_release desc  limit ?,?";			
 			}
 			

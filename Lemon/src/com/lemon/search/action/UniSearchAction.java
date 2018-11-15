@@ -21,7 +21,6 @@ public class UniSearchAction implements Action {
 		String search = request.getParameter("search");
 		String sort = request.getParameter("sort");
 		String test = request.getParameter("test");
-
 		HttpSession session = request.getSession();
 		String email_id = (String)session.getAttribute("email_id");
 		
@@ -37,10 +36,11 @@ public class UniSearchAction implements Action {
 		List<SearchChartBean> popular = sdao.popularSearches();
 //		List<SearchChartBean> realtime = cdao.popularSearches();
 		
-
+System.out.println("xxxxx"+email_id);
 		if(test==null && email_id!=null){
+			System.out.println("1234");
 			int checkSL = sdao.checkSearchLog(email_id, search);
-		
+		System.out.println("xxx1");
 			if(checkSL != 1){
 				String ip ="";
 				try (java.util.Scanner s = new java.util.Scanner(new java.net.URL("https://api.ipify.org").openStream(), "UTF-8").useDelimiter("\\A")) {
