@@ -89,8 +89,8 @@
 			<div id="contsSc">		
 			<%if(count!=0){ %>
 				<div style="float: right;">
-					<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
-						<li style="display: inline;"><a id="li_da">최신순 |</a></li>
+					<ul id="tabSc" style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
+						<li class="tcurrent" style="display: inline;"><a id="li_da">최신순 |</a></li>
 						<li style="display: inline;"><a id="li_ga">가나다순</a></li>
 					</ul>
 				</div>

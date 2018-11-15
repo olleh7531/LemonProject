@@ -126,8 +126,8 @@
 
 				<div style="float: right;">
 					<ul
-						style="font-size: 12px; color: gray; margin-top: 10px; margin-bottom: 10px">
-						<li style="display: inline;"><a id="btnArtist">아티스트명에서 |</a></li>
+						 id="tabSc" style="font-size: 12px; color: gray; margin-top: 10px; margin-bottom: 10px">
+						<li class="tcurrent" style="display: inline;"><a id="btnArtist">아티스트명에서 |</a></li>
 						<li style="display: inline;"><a id="btnMusicName">곡명에서 |</a></li>
 						<li style="display: inline;"><a id="btnAlbumName">앨범명에서</a></li>
 						<input type="hidden" id="categoryType">

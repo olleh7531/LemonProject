@@ -5,3 +5,10 @@
 			$(this).addClass('current');s
 		})
 	});
+	
+	$(function() {
+		$('#tabSc li').click(function() {
+			$('#tabSc li').removeClass('tcurrent');
+			$(this).addClass('tcurrent');
+		})
+	});
