@@ -196,7 +196,7 @@ public class SearchDAO {
 				sb = new SearchBean();
 				
 				sb.setMusic_name(rs.getString("music_name"));
-				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
 				list.add(sb);
@@ -230,7 +230,7 @@ public class SearchDAO {
 				sb = new SearchBean();
 				
 				sb.setMusic_name(rs.getString("music_name"));
-				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
 				list.add(sb);
@@ -264,7 +264,7 @@ public class SearchDAO {
 				sb = new SearchBean();
 				
 				sb.setMusic_name(rs.getString("music_name"));
-				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
 				list.add(sb);
@@ -299,7 +299,7 @@ public class SearchDAO {
 				sb.setAl_art_img(rs.getString("al_art_img"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
-				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 
 				list.add(sb);
 			}
@@ -334,7 +334,7 @@ public class SearchDAO {
 				sb.setLyrics(rs.getString("lyrics"));
 				sb.setMusic_name(rs.getString("music_name"));
 				sb.setAl_name(rs.getString("al_name"));
-				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 
 				list.add(sb);
 			}
@@ -548,7 +548,7 @@ public class SearchDAO {
 //				sb.setAl_art_img(rs.getString("al_art_img"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
-				sb.setSinger_name(rs.getString("singer_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 
 				list.add(sb);
 			}
