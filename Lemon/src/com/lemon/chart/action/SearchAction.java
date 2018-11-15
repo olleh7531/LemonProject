@@ -15,10 +15,15 @@ public class SearchAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String search = request.getParameter("search");
+		Object minute = request.getParameter("minute");
+		if(minute==null){
+			minute=10;
+		}
+		int min=(int)minute;
 		ChartDAO cdao = new ChartDAO();
 		List<SearchChartBean> searchchart = cdao.getSearchChart(search);
 		List<SearchChartBean> popular = cdao.popularSearches();
-		List<SearchChartBean> realtime = cdao.realTimeRising();
+		List<SearchChartBean> realtime = cdao.realTimeRising(min);
 		
 		request.setAttribute("searchchart", searchchart);
 		request.setAttribute("popular", popular);

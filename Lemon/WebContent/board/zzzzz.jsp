@@ -92,31 +92,23 @@
 	AND NOT ch_updatetime=DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%3'),
 	INTERVAL 7 DAY);
 	===========================================================================
-	select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a,(select
-	sc_keyword,sc_rank from search_chart where sc_date between
-	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 10 MINUTE) AND
-	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 0 MINUTE) AND
-	sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND)
-	order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and
-	a.sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 20
-	MINUTE) AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 10 MINUTE)
-	AND a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1
-	SECOND) group by a.sc_keyword union select sc_keyword,sc_rank,null from
+            select keyword,lately,past from( select sc_keyword keyword,sc_rank lately from
 	search_chart where sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d
-	%H:%i'), INTERVAL 10 MINUTE) AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d
-	%H:%i'), INTERVAL 0 MINUTE) AND sc_date !=
-	DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) limit 10;
- 	아래 위 쿼리 비교할것 (10분단위 급상승 검색어,new를 하려면 full outer join(mysql에선 union 사용해야 할듯))
-	-------------------------------------------------------------------------
-	select a.sc_keyword,b.sc_rank,a.sc_rank from search_chart a,(select
+	%H:%i'), INTERVAL 10 MINUTE) AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d
+	%H:%i'), INTERVAL 0 MINUTE), INTERVAL 1 SECOND) AND sc_date !=
+	DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) order by lately limit 10) d
+left outer join
+ (select a.sc_keyword key2,a.sc_rank past from search_chart a,(select
 	sc_keyword,sc_rank from search_chart where sc_date between
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 10 MINUTE) AND
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 0 MINUTE) AND
 	sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND)
 	order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and
-	a.sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 20
-	MINUTE) AND DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 10 MINUTE)
+	a.sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 20
+	MINUTE) AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL 10 MINUTE), INTERVAL 1
+	SECOND)
 	AND a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1
-	SECOND) group by a.sc_keyword order by b.sc_rank
+	SECOND)) c on c.key2=d.keyword;
+================================================================================================
 </body>
 </html>

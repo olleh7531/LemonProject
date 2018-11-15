@@ -92,7 +92,7 @@
 					<input type="hidden" name="q"> <input type="hidden" name="section">
 				</form> -->
 				<!-- //통합검색 영역 -->
-<c:set var="arr" value="${requestScope.realtime}"/>
+<c:set var="realtime" value="${requestScope.realtime}"/>
 				<!-- 실시간 검색어 -->
 				<div class="realtime_soar_keyword">
 					<a href="/search/trend/index.htm" class="title"
@@ -100,119 +100,94 @@
 					<div class="keyword_overlay">
 						<ol style="overflow: hidden; height: 20px;">
 							<!-- 롤링 영역 -->
-							
-							<li style="top: 0px; display: none;">
-								<strong class="order bg1 on">1 
+								<c:forEach var="psearch" items="${realtime}" varStatus="status">
+								
+
+									
+									<li class="testx" style="top: 0px; display: none;">
+								<strong class="order bg${status.index+1} on">${status.index+1} 
 									<span class="gubun">.</span>
 									<span class="none"> 위</span>
 								</strong>
 								<a href="" class="ellipsis"
-									title="휘성 (Realslow) - 페이지 이동">휘성 (Realslow)</a>
-								<span class="wrap_rank static">
-									<span class="icon">순위 동일</span>
+									title="${psearch.sc_keyword} - 페이지 이동">${psearch.sc_keyword}</a>
+									<c:if test="${psearch.sc_rank>0&&psearch.sc_rank!=9999999}">
+									<span class="wrap_rank up">
+									<span class="icon">순위상승수</span>
+									<span class="num">72</span>
 								</span>
-							</li>
-							
-							<li style="top: 0px; display: none;">
-								<strong class="order bg2">2 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis" title="우주속에서 - 페이지 이동">우주속에서</a>
-								<span class="wrap_rank new">
-									<span class="icon">새진입</span>
-								</span>
-							</li>
-							<li style="top: 0px; display: list-item;">
-								<strong class="order bg3">3 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis" title="최진혁 - 페이지 이동"></a>
+										</c:if>
+									<c:if test="${psearch.sc_rank<0}">
 								<span class="wrap_rank down">
 									<span class="icon">순위하락수</span>
 									<span class="num">1</span>
 								</span>
-							</li>
-							<li style="top: 0px; display: none;" class="">
-								<strong class="order bg4">4 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis" title="세글자 - 페이지 이동">세글자</a>
-								<span class="wrap_rank up">
-									<span class="icon">순위상승수</span>
-									<span class="num">72</span>
-								</span>
-							</li>
-							<li style="top: 0px; display: none;">
-								<strong class="order bg5">5 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis"
-									title="손 the guest OST - 페이지 이동">손 the guest OST</a>
-								<span class="wrap_rank static">
+										</c:if>
+									<c:if test="${psearch.sc_rank==0}">
+						<span class="wrap_rank static">
 									<span class="icon">순위 동일</span>
 								</span>
-							</li>
-							<li style="top: 0px; display: none;">
-								<strong class="order bg6">6 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis"
-									title="마성의 기쁨 OST - 페이지 이동">마성의 기쁨 OST</a>
-								<span class="wrap_rank static">
-									<span class="icon">순위 동일</span>
-								</span>
-							</li>
-							<li style="top: 0px; display: none;">
-								<strong class="order bg7">7 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis"
-									title="SURAN (수란) - 페이지 이동">SURAN (수란)</a>
-									<span class="wrap_rank up">
-										<span class="icon">순위상승수</span>
-									<span class="num">2</span>
-								</span>
-							</li>
-							<li style="top: 0px; display: none;">
-								<strong class="order bg8">8 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis" title="아이유 - 페이지 이동">아이유</a>
-								<span class="wrap_rank up">
-									<span class="icon">순위상승수</span>
-									<span class="num">549</span>
-								</span>
-							</li>
-							<li style="top: 0px; display: none;" class="">
-								<strong class="order bg9">9 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis" title="레오 (빅스) - 페이지 이동">레오 (빅스)</a>
-								<span class="wrap_rank new">
+										</c:if>
+									<c:if test="${psearch.sc_rank==9999999}">
+						<span class="wrap_rank new">
 									<span class="icon">새진입</span>
 								</span>
+										</c:if>
+									
+					
 							</li>
-							<li style="top: 0px; display: none;">
-								<strong class="order bg10">10 
-									<span class="gubun">.</span>
-									<span class="none"> 위</span>
-								</strong>
-								<a href="" class="ellipsis" title="정일훈 - 페이지 이동">정일훈</a>
-								<span class="wrap_rank up">
-									<span class="icon">순위상승수</span>
-									<span class="num">10</span>
-								</span>
-							</li>
+							
+
+									
+								</c:forEach>	
+							
+							
 							<!-- //롤링 영역 -->
 						</ol>
+						<script type="text/javascript">
+						
+						for (var i = 0;i<9999 ; i++) {
+							  (function (i) {
+							    setTimeout(function () {
+							      var j=i%10;
+							      if(j==0){
+							    	  $('.testx').eq(10).css('display','none');
+									$('.testx').eq(0).css('display','list-item');
+							      }else if(j==1){
+									$('.testx').eq(0).css('display','none');
+									$('.testx').eq(1).css('display','list-item');
+							      }else if(j==2){
+							    	  $('.testx').eq(1).css('display','none');
+										$('.testx').eq(2).css('display','list-item');
+							      }else if(j==3){
+							    	  $('.testx').eq(2).css('display','none');
+										$('.testx').eq(3).css('display','list-item');
+							      }else if(j==4){
+							    	  $('.testx').eq(3).css('display','none');
+										$('.testx').eq(4).css('display','list-item');
+							      }else if(j==5){
+							    	  $('.testx').eq(4).css('display','none');
+										$('.testx').eq(5).css('display','list-item');
+							      }else if(j==6){
+							    	  $('.testx').eq(5).css('display','none');
+										$('.testx').eq(6).css('display','list-item');
+							      }else if(j==7){
+							    	  $('.testx').eq(6).css('display','none');
+										$('.testx').eq(7).css('display','list-item');
+							      }else if(j==8){
+							    	  $('.testx').eq(7).css('display','none');
+										$('.testx').eq(8).css('display','list-item');
+							      }else if(j==9){
+							    	  $('.testx').eq(8).css('display','none');
+										$('.testx').eq(9).css('display','list-item');
+							      }else if(j==10){
+							    	  $('.testx').eq(9).css('display','none');
+										$('.testx').eq(10).css('display','list-item');
+							      }
+							    }, 7000*i);
+							  })(i);
+							};
+						</script>
 						<a href="/search/trend/index.htm" class="keyword_more" title="실시간 순위">
 							<span>더보기 
 								<span></span>
