@@ -319,9 +319,9 @@ public class SearchDAO {
 		try {
 			con = getCon();
 
-			sql = "select mu_num,lyrics,music_name,al_name"
-					+ " from music, album"
-					+ " where lyrics like '%"+search+"%' and al_num=album_num"
+			sql = "select mu_num,lyrics,music_name,al_name,singer_name"
+					+ " from music, album, singer"
+					+ " where lyrics like '%"+search+"%' and al_num=album_num AND singer_num=si_num "
 					+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc limit 0,6";	
 
 					pstmt = con.prepareStatement(sql);
@@ -333,6 +333,7 @@ public class SearchDAO {
 				sb.setLyrics(rs.getString("lyrics"));
 				sb.setMusic_name(rs.getString("music_name"));
 				sb.setAl_name(rs.getString("al_name"));
+				sb.setSinger_name(rs.getString("singer_name"));
 
 				list.add(sb);
 			}
