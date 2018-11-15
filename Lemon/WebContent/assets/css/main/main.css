@@ -994,10 +994,6 @@ legend, #IE8#HACK {
 	max-width: 230px;
 	padding-right: 8px;
 	color: #666666;
-	background-image:
-		url("../../../assets/img/main/login/main_login_arrow.png");
-	background-repeat: no-repeat;
-	background-position: right 5px;
 }
 
 /* 이용권 글자 */

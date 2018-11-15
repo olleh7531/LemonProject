@@ -54,7 +54,7 @@
 			}
 		});
 	}
-
+	
 	// 친구를 찾고 친구추가를 요청할 때
 	function addFriend() {
 		var m_nickname = document.getElementById("m_nickname").value;
@@ -116,7 +116,7 @@
 			}
 		});
 	}
-
+	
 	// 친구 목록에서 정보보기를 눌렀을 때
 	function fr_info(param) {
 		$.ajax({
@@ -206,7 +206,7 @@
 	function friendChat() {
 		var m_nickname = document.getElementById("m_nickname").value;
 		var f_nickname = document.getElementById("f_nickname").value;
-
+		
 		$.ajax({
 			url : "./ChattingFriend.mb",
 			data : {
@@ -249,40 +249,12 @@
 		friendChat();
 	}
 
-	var textarea = document.getElementById("messageWindow");
-	var nickname = document.getElementById("nickname");
-	var webSocket = new WebSocket('ws://localhost:8088/Lemon/LemonChatting');
-	var inputMessage = document.getElementById('inputMessage');
-
-	webSocket.onerror = function(event) {
-		onError(event)
-	};
-
-	webSocket.onopen = function(event) {
-		onOpen(event)
-	};
-
-	webSocket.onmessage = function(event) {
-		onMessage(event)
-	};
-
-	function onMessage(event) {
-		textarea.value += "상대 : " + event.data + "\n";
-	}
-
-	function onOpen(event) {
-		textarea.value += "연결 성공\n";
-	}
-
-	function onError(event) {
-		alert(event.data);
-	}
-
 	function send() {
 		textarea.value += nickname.value + " : " + inputMessage.value + "\n";
 		webSocket.send(textarea.value);
 		inputMessage.value = "";
 	}
+
 	// 	'sender_id' : sender,
 	// 	'receiver_id' : receiver.m_id,
 	function Chtext(f_name) {
@@ -306,24 +278,24 @@
 				String nickName = mdao.getNick(email_id);
 				String f_nickname = request.getParameter("f_nickname");
 			%>
-			<input type="hidden" id="m_nickname" value=<%=nickName%>> <input
-				type="button" class="ListBtn" value="친구검색" onclick="show1()">
+			
+			<input type="hidden" id="m_nickname" value=<%=nickName%>>
+			<input type="button" class="ListBtn" value="친구검색" onclick="show1()">
 			<input type="button" class="ListBtn" value="친구목록" onclick="show2()">
 			<input type="button" class="ListBtn" value="대화하기" onclick="show3()">
 			<br> <br>
-
+			
 			<div class="friend1">
-				<input type='text' id='f_nickname' name='f_nickname' value=''
-					placeholder="닉네임 입력"> <input type='button' class="FindBtn"
-					value='찾기' onclick='friendSearch()'> <br> <br> <span
-					class="findResult1"></span>
+				<input type='text' id='f_nickname' name='f_nickname' value='' placeholder="닉네임 입력">
+				<input type='button' class="FindBtn" value='찾기' onclick='friendSearch()'> <br> <br>
+				<span class="findResult1"></span>
 			</div>
-
+			
 			<div class="friend2">
 				<br> <span class="findResult2"></span>
 				<div class="infoMember"></div>
 			</div>
-
+			
 			<div class="friend3">
 				<span class="findResult3"></span>
 				<div class="friendChat"></div>

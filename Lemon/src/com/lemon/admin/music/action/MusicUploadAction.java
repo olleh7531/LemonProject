@@ -43,20 +43,20 @@ public class MusicUploadAction implements Action {
 
 		MultipartRequest multi = new MultipartRequest(request, realpath, maxSize, "UTF-8",
 				new DefaultFileRenamePolicy());
-
+		
 		Enumeration<String> files = multi.getFileNames();
-
+		
 		MusicBean mb = new MusicBean();
 		MusicDAO mdao = new MusicDAO();
 		AlbumBean ab = new AlbumBean();
 		while (files.hasMoreElements()) {
 			String musicfile = (String) files.nextElement();
-
+			
 			// System.out.println(musicfile);
 			File f = multi.getFile(musicfile);
 			MP3File mp3 = (MP3File) AudioFileIO.read(f);
 			AudioFile af = AudioFileIO.read(f);
-
+			
 			Tag tag = mp3.getTag();
 			String title = tag.getFirst(FieldKey.TITLE);
 			String artist = tag.getFirst(FieldKey.ARTIST);
@@ -76,7 +76,7 @@ public class MusicUploadAction implements Action {
 			String Lyrics = tag.getFirst(FieldKey.LYRICS);
 			String track = tag.getFirst(FieldKey.TRACK);
 			musicfile = multi.getFilesystemName(musicfile);
-
+			
 			/*
 			 * System.out.println("musicfile : " + musicfile);
 			 * System.out.println("Song Name : " + title);
@@ -87,7 +87,7 @@ public class MusicUploadAction implements Action {
 			 * System.out.println("Lyrics : " + Lyrics);
 			 * System.out.println("track : "+track);
 			 */
-
+			
 			int duration = af.getAudioHeader().getTrackLength();
 			// int minute = duration/60;
 			// int second = duration%60;
@@ -99,7 +99,7 @@ public class MusicUploadAction implements Action {
 			// }
 
 			// System.out.println("음악 길이 : "+musictime);
-
+			
 			Artwork art = tag.getFirstArtwork();
 			BufferedImage bi = (BufferedImage) art.getImage();
 			BufferedImage thumb = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -108,7 +108,7 @@ public class MusicUploadAction implements Action {
 			realpath = ctx.getRealPath("/musicUpload/albumcover/");
 			File filex = new File(realpath + album + ".jpg");
 			ImageIO.write(thumb, "jpg", filex);
-
+			
 			ab.setAl_name(album);
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			Date d = new Date(format.parse(year).getTime());
@@ -122,17 +122,17 @@ public class MusicUploadAction implements Action {
 			mb.setMusic_genre(genre);
 			mb.setMusic_time(musictime);
 			mb.setTrack_num(Integer.parseInt(track));
-
+			
 			int albumnum = mdao.insertAlbum(ab);
 			
 			mb.setAlbum_num(albumnum);
 			mdao.insertMusic(mb);
 		}
-
+		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(1);
-
+		
 		return null;
 	}
 }

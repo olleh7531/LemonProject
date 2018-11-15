@@ -206,10 +206,7 @@
                 
             	var filesName = 'musicfile'+i;
             	formData.append(filesName, fileList[uploadFileList[i]]);
-  
             }
-            
-
             
 /* 			var num;
              $('input[name=album_num]').each(function(index){
@@ -279,11 +276,9 @@
 		
 		</table>
 	</form>
-	<a href="#" onclick="uploadFile(); return false;" class="btn bg_01">파일
-		업로드</a>
+	<a href="#" onclick="uploadFile(); return false;" class="btn bg_01">파일 업로드</a>
 <!-- 본문 -->
-		
-		<jsp:include page="../common/footer.jsp"/>
+	<jsp:include page="../common/footer.jsp"/>
 
 </body>
 </html>

@@ -36,7 +36,7 @@ public class chatFriend implements Action{
 				
 				result = 
 					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
-					"<label>"+nickname+"</label>" + 
+					"<label style='width: 100px; display: inline-block;'>"+nickname+"</label>" + 
 					"<input type='button' class='fr_converse' value='대화하기'><br>";
 				out.print(result);
 			}

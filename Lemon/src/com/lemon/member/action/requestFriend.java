@@ -34,10 +34,10 @@ public class requestFriend implements Action{
 			out.print(count);
 			for(int i=0 ; i<check.size() ; i++) {
 				String nickname = check.get(i);
-
+				
 				result =
 					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
-					"<label>"+nickname+"</label>" + 
+					"<label style='width: 100px; display: inline-block;'>"+nickname+"</label>" + 
 					"<input type='button' class='fr_acception' value='수락'>" + 
 					"<input type='button' class='fr_refuse' value='거절'> <br>";
 				out.print(result);
@@ -55,7 +55,7 @@ public class requestFriend implements Action{
 				
 				result = 
 					"<input type='hidden' id='nick' value='"+ nickname +"'>"+ 
-					"<label>"+nickname+"</label>" + 
+					"<label style='width: 100px; display: inline-block;'>"+nickname+"</label>" + 
 					"<input type='button' class='fr_info' value='정보보기'>" +
 					"<input type='button' class='fr_del' value='친구삭제'> <br>";
 				out.print(result);

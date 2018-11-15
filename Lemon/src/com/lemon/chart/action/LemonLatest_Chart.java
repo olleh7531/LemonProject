@@ -59,7 +59,7 @@ public class LemonLatest_Chart implements Action {
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
-
+		
 		request.setAttribute("chartList", ChartList);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("count", count);
@@ -67,13 +67,11 @@ public class LemonLatest_Chart implements Action {
 		request.setAttribute("pageBlock", pageBlock);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		
 		request.setAttribute("album", request.getParameter("album"));
-
+		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./chart/latest_chart.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
-
 }
