@@ -33,9 +33,7 @@
 	.wrap_list{
 		display: inline-block;
 		width: 100%;
-		border-bottom: 1px solid #ccc;
 		margin-bottom: 20px;
-	
 	}
 	</style>
 		
@@ -88,8 +86,8 @@
 			<%if(count!=0){ %>
 				<div style="float: right;">
 				<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
-					<li style="display: inline;"><a id="li_weight">정확도순|</a></li>
-					<li style="display: inline;"><a id="li_date">최신순|</a></li>
+					<li style="display: inline;"><a id="li_weight">정확도순 |</a></li>
+					<li style="display: inline;"><a id="li_date">최신순 |</a></li>
 					<li style="display: inline;"><a id="li_ganada">가나다순</a></li>
 				</ul>
 				</div>
@@ -102,6 +100,7 @@
 						<li>검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
 					</ul>
 				</div>
+				<div style="border-top: 1px solid #ccc;"></div>
 			<%} %>
 			
 			
@@ -117,7 +116,7 @@
    							white-space: nowrap;
     						text-overflow: ellipsis;
    							overflow: hidden;"><%=sb.getLyrics() %></div>
-			<div><%-- ${list.singer_name} --%> | <%=sb.getAl_name() %></div>
+			<div><%=sb.getSinger_name() %> | <%=sb.getAl_name() %></div>
 			<hr>
 			<%	 
 			 }
@@ -232,7 +231,7 @@
 					text+='	white-space: nowrap;';
 					text+='	text-overflow: ellipsis;';
 					text+='	overflow: hidden;">'+this.lyrics+'</div>';
-					text+='<div>| '+this.al_name+'</div>';
+					text+='<div>'+this.singer_name+' | '+this.al_name+'</div>';
 					text+='<hr>';
 					$('.wrap_list').append(text);
 				}else{

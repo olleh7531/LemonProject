@@ -282,7 +282,7 @@ public class SearchDAO {
 		try {
 			con = getCon();
 
-			sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, a.al_singer_name" + " FROM music m,album a"
+			sql = "SELECT DISTINCT a.al_num, a.al_art_img, a.al_name, a.al_release, a.al_singer_name" + " FROM music m,album a"
 					+ " WHERE m.album_num=a.al_num AND a.al_name like'%" + search + "%'"
 					+ " ORDER BY a.al_release desc, a.al_name asc limit 0,6";
 			pstmt = con.prepareStatement(sql);
@@ -290,7 +290,8 @@ public class SearchDAO {
 
 			while (rs.next()) {
 				sb = new SearchBean();
-
+				
+				sb.setAl_num(rs.getInt("al_num"));
 				sb.setAl_art_img(rs.getString("al_art_img"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
@@ -427,15 +428,15 @@ public class SearchDAO {
 
 			// sql 쿼리
 			if (sort.equals("정확도순")) {
-				sql = "select mu_num,lyrics,music_name,al_name" + " from music, album" + " where lyrics like '%"
+				sql = "select mu_num,lyrics,music_name,al_name,al_singer_name" + " from music, album" + " where lyrics like '%"
 						+ search + "%' and al_num=album_num" + " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"
 						+ search + "', '')))) / LENGTH('" + search + "') desc limit ?,?";
 			} else if (sort.equals("최신순")) {
-				sql = "select mu_num,lyrics,music_name,al_name" + " from music, album" + " where lyrics like '%"
+				sql = "select mu_num,lyrics,music_name,al_name,al_singer_name" + " from music, album" + " where lyrics like '%"
 						+ search + "%' and al_num=album_num"
 						+ " order by (select al_release from album where al_num=album_num) desc limit ?,?";
 			} else if (sort.equals("가나다순")) {
-				sql = "select mu_num,lyrics,music_name,al_name" + " from music, album" + " where lyrics like '%"
+				sql = "select mu_num,lyrics,music_name,al_name,al_singer_name" + " from music, album" + " where lyrics like '%"
 						+ search + "%' and al_num=album_num" + " order by music_name asc limit ?,?";
 			}
 
@@ -452,6 +453,7 @@ public class SearchDAO {
 				sb.setLyrics(rs.getString("lyrics"));
 				sb.setMusic_name(rs.getString("music_name"));
 				sb.setAl_name(rs.getString("al_name"));
+				sb.setSinger_name(rs.getString("al_singer_name"));
 
 				list.add(sb);
 			}
@@ -502,11 +504,11 @@ public class SearchDAO {
 			con = getCon();
 
 			if (sort.equals("최신순")) {
-				sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
+				sql = "SELECT DISTINCT a.al_num, a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
 						+ " FROM music m,album a" + " WHERE m.album_num=a.al_num AND a.al_name like'%" + search + "%'"
 						+ " ORDER BY a.al_release desc, a.al_name asc limit ?,?";
 			} else if (sort.equals("가나다순")) {
-				sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
+				sql = "SELECT DISTINCT a.al_num, a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
 						+ " FROM music m,album a" + " WHERE m.album_num=a.al_num AND a.al_name like'%" + search + "%'"
 						+ " ORDER BY a.al_name asc, a.al_release desc  limit ?,?";
 			}
@@ -519,8 +521,9 @@ public class SearchDAO {
 
 			while (rs.next()) {
 				sb = new SearchBean();
-
-				// sb.setAl_art_img(rs.getString("al_art_img"));
+				
+				sb.setAl_num(rs.getInt("al_num"));
+				sb.setAl_art_img(rs.getString("al_art_img"));
 				sb.setAl_name(rs.getString("al_name"));
 				sb.setAl_release(rs.getDate("al_release"));
 				sb.setSinger_name(rs.getString("al_singer_name"));

@@ -22,17 +22,28 @@
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
-
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	
+	
 	<!-- Search CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/search/common.css">
 	
+	
+	<style>
+	.wrap_list{
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	
+	
+	</style>
+		
 
 </head>
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	<c:set var="search" value="${requestScope.search}"/>
 	
 	<%	
 		String search = request.getParameter("search");
@@ -49,59 +60,68 @@
 		System.out.println(startPage);
 		System.out.println(endPage);
 		System.out.println(pageBlock);
+			
+		
+		System.out.println(search);
 	%>
 	
 	<!-- 본문 -->
 	<div id="bg_contsSc">
-		<div id="wrap_contsSc">
-			<div>
-				<ul>
-					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
-					<li><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></li>
-					<li><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></li>
-					<li><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></li>
-					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
-				</ul>
+		<div id="wrap_con">			
+			<div id="wrap_contsSc">	
+			<c:set var="search" value="${requestScope.search}"/>
+			<div style="text-align: left; padding-top: 29px; padding-bottom: 8px;">
+				<strong>'${search}'</strong>에 대한 검색 결과입니다.
 			</div>
-		
-		<div><strong>'${search}'</strong>에 대한 검색 결과입니다.</div>
 			<input type="hidden" id="pageNum" value="1">
-			<%if(count!=0){ %>
-			<ul>
-				<li><a id="li_da">최신순</a></li>
-				<li><a id="li_ga">가나다순</a></li>
-			</ul>
-			<h1><b>총 <%=count %> 건</b></h1>
-						<%}else{ %>
-						<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
-						<ul style="list-style: disc;    margin: 26px 0 0 276px;">
-						<li style="list-style: disc;">검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
-						<li style="list-style: disc;">검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
-						</ul>
-						<%} %>
-			<div id="contsSc">
 
-			<%
-			System.out.println("album_list.size() : "+album_list.size());
-			for(int i=0;i<album_list.size();i++){
-				SearchBean sb =(SearchBean) album_list.get(i);				 
-			%>
-			
-			<div><b><%=sb.getAl_name() %></b></div>
-			<div style="    display: block;
-    						margin-bottom: 4px;
-   							white-space: nowrap;
-    						text-overflow: ellipsis;
-   							overflow: hidden;"><%=sb.getAl_release() %></div>
-			<div><%-- ${list.singer_name} --%> | <%=sb.getSinger_name() %></div>
-			<hr>
-			<%	 
-			 }
-			%>
+			<!-- 메뉴 -->	
+			<div id="menuSc">
+				<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
+				<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
+				<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
+				<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
+				<div><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
+				<div style="display:none; clear: both;"></div>
+			</div>
+					
+			<!-- 검색 결과 -->
+			<div id="contsSc">		
+			<%if(count!=0){ %>
+				<div style="float: right;">
+					<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
+						<li style="display: inline;"><a id="li_da">최신순 |</a></li>
+						<li style="display: inline;"><a id="li_ga">가나다순</a></li>
+					</ul>
+				</div>
+				<div style="display: none; clear: both;"></div>
+				<h3 class="titleSc">앨범<span style="color: gray;">(<%=count %>)</span></h3>
 				
-			<%
-			// 페이지 출력
-			if( count != 0 ){
+				<div class="wrap_list">
+				<%
+					System.out.println("album_list.size() : "+album_list.size());
+					for(int i=0;i<album_list.size();i++){
+						SearchBean sb =(SearchBean) album_list.get(i);				 
+				%>
+					<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">
+					<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+						<a href="./LemonDetai.ct?mu_num=<%=sb.getAl_num() %>"><img width="96" height="96"
+							 src="./musicUpload/albumcover/<%=sb.getAl_art_img()%>"></a>
+					</div>
+					<div style="display:none; clear: both;"></div>		
+					<div class="info" style="display: inline-block; margin-left: 10px;" >
+					<p><strong><%=sb.getAl_name() %></strong></p>
+					<p><%=sb.getSinger_name() %></p>
+					<p><%=sb.getAl_release() %></p>
+					</div>
+				</div>
+			
+				<%	 
+				 }
+					if( count != 0 ){
+				%>	
+				<div style="text-align: center;">
+				<%
 				// 이전
 				if(startPage>pageBlock){
 					%>
@@ -120,16 +140,47 @@
 					    <a id="next" class="<%=startPage+pageBlock %>">[다음]</a> 
 					<%	
 				}
+				 %>
+				</div>
+				<%
 			}			
 			%>
-			
-			
+				
+				</div>
+			<%}else{ %>
+				<h3 class="titleSc">앨범</h3>
+				<div style="margin-top: 100px; margin-bottom: 100px;">
+				<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
+				<ul style="text-align: center; margin-top: 26px;">
+					<li>검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
+					<li>검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
+				</ul>
+				</div>
+				<div style="border-top: 1px solid #ccc;"></div>				
+			<%} %>
+				
 			</div>
+			
+			<!-- 검색 결과 -->
+			</div>
+			
+			<!-- 차트 -->
+			<div id="contsCh">			
+				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
+			</div>
+			<!-- 차트 -->
+			
+	 		<div style="display:none; clear: both;"></div>
+
+	 				
 		</div>
 	</div>
+	
+	
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-	
+
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#top_search').val("${search}");
@@ -170,21 +221,25 @@
  			pageNum : $('#pageNum').val(),
 		},
 		success : function(data) { // data를 가져오는 것이 성공하였을 때
-		$('#contsSc').empty();
+		$('.wrap_list').empty();
 			$(data).each(function(index){
+				
 					
 			var text="";
 				if(data.length-1!=index){
-					text+='<div><b>'+this.al_name+'</b></div>';
-					text+='<div style="    display: block;';
-					text+='	margin-bottom: 4px;';
-					text+='	white-space: nowrap;';
-					text+='	text-overflow: ellipsis;';
-					text+='	overflow: hidden;">'+this.al_release+'</div>';
-					text+='<div>| '+this.singer_name+'</div>';
-					text+='<hr>';
-					$('#contsSc').append(text);
+					text+='<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">';
+					text+='<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">';
+					text+='<a href="./LemonDetai.ct?mu_num='+this.al_num+'"><img width="96" height="96"';
+					text+=' src="./musicUpload/albumcover/'+this.al_art_img+'"></a></div>';
+					text+='<div style="display:none; clear: both;"></div>';
+					text+='<div class="info" style="display: inline-block; margin-left: 10px;" >';
+					text+='<p><strong>'+this.al_name+'</strong></p>';
+					text+='<p>'+this.singer_name+'</p>';
+					text+='<p>'+this.al_release+'</p></div>';
+
+					$('.wrap_list').append(text);
 				}else{
+					text+='<div style="text-align: center;">';
 					if(this.startPage>this.pageBlock){
 						  text+='<a id="prev" class="'+(this.startPage-this.pageBlock)+'">[이전]</a>'
 					}
@@ -196,7 +251,9 @@
 					if(this.endPage < this.pageCount){
 						    text+='<a id="next" class="'+(this.startPage+this.pageBlock)+'">[다음]</a>' 
 					}
-					$('#contsSc').append(text);
+					text+='</div>';
+
+					$('.wrap_list').append(text);
 				}					
 					
 					$('#prev').click(function(){
@@ -220,5 +277,9 @@
 	});
 	}
 	</script>
+
+	
 	</body>
 </html>
+
+

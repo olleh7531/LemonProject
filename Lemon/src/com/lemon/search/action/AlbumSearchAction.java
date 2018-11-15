@@ -59,6 +59,8 @@ public class AlbumSearchAction implements Action {
 				
 			for(SearchBean sb:album_list){
 				JSONObject obj = new JSONObject();
+				obj.put("al_num", sb.getAl_num());
+				obj.put("al_art_img", sb.getAl_art_img());
 				obj.put("al_name", sb.getAl_name());
 				obj.put("singer_name", sb.getSinger_name());
 				obj.put("al_release", sb.getAl_release().toString());

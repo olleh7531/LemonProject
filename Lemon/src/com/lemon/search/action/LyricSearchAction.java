@@ -68,6 +68,7 @@ public class LyricSearchAction implements Action {
 			obj.put("lyrics", sb.getLyrics());
 			obj.put("music_name", sb.getMusic_name());
 			obj.put("al_name", sb.getAl_name());
+			obj.put("singer_name", sb.getSinger_name());
 			arr.add(obj);
 
 		}

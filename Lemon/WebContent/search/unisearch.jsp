@@ -584,12 +584,10 @@ dl#info dd {
 											SearchBean alSb = (SearchBean) album_list.get(i);
 								%>
 								<li style="width: 100%;">
-									<div
-										style="display: inline-block; width: 100%; border-top: 1px solid #ccc; padding-top: 10px; margin-bottom: 10px;">
-										<div
-											style="display: inline-block; width: 130px; height: 130px; border: 1px solid #ccc; float: left;">
-											<img src="<%=alSb.getAl_art_img()%>.jpg"
-												title="<%=alSb.getAl_art_img()%>">
+									<div style="display: inline-block; width: 100%; border-top: 1px solid #ccc; padding-top: 10px; margin-bottom: 10px;">
+										<div style="display: inline-block; border: 1px solid #ccc; float: left;">
+											<a href="./LemonDetai.ct?mu_num=<%=alSb.getAl_num() %>"><img src="./musicUpload/albumcover/<%=alSb.getAl_art_img()%>"
+												width="130" height="130" stitle="<%=alSb.getAl_art_img()%>"></a>
 										</div>
 										<div style="display: inline-block; margin-left: 10px;">
 											<p>
@@ -599,6 +597,7 @@ dl#info dd {
 											<p><%=alSb.getAl_release()%></p>
 										</div>
 										<div style="display: none; clear: both;"></div>
+									</div>
 								</li>
 								<%
 									}
