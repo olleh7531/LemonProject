@@ -2,6 +2,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,10 +59,11 @@ function NotYet() {
 	color: #edae06;
 	border-bottom: 2px solid #edae06;
 }
+.button_icons {background: none !important;}
 </style>
 </head>
 <%
-	ArrayList chartList = (ArrayList) request.getAttribute("chartList");
+// 	ArrayList chartList = (ArrayList) request.getAttribute("chartList");
 	String pageNum = (String) request.getAttribute("pageNum");
 	int count = ((Integer) request.getAttribute("count")).intValue();
 	int pageCount = ((Integer) request.getAttribute("pageCount")).intValue();
@@ -125,7 +128,7 @@ function NotYet() {
 										<div class="wrap none">곡 상세가기</div>
 									</th>
 									<th scope="col">
-										<div class="wrap pd_l_12"></div>
+										<div class="wrap pd_l_12">곡정보</div>
 									</th>
 									<th scope="col">
 										<div class="wrap pd_l_12">앨범</div>
@@ -150,47 +153,48 @@ function NotYet() {
 
 							<audio preload class="album"></audio>
 							<tbody>
-								<%
-									if (count != 0) {
-										for (int i = 0; i < chartList.size(); i++) {
-											ChartBean cb = (ChartBean) chartList.get(i);
-											int a = i + 1;
-								%>
-								<tr>
-									<td>
-										
-									</td>
+							<c:set var="realmusic" value="${requestScope.realmusic}"/>
 
+								
+								<c:forEach var="realmusic" items="${realmusic}" varStatus="status">
+									
+					
+
+					
+													<tr>
 									<td>
 										<div class="wrap t_center" style="color: #000;">
-											<span class="rank "><%=a%></span>
+											<span class="rank ">${realmusic.ch_playcnt}</span>
 										</div>
 									</td>
 									<td style="width: 60px;">
 										<div class="wrap">
 											<a
-												href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>"
-												title="Sun And Moon Part.1" class="image_typeAll"> 
-												<img width="60" height="60" src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>" alt="<%=cb.getMusic_name()%>"> 
-												<span class="bg_album_frame"></span>
+												href="./LemonDetai.ct?mu_num=${realmusic.al_num}&pageNum=<%=pageNum%>"
+												title="Sun And Moon Part.1" class="image_typeAll"> <img
+												width="60" height="60"
+												src="./musicUpload/albumcover/${realmusic.al_art_img}"
+												alt="${realmusic.music_name}"> <span
+												class="bg_album_frame"></span>
 											</a>
 										</div>
 									</td>
 									<td>
 										<div class="wrap" style="text-align: center;">
-										<i class="fa fa-file-text-o"></i>
+											<a href="#" class="btn button_icons type03 song_info"><i
+												class="fa fa-file-text-o"></i></a>
 										</div>
 									</td>
 									<td>
 										<div class="wrap">
 											<div class="wrap_song_info">
 												<div class="ellipsis rank01">
-													<span> <a href="#" title="<%=cb.getMusic_name()%>"><%=cb.getMusic_name()%></a>
+													<span> <a href="#" title="${realmusic.music_name}">${realmusic.music_name}</a>
 													</span>
 												</div>
 												<br>
 												<div class="ellipsis rank02">
-													<a href="#" title="<%=cb.getAl_singer_name()%>"><%=cb.getAl_singer_name()%></a>
+													<a href="#" title="${realmusic.singer_name}">${realmusic.singer_name}</a>
 												</div>
 
 											</div>
@@ -201,8 +205,8 @@ function NotYet() {
 											<div class="wrap_song_info">
 												<div class="ellipsis rank03">
 													<a
-														href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>"
-														title="<%=cb.getAl_name()%>"><%=cb.getAl_name()%></a>
+														href="./LemonDetai.ct?mu_num=${realmusic.al_num}&pageNum=<%=pageNum%>"
+														title="${realmusic.al_name}">${realmusic.al_name}</a>
 												</div>
 											</div>
 										</div>
@@ -211,9 +215,9 @@ function NotYet() {
 										<div class="wrap" style="text-align: center">
 											<button type="button" class="button_etc like" title=""
 												data-song-no="" data-song-menuid=""
-												onclick="goodMusic(<%=cb.getMu_num()%>)">
+												onclick="goodMusic(${realmusic.ch_music_num})">
 												<span class="odd_span"><i class="fa fa-heart-o"></i>
-												<span class="cnt"><%=cb.getMu_good()%></span>
+												<span class="cnt">${realmusic.mu_good}</span>
 												</span>
 											</button>
 										</div>
@@ -221,7 +225,7 @@ function NotYet() {
 									<td>
 										<div class="wrap t_center">
 											<button type="button" title="듣기" class="button_icons scrap"
-												onclick="LemonPlayer(<%=cb.getMu_num()%>,<%=cb.getAlbum_num()%>)">
+												onclick="LemonPlayer(${realmusic.ch_music_num},${realmusic.al_num})">
 												<i class="fa fa-play"></i><span class="none">듣기</span>
 											</button>
 										</div>
@@ -229,7 +233,7 @@ function NotYet() {
 									<td>
 										<div class="wrap t_center">
 											<button type="button" title="담기" class="button_icons scrap"
-												onclick="location.href='./UserPlaylistUP.ct?mu_num=<%=cb.getMu_num()%>'">
+												onclick="location.href='./UserPlaylistUP.ct?mu_num=${realmusic.ch_music_num}'">
 												<i class="fa  fa-plus"></i><span class="none">담기</span>
 											</button>
 										</div>
@@ -237,24 +241,23 @@ function NotYet() {
 									<td>
 										<div class="wrap t_center">
 											<button type="button" title="다운로드" class="button_icons download"
-												onclick="MusicDownload('<%=cb.getMusicfile()%>')">
+												onclick="MusicDownload('${realmusic.musicfile}')">
 												<i class="fa  fa-download"></i><span class="none">다운로드</span>
 											</button>
 										</div>
 									</td>
 									<td>
 										<div class="wrap t_center">
-											<button type="button" title="뮤직비디오" class="button_icons video" onclick="NotYet()">
+											<button type="button" title="뮤직비디오"
+												class="button_icons video ">
 												<i class="fa  fa-youtube-play"></i><span class="none">뮤직비디오</span>
 											</button>
 										</div>
 									</td>
 								</tr>
 
-								<%
-									}
-									}
-								%>
+							
+								</c:forEach>
 
 							</tbody>
 						</table>
