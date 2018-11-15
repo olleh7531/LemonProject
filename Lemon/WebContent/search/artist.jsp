@@ -75,7 +75,7 @@
 			<!-- 메뉴 -->	
 			<div id="menuSc">
 				<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
-				<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
+				<div class="current"><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
 				<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
 				<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
 				<div><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
@@ -170,6 +170,9 @@
 	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	
+	<!-- 메뉴 Script -->
+	<script type="text/javascript" src="./assets/js/search/menuSc.js"></script>
 	
 	</body>
 </html>

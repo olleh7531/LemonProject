@@ -72,29 +72,30 @@
 /* 레이아웃 */
 
 /* 메뉴 */
-#menuSc {
-	display: inline-block;
-	border-top: 2px solid #848484;
-	width: 100%;
-}
+ 	#menuSc{
+ 		display: inline-block;
+ 		border-top: 2px solid #848484;
+ 		width: 100%;
+ 	}
+ 	
+ 	#menuSc div {
+ 	 	display: inline-block;
+ 	 	float: left;
+ 	 	width: 20%;
+ 	 	background-color: #ebf0ed;
+ 	 	border-bottom: 1px solid #dbdbdb;
+ 	 	padding-top: 10px;
+ 	 	padding-bottom: 10px;
+ 	}
+ 	
+ 	#menuSc div.current{
+ 		font-weight: bold;
+ 		color: #333333;
+ 		background-color: #fff;
+ 	 	border-bottom: 1px solid #fff; 		
+ 	}
 
-#menuSc div a {
-	display: inline-block;
-	float: left;
-	width: 20%;
-	background-color: #ebf0ed;
-	border-bottom: 1px solid #dbdbdb;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-#menuSc div a:hover {
-	font-weight: bold;
-	color: #333333;
-	background-color: #fff;
-	border-bottom: 1px solid #fff;
-}
-/* 메뉴 */
+ /* 메뉴 */
 
 /* 공통 기타 */
 h3.titleSc {
@@ -236,7 +237,7 @@ dl#info dd {
 				</div>
 				<!-- 메뉴 -->
 				<div id="menuSc">
-					<div>
+					<div class="current">
 						<a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a>
 					</div>
 					<div>
@@ -667,5 +668,7 @@ dl#info dd {
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
+	<!-- 메뉴 Script -->
+	<script type="text/javascript" src="./assets/js/search/menuSc.js"></script>
 </body>
 </html>

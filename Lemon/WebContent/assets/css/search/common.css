@@ -41,7 +41,7 @@
  		width: 100%;
  	}
  	
- 	#menuSc div a{
+ 	#menuSc div {
  	 	display: inline-block;
  	 	float: left;
  	 	width: 20%;
@@ -51,11 +51,15 @@
  	 	padding-bottom: 10px;
  	}
  	
- 	#menuSc div a:hover{
+ 	#menuSc div.current{
  		font-weight: bold;
  		color: #333333;
  		background-color: #fff;
  	 	border-bottom: 1px solid #fff; 		
+ 	}
+ 	
+ 	 #menuSc div a:hover{
+ 	 	text-decoration: underline;
  	}
  	/* 메뉴 */ 	
  	

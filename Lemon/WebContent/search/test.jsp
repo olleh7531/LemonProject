@@ -24,36 +24,37 @@
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
 	
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	
 	<style>
  	#bg_contsSc{ 
- 		border: 1px solid red; 
+/*  		border: 1px solid red;  */
  		text-align: center;
  		width: 100%; 
  	} 
 	
  	#wrap_con{ 
- 	 border: 1px solid blue;    
+/*  	 border: 1px solid blue;     */
  	 display: inline-block; 
   	 width: 1008px;  
  	} 
  	
  	 #wrap_contsSc{ 
  	 	display: inline-block;
- 		border: 1px solid green; 
+/*  		border: 1px solid green;  */
  		width: 80%; 
  		float: left;  		
  	 
  	} 
 	
  	#contsSc { 
- 		border: 1px solid pink; 
+/*  		border: 1px solid pink;  */
  		
  	} 
 	
  	#contsCh { 
 	 	display: inline-block;
- 		border: 1px solid gray; 
+/*  		border: 1px solid gray;  */
  		width: 18%;
  		float: right;
  	}
@@ -64,7 +65,7 @@
  		width: 100%;
  	}
  	
- 	#menuSc div a{
+ 	#menuSc div {
  	 	display: inline-block;
  	 	float: left;
  	 	width: 20%;
@@ -74,7 +75,7 @@
  	 	padding-bottom: 10px;
  	}
  	
- 	#menuSc div a:hover{
+ 	#menuSc div.current{
  		font-weight: bold;
  		color: #333333;
  		background-color: #fff;
@@ -96,7 +97,7 @@
 		<div id="wrap_con">			
 			<div id="wrap_contsSc">	
 				<div id="menuSc">
-					<div><a>통합검색</a></div>
+					<div class="current"><a>통합검색</a></div>
 					<div><a>아티스트</a></div>
 					<div><a>곡</a></div>
 					<div><a>앨범</a></div>
@@ -120,6 +121,18 @@
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	
+	<script>
+	/* 메뉴 관련 */
+	$(function() {
+		$('#menuSc div').click(function() {
+			$('#menuSc div').removeClass('current');
+			$(this).addClass('current');s
+		})
+	});
+	
+	</script>
+	
 	
 	</body>
 </html>
