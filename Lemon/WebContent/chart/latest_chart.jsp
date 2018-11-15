@@ -172,7 +172,7 @@ function NotYet() {
 
 									<td>
 										<div class="wrap t_center" style="color: #000;">
-											<span class="rank "><%=a%></span><span class="none">위</span>
+											<span class="rank "><%=a%></span>
 										</div>
 									</td>
 									<td style="width: 60px;">
@@ -224,14 +224,15 @@ function NotYet() {
 											<button type="button" class="button_etc like" title=""
 												data-song-no="" data-song-menuid=""
 												onclick="goodMusic(<%=cb.getMu_num()%>)">
-												<span class="odd_span"><i class="fa fa-heart-o"></i><span
-													class="cnt"><%=cb.getMu_good()%></span></span>
+												<span class="odd_span"><i class="fa fa-heart-o"></i>
+												<span class="cnt"><%=cb.getMu_good()%></span>
+												</span>
 											</button>
 										</div>
 									</td>
 									<td>
 										<div class="wrap t_center">
-											<button type="button" title="담기" class="button_icons scrap"
+											<button type="button" title="듣기" class="button_icons scrap"
 												onclick="LemonPlayer(<%=cb.getMu_num()%>,<%=cb.getAlbum_num()%>)">
 												<i class="fa fa-play"></i><span class="none">듣기</span>
 											</button>
@@ -247,8 +248,7 @@ function NotYet() {
 									</td>
 									<td>
 										<div class="wrap t_center">
-											<button type="button" title="다운로드"
-												class="button_icons download"
+											<button type="button" title="다운로드" class="button_icons download"
 												onclick="MusicDownload('<%=cb.getMusicfile()%>')">
 												<i class="fa  fa-download"></i><span class="none">다운로드</span>
 											</button>

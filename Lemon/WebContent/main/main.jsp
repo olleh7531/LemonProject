@@ -40,6 +40,7 @@
 	String email_id = (String) session.getAttribute("email_id");
 	MemberDAO mdao = new MemberDAO();
 	String nickName = mdao.getNick(email_id);
+	int level = mdao.getLevel(email_id);
 	System.out.println("email_id : " + email_id );
 %>
 
@@ -1494,17 +1495,21 @@
 						로그인한 유저 이용권 관련 -->
 						<div class="mem_used">
 							<strong class="product_name">
-								<a href="">
+								<a>
 									<strong>
-										<span><%=email_id %></span>
+										<span>email : <%=email_id %></span>
 									</strong>
 								</a>
 							</strong>
 							
 							<strong class="product_name">
-								<a href="">
+								<a>
 									<strong>
-										<span>뭐 넣을지 몰겠당</span>
+										<%if(level == 1) {%>
+										<span>회원 등급 : 관리자</span>
+										<%} else {%>
+										<span>회원 등급 : 일반 회원</span>
+										<%}%>
 									</strong>
 								</a>
 							</strong>

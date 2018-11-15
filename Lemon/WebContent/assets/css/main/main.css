@@ -978,7 +978,7 @@ legend, #IE8#HACK {
 .mem_used strong.product_name {
 	display: block;
 	margin: 0 15px;
-	padding: 14px 0 7px 7px;
+	padding: 10px 10px;
 	background-image:
 		url("../../../assets/img/main/login/main_login_use_bg.png");
 	background-repeat: no-repeat;
