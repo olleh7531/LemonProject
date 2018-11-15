@@ -1,3 +1,4 @@
+<%@page import="com.lemon.member.db.MemberDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.lemon.magazine.board.db.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -43,7 +44,23 @@
 		$(document).viewTinted();
 	});
 </script>
+<style type="text/css">
+.pagination {
+	display: inline-block;
+}
 
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 10px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	color: #edae06;
+	border-bottom: 2px solid #edae06;
+}
+</style>
 </head>
 <body>
 	<%
@@ -54,6 +71,12 @@
 		int pageBlock = ((Integer) request.getAttribute("pageBlock")).intValue();
 		int startPage = ((Integer) request.getAttribute("startPage")).intValue();
 		int endPage = ((Integer) request.getAttribute("endPage")).intValue();
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String email_id = (String) session.getAttribute("email_id");
+		MemberDAO mdao = new MemberDAO();
+		int level = mdao.getLevel(email_id);
 	%>
 
 
@@ -101,7 +124,15 @@
 				</div>
 				<br>
 				<br>
-				<a href="/Lemon/magazineBoardWrite.maga">글쓰기</a>
+				
+				<%if(level == 1) {%>
+					<div class="writeNotice">
+						<a href="/Lemon/magazineBoardWrite.maga">글쓰기</a>
+					</div>
+				<%} else {%>
+					<div class="writeNotice"></div>
+				<%} %>
+				
 				<div style="text-align: center;">
 					<div class="pagination">
 						<%

@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.lemon.chart.db.ChartBean;
+
 
 
 public class MainDAO {
@@ -103,6 +105,121 @@ public class MainDAO {
 		
 		return arr;
 	}
-	
+	public ArrayList<ChartBean> musicCountList00(String music_genre, int num) {
+		ArrayList<ChartBean> cblist = new ArrayList<>();
+		ChartBean cb = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b on a.al_num = b.album_num where music_genre = ? group by a.al_name order by a.al_release desc limit ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, music_genre);
+			pstmt.setInt(2, num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cb = new ChartBean();
+				cb.setAl_agency(rs.getString("al_agency"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				cb.setAl_content(rs.getString("al_content"));
+				cb.setAl_name(rs.getString("al_name"));
+				cb.setAl_num(rs.getInt("al_num"));
+				cb.setAl_release(rs.getDate("al_release"));
+				cb.setAl_singer_name(rs.getString("al_singer_name"));
+				cb.setAlbum_num(rs.getInt("album_num"));
+				cb.setLyrics(rs.getString("lyrics"));
+				cb.setMu_num(rs.getInt("mu_num"));
+				cb.setMusic_genre(rs.getString("music_genre"));
+				cb.setMusic_name(rs.getString("music_name"));
+				cb.setMusic_time(rs.getString("music_time"));
+				cb.setMusic_video(rs.getString("music_video"));
+				cb.setMusicfile(rs.getString("musicfile"));
+				cb.setSinger_num(rs.getInt("singer_num"));
+				cb.setTrack_num(rs.getInt("track_num"));
+				cblist.add(cb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return cblist;
+	}
+
+	public ArrayList<ChartBean> musicCountList01(String music_genre, int num) {
+		ArrayList<ChartBean> cblist = new ArrayList<>();
+		ChartBean cb = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b on a.al_num = b.album_num where music_genre = ? group by a.al_name order by a.al_release desc limit ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, music_genre);
+			pstmt.setInt(2, num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cb = new ChartBean();
+				cb.setAl_agency(rs.getString("al_agency"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				cb.setAl_content(rs.getString("al_content"));
+				cb.setAl_name(rs.getString("al_name"));
+				cb.setAl_num(rs.getInt("al_num"));
+				cb.setAl_release(rs.getDate("al_release"));
+				cb.setAl_singer_name(rs.getString("al_singer_name"));
+				cb.setAlbum_num(rs.getInt("album_num"));
+				cb.setLyrics(rs.getString("lyrics"));
+				cb.setMu_num(rs.getInt("mu_num"));
+				cb.setMusic_genre(rs.getString("music_genre"));
+				cb.setMusic_name(rs.getString("music_name"));
+				cb.setMusic_time(rs.getString("music_time"));
+				cb.setMusic_video(rs.getString("music_video"));
+				cb.setMusicfile(rs.getString("musicfile"));
+				cb.setSinger_num(rs.getInt("singer_num"));
+				cb.setTrack_num(rs.getInt("track_num"));
+				cblist.add(cb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return cblist;
+	}
+
+	public ArrayList<ChartBean> MusicImgList(int countimg) {
+		ArrayList<ChartBean> cbimg = new ArrayList<>();
+		ChartBean cb = null;
+		try {
+			con = getCon();
+			sql = "select * from album a inner join music b on a.al_num = b.album_num group by a.al_name order by a.al_release desc limit ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, countimg);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cb = new ChartBean();
+				cb.setAl_agency(rs.getString("al_agency"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				cb.setAl_content(rs.getString("al_content"));
+				cb.setAl_name(rs.getString("al_name"));
+				cb.setAl_num(rs.getInt("al_num"));
+				cb.setAl_release(rs.getDate("al_release"));
+				cb.setAl_singer_name(rs.getString("al_singer_name"));
+				cb.setAlbum_num(rs.getInt("album_num"));
+				cb.setLyrics(rs.getString("lyrics"));
+				cb.setMu_num(rs.getInt("mu_num"));
+				cb.setMusic_genre(rs.getString("music_genre"));
+				cb.setMusic_name(rs.getString("music_name"));
+				cb.setMusic_time(rs.getString("music_time"));
+				cb.setMusic_video(rs.getString("music_video"));
+				cb.setMusicfile(rs.getString("musicfile"));
+				cb.setSinger_num(rs.getInt("singer_num"));
+				cb.setTrack_num(rs.getInt("track_num"));
+				cbimg.add(cb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return cbimg;
+	}
+
 	
 }

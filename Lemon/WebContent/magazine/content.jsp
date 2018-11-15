@@ -70,11 +70,11 @@
 				</tr>
 				<tr>
 					<td colspan="3"><input type="button" value="글 수정"
-						onclick="location.href='./magazineUpdate.maga'"> <input
+						onclick="location.href='./magazineUpdate.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum%>'"> <input
 						type="button" value="글 삭제"
-						onclick="location.href='./magazineDelete.maga'"> <input
+						onclick="location.href='./magazineDeleteAction.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum%>'"> <input
 						type="button" value="글 목록"
-						onclick="location.href='./magazineList.maga'"></td>
+						onclick="location.href='./magazineList.maga?pageNum=<%=pageNum%>'"></td>
 				</tr>
 
 			</table>

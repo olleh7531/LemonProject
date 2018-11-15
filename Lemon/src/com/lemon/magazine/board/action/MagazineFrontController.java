@@ -85,11 +85,7 @@ public class MagazineFrontController extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/magazineDelete.maga")){
-			forward = new ActionForward();
-			forward.setPath("./magazine/deleteForm.jsp");
-			forward.setRedirect(false);
-		} else if(command.equals("/magazineDeleteAction.maga")){
+		}  else if(command.equals("/magazineDeleteAction.maga")){
 			action = new magazineDeleteAction();
 			try {
 				forward = action.execute(request, response);

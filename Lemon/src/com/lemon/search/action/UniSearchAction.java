@@ -26,10 +26,12 @@ public class UniSearchAction implements Action {
 		
 		SearchDAO sdao = new SearchDAO();
 		SearchBean artist_profile = sdao.ArtistProfileSearch(search);
-		List<SearchBean> artist_list = sdao.ArtistSearch(search);			
+		List<SearchBean> artist_list = sdao.ArtistSearch(search);	
+		
 		List<SearchBean> song_ar_list = sdao.SongArtistSearch(search);
 		List<SearchBean> song_mn_list = sdao.SongMusicNameSearch(search);
 		List<SearchBean> song_an_list = sdao.SongAlbumNameSearch(search);
+		
 		List<SearchBean> album_list = sdao.AlbumSearch(search);
 		List<SearchBean> lyric_list = sdao.LyricSearch(search);
 		List<SearchChartBean> searchchart = sdao.getSearchChart(search);
