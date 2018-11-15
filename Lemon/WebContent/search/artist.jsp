@@ -171,6 +171,15 @@
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
+	<script type="text/javascript">
+	// 검색어 초기화
+	$(document).ready(function(){
+		$('#top_search').val("${search}");s
+	});
+
+	</script>
+	
+	
 	<!-- 메뉴 Script -->
 	<script type="text/javascript" src="./assets/js/search/menuSc.js"></script>
 	

@@ -288,6 +288,11 @@
 
 	</script>
 	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#top_search').val("${search}");s
+	});
+
+	
 	function LemonPlayer(mu_num,album_num){
 		window.open("./LemonPlayer.mp?musicNum="+mu_num+"&album="+album_num+"","a","width=320,height=315,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
 	}
