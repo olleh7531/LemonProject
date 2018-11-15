@@ -574,8 +574,29 @@ tr .button_icons {background: none !important;}
 		}
 		
 		function MusicDownload(singer) {
-			var afterEncoding = encodeURI(singer);
-			location.href="./chart/file_down.jsp?file_name="+afterEncoding;
+
+				
+				$.ajax({
+					type : "POST", // method="POST" 방식으로 출력 
+					url : "./DownLogUp.ct", // id 체크하는 jsp 파일 주소 불러오기 
+					data : {
+						musicfile : singer,			
+					},
+					success : function(data) { // data를 가져오는 것이 성공하였을 때
+						if(data==2){
+							alert("로그인한 유저만 가능합니다.")
+						}else{
+							var afterEncoding = encodeURI(singer);
+							location.href="./chart/file_down.jsp?file_name="+afterEncoding;
+						}
+									
+					},
+					error : function(xhr, status, error) { // 에러났을 때
+						alert("error : " + error);
+					}
+				});
+				
+			
 		}
 	</script>
 	<!-- footer -->

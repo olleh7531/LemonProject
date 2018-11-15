@@ -14,7 +14,7 @@ public class DownLogUpAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		int mu_num = Integer.parseInt(request.getParameter("mu_num"));
+		String musicfile = request.getParameter("musicfile");
 		
 		HttpSession session = request.getSession();
 		String user = (String) session.getAttribute("email_id");
@@ -27,7 +27,13 @@ public class DownLogUpAction implements Action {
 		}
 		
 		ChartDAO cdao = new ChartDAO();
-		int check = cdao.insertDownloadlog(user, mu_num);
+		String ip ="";
+		try (java.util.Scanner s = new java.util.Scanner(new java.net.URL("https://api.ipify.org").openStream(), "UTF-8").useDelimiter("\\A")) {
+		    ip = s.next();
+		} catch (java.io.IOException e) {
+		    e.printStackTrace();
+		}
+		int check = cdao.insertDownloadlog(user, musicfile,ip);
 
 
 		response.setContentType("text/html; charset=UTF-8");

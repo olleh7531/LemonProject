@@ -388,28 +388,27 @@ public class ChartDAO {
 		}
 	}
 
-	public int insertDownloadlog(String user, int mu_num) {
+	public int insertDownloadlog(String user, String musicfile,String ip) {
 		int check = -1;
 		try {
 			con = getCon();
-			sql = "select * from download_log where do_user_email= ? AND do_music_num= ? ";
+			sql = "select * from download_log where do_user_email= ? AND do_music_num = (select mu_num from music where musicfile=?); ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
-			pstmt.setInt(2, mu_num);
+			pstmt.setString(2, musicfile);
 			rs = pstmt.executeQuery();
-			System.out.println("yyyyyyyyyyyyyyyyy");
 			if (rs.next()) {
-				System.out.println("testxxxxxxxxxxx");
-				if (rs.getInt(1) == 0) {
 					check = 0;
-					sql = "insert into playlist(pls_user_email, pls_music_num) values(?,?)";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, user);
-					pstmt.setInt(2, mu_num);
-					pstmt.executeUpdate();
-				} else {
-					check = 1;
-				}
+			}else{
+				sql = "insert into download_log(do_num,do_level,do_user_email,do_user_ip,do_music_num,do_downtime) "
+						+ "values(null,0,?,?,(select mu_num from music where musicfile=?),now())";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user);
+				pstmt.setString(2, ip);
+				pstmt.setString(3, musicfile);
+				pstmt.executeUpdate();
+				check = 1;
+				
 			}
 
 		} catch (Exception e) {
@@ -581,6 +580,11 @@ public class ChartDAO {
 				pstmt = con.prepareStatement(sql);
 				// pstmt 객체 실행
 				// lately가 10분전 past가 20분전 자료
+				pstmt.executeUpdate();
+			}
+			for(int i=0;i<100;i++){
+				sql="update search_chart a,( SELECT b.*,@ROWNUM := @ROWNUM + 1 AS sc_rank FROM (select sc_num,sc_keyword,sc_date from search_chart where sc_date =  DATE_ADD(DATE_FORMAT(now(),'%Y-%m-%d %H'), INTERVAL "+i+"*10 MINUTE) group by sc_num order by sc_count desc) b, (SELECT @ROWNUM := 0) R ) b set a.sc_rank = b.sc_rank where a.sc_num=b.sc_num";
+				pstmt = con.prepareStatement(sql);
 				pstmt.executeUpdate();
 			}
 			

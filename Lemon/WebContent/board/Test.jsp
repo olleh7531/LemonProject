@@ -10,14 +10,17 @@
 <body>
 	<%
 		Random r = new Random();
+	
+		// for문 사용 후 Rank.ct 로 이동하면 순위 매겨짐 (searchchart,musicchart 2개 insert 먼저)
+		
+		
 
 		// chart(music) 임시 데이터 생성
-		// for문 사용 후 Rank.ct 로 이동하면 순위 매겨짐
 
-/*  		 for(int i=0;i<49;i++){
+ 		 for(int i=0;i<49;i++){
 			for(int j=1;j<101;j++){
 				if(i==0&&j==1){
-					out.println("insert into chart values");
+					out.println("insert into chart (ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) values");
 			out.println("(null,"+j+","+r.nextInt(21)+","+r.nextInt(8)+",DATE_FORMAT(NOW(),'%Y-%m-%d %H')),");
 				}else if(i==0){
 			out.println("(null,"+j+","+r.nextInt(21)+","+r.nextInt(8)+",DATE_FORMAT(NOW(),'%Y-%m-%d %H')),");			
@@ -31,85 +34,15 @@
 			
 				
 			}
-		}  */ 
+		}  
 
 		// searchchart 임시데이터 생성
 
-  		System.out.println("insert into search_chart values");
-		for (int i = 0; i < 12; i++) {
-			
-			int aa=r.nextInt(12)+1;
-	int bb=0,cc=0,dd=0,ee=0,ff=0,gg=0,hh=0,ii=0,jj=0,kk=0,ll=0;
-	for(;;){					
-	bb=r.nextInt(12)+1;
-	if(bb!=aa){
-		break;					
-	}
-	}
-	for(;;){					
-	cc=r.nextInt(12)+1;
-	if(cc!=bb&&cc!=aa){
-		break;
-	}
-	}
-	for(;;){					
-	dd=r.nextInt(12)+1;
-	if(dd!=cc&&dd!=bb&&dd!=aa){
-		break;
-	}
-	}
-	for(;;){		
-		ee=r.nextInt(12)+1;
-	if(ee!=dd&&ee!=cc&&ee!=bb&&ee!=aa){
-		break;
-	}
-	}
-	for(;;){
-		ff=r.nextInt(12)+1;
-	if(ff!=ee&&ff!=dd&&ff!=cc&&ff!=bb&&ff!=aa){
-		break;
-	}
-	}
-	for(;;){	
-		gg=r.nextInt(12)+1;
-	if(gg!=ff&&gg!=ee&&gg!=dd&&gg!=cc&&gg!=bb&&gg!=aa){
-		break;
-	}
-	}
-	for(;;){
-		hh=r.nextInt(12)+1;
-	if(hh!=gg&&hh!=ff&&hh!=ee&&hh!=dd&&hh!=cc&&hh!=bb&&hh!=aa){
-		break;
-	}
-	}
-	for(;;){
-		ii=r.nextInt(12)+1;
-	if(ii!=hh&&ii!=gg&&ii!=ff&&ii!=ee&&ii!=dd&&ii!=cc&&ii!=bb&&ii!=aa){
-		break;
-	}
-	}
-	for(;;){
-		jj=r.nextInt(12)+1;
-	if(jj!=ii&&jj!=hh&&jj!=gg&&jj!=ff&&jj!=ee&&jj!=dd&&jj!=cc&&jj!=bb&&jj!=aa){
-		break;
-	}
-	}
-	for(;;){
-		kk=r.nextInt(12)+1;
-	if(kk!=jj&&kk!=ii&&kk!=hh&&kk!=gg&&kk!=ff&&kk!=ee&&kk!=dd&&kk!=cc&&kk!=bb&&kk!=aa){
-		break;
-	}
-	}
-	for(;;){
-		ll=r.nextInt(12)+1;
-	if(ll!=kk&&ll!=jj&&ll!=ii&&ll!=hh&&ll!=gg&&ll!=ff&&ll!=ee&&ll!=dd&&ll!=cc&&ll!=bb&&ll!=aa){
-		break;
-	}
-	}
+  		/* out.println("insert into search_chart (sc_num,sc_keyword,sc_date,sc_gender1,sc_gender2,sc_generation1,sc_generation2,sc_generation3,sc_generation4,sc_generation5,sc_count) values");
+		for (int i = 0; i < 100; i++) {
 	
 	
-	
-			for (int j = 0; j < 12; j++) {
+			for (int j = 0; j < 41; j++) {
 				int rr = r.nextInt(250) + 51;
 				int a = r.nextInt(rr) + 1;
 				int b = rr - a;
@@ -119,109 +52,306 @@
 				int y = (rr-(v + w + z)) / (r.nextInt(2)+2);
 				int x = rr - (v + w + y + z);
 				
-				
-				
-				
 
 				switch (j) {
 				case 0:
-					System.out.println("(null,'아이유',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
-							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+aa+"),");
-					System.out.println("(null,'아이유',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+aa+"),");
+					out.println("(null,'아이유',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr+"),");
+					out.println("(null,'아이유',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr +"),");
 					break;
 				case 1:
-					System.out.println("(null,'테스트',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
-							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+bb+"),");
-					System.out.println("(null,'테스트',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+bb+"),");
+					out.println("(null,'스탠딩에그',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr+ "),");
+					out.println("(null,'스탠딩에그',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 2:
-					System.out.println("(null,'방탄',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'방탄소년단',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+cc+"),");
-					System.out.println("(null,'방탄',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+cc+"),");
+							+ "),");
+					out.println("(null,'방탄소년단',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 3:
-					System.out.println("(null,'시간',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'사랑',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+dd+"),");
-					System.out.println("(null,'시간',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+dd+"),");
+							+ "),");
+					out.println("(null,'사랑',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 4:
-					System.out.println("(null,'없다',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'밤편지',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+ee+"),");
-					System.out.println("(null,'없다',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+ee+"),");
+							+ "),");
+					out.println("(null,'밤편지',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 5:
-					System.out.println("(null,'시작',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'FAKELOVE',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+ff+"),");
-					System.out.println("(null,'시작',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+ff+"),");
+							+ "),");
+					out.println("(null,'FAKELOVE',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 6:
-					System.out.println("(null,'단어',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'비투비',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+gg+"),");
-					System.out.println("(null,'단어',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+gg+"),");
+							+ "),");
+					out.println("(null,'비투비',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 7:
-					System.out.println("(null,'하루',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'NCT',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+hh+"),");
-					System.out.println("(null,'하루',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+hh+"),");
+							+ "),");
+					out.println("(null,'NCT',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 8:
-					System.out.println("(null,'단위',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'멜로망스',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+ii+"),");
-					System.out.println("(null,'단위',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+ii+"),");
+							+ "),");
+					out.println("(null,'멜로망스',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 9:
-					System.out.println("(null,'먼데이키즈',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL "
+					out.println("(null,'먼데이키즈',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL "
 							+ i * 10 + " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z
-							+ "," + rr + ","+jj+"),");
-					System.out.println(
+							+ "," + rr + "),");
+					out.println(
 							"(null,'먼데이키즈',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND)," + a + ","
-									+ b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+jj+"),");
+									+ b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 10:
-					System.out.println("(null,'블랙핑크',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'블랙핑크',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+kk+"),");
-					System.out.println("(null,'블랙핑크',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+kk+"),");
+							+ "),");
+					out.println("(null,'블랙핑크',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					break;
 				case 11:
-					if(i!=11){
-					System.out.println("(null,'최우성',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+					out.println("(null,'지코',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-							+ ","+ll+"),");
-					System.out.println("(null,'최우성',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + ","+ll+"),");
+							+ "),");
+					out.println("(null,'지코',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 12:
+					out.println("(null,'너나해',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'너나해',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 13:
+					out.println("(null,'별이빛나는밤',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'별이빛나는밤',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 14:
+					out.println("(null,'마마무',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'마마무',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 15:
+					out.println("(null,'캥거루',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'캥거루',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 16:
+					out.println("(null,'고백',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'고백',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 17:
+					out.println("(null,'몰랐니',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'몰랐니',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 18:
+					out.println("(null,'사이렌',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'사이렌',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 19:
+					out.println("(null,'선미',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'선미',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 20:
+					out.println("(null,'모래시계',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'모래시계',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 21:
+					out.println("(null,'레드벨벳',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'레드벨벳',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 22:
+					out.println("(null,'그날처럼',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'그날처럼',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 23:
+					out.println("(null,'빨간맛',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'빨간맛',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 24:
+					out.println("(null,'트와이스',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'트와이스',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 25:
+					out.println("(null,'봄날',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'봄날',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 26:
+					out.println("(null,'지나오다',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'지나오다',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 27:
+					out.println("(null,'여행',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'여행',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 28:
+					out.println("(null,'볼빨간사춘기',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'볼빨간사춘기',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 29:
+					out.println("(null,'로이킴',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'로이킴',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 30:
+					out.println("(null,'모모랜드',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'모모랜드',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 31:
+					out.println("(null,'세븐틴',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'세븐틴',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 32:
+					out.println("(null,'열애중',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'열애중',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 33:
+					out.println("(null,'벤',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'벤',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 34:
+					out.println("(null,'EXO',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'EXO',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 35:
+					out.println("(null,'뿜뿜',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'뿜뿜',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 36:
+					out.println("(null,'로꼬',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'로꼬',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 37:
+					out.println("(null,'미스터 선샤인',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'미스터 선샤인',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 38:
+					out.println("(null,'AOA',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'AOA',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 39:
+					out.println("(null,'길구봉구',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'길구봉구',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
+					break;
+				case 40:
+					if(i!=99){
+					out.println("(null,'이수',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+							+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
+							+ "),");
+					out.println("(null,'이수',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+							+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr + "),");
 					}else{
-						System.out.println("(null,'최우성',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
+						out.println("(null,'이수',DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL " + i * 10
 								+ " MINUTE)," + a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-								+ ","+ll+"),");
-						System.out.println("(null,'최우성',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
-								+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr
-								+"," + ll + ");");
+								+ "),");
+						out.println("(null,'이수',DATE_ADD(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL " + i + " DAY), INTERVAL 1 SECOND),"
+								+ a + "," + b + "," + v + "," + w + "," + x + "," + y + "," + z + "," + rr+ ");");
 					}
 					break;
 				}
 
 			}
-		}  
+		}   */
 	%>
 </body>
 </html>
