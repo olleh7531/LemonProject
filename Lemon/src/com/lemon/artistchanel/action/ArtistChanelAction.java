@@ -130,11 +130,11 @@ public class ArtistChanelAction implements Action {
 		request.setAttribute("page_count", page_count);
 		request.setAttribute("start_page", start_page);
 		request.setAttribute("end_page", end_page);
-
+		
 		/*----------------------------------------------------------*/
 		/*　　　　　　　　　　　　　　　　　　페이지 이동　　　　　　　　　　　　　　　　　　*/
 		/*----------------------------------------------------------*/
- 			
+		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("/starpost/artistChanel.jsp?artist=" + artist);
