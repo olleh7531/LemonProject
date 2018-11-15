@@ -1,11 +1,14 @@
 package com.lemon.chart.action;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lemon.chart.db.ChartBean;
+import com.lemon.chart.db.ChartBean1;
 import com.lemon.chart.db.ChartDAO;
 
 public class LemonLatest_Chart implements Action {
@@ -60,6 +63,43 @@ public class LemonLatest_Chart implements Action {
 			endPage = pageCount;
 		}
 		
+		String daytime = request.getParameter("dayTime");
+		if (daytime == null) {
+			Date date = new Date();
+			daytime = date.toString().substring(date.toString().indexOf(":") - 2, date.toString().indexOf(":"));
+		}
+		int daytimex = Integer.parseInt(daytime);
+
+
+		// ChartDAO 객체 생성 -> 메서드 getChart(id) -> 차트정보를 가져오기(JavaBean)
+		List<ChartBean1> list = cdao.getChart(daytimex);
+		List<Double> total = new ArrayList();
+		double temp = 0;
+		for (int i = 0; i < list.size() / 3; i++) {
+			for (int j = i; j < list.size(); j = j + list.size() / 3) {
+				temp += (list.get(j).getCh_playcnt() * 4) + (list.get(j).getCh_downcnt() * 6);
+			}
+			total.add(temp);
+			temp = 0;
+		}
+		List totalarr = new ArrayList();
+
+		for (int i = 0; i < list.size() / 3; i++) {
+			for (int j = i; j < list.size(); j = j + list.size() / 3) {
+				totalarr.add((int) Math
+						.round((((list.get(j).getCh_playcnt() * 4) + (list.get(j).getCh_downcnt() * 6)) / total.get(i))
+								* 100));
+			}
+			temp = 0;
+		}
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).setCh_num((int) totalarr.get(i));
+		}
+
+		// 차트정보를 request 객체에 저장 ,페이지 이동 (./board/lemonChart.jsp)-Actionforward
+		request.setAttribute("list", list);
+
+		
 		request.setAttribute("chartList", ChartList);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("count", count);
@@ -70,7 +110,7 @@ public class LemonLatest_Chart implements Action {
 		request.setAttribute("album", request.getParameter("album"));
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./chart/latest_chart.jsp");
+		forward.setPath("./chart/latest_chart.jsp?dayTime=" + daytime + "");
 		forward.setRedirect(false);
 		return forward;
 	}

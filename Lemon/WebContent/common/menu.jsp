@@ -237,23 +237,8 @@
 			<div id="menu">
 				<ul>
 					<li class="menu1">
-						<a href="./LemonChart.ct" class="cur_menu mlog">
-							<span class="menu_bg menu01">레몬차트</span>
-						</a>
-					</li>
-					<li class="menu2">
 						<a href="./LemonLatest_Chart.ct" class="cur_menu mlog">
-							<span class="menu_bg menu02">최신</span>
-						</a>
-					</li>
-					<li class="menu3">
-						<a href="" class="cur_menu mlog">
-							<span class="menu_bg menu03">장르</span>
-						</a>
-					</li>
-					<li class="menu4">
-						<a href="" class="cur_menu mlog">
-							<span class="menu_more menu05">멜론DJ</span>
+							<span class="menu_bg menu01">레몬차트</span>
 						</a>
 					</li>
 					<li class="menu5">

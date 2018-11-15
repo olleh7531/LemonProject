@@ -71,10 +71,11 @@ function NotYet() {
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
+	<jsp:include page="../board/lemonChart.jsp"></jsp:include>
 	<!-- 본문 -->
 	<div id="cont_wrap" class="clfix">
 		<div
-			style="border-top: 1px solid #b8b8b8; border-bottom: 1px solid #eaeaea; height: 50px; background-color: #fcfcfc;">
+			style="border-top: 1px solid #b8b8b8; display:none; border-bottom: 1px solid #eaeaea; height: 50px; background-color: #fcfcfc;">
 			<div class="div_tab">
 				<ul class="tab">
 					<li class="current" data-tab="tab1"><a
@@ -90,12 +91,12 @@ function NotYet() {
 
 
 			<div id="tab1" class="tabcontent current">
-				<div class="page_header">
+				<div class="page_header" style="display: none;">
 					<h2 class="title">최신곡</h2>
 				</div>
 				<form action="#">
 					<div class="service_list_song">
-						<div class="wrap_btn_tb top">
+						<div class="wrap_btn_tb top" style="display: none;">
 							<button type="button" title="선택된 곡 듣기" class="button_rbox"
 								onclick="">
 								<i class="fa fa-play" style="color: #969696;"><span	class="cnt">듣기</span></i>
