@@ -14,7 +14,7 @@
 		// chart(music) 임시 데이터 생성
 		// for문 사용 후 Rank.ct 로 이동하면 순위 매겨짐
 
- 		 for(int i=0;i<49;i++){
+/*  		 for(int i=0;i<49;i++){
 			for(int j=1;j<101;j++){
 				if(i==0&&j==1){
 					out.println("insert into chart values");
@@ -31,11 +31,11 @@
 			
 				
 			}
-		}  
+		}  */ 
 
 		// searchchart 임시데이터 생성
 
-/*  		System.out.println("insert into search_chart values");
+  		System.out.println("insert into search_chart values");
 		for (int i = 0; i < 12; i++) {
 			
 			int aa=r.nextInt(12)+1;
@@ -221,7 +221,7 @@
 				}
 
 			}
-		}  */
+		}  
 	%>
 </body>
 </html>

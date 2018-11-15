@@ -11,6 +11,7 @@ public class ChartBean {
 	private String music_name;
 	private int ch_ranking;
 	private String singer_name;
+	private String al_art_img;
 	
 	public String getMusic_name() {
 		return music_name;
@@ -59,6 +60,12 @@ public class ChartBean {
 	}
 	public void setSinger_name(String singer_name) {
 		this.singer_name = singer_name;
+	}
+	public String getAl_art_img() {
+		return al_art_img;
+	}
+	public void setAl_art_img(String al_art_img) {
+		this.al_art_img = al_art_img;
 	}
 
 	

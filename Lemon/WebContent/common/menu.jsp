@@ -41,7 +41,7 @@
 				<c:set var="realtime" value="${sessionScope.realtime}"/>
 				<!-- 실시간 검색어 -->
 				<div class="realtime_soar_keyword">
-					<a href="/search/trend/index.htm" class="title"
+					<a class="title"
 						style="display: inline-block;">급상승 키워드</a>
 					<div class="keyword_overlay">
 						<ol style="overflow: hidden; height: 20px;">
@@ -52,7 +52,7 @@
 									<span class="gubun">.</span>
 									<span class="none"> 위</span>
 								</strong>
-								<a href="" class="ellipsis"
+								<a href="/Lemon/UniSearch.sc?search=${psearch.sc_keyword}&sort=최신순" class="ellipsis"
 									title="${psearch.sc_keyword} - 페이지 이동">${psearch.sc_keyword}</a>
 									<c:if test="${psearch.sc_rank==9999999}">
 						<span class="wrap_rank new">
@@ -65,15 +65,15 @@
 									<span class="num">${psearch.sc_rank}</span>
 								</span>
 										</c:if>
+									<c:if test="${0 eq psearch.sc_rank}">
+						<span class="wrap_rank static">
+									<span class="icon">순위 동일</span>
+								</span>
+										</c:if>
 									<c:if test="${psearch.sc_rank<0}">
 								<span class="wrap_rank down">
 									<span class="icon">순위하락수</span>
 									<span class="num">${psearch.sc_rank}</span>
-								</span>
-										</c:if>
-									<c:if test="${psearch.sc_rank==0}">
-						<span class="wrap_rank static">
-									<span class="icon">순위 동일</span>
 								</span>
 										</c:if>
 					
@@ -132,11 +132,6 @@
 							  })(i);
 							};
 						</script>
-						<a href="/search/trend/index.htm" class="keyword_more" title="실시간 순위">
-							<span>더보기 
-								<span></span>
-							</span>
-						</a>
 					</div>
 				</div>
 			</div>

@@ -203,18 +203,16 @@ ol, ul, li {
 <c:set var= "female1" value="${gender2 / (gender1+gender2) *100}"/>
 <fmt:formatNumber var="male2" value="${male1}" pattern="."/>
 <fmt:formatNumber var="female2" value="${female1}" pattern="."/>
-<h1>서치차트</h1>
+<h5 style="font-size: 14px;"><b style="float: left; padding-left: 10px; padding-top: 20px; color: #eeb024;">${arr[0].sc_keyword}</b><b style="float: right; padding-right: 10px; padding-top: 20px;">검색트렌드</b></h5>
 <div id="side_conts">
 <div id="lineChart"></div>
+<h5 style="font-size: 13px;"><b style="float: left; padding-left: 10px;">성별</b></h5>
 <div id="chart"></div>
+<h5 style="font-size: 13px;"><b style="float: left; padding-left: 10px;">연령별</b></h5>
 <div id="PieChart"></div>
 <div id="side_cont">
 <div class="wrap_title_side line">
-							<h2 class="f_tit_side ">인기키워드</h2>
-							<button type="button" title="인기키워드 접기" class="btn_text arrow_u">
-								<span class="none">더보기</span>
-								<span class="icon"></span>
-							</button>
+							<h2 class="f_tit_side " style="padding-top: 10px;">인기키워드</h2>
 						</div>
 						<hr>
 						<div class="wrap_cont_side">
@@ -229,7 +227,7 @@ ol, ul, li {
 											<div class="cntt">
 												<span class="none">곡명</span>
 												<div class="ellipsis">
-													<a href="" title="${psearch.sc_keyword} 통합검색 - 페이지 이동">${psearch.sc_keyword}</a>
+													<a href="/Lemon/UniSearch.sc?search=${psearch.sc_keyword}&sort=최신순" title="${psearch.sc_keyword} 통합검색 - 페이지 이동">${psearch.sc_keyword}</a>
 												</div>
 											</div>
 										</div>
@@ -251,15 +249,10 @@ ol, ul, li {
 									
 								</ul>
 							</div>
+							<hr>
 							<div class="wrap_btn_r_side line">
-								<span class="date"><c:forEach items="${arr}" var="list" varStatus="status" begin="9">
-			<c:set var="test" value="${list.sc_date}" />
-				${fn:substring(test,0,10)} 
-				</c:forEach>	</span>
-								<a href="javascript:;" title="인기키워드 전체보기 - 페이지 이동" class="btn btn_text arrow_r" onclick="location.href='/search/trend/index.htm'">
-									<span class="text">전체보기</span>
-									<span class="icon"></span>
-								</a>
+								<span class="date" style="float:left; padding-left: 10px; font-size: 12px; padding-bottom: 10px;">
+				${fn:substring(popular[0].sc_date,0,10)} 	</span>
 							</div>
 							
 						</div>
@@ -363,7 +356,9 @@ var chart = bb.generate({
 		"${list.sc_count}"
 		</c:if>
 		</c:forEach>]
-	    ],
+	    ],colors: {
+            "검색 수": "#eeb024",
+        },
 	  },
 	  axis: {
 	    x: {

@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -1903,382 +1904,98 @@
 					</h2>
 					<div class="wrap_chart_tab">
 						<ul>
-							<!-- 실시간 차트 -->
 							<c:set var="realmusic" value="${requestScope.realmusic}"/>
+							<!-- 실시간 차트 -->
 							<li class="nth1 chart_tab_li"><a title="실시간 보기"
 								class="d_link tab_link realtime"> <span
 									class="chart_tab_span">실시간</span>
 							</a> <!-- <span class="none">실시간</span> -->
 								<div class="list_wrap typeRealtime">
-									<span class="txt_intro">2018.10.01 <strong>16:00</strong>
+									<span class="txt_intro">${fn:substring(realmusic[0].ch_updatetime,0,10)} <strong>${fn:substring(realmusic[0].ch_updatetime,10,16)} </strong>
 										기준
 									</span>
 									<ul>
+									
+									
+					<c:forEach var="realmusic" items="${realmusic}" varStatus="status">
+									
+									<c:if test="${realmusic.ch_ranking==9999999}">
 										<li class="rank_item">
-											<div class="rank_number nth1">
-												<span class="rank">1</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
+											<div class="rank_number nth${status.index+1}">
+												<span class="rank">${status.index+1}</span> <span class="none">위</span> <span
+													class="ranking_num new"> <span class="icon">새진입</span>
+												</span>
+											</div>
+										</c:if>
+		
+									
+									<c:if test="${realmusic.ch_ranking>0}">
+									
+										<li class="rank_item">
+											<div class="rank_number nth${status.index+1}">
+												<span class="rank">${status.index+1}</span> <span class="none">위</span> <span
+													class="ranking_num up"> <span class="num">${realmusic.ch_ranking}</span> <span
+													class="icon">단계 상승</span>
+												</span>
+											</div>
+										</c:if>
+										
+									<c:if test="${realmusic.ch_ranking<0}">
+												<li class="rank_item odd">
+											<div class="rank_number nth${status.index+1}">
+												<span class="rank">${status.index+1}</span> <span class="none">위</span> <span
+													class="ranking_num down"> <span class="num">${realmusic.ch_ranking}</span>
+													<span class="icon">단계 하락</span>
+												</span>
+											</div>
+									</c:if>
+									
+
+									<c:if test="${realmusic.ch_ranking eq 0}">
+											<li class="rank_item">
+											<div class="rank_number nth${status.index+1}">
+												<span class="rank">${status.index+1} </span> <span class="none">위</span> <span
+													class="ranking_num static"> <span class="num">${realmusic.ch_ranking}</span>
 													<span class="icon">순위 동일</span>
 												</span>
 											</div>
-											<div class="rank_cntt">
+									</c:if>
+
+									
+												<div class="rank_cntt">
 												<div class="thumb">
-													<a href="" title="하루도 그대를 사랑하지 않은 적이 없었다" class="mlog">
+													<a title="${realmusic.music_name}" class="mlog">
 														<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/102/05/805/10205805_500.jpg/melon/quality/80/resize/48/optimize"
+														src="./musicUpload/albumcover/${realmusic.al_art_img}"
 														alt=""> <span class="bg_album_frame">실시간</span>
 													</a>
 												</div>
 												<div class="rank_info">
 													<p class="song" data-song-no="31316695">
-														<a href="" class="ellipsis mlog"
-															title="하루도 그대를 사랑하지 않은 적이 없었다">하루도 그대를 사랑하지 않은 적이 없었다</a>
+														<a href="/Lemon/UniSearch.sc?search=${realmusic.music_name}&sort=최신순" class="ellipsis mlog"
+															title="${realmusic.music_name}">${realmusic.music_name}</a>
 													</p>
 													<div class="artist">
 														<div class="ellipsis">
-															<a href="" title="임창정 - 페이지 이동" class="fc_mgray mlog">임창정</a>
+															<a href="/Lemon/UniSearch.sc?search=${realmusic.singer_name}&sort=최신순" title="${realmusic.singer_name} - 페이지 이동" class="fc_mgray mlog">${realmusic.singer_name}</a>
 															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="임창정 - 페이지 이동" class="fc_mgray mlog">임창정</a>
+																style="display: none"> <a 
+																title="${realmusic.singer_name} - 페이지 이동" class="fc_mgray mlog">${realmusic.singer_name}</a>
 															</span>
 														</div>
 													</div>
 												</div>
 											</div>
 										</li>
-										<li class="rank_item odd">
-											<div class="rank_number nth2">
-												<span class="rank">2</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="우리 그만하자" class="mlog"> <img
-														width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/102/05/438/10205438_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31314142">
-														<a href="" class="ellipsis mlog" title="우리 그만하자">우리
-															그만하자</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="로이킴 - 페이지 이동" class="fc_mgray mlog">로이킴</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="로이킴 - 페이지 이동" class="fc_mgray mlog">로이킴</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item">
-											<div class="rank_number nth3">
-												<span class="rank">3</span> <span class="none">위</span> <span
-													class="ranking_num up"> <span class="num">1</span> <span
-													class="icon">단계 상승</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="WARNING" class="mlog"> <img
-														width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/102/00/838/10200838_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31286161">
-														<a href="" class="ellipsis mlog" title="사이렌 (Siren)">사이렌(Siren)</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="선미 - 페이지 이동" class="fc_mgray mlog">선미</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="선미 - 페이지 이동" class="fc_mgray mlog">선미</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item odd">
-											<div class="rank_number nth4">
-												<span class="rank">4</span> <span class="none">위</span> <span
-													class="ranking_num down"> <span class="num">1</span>
-													<span class="icon">단계 하락</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="헤어지는 중" class="mlog"> <img width="48"
-														height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/102/03/500/10203500_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31302310">
-														<a href="" class="ellipsis mlog" title="헤어지는 중">헤어지는 중</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="펀치 (Punch) - 페이지 이동"
-																class="fc_mgray mlog">펀치(Punch)</a> <span
-																class="checkEllipsisRealtimeChart" style="display: none">
-																<a href="" title="펀치 (Punch) - 페이지 이동"
-																class="fc_mgray mlog">펀치(Punch)</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item">
-											<div class="rank_number nth5">
-												<span class="rank">5</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="Take" class="mlog"> <img width="48"
-														height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/101/79/508/10179508_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31151836">
-														<a href="" class="ellipsis mlog" title="Way Back Home">Way
-															Back Home</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="숀 (SHAUN) - 페이지 이동"
-																class="fc_mgray mlog">숀(SHAUN)</a> <span
-																class="checkEllipsisRealtimeChart" style="display: none">
-																<a href="" title="숀 (SHAUN) - 페이지 이동"
-																class="fc_mgray mlog">숀(SHAUN)</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item odd">
-											<div class="rank_number nth6">
-												<span class="rank">6</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="LOVE YOURSELF 結 `Answer`" class="mlog">
-														<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/101/97/480/10197480_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31266290">
-														<a href="" class="ellipsis mlog" title="IDOL">IDOL</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="방탄소년단 - 페이지 이동" class="fc_mgray mlog">방탄소년단</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="방탄소년단 - 페이지 이동" class="fc_mgray mlog">방탄소년단</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item">
-											<div class="rank_number nth7">
-												<span class="rank">7</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="`키스 먼저 할까요?` OST Part.3" class="mlog">
-														<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/101/49/492/10149492_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="30962526">
-														<a href="" class="ellipsis mlog"
-															title="모든 날, 모든 순간 (Every day, Every Moment)"> 모든 날,
-															모든 순간 (Every day, Every Moment) </a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="폴킴 - 페이지 이동" class="fc_mgray mlog">폴킴</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="폴킴 - 페이지 이동" class="fc_mgray mlog">폴킴</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item odd">
-											<div class="rank_number nth8">
-												<span class="rank">8</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="RECIPE" class="mlog"> <img width="48"
-														height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/101/64/839/10164839_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31062863">
-														<a href="" class="ellipsis mlog" title="열애중">열애중</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="벤 - 페이지 이동" class="fc_mgray mlog">벤</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="벤 - 페이지 이동" class="fc_mgray mlog">벤</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item">
-											<div class="rank_number nth9">
-												<span class="rank">9</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="Dingo X Indigo Music" class="mlog"> <img
-														width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/101/89/965/10189965_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31219546">
-														<a href="" class="ellipsis mlog"
-															title="flex (Prod. By 기리보이)">flex (Prod. By 기리보이)</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="기리보이 - 페이지 이동" class="fc_mgray mlog">기리보이</a>,
-															<a href="" title="Kid Milli - 페이지 이동"
-																class="fc_mgray mlog">Kid Milli</a>, <a href=""
-																title="NO:EL - 페이지 이동" class="fc_mgray mlog">NO:EL</a>,
-															<a href="" title="스윙스 - 페이지 이동" class="fc_mgray mlog">스윙스</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="기리보이 - 페이지 이동" class="fc_mgray mlog">기리보이</a>, <a
-																href="" title="Kid Milli - 페이지 이동" class="fc_mgray mlog">Kid
-																	Milli</a>, <a href="" title="NO:EL - 페이지 이동"
-																class="fc_mgray mlog">NO:EL</a>, <a href=""
-																title="스윙스 - 페이지 이동" class="fc_mgray mlog">스윙스</a>
-															</span>
-														</div>
-														<div class="wrap_atist realtime_chart_artist"
-															style="display: none">
-															<button type="button" title="아티스트 더보기"
-																class="btn btn_more" data-control="dropdown">
-																<span class="odd_span">아티스트명 더보기</span>
-															</button>
-															[DP] 아티스트 더보기 레이어
-															<div class="l_popup small"
-																style="display: none; width: 168px;">
-																<div class="l_cntt">
-																	<ul class="list_bullet">
-																		<li><a href="" title="기리보이" class="mlog">기리보이</a>
-																		</li>
-																		<li><a href="" title="Kid Milli" class="mlog">Kid
-																				Milli</a></li>
-																		<li><a href="" title="NO:EL" class="mlog">NO:EL</a>
-																		</li>
-																		<li><a href="" title="스윙스" class="mlog">스윙스</a></li>
-																	</ul>
-																</div>
-																<button type="button" class="btn_close">
-																	<span class="odd_span">닫기</span>
-																</button>
-																<span class="shadow"></span> <span
-																	class="bullet_vertical"></span>
-															</div>
-															//[DP] 아티스트 더보기 레이어
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
-										<li class="rank_item odd">
-											<div class="rank_number nth10">
-												<span class="rank">10</span> <span class="none">위</span> <span
-													class="ranking_num static"> <span class="num">0</span>
-													<span class="icon">순위 동일</span>
-												</span>
-											</div>
-											<div class="rank_cntt">
-												<div class="thumb">
-													<a href="" title="LOVE YOURSELF 結 `Answer`" class="mlog">
-														<img width="48" height="48"
-														src="https://cdnimg.melon.co.kr/cm/album/images/101/97/480/10197480_500.jpg/melon/quality/80/resize/48/optimize"
-														alt=""> <span class="bg_album_frame"></span>
-													</a>
-												</div>
-												<div class="rank_info">
-													<p class="song" data-song-no="31266289">
-														<a href="" class="ellipsis mlog" title="I`m Fine">I`m
-															Fine</a>
-													</p>
-													<div class="artist">
-														<div class="ellipsis">
-															<a href="" title="방탄소년단 - 페이지 이동" class="fc_mgray mlog">방탄소년단</a>
-															<span class="checkEllipsisRealtimeChart"
-																style="display: none"> <a href=""
-																title="방탄소년단 - 페이지 이동" class="fc_mgray mlog">방탄소년단</a>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</li>
+					
+							
+								</c:forEach>
+	
+										
 									</ul>
-									<div class="chart_btn_area">
-										<button type="button" title="TOP 10 재생"
-											class="btn_base play d_listen mlog">
-											<span class="odd_span"> <span class="even_span">TOP10
-													듣기</span>
-											</span>
-										</button>
+									<div class="chart_btn_area">			
 										<div class="all_view">
-											<a href="" title="레몬차트 더보기" class="mlog"> <span>더보기
+											<a href="/Lemon/LemonLatest_Chart.ct" title="레몬차트 더보기" class="mlog"> <span>더보기
 													<span></span>
 											</span>
 											</a>

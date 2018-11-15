@@ -3,7 +3,9 @@ package com.lemon.main.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.naming.Context;
@@ -90,7 +92,6 @@ public class MainDAO {
 					
 				chk2=rs.getInt("lately");
 				scb.setSc_rank(chk1-chk2);
-				
 				}else{
 					scb.setSc_rank(9999999);
 				}
@@ -233,7 +234,7 @@ public class MainDAO {
 			con = getCon();
 			
 			// sql 쿼리
-			sql = "select ch_music_num,lately,past,music_name,al_singer_name from(select ch_music_num,ch_ranking lately,music_name,al_singer_name"
+			sql = "select ch_updatetime,ch_music_num,lately,past,music_name,al_singer_name,al_art_img from(select ch_updatetime,ch_music_num,ch_ranking lately,music_name,al_singer_name,al_art_img"
 					+ " from chart,music,album where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour+" HOUR) AND"
 					+ " DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour1+" HOUR), INTERVAL 1 SECOND) AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')"
 					+ " and mu_num=ch_music_num and al_num=album_num order by lately) d left outer join (select a.ch_music_num chm2,a.ch_ranking past from chart a,"
@@ -241,7 +242,7 @@ public class MainDAO {
 					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour1+" HOUR), INTERVAL 1 SECOND) AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) b"
 					+ " where a.ch_music_num=b.ch_music_num and a.ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour2+" HOUR)"
 					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour+" HOUR), INTERVAL 1 SECOND) AND a.ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) c"
-					+ " on c.chm2=d.ch_music_num group by lately";
+					+ " on c.chm2=d.ch_music_num group by lately limit 10";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 			// pstmt 객체 실행
@@ -252,6 +253,13 @@ public class MainDAO {
 				cb.setCh_num(rs.getInt("ch_music_num"));
 				cb.setSinger_name(rs.getString("al_singer_name"));
 				cb.setMusic_name(rs.getString("music_name"));
+				cb.setAl_art_img(rs.getString("al_art_img"));
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeInMillis(rs.getTimestamp("ch_updatetime").getTime());
+				cal.add(Calendar.SECOND, -32400);
+				
+				Timestamp later = new Timestamp(cal.getTime().getTime());
+				cb.setCh_updatetime(later);
 				
 				if(rs.getObject("past")!=null){	
 				chk1=rs.getInt("past");
