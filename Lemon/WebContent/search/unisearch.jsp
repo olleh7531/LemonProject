@@ -556,7 +556,7 @@
 				<div class="wrap_list">
 				<%
 					 for(int i=0; i<lyric_list.size(); i++){
-						SearchBean lySb =(SearchBean) lyric_list.get(i);				 
+						SearchBean lySb =(SearchBean) lyric_list.get(i);	
 				%>
 				<div style="border-bottom: 1px solid #ccc; padding-top: 15px; padding-bottom: 15px;">
 				<div><b><%=lySb.getMusic_name() %></b></div>
@@ -568,13 +568,15 @@
 				<div><%=lySb.getSinger_name() %> | <%=lySb.getAl_name() %></div>
 				</div>
 				<%	 
-				 }
+					}
+				 
 				%>
 				</div>
 				<%
-					}
+				}
 				%>
 				<!-- 가사 -->		
+
 				</div>
 			</div>
 			<!-- 검색 결과 -->

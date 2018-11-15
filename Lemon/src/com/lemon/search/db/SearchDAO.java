@@ -254,7 +254,7 @@ public class SearchDAO {
 			con = getCon();
 			
 			sql = "SELECT m.music_name, a.al_singer_name, a.al_name, a.al_release"
-					+ " FROM music m,album a,singer s"
+					+ " FROM music m,album a"
 					+ " WHERE m.album_num=a.al_num and a.al_name like'%"+search+"%'"
 					+ " ORDER BY a.al_name asc, a.al_release desc";
 			pstmt = con.prepareStatement(sql);
@@ -321,7 +321,7 @@ public class SearchDAO {
 			con = getCon();
 
 			sql = "select mu_num,lyrics,music_name,al_name,al_singer_name"
-					+ " from music, album, singer"
+					+ " from music, album"
 					+ " where lyrics like '%"+search+"%' and al_num=album_num"
 					+ " order by (LENGTH(lyrics) - LENGTH((REPLACE(lyrics, '"+search+"', '')))) / LENGTH('"+search+"') desc limit 0,6";	
 
@@ -424,6 +424,9 @@ public class SearchDAO {
 		
 		return count;
 	}
+	
+	
+	
 	
 	// 가사 검색
 	public List<SearchBean> LyricSearch(String search,int startRow,int pageSize,String sort){

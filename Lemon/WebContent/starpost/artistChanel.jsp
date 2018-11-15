@@ -1,3 +1,4 @@
+<%@page import="com.lemon.member.db.MemberDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="java.sql.Date"%>
@@ -69,7 +70,12 @@
 			group_name = group_name.substring(0, group_name.length() - 1);
 		}
 %> --%>
-
+	<%
+		String email_id = (String) session.getAttribute("email_id");
+		MemberDAO mdao = new MemberDAO();
+		int level = mdao.getLevel(email_id);
+	%>
+	
 	<!-- ArtistChanelInfoBean 불러오기 -->
 	<c:set var="info" value="${requestScope.info}"/>
 	
@@ -219,46 +225,51 @@
 						<!-- 아티스트 정보 -->
 						
 						<!-- 관리자 전용 -->
-						<div class="wrap_intst">
-							<div class="fan_area">
-								<div class="list_userlk01">
-									<strong class="none">이 아티스트 팬</strong>
-									<ul class="clfix" id="artistTopLikeUserLayer">										
-										<li>
-											<a href="" title="비디오 글쓰기" class="box_userlk01">
-												<span class="memid">비디오 글쓰기</span>
-											</a>
-										</li>
-										<li>
-											<a href="" title="비디오 수정" class="box_userlk01">
-												<span class="memid">비디오 수정</span>
-											</a>
-										</li>
-										<li>
-											<a href="./AdminArtistChanelPhoto.ac" title="포토 글쓰기" class="box_userlk01">
-												<span class="memid">포토 글쓰기</span>
-											</a>
-										</li>
-										<li>
-											<a href="" title="포토 수정" class="box_userlk01">
-												<span class="memid">포토 수정</span>
-											</a>
-										</li>
-										<li>
-											<a href="./AdminArtistChanelInfo.ac" title="소개 글쓰기" class="box_userlk01">
-												<span class="memid">소개 글쓰기</span>
-											</a>
-										</li>
-										<li>
-											<a href="" title="소개 수정" class="box_userlk01">
-												<span class="memid">소개 수정</span>
-											</a>
-										</li>
-									</ul>
+						
+						<% 
+						if(email_id != null) {
+							if(email_id.equals("admin")) { %>
+							<div class="wrap_intst">
+								<div class="fan_area">
+									<div class="list_userlk01">
+										<strong class="none">이 아티스트 팬</strong>
+										<ul class="clfix" id="artistTopLikeUserLayer">										
+											<li>
+												<a href="" title="비디오 글쓰기" class="box_userlk01">
+													<span class="memid">비디오 글쓰기</span>
+												</a>
+											</li>
+											<li>
+												<a href="" title="비디오 수정" class="box_userlk01">
+													<span class="memid">비디오 수정</span>
+												</a>
+											</li>
+											<li>
+												<a href="./AdminArtistChanelPhoto.ac" title="포토 글쓰기" class="box_userlk01">
+													<span class="memid">포토 글쓰기</span>
+												</a>
+											</li>
+											<li>
+												<a href="" title="포토 수정" class="box_userlk01">
+													<span class="memid">포토 수정</span>
+												</a>
+											</li>
+											<li>
+												<a href="./AdminArtistChanelInfo.ac" title="소개 글쓰기" class="box_userlk01">
+													<span class="memid">소개 글쓰기</span>
+												</a>
+											</li>
+											<li>
+												<a href="" title="소개 수정" class="box_userlk01">
+													<span class="memid">소개 수정</span>
+												</a>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
-							<!-- //팬 -->
-						</div> <!-- 관리자 전용 -->
+						<%}
+						} %>
 					</div>
 				</div>
 				<!-- 아티스트 기본정보 -->

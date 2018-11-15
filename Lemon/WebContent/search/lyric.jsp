@@ -23,67 +23,20 @@
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+	
+	<!-- Search CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/search/common.css">
+	
 	
 	<style>
-	/* 레이아웃 */
-	#bg_contsSc{ 
- 		 border: 1px solid red;  
- 		text-align: center;
- 		width: 100%; 
- 	} 
+	.wrap_list{
+		display: inline-block;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 20px;
 	
- 	#wrap_con{ 
- 	  border: 1px solid blue;     
- 	 display: inline-block; 
-  	 width: 1008px;  
- 	} 
- 	
- 	 #wrap_contsSc{ 
- 	 	display: inline-block;
- 		 border: 1px solid green;  
- 		width: 80%; 
- 		float: left;  		
- 	 
- 	} 
- 	#contsSc { 
-  		border: 1px solid pink;  
- 		text-align: left;
- 	} 
- 	
- 	#contsCh { 
-	 	display: inline-block;
- 		border: 1px solid gray; 
- 		width: 18%;
- 		float: right;
- 	}
-	/* 레이아웃 */
-	
-	
-	/* 메뉴 */ 	
- 	#menuSc{
- 		display: inline-block;
- 		border-top: 2px solid #848484;
- 		width: 100%;
- 	}
- 	
- 	#menuSc div a{
- 	 	display: inline-block;
- 	 	float: left;
- 	 	width: 20%;
- 	 	background-color: #ebf0ed;
- 	 	border-bottom: 1px solid #dbdbdb;
- 	 	padding-top: 10px;
- 	 	padding-bottom: 10px;
- 	}
- 	
- 	#menuSc div a:hover{
- 		font-weight: bold;
- 		color: #333333;
- 		background-color: #fff;
- 	 	border-bottom: 1px solid #fff; 		
- 	}
- 	/* 메뉴 */ 	
-	
+	}
 	</style>
 		
 
@@ -129,26 +82,30 @@
 				<div style="display:none; clear: both;"></div>
 			</div>
 			
-			
-			<%if(count!=0){ %>
-			<ul>
-				<li><a id="li_weight">정확도순</a></li>
-				<li><a id="li_date">최신순</a></li>
-				<li><a id="li_ganada">가나다순</a></li>
-			</ul>
-			<h1><b>총 <%=count %> 건</b></h1>
-						<%}else{ %>
-						<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
-						<ul style="list-style: disc;    margin: 26px 0 0 276px;">
-						<li style="list-style: disc;">검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
-						<li style="list-style: disc;">검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
-						</ul>
-						<%} %>
-			
-				
-			<!-- 검색 결과 -->
+			<!-- 검색 결과 -->		
 			<div id="contsSc">	
+			<h3 class="titleSc">가사</h3>
+			<%if(count!=0){ %>
+				<div style="float: right;">
+				<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
+					<li style="display: inline;"><a id="li_weight">정확도순|</a></li>
+					<li style="display: inline;"><a id="li_date">최신순|</a></li>
+					<li style="display: inline;"><a id="li_ganada">가나다순</a></li>
+				</ul>
+				</div>
+				<div style="display: none; clear: both;"></div>				
+			<%}else{ %>
+				<div style="margin-top: 100px; margin-bottom: 100px;">
+					<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
+					<ul style="text-align: center; margin-top: 26px;">
+						<li>검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
+						<li>검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
+					</ul>
+				</div>
+			<%} %>
 			
+			
+			<div class="wrap_list">
 			<%
 			 for(int i=0;i<lyric_list.size();i++){
 				SearchBean sb =(SearchBean) lyric_list.get(i);				 
@@ -169,6 +126,9 @@
 			<%
 			// 페이지 출력
 			if( count != 0 ){
+				%>
+				<div style="text-align: center;">
+				<%
 				// 이전
 				if(startPage>pageBlock){
 					%>
@@ -187,14 +147,12 @@
 					    <a id="next" class="<%=startPage+pageBlock %>">[다음]</a> 
 					<%	
 				}
+				 %>
+				</div>
+				<%
 			}			
 			%>
-			
-			
-			
-				</div>
-				<!-- 검색 결과 -->
-				</div>
+			</div>
 			</div>
 			
 			<!-- 검색 결과 -->
@@ -204,9 +162,7 @@
 				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
 			</div>
 			<!-- 차트 -->
-			
-			
-	 		<div style="display:none; clear: both;"></div>
+			<div style="display:none; clear: both;"></div>
 
 	 				
 		</div>
@@ -265,7 +221,7 @@
 		},
 		success : function(data) { // data를 가져오는 것이 성공하였을 때
 
-		$('#contsSc').empty();
+		$('.wrap_list').empty();
 			$(data).each(function(index){
 					
 			var text="";
@@ -278,8 +234,9 @@
 					text+='	overflow: hidden;">'+this.lyrics+'</div>';
 					text+='<div>| '+this.al_name+'</div>';
 					text+='<hr>';
-					$('#contsSc').append(text);
+					$('.wrap_list').append(text);
 				}else{
+					text+='<div style="text-align: center;">';
 					if(this.startPage>this.pageBlock){
 						  text+='<a id="prev" class="'+(this.startPage-this.pageBlock)+'">[이전]</a>'
 					}
@@ -291,7 +248,8 @@
 					if(this.endPage < this.pageCount){
 						    text+='<a id="next" class="'+(this.startPage+this.pageBlock)+'">[다음]</a>' 
 					}
-					$('#contsSc').append(text);
+					text+='</div>';
+					$('.wrap_list').append(text);
 				}					
 					
 					$('#prev').click(function(){

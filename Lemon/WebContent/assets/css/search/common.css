@@ -2,32 +2,32 @@
 
 	/* 레이아웃 */
 	#bg_contsSc{ 
- 		 border: 1px solid red;  
+/*  		 border: 1px solid red;   */
  		text-align: center;
  		width: 100%; 
  	} 
 	
  	#wrap_con{ 
- 	  border: 1px solid blue;     
+/*  	  border: 1px solid blue;      */
  	 display: inline-block; 
   	 width: 1008px;  
  	} 
  	
  	 #wrap_contsSc{ 
  	 	display: inline-block;
- 		 border: 1px solid green;  
+/*  		 border: 1px solid green;   */
  		width: 80%; 
  		float: left;  		
  	 
  	} 
  	#contsSc { 
-  		border: 1px solid pink;  
+/*   		border: 1px solid pink;   */
  		text-align: left;
  	} 
  	
  	#contsCh { 
 	 	display: inline-block;
- 		border: 1px solid gray; 
+/*  		border: 1px solid gray;  */
  		width: 18%;
  		float: right;
  	}

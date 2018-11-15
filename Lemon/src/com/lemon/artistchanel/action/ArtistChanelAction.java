@@ -203,7 +203,7 @@ public class ArtistChanelAction implements Action {
 		/*----------------------------------------------------------*/
 		/*　　　　　　　　　　　　　　　　　　페이지 이동　　　　　　　　　　　　　　　　　　*/
 		/*----------------------------------------------------------*/
- 			
+		
 		// 페이지 이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("/starpost/artistChanel.jsp?artist=" + artist);
