@@ -106,6 +106,7 @@
 
 	<!-- 내용 -->
 	<input type="hidden" id="artist" value="${artist}">
+	
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="my_fold">
 			<div id="conts" class="">

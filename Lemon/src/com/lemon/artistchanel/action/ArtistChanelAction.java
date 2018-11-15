@@ -20,9 +20,6 @@ public class ArtistChanelAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ArtistChanel 페이지");
 
-		
-		
-		
 		/*----------------------------------------------------------*/
 		/*　　　　　　　　　　　　　　　　　　common　　　　　　　　　　　　　　　　　　　*/
 		/*----------------------------------------------------------*/
@@ -58,12 +55,16 @@ public class ArtistChanelAction implements Action {
 		// 그룹 -> 그룹 멤버 가져오기 
 		// String group_member = acibean.getGroup_singer_name();
 		String group_member_name = info.getGroup_singer_num();
-	 	List group_member = acidao.getGroupMember(group_member_name);
+		System.out.println("ArtistChanelAction.java photo group_member_name : " + group_member_name);
 		
+	 	List group_member = acidao.getGroupMember(group_member_name);
+	 	System.out.println("ArtistChanelAction.java photo group_member : " + group_member);
+	 	
 	 	request.setAttribute("group_member", group_member);
 	 	
 	 	// 솔로 -> 그룹 이름 불러오기
  		List<ArtistChanelInfoDAO> solo_group = (ArrayList)acidao.getArtistChanelSoloGroupName(artist);
+ 		System.out.println("ArtistChanelAction.java photo solo_group : " + solo_group);
  		
  		if(solo_group.size() > 0) {
  			request.setAttribute("solo_group", solo_group);
@@ -84,6 +85,8 @@ public class ArtistChanelAction implements Action {
 		if(acpdao != null) {
 			int photo_singer_num = acpbean.getAr_singer_num();
 			List photo = acpdao.getPhotoSinger(photo_singer_num);
+			System.out.println("ArtistChanelAction.java photo photo : " + photo);
+			
 			request.setAttribute("photo", photo);
 		}
 		
@@ -146,40 +149,56 @@ public class ArtistChanelAction implements Action {
 		/*　　　　　　　　　　　　　　　　　　포토 내용　　　　　　　　　　　　　　　　　　  */
 		/*----------------------------------------------------------*/
 		String photo_content_ajax = request.getParameter("photo_content_ajax");
+		System.out.println("ArtistChanelAction.java photo photo_content_ajax : " + photo_content_ajax);
 		
 		// photo_content_ajax 일 때만 내용 보이게 한다
 		if(photo_content_ajax != null) {
 			JSONArray arr = new JSONArray();
 			
-			ArtistChanelPhotoBean acpb = new ArtistChanelPhotoBean();
+			ArtistChanelPhotoBean acpbean_content = new ArtistChanelPhotoBean();
 			
-			int ar_num = Integer.parseInt(request.getParameter("ar_num"));
+			Object o_ar_num = request.getParameter("ar_num");
+			System.out.println("ArtistChanelAction.java photo o_ar_num : " + o_ar_num);
 			
-			JSONObject obj = new JSONObject();
+			JSONObject obj = null;
 			
-			acpb = acpdao.getPhotoContentNum(ar_num);
+			if(o_ar_num != "") {
+				int ar_num = Integer.parseInt(request.getParameter("ar_num"));
+				System.out.println("ArtistChanelAction.java photo ar_num : " + ar_num);
+			
+				obj = new JSONObject();
+				
+				acpbean_content = acpdao.getPhotoContentNum(ar_num);
+				System.out.println("ArtistChanelAction.java photo acpbean_content : " + acpbean_content);
+			}
 			
 			// "" : db 컬럼 명
 			
 			// 포토 번호
-			obj.put("ar_num", acpb.getAr_num());
+			obj.put("ar_num", acpbean_content.getAr_num());
+			System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content.getAr_num());
 			
 			// 제목
-			obj.put("ar_subject", acpb.getAr_subject());
+			obj.put("ar_subject", acpbean_content.getAr_subject());
+			System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content.getAr_subject());
 			
 			// 내용
-			obj.put("ar_content", acpb.getAr_content());
+			obj.put("ar_content", acpbean_content.getAr_content());
+			System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content.getAr_content());
 			
 			// 등록 날짜
-			obj.put("ar_registerdate", acpb.getAr_registerdate());
+			obj.put("ar_registerdate", acpbean_content.getAr_registerdate());
+			System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content.getAr_registerdate());
 			
 			// 좋아요
 			
 			// 조회수
-			obj.put("ar_readcount", acpb.getAr_readcount());
+			obj.put("ar_readcount", acpbean_content.getAr_readcount());
+			System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content.getAr_readcount());
 			
 			// 사진
-			obj.put("ar_photo", acpb.getAr_photo());
+			obj.put("ar_photo", acpbean_content.getAr_photo());
+			System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content.getAr_photo());
 			
 			// 댓글
 
@@ -190,31 +209,33 @@ public class ArtistChanelAction implements Action {
 			// 포토 슬라이더 내용 가져온다
 			List<ArtistChanelPhotoBean> photolist = acpdao.getPhotoSlider();
 			
-			for(ArtistChanelPhotoBean acbp2:photolist) {
-				
+			for(ArtistChanelPhotoBean acpbean_content_slider:photolist) {
 				obj = new JSONObject();
 				
 				// 포토 번호
-				obj.put("ar_num", acpb.getAr_num());
+				obj.put("ar_num", acpbean_content_slider.getAr_num());
+				System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content_slider.getAr_num());
 				
 				// 포토 제목
-				obj.put("ar_subject", acpb.getAr_subject());
+				obj.put("ar_subject", acpbean_content_slider.getAr_subject());
+				System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content_slider.getAr_subject());
 				
 				// 포토
-				obj.put("ar_photo", acpb.getAr_photo());
+				obj.put("ar_photo", acpbean_content_slider.getAr_photo());
+				System.out.println("ArtistChanelAction.java photo ar_num : " + acpbean_content_slider.getAr_photo());
 				
 				arr.add(obj);
 			}
 			
 			// 페이지 관련
-			obj = new JSONObject();
+			/*obj = new JSONObject();
 			
 			obj.put("start_page", start_page);
 			obj.put("pageBlock", page_block);
 			obj.put("end_page", end_page);
 			obj.put("page_count", page_count);
 			
-			arr.add(obj);
+			arr.add(obj);*/
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();

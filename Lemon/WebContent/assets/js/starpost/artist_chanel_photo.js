@@ -35,11 +35,11 @@ function photo_content() {
 		url : "./ArtistChanel.ac", // 아티스트 채널 포토 jsp 파일 주소 불러오기
 		// dataType : 'json',
 		data : {
-			// <input type="text" id="id"> 값 불러와서 inputID에 대입 
 			// 변수 : "" -> ajax 변수명 
 			// .val() 문자
+			
 			// 포토 번호 num : ar_num
-			ar_num : this.ar_num,
+			ar_num : "",
 			
 			// photo_content_ajax 일 때만 내용 보이게 한다
 			photo_content_ajax : "photo_content_ajax",
