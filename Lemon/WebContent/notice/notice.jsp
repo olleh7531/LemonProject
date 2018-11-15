@@ -104,27 +104,7 @@
 						</tr>
 					</thead>
 
-					<tbody class="no_tbody">
-						<%
-							if (count != 0) {
-								for (int i = 0; i < NoticeList.size(); i++) {
-									NoticeBean nb = (NoticeBean) NoticeList.get(i);
-						%>
-						<%-- <tr>
-							<td scope="col"><%=nb.getNum()%></td>
-							<td scope="col"><%=nb.getNo_category()%></td>
-							<td id="subject" scope="col">
-							<a href="./noticeContent.nt?num=<%=nb.getNum()%>&pageNum=<%=pageNum%>"><%=nb.getNo_subject()%></a>
-							</td>
-							<td scope="col"><%=nb.getNo_readcount()%></td>
-							<td><div class="wrap"><%=nb.getNo_reg_date()%></div></td>
-						</tr> --%>
-						<%
-								}
-							}
-						%>
-					
-					<tbody>
+					<tbody class="no_tbody"></tbody>
 				</table>
 				<div id="wrap_num">
 					<div>

@@ -30,9 +30,17 @@ public class ArtistChanelFrontController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 
-		// 가상주소와 내가 처리할 동작이랑 같은지 비교 
 		if(command.equals("/ArtistChanel.ac")) {
-			// 아티스트 채널 내용
+			// level값 체크 -> 1이면 관리자 페이지
+			// 				-> 0이면 일반 화면 보기
+			action = new ArtistChanelAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		} if(command.equals("/ArtistChanel.ac")) {
 			action = new ArtistChanelAction(); 
 			
 			try {
@@ -40,13 +48,15 @@ public class ArtistChanelFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} 
+		}
+		
 		else if (command.equals("/AdminArtistChanelInfo.ac")) {
 			// 정보 글쓰기
 			forward = new ActionForward();
-			forward.setPath("./starpost/adminArtistChanelInfo.jsp");
-			forward.setRedirect(false);
+			forward.setPath("./ArtistChanel.ac?artist=1");
+			forward.setRedirect(true);
 		}
+		
 		else if(command.equals("/ArtistChanelInfoWrtieAction.ac")) {
 			// 정보 글쓰기 proc 
 			action = new ArtistChanelInfoWrtieAction(); 

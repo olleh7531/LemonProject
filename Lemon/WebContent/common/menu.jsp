@@ -210,17 +210,17 @@
 			<!-- 배너 영역 -->
 			<div class="cmn_banner">
 				<div class="banner_bxslider">
-					<a href="" title="라이브원(소유) 사전알림 당일 - 페이지 이동" class="d_item mlog">
+					<a title="ITWILL 7강의실 1조" class="d_item mlog">
 						<img class="btn_banner" width="280" height="75"
 							src="./assets/img/common/b3.png"
 							alt="">
 					</a>
-					<a href="" title="이용권(니니즈 10월) - 페이지 이동" class="d_item mlog">
+					<a title="김성일 김수정 우다솜" class="d_item mlog">
 						<img class="btn_banner" width="280" height="75"
 							src="./assets/img/common/b1.png"
 							alt="">
 					</a>
-					<a href="" title="게토레이 5차 - 페이지 이동" class="d_item mlog">
+					<a title="김시현 부지연 최우성" class="d_item mlog">
 						<img class="btn_banner" width="280" height="75"
 							src="./assets/img/common/b2.png"
 							alt="">

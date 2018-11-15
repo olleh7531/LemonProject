@@ -22,18 +22,59 @@
 	<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="./assets/bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="./assets/js/menu/menu_banner.js"></script>
-	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>	
-
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	
+	
 	<!-- Search CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/search/common.css">
 	
+	
+	<style>
+	.wrap_list{
+		display: inline-block;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 20px;
+	
+	}
+	
+		/* 곡 관련 */
+	
+	.wrap_tb_song_list{
+ 		border-top: 1px solid #ccc; 
+ 		border-bottom: 1px solid #ccc;  		
+	}
+	
+	.tb_song_list {
+		width: 100%;
+		border-collapse:collapse;
+	}
+	
+	.tb_song_list th {
+		line-height: 30px;
+	}
+	
+	.tb_song_list td {
+		line-height: 30px;
+	}
+	
+	.songs{
+		text-align: center;
+	}
+	
+	.songs td{
+ 		border-top: 1px solid #ccc; 
+	}
+	/* 곡 관련 */
+	
+	
+	</style>
+		
 
 </head>
-
 <body>
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
-	<c:set var="search" value="${requestScope.search}"/>
 	
 	<%	
 		String search = request.getParameter("search");
@@ -41,33 +82,57 @@
 		
 		List song_list = (List) request.getAttribute("song_list");
 	%>
+
 	
 	<!-- 본문 -->
 	<div id="bg_contsSc">
-		<div id="wrap_contsSc">
-			<div>
-				<ul>
-					<li><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></li>
-					<li><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></li>
-					<li><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></li>
-					<li><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></li>
-					<li><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></li>
-				</ul>
+		<div id="wrap_con">			
+			<div id="wrap_contsSc">	
+			
+			<c:set var="search" value="${requestScope.search}"/>
+			<div style="text-align: left; padding-top: 29px; padding-bottom: 8px;">
+				<strong>'${search}'</strong>에 대한 검색 결과입니다.
 			</div>
 			
-			<ul>
-				<li><a id="btnArtist">아티스트명에서</a></li>
-				<li><a id="btnMusicName">곡명에서</a></li>
-				<li><a id="btnAlbumName">앨범명에서</a></li>
+			<!-- 메뉴 -->	
+			<div id="menuSc">
+				<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
+				<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
+				<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
+				<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
+				<div><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
+				<div style="display:none; clear: both;"></div>
+			</div>
+			
+			<div style="float: right;">
+			<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
+				<li style="display: inline;"><a id="btnArtist">아티스트명에서 |</a></li>
+				<li style="display: inline;"><a id="btnMusicName">곡명에서 |</a></li>
+				<li style="display: inline;"><a id="btnAlbumName">앨범명에서</a></li>
 				<input type="hidden" id="categoryType">
 			</ul>
+			</div>
 				
-			<div id="contsSc">
-	
-			<div>
-				<table>
+			<!-- 검색 결과 -->
+			<div id="contsSc">	
+			<h3 class="titleSc">곡</h3>
+			
+			<div class="wrap_list">
+			<div class="wrap_tb_song_list">
+				<table class="tb_song_list">
+					<colgroup>
+						<col style="width:30px">
+						<col style="width:30px">
+						<col style="width:100px">
+						<col style="width:80px">
+						<col style="width:80px">
+						<col style="width:50px">
+						<col style="width:30px">
+						<col style="width:30px">
+						<col style="width:30px">
+					</colgroup>
 					<thead>
-						<tr>
+						<tr style="text-align: center;">
 							<th><div><input type="checkbox"></div></th>
 							<th><div>NO</div></th>
 							<th><div>곡명</div></th>
@@ -79,12 +144,13 @@
 							<th><div>뮤비</div></th>
 						</tr>
 					</thead>
+					
 					<tbody id="songList">
 					<%
 						for (int i = 0; i < song_list.size(); i++) {
 							SearchBean sb = (SearchBean) song_list.get(i);	
 					%>
-						<tr>
+						<tr class="songs">
 							<td><div><input type="checkbox"></div></td>
 							<td><div><%=(i+1) %></div></td>
 							<td><div><%=sb.getMusic_name() %></div></td>
@@ -101,15 +167,38 @@
 					%>
 					</tbody>
 				</table>
+
 			</div>
+			</div>
+			</div>
+			<!-- 검색 결과 -->
+			
+			
+			
 			
 			</div>
+			<!-- 차트 -->
+			<div id="contsCh">			
+				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
+			</div>
+			<!-- 차트 -->
+			
+			
+	 		<div style="display:none; clear: both;"></div>
+
+	 				
 		</div>
 	</div>
+	
+	
+	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
-	<script>
+	
+	
+	
+		<script>
 	$(document).ready(function(){
 		$('#top_search').val("${search}");
 		$('#btnArtist').click(function(){
@@ -123,16 +212,7 @@
 		$('#btnAlbumName').click(function(){
 			$('#categoryType').val("albumname");
 			changeCategory();
-		});
-		$('#li_date').click(function(){
-			$('#sort').val("최신순");
-			ajax();
-		});
-		$('#li_ganada').click(function(){
-			$('#sort').val("가나다순");
-			ajax();
-		});
-		
+		});		
 	}); 
 	
 	
@@ -151,8 +231,8 @@
  				$(data).each(function(index){ 					
  					var text="";
  					
- 					text+='<tr><td><div><input type="checkbox"></div></td>';
- 					text+='<td><div>1</div></td>';
+ 					text+='<tr class="songs"><td><div><input type="checkbox"></div></td>';
+ 					text+='<td><div>'+(index+1)+'</div></td>';
  					text+='<td><div>'+this.music_name+'</div></td>';
  					text+='<td><div>'+this.singer_name+'</div></td>';
  					text+='<td><div>'+this.al_name+'</div></td>';
@@ -173,6 +253,8 @@
 	
 
 	</script>
+	
+	
 	
 	</body>
 </html>

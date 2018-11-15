@@ -257,8 +257,7 @@ function NotYet() {
 									</td>
 									<td>
 										<div class="wrap t_center">
-											<button type="button" title="뮤직비디오"
-												class="button_icons video ">
+											<button type="button" title="뮤직비디오" class="button_icons video" onclick="NotYet()">
 												<i class="fa  fa-youtube-play"></i><span class="none">뮤직비디오</span>
 											</button>
 										</div>
