@@ -73,7 +73,7 @@ public class MainDAO {
 					+ " sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND)"
 					+ " order by sc_rank asc limit 10) b where a.sc_keyword=b.sc_keyword and a.sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL "+min2+"	MINUTE)"
 					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i'), INTERVAL "+minute+" MINUTE), INTERVAL 1 SECOND) AND"
-					+ " a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1	SECOND)) c on c.key2=d.keyword";
+					+ " a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1	SECOND)) c on c.key2=d.keyword group by lately";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 			// pstmt 객체 실행

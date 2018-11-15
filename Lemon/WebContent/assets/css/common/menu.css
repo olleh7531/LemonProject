@@ -725,3 +725,37 @@ button span.odd_span, .btn span.odd_span, button span.even_span, .btn span.even_
 #menu ul li a:HOVER {
 	color: #EDAE06;
 }
+
+
+.realtime_soar_keyword .order.bg10 {
+    letter-spacing: -1px;
+}
+
+.realtime_soar_keyword .order.bg10 .gubun {
+    letter-spacing: 0;
+}
+
+.realtime_soar_keyword .keyword_overlay {position:relative;float:left; display:inline-block; width:162px; margin:3px 0 0 10px; *margin-top:2px; overflow:hidden; z-index:15;}
+.realtime_soar_keyword.d_hover li {position:relative;}
+.realtime_soar_keyword.d_hover .keyword_overlay {width:161px;height:284px;position:absolute;top:-13px;left:49px;z-index:15;*z-index:0 !important; border:1px solid #b4b4b4; background:#fff;}
+.realtime_soar_keyword.d_hover .keyword_overlay span.ranktitle {display: inline-block;margin:0 2px;text-align:center;padding-top:7px;width:174px;height:22px;color:#333333;font-weight:bold;font-family:"dotum","Apple Gothic", sans-serif;border-bottom:1px solid #c8c8c8;}
+.realtime_soar_keyword .keyword_overlay ol {width:162px;}/* 150204 수정 lyr */
+.realtime_soar_keyword.d_hover .keyword_overlay ol {width:161px; height:20px; margin:10px 0 0;}
+.realtime_soar_keyword.d_hover .keyword_overlay li {width:166px;height:20px;padding:2px 0 0 1px;margin-bottom:2px;}
+.realtime_soar_keyword.d_hover .keyword_overlay li.mhover {background-color:#f5f5f5;}
+.realtime_soar_keyword.d_hover .keyword_overlay li .gubun{display:none}
+.realtime_soar_keyword.d_hover .keyword_overlay li a {width:93px;height:20px;}/* 150306 수정 lyr */
+.realtime_soar_keyword.d_hover .keyword_overlay .order {margin-right:9px;}
+.realtime_soar_keyword.d_hover .keyword_overlay li .order.bg1,
+.realtime_soar_keyword.d_hover .keyword_overlay li .order.bg2,
+.realtime_soar_keyword.d_hover .keyword_overlay li .order.bg3 {color:#777;}
+.realtime_soar_keyword.d_hover .keyword_overlay li a:hover,.realtime_soar_keyword.d_hover .keyword_overlay li.on a {color:#1a1a1a; font-weight: bold;text-decoration:underline; letter-spacing:-1px;} /* 140609 수정 */
+.realtime_soar_keyword.d_hover .keyword_overlay li.on a:hover {font-weight:bold; letter-spacing:-1px;}/* 140611_수정 */
+.realtime_soar_keyword.d_hover .keyword_overlay li a:hover{font-weight:normal; letter-spacing:0;}/* 140611_수정 */
+.realtime_soar_keyword.d_hover .keyword_overlay .keyword_more {display:block;}
+.realtime_soar_keyword.d_hover .keyword_overlay.active ol {height:246px !important;}
+.realtime_soar_keyword.d_hover .keyword_overlay.active li {display: block !important;}
+.realtime_soar_keyword.d_hover .keyword_overlay.active li a {width:92px;}
+.textx{-webkit-transition: width 2s; 
+    transition: width 2s;}
+

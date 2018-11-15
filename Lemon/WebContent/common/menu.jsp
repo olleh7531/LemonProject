@@ -92,7 +92,7 @@
 					<input type="hidden" name="q"> <input type="hidden" name="section">
 				</form> -->
 				<!-- //통합검색 영역 -->
-<c:set var="realtime" value="${requestScope.realtime}"/>
+<c:set var="realtime" value="${sessionScope.realtime}"/>
 				<!-- 실시간 검색어 -->
 				<div class="realtime_soar_keyword">
 					<a href="/search/trend/index.htm" class="title"
@@ -114,13 +114,13 @@
 									<c:if test="${psearch.sc_rank>0&&psearch.sc_rank!=9999999}">
 									<span class="wrap_rank up">
 									<span class="icon">순위상승수</span>
-									<span class="num">72</span>
+									<span class="num">${psearch.sc_rank}</span>
 								</span>
 										</c:if>
 									<c:if test="${psearch.sc_rank<0}">
 								<span class="wrap_rank down">
 									<span class="icon">순위하락수</span>
-									<span class="num">1</span>
+									<span class="num">${psearch.sc_rank}</span>
 								</span>
 										</c:if>
 									<c:if test="${psearch.sc_rank==0}">
@@ -145,13 +145,25 @@
 							<!-- //롤링 영역 -->
 						</ol>
 						<script type="text/javascript">
+						$('.realtime_soar_keyword').mouseover(function(){
+							$('.realtime_soar_keyword').addClass('d_hover');
+							$('.keyword_overlay').addClass('active');
+						});
+						$('.keyword_overlay').mouseleave(function(){
+							$('.realtime_soar_keyword').removeClass('d_hover');
+							$('.keyword_overlay').removeClass('active');
+							
+						});
+						
+						
+						
 						
 						for (var i = 0;i<9999 ; i++) {
 							  (function (i) {
 							    setTimeout(function () {
 							      var j=i%10;
 							      if(j==0){
-							    	  $('.testx').eq(10).css('display','none');
+							    	  $('.testx').eq(9).css('display','none');
 									$('.testx').eq(0).css('display','list-item');
 							      }else if(j==1){
 									$('.testx').eq(0).css('display','none');
@@ -180,11 +192,8 @@
 							      }else if(j==9){
 							    	  $('.testx').eq(8).css('display','none');
 										$('.testx').eq(9).css('display','list-item');
-							      }else if(j==10){
-							    	  $('.testx').eq(9).css('display','none');
-										$('.testx').eq(10).css('display','list-item');
 							      }
-							    }, 7000*i);
+							    }, 3000*i);
 							  })(i);
 							};
 						</script>
