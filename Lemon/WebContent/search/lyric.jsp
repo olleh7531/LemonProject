@@ -65,69 +65,60 @@
 	<div id="bg_contsSc">
 		<div id="wrap_con">			
 			<div id="wrap_contsSc">	
-			
-			<c:set var="search" value="${requestScope.search}"/>
-			<div style="text-align: left; padding-top: 29px; padding-bottom: 8px;"><strong>'${search}'</strong>에 대한 검색 결과입니다.</div>
-			<input type="hidden" id="pageNum" value="1">			
-
-			<!-- 메뉴 -->	
-			<div id="menuSc">
-				<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
-				<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
-				<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
-				<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
-				<div class="current"><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
-				<div style="display:none; clear: both;"></div>
-			</div>
-			
-			<!-- 검색 결과 -->		
-			<div id="contsSc">	
-			<h3 class="titleSc">가사</h3>
-			<%if(count!=0){ %>
-				<div style="float: right;">
-				<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
-					<li style="display: inline;"><a id="li_weight">정확도순 |</a></li>
-					<li style="display: inline;"><a id="li_date">최신순 |</a></li>
-					<li style="display: inline;"><a id="li_ganada">가나다순</a></li>
-				</ul>
+				<c:set var="search" value="${requestScope.search}"/>
+				<div style="text-align: left; padding-top: 29px; padding-bottom: 8px;">
+					<strong>'${search}'</strong>에 대한 검색 결과입니다.
 				</div>
-				<div style="display: none; clear: both;"></div>				
-			<%}else{ %>
-				<div style="margin-top: 100px; margin-bottom: 100px;">
-					<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
-					<ul style="text-align: center; margin-top: 26px;">
-						<li>검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
-						<li>검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
-					</ul>
+				<input type="hidden" id="pageNum" value="1">			
+	
+				<!-- 메뉴 -->	
+				<div id="menuSc">
+					<div><a href="/Lemon/UniSearch.sc?search=<%=search%>&sort=<%=sort%>">통합검색</a></div>
+					<div><a href="/Lemon/ArtistSearch.sc?search=<%=search%>&sort=<%=sort%>">아티스트</a></div>
+					<div><a href="/Lemon/SongSearch.sc?search=<%=search%>&sort=<%=sort%>">곡</a></div>
+					<div><a href="/Lemon/AlbumSearch.sc?search=<%=search%>&sort=<%=sort%>">앨범</a></div>
+					<div class="current"><a href="/Lemon/LyricSearch.sc?search=<%=search%>&sort=<%=sort%>">가사</a></div>
+					<div style="display:none; clear: both;"></div>
 				</div>
-				<div style="border-top: 1px solid #ccc;"></div>
-			<%} %>
-			
-			
-			<div class="wrap_list">
-			<%
-			 for(int i=0;i<lyric_list.size();i++){
-				SearchBean sb =(SearchBean) lyric_list.get(i);				 
-			%>
-			
-			<div><b><%=sb.getMusic_name() %></b></div>
-			<div style="    display: block;
-    						margin-bottom: 4px;
-   							white-space: nowrap;
-    						text-overflow: ellipsis;
-   							overflow: hidden;"><%=sb.getLyrics() %></div>
-			<div><%=sb.getSinger_name() %> | <%=sb.getAl_name() %></div>
-			<hr>
-			<%	 
-			 }
-			%>
 				
-			<%
-			// 페이지 출력
-			if( count != 0 ){
-				%>
-				<div style="text-align: center;">
-				<%
+				
+			
+				<!-- 검색 결과 -->		
+				<div id="contsSc">	
+				<%if(count!=0){ %>
+					<div style="float: right;">
+					<ul style="font-size: 12px; color:gray; margin-top:10px; margin-bottom:10px">
+						<li style="display: inline;"><a id="li_weight">정확도순 |</a></li>
+						<li style="display: inline;"><a id="li_date">최신순 |</a></li>
+						<li style="display: inline;"><a id="li_ganada">가나다순</a></li>
+					</ul>
+					</div>
+					<div style="display: none; clear: both;"></div>
+					<h3 class="titleSc">가사<span style="color: gray;">(<%=count %>)</span></h3>
+					
+					
+					<div class="wrap_list">
+					
+					<%
+					 for(int i=0;i<lyric_list.size();i++){
+						SearchBean sb =(SearchBean) lyric_list.get(i);				 
+					%>
+					
+					<div><b><%=sb.getMusic_name() %></b></div>
+					<div style="    display: block;
+		    						margin-bottom: 4px;
+		   							white-space: nowrap;
+		    						text-overflow: ellipsis;
+		   							overflow: hidden;"><%=sb.getLyrics() %></div>
+					<div><%=sb.getSinger_name() %> | <%=sb.getAl_name() %></div>
+					<hr>
+					
+					<%
+						}
+							if( count != 0 ){
+					%>
+						<div style="text-align: center;">
+					<%
 				// 이전
 				if(startPage>pageBlock){
 					%>
@@ -149,21 +140,36 @@
 				 %>
 				</div>
 				<%
-			}			
-			%>
-			</div>
+			}
+							%>
+					</div>
+				
+				<%}else{ %>
+				<h3 class="titleSc">앨범</h3>
+				<div style="margin-top: 100px; margin-bottom: 100px;">
+					<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
+					<ul style="text-align: center; margin-top: 26px;">
+						<li>검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
+						<li>검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
+					</ul>
+				</div>
+				<div style="border-top: 1px solid #ccc;"></div>
+				<%} %>
+				
+			
+				</div>
+				<!-- 검색 결과 -->
 			</div>
 			
-			<!-- 검색 결과 -->
-			</div>
+			
+			
 			<!-- 차트 -->
-			<div id="contsCh">			
+	 		<div id="contsCh">			
 				<jsp:include page="../board/searchChart.jsp"></jsp:include>	
 			</div>
 			<!-- 차트 -->
-			<div style="display:none; clear: both;"></div>
-
-	 				
+			
+			<div style="display:none; clear: both;"></div>	
 		</div>
 	</div>
 	

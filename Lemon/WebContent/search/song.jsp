@@ -288,9 +288,11 @@
 
 	</script>
 	<script type="text/javascript">
+	// 검색어 초기화
 	$(document).ready(function(){
 		$('#top_search').val("${search}");s
 	});
+
 
 	
 	function LemonPlayer(mu_num,album_num){

@@ -99,7 +99,6 @@
 				
 				<div class="wrap_list">
 				<%
-					System.out.println("album_list.size() : "+album_list.size());
 					for(int i=0;i<album_list.size();i++){
 						SearchBean sb =(SearchBean) album_list.get(i);				 
 				%>
@@ -145,8 +144,7 @@
 				<%
 			}			
 			%>
-				
-				</div>
+			</div>
 			<%}else{ %>
 				<h3 class="titleSc">앨범</h3>
 				<div style="margin-top: 100px; margin-bottom: 100px;">
