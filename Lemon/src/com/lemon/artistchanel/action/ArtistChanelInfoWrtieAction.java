@@ -68,10 +68,6 @@ public class ArtistChanelInfoWrtieAction implements Action {
 		acibean.setSinger_name(infoMulti.getParameter("singer_name"));
 		System.out.println("ArtistChanelInfoWrtieAction.java singer_name : " + infoMulti.getParameter("singer_name"));
 
-		String test = infoMulti.getParameter("singer_debut_day").trim();
-		System.out.println("xxx1"+test);
-		System.out.println("yyy2"+infoMulti.getParameter("singer_birth"));
-		
 		// 본명
 		acibean.setReal_name(infoMulti.getParameter("singer_real_name"));
 		System.out.println("ArtistChanelInfoWrtieAction.java singer_real_name : " + infoMulti.getParameter("singer_real_name"));

@@ -88,6 +88,22 @@ function check() {
 }
 
 </script>
+
+<style>
+.btnAuth{
+    background-color: #FFF;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: 5px;
+    height: 30px;
+    color: #666666;
+}
+</style>
+
 </head>
 
 <body>
@@ -95,31 +111,9 @@ function check() {
 		String email_id = (String) request.getParameter("email_id");
 		String name = (String) request.getParameter("name");
 		
- 		/*난수 생성*/
- 		StringBuffer temp = new StringBuffer();
-		
-		Random rnd = new Random();
-		for (int i = 0; i < 6; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0:
-				// a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1:
-				// A-Z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2:
-				// 0-9
-				temp.append((rnd.nextInt(10)));
-				break;
-			}
-		} 
-		
-		String code = temp.toString();
-		System.out.println("code : " + code);
- 		/*난수 생성*/
+ 		
+ 		String code = "";
+
 	%>
 
 	<div id="wrap" class="join">
@@ -186,8 +180,8 @@ function check() {
 							<%if(email_id == null) {
 								// 일반 회원 가입일 때
 							%>
-							<div id="authBox" style="display: block; height:70px; border: 1px solid blue">
-								<input type="button" class="chkEmail" value="이메일 인증" onclick="chkEmail()" >
+							<div id="authBox" style="display: block; height:50px; margin-left: 90px;">
+								<input type="button" class="chkEmail btnAuth" style="width: 100px;"value="이메일 인증 받기" onclick="chkEmail()" >
 							</div>
 							<%} %>
 					</div>
@@ -475,12 +469,14 @@ function check() {
 				var email = $('#email_1').val()+$('#email_2').val();
 				
 				authBox.innerHTML=
-				"<div style='display: block; height:70px; border: 1px solid red'>"
-				+"<input type='text' id='abc'/>"
-				+"<input type='button' id='test' value='확인' onclick='test1()'/>"	
-				+"<input type='button' class='chkEmail' value='이메일 인증' onclick='chkEmail()' >"
+				"<div style='display: block; height:50px;'>"
+				+"<input type='text' id='inputValue'/>"
+				+"<input type='button' style='margin-left: 5px; width: 50px;' id='test' class='btnAuth' value='확인' onclick='chkAuth()'/>"	
+				+"<input type='button' style='margin-left: 5px; width: 50px;' class='chkEmail btnAuth' value='재전송' onclick='chkEmail()' >"
 				+"<input type='hidden' name='email_cert' value='0'/>"
 				+"</div>";
+				
+				alert('메일을 전송합니다.');
 				
 				$.ajax({
 					type : "POST", // method="POST" 방식으로 출력 
@@ -507,18 +503,16 @@ function check() {
 				});
 			}
 			
-			function test1(){
-				var tt = document.getElementById("code").value;
-				var abc = document.getElementById("abc").value;
+			function chkAuth(){
+				var code = document.getElementById("code").value;
+				var inputValue = document.getElementById("inputValue").value;
 				var authBox = document.getElementById("authBox");
+				if(inputValue == code && code.length == 6){
+					alert("인증 성공!");	
+					authBoxㄴ.innerHTML="<div style='text-align: center; font-size: 15px;'><strong><p>인증에 성공하였습니다.</p></strong></div><input type='hidden' name='email_cert' value='1'/>";
 
-				alert('test1');
-				alert(tt);
-				alert(abc);
-				if(abc == tt && tt.length == 6){
-					alert("성공!!!");	
-					authBox.innerHTML="<p>인증 성공하였습니다.</p><input type='hidden' name='email_cert' value='1'/>";
-
+				}else{
+					alert("다시 한번 확인 해 주세요.");						
 				}
 			}
 			

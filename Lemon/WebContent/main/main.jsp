@@ -1502,9 +1502,10 @@
 											</button>
 										</div>
 
-										<div class="main_naver_login">
-											<div id="naverIdLogin"></div>
-											<!-- 									<a href="./member/loginForm.jsp">네이버 로그인</a> -->
+										<div class="main_naver_login" style="vertical-align:middle;">
+											<div id="naverIdLogin" style="float: left;"></div>
+											<p style="display: inline-block; font-size:13px; font-family: 'Dotum'; color: #6f5552;margin-left: 2px;">NAVER</p>
+											<div style="display:none; clear: both;"></div>
 										</div>
 
 
