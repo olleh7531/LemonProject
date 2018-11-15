@@ -145,7 +145,7 @@
 					</div>
 				
 				<%}else{ %>
-				<h3 class="titleSc">앨범</h3>
+				<h3 class="titleSc">가사</h3>
 				<div style="margin-top: 100px; margin-bottom: 100px;">
 					<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
 					<ul style="text-align: center; margin-top: 26px;">
