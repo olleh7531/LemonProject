@@ -1479,10 +1479,11 @@
 							<strong>
 								<a href="" class="id_area"><%=nickName %></a> 님
 							</strong>
+							
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>
 							</a>
-														
+							
 							<input type="button" class="btn_logout" value="로그아웃"
 									onclick="
 									gauth.signOut().then(function(){
@@ -1493,40 +1494,21 @@
 						로그인한 유저 이용권 관련 -->
 						<div class="mem_used">
 							<strong class="product_name">
-								<a href="" title="이용권보유현황">
-									<span class="box_name">
-										<strong>
-											<span>프리클럽</span>
-										</strong> 사용중
-									</span>
+								<a href="">
+									<strong>
+										<span><%=email_id %></span>
+									</strong>
 								</a>
 							</strong>
-							<ul>
-								<li class="nth1">
-									<a href="">
-										<span>
-											<span class="label">쿠폰</span>
-											<span class="nm">0</span>
-										</span>
-									</a>
-								</li>
-								<li class="nth2">
-									<a href="">
-										<span>
-											<span class="label">캐쉬</span>
-											<span class="nm">0</span>
-										</span>
-									</a>
-								</li>
-								<li class="nth3">
-									<a href="">
-										<span>
-											<span class="label">선물</span>
-											<span class="nm">0</span>
-										</span>
-									</a>
-								</li>
-							</ul>
+							
+							<strong class="product_name">
+								<a href="">
+									<strong>
+										<span>뭐 넣을지 몰겠당</span>
+									</strong>
+								</a>
+							</strong>
+							
 						</div> <!-- 로그인한 유저 이용권 관련 -->
 					</div>
 					</c:if>
@@ -2759,11 +2741,11 @@
 							<!-- //POP 차트 -->
 							
 							<!-- 아티스트 차트 -->
-							<li class="nth3 chart_tab_li">
+							<!-- <li class="nth3 chart_tab_li">
 								<a title="아티스트 보기" class="d_link tab_link artist">
 									<span>아티스트</span>
 								</a>
-	<!-- 							<span>아티스트</span> -->
+								<span>아티스트</span>
 								<div class="list_wrap typeArtist">
 									<span class="txt_intro">2018.10.04 기준</span>
 									<ul class="d_artist_list">
@@ -3087,7 +3069,7 @@
 										</div>
 									</div>
 								</div>
-							</li> <!-- //아티스트 차트 -->
+							</li> //아티스트 차트 -->
 						</ul>
 					</div>
 				</div> <!-- //레몬차트 -->

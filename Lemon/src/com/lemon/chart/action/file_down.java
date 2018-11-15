@@ -22,7 +22,6 @@ public class file_down implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("로그인이 필요합니다.");
 			out.close();
-			
 			return null;
 		}
 		
@@ -39,7 +38,7 @@ public class file_down implements Action {
 		for(int i=0 ; i<fileName.length ; i++) {
 			System.out.println("fileName : " + fileName[i]);
 		}
-
+		
 		response.setContentType("text/html; charset=UTF-8");
 		ActionForward forward = new ActionForward();
 		
@@ -58,11 +57,5 @@ public class file_down implements Action {
 		forward.setRedirect(false);
 		
 		return forward;
-		
-		/*PrintWriter out = response.getWriter();
-		out.println(fileName);
-		out.close();
-		
-		return null;*/
 	}
 }

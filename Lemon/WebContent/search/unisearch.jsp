@@ -47,7 +47,7 @@
  	 
  	} 
  	#contsSc { 
- 		border: 1px solid pink; 
+/*  		border: 1px solid pink;  */
  		text-align: left;
  	} 
  	#contsCh { 
@@ -89,17 +89,38 @@
  	
  	/* 공통 기타 */ 	
  	h3.titleSc{
- 		margin-bottom: 12px;
 	    color: #1a1a1a;
 	    font-weight: bold;
 	    font-size: 18px;
 	    line-height: 24px;
 	    font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
 	    padding-top: 25px;
-	    padding-bottom: 12px;
- 	}
+ 	    padding-bottom: 12px;
+		border-bottom: 1px solid #ccc;
+  	}
+ 	
+ 	.wrap_list{
+		display: inline-block;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 20px;
+	}
+		
+	h4.titleSc{
+	    padding-top: 25px;
+	    padding-bottom: 8px;
+	    color: #1a1a1a;
+	    font-weight: bold;
+	    font-size: 14px;
+	    line-height: 24px;
+	    font-family: "맑은 고딕", "Malgun Gothic", "Apple Gothic", sans-serif;
+	}
  	/* 공통 기타 */ 	
  	
+ 	
+ 	
+ 	
+ 	/* 아티스트 관련 */
  	#artist_list{ 	
 	    padding: 16px 0 0;
 	    border-top: 1px solid #ccc;
@@ -134,9 +155,50 @@
 	.wrap_artist{
 		display: block;
 	}
+	
 	.g_artist_info{
 	display: inline-block;
+	margin-left: 10px;
 	}
+	
+	.g_artist_info dl dd{
+		font-size: 12px;
+	    line-height: 20px;
+	    margin-top: 2px;
+	}
+	/* 아티스트 관련 */
+	
+	
+	
+	/* 곡 관련 */
+	
+	.wrap_tb_song_list{
+ 		border-top: 1px solid #ccc; 
+ 		border-bottom: 1px solid #ccc;  		
+	}
+	
+	.tb_song_list {
+		width: 100%;
+		border-collapse:collapse;
+	}
+	
+	.tb_song_list th {
+		line-height: 30px;
+	}
+	
+	.tb_song_list td {
+		line-height: 30px;
+	}
+	
+	.songs{
+		text-align: center;
+	}
+	
+	.songs td{
+ 		border-top: 1px solid #ccc; 
+	}
+	/* 곡 관련 */
+	
 	</style>
 
 </head>
@@ -224,12 +286,12 @@
 							SearchBean arSb = (SearchBean) artist_list.get(i);	
 					%>
 					<div class="wrap_artist">
-						<div style="display: inline-block; border: 1px solid #ccc; float: left;">
+						<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
 							<img width="96" height="96"
 								 src="./upload/starpost/singerProfile/<%=arSb.getSi_picture() %>">
 						</div>
 						<div style="display:none; clear: both;"></div>										
-						<div id="g_artist_info" style="display: inline-block;">
+						<div class="g_artist_info" style="display: inline-block;">
 						<dl>
 						<dd><strong><%=arSb.getSinger_name() %></strong></dd>
 						<dd><%=arSb.getSi_gender() %>,<%=arSb.getActivity_type() %></dd>
@@ -250,20 +312,39 @@
 				<%
 					}
 				%> 
+
 				<!-- 아티스트 -->
 				
+				
+				
 			
-				<!-- 곡 -->
-				<div style="display: inline-block;">
+ 				<!-- 곡 -->
+				<%
+					if(!(song_ar_list.size() == 0) || !(song_mn_list.size() == 0) || !(song_an_list.size() == 0)){
+				%>
+				<h3 class="titleSc">곡</h3>
+				<div class="wrap_list">
 					<!-- 곡: 아티스트명으로 검색 -->
 					<%
 						if(!(song_ar_list.size() == 0)){
 					%>
-					<div>
-						<p>아티스트명으로 검색</p>
-						<table>
+					<div style="display: inline-block; width: 100%;">
+						<h4 class="titleSc"> ● 아티스트명으로 검색</h4>
+						<div class="wrap_tb_song_list">
+						<table class="tb_song_list">
+							<colgroup>
+								<col style="width:30px">
+								<col style="width:30px">
+								<col style="width:100px">
+								<col style="width:80px">
+								<col style="width:80px">
+								<col style="width:50px">
+								<col style="width:30px">
+								<col style="width:30px">
+								<col style="width:30px">
+							</colgroup>
 							<thead>
-								<tr>
+								<tr style="text-align: center;">
 									<th><div><input type="checkbox"></div></th>
 									<th><div>NO</div></th>
 									<th><div>곡명</div></th>
@@ -280,7 +361,7 @@
 								for (int i = 0; i < song_ar_list.size(); i++) {
 									SearchBean sarlSb = (SearchBean) song_ar_list.get(i);	
 							%>
-								<tr>
+								<tr class="songs">
 									<td><div><input type="checkbox"></div></td>
 									<td><div><%=(i+1)%></div></td>
 									<td><div><%=sarlSb.getMusic_name() %></div></td>
@@ -297,6 +378,7 @@
 							%>
 							</tbody>
 						</table>
+						</div>
 					</div>
 					<%
 						}
@@ -307,11 +389,23 @@
 					<%
 						if(!(song_mn_list.size() == 0)){
 					%>
-					<div style="display: inline-block;">
-						<p>곡명으로 검색</p>
-						<table>
+					<div style="display: inline-block; width: 100%;">
+						<h4 class="titleSc"> ● 곡명으로 검색</h4>
+						<div class="wrap_tb_song_list">
+						<table class="tb_song_list">
+							<colgroup>
+								<col style="width:30px">
+								<col style="width:30px">
+								<col style="width:100px">
+								<col style="width:80px">
+								<col style="width:80px">
+								<col style="width:50px">
+								<col style="width:30px">
+								<col style="width:30px">
+								<col style="width:30px">
+							</colgroup>
 							<thead>
-								<tr>
+								<tr style="text-align: center;">
 									<th><div><input type="checkbox"></div></th>
 									<th><div>NO</div></th>
 									<th><div>곡명</div></th>
@@ -328,7 +422,7 @@
 								for (int i = 0; i < song_mn_list.size(); i++) {
 									SearchBean smnlSb = (SearchBean) song_mn_list.get(i);	
 							%>
-								<tr>
+								<tr class="songs">
 									<td><div><input type="checkbox"></div></td>
 									<td><div><%=(i+1) %></div></td>
 									<td><div><%=smnlSb.getMusic_name() %></div></td>
@@ -345,6 +439,7 @@
 							%>
 							</tbody>
 						</table>
+						</div>
 					</div>
 					<%
 						}
@@ -355,11 +450,23 @@
 					<%
 						if(!(song_an_list.size() == 0)){
 					%>
-					<div>
-						<p>앨범명으로 검색</p>
-						<table>
+					<div style="display: inline-block; width: 100%;">
+						<h4 class="titleSc"> ● 앨범명으로 검색</h4>
+						<div class="wrap_tb_song_list">
+						<table class="tb_song_list">
+							<colgroup>
+								<col style="width:30px">
+								<col style="width:30px">
+								<col style="width:100px">
+								<col style="width:80px">
+								<col style="width:80px">
+								<col style="width:50px">
+								<col style="width:30px">
+								<col style="width:30px">
+								<col style="width:30px">
+							</colgroup>
 							<thead>
-								<tr>
+								<tr style="text-align: center;">
 									<th><div><input type="checkbox"></div></th>
 									<th><div>NO</div></th>
 									<th><div>곡명</div></th>
@@ -376,7 +483,7 @@
 								for (int i = 0; i < song_an_list.size(); i++) {
 									SearchBean sanlSb = (SearchBean) song_an_list.get(i);
 							%>
-								<tr>
+								<tr class="songs">
 									<td><div><input type="checkbox"></div></td>
 									<td><div><%=(i+1) %></div></td>
 									<td><div><%=sanlSb.getMusic_name() %></div></td>
@@ -393,36 +500,48 @@
 							%>
 							</tbody>
 						</table>
+						</div>
 					</div>
 					<%
 						}
 					%>
 				</div>
-				<!-- 곡 -->
+				<%
+					}
+				%>
+				
+				<!-- 곡 --> 
 				
 				<!-- 앨범 -->
 				<%
 					if(!(album_list.size() == 0)){
 				%>
- 				<div>
-				<ul>
-				<%	
-					for (int i=0; i<album_list.size(); i++) {
-						SearchBean alSb = (SearchBean) album_list.get(i);
-				%>
-					<li>
-						<div>
-	<%-- 						<p><%=alSb.getAl_art_img() %></p>
-	 --%>						<p><%=alSb.getAl_name() %></p>
-							<p><%=alSb.getSinger_name() %></p>
-							<p><%=alSb.getAl_release() %></p>
-						</div>
-					</li>
-					<hr>
-				<%	
-					}
-				%>
-				</ul>
+				<h3 class="titleSc">앨범</h3>
+				<div class="wrap_list">
+				<div>
+					<ul>
+					<%	
+						for (int i=0; i<album_list.size(); i++) {
+							SearchBean alSb = (SearchBean) album_list.get(i);
+					%>
+						<li style="width: 100%;">
+							<div style="display: inline-block; width: 100%; border-top: 1px solid #ccc; padding-top: 10px; margin-bottom: 10px;">
+								<div style="display: inline-block; width: 130px; height: 130px; border: 1px solid #ccc; float: left;">
+									<img src="<%=alSb.getAl_art_img() %>.jpg" title="<%=alSb.getAl_art_img() %>">
+								</div>
+								<div style="display: inline-block; margin-left: 10px;">
+									<p><strong><%=alSb.getAl_name() %></strong></p>
+									<p><%=alSb.getSinger_name() %></p>
+									<p><%=alSb.getAl_release() %></p>
+								</div>
+								<div style="display: none; clear: both;">
+							</div>
+						</li>
+					<%	
+						}
+					%>
+					</ul>
+				</div>
 				</div>
 				<%	
 					}
@@ -431,24 +550,31 @@
 				
 				
 				<!-- 가사 -->
-				<div>
+				<%
+					if(!(album_list.size() == 0)){
+				%>
+				<h3 class="titleSc">가사</h3>
+				<div class="wrap_list">
 				<%
 					 for(int i=0; i<lyric_list.size(); i++){
 						SearchBean lySb =(SearchBean) lyric_list.get(i);				 
 				%>
-			
+				<div style="border-bottom: 1px solid #ccc; padding-top: 15px; padding-bottom: 15px;">
 				<div><b><%=lySb.getMusic_name() %></b></div>
-				<div style="    display: block;
+				<div style="display: block;
 	    						margin-bottom: 4px;
 	   							white-space: nowrap;
 	    						text-overflow: ellipsis;
 	   							overflow: hidden;"><%=lySb.getLyrics() %></div>
-				<div><%-- ${list.singer_name} --%> | <%=lySb.getAl_name() %></div>
-				<hr>
+				<div><%=lySb.getSinger_name() %> | <%=lySb.getAl_name() %></div>
+				</div>
 				<%	 
 				 }
 				%>
 				</div>
+				<%
+					}
+				%>
 				<!-- 가사 -->		
 				</div>
 			</div>

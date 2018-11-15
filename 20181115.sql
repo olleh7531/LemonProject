@@ -386,6 +386,7 @@ CREATE TABLE `magazine` (
   `ma_readcount` int(11) DEFAULT NULL,
   `ma_register_date` timestamp NOT NULL,
   `ma_content` text NOT NULL,
+  `ma_file` text,
   PRIMARY KEY (`ma_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -747,4 +748,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-14 18:40:41
+-- Dump completed on 2018-11-15 11:51:08

@@ -36,6 +36,11 @@
 <script type="text/javascript" src="./assets/js/main/main_hot_issue.js"></script>
 <script type="text/javascript" src="./assets/js/main/main_chart.js"></script>
 <script type="text/javascript" src="./assets/js/chart/chartCheckBox.js"></script>
+<script type="text/javascript">
+function NotYet() {
+	alert("현재 구현 중입니다");	
+}
+</script>
 <style type="text/css">
 .pagination {
 	display: inline-block;
@@ -100,7 +105,7 @@
 								<i class="fa  fa-plus" style="color: #969696;"><span class="cnt">담기</span></i>
 							</button>
 							<button type="button" title="선택된 곡 다운로드" class="button_rbox"
-								onclick="CheckMusicDownload()">
+								onclick="NotYet()">
 								<i class="fa  fa-download " style="color: #969696;"><span class="cnt">다운</span></i>
 							</button>
 						</div>

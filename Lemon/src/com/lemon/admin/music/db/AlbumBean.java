@@ -9,6 +9,7 @@ public class AlbumBean {
 	private String al_agency;
 	private String al_content;
 	private String al_singer_name;
+	
 	public String getAl_name() {
 		return al_name;
 	}

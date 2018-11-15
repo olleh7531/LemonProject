@@ -69,10 +69,8 @@ function CheckMusicDownload() {
 			"mu_num" : saveList
 		},
 		success : function(file_name) {
-			/*var MusicAddress = "./chart/file_downs.jsp?file_name="+file_name;
-			var encoded = encodeURI(MusicAddress);
-			alert(encoded);
-			location.href = encoded;*/
+			var MusicAddress = "./chart/file_downs.jsp?file_name=";
+			location.href = MusicAddress+file_name;
 		},
 		error : function(xhr, status, error) {
 			alert(error);
