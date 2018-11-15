@@ -114,12 +114,6 @@ function NotYet() {
 							<thead>
 								<tr>
 									<th scope="col">
-										<div class="wrap t_right">
-											<input type="checkbox" title="곡 목록 전체 선택"
-												class="input_check d_checkall">
-										</div>
-									</th>
-									<th scope="col">
 										<div class="wrap t_center">
 											<span class="rank">NO</span>
 										</div>
@@ -131,7 +125,7 @@ function NotYet() {
 										<div class="wrap none">곡 상세가기</div>
 									</th>
 									<th scope="col">
-										<div class="wrap pd_l_12">곡정보</div>
+										<div class="wrap pd_l_12"></div>
 									</th>
 									<th scope="col">
 										<div class="wrap pd_l_12">앨범</div>
@@ -164,11 +158,7 @@ function NotYet() {
 								%>
 								<tr>
 									<td>
-										<div class="wrap t_right">
-											<input type="checkbox" title="" class="input_check "
-												name="input_check" id="input_check"
-												value="<%=cb.getMu_num()%>">
-										</div>
+										
 									</td>
 
 									<td>
@@ -180,18 +170,15 @@ function NotYet() {
 										<div class="wrap">
 											<a
 												href="./LemonDetai.ct?mu_num=<%=cb.getAl_num()%>&pageNum=<%=pageNum%>"
-												title="Sun And Moon Part.1" class="image_typeAll"> <img
-												width="60" height="60"
-												src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>"
-												alt="<%=cb.getMusic_name()%>"> <span
-												class="bg_album_frame"></span>
+												title="Sun And Moon Part.1" class="image_typeAll"> 
+												<img width="60" height="60" src="./musicUpload/albumcover/<%=cb.getAl_art_img()%>" alt="<%=cb.getMusic_name()%>"> 
+												<span class="bg_album_frame"></span>
 											</a>
 										</div>
 									</td>
 									<td>
 										<div class="wrap" style="text-align: center;">
-											<a href="#" class="btn button_icons type03 song_info"><i
-												class="fa fa-file-text-o"></i></a>
+										<i class="fa fa-file-text-o"></i>
 										</div>
 									</td>
 									<td>
