@@ -295,8 +295,8 @@ dl#info dd {
 						<div>
 							<div style="display: inline-block; width: 100%;">
 								<div
-									style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
-									<img width="208" height="208"
+									style="display: inline-block; width: 208px; height: 208px;margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+									<img width="100%" height="100%"
 										src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture()%>">
 								</div>
 
@@ -333,8 +333,8 @@ dl#info dd {
 							%>
 							<div class="wrap_artist">
 								<div
-									style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
-									<img width="96" height="96"
+									style="display: inline-block; width: 96px; height: 96px;margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+									<img width="100%" height="100%"
 										src="./upload/starpost/singerProfile/<%=arSb.getSi_picture()%>">
 								</div>
 								<div style="display: none; clear: both;"></div>
@@ -614,9 +614,9 @@ dl#info dd {
 								%>
 								<li style="width: 100%;">
 									<div style="display: inline-block; width: 100%; border-top: 1px solid #ccc; padding-top: 10px; margin-bottom: 10px;">
-										<div style="display: inline-block; border: 1px solid #ccc; float: left;">
+										<div style="display: inline-block; width: 130px; height: 130px; border: 1px solid #ccc; float: left;">
 											<a href="./LemonDetai.ct?mu_num=<%=alSb.getAl_num() %>"><img src="./musicUpload/albumcover/<%=alSb.getAl_art_img()%>"
-												width="130" height="130" stitle="<%=alSb.getAl_art_img()%>"></a>
+												 width="100%" height="100%" title="<%=alSb.getAl_art_img()%>"></a>
 										</div>
 										<div style="display: inline-block; margin-left: 10px;">
 											<p>

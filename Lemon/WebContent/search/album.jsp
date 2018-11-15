@@ -103,8 +103,8 @@
 						SearchBean sb =(SearchBean) album_list.get(i);				 
 				%>
 					<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">
-					<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
-						<a href="./LemonDetai.ct?mu_num=<%=sb.getAl_num() %>"><img width="96" height="96"
+					<div style="display: inline-block; width: 96px; height: 96px; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+						<a href="./LemonDetai.ct?mu_num=<%=sb.getAl_num() %>"><img width="100%" height="100%"
 							 src="./musicUpload/albumcover/<%=sb.getAl_art_img()%>"></a>
 					</div>
 					<div style="display:none; clear: both;"></div>		
@@ -226,8 +226,8 @@
 			var text="";
 				if(data.length-1!=index){
 					text+='<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">';
-					text+='<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">';
-					text+='<a href="./LemonDetai.ct?mu_num='+this.al_num+'"><img width="96" height="96"';
+					text+='<div style="display: inline-block; width: 96px; height: 96px; margin-bottom: 10px; border: 1px solid #ccc; float: left;">';
+					text+='<a href="./LemonDetai.ct?mu_num='+this.al_num+'"><img width="100%" height="100%"';
 					text+=' src="./musicUpload/albumcover/'+this.al_art_img+'"></a></div>';
 					text+='<div style="display:none; clear: both;"></div>';
 					text+='<div class="info" style="display: inline-block; margin-left: 10px;" >';

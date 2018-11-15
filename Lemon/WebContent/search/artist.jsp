@@ -94,8 +94,8 @@
 					if(at_pro != null){
 				%>
 				<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">
-					<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
-						<img width="96" height="96"
+					<div style="display: inline-block; width:96px; height:96px; 96margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+						<img width="100%" height="100%"
 							 src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture() %>">
 					</div>
 					<div style="display:none; clear: both;"></div>		
@@ -114,8 +114,8 @@
 							SearchBean arSb = (SearchBean) artist_list.get(i);	
 					%>
 					<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">
-						<div style="display: inline-block; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
-							<img width="96" height="96"
+						<div style="display: inline-block; width: 96px; height: 96px; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+							<img width="100%" height="100%"
 								 src="./upload/starpost/singerProfile/<%=arSb.getSi_picture() %>">
 						</div>
 						<div style="display:none; clear: both;"></div>		
