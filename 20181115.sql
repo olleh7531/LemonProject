@@ -660,7 +660,7 @@ CREATE TABLE `searchlog` (
   `se_keyword` text NOT NULL,
   `se_date` timestamp NULL DEFAULT NULL,
   `se_ip` varchar(15) DEFAULT NULL,
-  `se_eamil` varchar(100) DEFAULT NULL,
+  `se_email` varchar(100) DEFAULT NULL,
   `se_gender` varchar(5) DEFAULT NULL,
   `se_generation` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`se_num`)
@@ -748,4 +748,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-15 11:51:08
+-- Dump completed on 2018-11-15 17:42:31

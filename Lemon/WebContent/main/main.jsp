@@ -365,7 +365,6 @@
 														</span>
 													</a>
 													<div class="singer">
-														<span class="none">가수명:</span>
 														<div class="ellipsis">
 															<a href="" title="Babylon (베이빌론) - 페이지 이동" class="play_artist mlog">
 																<span>Babylon (베이빌론)</span>
@@ -1429,10 +1428,6 @@
 									<input type="password" placeholder="비밀번호" name="pass"
 										title="비밀번호 입력 편집창" class="text_password_main"
 										style="width: 199px; outline: 0;">
-									<div class="save_id">
-										<input type="checkbox" name="saveId" id="id_save01" class="">
-										<label for="id_save01">아이디 저장</label>
-									</div>
 									<button type="submit" class="btn_main_login" title="로그인">
 										<span class="odd_span">
 											<span class="even_span">로그인</span>
@@ -1458,7 +1453,7 @@
 									   	gauth.signOut().then(function(){
 									   		checkLoginStatus();
 										});
-								   			 }">
+								   		}">
 								</div>
 								
 								<div class="wrap_member">
@@ -1478,7 +1473,7 @@
 						<!-- 로그인 유저 정보 관련 -->
 						<div class="mem_info">
 							<strong>
-								<a href="" class="id_area"><%=nickName %></a> 님
+								<a class="id_area"><%=nickName %></a>님
 							</strong>
 							
 							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
@@ -1497,7 +1492,7 @@
 							<strong class="product_name">
 								<a>
 									<strong>
-										<span>email : <%=email_id %></span>
+										<span style="display:inline-block; width:250px;">email : <%=email_id %></span>
 									</strong>
 								</a>
 							</strong>
