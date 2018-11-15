@@ -59,7 +59,7 @@ function NotYet() {
 	color: #edae06;
 	border-bottom: 2px solid #edae06;
 }
-.button_icons {background: none !important;}
+tr .button_icons {background: none !important;}
 </style>
 </head>
 <%
