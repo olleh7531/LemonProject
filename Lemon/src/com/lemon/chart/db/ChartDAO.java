@@ -558,6 +558,41 @@ public class ChartDAO {
 	}
 	
 	
+	// ppt용 수동 랭킹업데이트 메서드
+	public void rankingupdate(){
+		try {
+			con = getCon();
+			
+			for(int i=0;i<48;i++){
+				System.out.println(i);
+			// sql 쿼리
+			sql = "	update chart a,( SELECT b.*,@ROWNUM := @ROWNUM + 1 AS ch_ranking FROM (select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime from chart where ch_updatetime =  DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H'), INTERVAL "+i+" HOUR) group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc) b, (SELECT @ROWNUM := 0) R ) b set a.ch_ranking = b.ch_ranking where a.ch_num=b.ch_num";
+			// pstmt 객체생성
+			pstmt = con.prepareStatement(sql);
+			// pstmt 객체 실행
+			// lately가 10분전 past가 20분전 자료
+			pstmt.executeUpdate();
+			}
+			for(int i=0;i<48;i++){
+				System.out.println(i);
+				// sql 쿼리
+				sql = "	update chart a,( SELECT b.*,@ROWNUM := @ROWNUM + 1 AS ch_ranking FROM (select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime from chart where ch_updatetime =  DATE_ADD(DATE_FORMAT(now(),'%Y-%m-%d %H'), INTERVAL "+i+" HOUR) group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc) b, (SELECT @ROWNUM := 0) R ) b set a.ch_ranking = b.ch_ranking where a.ch_num=b.ch_num";
+				// pstmt 객체생성
+				pstmt = con.prepareStatement(sql);
+				// pstmt 객체 실행
+				// lately가 10분전 past가 20분전 자료
+				pstmt.executeUpdate();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+	}
+	
+	
 	
 	
 	

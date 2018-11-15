@@ -1904,6 +1904,7 @@
 					<div class="wrap_chart_tab">
 						<ul>
 							<!-- 실시간 차트 -->
+							<c:set var="realmusic" value="${requestScope.realmusic}"/>
 							<li class="nth1 chart_tab_li"><a title="실시간 보기"
 								class="d_link tab_link realtime"> <span
 									class="chart_tab_span">실시간</span>

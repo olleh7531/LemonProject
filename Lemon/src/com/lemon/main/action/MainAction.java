@@ -21,12 +21,21 @@ public class MainAction implements Action {
 		HttpSession session = request.getSession();
 		
 		Object minute = request.getParameter("minute");
+		MainDAO mdao = new MainDAO(); 
 		if(minute==null){
 			minute=10;
 		}
 		int min=(int)minute;
-		MainDAO mdao = new MainDAO(); 
 		List<SearchChartBean> realtime = mdao.realTimeRising(min);
+		
+		Object hour = request.getParameter("hour");
+		if(hour==null){
+			hour=1;
+		}
+		int ho=(int)hour;
+		List<com.lemon.main.db.ChartBean> realmusic = mdao.realTimeMusic(ho);
+		
+		
 		
 		/* 김성일 */
 		int num = 6;
@@ -44,6 +53,7 @@ public class MainAction implements Action {
 		/* 김성일 */
 
 		session.setAttribute("realtime", realtime);
+		request.setAttribute("realmusic", realmusic);
 		
 		
 		ActionForward forward = new ActionForward();

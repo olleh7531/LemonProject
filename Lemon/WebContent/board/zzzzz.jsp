@@ -54,12 +54,23 @@
 	INTERVAL 1 HOUR) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),
 	INTERVAL 1 SECOND) AND NOT ch_updatetime=DATE_FORMAT(NOW(),'%Y-%m-%d
 	%H:%1'));
+	=============================================================================
+	// 1시간마다 1시간단위 데이터에 ranking 매기기 업데이트구문 
+	update chart a,(
+    SELECT b.*,@ROWNUM := @ROWNUM + 1 AS ch_ranking       
+    FROM
+        (select ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime from chart where ch_updatetime =  DATE_FORMAT(now(),'%Y-%m-%d %H') group by ch_num order by sum(ch_playcnt*4+ch_downcnt*6) desc) b,
+       (SELECT @ROWNUM := 0) R
+       ) b
+set a.ch_ranking = b.ch_ranking
+
+       where a.ch_num=b.ch_num;
 	===========================================================================
 	// 하루마다 1시간단위 데이터들 모아서 insert INSERT INTO chart
 	(ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) select
 	null,ch_music_num,sum(ch_playcnt)
 	ch_playcnt,sum(ch_downcnt),DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d
-	%H:%2'), INTERVAL 2 DAY) from chart where ch_updatetime between
+	%H:%02'), INTERVAL 2 DAY) from chart where ch_updatetime between
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY) and
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) group by
 	ch_music_num;
@@ -71,7 +82,7 @@
 	-----------------------------------------------------------------------------
 	하루단위 insert한 데이터를 music_sub에 update INSERT INTO chart
 	(ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) select
-	null,mu_num,0,0,DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%2'), INTERVAL
+	null,mu_num,0,0,DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%02'), INTERVAL
 	2 DAY) from music where mu_num not in ( select ch_music_num from chart
 	where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'),
 	INTERVAL 2 DAY) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1
@@ -92,6 +103,7 @@
 	AND NOT ch_updatetime=DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%3'),
 	INTERVAL 7 DAY);
 	===========================================================================
+	// 검색차트 순위대로 가져오는 셀렉트문(선택한시간,선택한시간-10분)
             select keyword,lately,past from( select sc_keyword keyword,sc_rank lately from
 	search_chart where sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d
 	%H:%i'), INTERVAL 10 MINUTE) AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d
@@ -109,6 +121,21 @@ left outer join
 	SECOND)
 	AND a.sc_date != DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1
 	SECOND)) c on c.key2=d.keyword;
+================================================================================================
+	// 음악차트 순위대로 가져오는 셀렉트문 (선택한시간,선택한시간-1시간)
+    select ch_music_num,lately,past,music_name,al_singer_name from(select ch_music_num,ch_ranking lately,music_name,al_singer_name from chart,music,album where ch_updatetime between
+	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 HOUR) AND
+	DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 0 HOUR), INTERVAL 1 SECOND)
+	AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02') and mu_num=ch_music_num and al_num=album_num order by lately) d
+    left outer join                      
+    (select a.ch_music_num chm2,a.ch_ranking past from chart a,
+	(select ch_music_num,ch_ranking from chart where ch_updatetime between
+	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 HOUR) AND
+	DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 0 HOUR), INTERVAL 1 SECOND)
+	AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) b where a.ch_music_num=b.ch_music_num and a.ch_updatetime
+    between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 2 HOUR)
+	AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL 1 HOUR), INTERVAL 1 SECOND) AND
+	a.ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) c on c.chm2=d.ch_music_num group by lately;
 ================================================================================================
 select count(*) from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
 and se_keyword='시작';

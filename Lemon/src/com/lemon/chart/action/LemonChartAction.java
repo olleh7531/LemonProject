@@ -25,7 +25,6 @@ public class LemonChartAction implements Action {
 		}
 		int daytimex = Integer.parseInt(daytime);
 
-		ActionForward forward = new ActionForward();
 
 		// ChartDAO 객체 생성 -> 메서드 getChart(id) -> 차트정보를 가져오기(JavaBean)
 		ChartDAO cdao = new ChartDAO();
@@ -56,6 +55,7 @@ public class LemonChartAction implements Action {
 		// 차트정보를 request 객체에 저장 ,페이지 이동 (./board/lemonChart.jsp)-Actionforward
 		request.setAttribute("list", list);
 
+		ActionForward forward = new ActionForward();
 		forward.setPath("./board/lemonChart.jsp?dayTime=" + daytime + "");
 		forward.setRedirect(false);
 		return forward;

@@ -66,7 +66,15 @@ public class LemonLatest_Chart implements Action {
 		String daytime = request.getParameter("dayTime");
 		if (daytime == null) {
 			Date date = new Date();
-			daytime = date.toString().substring(date.toString().indexOf(":") - 2, date.toString().indexOf(":"));
+			if(Integer.parseInt(date.toString().substring(date.toString().indexOf(":")+1 , date.toString().indexOf(":")+3))<5){
+				daytime = String.valueOf(Integer.parseInt(date.toString().substring(date.toString().indexOf(":") - 2, date.toString().indexOf(":")))-1);
+			}else{
+				
+				daytime = date.toString().substring(date.toString().indexOf(":") - 2, date.toString().indexOf(":"));
+			}
+				
+			
+			
 		}
 		int daytimex = Integer.parseInt(daytime);
 

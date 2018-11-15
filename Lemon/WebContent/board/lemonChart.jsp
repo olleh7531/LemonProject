@@ -64,7 +64,7 @@
 .calendar_prid .time_layer .box_scroll {
 	border: 1px solid #e5e5e5;
 	width: 82px;
-	height: 205px;
+	max-height: 205px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: #fff;
