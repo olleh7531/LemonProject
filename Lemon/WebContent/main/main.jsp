@@ -1476,9 +1476,9 @@
 								<a class="id_area"><%=nickName %></a>님
 							</strong>
 							
-							<a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
+							<!-- <a href="./ChooseMemberUpdate.mb" title="내정보" class="bg_none">
 								<span>내정보</span>
-							</a>
+							</a> -->
 							
 							<input type="button" class="btn_logout" value="로그아웃"
 									onclick="
