@@ -70,6 +70,7 @@
 			group_name = group_name.substring(0, group_name.length() - 1);
 		}
 %> --%>
+
 	<%
 		String email_id = (String) session.getAttribute("email_id");
 		MemberDAO mdao = new MemberDAO();
@@ -96,7 +97,10 @@
 	<c:set var="page_block" value="${requestScope.page_block}"/>
 	<c:set var="start_page" value="${requestScope.start_page}"/>
 	<c:set var="end_page" value="${requestScope.end_page}"/>
+	
+	<!-- url 아티스트 번호 불러오기 -->
 	<c:set var="artist" value="${param.artist}"/>
+	
 	<!-- 메뉴 -->
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 
@@ -145,6 +149,7 @@
 						<!-- 프로필 이미지 -->
 						
 						<!-- 아티스트 정보 -->
+						<c:if test="${info != null}">
 						<div class="wrap_atist_info">
 							<p class="title_atist">
 								<%-- <strong class="none">아티스트명</strong><%=acibean.getSinger_name()%>
@@ -222,10 +227,10 @@
 								</c:if>
 							</dl>
 						</div>
+						</c:if>
 						<!-- 아티스트 정보 -->
 						
 						<!-- 관리자 전용 -->
-						
 						<% 
 						if(email_id != null) {
 							if(email_id.equals("admin")) { %>
@@ -3995,7 +4000,8 @@
 									<a href="" id="LIKE" class="orderClass" title="포토리스트 좋아요순으로 정렬">좋아요순</a>
 								</li>
 							</ul>
-						</div> <!-- 최신순 / 좋아요순 -->
+						</div>
+						<!-- // 최신순 / 좋아요순 -->
 						
 						<!-- 포토 리스트 내용 -->
 						<c:if test="${photo_list != null}">
@@ -4010,7 +4016,9 @@
 											<div class="wrap_photo02">
 												<div class="thumb_wrap">
 													<!-- <a href="" class="thumb" title="[바닐라 어쿠스틱 - 싱글 앨범 &lsquo;지쳤니&rsquo; 발매 D-day 커버 공개] 포토상세"> -->
-													<a onclick="photo_content()" class="thumb" title="[${info.singer_name} '-' ${list_photo.ar_subject}] 포토상세">
+													<a onclick="photo_content()" class="thumb"
+														title="[${info.singer_name} '-' ${list_photo.ar_subject}] 포토상세"
+														style="cursor: pointer;">
 														<span class="thumb_frame"></span>
 														<!-- <img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/558/80050558_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트"> -->
 														<img width="148" src="./upload/starpost/singerPhoto/${list_photo.ar_photo}" alt="아티스트">
@@ -4199,9 +4207,8 @@
 				
 				<!-- 아티스트 소개 -->
 				<div class="section_atistinfo01 tab_content" id="artist_chanel_tab5">
-					<!-- 활동정보 -->
+					<!-- 활동정보 / 그룹 멤버 -->
 					<div class="section_atistinfo03">
-					
 						<!-- 활동 정보 -->
 						<h3 class="title line arr">활동정보</h3>
 						<dl class="list_define clfix">
@@ -4313,10 +4320,9 @@
 						</c:forEach>
 							</ul>
 						</div>
-						<!-- 그룹멤버 -->
-						
+						<!-- // 그룹멤버 -->
 					</div>
-					<!-- 활동정보 -->
+					<!-- // 활동정보 / 그룹 멤버 -->
 					
 					<!-- 신상정보 -->
 					<%-- <%if(!real_name.equals("") || siger_birth!=null) { %> --%>
@@ -4342,15 +4348,15 @@
 							<%-- <%} %> --%>
 							</c:if>
 						</dl>
-					</div> <!-- //신상정보 -->
+					</div>
 					<%-- <%} %> --%>
 					</c:if>
+					<!-- //신상정보 -->
 				</div>
-				<!-- 아티스트 소개 -->
-				
+				<!-- // 아티스트 소개 -->
 			</div>
 		</div>
-		<!-- 내용 -->
+		<!-- // 내용 -->
 	</div>
 	
 	<!-- footer -->
