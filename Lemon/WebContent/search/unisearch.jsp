@@ -223,6 +223,15 @@ dl#info dd {
 		List lyric_list = (List) request.getAttribute("lyric_list");
 
 		System.out.println(search);
+		System.out.println("at_pro : "+at_pro);
+		System.out.println("artist_list : "+artist_list);
+		System.out.println("song_ar_list : "+song_ar_list);
+		System.out.println("song_mn_list : "+song_mn_list);
+		System.out.println("song_an_list : "+song_an_list);
+		System.out.println("album_list : "+album_list);
+		System.out.println("lyric_list : "+lyric_list);
+		
+		
 	%>
 
 	<!-- 본문 -->
@@ -254,9 +263,28 @@ dl#info dd {
 					</div>
 					<div style="display: none; clear: both;"></div>
 				</div>
+				
+				<%
+					if(at_pro == null && !(artist_list.size() > 0) && !(song_ar_list.size() > 0) && !(song_mn_list.size() > 0) && !(song_an_list.size() > 0) && !(album_list.size() > 0) && !(lyric_list.size() > 0)){
+						%>
+						<div id="contsSc">
+						<h3 class="titleSc">통합 검색</h3>
+						<div style="margin-top: 100px; margin-bottom: 100px;">
+						<div style="text-align: center;"><strong>'${search}'</strong>(으)로 검색한 결과가 없습니다.	</div>
+							<ul style="text-align: center; margin-top: 26px;">
+								<li>검색어의 철자와 띄어쓰기가 정확한지 확인해 주세요.</li>
+								<li>검색어의 단어수를 줄이거나, 보다 일반적인 단어 등 다른 검색어를 입력해 보세요.</li>
+							</ul>
+						</div>
+						<div style="border-top: 1px solid #ccc;"></div>
+						</div>
+						<%		
+					}else{
+				%>
 
 				<!-- 검색 결과 -->
 				<div id="contsSc">
+					<h3 class="titleSc">통합 검색</h3>
 					<!-- 아티스트 -->
 					<!-- 아티스트 프로필 -->
 					<%
@@ -643,6 +671,9 @@ dl#info dd {
 					<!-- 가사 -->
 
 				</div>
+				<%
+					}
+				%>
 			</div>
 			<!-- 검색 결과 -->
 
