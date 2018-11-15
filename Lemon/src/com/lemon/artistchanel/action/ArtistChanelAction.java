@@ -1,10 +1,14 @@
 package com.lemon.artistchanel.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import com.lemon.artistchanel.db.ArtistChanelInfoBean;
 import com.lemon.artistchanel.db.ArtistChanelInfoDAO;
@@ -16,11 +20,22 @@ public class ArtistChanelAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ArtistChanel 페이지");
 
+		
+		
+		
 		/*----------------------------------------------------------*/
 		/*　　　　　　　　　　　　　　　　　　common　　　　　　　　　　　　　　　　　　　*/
 		/*----------------------------------------------------------*/
 		// 아티스트 번호
-		int artist = Integer.parseInt(request.getParameter("artist"));
+		Object artist_num = request.getParameter("artist");
+		System.out.println("ArtistChanelAction.java photo artist_num : " + artist_num);
+		
+		int artist = 0;
+		
+		if(artist_num != null) {
+			artist = Integer.parseInt(request.getParameter("artist"));
+			System.out.println("ArtistChanelAction.java photo artist : " + artist);
+		}
 		
 		// request.setAttribute("artist", artist);
 				
@@ -34,7 +49,10 @@ public class ArtistChanelAction implements Action {
 
 		// 디비에서 가수 정보 번호 가져오기(번호에 해당하는 가수 정보)
 		ArtistChanelInfoBean info = acidao.getArtistChanelInfo(artist);
+		System.out.println("ArtistChanelAction.java photo info : " + info);
 		
+		/*info.getGroup_singer_num();
+		request.setAttribute("info.getGroup_singer_num()", info.getGroup_singer_num());*/
 		request.setAttribute("info", info);
 		
 		// 그룹 -> 그룹 멤버 가져오기 
@@ -108,15 +126,15 @@ public class ArtistChanelAction implements Action {
 		System.out.println("ArtistChanelAction.java photo 전체 페이지수 계산 : " + page_count);
 		
 		// 한 화면에 보여줄 페이지 번호의 개수
-		int pageBlock = 10;
-		System.out.println("ArtistChanelAction.java photo 한 화면에 보여줄 페이지 번호의 개수 : " + pageBlock);
+		int page_block = 10;
+		System.out.println("ArtistChanelAction.java photo 한 화면에 보여줄 페이지 번호의 개수 : " + page_block);
 		
 		// 시작 페이지 번호
-		int start_page = ((currentPage - 1) / pageBlock) * pageBlock + 1;
+		int start_page = ((currentPage - 1) / page_block) * page_block + 1;
 		System.out.println("ArtistChanelAction.java photo 시작 페이지 번호 : " + start_page);
 		
 		// 끝 페이지 번호
-		int end_page = start_page + pageBlock - 1;
+		int end_page = start_page + page_block - 1;
 		System.out.println("ArtistChanelAction.java photo 끝 페이지 번호 : " + end_page);
 		
 		if(end_page > page_count) {
@@ -124,13 +142,64 @@ public class ArtistChanelAction implements Action {
 		}
 		System.out.println("ArtistChanelAction.java photo 끝 페이지 번호 : " + end_page);
 		
+		/*----------------------------------------------------------*/
+		/*　　　　　　　　　　　　　　　　　　포토 내용　　　　　　　　　　　　　　　　　　  */
+		/*----------------------------------------------------------*/
+		String photo_content_ajax = request.getParameter("photo_content_ajax");
+		
+		if(photo_content_ajax != null) {
+			JSONArray arr = new JSONArray();
+			
+			ArtistChanelPhotoBean acpb = new ArtistChanelPhotoBean();
+			
+			int ar_num = Integer.parseInt(request.getParameter("ar_num"));
+			JSONObject obj = new JSONObject();
+			acpb=acpdao.getPhotoContentNum(ar_num);
+			obj.put("ar_content", acpb.getAr_content());
+			obj.put(key, value);
+			obj.put(key, value);
+			obj.put(key, value);
+			obj.put(key, value);
+			arr.add(obj);
+			
+			List<ArtistChanelPhotoBean> photolist = acpdao.getPhotoSlider();
+			
+			for(ArtistChanelPhotoBean acbp2:photolist) {
+				
+				obj = new JSONObject();
+				
+				obj.put("mu_num", acbp2.getMu_num());
+				obj.put("lyrics", acbp2.getLyrics());
+				obj.put("music_name", acbp2.getMusic_name());
+				obj.put("al_name", acbp2.getAl_name());
+				arr.add(obj);
+			}
+			
+			// 페이지 관련
+			obj = new JSONObject();
+			obj.put("start_page", start_page);
+			obj.put("pageBlock", page_block);
+			obj.put("end_page", end_page);
+			obj.put("page_count", page_count);
+			arr.add(obj);
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			out.println(arr);
+			out.close();								
+			
+			return null;
+		}
+		
 		request.setAttribute("photo_list", photo_list);
 		request.setAttribute("page_num", page_num);
 		request.setAttribute("count", count);
 		request.setAttribute("page_count", page_count);
+		request.setAttribute("page_block", page_block);
 		request.setAttribute("start_page", start_page);
 		request.setAttribute("end_page", end_page);
-
+		
 		/*----------------------------------------------------------*/
 		/*　　　　　　　　　　　　　　　　　　페이지 이동　　　　　　　　　　　　　　　　　　*/
 		/*----------------------------------------------------------*/

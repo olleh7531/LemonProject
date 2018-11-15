@@ -223,8 +223,13 @@ public class ArtistChanelInfoDAO {
 				// 성별
 				acibean.setSi_gender(rs.getString("si_gender"));
 				
+				System.out.println("+dddd+"+rs.getString("group_singer_num"));
+				if(!rs.getString("group_singer_num").equals(",,")){
 				// 그룹 번호
 				acibean.setGroup_singer_num(rs.getString("group_singer_num"));
+				}else{
+					acibean.setGroup_singer_num(",0,");
+				}
 				
 				// 그룹 이름 가져오기
 				String g_singer_name = "";

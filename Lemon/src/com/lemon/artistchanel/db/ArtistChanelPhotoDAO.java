@@ -384,4 +384,41 @@ public class ArtistChanelPhotoDAO {
 		
 		return acpbean;
 	}
+	
+	// 글 번호에 해당하는 게시글 번호(내용) 가져오기 - 슬라이더
+	public List<ArtistChanelPhotoBean> getPhotoSlider() {
+		List<ArtistChanelPhotoBean> photoList = new ArrayList<ArtistChanelPhotoBean>();
+		
+		try {
+			con = getCon();
+			
+			// 최신글 처음에
+			sql = "select * from artist_photo order by ar_num desc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ArtistChanelPhotoBean acpbean = new ArtistChanelPhotoBean();
+				
+				acpbean.setAr_content(rs.getString("ar_content"));
+				acpbean.setAr_num(rs.getInt("ar_num"));
+				acpbean.setAr_photo(rs.getString("ar_photo"));
+				acpbean.setAr_readcount(rs.getInt("ar_readcount"));
+				acpbean.setAr_registerdate(rs.getDate("ar_registerdate"));
+				acpbean.setAr_singer_num(rs.getInt("ar_singer_num"));
+				acpbean.setAr_subject(rs.getString("ar_subject"));
+				
+				photoList.add(acpbean);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return photoList;
+	}
 }
