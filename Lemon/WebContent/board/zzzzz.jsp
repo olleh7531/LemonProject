@@ -9,7 +9,10 @@
 <body>
 
 	===========================================================================================
-	2018-11-02 // 5분마다 차트에 insert 4분59초에 시작 INSERT INTO chart
+<!--                     	스케줄러                        -->
+	<!-- 음악차트  -->
+	2018-11-02 // 5분마다 차트에 insert 4분59초에 시작 
+	INSERT INTO chart
 	(ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) select
 	null,pl_music_num music_num,mu_cnt,do_cnt,now() from (select
 	pl_music_num,count(pl_user_email) mu_cnt from (SELECT distinct
@@ -49,7 +52,8 @@
 	%H'), INTERVAL 1 HOUR) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),
 	INTERVAL 1 SECOND) group by ch_music_num;
 	============================================================================================
-	// 1시간마다 5분단위 데이터들 모아서 insert 하고난 뒤 삭제 2분10초정도에 시작 delete from chart
+	// 1시간마다 5분단위 데이터들 모아서 insert 하고난 뒤 삭제 2분10초정도에 시작
+	delete from chart
 	where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),
 	INTERVAL 1 HOUR) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'),
 	INTERVAL 1 SECOND) AND NOT ch_updatetime=DATE_FORMAT(NOW(),'%Y-%m-%d
@@ -66,21 +70,24 @@ set a.ch_ranking = b.ch_ranking
 
        where a.ch_num=b.ch_num;
 	===========================================================================
-	// 하루마다 1시간단위 데이터들 모아서 insert INSERT INTO chart
+	// 하루마다 1시간단위 데이터들 모아서 insert 
+	INSERT INTO chart
 	(ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) select
 	null,ch_music_num,sum(ch_playcnt)
-	ch_playcnt,sum(ch_downcnt),DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d
+	ch_playcnt,sum(ch_downcnt) ch_downcnt,DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d
 	%H:%02'), INTERVAL 2 DAY) from chart where ch_updatetime between
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 2 DAY) and
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) group by
 	ch_music_num;
 	===========================================================================
-	하루마다 1시간단위 데이터들 모아서 insert 후 delete delete from chart where
+	하루마다 1시간단위 데이터들 모아서 insert 후 delete 
+	delete from chart where
 	ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL
 	2 DAY) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) AND
 	NOT ch_updatetime=DATE_FORMAT(NOW(),'%Y-%m-%d %H:%2');
 	-----------------------------------------------------------------------------
-	하루단위 insert한 데이터를 music_sub에 update INSERT INTO chart
+	하루마다 재생,다운 0인 데이터를 차트에 insert 
+	INSERT INTO chart
 	(ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) select
 	null,mu_num,0,0,DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%02'), INTERVAL
 	2 DAY) from music where mu_num not in ( select ch_music_num from chart
@@ -88,7 +95,8 @@ set a.ch_ranking = b.ch_ranking
 	INTERVAL 2 DAY) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1
 	DAY) group by ch_music_num);
 	===========================================================================
-	일주일마다 하루단위 데이터들 모아서 insert INSERT INTO chart
+	일주일마다 하루단위 데이터들 모아서 insert 
+	INSERT INTO chart
 	(ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) select
 	null,ch_music_num,sum(ch_playcnt)
 	ch_playcnt,sum(ch_downcnt),DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d
@@ -97,11 +105,59 @@ set a.ch_ranking = b.ch_ranking
 	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) group by
 	ch_music_num;
 	===========================================================================
-	일주일마다 하루단위 데이터들 모아서 insert 후 delete delete from chart where
+	일주일마다 하루단위 데이터들 모아서 insert 후 delete 
+	delete from chart where
 	ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL
 	7 DAY) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND)
 	AND NOT ch_updatetime=DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d %H:%3'),
 	INTERVAL 7 DAY);
+	============================================================================
+	<!-- 서치차트 -->
+	 10분마다 서치로그에 있는 데이터 서치차트에 insert
+	insert into search_chart
+select null,a.se_keyword,now(),IFNULL(sc_gender1, 0) sc_gender1,IFNULL(sc_gender2, 0) sc_gender2,IFNULL(sc_generation1, 0) sc_generation1,IFNULL(sc_generation2, 0) sc_generation2,IFNULL(sc_generation3, 0)sc_generation3,IFNULL(sc_generation4, 0) sc_generation4,IFNULL(sc_generation5, 0) sc_generation5,sc_count,null from 
+(select count(*) sc_gender1,se_num,se_keyword from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) 
+and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+and se_gender='남' group by se_keyword) a
+ left outer join 
+(select count(*) sc_gender2,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ and se_gender='여' group by se_keyword) b
+  on b.se_num=a.se_num left outer join 
+(select count(*) sc_generation1,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ and se_generation=10 group by se_keyword) c
+ on c.se_num=a.se_num left outer join
+(select count(*) sc_generation2,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ and se_generation=20 group by se_keyword) d
+ on d.se_num=a.se_num left outer join
+(select count(*) sc_generation3,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ and se_generation=30 group by se_keyword) e
+ on e.se_num=a.se_num left outer join
+(select count(*) sc_generation4,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ and se_generation=40 group by se_keyword) f
+ on f.se_num=a.se_num left outer join
+(select count(*) sc_generation5,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ and se_generation=50 group by se_keyword) g
+ on g.se_num=a.se_num left outer join
+(select count(*) sc_count,se_num from searchlog where se_date between date_sub(date_format(now(), '%Y-%m-%d %H:%i'), interval 10 minute) and date_sub(date_format(now(), '%Y-%m-%d %H:%i:%S'), INTERVAL 1 SECOND)
+ group by se_keyword) h on h.se_num=a.se_num group by se_keyword;
+ =======================================================================
+ 하루마다 서치차트에 있는 10분단위 데이터를 하나로 모아서 insert
+ INSERT INTO search_chart
+	(sc_num,sc_keyword,sc_date,sc_gender1,sc_gender2,sc_generation1,sc_generation2,sc_generation3,sc_generation4,sc_generation5,sc_count) 
+    select
+	null,sc_keyword,
+	DATE_SUB(DATE_FORMAT(now(),'%Y-%m-%d
+	%H:%01'), INTERVAL 1 DAY),sc_gender1,sc_gender2,sc_generation1,sc_generation2,sc_generation3,sc_generation4,sc_generation5,sc_count from search_chart where sc_date between
+	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 DAY) and
+	DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) group by
+	sc_keyword;
+ 
+ =======================================================================
+ 하루마다 업데이트했던 10분단위 데이터 삭제
+ 
+ 
+	
+<!--                     	스케줄러                        -->
 	===========================================================================
 	// 검색차트 순위대로 가져오는 셀렉트문(선택한시간,선택한시간-10분)
             select keyword,lately,past from( select sc_keyword keyword,sc_rank lately from
