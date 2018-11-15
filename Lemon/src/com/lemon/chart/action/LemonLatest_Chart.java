@@ -63,6 +63,7 @@ public class LemonLatest_Chart implements Action {
 			endPage = pageCount;
 		}
 		
+		/*최우성*/
 		String daytime = request.getParameter("dayTime");
 		if (daytime == null) {
 			Date date = new Date();
@@ -77,7 +78,7 @@ public class LemonLatest_Chart implements Action {
 			
 		}
 		int daytimex = Integer.parseInt(daytime);
-
+		
 
 		// ChartDAO 객체 생성 -> 메서드 getChart(id) -> 차트정보를 가져오기(JavaBean)
 		List<ChartBean1> list = cdao.getChart(daytimex);
@@ -107,8 +108,12 @@ public class LemonLatest_Chart implements Action {
 		// 차트정보를 request 객체에 저장 ,페이지 이동 (./board/lemonChart.jsp)-Actionforward
 		request.setAttribute("list", list);
 
+		List<com.lemon.main.db.ChartBean> Realmusic = cdao.realTimeMusic(daytimex, startRow, pageSize);
+		List<com.lemon.main.db.ChartBean> realmusic = cdao.GoodList2(Realmusic);
+		request.setAttribute("realmusic", realmusic);
+		/*최우성*/
 		
-		request.setAttribute("chartList", ChartList);
+//		request.setAttribute("chartList", ChartList);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("count", count);
 		request.setAttribute("pageCount", pageCount);
