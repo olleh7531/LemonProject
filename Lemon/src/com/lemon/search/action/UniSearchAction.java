@@ -34,13 +34,9 @@ public class UniSearchAction implements Action {
 		List<SearchBean> lyric_list = sdao.LyricSearch(search);
 		List<SearchChartBean> searchchart = sdao.getSearchChart(search);
 		List<SearchChartBean> popular = sdao.popularSearches();
-//		List<SearchChartBean> realtime = cdao.popularSearches();
 		
-System.out.println("xxxxx"+email_id);
-	/*	if(test==null && email_id!=null){
-			System.out.println("1234");
+		if(test==null && email_id!=null){
 			int checkSL = sdao.checkSearchLog(email_id, search);
-		System.out.println("xxx1");
 			if(checkSL != 1){
 				String ip ="";
 				try (java.util.Scanner s = new java.util.Scanner(new java.net.URL("https://api.ipify.org").openStream(), "UTF-8").useDelimiter("\\A")) {
@@ -49,9 +45,9 @@ System.out.println("xxxxx"+email_id);
 				    e.printStackTrace();
 				}
 				
-//				sdao.insertSearchLog(email_id,search,ip);
+				sdao.insertSearchLog(email_id,search,ip);
 			}
-		}	*/	
+		}		
 		
 		request.setAttribute("artist_profile", artist_profile);		
 		request.setAttribute("artist_list", artist_list);

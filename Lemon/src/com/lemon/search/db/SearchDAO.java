@@ -379,17 +379,12 @@ public class SearchDAO {
 		
 		try {
 			con = getCon();
-			System.out.println(email_id);
-			
-			sql = "select se_num from searchlog where se_email_id=? and se_keyword=?"
-					+ " AND se_date BETWEEN DATE_FORMAT(NOW(),'%Y-%m-%d %H') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%S')";
+			sql = "select se_num from searchlog where se_email=? and se_keyword=? AND se_date BETWEEN DATE_FORMAT(NOW(),'%Y-%m-%d %H') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%S')";
 			pstmt = con.prepareStatement(sql);
 		    pstmt.setString(1, email_id);
 		    pstmt.setString(2, keyword);  
 
-			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();		
-			
 			if(rs.next()){
 				check = 1;
 			}
