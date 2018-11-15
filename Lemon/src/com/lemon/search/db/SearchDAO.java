@@ -137,11 +137,11 @@ public class SearchDAO {
 
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-
+			
+			
 			String group_singer_num = "";
 			if(rs.next()){
 				group_singer_num = rs.getString("group_singer_num");
-			}
 			
 			String group_num = rs.getString("group_singer_num").substring(1, rs.getString("group_singer_num").length() - 1);
 			StringTokenizer g_number= new StringTokenizer(group_num,",");
@@ -167,6 +167,7 @@ public class SearchDAO {
 					list.add(sb);						
 				}
 			}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -186,8 +187,8 @@ public class SearchDAO {
 			
 			sql = "SELECT m.music_name, a.al_singer_name, a.al_name, a.al_release"
 					+ " FROM music m,album a"
-					+ " WHERE m.album_num=a.al_num a.al_singer_name like'%"+search+"%'"
-					+ " ORDER BY s.singer_name asc, a.al_release desc";
+					+ " WHERE m.album_num=a.al_num AND a.al_singer_name like'%"+search+"%'"
+					+ " ORDER BY a.al_singer_name asc, a.al_release desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -218,9 +219,9 @@ public class SearchDAO {
 		try {
 			con = getCon();
 			
-			sql = "SELECT m.music_name, s.singer_name, a.al_name, a.al_release"
-					+ " FROM music m,album a,singer s"
-					+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num and m.music_name like'%"+search+"%'"
+			sql = "SELECT m.music_name, a.al_singer_name, a.al_name, a.al_release"
+					+ " FROM music m,album a"
+					+ " WHERE m.album_num=a.al_num and m.music_name like'%"+search+"%'"
 					+ " ORDER BY m.music_name asc, a.al_release desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -252,9 +253,9 @@ public class SearchDAO {
 		try {
 			con = getCon();
 			
-			sql = "SELECT m.music_name, s.singer_name, a.al_name, a.al_release"
+			sql = "SELECT m.music_name, a.al_singer_name, a.al_name, a.al_release"
 					+ " FROM music m,album a,singer s"
-					+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num and a.al_name like'%"+search+"%'"
+					+ " WHERE m.album_num=a.al_num and a.al_name like'%"+search+"%'"
 					+ " ORDER BY a.al_name asc, a.al_release desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -285,9 +286,9 @@ public class SearchDAO {
 		try {
 			con = getCon();
 			
-			sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, s.singer_name"
-					+ " FROM music m,album a,singer s"
-					+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num AND a.al_name like'%"+search+"%'"
+			sql = "SELECT DISTINCT a.al_art_img, a.al_name, a.al_release, a.al_singer_name"
+					+ " FROM music m,album a"
+					+ " WHERE m.album_num=a.al_num AND a.al_name like'%"+search+"%'"
 					+ " ORDER BY a.al_release desc, a.al_name asc limit 0,6";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -496,8 +497,8 @@ public class SearchDAO {
 			sql ="SELECT count(*)"
 					+ " FROM album"
 					+ " WHERE al_name IN(SELECT DISTINCT a.al_name"
-					+ " FROM music m,album a,singer s"
-					+ " WHERE m.album_num=a.al_num AND m.singer_num=s.si_num AND a.al_name like'%"+search+"%')";
+					+ " FROM music m,album a"
+					+ " WHERE m.album_num=a.al_num AND a.al_name like'%"+search+"%')";
 
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();

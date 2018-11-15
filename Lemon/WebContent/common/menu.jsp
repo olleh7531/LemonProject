@@ -111,7 +111,12 @@
 								</strong>
 								<a href="" class="ellipsis"
 									title="${psearch.sc_keyword} - 페이지 이동">${psearch.sc_keyword}</a>
-									<c:if test="${psearch.sc_rank>0&&psearch.sc_rank!=9999999}">
+									<c:if test="${psearch.sc_rank==9999999}">
+						<span class="wrap_rank new">
+									<span class="icon">새진입</span>
+								</span>
+										</c:if>
+									<c:if test="${psearch.sc_rank>0}">
 									<span class="wrap_rank up">
 									<span class="icon">순위상승수</span>
 									<span class="num">${psearch.sc_rank}</span>
@@ -126,11 +131,6 @@
 									<c:if test="${psearch.sc_rank==0}">
 						<span class="wrap_rank static">
 									<span class="icon">순위 동일</span>
-								</span>
-										</c:if>
-									<c:if test="${psearch.sc_rank==9999999}">
-						<span class="wrap_rank new">
-									<span class="icon">새진입</span>
 								</span>
 										</c:if>
 									

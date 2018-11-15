@@ -550,7 +550,7 @@
 				
 				<!-- 가사 -->
 				<%
-					if(!(album_list.size() == 0)){
+					if(!(lyric_list.size() == 0)){
 				%>
 				<h3 class="titleSc">가사</h3>
 				<div class="wrap_list">

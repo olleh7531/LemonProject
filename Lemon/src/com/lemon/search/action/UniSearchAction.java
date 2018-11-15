@@ -37,7 +37,7 @@ public class UniSearchAction implements Action {
 //		List<SearchChartBean> realtime = cdao.popularSearches();
 		
 System.out.println("xxxxx"+email_id);
-		if(test==null && email_id!=null){
+	/*	if(test==null && email_id!=null){
 			System.out.println("1234");
 			int checkSL = sdao.checkSearchLog(email_id, search);
 		System.out.println("xxx1");
@@ -49,9 +49,9 @@ System.out.println("xxxxx"+email_id);
 				    e.printStackTrace();
 				}
 				
-				sdao.insertSearchLog(email_id,search,ip);
+//				sdao.insertSearchLog(email_id,search,ip);
 			}
-		}		
+		}	*/	
 		
 		request.setAttribute("artist_profile", artist_profile);		
 		request.setAttribute("artist_list", artist_list);
