@@ -41,7 +41,7 @@ function photo_content() {
 			// 포토 번호 num : ar_num
 			ar_num : this.ar_num,
 			
-			// ajax일 때만 내용 보이게 한다
+			// photo_content_ajax 일 때만 내용 보이게 한다
 			photo_content_ajax : "photo_content_ajax",
 			
 			// 아티스트 번호 : si_num

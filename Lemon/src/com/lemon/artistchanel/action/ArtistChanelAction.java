@@ -147,40 +147,73 @@ public class ArtistChanelAction implements Action {
 		/*----------------------------------------------------------*/
 		String photo_content_ajax = request.getParameter("photo_content_ajax");
 		
+		// photo_content_ajax 일 때만 내용 보이게 한다
 		if(photo_content_ajax != null) {
 			JSONArray arr = new JSONArray();
 			
 			ArtistChanelPhotoBean acpb = new ArtistChanelPhotoBean();
 			
 			int ar_num = Integer.parseInt(request.getParameter("ar_num"));
+			
 			JSONObject obj = new JSONObject();
-			acpb=acpdao.getPhotoContentNum(ar_num);
+			
+			acpb = acpdao.getPhotoContentNum(ar_num);
+			
+			// "" : db 컬럼 명
+			
+			// 포토 번호
+			obj.put("ar_num", acpb.getAr_num());
+			
+			// 제목
+			obj.put("ar_subject", acpb.getAr_subject());
+			
+			// 내용
 			obj.put("ar_content", acpb.getAr_content());
-			obj.put(key, value);
-			obj.put(key, value);
-			obj.put(key, value);
-			obj.put(key, value);
+			
+			// 등록 날짜
+			obj.put("ar_registerdate", acpb.getAr_registerdate());
+			
+			// 좋아요
+			
+			// 조회수
+			obj.put("ar_readcount", acpb.getAr_readcount());
+			
+			// 사진
+			obj.put("ar_photo", acpb.getAr_photo());
+			
+			// 댓글
+
+			// arr에 obj 담기
 			arr.add(obj);
 			
+			// 포토 리스트에서 포토 선택 후 선택한 포토 내용 보여줄 때
+			// 포토 슬라이더 내용 가져온다
 			List<ArtistChanelPhotoBean> photolist = acpdao.getPhotoSlider();
 			
 			for(ArtistChanelPhotoBean acbp2:photolist) {
 				
 				obj = new JSONObject();
 				
-				obj.put("mu_num", acbp2.getMu_num());
-				obj.put("lyrics", acbp2.getLyrics());
-				obj.put("music_name", acbp2.getMusic_name());
-				obj.put("al_name", acbp2.getAl_name());
+				// 포토 번호
+				obj.put("ar_num", acpb.getAr_num());
+				
+				// 포토 제목
+				obj.put("ar_subject", acpb.getAr_subject());
+				
+				// 포토
+				obj.put("ar_photo", acpb.getAr_photo());
+				
 				arr.add(obj);
 			}
 			
 			// 페이지 관련
 			obj = new JSONObject();
+			
 			obj.put("start_page", start_page);
 			obj.put("pageBlock", page_block);
 			obj.put("end_page", end_page);
 			obj.put("page_count", page_count);
+			
 			arr.add(obj);
 			
 			response.setContentType("text/html; charset=UTF-8");
