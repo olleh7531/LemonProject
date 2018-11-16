@@ -110,7 +110,7 @@ figure img{
 					<thead>
 						<tr style="text-align: center;">
 							<th scope="col">NO.</th>
-							<th scope="col">이미지</th>
+							<th scope="col"></th>
 							<th scope="col">제목</th>
 							<th scope="col">날짜</th>
 							<th scope="col">조회</th>
