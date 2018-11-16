@@ -1381,18 +1381,13 @@
 							</div>
 							<div class="wrap_page">
 								<div class="page">
-									<!-- <span class="page_num">
-										<span class="none">현재 페이지</span>
-										<strong>1</strong>/
-										<span class="none">전체 페이지</span>
-										<span>16</span>
-									</span> -->
-									<span class="wrap_btn"> <a class="btn btn_pre mlog"
-										title="이전" onclick="plusNewAlbum(-1)"> <span
-											class="odd_span">이전</span>
-									</a> <a class="btn btn_next mlog" title="다음"
-										onclick="plusNewAlbum(1)"> <span class="odd_span">다음</span>
-									</a>
+									
+									<span class="	wrap_btn"> 
+									<a title="이전" style="cursor: pointer;" onclick="plusNewAlbum(-1)"> 
+									<span class="odd_span">◀</span> </a> 
+									
+									<a title="다음" style="cursor: pointer;" onclick="plusNewAlbum(1)"> 
+									<span class="odd_span">▶</span> </a>
 									</span>
 								</div>
 							</div>
@@ -1880,14 +1875,14 @@
 						</ul>
 					</div>
 					<div class="wrap_page">
-						<div class="page">
-							<span class="page_num"> <span class="none">2</span> <strong>1</strong>/
-								<span class="none">2</span> <span>2</span>
-							</span> <span class="wrap_btn"> <a
-								class="btn btn_pre mlog_without_page_change" title="이전"> <span
-									class="odd_span">이전</span>
-							</a> <a class="btn btn_next mlog_without_page_change" title="다음">
-									<span class="odd_span">다음</span>
+						<div class="page">							
+							<span class="wrap_btn"> 
+							<a class="btn btn_pre mlog_without_page_change" title="이전22"> 
+							<span class="odd_span">이전</span>
+							</a> 
+							
+							<a class="btn btn_next mlog_without_page_change" title="다음22">
+							<span class="odd_span">다음</span>
 							</a>
 							</span>
 						</div>

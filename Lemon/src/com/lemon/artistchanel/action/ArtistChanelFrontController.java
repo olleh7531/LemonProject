@@ -39,15 +39,6 @@ public class ArtistChanelFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
-		} if(command.equals("/ArtistChanel.ac")) {
-			action = new ArtistChanelAction(); 
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
 		
 		else if (command.equals("/AdminArtistChanelInfo.ac")) {
