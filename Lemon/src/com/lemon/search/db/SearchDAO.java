@@ -400,13 +400,8 @@ public class SearchDAO {
 		try {
 			con = getCon();
 
-			sql = "SELECT count(*)" 
-					+ " FROM album" 
-					+ " WHERE al_name IN(SELECT DISTINCT a.al_name"
-					+ " FROM music m, album a" 
-					+ " WHERE m.album_num=a.al_num AND a.al_name like '%"+search+"%' OR m.lyrics like '%"+search+"%' OR a.al_singer_name like '%"+search+"%')";
-			
-			
+			sql = "select count(*)" + " from music, album" + " where lyrics like '%" + search
+					+ "%' and al_num=album_num";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -483,8 +478,10 @@ public class SearchDAO {
 		try {
 			con = getCon();
 
-			sql = "SELECT count(*)" + " FROM album" + " WHERE al_name IN(SELECT DISTINCT a.al_name"
-					+ " FROM music m,album a" + " WHERE m.album_num=a.al_num AND a.al_name like'%" + search + "%')";
+			sql = "SELECT count(*)"
+					+ " FROM album WHERE al_name IN(SELECT DISTINCT a.al_name"
+					+ " FROM music m, album a"
+					+ " WHERE m.album_num=a.al_num AND a.al_name like '%"+search+"%' OR m.lyrics like '%"+search+"%' OR a.al_singer_name like '%"+search+"%');";
 
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
