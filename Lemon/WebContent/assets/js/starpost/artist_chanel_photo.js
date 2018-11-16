@@ -93,31 +93,9 @@ function photo_content() {
 					
 					// 영역
 					content += '<div class="photo_list02">';
-					content += '<ul>';
+					content += '<ul id="photo_slider">';
 					
-					// 사진 반복 뿌려주기 ( 8개 )
-					// 현재 보고 있는 사진 class = "on" (1개)
-					content += '<li class="on">';
-					content += '<div class="thumb_wrap">';
-					content += '<a href="" class="thumb" title="">';
-					content += '<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/258/80050258_1000.jpg/melon/resize/104/quality/80/optimize" alt="아티스트">';
-					content += '<span class="wrap_vertical"></span>';
-					content += '<span class="bor"></span>';
-					content += '</a>';
-					content += '</div>';
-					content += '</li>';
 					
-					// 포토 리스트 class = ex_height 확인하기
-					// 반복 뿌려주기(7개)
-					content += '<li class="">';
-					content += '<div class="thumb_wrap">';
-					content += '<a href="" class="thumb ex_height" title="">';
-					content += '<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/457/80049457_1000.jpg/melon/resize/104/quality/80/optimize" alt="아티스트">';
-					content += '<span class="wrap_vertical"></span>';
-					content += '<span class="bor"></span>';
-					content += '</a>';
-					content += '</div>';
-					content += '</li>';
 					
 					// 뿌려주기 종료
 					content += '</ul>';
@@ -229,7 +207,36 @@ function photo_content() {
 					
 					$('.test').append(content);
 				}
+				else if(index < 9) {
+					alert(this.ar_photo)
+					// 사진 반복 뿌려주기 ( 8개 )
+					// 현재 보고 있는 사진 class = "on" (1개)
+					content += '<li class="on">';
+					content += '<div class="thumb_wrap">';
+					content += '<a href="" class="thumb" title="">';
+					content += '<img src="./upload/starpost/singerPhoto/' + this.ar_photo + '" alt="아티스트">';
+					content += '<span class="wrap_vertical"></span>';
+					content += '<span class="bor"></span>';
+					content += '</a>';
+					content += '</div>';
+					content += '</li>';
+					
+					// 포토 리스트 class = ex_height 확인하기
+					// 반복 뿌려주기(7개)
+					/*content += '<li class="">';
+					content += '<div class="thumb_wrap">';
+					content += '<a href="" class="thumb ex_height" title="">';
+					content += '<img src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/49/457/80049457_1000.jpg/melon/resize/104/quality/80/optimize" alt="아티스트">';
+					content += '<span class="wrap_vertical"></span>';
+					content += '<span class="bor"></span>';
+					content += '</a>';
+					content += '</div>';
+					content += '</li>';*/
+					
+					$('#photo_slider').append(content);
+				}
 			});
+			
 		},
 		error : function(xhr, status, error) { // 에러났을 때
 			alert("error : " + error);
