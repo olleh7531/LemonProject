@@ -167,6 +167,12 @@
 			<div id="menu">
 				<ul>
 					<li class="menu1">
+						<a href="./LemonPlayerList.mp" class="cur_menu mlog">
+							<span class="menu_bg menu01">플레이리스트</span>
+						</a>
+					</li>
+				
+					<li class="menu1">
 						<a href="./LemonLatest_Chart.ct" class="cur_menu mlog">
 							<span class="menu_bg menu01">레몬차트</span>
 						</a>
@@ -186,13 +192,21 @@
 							<span class="menu_more menu04">공지사항</span>
 						</a>
 					</li>
+					
+					<% if(email_id == null) { %> 
+					<li class="menu8">
+						<a class="cur_menu mlog">
+							<span class="menu_bg menu07">마이레몬</span>
+						</a>
+					</li>
+					<%} else { %>
 					<li class="menu8">
 						<a href="./ChooseMemberUpdate.mb" class="cur_menu mlog">
 							<span class="menu_bg menu07">마이레몬</span>
 						</a>
 					</li>
+					<% } 
 					
-					<% 
 						if(email_id != null) {
 							if(email_id.equals("admin")) { %> 
 					<li class="menu9">

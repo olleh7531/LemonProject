@@ -979,10 +979,6 @@ legend, #IE8#HACK {
 	display: block;
 	margin: 0 15px;
 	padding: 10px 10px;
-	background-image:
-		url("../../../assets/img/main/login/main_login_use_bg.png");
-	background-repeat: no-repeat;
-	background-position: left 21px;
 	font-weight: normal;
 	vertical-align: top;
 }

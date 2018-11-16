@@ -58,6 +58,7 @@
 		String email_id = (String) session.getAttribute("email_id");
 		MemberDAO mdao = new MemberDAO();
 		String nickName = mdao.getNick(email_id);
+		int level = mdao.getLevel(email_id);
 		System.out.println("email_id : " + email_id);
 		ArrayList<ChartBean> cb = (ArrayList) request.getAttribute("cb");
 		ArrayList<ChartBean> cb01 = (ArrayList) request.getAttribute("cb01");
@@ -1540,7 +1541,7 @@
 						<div class="logout_wrap">
 							<!-- 로그인 유저 정보 관련 -->
 							<div class="mem_info">
-								<strong> <a href="" class="id_area"><%=nickName%></a> 님
+								<strong> <a class="id_area"><%=nickName%></a> 님
 								</strong> 
 								<input type="button" class="btn_logout" value="로그아웃"
 									onclick="
@@ -1551,27 +1552,23 @@
 							<!-- 로그인 유저 정보 관련
 						로그인한 유저 이용권 관련 -->
 							<div class="mem_used">
-								<strong class="product_name"> <a href=""
-									title="이용권보유현황"> <span class="box_name"> <strong>
-												<span>프리클럽</span>
-										</strong> 사용중
-									</span>
-								</a>
-								</strong>
-								<ul>
-									<li class="nth1"><a href=""> <span> <span
-												class="label">쿠폰</span> <span class="nm">0</span>
-										</span>
-									</a></li>
-									<li class="nth2"><a href=""> <span> <span
-												class="label">캐쉬</span> <span class="nm">0</span>
-										</span>
-									</a></li>
-									<li class="nth3"><a href=""> <span> <span
-												class="label">선물</span> <span class="nm">0</span>
-										</span>
-									</a></li>
-								</ul>
+								<strong class="product_name">
+ 								<a>
+ 									<strong>
+ 										<span>E-mail : <%=email_id %></span>
+ 									</strong>
+ 								</a>
+ 								
+ 								<a>
+ 									<strong>
+ 										<%if(level == 1) {%>
+ 										<span>회원 등급 : 관리자</span>
+ 										<%} else {%>
+ 										<span>회원 등급 : 일반 회원</span>
+ 										<%}%>
+ 									</strong>
+ 								</a>
+ 							</strong>		
 							</div>
 							<!-- 로그인한 유저 이용권 관련 -->
 						</div>
@@ -1581,16 +1578,17 @@
 					<!-- 콘서트 -->
 					<div class="promotion_wrap">
 						<div class="promotion_default" style="display: none;">
-							<a href="" title="[티켓] 박정현"> <img width="280" height="188"
-								src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002114836.png/melon/quality/80"
-								alt=""> <span class="bg_album_frame"></span>
+							<a href="" title="[티켓] 박정현"> 
+							<img width="280" height="188"
+								src="./assets/img/main/common/underLogin.png"> 
+								<span class="bg_album_frame"></span>
 							</a>
 						</div>
 						<ul style="width: 280px;">
-							<li class="d_item"><a href="" title="[티켓] 박정현" class="mlog">
-									<img width="280" height="188"
-									src="https://cdnimg.melon.co.kr/svc/images/main/imgUrl20181002114836.png/melon/quality/80"
-									alt=""> <span class="bg_album_frame"></span>
+							<li class="d_item">
+							<a href="" title="[티켓] 박정현" class="mlog">
+							<img width="280" height="188" src="./assets/img/main/common/underLogin.png"> 
+							<span class="bg_album_frame"></span>
 							</a></li>
 						</ul>
 						<div class="play_control" style="display: none;">
@@ -1900,7 +1898,7 @@
 				<!-- 레몬차트 -->
 				<div class="chart">
 					<h2>
-						<a href="/Lemon/LemonLatest_Chart.ct" class="title_link mlog">레몬 차트</a> <img
+						<a href="" class="title_link mlog">레몬 차트</a> <img
 							src="./assets/img/main/chart/main_chart_subject_arrow.png">
 					</h2>
 					<div class="wrap_chart_tab">
@@ -1912,7 +1910,8 @@
 									class="chart_tab_span">실시간</span>
 							</a> <!-- <span class="none">실시간</span> -->
 								<div class="list_wrap typeRealtime">
-									<span class="txt_intro">${fn:substring(realmusic[0].ch_updatetime,0,10)} <strong>${fn:substring(realmusic[0].ch_updatetime,10,16)} </strong>
+									<span class="txt_intro">
+									${fn:substring(realmusic[0].ch_updatetime,0,10)} <strong>${fn:substring(realmusic[0].ch_updatetime,10,16)} </strong>
 										기준
 									</span>
 									<ul>
@@ -2004,8 +2003,6 @@
 									</div>
 								</div></li>
 							<!-- //실시간 차트 -->
-
-							
 					</div>
 				</div>
 				<!-- //레몬차트 -->
