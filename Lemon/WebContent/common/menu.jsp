@@ -167,7 +167,7 @@
 			<div id="menu">
 				<ul>
 					<li class="menu1">
-						<a href="./LemonPlayerList.mp" class="cur_menu mlog">
+						<a  onclick="LemonPlayerList();" class="cur_menu mlog">
 							<span class="menu_bg menu01">플레이리스트</span>
 						</a>
 					</li>
@@ -222,4 +222,9 @@
 			<!-- 메뉴 -->
 		</div>
 	</div>
+	<script type="text/javascript">
+		function LemonPlayerList(){
+			window.open("./LemonPlayerList.mp","a","width=320,height=315,top=300,left=200,scrollbars=no,resizable=no,location=no,toolbar=no,menubar=no")
+		}
+	</script>
 <div style="clear: both;"></div> 

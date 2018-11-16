@@ -9,8 +9,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<title>Amazing Audio Player | HTML5 Audio Player for Your
-	Website</title>
+<title>Lemon Audio Player</title>
 <link rel="shortcut icon" href="./assets/img/common/favicon.png">
 <script type='text/javascript' src="./assets/js/player/jquery.js"></script>
 <script src="http://snote88.dothome.co.kr/assets/js/jquery-3.0.0.min.js"></script>
