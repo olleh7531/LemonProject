@@ -33,13 +33,13 @@ function photo_content() {
 	$.ajax({
 		type : "post", // method = "post" 방식으로 출력
 		url : "./ArtistChanel.ac", // 아티스트 채널 포토 jsp 파일 주소 불러오기
-		// dataType : 'json',
+		dataType : 'json',
 		data : {
 			// 변수 : "" -> ajax 변수명 
 			// .val() 문자
 			
 			// 포토 번호 num : ar_num
-			ar_num : "",
+			ar_num : $('#ar_num').find('img').attr('title'),
 			
 			// photo_content_ajax 일 때만 내용 보이게 한다
 			photo_content_ajax : "photo_content_ajax",
@@ -49,24 +49,19 @@ function photo_content() {
 		},
 		success : function(data) { // data 가져오는 것이 성공하였을 때
 			// 사진 리스트 지운다(안 보이게함)
-			$('.section_photo .d_photo_list').empty();
+			$('.test').empty();
 			
 			// 사진 리스트 선택 시 선택한 사진 내용 뿌려준다
 			$(data).each(function(index) {
 				var content = "";				
 				
-				if(data.length-1 != index) {
+				if(index == 0) {
 					/*----------------------------------*/
 					/*　　　　　　　　　포토 내용 보기　　　　　　　 */
 					/*----------------------------------*/
-					content += '<!-- 포토 선택시 내용 보기 -->';
-					
-					content += '<!-- 영역 -->';
-					
 					// 영역
-					content += '<div class="section_photo">';
+					content += '<div class="section_photo ">';
 					
-					content += '<!-- 사진 수량 / 전체 목록보기 -->';
 					
 					// 포토 현재 개수 / 전체 개수 영역
 					content += '<div class="sort_info clfix">';
@@ -91,12 +86,10 @@ function photo_content() {
 					// 포토 현재 개수 / 전체 개수 / 전체 목록 보기 영역 끝
 					content += '</div>';
 					
-					content += '<!-- // 사진 수량 / 전체 목록보기 -->';
 					
 					/*----------------------------------*/
 					/*　　　　　　　　 　포토 슬라이더　　　　　　　 */
 					/*----------------------------------*/
-					content += '<!-- 포토 슬라이더 -->';
 					
 					// 영역
 					content += '<div class="photo_list02">';
@@ -146,22 +139,18 @@ function photo_content() {
 					// 영역 종료
 					content += '</div>';
 					
-					content += '<!-- // 포토 슬라이더 -->';
 					
 					/*----------------------------------*/
 					/*　　　　　슬라이더 선택한 사진 내용 보기 　　　 */
 					/*----------------------------------*/
-					content += '<!-- 포토 슬라이더 선택 내용 보여주기 -->';
 					
 					// 내용 + 댓글 영역
 					content += '<div class="photo_detail_view">';
 					
-					content += '<!-- 사진 내용 / 댓글 -->';
 					
 					// 내용 영역
 					content += '<div class="photo_detail_list_ajax d_photo_list">';
 					
-					content += '<!-- 사진 내용 -->';
 					
 					content += '<div class="photo_detail_list">';
 					
@@ -174,7 +163,6 @@ function photo_content() {
 					content += '</a>';
 					content += '</div>';
 					
-					content += '<!-- 좋아요 / 조회수 / 내용 / 등록일 / 리뷰수 -->';
 					
 					// 좋아요 / 조회수 / 내용 / 등록일 / 리뷰 영역
 					content += '<div class="photo_detail_info">';
@@ -182,7 +170,6 @@ function photo_content() {
 					// 좋아요 / 조회수
 					content += '<div class="photo_info_view">';
 					
-					content += '<!-- class="on" 추가시 활성 -->';
 					
 					// class="on" 추가시 활성
 					content += '<a class="btn_like_big d_btn" title="[D-1] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #5 좋아요" href="">';
@@ -216,11 +203,9 @@ function photo_content() {
 					
 					// 좋아요 / 조회수 / 내용 / 등록일 / 리뷰 영역 종료
 					content += '</div>';
-					content += '<!-- // 좋아요 / 조회수 / 내용 / 등록일 / 리뷰수 -->';
 					
 					// 사진 내용 종료
 					content += '</div>';
-					content += '<!-- // 사진 내용 -->';
 					
 					/*----------------------------------*/
 					/*　　　　　　　　　　　　댓글 　　　 　　　　　　*/
@@ -232,21 +217,17 @@ function photo_content() {
 					/*----------------------------------*/
 					// 사진 내용 종료
 					content += '</div>';
-					content += '<!-- // 사진 내용 / 댓글 -->';
 					
 					// 사진 내용 종료
 					content += '</div>';
-					content += '<!-- // 포토 슬라이더 선택 내용 보여주기 -->';
 					
 					// 사진 내용 종료
 					content += '</div>';
-					content += '<!-- // 영역 -->';
 					
 					// 사진 내용 종료
 					content += '</div>';
-					content += '<!-- // 포토 선택시 내용 보기 -->';					
 					
-					$('.section_photo .d_photo_list').append(content);
+					$('.test').append(content);
 				}
 			});
 		},

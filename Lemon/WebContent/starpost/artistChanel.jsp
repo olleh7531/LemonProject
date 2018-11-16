@@ -3990,7 +3990,7 @@
 				<!-- 포토  -->
 				<div class="tab_content" id="artist_chanel_tab4">
 					<!-- 포토 리스트 -->
-					<div class="section_photo d_photo_list">
+					<div class="section_photo d_photo_list test">
 						<!-- 최신순 / 좋아요순 -->
 						<div class="sort_info clfix">
 							<ul class="list_sort fl_right">
@@ -4017,12 +4017,12 @@
 											<div class="wrap_photo02">
 												<div class="thumb_wrap">
 													<!-- <a href="" class="thumb" title="[바닐라 어쿠스틱 - 싱글 앨범 &lsquo;지쳤니&rsquo; 발매 D-day 커버 공개] 포토상세"> -->
-													<a onclick="photo_content()" class="thumb"
+													<a id="ar_num" onclick="photo_content()" class="thumb"
 														title="[${info.singer_name} '-' ${list_photo.ar_subject}] 포토상세"
-														style="cursor: pointer;">
+														style="cursor: pointer;">test
 														<span class="thumb_frame"></span>
 														<!-- <img width="148" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/558/80050558_1000.jpg/melon/resize/148/quality/80/optimize" alt="아티스트"> -->
-														<img width="148" src="./upload/starpost/singerPhoto/${list_photo.ar_photo}" alt="아티스트">
+														<img  width="148" src="./upload/starpost/singerPhoto/${list_photo.ar_photo}" title="${list_photo.ar_num}" alt="아티스트">
 														<span class="wrap_vertical"></span>
 													</a>
 												</div>

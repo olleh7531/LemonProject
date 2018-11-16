@@ -354,18 +354,16 @@ public class ArtistChanelPhotoDAO {
 	// 글 번호에 해당하는 게시글 번호(내용) 가져오기
 	public ArtistChanelPhotoBean getPhotoContentNum(int num) {
 		ArtistChanelPhotoBean acpbean = null;
-		
 		try {
 			con = getCon();
-			
 			// 글 번호에 해당하는 글 정보 모두 가져오기
 			sql = "select * from artist_photo where ar_num = ?";
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1,  num);;
+			pstmt.setInt(1,  num);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()) {
+				acpbean = new ArtistChanelPhotoBean();
 				acpbean.setAr_content(rs.getString("ar_content"));
 				acpbean.setAr_num(rs.getInt("ar_num"));
 				acpbean.setAr_photo(rs.getString("ar_photo"));
