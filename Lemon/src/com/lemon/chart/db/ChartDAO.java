@@ -603,21 +603,20 @@ public class ChartDAO {
 		List<com.lemon.main.db.ChartBean> arr = new ArrayList<com.lemon.main.db.ChartBean>();
 		int chk1=0;
 		int chk2=0;
-		int hour1=hour-1;
 		int hour2=hour+1;
 		try {
 			con = getCon();
 			
 			// sql 쿼리
 			sql = "select ch_updatetime,ch_music_num,lately,past,music_name,al_singer_name,al_art_img,al_num,al_name,musicfile from(select ch_updatetime,ch_music_num,ch_ranking lately,music_name,al_singer_name,al_art_img,al_num,al_name,musicfile"
-					+ " from chart,music,album where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour+" HOUR) AND"
-					+ " DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour1+" HOUR), INTERVAL 1 SECOND) AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')"
+					+ " from chart,music,album where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour2+"'), INTERVAL 1 HOUR) AND"
+					+ " DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour2+"'), INTERVAL 0 HOUR), INTERVAL 1 SECOND) AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')"
 					+ " and mu_num=ch_music_num and al_num=album_num order by lately) d left outer join (select a.ch_music_num chm2,a.ch_ranking past from chart a,"
-					+ " (select ch_music_num,ch_ranking from chart where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour+" HOUR)"
-					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour1+" HOUR), INTERVAL 1 SECOND) AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) b"
-					+ " where a.ch_music_num=b.ch_music_num and a.ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour2+" HOUR)"
-					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %H'), INTERVAL "+hour+" HOUR), INTERVAL 1 SECOND) AND a.ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) c"
-					+ " on c.chm2=d.ch_music_num group by lately limit ?,?";
+					+ " (select ch_music_num,ch_ranking from chart where ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour2+"'), INTERVAL 1 HOUR)"
+					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour2+"'), INTERVAL 0 HOUR), INTERVAL 1 SECOND) AND ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) b"
+					+ " where a.ch_music_num=b.ch_music_num and a.ch_updatetime between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour2+"'), INTERVAL 2 HOUR)"
+					+ " AND DATE_SUB(DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d %"+hour2+"'), INTERVAL 1 HOUR), INTERVAL 1 SECOND) AND a.ch_updatetime != DATE_FORMAT(NOW(),'%Y-%m-%d %00:%02')) c"
+					+ " on c.chm2=d.ch_music_num order by lately limit ?,?";
 			// pstmt 객체생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow - 1);

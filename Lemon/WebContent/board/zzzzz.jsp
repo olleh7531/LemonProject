@@ -155,7 +155,10 @@ and se_gender='남' group by se_keyword) a
  =======================================================================
  하루마다 업데이트했던 10분단위 데이터 삭제
  
- 
+ delete from search_chart where
+	sc_date between DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL
+	1 DAY) and DATE_SUB(DATE_FORMAT(NOW(),'%Y-%m-%d'), INTERVAL 1 SECOND) AND
+	NOT sc_date=DATE_FORMAT(NOW(),'%Y-%m-%d %H:%1');
 	
 <!--                     	스케줄러                        -->
 	===========================================================================
