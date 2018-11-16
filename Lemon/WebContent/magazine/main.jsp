@@ -60,6 +60,18 @@
 	color: #edae06;
 	border-bottom: 2px solid #edae06;
 }
+
+figure{
+   width:200px; /*container-width*/
+   overflow:hidden; /*hide bounds of image */
+   margin:0;   /*reset margin of figure tag*/
+}
+
+figure img{
+   display:block; /*remove inline-block spaces*/
+   width:100%; /*make image streatch*/
+}
+
 </style>
 </head>
 <body>
@@ -85,7 +97,7 @@
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="pr_none">
 			<section id="listForm">
-				<h1>Magazine</h1>
+				<h1 style="font-size: 35px; font-weight: bold;">MAGAZINE</h1>
 			<div id="pageList">
 				<table class="type04">
 					<colgroup>
@@ -111,8 +123,10 @@
 					%>
 					<tr onclick="location.href='./magazineContent.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum %>'" style="cursor: pointer;">
 						<td style="padding: 50px 15px 0;"><%=bb.getMa_Num()%></td>
-						<td><img alt="" src="./magazine/image/<%=bb.getMa_file() %>" height="100"> </td>
-						<td  class="tdclass" style="padding: 50px 0 0; font-weight: bold;"><%=bb.getMa_subject()%></td>
+						<td><figure>
+						<img alt="" src="./magazine/image/<%=bb.getMa_file() %>" height="100">
+						</figure></td>
+						<td  class="tdclass" style="padding: 50px 10px 0; font-weight: bold;"><%=bb.getMa_subject()%></td>
 						<td style="padding: 50px 0 0;"><%=bb.getMa_date()%></td>
 						<td style="padding: 50px 15px 0;"><%=bb.getMa_readcount()%></td>
 					</tr>
