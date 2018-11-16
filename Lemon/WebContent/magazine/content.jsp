@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>레몬 Lemon</title>
 <link rel="stylesheet" type="text/css"
+	href="./assets/css/magazine/table.css">
+
+<link rel="stylesheet" type="text/css"
 	href="./assets/css/common/common.css">
 <link rel="stylesheet" type="text/css"
 	href="./assets/css/common/menu.css">
@@ -43,7 +46,6 @@
 	<jsp:include page="../common/menu.jsp"></jsp:include>
 	<div id="cont_wrap" class="clfix">
 		<div id="conts_section" class="pr_none">
-			<h1>WebContent/board/content.jsp</h1>
 			<%
 				// 저장 
 				// request.setAttribute("bb", bb); 
@@ -52,28 +54,36 @@
 				BoardBean bb = (BoardBean) request.getAttribute("bb");
 				String pageNum = (String) request.getAttribute("pageNum");
 			%>
-			<h1>글 내용 보기</h1>
-			<table border="1">
-				<tr>
-					<td>NO.</td>
-					<td><%=bb.getMa_Num()%></td>
-					<td>작성일</td>
-					<td><%=bb.getMa_date()%></td>
+			<table class="type04">
+				<colgroup>
+					<col style="width: 3%">
+					<col style="width: 3%">
+					<col style="width: 71%">
+					<col style="width: 10%">
+					<col style="width: 13%">
+				</colgroup>
+				<tr style="text-align: center;">
+					<th scope="col">NO.</th>
+					<th scope="col"><%=bb.getMa_Num()%></th>
+					<th scope="col"></th>
+					<th scope="col">작성일</th>
+					<th scope="col"><%=bb.getMa_date()%></th>
 				</tr>
 				<tr>
-					<td>글제목</td>
-					<td colspan="3"><%=bb.getMa_subject()%></td>
+					<td></td>
+					<td colspan="3" style="font-weight: bold;"><%=bb.getMa_subject()%></td>
 				</tr>
 				<tr>
-					<td>글내용</td>
+					<td></td>
 					<td colspan="3"><%=bb.getMa_content()%></td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="button" value="글 수정"
-						onclick="location.href='./magazineUpdate.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum%>'"> <input
-						type="button" value="글 삭제"
-						onclick="location.href='./magazineDeleteAction.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum%>'"> <input
-						type="button" value="글 목록"
+					<td colspan="3" style="text-align: center;">
+						<input type="button" value="글 수정" class="button"
+						onclick="location.href='./magazineUpdate.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum%>'">
+						<input type="button" value="글 삭제" class="button"
+						onclick="location.href='./magazineDeleteAction.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum%>'">
+						<input type="button" value="글 목록" class="button"
 						onclick="location.href='./magazineList.maga?pageNum=<%=pageNum%>'"></td>
 				</tr>
 

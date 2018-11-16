@@ -35,13 +35,18 @@ table.type04 th {
     vertical-align: top;
 	border-bottom: 1px solid #ccc;
 	font-size: 10px;
+	text-align: center;
 }
 table.type04 td {
     padding: 10px;
     vertical-align: top;
-    border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
 }
 
+#sub {
+	font-weight: bold;
+}
 
 input[type=text], select {
 	width: 100%;
@@ -55,6 +60,10 @@ input[type=text], select {
 
 #frm {
 	padding: 0 20px;
+}
+
+.tdclass {
+    padding: 70px 0;
 }
 
 .button {

@@ -96,7 +96,7 @@
 						<col style="width: 5%">
 					</colgroup>
 					<thead>
-						<tr>
+						<tr style="text-align: center;">
 							<th scope="col">NO.</th>
 							<th scope="col">이미지</th>
 							<th scope="col">제목</th>
@@ -110,11 +110,11 @@
 								BoardBean bb = (BoardBean) boardList.get(i);
 					%>
 					<tr onclick="location.href='./magazineContent.maga?num=<%=bb.getMa_Num()%>&pageNum=<%=pageNum %>'" style="cursor: pointer;">
-						<td><%=bb.getMa_Num()%></td>
-						<td><img alt="" src="./magazine/image/<%=bb.getMa_file() %>" height="50"> </td>
-						<td><%=bb.getMa_subject()%></td>
-						<td><%=bb.getMa_date()%></td>
-						<td><%=bb.getMa_readcount()%></td>
+						<td style="padding: 50px 15px 0;"><%=bb.getMa_Num()%></td>
+						<td><img alt="" src="./magazine/image/<%=bb.getMa_file() %>" height="100"> </td>
+						<td  class="tdclass" style="padding: 50px 0 0; font-weight: bold;"><%=bb.getMa_subject()%></td>
+						<td style="padding: 50px 0 0;"><%=bb.getMa_date()%></td>
+						<td style="padding: 50px 15px 0;"><%=bb.getMa_readcount()%></td>
 					</tr>
 					<%
 						}
