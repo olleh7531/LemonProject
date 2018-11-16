@@ -37,6 +37,10 @@
 		margin-bottom: 20px;
 	}
 	
+	.info p a:hover{
+		text-decoration: underline;
+	}
+	
 	
 	</style>
 		
@@ -95,12 +99,13 @@
 				%>
 				<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">
 					<div style="display: inline-block; width:96px; height:96px; 96margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+						<a href="./ArtistChanel.ac?artist=<%=at_pro.getSi_num() %>">
 						<img width="100%" height="100%"
-							 src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture() %>">
+							 src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture() %>"></a>
 					</div>
 					<div style="display:none; clear: both;"></div>		
 					<div class="info" style="display: inline-block; margin-left: 10px;" >
-					<p><strong><%=at_pro.getSinger_name() %></strong></p>
+					<p><a href="./ArtistChanel.ac?artist=<%=at_pro.getSi_num() %>"><strong><%=at_pro.getSinger_name() %></strong></a></p>
 					<p><%=at_pro.getSi_gender() %></p>
 					<p><%=at_pro.getActivity_type() %></p>
 					<p><%=at_pro.getSi_genre() %></p>
@@ -115,13 +120,14 @@
 					%>
 					<div style="display: inline-block; width:100%; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid #ccc">
 						<div style="display: inline-block; width: 96px; height: 96px; margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+							<a href="./ArtistChanel.ac?artist=<%=arSb.getSi_num() %>">
 							<img width="100%" height="100%"
-								 src="./upload/starpost/singerProfile/<%=arSb.getSi_picture() %>">
+								 src="./upload/starpost/singerProfile/<%=arSb.getSi_picture() %>"></a>
 						</div>
 						<div style="display:none; clear: both;"></div>		
 						
 						<div class="info" style="display: inline-block; margin-left: 10px;" >
-						<p><strong><%=arSb.getSinger_name() %></strong></p>
+						<p><a href="./ArtistChanel.ac?artist=<%=arSb.getSi_num() %>"><strong><%=arSb.getSinger_name() %></strong></a></p>
 						<p><%=arSb.getSi_gender() %></p>
 						<p><%=arSb.getActivity_type() %></p>
 						<p><%=arSb.getSi_genre() %></p>
