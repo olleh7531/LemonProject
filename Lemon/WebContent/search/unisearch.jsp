@@ -202,6 +202,11 @@ dl#info dd {
 	border-top: 1px solid #ccc;
 }
 /* 곡 관련 */
+
+.g_artist_info dl dd a:hover{
+	text-decoration: underline;
+}
+
 </style>
 
 </head>
@@ -296,13 +301,15 @@ dl#info dd {
 							<div style="display: inline-block; width: 100%;">
 								<div
 									style="display: inline-block; width: 208px; height: 208px;margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+									<a href="./ArtistChanel.ac?artist=<%=at_pro.getSi_num() %>">
 									<img width="100%" height="100%"
-										src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture()%>">
+										src="./upload/starpost/singerProfile/<%=at_pro.getSi_picture()%>"></a>
 								</div>
+								
 
 								<div id="artist_info">
 									<div style="display: inline-block; font-size: 18px;">
-										<strong><b><%=at_pro.getSinger_name()%></b></strong>
+										<a href="./ArtistChanel.ac?artist=<%=at_pro.getSi_num() %>"><strong><b><%=at_pro.getSinger_name()%></b></strong></a>
 									</div>
 									<div style="border-top: 1px solid #e6e6e6">
 										<dl id="info" style="display: block; margin-top: 10px;">
@@ -331,17 +338,18 @@ dl#info dd {
 								for (int i = 0; i < artist_list.size(); i++) {
 											SearchBean arSb = (SearchBean) artist_list.get(i);
 							%>
-							<div class="wrap_artist">
+							<div class="wrap_artist" style="display: inline-block; float: left; margin-right: 10px;">
 								<div
 									style="display: inline-block; width: 96px; height: 96px;margin-bottom: 10px; border: 1px solid #ccc; float: left;">
+ 									<a href="./ArtistChanel.ac?artist=<%=arSb.getSi_num() %>">
 									<img width="100%" height="100%"
-										src="./upload/starpost/singerProfile/<%=arSb.getSi_picture()%>">
+										src="./upload/starpost/singerProfile/<%=arSb.getSi_picture()%>"></a>
 								</div>
 								<div style="display: none; clear: both;"></div>
 								<div class="g_artist_info" style="display: inline-block;">
 									<dl>
 										<dd>
-											<strong><%=arSb.getSinger_name()%></strong>
+											<a href="./ArtistChanel.ac?artist=<%=arSb.getSi_num() %>"><strong><%=arSb.getSinger_name()%></strong></a>
 										</dd>
 										<dd><%=arSb.getSi_gender()%>,<%=arSb.getActivity_type()%></dd>
 										<dd><%=arSb.getSi_genre()%></dd>
@@ -350,6 +358,7 @@ dl#info dd {
 								<div style="display: none; clear: both;"></div>
 
 							</div>
+							<div style="display: none; clear: both;"></div>
 							<%
 								}
 							%>

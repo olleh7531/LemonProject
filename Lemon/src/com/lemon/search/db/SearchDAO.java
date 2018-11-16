@@ -21,6 +21,11 @@ public class SearchDAO {
 	ResultSet rs = null;
 	String sql = "";
 
+	Connection con2 = null;
+	PreparedStatement pstmt2 = null;
+	ResultSet rs2 = null;
+	String sql2 = "";
+	
 	private Connection getCon() throws Exception {
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/Lemon");
@@ -47,6 +52,31 @@ public class SearchDAO {
 		if (con != null) {
 			try {
 				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void CloseDB2() {
+		if (rs2 != null) {
+			try {
+				rs2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (pstmt2 != null) {
+			try {
+				pstmt2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if (con2 != null) {
+			try {
+				con2.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -117,6 +147,7 @@ public class SearchDAO {
 
 		System.out.println(search);
 
+		
 		try {
 			con = getCon();
 
@@ -125,35 +156,38 @@ public class SearchDAO {
 			rs = pstmt.executeQuery();
 
 			int si_num = 0;
+			
 			if (rs.next()) {
 				si_num = rs.getInt("si_num");
 			}
 
-			sql = "select * from singer where group_singer_num like '%," + si_num + ",%'";
+			sql = "select * from singer where group_singer_num like '%,"+si_num+",%'";
 
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+	
+			System.out.println("si_num : "+si_num);
+			
+			while (rs.next()) {
+				String group_singer_num = rs.getString("group_singer_num");
 
-			String group_singer_num = "";
-			if (rs.next()) {
-				group_singer_num = rs.getString("group_singer_num");
-
-				String group_num = rs.getString("group_singer_num").substring(1,
-						rs.getString("group_singer_num").length() - 1);
+				String group_num = rs.getString("group_singer_num").substring(1, rs.getString("group_singer_num").length() - 1);
 				StringTokenizer g_number = new StringTokenizer(group_num, ",");
+				
 				while (g_number.hasMoreTokens()) {
 					group_num = g_number.nextToken();
 
-					sql = "select singer_name, si_gender, activity_type, si_genre, si_picture"
+					sql2 = "select singer_name, si_gender, activity_type, si_genre, si_picture"
 							+ " from singer where si_num = ? AND si_num NOT IN (" + si_num + ")";
 
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, Integer.parseInt(group_num));
-					rs = pstmt.executeQuery();
+					pstmt2 = con.prepareStatement(sql2);
+					pstmt2.setInt(1, Integer.parseInt(group_num));
+					rs2 = pstmt2.executeQuery();
 
-					while (rs.next()) {
+					while (rs2.next()) {
 						sb = new SearchBean();
-
+						
+						sb.setSi_num(rs.getInt("si_num"));
 						sb.setSi_picture(rs.getString("si_picture"));
 						sb.setSinger_name(rs.getString("singer_name"));
 						sb.setSi_gender(rs.getString("si_gender"));
@@ -168,6 +202,7 @@ public class SearchDAO {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
+			CloseDB2();
 		}
 
 		return list;

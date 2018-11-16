@@ -39,7 +39,7 @@ public class ArtistChanelFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}		
+		}
 		else if (command.equals("/AdminArtistChanelInfo.ac")) {
 			// 정보 글쓰기
 			forward = new ActionForward();
