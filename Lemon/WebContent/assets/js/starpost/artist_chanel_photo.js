@@ -28,7 +28,7 @@ function singerNumCheck() {
 	});
 }
 
-// 사진 리스트 뿌려주고 사진 선택 시 내용 가져올 때
+// 사진 리스트 뿌려주고 사진 선택 시 선택한 사진 내용 가져올 때
 function photo_content() {
 	$.ajax({
 		type : "post", // method = "post" 방식으로 출력
@@ -36,16 +36,14 @@ function photo_content() {
 		dataType : 'json',
 		data : {
 			// 변수 : "" -> ajax 변수명 
-			// .val() 문자
+			// photo_content_ajax 일 때만 내용 보이게 한다
+			photo_content_ajax : "photo_content_ajax",
 			
 			// 포토 번호 num : ar_num
 			ar_num : $('#ar_num').find('img').attr('title'),
 			
-			// photo_content_ajax 일 때만 내용 보이게 한다
-			photo_content_ajax : "photo_content_ajax",
-			
 			// 아티스트 번호 : si_num
-			artist : $('#artist').val(),
+			artist : $('#artist').val(), // .val() 문자
 		},
 		success : function(data) { // data 가져오는 것이 성공하였을 때
 			// 사진 리스트 지운다(안 보이게함)
@@ -136,7 +134,7 @@ function photo_content() {
 					content += '<div class="photo_detail_image">';
 					content += '<a href="" title="이미지 확대보기" class="thumb">';
 					content += '<span class="wrap_vertical"></span>';
-					content += '<img id="photoViewLayer" src="https://cdnimg.melon.co.kr/cm/photo/images/000/800/50/258/80050258_org.jpg/melon/quality/80/optimize" alt="">';
+					content += '<img id="photoViewLayer" src="./upload/starpost/singerPhoto/' + this.ar_photo + '" alt="">';
 					content += '<span class="icon_viewlk_image"></span>';
 					content += '</a>';
 					content += '</div>';
@@ -152,24 +150,24 @@ function photo_content() {
 					// class="on" 추가시 활성
 					content += '<a class="btn_like_big d_btn" title="[D-1] 10주년 투어콘서트 <이 지금 dlwlrma> Teaser Poster #5 좋아요" href="">';
 					content += '<span class="icon">좋아요</span>';
-					content += '<strong class="none">총건수</strong>2,586';
+					content += '<strong class="none">총건수</strong> 2536'
 					content += '</a>';
 					content += '<em class="bar">|</em>';
 					content += '<span class="cnt_view">조회 ';
-					content += '<strong>45,003</strong>';
+					content += '<strong>' + this.ar_readcount + '</strong>';
 					content += '</span>';
 					content += '</div>';
 					
 					// 사진 내용
 					content += '<div class="photo_info_text">';
-					content += '[D-1] 10주년 투어콘서트 &lt;이 지금 dlwlrma&gt;<br>Teaser Poster #5 : 더 이상한 나라의 이지금';
+					content += this.ar_content;
 					content += '</div>';
 					
 					// 등록일 / 리뷰
 					content += '<div class="photo_info_btm">';
 					content += '<p class="date">';
 					content += '<span>등록일</span>';
-					content += '<strong>2018.10.27</strong>';
+					content += '<strong>' + this.ar_registerdate + '</strong>';
 					content += '</p>';
 					content += '<p class="review">';
 					content += '<span>리뷰</span> ';
@@ -208,10 +206,9 @@ function photo_content() {
 					$('.test').append(content);
 				}
 				else if(index < 9) {
-					alert(this.ar_photo)
 					// 사진 반복 뿌려주기 ( 8개 )
 					// 현재 보고 있는 사진 class = "on" (1개)
-					content += '<li class="on">';
+					content += '<li class="on photo_content_bxslider">';
 					content += '<div class="thumb_wrap">';
 					content += '<a href="" class="thumb" title="">';
 					content += '<img src="./upload/starpost/singerPhoto/' + this.ar_photo + '" alt="아티스트">';
@@ -236,10 +233,35 @@ function photo_content() {
 					$('#photo_slider').append(content);
 				}
 			});
-			
 		},
 		error : function(xhr, status, error) { // 에러났을 때
 			alert("error : " + error);
 		}
 	});
 }
+
+// 사진 슬라이더 선택 후 밑에 사진 내용 뿌려주기
+$('.photo_content_bxslider').bxSlider({
+  buildPager: function(slideIndex){
+    switch(slideIndex){
+      case 0:
+        return '<img src="/images/thumbs/tree_root.jpg">';
+      case 1:
+        return '<img src="/images/thumbs/houses.jpg">';
+      case 2:
+        return '<img src="/images/thumbs/hill_fence.jpg">';
+      case 3:
+          return '<img src="/images/thumbs/hill_fence.jpg">';
+      case 4:
+          return '<img src="/images/thumbs/hill_fence.jpg">';
+      case 5:
+          return '<img src="/images/thumbs/hill_fence.jpg">';
+      case 6:
+          return '<img src="/images/thumbs/hill_fence.jpg">';
+      case 7:
+          return '<img src="/images/thumbs/hill_fence.jpg">';
+      case 8:
+          return '<img src="/images/thumbs/hill_fence.jpg">';
+    }
+  }
+});
