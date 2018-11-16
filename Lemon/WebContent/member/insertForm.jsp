@@ -509,7 +509,7 @@ function check() {
 				var authBox = document.getElementById("authBox");
 				if(inputValue == code && code.length == 6){
 					alert("인증 성공!");	
-					authBoxㄴ.innerHTML="<div style='text-align: center; font-size: 15px;'><strong><p>인증에 성공하였습니다.</p></strong></div><input type='hidden' name='email_cert' value='1'/>";
+					authBox.innerHTML="<div style='text-align: center; font-size: 15px;'><strong><p>인증에 성공하였습니다.</p></strong></div><input type='hidden' name='email_cert' value='1'/>";
 
 				}else{
 					alert("다시 한번 확인 해 주세요.");						
