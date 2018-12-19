@@ -17,7 +17,7 @@
 
 		// chart(music) 임시 데이터 생성
 
-  		 for(int i=0;i<49;i++){
+/*   		 for(int i=0;i<49;i++){
 			for(int j=1;j<101;j++){
 				if(i==0&&j==1){
 					out.println("insert into chart (ch_num,ch_music_num,ch_playcnt,ch_downcnt,ch_updatetime) values");
@@ -34,12 +34,12 @@
 			
 				
 			}
-		} 
+		}  */
 
 		// searchchart 임시데이터 생성
 
-  		// out.println("insert into search_chart (sc_num,sc_keyword,sc_date,sc_gender1,sc_gender2,sc_generation1,sc_generation2,sc_generation3,sc_generation4,sc_generation5,sc_count) values");
-		/* for (int i = 0; i < 100; i++) {
+  		 out.println("insert into search_chart (sc_num,sc_keyword,sc_date,sc_gender1,sc_gender2,sc_generation1,sc_generation2,sc_generation3,sc_generation4,sc_generation5,sc_count) values");
+		 for (int i = 0; i < 100; i++) {
 	
 	
 			for (int j = 0; j < 41; j++) {
@@ -351,7 +351,7 @@
 				}
 
 			}
-		}    */
+		}    
 	%>
 </body>
 </html>

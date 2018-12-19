@@ -47,7 +47,7 @@ function photo_content() {
 		},
 		success : function(data) { // data 가져오는 것이 성공하였을 때
 			// 사진 리스트 지운다(안 보이게함)
-			$('.test').empty();
+			$('.photo_list_div').empty();
 			
 			// 사진 리스트 선택 시 선택한 사진 내용 뿌려준다
 			$(data).each(function(index) {
@@ -58,10 +58,12 @@ function photo_content() {
 					/*　　　　　　　　　포토 내용 보기　　　　　　　 */
 					/*----------------------------------*/
 					// 영역
+					content += '<!-- 포토 리스트 -->';
 					content += '<div class="section_photo ">';
 					
 					
 					// 포토 현재 개수 / 전체 개수 영역
+					content += '';
 					content += '<div class="sort_info clfix">';
 					
 					// 포토 현재 개수 / 전체 개수
@@ -203,7 +205,7 @@ function photo_content() {
 					// 사진 내용 종료
 					content += '</div>';
 					
-					$('.test').append(content);
+					$('.photo_list_div').append(content);
 				}
 				else if(index < 9) {
 					// 사진 반복 뿌려주기 ( 8개 )
@@ -241,7 +243,7 @@ function photo_content() {
 }
 
 // 사진 슬라이더 선택 후 밑에 사진 내용 뿌려주기
-$('.photo_content_bxslider').bxSlider({
+/*$('.photo_content_bxslider').bxSlider({
   buildPager: function(slideIndex){
     switch(slideIndex){
       case 0:
@@ -264,4 +266,4 @@ $('.photo_content_bxslider').bxSlider({
           return '<img src="/images/thumbs/hill_fence.jpg">';
     }
   }
-});
+});*/

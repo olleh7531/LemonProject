@@ -21,7 +21,7 @@
     // 등록 가능한 파일 사이즈 MB
     var uploadSize = 50;
     // 등록 가능한 총 파일 사이즈 MB
-    var maxUploadSize = 500;
+    var maxUploadSize = 1000;
  
     $(function (){
         // 파일 드롭 다운

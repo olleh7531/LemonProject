@@ -3990,7 +3990,7 @@
 				<!-- 포토  -->
 				<div class="tab_content" id="artist_chanel_tab4">
 					<!-- 포토 리스트 -->
-					<div class="section_photo d_photo_list test">
+					<div class="section_photo d_photo_list photo_list_div">
 						<!-- 최신순 / 좋아요순 -->
 						<div class="sort_info clfix">
 							<ul class="list_sort fl_right">

@@ -63,11 +63,15 @@ public class MusicUploadAction implements Action {
 			String album = tag.getFirst(FieldKey.ALBUM);
 			album = album.replace("?", "");
 			album = album.replace("*", "");
+			album = album.replace(":", "");
+			album = album.replace("#", "");
 			album = album.trim();
 			String year = tag.getFirst(FieldKey.YEAR);
 			if (year.length() < 8) {
 				year = "20180229";
 				// 2월29일(실제로 존재하지 않는 날) 로 설정된 앨범에 대해서는 따로 발매일 업데이트 해주어야함
+			}else if(year.length() > 8){
+				year=year.substring(0,10);
 			}
 			year = year.replace(".", "");
 			year = year.trim();
@@ -77,16 +81,16 @@ public class MusicUploadAction implements Action {
 			String track = tag.getFirst(FieldKey.TRACK);
 			musicfile = multi.getFilesystemName(musicfile);
 			
-			/*
-			 * System.out.println("musicfile : " + musicfile);
-			 * System.out.println("Song Name : " + title);
-			 * System.out.println("Artist : " + artist);
-			 * System.out.println("Album : " + album);
-			 * System.out.println("Year : " + year);
-			 * System.out.println("Genre : " + genre);
-			 * System.out.println("Lyrics : " + Lyrics);
-			 * System.out.println("track : "+track);
-			 */
+			
+			 System.out.println("musicfile : " + musicfile);
+			 System.out.println("Song Name : " + title);
+			 System.out.println("Artist : " + artist);
+			 System.out.println("Album : " + album);
+			 System.out.println("Year : " + year);
+			 System.out.println("Genre : " + genre);
+			 System.out.println("Lyrics : " + Lyrics);
+			 System.out.println("track : "+track);
+			 
 			
 			int duration = af.getAudioHeader().getTrackLength();
 			// int minute = duration/60;
